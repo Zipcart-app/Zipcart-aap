@@ -3,1261 +3,341 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZipCart - सब कुछ एक जगह</title>
-
+<title>ZipCart — आपकी अपनी Shopping जगह ❤️</title>
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-body{
-  font-family:Arial, sans-serif;
-  background:#f7f5fb;
-  color:#222;
-}
-
-header{
-  background:linear-gradient(135deg,#6a1b9a,#9c27b0,#7b1fa2);
-  color:white;
-  padding:14px 18px;
-  position:sticky;
-  top:0;
-  z-index:100;
-  box-shadow:0 3px 12px #0002;
-}
-
-.header-top{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  max-width:1200px;
-  margin:auto;
-}
-
-.logo{
-  font-size:28px;
-  font-weight:bold;
-  white-space:nowrap;
-}
-
-.search{
-  flex:1;
-  background:white;
-  border-radius:25px;
-  padding:11px 16px;
-  display:flex;
-  align-items:center;
-}
-
-.search input{
-  border:0;
-  outline:0;
-  width:100%;
-  font-size:15px;
-}
-
-.search button{
-  border:0;
-  background:none;
-  font-size:21px;
-  cursor:pointer;
-}
-
-.header-btn{
-  background:white;
-  color:#6a1b9a;
-  border:0;
-  border-radius:22px;
-  padding:10px 13px;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-.hero{
-  max-width:1200px;
-  margin:20px auto;
-  padding:38px 20px;
-  border-radius:22px;
-  background:linear-gradient(135deg,#ede7f6,#fce4ec);
-  text-align:center;
-}
-
-.hero h1{
-  color:#6a1b9a;
-  font-size:32px;
-  margin-bottom:10px;
-}
-
-.hero p{
-  font-size:17px;
-  margin-bottom:18px;
-}
-
-.voice-btn{
-  border:0;
-  border-radius:25px;
-  padding:12px 20px;
-  background:#6a1b9a;
-  color:white;
-  cursor:pointer;
-  font-size:15px;
-}
-
-.section{
-  max-width:1200px;
-  margin:28px auto;
-  padding:0 14px;
-}
-
-.section-title{
-  font-size:23px;
-  color:#5d167f;
-  margin-bottom:18px;
-}
-
-.category-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(100px,1fr));
-  gap:18px;
-}
-
-.category{
-  text-align:center;
-  cursor:pointer;
-}
-
-.circle{
-  width:82px;
-  height:82px;
-  border-radius:50%;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:38px;
-  background:white;
-  box-shadow:0 4px 12px #0002;
-  transition:.2s;
-}
-
-.category:hover .circle{
-  transform:scale(1.08);
-  box-shadow:0 6px 18px #0003;
-}
-
-.category p{
-  margin-top:8px;
-  font-weight:bold;
-  font-size:14px;
-}
-
-.products{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-  gap:16px;
-}
-
-.product{
-  background:white;
-  border-radius:16px;
-  overflow:hidden;
-  box-shadow:0 3px 12px #0002;
-  cursor:pointer;
-}
-
-.product-image{
-  height:170px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:65px;
-  background:#f3e5f5;
-}
-
-.product-info{
-  padding:13px;
-}
-
-.product-info h3{
-  font-size:16px;
-  margin-bottom:7px;
-}
-
-.price{
-  font-size:19px;
-  font-weight:bold;
-  color:#6a1b9a;
-}
-
-.rating{
-  margin-top:6px;
-  color:#f39c12;
-}
-
-.delivery{
-  margin-top:6px;
-  color:#16803c;
-  font-size:13px;
-}
-
-.old-price{
-  color:#888;
-  text-decoration:line-through;
-  font-size:13px;
-  margin-left:5px;
-}
-
-.discount{
-  color:#16803c;
-  font-size:13px;
-}
-
-.page{
-  display:none;
-}
-
-.page.active{
-  display:block;
-}
-
-.back-btn{
-  border:0;
-  background:#6a1b9a;
-  color:white;
-  border-radius:20px;
-  padding:10px 18px;
-  cursor:pointer;
-  margin-bottom:18px;
-}
-
-.sub-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(110px,1fr));
-  gap:18px;
-}
-
-.sub-item{
-  text-align:center;
-  cursor:pointer;
-}
-
-.sub-circle{
-  width:78px;
-  height:78px;
-  margin:auto;
-  border-radius:50%;
-  background:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:34px;
-  box-shadow:0 4px 12px #0002;
-}
-
-.sub-item p{
-  font-size:13px;
-  margin-top:7px;
-  font-weight:bold;
-}
-
-.info-box{
-  background:white;
-  border-radius:18px;
-  padding:18px;
-  margin:15px 0;
-  box-shadow:0 3px 10px #0001;
-}
-
-.delivery-options{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:12px;
-  margin-top:12px;
-}
-
-.delivery-option{
-  border:2px solid #ddd;
-  border-radius:14px;
-  padding:15px;
-  cursor:pointer;
-}
-
-.delivery-option:hover{
-  border-color:#8e24aa;
-}
-
-.cart-btn{
-  width:100%;
-  border:0;
-  border-radius:25px;
-  padding:13px;
-  background:#6a1b9a;
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
-  margin-top:12px;
-}
-
-.review{
-  background:#fafafa;
-  border-radius:12px;
-  padding:14px;
-  margin-top:10px;
-}
-
-.review-stars{
-  color:#f39c12;
-}
-
-footer{
-  margin-top:40px;
-  padding:30px 15px;
-  text-align:center;
-  background:#311b3f;
-  color:white;
-}
-
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:#0008;
-  z-index:500;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-
-.modal-box{
-  background:white;
-  width:min(600px,100%);
-  max-height:85vh;
-  overflow:auto;
-  border-radius:20px;
-  padding:22px;
-}
-
-.close{
-  float:right;
-  border:0;
-  background:#eee;
-  border-radius:50%;
-  width:35px;
-  height:35px;
-  cursor:pointer;
-}
-
-.language-list{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-  margin-top:20px;
-}
-
-.language-list button{
-  border:1px solid #ddd;
-  background:white;
-  padding:12px;
-  border-radius:10px;
-  cursor:pointer;
-}
-
-.order-actions{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
-  gap:9px;
-  margin-top:14px;
-}
-
-.order-actions button{
-  border:0;
-  padding:10px;
-  border-radius:10px;
-  background:#ede7f6;
-  color:#5d167f;
-  cursor:pointer;
-}
-
-@media(max-width:650px){
-  .header-top{
-    flex-wrap:wrap;
-  }
-
-  .logo{
-    width:100%;
-    text-align:center;
-  }
-
-  .search{
-    order:2;
-    width:100%;
-    flex-basis:100%;
-  }
-
-  .hero h1{
-    font-size:25px;
-  }
-
-  .category-grid{
-    grid-template-columns:repeat(4,1fr);
-  }
-
-  .circle{
-    width:65px;
-    height:65px;
-    font-size:29px;
-  }
-
-  .products{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .product-image{
-    height:135px;
-  }
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,"Noto Sans",sans-serif;background:#f7f7fb;color:#222}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer;border:0}
+.header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#6a11cb,#8e2de2);color:#fff;padding:12px}
+.top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;max-width:1200px;margin:auto}
+.logo{font-size:25px;font-weight:800;white-space:nowrap}
+.tag{font-size:11px;opacity:.9}
+.search{flex:1;min-width:220px;display:flex;background:#fff;border-radius:25px;overflow:hidden}
+.search input{flex:1;border:0;padding:12px 15px;outline:0}
+.search button{background:#fff;padding:0 10px}
+.navbtn{background:#ffffff22;color:#fff;padding:10px 12px;border-radius:20px;font-weight:600}
+.page{max-width:1200px;margin:auto;padding:14px}
+.hero{background:linear-gradient(135deg,#fff0fa,#eee5ff);border-radius:20px;padding:24px;margin-bottom:16px}
+.hero h1{margin:0 0 8px;color:#5c16b8}
+.quick{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.pill{background:#fff;border:1px solid #ddd;padding:9px 13px;border-radius:20px}
+.section{margin:22px 0}
+.section h2{margin:0 0 12px}
+.hscroll{display:flex;gap:14px;overflow-x:auto;padding:5px 2px 12px}
+.cat{min-width:92px;width:92px;text-align:center;flex:none}
+.catpic{width:78px;height:78px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;border:2px solid #eadcff;box-shadow:0 3px 10px #0001;font-size:35px;margin:auto}
+.cat b{display:block;font-size:13px;margin-top:7px}
+.banner{background:linear-gradient(100deg,#5f0a87,#a4508b);color:#fff;border-radius:18px;padding:18px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+.banner button{background:#fff;color:#6812ad;padding:10px 15px;border-radius:20px;font-weight:bold}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px #0001;position:relative}
+.photo{height:155px;background:linear-gradient(135deg,#eee,#fafafa);display:flex;align-items:center;justify-content:center;font-size:70px}
+.heart{position:absolute;right:8px;top:8px;background:#fff;border-radius:50%;width:36px;height:36px;font-size:20px;box-shadow:0 2px 7px #0002}
+.cardbody{padding:11px}
+.price{font-size:20px;font-weight:800}
+.old{text-decoration:line-through;color:#888;font-size:13px;margin-left:5px}
+.off{color:#16833c;font-weight:700;font-size:13px;margin-left:5px}
+.rating{color:#087b36;font-weight:700;margin-top:5px}
+.buy{width:100%;margin-top:9px;padding:10px;border-radius:10px;background:#6a11cb;color:#fff;font-weight:bold}
+.panel{background:#fff;border-radius:18px;padding:18px;box-shadow:0 2px 12px #0001;margin-bottom:15px}
+.back{background:#eee;padding:9px 14px;border-radius:18px;margin-bottom:12px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.grow{flex:1}
+.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field input,.field select,.field textarea{padding:11px;border:1px solid #ccc;border-radius:10px}
+.field textarea{min-height:80px}
+.modal{position:fixed;inset:0;background:#0008;z-index:100;display:none;align-items:center;justify-content:center;padding:15px}
+.modalbox{background:#fff;border-radius:18px;max-width:700px;width:100%;max-height:90vh;overflow:auto;padding:20px}
+.modal.show{display:flex}
+.track{display:flex;justify-content:space-between;gap:4px;position:relative;margin:20px 0}
+.track:before{content:"";position:absolute;top:15px;left:6%;right:6%;height:4px;background:#ddd}
+.step{z-index:1;text-align:center;font-size:11px;max-width:90px}
+.dot{width:30px;height:30px;border-radius:50%;background:#eee;margin:auto;padding-top:7px}
+.done .dot{background:#287be8;color:#fff}
+.notice{background:#fff8df;border:1px solid #efd57c;border-radius:12px;padding:12px;margin:10px 0}
+.bottom{position:sticky;bottom:0;background:#fff;border-top:1px solid #ddd;padding:9px;display:flex;justify-content:center;gap:8px;z-index:40}
+.bottom button{background:#f2eff8;padding:9px 12px;border-radius:12px}
+@media(max-width:650px){.formgrid{grid-template-columns:1fr}.navbtn{padding:8px}.logo{font-size:21px}.photo{height:135px}.grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
-
 <body>
 
-<header>
-  <div class="header-top">
-    <div class="logo">🛍️ ZipCart</div>
-
-    <div class="search">
-      <input id="searchInput" placeholder="क्या ढूँढना है? बोलें या लिखें...">
-      <button onclick="voiceSearch()">🎤</button>
-      <button onclick="searchProducts()">🔍</button>
-    </div>
-
-    <button class="header-btn" onclick="openLanguage()">🌐 भाषा</button>
-    <button class="header-btn" onclick="showPage('cartPage')">🛒</button>
-  </div>
+<header class="header">
+<div class="top">
+<div><div class="logo">🛍️ ZipCart</div><div class="tag">आपकी अपनी Shopping जगह ❤️</div></div>
+<div class="search">
+<input id="search" placeholder="क्या ढूँढ रहे हैं? जैसे Anarkali Suit" onkeydown="if(event.key==='Enter')doSearch()">
+<button onclick="voiceSearch()">🎤</button><button onclick="doSearch()">🔍</button>
+</div>
+<button class="navbtn" onclick="show('wishlist')">❤️ <span id="wishCount">0</span></button>
+<button class="navbtn" onclick="show('cart')">🛒 <span id="cartCount">0</span></button>
+<button class="navbtn" onclick="show('orders')">📦 मेरे ऑर्डर</button>
+<button class="navbtn" onclick="show('account')">👤 Account</button>
+<button class="navbtn" onclick="languageModal()">🌐</button>
+</div>
 </header>
 
+<main class="page" id="app"></main>
 
-<!-- HOME -->
-<div id="homePage" class="page active">
-
-  <section class="hero">
-    <h1>ZipCart में आपका स्वागत है ❤️</h1>
-    <p>देखो → पहचानो → दबाओ → खरीदो</p>
-    <button class="voice-btn" onclick="voiceSearch()">🎤 बोलकर खोजें</button>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">🛍️ Categories</h2>
-
-    <div class="category-grid">
-
-      <div class="category" onclick="openCategory('women')">
-        <div class="circle">👗</div><p>Women Fashion</p>
-      </div>
-
-      <div class="category" onclick="openCategory('men')">
-        <div class="circle">👔</div><p>Men Fashion</p>
-      </div>
-
-      <div class="category" onclick="openCategory('kids')">
-        <div class="circle">🧒</div><p>Kids Wear</p>
-      </div>
-
-      <div class="category" onclick="openCategory('shoes')">
-        <div class="circle">👟</div><p>जूते</p>
-      </div>
-
-      <div class="category" onclick="openCategory('toys')">
-        <div class="circle">🧸</div><p>खिलौने</p>
-      </div>
-
-      <div class="category" onclick="openCategory('jewellery')">
-        <div class="circle">💎</div><p>Jewellery</p>
-      </div>
-
-      <div class="category" onclick="openCategory('bags')">
-        <div class="circle">👜</div><p>Bags</p>
-      </div>
-
-      <div class="category" onclick="openCategory('beauty')">
-        <div class="circle">💄</div><p>Beauty</p>
-      </div>
-
-      <div class="category" onclick="openCategory('home')">
-        <div class="circle">🏠</div><p>घर का सामान</p>
-      </div>
-
-      <div class="category" onclick="openCategory('electronics')">
-        <div class="circle">📱</div><p>Electronics</p>
-      </div>
-
-      <div class="category" onclick="openCategory('school')">
-        <div class="circle">📚</div><p>School Items</p>
-      </div>
-
-      <div class="category" onclick="openCategory('travel')">
-        <div class="circle">✈️</div><p>Travel Tickets</p>
-      </div>
-
-      <div class="category" onclick="openCategory('bills')">
-        <div class="circle">💳</div><p>Bills & Recharge</p>
-      </div>
-
-    </div>
-  </section>
-
-
-  <section class="section">
-    <h2 class="section-title">🔥 Popular Products</h2>
-
-    <div class="products">
-
-      <div class="product" onclick="showProduct('Beautiful Saree')">
-        <div class="product-image">🥻</div>
-        <div class="product-info">
-          <h3>Beautiful Saree</h3>
-          <div class="price">₹999 <span class="old-price">₹1,499</span></div>
-          <div class="discount">33% OFF</div>
-          <div class="rating">★★★★★ 4.8</div>
-          <div class="delivery">🚚 Delivery by 12 Sep</div>
-        </div>
-      </div>
-
-      <div class="product" onclick="showProduct('Stylish Shoes')">
-        <div class="product-image">👟</div>
-        <div class="product-info">
-          <h3>Stylish Shoes</h3>
-          <div class="price">₹799</div>
-          <div class="rating">★★★★★ 4.7</div>
-          <div class="delivery">🚚 Delivery by 11 Sep</div>
-        </div>
-      </div>
-
-      <div class="product" onclick="showProduct('Kids Toy')">
-        <div class="product-image">🧸</div>
-        <div class="product-info">
-          <h3>Kids Toy</h3>
-          <div class="price">₹499</div>
-          <div class="rating">★★★★☆ 4.5</div>
-          <div class="delivery">🚚 Delivery by 10 Sep</div>
-        </div>
-      </div>
-
-      <div class="product" onclick="showProduct('Fashion Jewellery')">
-        <div class="product-image">💍</div>
-        <div class="product-info">
-          <h3>Fashion Jewellery</h3>
-          <div class="price">₹399</div>
-          <div class="rating">★★★★★ 4.8</div>
-          <div class="delivery">🚚 Delivery by 9 Sep</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
+<div class="bottom">
+<button onclick="show('home')">🏠 Home</button>
+<button onclick="show('categories')">🗂️ Categories</button>
+<button onclick="show('seller')">🏪 Seller</button>
+<button onclick="show('orders')">📦 My Orders</button>
+<button onclick="show('account')">👤 Account</button>
 </div>
 
-
-<!-- CATEGORY PAGE -->
-<div id="categoryPage" class="page">
-  <section class="section">
-
-    <button class="back-btn" onclick="goHome()">← वापस</button>
-
-    <h2 id="categoryTitle" class="section-title"></h2>
-
-    <div id="subcategoryGrid" class="sub-grid"></div>
-
-  </section>
-</div>
-
-
-<!-- PRODUCT PAGE -->
-<div id="productPage" class="page">
-  <section class="section">
-
-    <button class="back-btn" onclick="goHome()">← Home</button>
-
-    <div class="info-box">
-      <div style="font-size:100px;text-align:center" id="productEmoji">🥻</div>
-
-      <h2 id="productTitle">Beautiful Saree</h2>
-
-      <div class="rating">★★★★★ <b>4.8/5</b></div>
-
-      <p style="margin-top:8px">
-        ⭐ 2,458 Ratings &nbsp; | &nbsp; 1,245 Reviews
-      </p>
-
-      <h2 style="color:#6a1b9a;margin-top:12px">₹999</h2>
-
-      <p>✓ Free delivery available</p>
-      <p>✓ Easy Return / Replacement</p>
-      <p>✓ Secure payment</p>
-
-      <h3 style="margin-top:18px">🚚 Delivery Options</h3>
-
-      <div class="delivery-options">
-
-        <div class="delivery-option">
-          <b>📦 Standard</b>
-          <p>12 Sep</p>
-          <strong>₹0</strong>
-        </div>
-
-        <div class="delivery-option">
-          <b>⚡ Fast</b>
-          <p>10 Sep</p>
-          <strong>+₹20</strong>
-        </div>
-
-        <div class="delivery-option">
-          <b>🚀 Express</b>
-          <p>9 Sep</p>
-          <strong>+₹50</strong>
-        </div>
-
-      </div>
-
-      <button class="cart-btn" onclick="alert('Product Cart में जोड़ दिया गया!')">
-        🛒 Add to Cart
-      </button>
-
-      <button class="cart-btn" onclick="alert('Buy Now का checkout आगे जोड़ा जाएगा।')">
-        ⚡ Buy Now
-      </button>
-    </div>
-
-
-    <div class="info-box">
-      <h3>📸 Customers ने इस्तेमाल करके दिखाया</h3>
-      <p style="margin-top:8px">Real customer photos और videos यहाँ दिखाई देंगे।</p>
-
-      <div style="font-size:45px;margin-top:15px">
-        📷 🎥 📷 🎥
-      </div>
-    </div>
-
-
-    <div class="info-box">
-      <h3>⭐ Customer Reviews</h3>
-
-      <h2 style="margin-top:10px">4.8 / 5 ⭐</h2>
-
-      <p>★★★★★ 78%</p>
-      <p>★★★★☆ 15%</p>
-      <p>★★★☆☆ 4%</p>
-      <p>★★☆☆☆ 2%</p>
-      <p>★☆☆☆☆ 1%</p>
-
-      <div class="review">
-        <div class="review-stars">★★★★★</div>
-        <b>✓ Verified Purchase</b>
-        <p style="margin-top:6px">बहुत अच्छा product है। मुझे बहुत पसंद आया।</p>
-        <div style="font-size:35px;margin-top:8px">📷</div>
-        <button style="margin-top:8px">👍 Helpful</button>
-      </div>
-
-      <div class="review">
-        <div class="review-stars">★★★★★</div>
-        <b>✓ Verified Purchase</b>
-        <p style="margin-top:6px">Quality बहुत अच्छी है। बिल्कुल फोटो जैसी मिली।</p>
-        <div style="font-size:35px;margin-top:8px">🎥</div>
-        <button style="margin-top:8px">👍 Helpful</button>
-      </div>
-    </div>
-
-
-    <div class="section" style="padding:0">
-      <h2 class="section-title">❤️ आपको ये भी पसंद आ सकता है</h2>
-
-      <div class="products">
-
-        <div class="product">
-          <div class="product-image">💎</div>
-          <div class="product-info">
-            <h3>Matching Jewellery</h3>
-            <div class="price">₹399</div>
-            <div class="rating">★★★★★ 4.8</div>
-          </div>
-        </div>
-
-        <div class="product">
-          <div class="product-image">👜</div>
-          <div class="product-info">
-            <h3>Fashion Handbag</h3>
-            <div class="price">₹799</div>
-            <div class="rating">★★★★☆ 4.6</div>
-          </div>
-        </div>
-
-        <div class="product">
-          <div class="product-image">👡</div>
-          <div class="product-info">
-            <h3>Women's Footwear</h3>
-            <div class="price">₹599</div>
-            <div class="rating">★★★★★ 4.7</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </section>
-</div>
-
-
-<!-- CART -->
-<div id="cartPage" class="page">
-  <section class="section">
-
-    <button class="back-btn" onclick="goHome()">← Home</button>
-
-    <h2 class="section-title">🛒 My Cart</h2>
-
-    <div class="info-box">
-      <h3>Beautiful Saree</h3>
-      <p>₹999 × 1</p>
-      <p>🚚 Delivery by 12 Sep</p>
-
-      <hr style="margin:12px 0">
-
-      <p>Product Price: ₹999</p>
-      <p>Delivery: FREE</p>
-      <h3>Total: ₹999</h3>
-
-      <button class="cart-btn" onclick="alert('Checkout आगे जोड़ा जाएगा।')">
-        Proceed to Checkout
-      </button>
-    </div>
-
-  </section>
-</div>
-
-
-<!-- ORDER PAGE -->
-<div id="ordersPage" class="page">
-  <section class="section">
-
-    <button class="back-btn" onclick="goHome()">← Home</button>
-
-    <h2 class="section-title">📦 My Orders</h2>
-
-    <div class="info-box">
-
-      <div style="font-size:70px;text-align:center;cursor:pointer"
-           onclick="showProduct('Beautiful Saree')">
-        🥻
-      </div>
-
-      <h3>Beautiful Saree</h3>
-      <p>₹999</p>
-      <p>📅 Expected Delivery: 12 Sep</p>
-
-      <p style="margin-top:10px;color:#16803c">
-        ✓ Order Placed
-      </p>
-
-      <div class="order-actions">
-        <button>📍 Track Order</button>
-        <button>❌ Cancel Order</button>
-        <button>🔄 Return</button>
-        <button>♻️ Replace</button>
-        <button>💰 Refund Status</button>
-        <button>⭐ Rate & Review</button>
-        <button>📄 Invoice</button>
-        <button onclick="showProduct('Beautiful Saree')">👀 View Product</button>
-        <button>🛒 Buy Again</button>
-        <button>📞 Help</button>
-      </div>
-
-      <p style="margin-top:15px;color:#6a1b9a">
-        ऊपर product photo पर क्लिक करके उसी product page पर वापस जा सकते हैं।
-      </p>
-
-    </div>
-
-
-    <h2 class="section-title">❤️ और Products देखें</h2>
-
-    <div class="products">
-
-      <div class="product">
-        <div class="product-image">💎</div>
-        <div class="product-info">
-          <h3>Jewellery Set</h3>
-          <div class="price">₹499</div>
-          <div class="rating">★★★★★ 4.8</div>
-        </div>
-      </div>
-
-      <div class="product">
-        <div class="product-image">👜</div>
-        <div class="product-info">
-          <h3>Handbag</h3>
-          <div class="price">₹799</div>
-          <div class="rating">★★★★☆ 4.6</div>
-        </div>
-      </div>
-
-      <div class="product">
-        <div class="product-image">👟</div>
-        <div class="product-info">
-          <h3>New Shoes</h3>
-          <div class="price">₹699</div>
-          <div class="rating">★★★★★ 4.7</div>
-        </div>
-      </div>
-
-      <div class="product">
-        <div class="product-image">👗</div>
-        <div class="product-info">
-          <h3>New Dress</h3>
-          <div class="price">₹899</div>
-          <div class="rating">★★★★★ 4.8</div>
-        </div>
-      </div>
-
-    </div>
-
-  </section>
-</div>
-
-
-<footer>
-  <h3>🛍️ ZipCart</h3>
-  <p style="margin-top:8px">हर चीज़, एक जगह ❤️</p>
-  <p style="margin-top:12px">Help & Support &nbsp; | &nbsp; Privacy &nbsp; | &nbsp; Terms</p>
-</footer>
-
-
-<!-- LANGUAGE MODAL -->
-<div id="languageModal" class="modal">
-  <div class="modal-box">
-
-    <button class="close" onclick="closeLanguage()">×</button>
-
-    <h2>🌐 अपनी भाषा चुनें</h2>
-
-    <div class="language-list">
-
-      <button onclick="selectLanguage('हिन्दी')">हिन्दी</button>
-      <button onclick="selectLanguage('English')">English</button>
-      <button onclick="selectLanguage('मराठी')">मराठी</button>
-      <button onclick="selectLanguage('ગુજરાતી')">ગુજરાતી</button>
-      <button onclick="selectLanguage('বাংলা')">বাংলা</button>
-      <button onclick="selectLanguage('தமிழ்')">தமிழ்</button>
-      <button onclick="selectLanguage('తెలుగు')">తెలుగు</button>
-      <button onclick="selectLanguage('ಕನ್ನಡ')">ಕನ್ನಡ</button>
-      <button onclick="selectLanguage('മലയാളം')">മലയാളം</button>
-      <button onclick="selectLanguage('ਪੰਜਾਬੀ')">ਪੰਜਾਬੀ</button>
-      <button onclick="selectLanguage('ଓଡ଼ିଆ')">ଓଡ଼ିଆ</button>
-      <button onclick="selectLanguage('অসমীয়া')">অসমীয়া</button>
-      <button onclick="selectLanguage('اردو')">اردو</button>
-      <button onclick="selectLanguage('नेपाली')">नेपाली</button>
-      <button onclick="selectLanguage('कोंकणी')">कोंकणी</button>
-      <button onclick="selectLanguage('मैथिली')">मैथिली</button>
-
-    </div>
-  </div>
-</div>
-
+<div class="modal" id="modal"><div class="modalbox" id="modalbox"></div></div>
 
 <script>
+const cats=[
+["👗","महिलाओं का फैशन","women"],["👔","Men Fashion","men"],["🧒","Kids","kids"],
+["👟","जूते","shoes"],["💍","ज्वेलरी","jewellery"],["👜","बैग","bags"],
+["🧸","खिलौने","toys"],["💄","Beauty","beauty"],["🏠","घर का सामान","home"],
+["📱","Electronics","electronics"],["📚","School Items","school"],["🚌","Travel Tickets","travel"],
+["🧾","Bills & Recharge","bills"],["💊","Medicines","medicine"],["🛒","Grocery","grocery"]
+];
 
-const categories = {
-
-women: {
-  title:"👗 Women's Fashion",
-  items:[
-    ["👗","Suits"],
-    ["🥻","Sarees"],
-    ["🌸","Kurtis"],
-    ["👖","Jeans"],
-    ["👚","Tops"],
-    ["💃","Lehenga"],
-    ["👗","Dresses"]
-  ]
-},
-
-men:{
-  title:"👔 Men's Fashion",
-  items:[
-    ["👔","Shirts"],
-    ["👕","T-Shirts"],
-    ["👖","Jeans"],
-    ["👖","Pants"],
-    ["🥻","Kurta"],
-    ["🧥","Jackets"]
-  ]
-},
-
-kids:{
-  title:"🧒 Kids Wear",
-  items:[
-    ["👧","Girls Wear"],
-    ["👦","Boys Wear"],
-    ["👶","Baby Clothes"],
-    ["🎒","Kids Accessories"]
-  ]
-},
-
-shoes:{
-  title:"👟 Footwear",
-  items:[
-    ["👠","Women Shoes"],
-    ["👞","Men Shoes"],
-    ["👟","Sports Shoes"],
-    ["🩴","Sandals"],
-    ["👶","Kids Shoes"]
-  ]
-},
-
-toys:{
-  title:"🧸 Toys",
-  items:[
-    ["🍼","Baby Toys"],
-    ["🧠","Educational Toys"],
-    ["🚗","Cars"],
-    ["🎎","Dolls"],
-    ["🎲","Games"]
-  ]
-},
-
-jewellery:{
-  title:"💎 Jewellery",
-  items:[
-    ["👂","Earrings"],
-    ["💍","Rings"],
-    ["📿","Necklace"],
-    ["💎","Bridal Set"],
-    ["⭕","Bangles"],
-    ["❤️","Mangalsutra"],
-    ["👃","Nose Pins"]
-  ]
-},
-
-bags:{
-  title:"👜 Bags",
-  items:[
-    ["👜","Handbag"],
-    ["👝","Sling Bag"],
-    ["🎒","School Bag"],
-    ["🧳","Travel Bag"],
-    ["💼","Office Bag"]
-  ]
-},
-
-beauty:{
-  title:"💄 Beauty",
-  items:[
-    ["💄","Makeup"],
-    ["🧴","Skincare"],
-    ["💇","Haircare"],
-    ["🌸","Fragrance"]
-  ]
-},
-
-home:{
-  title:"🏠 Home",
-  items:[
-    ["🍳","Kitchen"],
-    ["🪴","Home Decor"],
-    ["🛋️","Furniture"],
-    ["📦","Storage"],
-    ["🛏️","Bedding"]
-  ]
-},
-
-electronics:{
-  title:"📱 Electronics",
-  items:[
-    ["📱","Mobile Accessories"],
-    ["🎧","Earphones"],
-    ["🔌","Chargers"],
-    ["⌚","Smart Watches"],
-    ["💻","Computer Accessories"]
-  ]
-},
-
-school:{
-  title:"📚 School Items",
-  items:[
-    ["🎒","School Bags"],
-    ["📚","Books"],
-    ["✏️","Stationery"],
-    ["🖍️","Art Items"]
-  ]
-},
-
-travel:{
-  title:"✈️ Travel Tickets",
-  items:[
-    ["🚌","Bus"],
-    ["🚆","Train"],
-    ["✈️","Flight"],
-    ["🏨","Hotel"]
-  ]
-},
-
-bills:{
-  title:"💳 Bills & Recharge",
-  items:[
-    ["📱","Mobile Recharge"],
-    ["📺","DTH Recharge"],
-    ["💡","Electricity Bill"],
-    ["💧","Water Bill"],
-    ["🔥","Gas Bill"],
-    ["🌐","Broadband / Landline"],
-    ["🚘","FASTag"],
-    ["🛡️","Insurance"],
-    ["🎓","Education Fees"],
-    ["🏠","Property / Other Bills"]
-  ]
-}
-
+const sub={
+women:["👗 Saree","🥻 Suits","👚 Kurtis","👖 Jeans","👕 Tops","👗 Dresses","👰 Lehenga","🧥 Jackets","🌙 Nightwear","🪷 Ethnic Wear","👠 Western Wear"],
+men:["👔 Shirts","👕 T-Shirts","👖 Jeans","🥻 Kurta","🧣 Kurta-Pajama","👖 Trousers/Pants","🧥 Jackets","🩳 Shorts","💼 Formal Wear","🏃 Sports Wear"],
+kids:["👧 Girls","👦 Boys","👶 Baby","👗 Kids Dresses","👟 Kids Shoes","🍼 Baby Products","🧸 Toys"],
+shoes:["👩 Women","👨 Men","🧒 Kids","🏃 Sports Shoes","🩴 Sandals","👠 Heels","🥿 Flats","🩴 Slippers"],
+jewellery:["📿 Necklace","💎 Earrings","🪷 Bangles","💍 Rings","👰 Bridal Jewellery","✨ Artificial Jewellery"],
+bags:["👜 Handbag","🎒 Sling Bag","🎒 School Bag","🧳 Travel Bag","🎒 Backpack","👛 Wallet/Purse"],
+toys:["🧸 Baby Toys","🧠 Educational","🚗 Cars","👧 Dolls","🎲 Games","🎮 Remote Toys","⚽ Outdoor Toys"],
+beauty:["💄 Makeup","🧴 Skincare","💇 Haircare","🧼 Personal Care"],
+home:["🍳 Kitchen","🖼️ Home Decor","🛋️ Furniture","📦 Storage","🛏️ Bedsheet","🪟 Curtains"],
+electronics:["📱 Mobile Accessories","🎧 Earphones","🔌 Chargers","🔗 Cables","🔊 Speakers","💻 Other Electronics"],
+school:["🎒 School Bags","📖 Books","📓 Notebooks","✏️ Stationery","🎨 Art & Craft"],
+travel:["🚌 Bus","🚆 Train","✈️ Flight","🏨 Hotel"],
+bills:["📱 Mobile Recharge","📺 DTH","⚡ Electricity","💧 Water","🔥 Gas","🌐 Broadband/Landline","🛣️ FASTag","🛡️ Insurance","🎓 Education Fees","🏠 Property/Other Bills"],
+medicine:["💊 Common Care","🩺 Prescription Medicines","🧴 Health & Personal Care","🌡️ Devices & Wellness"],
+grocery:["🥦 Fresh Grocery","🍚 Staples","🥛 Dairy","🍪 Snacks","🧹 Household","🧼 Cleaning","🧃 Beverages"]
 };
 
+const lehenga=["👰 Bridal","🎉 Party Wear","✨ Net","💎 Designer","🌟 Heavy Work","🥻 Silk","🌸 Georgette","✨ Sequins","🧵 Embroidery","🌺 Floral","🌿 Simple/Lightweight","👧 Girls/Kids"];
+const saree=["👑 Banarasi","🥻 Silk","🌿 Cotton","🌸 Georgette","🪶 Chiffon","🌺 Bandhej","🎉 Party Wear","👰 Bridal","✨ Designer","🧵 Embroidery","🖼️ Printed","🌿 Linen"];
 
-const deepCategories = {
+const products=[
+{id:1,name:"Beautiful Saree",cat:"women",sub:"Saree",emoji:"🥻",price:999,old:1499,rating:4.5},
+{id:2,name:"Designer Anarkali Suit",cat:"women",sub:"Suits",emoji:"👗",price:122,old:610,rating:4.5},
+{id:3,name:"Stylish Shoes",cat:"shoes",sub:"Women",emoji:"👠",price:799,old:1299,rating:4.3},
+{id:4,name:"Kids Toy Car",cat:"toys",sub:"Cars",emoji:"🚗",price:499,old:799,rating:4.4},
+{id:5,name:"Fashion Jewellery Set",cat:"jewellery",sub:"Artificial Jewellery",emoji:"💍",price:399,old:699,rating:4.2},
+{id:6,name:"Women Handbag",cat:"bags",sub:"Handbag",emoji:"👜",price:799,old:1199,rating:4.4},
+{id:7,name:"Cotton Kurti",cat:"women",sub:"Kurtis",emoji:"👚",price:549,old:899,rating:4.6},
+{id:8,name:"Men Casual Shirt",cat:"men",sub:"Shirts",emoji:"👔",price:699,old:999,rating:4.3},
+{id:9,name:"Kids Dress",cat:"kids",sub:"Kids Dresses",emoji:"👗",price:449,old:799,rating:4.5},
+{id:10,name:"Wireless Earphones",cat:"electronics",sub:"Earphones",emoji:"🎧",price:899,old:1499,rating:4.1},
+{id:11,name:"Grocery Daily Essentials",cat:"grocery",sub:"Household",emoji:"🛒",price:299,old:349,rating:4.4},
+{id:12,name:"Health Care Product",cat:"medicine",sub:"Common Care",emoji:"💊",price:199,old:249,rating:4.2}
+];
 
-"Suits":[
- ["👗","Anarkali Suit"],
- ["👗","Straight Suit"],
- ["👖","Palazzo Suit"],
- ["👗","Patiala Suit"],
- ["👗","Punjabi Suit"],
- ["✨","Party Wear Suit"]
-],
+let wishlist=JSON.parse(localStorage.getItem("zipWish")||"[]");
+let cart=JSON.parse(localStorage.getItem("zipCart")||"[]");
+let currentLang=localStorage.getItem("zipLang")||"Hindi";
+let selectedCat=null;
 
-"Sarees":[
- ["🥻","Banarasi Saree"],
- ["🥻","Silk Saree"],
- ["🥻","Cotton Saree"],
- ["🥻","Georgette Saree"],
- ["🥻","Chiffon Saree"],
- ["✨","Party Wear Saree"],
- ["💍","Bridal Saree"]
-],
-
-"Jewellery":[
- ["👂","Earrings"],
- ["💍","Bridal Jewellery"],
- ["💎","Rings"],
- ["📿","Necklaces"],
- ["⭕","Bangles"],
- ["❤️","Mangalsutra"],
- ["👃","Nose Pins"]
-],
-
-"Mobile Recharge":[
- ["📱","Prepaid Recharge"],
- ["📱","Postpaid Bill"]
-],
-
-"Electricity Bill":[
- ["💡","Electricity Payment"],
- ["🧾","View Bill"]
-],
-
-"Water Bill":[
- ["💧","Water Bill Payment"]
-],
-
-"Gas Bill":[
- ["🔥","Gas Bill Payment"]
-]
-
-};
-
-
-function hideAllPages(){
-  document.querySelectorAll(".page").forEach(p=>{
-    p.classList.remove("active");
-  });
+function save(){
+localStorage.setItem("zipWish",JSON.stringify(wishlist));
+localStorage.setItem("zipCart",JSON.stringify(cart));
+updateCounts();
 }
-
-
-function showPage(id){
-  hideAllPages();
-  document.getElementById(id).classList.add("active");
-  window.scrollTo(0,0);
+function updateCounts(){
+document.getElementById("wishCount").textContent=wishlist.length;
+document.getElementById("cartCount").textContent=cart.reduce((a,x)=>a+x.qty,0);
 }
-
-
-function goHome(){
-  showPage("homePage");
+function productCard(p){
+const liked=wishlist.includes(p.id),pct=Math.round((1-p.price/p.old)*100);
+return `<div class="card">
+<button class="heart" onclick="toggleWish(${p.id})">${liked?"❤️":"♡"}</button>
+<div class="photo">${p.emoji}</div>
+<div class="cardbody"><b>${p.name}</b>
+<div><span class="price">₹${p.price}</span><span class="old">₹${p.old}</span><span class="off">${pct}% OFF</span></div>
+<div class="rating">⭐ ${p.rating}</div>
+<button class="buy" onclick="product(${p.id})">देखें / खरीदें</button>
+</div></div>`;
 }
-
-
-function openCategory(key){
-
-  const cat = categories[key];
-
-  if(!cat) return;
-
-  document.getElementById("categoryTitle").innerText = cat.title;
-
-  const grid = document.getElementById("subcategoryGrid");
-  grid.innerHTML = "";
-
-  cat.items.forEach(item=>{
-
-    const div = document.createElement("div");
-    div.className = "sub-item";
-
-    div.innerHTML = `
-      <div class="sub-circle">${item[0]}</div>
-      <p>${item[1]}</p>
-    `;
-
-    div.onclick = function(){
-      openSubCategory(item[1]);
-    };
-
-    grid.appendChild(div);
-
-  });
-
-  showPage("categoryPage");
+function catsHTML(){
+return `<div class="hscroll">${cats.map(c=>`<div class="cat" onclick="category('${c[2]}')">
+<div class="catpic">${c[0]}</div><b>${c[1]}</b></div>`).join("")}</div>`;
 }
-
-
-function openSubCategory(name){
-
-  if(deepCategories[name]){
-
-    document.getElementById("categoryTitle").innerText =
-      "📂 " + name + " की varieties";
-
-    const grid = document.getElementById("subcategoryGrid");
-    grid.innerHTML = "";
-
-    deepCategories[name].forEach(item=>{
-
-      const div = document.createElement("div");
-      div.className = "sub-item";
-
-      div.innerHTML = `
-        <div class="sub-circle">${item[0]}</div>
-        <p>${item[1]}</p>
-      `;
-
-      div.onclick = function(){
-        showProduct(item[1]);
-      };
-
-      grid.appendChild(div);
-
-    });
-
-    return;
-  }
-
-  showProduct(name);
+function home(){
+app.innerHTML=`<section class="hero">
+<h1>ZipCart में आपका स्वागत है ❤️</h1>
+<p>आपकी अपनी shopping जगह — <b>देखो → सुनो → समझो → दबाओ → खरीदो</b></p>
+<div class="quick">
+<button class="pill" onclick="voiceSearch()">🔊 Voice Search</button>
+<button class="pill" onclick="show('orders')">📦 मेरे ऑर्डर</button>
+<button class="pill" onclick="show('account')">🆘 मदद चाहिए?</button>
+<button class="pill" onclick="category('grocery')">⚡ Grocery Quick Delivery</button>
+<button class="pill" onclick="category('medicine')">💊 Medicines</button>
+</div></section>
+<div class="banner"><div><h2>🎉 आज के Offers</h2><div>आपके बजट और पसंद के हिसाब से खरीदारी करें</div></div>
+<button onclick="doSearchText('Anarkali Suit')">Anarkali Suit देखें</button></div>
+<section class="section"><h2>🗂️ Top Categories</h2>${catsHTML()}</section>
+<section class="section"><h2>✨ आपके लिए चुना गया</h2><div class="grid">${products.slice(0,8).map(productCard).join("")}</div></section>
+<section class="section"><h2>🔥 कम बजट में पसंदीदा</h2><div class="grid">${products.filter(p=>p.price<600).map(productCard).join("")}</div></section>
+<section class="section"><h2>🆕 New Arrivals</h2><div class="grid">${products.slice(8).map(productCard).join("")}</div></section>`;
+updateCounts();
 }
-
-
-function showProduct(name){
-
-  document.getElementById("productTitle").innerText = name;
-
-  let emoji = "🛍️";
-
-  if(name.toLowerCase().includes("saree") ||
-     name.toLowerCase().includes("suit") ||
-     name.toLowerCase().includes("dress") ||
-     name.toLowerCase().includes("kurti")){
-    emoji="👗";
-  }
-
-  if(name.toLowerCase().includes("jewellery") ||
-     name.toLowerCase().includes("ring") ||
-     name.toLowerCase().includes("earring")){
-    emoji="💎";
-  }
-
-  if(name.toLowerCase().includes("shoe")){
-    emoji="👟";
-  }
-
-  if(name.toLowerCase().includes("toy")){
-    emoji="🧸";
-  }
-
-  document.getElementById("productEmoji").innerText=emoji;
-
-  showPage("productPage");
+function category(key){
+selectedCat=key;const c=cats.find(x=>x[2]===key);let arr=sub[key]||[];
+app.innerHTML=`<button class="back" onclick="show('home')">← वापस Home</button>
+<div class="panel"><h2>${c?c[0]+" "+c[1]:key}</h2>
+<p>ऊपर की category को बाएँ-दाएँ swipe करके देखें। 🔊 नाम सुनने के लिए नीचे Listen दबाएँ।</p>
+<button class="pill" onclick='speakList(${JSON.stringify(arr)})'>🔊 सुनें</button></div>
+<div class="hscroll">${arr.map(x=>`<div class="cat" onclick="subCategory('${key}',\`${x}\`)">
+<div class="catpic">${x.split(" ")[0]}</div><b>${x.substring(x.indexOf(" ")+1)}</b></div>`).join("")}</div>
+${key==="women"?`<div class="panel"><h3>👰 Lehenga की अलग varieties</h3><div class="hscroll">
+${lehenga.map(x=>`<div class="cat" onclick="subCategory('women',\`Lehenga ${x.substring(x.indexOf(" ")+1)}\`)"><div class="catpic">${x.split(" ")[0]}</div><b>${x.substring(x.indexOf(" ")+1)}</b></div>`).join("")}</div>
+<h3>🥻 Saree varieties</h3><div class="hscroll">${saree.map(x=>`<div class="cat" onclick="subCategory('women',\`Saree ${x.substring(x.indexOf(" ")+1)}\`)"><div class="catpic">${x.split(" ")[0]}</div><b>${x.substring(x.indexOf(" ")+1)}</b></div>`).join("")}</div></div>`:""}
+<section class="section"><h2>🛍️ Products</h2><div class="grid">${products.filter(p=>p.cat===key).map(productCard).join("")||`<div class="panel">इस category के real products seller जोड़ने के बाद यहाँ दिखाई देंगे।</div>`}</div></section>`;
 }
-
-
-function openLanguage(){
-  document.getElementById("languageModal").style.display="flex";
+function subCategory(key,s){
+let name=s.trim();
+let found=products.filter(p=>p.cat===key&&((p.sub||"").toLowerCase().includes(name.toLowerCase())||p.name.toLowerCase().includes(name.toLowerCase())));
+app.innerHTML=`<button class="back" onclick="category('${key}')">← वापस</button>
+<div class="panel"><h2>${name}</h2><button class="pill" onclick='speak(${JSON.stringify(name)})'>🔊 सुनें</button>
+<div class="quick">${["₹100–₹500","₹500–₹1,000","₹1,000–₹1,500","₹1,500–₹2,000","₹2,000–₹3,000","₹3,000–₹5,000","₹5,000–₹10,000","₹10,000+"].map(x=>`<button class="pill">${x}</button>`).join("")}</div></div>
+<div class="grid">${found.length?found.map(productCard).join(""):products.filter(p=>p.cat===key).map(productCard).join("")}</div>`;
 }
-
-
-function closeLanguage(){
-  document.getElementById("languageModal").style.display="none";
+function product(id){
+const p=products.find(x=>x.id===id);
+app.innerHTML=`<button class="back" onclick="show('home')">← वापस</button>
+<div class="panel"><div class="photo" style="height:240px">${p.emoji}</div><h2>${p.name}</h2>
+<div><span class="price">₹${p.price}</span> <span class="old">₹${p.old}</span> <span class="off">${Math.round((1-p.price/p.old)*100)}% OFF</span></div>
+<div class="rating">⭐ ${p.rating} Green Rating</div>
+<p><b>पूरा विवरण:</b> वास्तविक seller listing में category के अनुसार fabric/material, size, color, weight, dimensions, manufacturer, warranty/expiry और अन्य लागू जानकारी दिखाई जाएगी।</p>
+<p><b>Size:</b> XS, S, M, L, XL, XXL, 3XL, 4XL / लागू variants</p>
+<p><b>Color:</b> उपलब्ध रंग seller के अनुसार</p>
+<p><b>Delivery:</b> PIN code डालने पर वास्तविक उपलब्ध तारीख और charge दिखेगा।</p>
+<p><b>Return/Exchange:</b> लागू policy और window के अनुसार।</p>
+<div class="quick"><button class="pill" onclick="toggleWish(${p.id})">❤️ Wishlist</button>
+<button class="pill" onclick="addCart(${p.id})">🛒 Add to Cart</button>
+<button class="pill" onclick="buyNow(${p.id})">⚡ Buy Now</button>
+<button class="pill" onclick='speak(${JSON.stringify(p.name)})'>🔊 सुनें</button></div></div>
+<div class="panel"><h3>⭐ Reviews & Q&A</h3><p>Verified Purchase reviews, customer photo/video, Helpful, seller reply और Product Q&A यहाँ दिखेंगे।</p></div>`;
 }
-
-
-function selectLanguage(language){
-  alert("आपने " + language + " चुनी है। पूरी भाषा translation system आगे जोड़ी जाएगी।");
-  closeLanguage();
+function toggleWish(id){
+wishlist=wishlist.includes(id)?wishlist.filter(x=>x!==id):[...wishlist,id];save();
+selectedCat?category(selectedCat):wishlistPage();
 }
-
-
+function addCart(id){
+let x=cart.find(a=>a.id===id);x?x.qty++:cart.push({id,qty:1,selected:true});save();alert("🛒 Product cart में जोड़ दिया गया।");
+}
+function buyNow(id){addCart(id);show("cart")}
+function cartPage(){
+let total=cart.filter(x=>x.selected).reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0);
+app.innerHTML=`<h2>🛒 मेरा Cart</h2><div class="panel">${cart.length?cart.map((x,i)=>{let p=products.find(a=>a.id===x.id);
+return `<div class="row" style="padding:12px 0;border-bottom:1px solid #eee">
+<input type="checkbox" ${x.selected?"checked":""} onchange="cart[${i}].selected=this.checked;save();cartPage()">
+<span>${p.emoji}</span><div class="grow"><b>${p.name}</b><div>₹${p.price} × ${x.qty}</div></div>
+<button onclick="qty(${i},-1)">−</button><b>${x.qty}</b><button onclick="qty(${i},1)">+</button>
+<button onclick="removeCart(${i})">🗑️ Remove</button><button onclick="saveLater(${i})">💾 Save for Later</button>
+</div>`}).join(""):`<p>आपका cart अभी खाली है। ❤️</p>`}</div>
+${cart.length?`<div class="panel"><h3>Price Details</h3><p>Selected Product Total: ₹${total}</p>
+<p>Delivery: checkout पर वास्तविक PIN/stock के अनुसार</p><p>Discount: लागू coupon/offer के अनुसार</p>
+<h2>Final Total: ₹${total}</h2><button class="buy" onclick="checkout()">Proceed to Checkout</button></div>`:""}`;
+}
+function qty(i,d){cart[i].qty=Math.max(1,cart[i].qty+d);save();cartPage()}
+function removeCart(i){cart.splice(i,1);save();cartPage()}
+function saveLater(i){cart[i].selected=false;save();cartPage()}
+function wishlistPage(){
+let ps=products.filter(p=>wishlist.includes(p.id));
+app.innerHTML=`<h2>❤️ मेरी Wishlist</h2><div class="grid">${ps.length?ps.map(productCard).join(""):`<div class="panel">Wishlist अभी खाली है। किसी product पर ❤️ दबाइए।</div>`}</div>`;
+}
+function checkout(){
+let total=cart.filter(x=>x.selected).reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0);
+app.innerHTML=`<button class="back" onclick="cartPage()">← Cart</button><div class="panel"><h2>💳 Checkout</h2>
+<div class="formgrid"><div class="field"><label>नाम</label><input placeholder="आपका नाम"></div>
+<div class="field"><label>Mobile</label><input placeholder="Mobile number"></div>
+<div class="field"><label>Address</label><textarea placeholder="पूरा delivery address"></textarea></div>
+<div class="field"><label>PIN Code</label><input placeholder="PIN"></div></div>
+<h3>🚚 Delivery</h3><p>Standard / Fast / Express — वास्तविक उपलब्धता, stock और PIN के अनुसार charge/date दिखेंगे। Grocery में 15–20 मिनट केवल eligible location/store पर; Medicine में Today/Tomorrow केवल वास्तविक availability पर।</p>
+<h3>💰 Payment</h3><p>UPI / Card / Net Banking / COD — वास्तविक payment gateway backend जुड़ने पर काम करेगा।</p>
+<p>Open Box Delivery: केवल eligible products पर configurable extra charge के साथ।</p><h2>Final Total: ₹${total}</h2>
+<button class="buy" onclick="alert('Prototype में order preview तैयार है। Real order/payment के लिए secure backend आवश्यक है।')">Place Order</button></div>`;
+}
+function orders(){
+app.innerHTML=`<h2>📦 मेरे ऑर्डर</h2><div class="panel"><h3>Example Order #ZC-DEMO</h3><div class="row">
+<span style="font-size:50px">🥻</span><div class="grow"><b>Beautiful Saree</b><p>Order date: — | Expected delivery: वास्तविक system से</p></div>
+<button class="pill" onclick="track()">Track Order</button><button class="pill" onclick="returnFlow()">↩️ Return</button><button class="pill" onclick="exchangeFlow()">🔄 Exchange</button>
+</div></div><div class="panel"><h3>✨ Shopping जारी रखें</h3><div class="grid">${products.slice(0,4).map(productCard).join("")}</div></div>`;
+}
+function track(){
+app.innerHTML=`<button class="back" onclick="orders()">← My Orders</button><div class="panel"><h2>🚚 Order Tracking</h2>
+<div class="track"><div class="step done"><div class="dot">✓</div>Order Placed</div><div class="step done"><div class="dot">✓</div>Confirmed</div>
+<div class="step done"><div class="dot">✓</div>Packed</div><div class="step"><div class="dot">4</div>Shipped</div>
+<div class="step"><div class="dot">5</div>Out for Delivery</div><div class="step"><div class="dot">6</div>Delivered</div></div>
+<p>अगर order delayed हुआ तो यहाँ <b>Delayed</b> और नया expected date दिखेगा।</p></div>`;
+}
+function returnFlow(){
+app.innerHTML=`<div class="panel"><h2>↩️ Return</h2><p>Reason चुनें, photo/video evidence जोड़ें, pickup और refund status देखें। Seller fault (wrong/defective/damaged) applicable policy के अनुसार seller responsibility में जा सकता है।</p>
+<select><option>Wrong product</option><option>Damaged/defective</option><option>Wrong color/size</option><option>Change of mind (if eligible)</option></select><br><br>
+<button class="pill">📷 Photo/Video जोड़ें</button><button class="pill">Submit Return</button></div>`;
+}
+function exchangeFlow(){
+app.innerHTML=`<div class="panel"><h2>🔄 Exchange</h2><p>नया size/color/variant चुनें। Availability के अनुसार replacement होगा; unavailable होने पर applicable fallback दिखेगा।</p>
+<select><option>Size: S</option><option>Size: M</option><option>Size: L</option><option>Size: XL</option></select>
+<select><option>Color चुनें</option><option>Red</option><option>Blue</option></select><br><br><button class="pill">Submit Exchange</button></div>`;
+}
+function account(){
+app.innerHTML=`<h2>👤 मेरी ZipCart</h2><div class="grid">${["📦 Orders","❤️ Wishlist","🛒 Cart","🏠 Addresses","💳 Payments","🎟️ Coupons","⭐ Reviews","↩️ Returns & Refunds","🔔 Notifications","🆘 Help & Support","🌐 Language","⚙️ Accessibility","🔐 Login/OTP","🚪 Logout"].map(x=>`<button class="panel" onclick="alert('${x}: यह feature production backend में जुड़ेगा।')">${x}</button>`).join("")}</div>`;
+}
+function categories(){app.innerHTML=`<h2>🗂️ सभी Categories</h2>${catsHTML()}`}
+function seller(){
+app.innerHTML=`<div class="panel"><h2>🏪 ZipCart Seller Registration</h2>
+<div class="notice">एक ही registration form. पहले चुनें कि आप क्या बेचना चाहते हैं। भाषा बदलने पर भरी हुई जानकारी मिटेगी नहीं।</div>
+<div class="field"><label>🌐 Form Language</label><select><option>Hindi</option><option>English</option><option>Gujarati</option><option>Marathi</option><option>Bengali</option><option>Tamil</option><option>Telugu</option><option>Kannada</option><option>Malayalam</option><option>Punjabi</option><option>Odia</option><option>Assamese</option><option>Urdu</option><option>Nepali</option><option>Maithili</option><option>Konkani</option></select></div><br>
+<div class="field"><label>आप ZipCart पर क्या बेचना चाहते हैं?</label><select><option>Clothing</option><option>Artificial Jewellery</option><option>Shoes</option><option>Bags</option><option>Toys</option><option>Kids Products</option><option>Beauty</option><option>Home & Kitchen</option><option>Electronics</option><option>School Items</option><option>Grocery</option><option>Medicines</option><option>Travel</option><option>Other</option></select></div>
+<div class="formgrid" style="margin-top:12px"><div class="field"><label>Seller/Business Name</label><input></div><div class="field"><label>Mobile / Email</label><input></div>
+<div class="field"><label>PAN / applicable identity details</label><input></div><div class="field"><label>GSTIN, जहाँ लागू/आवश्यक हो</label><input></div>
+<div class="field"><label>Business Address</label><textarea></textarea></div><div class="field"><label>Required licence/documents</label><input placeholder="Category के अनुसार"></div></div>
+<p>💊 Medicines के लिए लागू drug/pharmacy licence, prescription verification और अन्य कानूनी requirements पूरी होने के बाद ही listing/sale की अनुमति होगी।</p>
+<button class="pill" onclick="speak('आप ZipCart पर क्या बेचना चाहते हैं? कृपया अपनी category चुनें।')">🔊 सुनें</button>
+<button class="buy" onclick="alert('Prototype registration saved. Real OTP/document verification के लिए secure backend जरूरी है।')">Continue</button></div>
+<div class="panel"><h3>📋 Seller Dashboard Preview</h3><p>Products • Orders • Stock • Variants • Returns • Reviews • Earnings • Payouts • Verification • Help • Vacation Mode</p></div>`;
+}
+function searchPage(q){
+let ps=products.filter(p=>(p.name+" "+p.sub).toLowerCase().includes(q.toLowerCase()));
+app.innerHTML=`<button class="back" onclick="show('home')">← Home</button><div class="panel"><h2>🔎 Search: “${q}”</h2>
+<p>${ps.length?ps.length+" विकल्प मिले":"कोई exact result नहीं मिला — Similar categories/products देखें।"}</p>
+<div class="quick">${["Price","Color","Brand","Seller","Rating","Discount","Delivery","Newest","Popular","Price Low-High","Price High-Low"].map(x=>`<button class="pill">${x}</button>`).join("")}</div></div>
+<div class="grid">${(ps.length?ps:products).map(productCard).join("")}</div>
+<div class="notice">🔔 चाहें तो इस search के लिए Price Drop / Back in Stock alert बाद में on कर सकते हैं।</div>`;
+}
+function doSearch(){let q=document.getElementById("search").value.trim();if(q)searchPage(q)}
+function doSearchText(q){document.getElementById("search").value=q;searchPage(q)}
 function voiceSearch(){
-
-  const SpeechRecognition =
-    window.SpeechRecognition ||
-    window.webkitSpeechRecognition;
-
-  if(!SpeechRecognition){
-    alert("इस browser में Voice Search उपलब्ध नहीं है।");
-    return;
-  }
-
-  const recognition = new SpeechRecognition();
-
-  recognition.lang="hi-IN";
-
-  recognition.start();
-
-  recognition.onresult=function(event){
-
-    const text=event.results[0][0].transcript;
-
-    document.getElementById("searchInput").value=text;
-
-    searchProducts();
-
-  };
-
+if(!("webkitSpeechRecognition" in window)){alert("इस browser में voice search उपलब्ध नहीं है।");return}
+let r=new webkitSpeechRecognition();r.lang="hi-IN";
+r.onresult=e=>{let q=e.results[0][0].transcript;document.getElementById("search").value=q;searchPage(q)};r.start();
 }
-
-
-function searchProducts(){
-
-  const value=document
-    .getElementById("searchInput")
-    .value
-    .trim();
-
-  if(!value){
-    alert("कृपया product का नाम लिखें या 🎤 से बोलें।");
-    return;
-  }
-
-  alert("आपने खोजा: " + value +
-        "\nSearch system में असली products और database बाद में जोड़ा जाएगा।");
+function speak(t){if("speechSynthesis" in window)speechSynthesis.speak(new SpeechSynthesisUtterance(t))}
+function speakList(a){a.forEach((x,i)=>setTimeout(()=>speak(x.substring(x.indexOf(" ")+1)),i*900))}
+function languageModal(){
+openModal(`<h2>🌐 भाषा चुनें</h2><p>आपकी पसंद याद रखी जाएगी।</p><div class="quick">
+${["Hindi","English","Gujarati","Marathi","Bengali","Tamil","Telugu","Kannada","Malayalam","Punjabi","Odia","Assamese","Urdu","Nepali","Maithili","Konkani"].map(x=>`<button class="pill" onclick="setLang('${x}')">${x}</button>`).join("")}</div><br><button class="back" onclick="closeModal()">बंद करें</button>`);
 }
-
-
+function setLang(x){currentLang=x;localStorage.setItem("zipLang",x);closeModal();alert("Language saved: "+x+" (full translation content layer में जोड़ी जाएगी।)")}
+function openModal(x){document.getElementById("modalbox").innerHTML=x;document.getElementById("modal").classList.add("show")}
+function closeModal(){document.getElementById("modal").classList.remove("show")}
+function show(x){
+selectedCat=null;
+if(x==="home")home();
+if(x==="wishlist")wishlistPage();
+if(x==="cart")cartPage();
+if(x==="orders")orders();
+if(x==="account")account();
+if(x==="categories")categories();
+if(x==="seller")seller();
+window.scrollTo(0,0);
+}
+show("home");
 </script>
-
 </body>
 </html>
