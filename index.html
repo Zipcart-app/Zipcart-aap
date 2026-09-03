@@ -3,279 +3,420 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZipCart - सबकी अपनी Shopping</title>
+<title>ZipCart - सब कुछ एक जगह</title>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 body{
-    background:#f7f7fb;
-    color:#222;
+  font-family:Arial, sans-serif;
+  background:#f7f5fb;
+  color:#222;
 }
 
 header{
-    background:linear-gradient(135deg,#6c2bd9,#a855f7);
-    color:white;
-    padding:15px 5%;
-    display:flex;
-    align-items:center;
-    gap:18px;
-    flex-wrap:wrap;
+  background:linear-gradient(135deg,#6a1b9a,#9c27b0,#7b1fa2);
+  color:white;
+  padding:14px 18px;
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 3px 12px #0002;
+}
+
+.header-top{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  max-width:1200px;
+  margin:auto;
 }
 
 .logo{
-    font-size:30px;
-    font-weight:bold;
-    white-space:nowrap;
+  font-size:28px;
+  font-weight:bold;
+  white-space:nowrap;
 }
 
-.search-box{
-    flex:1;
-    min-width:220px;
-    display:flex;
-    background:white;
-    border-radius:30px;
-    overflow:hidden;
+.search{
+  flex:1;
+  background:white;
+  border-radius:25px;
+  padding:11px 16px;
+  display:flex;
+  align-items:center;
 }
 
-.search-box input{
-    flex:1;
-    border:0;
-    outline:0;
-    padding:13px 18px;
-    font-size:15px;
+.search input{
+  border:0;
+  outline:0;
+  width:100%;
+  font-size:15px;
 }
 
-.search-box button{
-    border:0;
-    background:#6c2bd9;
-    color:white;
-    padding:0 20px;
-    cursor:pointer;
+.search button{
+  border:0;
+  background:none;
+  font-size:21px;
+  cursor:pointer;
 }
 
-.language{
-    background:white;
-    color:#6c2bd9;
-    border:0;
-    border-radius:25px;
-    padding:11px 15px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.cart{
-    background:white;
-    color:#6c2bd9;
-    border:0;
-    border-radius:25px;
-    padding:11px 18px;
-    font-weight:bold;
+.header-btn{
+  background:white;
+  color:#6a1b9a;
+  border:0;
+  border-radius:22px;
+  padding:10px 13px;
+  cursor:pointer;
+  font-weight:bold;
 }
 
 .hero{
-    text-align:center;
-    padding:45px 20px;
-    background:white;
+  max-width:1200px;
+  margin:20px auto;
+  padding:38px 20px;
+  border-radius:22px;
+  background:linear-gradient(135deg,#ede7f6,#fce4ec);
+  text-align:center;
 }
 
 .hero h1{
-    color:#6c2bd9;
-    font-size:38px;
-    margin-bottom:12px;
+  color:#6a1b9a;
+  font-size:32px;
+  margin-bottom:10px;
 }
 
 .hero p{
-    font-size:18px;
-    color:#666;
+  font-size:17px;
+  margin-bottom:18px;
+}
+
+.voice-btn{
+  border:0;
+  border-radius:25px;
+  padding:12px 20px;
+  background:#6a1b9a;
+  color:white;
+  cursor:pointer;
+  font-size:15px;
 }
 
 .section{
-    padding:30px 5%;
+  max-width:1200px;
+  margin:28px auto;
+  padding:0 14px;
 }
 
 .section-title{
-    text-align:center;
-    font-size:25px;
-    margin-bottom:25px;
+  font-size:23px;
+  color:#5d167f;
+  margin-bottom:18px;
 }
 
 .category-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(110px,1fr));
-    gap:22px;
-    max-width:1100px;
-    margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(100px,1fr));
+  gap:18px;
 }
 
 .category{
-    text-align:center;
-    cursor:pointer;
+  text-align:center;
+  cursor:pointer;
 }
 
-.category-circle{
-    width:105px;
-    height:105px;
-    margin:auto;
-    border-radius:50%;
-    background:white;
-    box-shadow:0 4px 14px rgba(0,0,0,.12);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:48px;
-    transition:.2s;
+.circle{
+  width:82px;
+  height:82px;
+  border-radius:50%;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:38px;
+  background:white;
+  box-shadow:0 4px 12px #0002;
+  transition:.2s;
 }
 
-.category:hover .category-circle{
-    transform:scale(1.08);
+.category:hover .circle{
+  transform:scale(1.08);
+  box-shadow:0 6px 18px #0003;
 }
 
-.category-name{
-    margin-top:10px;
-    font-weight:bold;
-    font-size:15px;
+.category p{
+  margin-top:8px;
+  font-weight:bold;
+  font-size:14px;
 }
 
 .products{
-    background:white;
-}
-
-.product-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-    gap:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:16px;
 }
 
 .product{
-    background:#fafafa;
-    border-radius:15px;
-    padding:18px;
-    box-shadow:0 3px 12px rgba(0,0,0,.08);
+  background:white;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 3px 12px #0002;
+  cursor:pointer;
 }
 
 .product-image{
-    height:150px;
-    border-radius:12px;
-    background:#eee5ff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:65px;
-    margin-bottom:15px;
+  height:170px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:65px;
+  background:#f3e5f5;
 }
 
-.product h3{
-    margin-bottom:8px;
+.product-info{
+  padding:13px;
+}
+
+.product-info h3{
+  font-size:16px;
+  margin-bottom:7px;
 }
 
 .price{
-    color:#6c2bd9;
-    font-size:20px;
-    font-weight:bold;
-    margin-bottom:12px;
+  font-size:19px;
+  font-weight:bold;
+  color:#6a1b9a;
 }
 
-.buy-btn{
-    width:100%;
-    padding:11px;
-    border:0;
-    border-radius:8px;
-    background:#6c2bd9;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
+.rating{
+  margin-top:6px;
+  color:#f39c12;
 }
 
-.language-box{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.5);
-    z-index:1000;
-    align-items:center;
-    justify-content:center;
+.delivery{
+  margin-top:6px;
+  color:#16803c;
+  font-size:13px;
 }
 
-.language-panel{
-    background:white;
-    width:90%;
-    max-width:500px;
-    max-height:80vh;
-    overflow:auto;
-    border-radius:20px;
-    padding:25px;
+.old-price{
+  color:#888;
+  text-decoration:line-through;
+  font-size:13px;
+  margin-left:5px;
 }
 
-.language-panel h2{
-    text-align:center;
-    margin-bottom:20px;
-    color:#6c2bd9;
+.discount{
+  color:#16803c;
+  font-size:13px;
 }
 
-.language-list{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
+.page{
+  display:none;
 }
 
-.lang-btn{
-    padding:13px;
-    border:1px solid #ddd;
-    background:#fafafa;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:15px;
+.page.active{
+  display:block;
 }
 
-.close-btn{
-    width:100%;
-    margin-top:18px;
-    padding:12px;
-    border:0;
-    border-radius:10px;
-    background:#6c2bd9;
-    color:white;
-    font-weight:bold;
+.back-btn{
+  border:0;
+  background:#6a1b9a;
+  color:white;
+  border-radius:20px;
+  padding:10px 18px;
+  cursor:pointer;
+  margin-bottom:18px;
+}
+
+.sub-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(110px,1fr));
+  gap:18px;
+}
+
+.sub-item{
+  text-align:center;
+  cursor:pointer;
+}
+
+.sub-circle{
+  width:78px;
+  height:78px;
+  margin:auto;
+  border-radius:50%;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:34px;
+  box-shadow:0 4px 12px #0002;
+}
+
+.sub-item p{
+  font-size:13px;
+  margin-top:7px;
+  font-weight:bold;
+}
+
+.info-box{
+  background:white;
+  border-radius:18px;
+  padding:18px;
+  margin:15px 0;
+  box-shadow:0 3px 10px #0001;
+}
+
+.delivery-options{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:12px;
+  margin-top:12px;
+}
+
+.delivery-option{
+  border:2px solid #ddd;
+  border-radius:14px;
+  padding:15px;
+  cursor:pointer;
+}
+
+.delivery-option:hover{
+  border-color:#8e24aa;
+}
+
+.cart-btn{
+  width:100%;
+  border:0;
+  border-radius:25px;
+  padding:13px;
+  background:#6a1b9a;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:12px;
+}
+
+.review{
+  background:#fafafa;
+  border-radius:12px;
+  padding:14px;
+  margin-top:10px;
+}
+
+.review-stars{
+  color:#f39c12;
 }
 
 footer{
-    background:#222;
-    color:white;
-    text-align:center;
-    padding:25px;
-    margin-top:30px;
+  margin-top:40px;
+  padding:30px 15px;
+  text-align:center;
+  background:#311b3f;
+  color:white;
 }
 
-@media(max-width:600px){
-    .logo{
-        width:100%;
-        text-align:center;
-    }
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:500;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
 
-    .hero h1{
-        font-size:30px;
-    }
+.modal-box{
+  background:white;
+  width:min(600px,100%);
+  max-height:85vh;
+  overflow:auto;
+  border-radius:20px;
+  padding:22px;
+}
 
-    .category-grid{
-        grid-template-columns:repeat(3,1fr);
-        gap:18px 8px;
-    }
+.close{
+  float:right;
+  border:0;
+  background:#eee;
+  border-radius:50%;
+  width:35px;
+  height:35px;
+  cursor:pointer;
+}
 
-    .category-circle{
-        width:82px;
-        height:82px;
-        font-size:38px;
-    }
+.language-list{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:20px;
+}
 
-    .category-name{
-        font-size:13px;
-    }
+.language-list button{
+  border:1px solid #ddd;
+  background:white;
+  padding:12px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.order-actions{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:9px;
+  margin-top:14px;
+}
+
+.order-actions button{
+  border:0;
+  padding:10px;
+  border-radius:10px;
+  background:#ede7f6;
+  color:#5d167f;
+  cursor:pointer;
+}
+
+@media(max-width:650px){
+  .header-top{
+    flex-wrap:wrap;
+  }
+
+  .logo{
+    width:100%;
+    text-align:center;
+  }
+
+  .search{
+    order:2;
+    width:100%;
+    flex-basis:100%;
+  }
+
+  .hero h1{
+    font-size:25px;
+  }
+
+  .category-grid{
+    grid-template-columns:repeat(4,1fr);
+  }
+
+  .circle{
+    width:65px;
+    height:65px;
+    font-size:29px;
+  }
+
+  .products{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .product-image{
+    height:135px;
+  }
 }
 </style>
 </head>
@@ -283,179 +424,838 @@ footer{
 <body>
 
 <header>
+  <div class="header-top">
+    <div class="logo">🛍️ ZipCart</div>
 
-<div class="logo">ZipCart</div>
+    <div class="search">
+      <input id="searchInput" placeholder="क्या ढूँढना है? बोलें या लिखें...">
+      <button onclick="voiceSearch()">🎤</button>
+      <button onclick="searchProducts()">🔍</button>
+    </div>
 
-<div class="search-box">
-<input type="text" placeholder="Search products...">
-<button>🔍</button>
-</div>
-
-<button class="language" onclick="openLanguages()">🌐 भाषा</button>
-
-<button class="cart">🛒 Cart</button>
-
+    <button class="header-btn" onclick="openLanguage()">🌐 भाषा</button>
+    <button class="header-btn" onclick="showPage('cartPage')">🛒</button>
+  </div>
 </header>
 
-<section class="hero">
-<h1>ZipCart में आपका स्वागत है ❤️</h1>
-<p>हर चीज़ एक जगह — आसान Shopping, अपनी भाषा में।</p>
-</section>
 
-<section class="section">
+<!-- HOME -->
+<div id="homePage" class="page active">
 
-<h2 class="section-title">🛍️ क्या खरीदना है?</h2>
+  <section class="hero">
+    <h1>ZipCart में आपका स्वागत है ❤️</h1>
+    <p>देखो → पहचानो → दबाओ → खरीदो</p>
+    <button class="voice-btn" onclick="voiceSearch()">🎤 बोलकर खोजें</button>
+  </section>
 
-<div class="category-grid">
+  <section class="section">
+    <h2 class="section-title">🛍️ Categories</h2>
 
-<div class="category">
-<div class="category-circle">👗</div>
-<div class="category-name">कपड़े</div>
-</div>
+    <div class="category-grid">
 
-<div class="category">
-<div class="category-circle">👟</div>
-<div class="category-name">जूते</div>
-</div>
+      <div class="category" onclick="openCategory('women')">
+        <div class="circle">👗</div><p>Women Fashion</p>
+      </div>
 
-<div class="category">
-<div class="category-circle">🧸</div>
-<div class="category-name">खिलौने</div>
-</div>
+      <div class="category" onclick="openCategory('men')">
+        <div class="circle">👔</div><p>Men Fashion</p>
+      </div>
 
-<div class="category">
-<div class="category-circle">💍</div>
-<div class="category-name">ज्वेलरी</div>
-</div>
+      <div class="category" onclick="openCategory('kids')">
+        <div class="circle">🧒</div><p>Kids Wear</p>
+      </div>
 
-<div class="category">
-<div class="category-circle">👜</div>
-<div class="category-name">बैग</div>
-</div>
+      <div class="category" onclick="openCategory('shoes')">
+        <div class="circle">👟</div><p>जूते</p>
+      </div>
 
-<div class="category">
-<div class="category-circle">👶</div>
-<div class="category-name">बच्चों के कपड़े</div>
-</div>
+      <div class="category" onclick="openCategory('toys')">
+        <div class="circle">🧸</div><p>खिलौने</p>
+      </div>
 
-<div class="category">
-<div class="category-circle">👕</div>
-<div class="category-name">Men Fashion</div>
-</div>
+      <div class="category" onclick="openCategory('jewellery')">
+        <div class="circle">💎</div><p>Jewellery</p>
+      </div>
 
-<div class="category">
-<div class="category-circle">💄</div>
-<div class="category-name">Beauty</div>
-</div>
+      <div class="category" onclick="openCategory('bags')">
+        <div class="circle">👜</div><p>Bags</p>
+      </div>
 
-<div class="category">
-<div class="category-circle">🏠</div>
-<div class="category-name">घर का सामान</div>
-</div>
+      <div class="category" onclick="openCategory('beauty')">
+        <div class="circle">💄</div><p>Beauty</p>
+      </div>
 
-<div class="category">
-<div class="category-circle">📱</div>
-<div class="category-name">Electronics</div>
-</div>
+      <div class="category" onclick="openCategory('home')">
+        <div class="circle">🏠</div><p>घर का सामान</p>
+      </div>
 
-<div class="category">
-<div class="category-circle">🎒</div>
-<div class="category-name">School Items</div>
-</div>
+      <div class="category" onclick="openCategory('electronics')">
+        <div class="circle">📱</div><p>Electronics</p>
+      </div>
 
-<div class="category">
-<div class="category-circle">✈️</div>
-<div class="category-name">Travel Tickets</div>
-</div>
+      <div class="category" onclick="openCategory('school')">
+        <div class="circle">📚</div><p>School Items</p>
+      </div>
 
-</div>
+      <div class="category" onclick="openCategory('travel')">
+        <div class="circle">✈️</div><p>Travel Tickets</p>
+      </div>
 
-</section>
+      <div class="category" onclick="openCategory('bills')">
+        <div class="circle">💳</div><p>Bills & Recharge</p>
+      </div>
 
-<section class="section products">
+    </div>
+  </section>
 
-<h2 class="section-title">⭐ Popular Products</h2>
 
-<div class="product-grid">
+  <section class="section">
+    <h2 class="section-title">🔥 Popular Products</h2>
 
-<div class="product">
-<div class="product-image">👗</div>
-<h3>Beautiful Saree</h3>
-<div class="price">₹999</div>
-<button class="buy-btn">🛒 Add to Cart</button>
-</div>
+    <div class="products">
 
-<div class="product">
-<div class="product-image">👟</div>
-<h3>Stylish Shoes</h3>
-<div class="price">₹799</div>
-<button class="buy-btn">🛒 Add to Cart</button>
-</div>
+      <div class="product" onclick="showProduct('Beautiful Saree')">
+        <div class="product-image">🥻</div>
+        <div class="product-info">
+          <h3>Beautiful Saree</h3>
+          <div class="price">₹999 <span class="old-price">₹1,499</span></div>
+          <div class="discount">33% OFF</div>
+          <div class="rating">★★★★★ 4.8</div>
+          <div class="delivery">🚚 Delivery by 12 Sep</div>
+        </div>
+      </div>
 
-<div class="product">
-<div class="product-image">🧸</div>
-<h3>Kids Toy</h3>
-<div class="price">₹499</div>
-<button class="buy-btn">🛒 Add to Cart</button>
-</div>
+      <div class="product" onclick="showProduct('Stylish Shoes')">
+        <div class="product-image">👟</div>
+        <div class="product-info">
+          <h3>Stylish Shoes</h3>
+          <div class="price">₹799</div>
+          <div class="rating">★★★★★ 4.7</div>
+          <div class="delivery">🚚 Delivery by 11 Sep</div>
+        </div>
+      </div>
 
-<div class="product">
-<div class="product-image">💍</div>
-<h3>Fashion Jewellery</h3>
-<div class="price">₹399</div>
-<button class="buy-btn">🛒 Add to Cart</button>
-</div>
+      <div class="product" onclick="showProduct('Kids Toy')">
+        <div class="product-image">🧸</div>
+        <div class="product-info">
+          <h3>Kids Toy</h3>
+          <div class="price">₹499</div>
+          <div class="rating">★★★★☆ 4.5</div>
+          <div class="delivery">🚚 Delivery by 10 Sep</div>
+        </div>
+      </div>
 
-</div>
+      <div class="product" onclick="showProduct('Fashion Jewellery')">
+        <div class="product-image">💍</div>
+        <div class="product-info">
+          <h3>Fashion Jewellery</h3>
+          <div class="price">₹399</div>
+          <div class="rating">★★★★★ 4.8</div>
+          <div class="delivery">🚚 Delivery by 9 Sep</div>
+        </div>
+      </div>
 
-</section>
-
-<div class="language-box" id="languageBox">
-
-<div class="language-panel">
-
-<h2>🌐 अपनी भाषा चुनें</h2>
-
-<div class="language-list">
-
-<button class="lang-btn">🇮🇳 हिंदी</button>
-<button class="lang-btn">🇬🇧 English</button>
-<button class="lang-btn">मराठी</button>
-<button class="lang-btn">ગુજરાતી</button>
-<button class="lang-btn">বাংলা</button>
-<button class="lang-btn">தமிழ்</button>
-<button class="lang-btn">తెలుగు</button>
-<button class="lang-btn">ಕನ್ನಡ</button>
-<button class="lang-btn">മലയാളം</button>
-<button class="lang-btn">ਪੰਜਾਬੀ</button>
-<button class="lang-btn">ଓଡ଼ିଆ</button>
-<button class="lang-btn">অসমীয়া</button>
-<button class="lang-btn">اردو</button>
-<button class="lang-btn">नेपाली</button>
-<button class="lang-btn">कोंकणी</button>
-<button class="lang-btn">मैथिली</button>
+    </div>
+  </section>
 
 </div>
 
-<button class="close-btn" onclick="closeLanguages()">बंद करें</button>
 
+<!-- CATEGORY PAGE -->
+<div id="categoryPage" class="page">
+  <section class="section">
+
+    <button class="back-btn" onclick="goHome()">← वापस</button>
+
+    <h2 id="categoryTitle" class="section-title"></h2>
+
+    <div id="subcategoryGrid" class="sub-grid"></div>
+
+  </section>
 </div>
 
+
+<!-- PRODUCT PAGE -->
+<div id="productPage" class="page">
+  <section class="section">
+
+    <button class="back-btn" onclick="goHome()">← Home</button>
+
+    <div class="info-box">
+      <div style="font-size:100px;text-align:center" id="productEmoji">🥻</div>
+
+      <h2 id="productTitle">Beautiful Saree</h2>
+
+      <div class="rating">★★★★★ <b>4.8/5</b></div>
+
+      <p style="margin-top:8px">
+        ⭐ 2,458 Ratings &nbsp; | &nbsp; 1,245 Reviews
+      </p>
+
+      <h2 style="color:#6a1b9a;margin-top:12px">₹999</h2>
+
+      <p>✓ Free delivery available</p>
+      <p>✓ Easy Return / Replacement</p>
+      <p>✓ Secure payment</p>
+
+      <h3 style="margin-top:18px">🚚 Delivery Options</h3>
+
+      <div class="delivery-options">
+
+        <div class="delivery-option">
+          <b>📦 Standard</b>
+          <p>12 Sep</p>
+          <strong>₹0</strong>
+        </div>
+
+        <div class="delivery-option">
+          <b>⚡ Fast</b>
+          <p>10 Sep</p>
+          <strong>+₹20</strong>
+        </div>
+
+        <div class="delivery-option">
+          <b>🚀 Express</b>
+          <p>9 Sep</p>
+          <strong>+₹50</strong>
+        </div>
+
+      </div>
+
+      <button class="cart-btn" onclick="alert('Product Cart में जोड़ दिया गया!')">
+        🛒 Add to Cart
+      </button>
+
+      <button class="cart-btn" onclick="alert('Buy Now का checkout आगे जोड़ा जाएगा।')">
+        ⚡ Buy Now
+      </button>
+    </div>
+
+
+    <div class="info-box">
+      <h3>📸 Customers ने इस्तेमाल करके दिखाया</h3>
+      <p style="margin-top:8px">Real customer photos और videos यहाँ दिखाई देंगे।</p>
+
+      <div style="font-size:45px;margin-top:15px">
+        📷 🎥 📷 🎥
+      </div>
+    </div>
+
+
+    <div class="info-box">
+      <h3>⭐ Customer Reviews</h3>
+
+      <h2 style="margin-top:10px">4.8 / 5 ⭐</h2>
+
+      <p>★★★★★ 78%</p>
+      <p>★★★★☆ 15%</p>
+      <p>★★★☆☆ 4%</p>
+      <p>★★☆☆☆ 2%</p>
+      <p>★☆☆☆☆ 1%</p>
+
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <b>✓ Verified Purchase</b>
+        <p style="margin-top:6px">बहुत अच्छा product है। मुझे बहुत पसंद आया।</p>
+        <div style="font-size:35px;margin-top:8px">📷</div>
+        <button style="margin-top:8px">👍 Helpful</button>
+      </div>
+
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <b>✓ Verified Purchase</b>
+        <p style="margin-top:6px">Quality बहुत अच्छी है। बिल्कुल फोटो जैसी मिली।</p>
+        <div style="font-size:35px;margin-top:8px">🎥</div>
+        <button style="margin-top:8px">👍 Helpful</button>
+      </div>
+    </div>
+
+
+    <div class="section" style="padding:0">
+      <h2 class="section-title">❤️ आपको ये भी पसंद आ सकता है</h2>
+
+      <div class="products">
+
+        <div class="product">
+          <div class="product-image">💎</div>
+          <div class="product-info">
+            <h3>Matching Jewellery</h3>
+            <div class="price">₹399</div>
+            <div class="rating">★★★★★ 4.8</div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="product-image">👜</div>
+          <div class="product-info">
+            <h3>Fashion Handbag</h3>
+            <div class="price">₹799</div>
+            <div class="rating">★★★★☆ 4.6</div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="product-image">👡</div>
+          <div class="product-info">
+            <h3>Women's Footwear</h3>
+            <div class="price">₹599</div>
+            <div class="rating">★★★★★ 4.7</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
 </div>
+
+
+<!-- CART -->
+<div id="cartPage" class="page">
+  <section class="section">
+
+    <button class="back-btn" onclick="goHome()">← Home</button>
+
+    <h2 class="section-title">🛒 My Cart</h2>
+
+    <div class="info-box">
+      <h3>Beautiful Saree</h3>
+      <p>₹999 × 1</p>
+      <p>🚚 Delivery by 12 Sep</p>
+
+      <hr style="margin:12px 0">
+
+      <p>Product Price: ₹999</p>
+      <p>Delivery: FREE</p>
+      <h3>Total: ₹999</h3>
+
+      <button class="cart-btn" onclick="alert('Checkout आगे जोड़ा जाएगा।')">
+        Proceed to Checkout
+      </button>
+    </div>
+
+  </section>
+</div>
+
+
+<!-- ORDER PAGE -->
+<div id="ordersPage" class="page">
+  <section class="section">
+
+    <button class="back-btn" onclick="goHome()">← Home</button>
+
+    <h2 class="section-title">📦 My Orders</h2>
+
+    <div class="info-box">
+
+      <div style="font-size:70px;text-align:center;cursor:pointer"
+           onclick="showProduct('Beautiful Saree')">
+        🥻
+      </div>
+
+      <h3>Beautiful Saree</h3>
+      <p>₹999</p>
+      <p>📅 Expected Delivery: 12 Sep</p>
+
+      <p style="margin-top:10px;color:#16803c">
+        ✓ Order Placed
+      </p>
+
+      <div class="order-actions">
+        <button>📍 Track Order</button>
+        <button>❌ Cancel Order</button>
+        <button>🔄 Return</button>
+        <button>♻️ Replace</button>
+        <button>💰 Refund Status</button>
+        <button>⭐ Rate & Review</button>
+        <button>📄 Invoice</button>
+        <button onclick="showProduct('Beautiful Saree')">👀 View Product</button>
+        <button>🛒 Buy Again</button>
+        <button>📞 Help</button>
+      </div>
+
+      <p style="margin-top:15px;color:#6a1b9a">
+        ऊपर product photo पर क्लिक करके उसी product page पर वापस जा सकते हैं।
+      </p>
+
+    </div>
+
+
+    <h2 class="section-title">❤️ और Products देखें</h2>
+
+    <div class="products">
+
+      <div class="product">
+        <div class="product-image">💎</div>
+        <div class="product-info">
+          <h3>Jewellery Set</h3>
+          <div class="price">₹499</div>
+          <div class="rating">★★★★★ 4.8</div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-image">👜</div>
+        <div class="product-info">
+          <h3>Handbag</h3>
+          <div class="price">₹799</div>
+          <div class="rating">★★★★☆ 4.6</div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-image">👟</div>
+        <div class="product-info">
+          <h3>New Shoes</h3>
+          <div class="price">₹699</div>
+          <div class="rating">★★★★★ 4.7</div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-image">👗</div>
+        <div class="product-info">
+          <h3>New Dress</h3>
+          <div class="price">₹899</div>
+          <div class="rating">★★★★★ 4.8</div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+</div>
+
 
 <footer>
-<p>© 2026 ZipCart — सबके लिए आसान Shopping ❤️</p>
+  <h3>🛍️ ZipCart</h3>
+  <p style="margin-top:8px">हर चीज़, एक जगह ❤️</p>
+  <p style="margin-top:12px">Help & Support &nbsp; | &nbsp; Privacy &nbsp; | &nbsp; Terms</p>
 </footer>
+
+
+<!-- LANGUAGE MODAL -->
+<div id="languageModal" class="modal">
+  <div class="modal-box">
+
+    <button class="close" onclick="closeLanguage()">×</button>
+
+    <h2>🌐 अपनी भाषा चुनें</h2>
+
+    <div class="language-list">
+
+      <button onclick="selectLanguage('हिन्दी')">हिन्दी</button>
+      <button onclick="selectLanguage('English')">English</button>
+      <button onclick="selectLanguage('मराठी')">मराठी</button>
+      <button onclick="selectLanguage('ગુજરાતી')">ગુજરાતી</button>
+      <button onclick="selectLanguage('বাংলা')">বাংলা</button>
+      <button onclick="selectLanguage('தமிழ்')">தமிழ்</button>
+      <button onclick="selectLanguage('తెలుగు')">తెలుగు</button>
+      <button onclick="selectLanguage('ಕನ್ನಡ')">ಕನ್ನಡ</button>
+      <button onclick="selectLanguage('മലയാളം')">മലയാളം</button>
+      <button onclick="selectLanguage('ਪੰਜਾਬੀ')">ਪੰਜਾਬੀ</button>
+      <button onclick="selectLanguage('ଓଡ଼ିଆ')">ଓଡ଼ିଆ</button>
+      <button onclick="selectLanguage('অসমীয়া')">অসমীয়া</button>
+      <button onclick="selectLanguage('اردو')">اردو</button>
+      <button onclick="selectLanguage('नेपाली')">नेपाली</button>
+      <button onclick="selectLanguage('कोंकणी')">कोंकणी</button>
+      <button onclick="selectLanguage('मैथिली')">मैथिली</button>
+
+    </div>
+  </div>
+</div>
+
 
 <script>
 
-function openLanguages(){
-    document.getElementById("languageBox").style.display="flex";
+const categories = {
+
+women: {
+  title:"👗 Women's Fashion",
+  items:[
+    ["👗","Suits"],
+    ["🥻","Sarees"],
+    ["🌸","Kurtis"],
+    ["👖","Jeans"],
+    ["👚","Tops"],
+    ["💃","Lehenga"],
+    ["👗","Dresses"]
+  ]
+},
+
+men:{
+  title:"👔 Men's Fashion",
+  items:[
+    ["👔","Shirts"],
+    ["👕","T-Shirts"],
+    ["👖","Jeans"],
+    ["👖","Pants"],
+    ["🥻","Kurta"],
+    ["🧥","Jackets"]
+  ]
+},
+
+kids:{
+  title:"🧒 Kids Wear",
+  items:[
+    ["👧","Girls Wear"],
+    ["👦","Boys Wear"],
+    ["👶","Baby Clothes"],
+    ["🎒","Kids Accessories"]
+  ]
+},
+
+shoes:{
+  title:"👟 Footwear",
+  items:[
+    ["👠","Women Shoes"],
+    ["👞","Men Shoes"],
+    ["👟","Sports Shoes"],
+    ["🩴","Sandals"],
+    ["👶","Kids Shoes"]
+  ]
+},
+
+toys:{
+  title:"🧸 Toys",
+  items:[
+    ["🍼","Baby Toys"],
+    ["🧠","Educational Toys"],
+    ["🚗","Cars"],
+    ["🎎","Dolls"],
+    ["🎲","Games"]
+  ]
+},
+
+jewellery:{
+  title:"💎 Jewellery",
+  items:[
+    ["👂","Earrings"],
+    ["💍","Rings"],
+    ["📿","Necklace"],
+    ["💎","Bridal Set"],
+    ["⭕","Bangles"],
+    ["❤️","Mangalsutra"],
+    ["👃","Nose Pins"]
+  ]
+},
+
+bags:{
+  title:"👜 Bags",
+  items:[
+    ["👜","Handbag"],
+    ["👝","Sling Bag"],
+    ["🎒","School Bag"],
+    ["🧳","Travel Bag"],
+    ["💼","Office Bag"]
+  ]
+},
+
+beauty:{
+  title:"💄 Beauty",
+  items:[
+    ["💄","Makeup"],
+    ["🧴","Skincare"],
+    ["💇","Haircare"],
+    ["🌸","Fragrance"]
+  ]
+},
+
+home:{
+  title:"🏠 Home",
+  items:[
+    ["🍳","Kitchen"],
+    ["🪴","Home Decor"],
+    ["🛋️","Furniture"],
+    ["📦","Storage"],
+    ["🛏️","Bedding"]
+  ]
+},
+
+electronics:{
+  title:"📱 Electronics",
+  items:[
+    ["📱","Mobile Accessories"],
+    ["🎧","Earphones"],
+    ["🔌","Chargers"],
+    ["⌚","Smart Watches"],
+    ["💻","Computer Accessories"]
+  ]
+},
+
+school:{
+  title:"📚 School Items",
+  items:[
+    ["🎒","School Bags"],
+    ["📚","Books"],
+    ["✏️","Stationery"],
+    ["🖍️","Art Items"]
+  ]
+},
+
+travel:{
+  title:"✈️ Travel Tickets",
+  items:[
+    ["🚌","Bus"],
+    ["🚆","Train"],
+    ["✈️","Flight"],
+    ["🏨","Hotel"]
+  ]
+},
+
+bills:{
+  title:"💳 Bills & Recharge",
+  items:[
+    ["📱","Mobile Recharge"],
+    ["📺","DTH Recharge"],
+    ["💡","Electricity Bill"],
+    ["💧","Water Bill"],
+    ["🔥","Gas Bill"],
+    ["🌐","Broadband / Landline"],
+    ["🚘","FASTag"],
+    ["🛡️","Insurance"],
+    ["🎓","Education Fees"],
+    ["🏠","Property / Other Bills"]
+  ]
 }
 
-function closeLanguages(){
-    document.getElementById("languageBox").style.display="none";
+};
+
+
+const deepCategories = {
+
+"Suits":[
+ ["👗","Anarkali Suit"],
+ ["👗","Straight Suit"],
+ ["👖","Palazzo Suit"],
+ ["👗","Patiala Suit"],
+ ["👗","Punjabi Suit"],
+ ["✨","Party Wear Suit"]
+],
+
+"Sarees":[
+ ["🥻","Banarasi Saree"],
+ ["🥻","Silk Saree"],
+ ["🥻","Cotton Saree"],
+ ["🥻","Georgette Saree"],
+ ["🥻","Chiffon Saree"],
+ ["✨","Party Wear Saree"],
+ ["💍","Bridal Saree"]
+],
+
+"Jewellery":[
+ ["👂","Earrings"],
+ ["💍","Bridal Jewellery"],
+ ["💎","Rings"],
+ ["📿","Necklaces"],
+ ["⭕","Bangles"],
+ ["❤️","Mangalsutra"],
+ ["👃","Nose Pins"]
+],
+
+"Mobile Recharge":[
+ ["📱","Prepaid Recharge"],
+ ["📱","Postpaid Bill"]
+],
+
+"Electricity Bill":[
+ ["💡","Electricity Payment"],
+ ["🧾","View Bill"]
+],
+
+"Water Bill":[
+ ["💧","Water Bill Payment"]
+],
+
+"Gas Bill":[
+ ["🔥","Gas Bill Payment"]
+]
+
+};
+
+
+function hideAllPages(){
+  document.querySelectorAll(".page").forEach(p=>{
+    p.classList.remove("active");
+  });
 }
+
+
+function showPage(id){
+  hideAllPages();
+  document.getElementById(id).classList.add("active");
+  window.scrollTo(0,0);
+}
+
+
+function goHome(){
+  showPage("homePage");
+}
+
+
+function openCategory(key){
+
+  const cat = categories[key];
+
+  if(!cat) return;
+
+  document.getElementById("categoryTitle").innerText = cat.title;
+
+  const grid = document.getElementById("subcategoryGrid");
+  grid.innerHTML = "";
+
+  cat.items.forEach(item=>{
+
+    const div = document.createElement("div");
+    div.className = "sub-item";
+
+    div.innerHTML = `
+      <div class="sub-circle">${item[0]}</div>
+      <p>${item[1]}</p>
+    `;
+
+    div.onclick = function(){
+      openSubCategory(item[1]);
+    };
+
+    grid.appendChild(div);
+
+  });
+
+  showPage("categoryPage");
+}
+
+
+function openSubCategory(name){
+
+  if(deepCategories[name]){
+
+    document.getElementById("categoryTitle").innerText =
+      "📂 " + name + " की varieties";
+
+    const grid = document.getElementById("subcategoryGrid");
+    grid.innerHTML = "";
+
+    deepCategories[name].forEach(item=>{
+
+      const div = document.createElement("div");
+      div.className = "sub-item";
+
+      div.innerHTML = `
+        <div class="sub-circle">${item[0]}</div>
+        <p>${item[1]}</p>
+      `;
+
+      div.onclick = function(){
+        showProduct(item[1]);
+      };
+
+      grid.appendChild(div);
+
+    });
+
+    return;
+  }
+
+  showProduct(name);
+}
+
+
+function showProduct(name){
+
+  document.getElementById("productTitle").innerText = name;
+
+  let emoji = "🛍️";
+
+  if(name.toLowerCase().includes("saree") ||
+     name.toLowerCase().includes("suit") ||
+     name.toLowerCase().includes("dress") ||
+     name.toLowerCase().includes("kurti")){
+    emoji="👗";
+  }
+
+  if(name.toLowerCase().includes("jewellery") ||
+     name.toLowerCase().includes("ring") ||
+     name.toLowerCase().includes("earring")){
+    emoji="💎";
+  }
+
+  if(name.toLowerCase().includes("shoe")){
+    emoji="👟";
+  }
+
+  if(name.toLowerCase().includes("toy")){
+    emoji="🧸";
+  }
+
+  document.getElementById("productEmoji").innerText=emoji;
+
+  showPage("productPage");
+}
+
+
+function openLanguage(){
+  document.getElementById("languageModal").style.display="flex";
+}
+
+
+function closeLanguage(){
+  document.getElementById("languageModal").style.display="none";
+}
+
+
+function selectLanguage(language){
+  alert("आपने " + language + " चुनी है। पूरी भाषा translation system आगे जोड़ी जाएगी।");
+  closeLanguage();
+}
+
+
+function voiceSearch(){
+
+  const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+  if(!SpeechRecognition){
+    alert("इस browser में Voice Search उपलब्ध नहीं है।");
+    return;
+  }
+
+  const recognition = new SpeechRecognition();
+
+  recognition.lang="hi-IN";
+
+  recognition.start();
+
+  recognition.onresult=function(event){
+
+    const text=event.results[0][0].transcript;
+
+    document.getElementById("searchInput").value=text;
+
+    searchProducts();
+
+  };
+
+}
+
+
+function searchProducts(){
+
+  const value=document
+    .getElementById("searchInput")
+    .value
+    .trim();
+
+  if(!value){
+    alert("कृपया product का नाम लिखें या 🎤 से बोलें।");
+    return;
+  }
+
+  alert("आपने खोजा: " + value +
+        "\nSearch system में असली products और database बाद में जोड़ा जाएगा।");
+}
+
 
 </script>
 
