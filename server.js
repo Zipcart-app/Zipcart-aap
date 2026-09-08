@@ -13,34 +13,41 @@ const MONGODB_URI = process.env.MONGODB_URI;
 let db;
 
 app.get("/", (req, res) => {
-  res.send("ZipCart Backend is running!");
+res.send("ZipCart Backend is running!");
 });
 
 app.get("/api/health", (req, res) => {
-  res.json({ success: true, message: "ZipCart API is working" });
+res.json({
+success: true,
+message: "ZipCart API is working"
+});
 });
 
 async function startServer() {
-  try {
-    if (!MONGODB_URI) {
-      throw new Error("MONGODB_URI is not configured");
-    }
+try {
+if (!MONGODB_URI) {
+console.error("MONGODB_URI is not configured");
+process.exit(1);
+}
 
-    const client = new MongoClient(MONGODB_URI);
-    await client.connect();
+```
+const client = new MongoClient(MONGODB_URI);
 
-    db = client.db("zipcart");
+await client.connect();
 
-    console.log("MongoDB connected");
+db = client.db("zipcart");
 
-    app.listen(PORT, () => {
-      console.log(`ZipCart server running on port ${PORT}`);
-    });
-  } catch (error) {
-    console.error("Server error:", error);
-    process.exit(1);
-  }
+console.log("MongoDB connected successfully");
+
+app.listen(PORT, () => {
+  console.log(`ZipCart server running on port ${PORT}`);
+});
+```
+
+} catch (error) {
+console.error("Server error:", error.message);
+process.exit(1);
+}
 }
 
 startServer();
-// Render deployment update
