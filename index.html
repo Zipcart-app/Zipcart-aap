@@ -229,7 +229,12 @@ selectedCat?category(selectedCat):wishlistPage();
 function addCart(id){
 let x=cart.find(a=>a.id===id);x?x.qty++:cart.push({id,qty:1,selected:true});save();alert("🛒 Product cart में जोड़ दिया गया।");
 }
-function buyNow(id){addCart(id);show("cart")}
+function buyNow(id){
+let x=cart.find(a=>a.id===id);
+x?x.qty++:cart.push({id,qty:1,selected:true});
+save();
+show("cart");
+}
 function cartPage(){
 let total=cart.filter(x=>x.selected).reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0);
 app.innerHTML=`<h2>🛒 मेरा Cart</h2><div class="panel">${cart.length?cart.map((x,i)=>{let p=products.find(a=>a.id===x.id);
