@@ -303,12 +303,108 @@ app.innerHTML=`<div class="panel"><h2>🏪 ZipCart Seller Registration</h2>
 <div class="panel"><h3>📋 Seller Dashboard Preview</h3><p>Products • Orders • Stock • Variants • Returns • Reviews • Earnings • Payouts • Verification • Help • Vacation Mode</p></div>`;
 }
 function searchPage(q){
-let ps=products.filter(p=>(p.name+" "+p.sub).toLowerCase().includes(q.toLowerCase()));
-app.innerHTML=`<button class="back" onclick="show('home')">← Home</button><div class="panel"><h2>🔎 Search: “${q}”</h2>
-<p>${ps.length?ps.length+" विकल्प मिले":"कोई exact result नहीं मिला — Similar categories/products देखें।"}</p>
-<div class="quick">${["Price","Color","Brand","Seller","Rating","Discount","Delivery","Newest","Popular","Price Low-High","Price High-Low"].map(x=>`<button class="pill">${x}</button>`).join("")}</div></div>
-<div class="grid">${(ps.length?ps:products).map(productCard).join("")}</div>
-<div class="notice">🔔 चाहें तो इस search के लिए Price Drop / Back in Stock alert बाद में on कर सकते हैं।</div>`;
+let ps=products.filter(p=>
+(p.name+" "+p.sub).toLowerCase().includes(q.toLowerCase())
+);
+
+let activePrice="all";
+let activeRating=0;
+let activeSort="default";
+
+function renderResults(){
+let result=[...ps];
+
+if(activePrice!=="all"){
+result=result.filter(p=>{
+if(activePrice==="0-500") return p.price<=500;
+if(activePrice==="500-1000") return p.price>500&&p.price<=1000;
+if(activePrice==="1000-1500") return p.price>1000&&p.price<=1500;
+if(activePrice==="1500-2000") return p.price>1500&&p.price<=2000;
+if(activePrice==="2000-3000") return p.price>2000&&p.price<=3000;
+if(activePrice==="3000-5000") return p.price>3000&&p.price<=5000;
+if(activePrice==="5000-10000") return p.price>5000&&p.price<=10000;
+if(activePrice==="10000+") return p.price>10000;
+return true;
+});
+}
+
+if(activeRating>0){
+result=result.filter(p=>p.rating>=activeRating);
+}
+
+if(activeSort==="low") result.sort((a,b)=>a.price-b.price);
+if(activeSort==="high") result.sort((a,b)=>b.price-a.price);
+if(activeSort==="rating") result.sort((a,b)=>b.rating-a.rating);
+
+document.getElementById("searchResults").innerHTML=
+result.length
+?result.map(productCard).join("")
+:`<div class="panel">इस filter में कोई product नहीं मिला।</div>`;
+
+document.getElementById("resultCount").textContent=
+result.length+" विकल्प मिले";
+}
+
+app.innerHTML=`
+<button class="back" onclick="show('home')">← Home</button>
+
+<div class="panel">
+<h2>🔎 Search: “${q}”</h2>
+
+<p id="resultCount">${ps.length} विकल्प मिले</p>
+
+<h3>💰 Price</h3>
+<div class="quick">
+<button class="pill" onclick="priceFilter('all')">All</button>
+<button class="pill" onclick="priceFilter('0-500')">₹100–₹500</button>
+<button class="pill" onclick="priceFilter('500-1000')">₹500–₹1,000</button>
+<button class="pill" onclick="priceFilter('1000-1500')">₹1,000–₹1,500</button>
+<button class="pill" onclick="priceFilter('1500-2000')">₹1,500–₹2,000</button>
+<button class="pill" onclick="priceFilter('2000-3000')">₹2,000–₹3,000</button>
+<button class="pill" onclick="priceFilter('3000-5000')">₹3,000–₹5,000</button>
+<button class="pill" onclick="priceFilter('5000-10000')">₹5,000–₹10,000</button>
+<button class="pill" onclick="priceFilter('10000+')">₹10,000+</button>
+</div>
+
+<h3>⭐ Rating</h3>
+<div class="quick">
+<button class="pill" onclick="ratingFilter(0)">All</button>
+<button class="pill" onclick="ratingFilter(4)">⭐ 4+</button>
+<button class="pill" onclick="ratingFilter(4.5)">⭐ 4.5+</button>
+</div>
+
+<h3>↕️ Sort By</h3>
+<div class="quick">
+<button class="pill" onclick="sortProducts('low')">Price Low-High</button>
+<button class="pill" onclick="sortProducts('high')">Price High-Low</button>
+<button class="pill" onclick="sortProducts('rating')">Highest Rating</button>
+<button class="pill" onclick="sortProducts('default')">Popular</button>
+</div>
+</div>
+
+<div id="searchResults" class="grid"></div>
+
+<div class="notice">
+🔔 Price Drop / Back in Stock alerts बाद में जोड़े जा सकते हैं।
+</div>
+`;
+
+window.priceFilter=function(value){
+activePrice=value;
+renderResults();
+};
+
+window.ratingFilter=function(value){
+activeRating=value;
+renderResults();
+};
+
+window.sortProducts=function(value){
+activeSort=value;
+renderResults();
+};
+
+renderResults();
 }
 function doSearch(){let q=document.getElementById("search").value.trim();if(q)searchPage(q)}
 function doSearchText(q){document.getElementById("search").value=q;searchPage(q)}
