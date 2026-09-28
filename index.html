@@ -274,7 +274,8 @@ app.innerHTML=`<button class="back" onclick="cartPage()">← Cart</button><div c
 function orders(){
 app.innerHTML=`<h2>📦 मेरे ऑर्डर</h2><div class="panel"><h3>Example Order #ZC-DEMO</h3><div class="row">
 <span style="font-size:50px">🥻</span><div class="grow"><b>Beautiful Saree</b><p>Order date: — | Expected delivery: वास्तविक system से</p></div>
-<button class="pill" onclick="track()">Track Order</button><button class="pill" onclick="returnFlow()">↩️ Return</button><button class="pill" onclick="exchangeFlow()">🔄 Exchange</button>
+<button class="pill" onclick="track()">Track Order</button>
+<button class="pill" onclick="cancelOrder()">❌ Cancel Order</button>
 </div></div><div class="panel"><h3>✨ Shopping जारी रखें</h3><div class="grid">${products.slice(0,4).map(productCard).join("")}</div></div>`;
 }
 function track(){
