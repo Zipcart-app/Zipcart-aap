@@ -350,22 +350,11 @@ if(activeSort==="low") result.sort((a,b)=>a.price-b.price);
 if(activeSort==="high") result.sort((a,b)=>b.price-a.price);
 if(activeSort==="rating") result.sort((a,b)=>b.rating-a.rating);
 
-document.getElementById("searchResults").innerHTML=
-result.length
-?result.map(productCard).join("")
-:`<div class="panel">इस filter में कोई product नहीं मिला।</div>`;
-
-document.getElementById("resultCount").textContent=
-result.length+" विकल्प मिले";
-}
-
 app.innerHTML=`
 <button class="back" onclick="show('home')">← Home</button>
-
 <div class="panel">
 <h2>🔎 Search: “${q}”</h2>
-
-<p id="resultCount">${ps.length} विकल्प मिले</p>
+<p id="resultCount">${result.length} विकल्प मिले</p>
 
 <h3>💰 Price</h3>
 <div class="quick">
@@ -397,10 +386,7 @@ app.innerHTML=`
 </div>
 
 <div id="searchResults" class="grid"></div>
-
-<div class="notice">
-🔔 Price Drop / Back in Stock alerts बाद में जोड़े जा सकते हैं।
-</div>
+<div class="notice">🔔 Price Drop / Back in Stock alerts बाद में जोड़े जा सकते हैं।</div>
 `;
 
 window.priceFilter=function(value){
