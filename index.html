@@ -2,313 +2,1777 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZipCart — आपकी अपनी Shopping जगह ❤️</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#7b1010">
+<title>ZipCart</title>
+
 <style>
+:root{
+  --primary:#7b1010;
+  --primary2:#9b1717;
+  --accent:#ffd21c;
+  --bg:#fff8ef;
+  --card:#ffffff;
+  --text:#222;
+  --muted:#666;
+  --border:#ead8c8;
+  --success:#16833a;
+  --danger:#c62828;
+}
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,"Noto Sans",sans-serif;background:#f7f7fb;color:#222}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
 button,input,select,textarea{font:inherit}
-button{cursor:pointer;border:0}
-.header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#6a11cb,#8e2de2);color:#fff;padding:12px}
-.top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;max-width:1200px;margin:auto}
-.logo{font-size:25px;font-weight:800;white-space:nowrap}
-.tag{font-size:11px;opacity:.9}
-.search{flex:1;min-width:220px;display:flex;background:#fff;border-radius:25px;overflow:hidden}
-.search input{flex:1;border:0;padding:12px 15px;outline:0}
-.search button{background:#fff;padding:0 10px}
-.navbtn{background:#ffffff22;color:#fff;padding:10px 12px;border-radius:20px;font-weight:600}
-.page{max-width:1200px;margin:auto;padding:14px}
-.hero{background:linear-gradient(135deg,#fff0fa,#eee5ff);border-radius:20px;padding:24px;margin-bottom:16px}
-.hero h1{margin:0 0 8px;color:#5c16b8}
-.quick{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.pill{background:#fff;border:1px solid #ddd;padding:9px 13px;border-radius:20px}
-.section{margin:22px 0}
-.section h2{margin:0 0 12px}
-.hscroll{display:flex;gap:14px;overflow-x:auto;padding:5px 2px 12px}
-.cat{min-width:92px;width:92px;text-align:center;flex:none}
-.catpic{width:78px;height:78px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;border:2px solid #eadcff;box-shadow:0 3px 10px #0001;font-size:35px;margin:auto}
-.cat b{display:block;font-size:13px;margin-top:7px}
-.banner{background:linear-gradient(100deg,#5f0a87,#a4508b);color:#fff;border-radius:18px;padding:18px;display:flex;justify-content:space-between;align-items:center;gap:15px}
-.banner button{background:#fff;color:#6812ad;padding:10px 15px;border-radius:20px;font-weight:bold}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
-.card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px #0001;position:relative}
-.photo{height:155px;background:linear-gradient(135deg,#eee,#fafafa);display:flex;align-items:center;justify-content:center;font-size:70px}
-.heart{position:absolute;right:8px;top:8px;background:#fff;border-radius:50%;width:36px;height:36px;font-size:20px;box-shadow:0 2px 7px #0002}
-.cardbody{padding:11px}
-.price{font-size:20px;font-weight:800}
-.old{text-decoration:line-through;color:#888;font-size:13px;margin-left:5px}
-.off{color:#16833c;font-weight:700;font-size:13px;margin-left:5px}
-.rating{color:#087b36;font-weight:700;margin-top:5px}
-.buy{width:100%;margin-top:9px;padding:10px;border-radius:10px;background:#6a11cb;color:#fff;font-weight:bold}
-.panel{background:#fff;border-radius:18px;padding:18px;box-shadow:0 2px 12px #0001;margin-bottom:15px}
-.back{background:#eee;padding:9px 14px;border-radius:18px;margin-bottom:12px}
-.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+button{
+  cursor:pointer;
+  border:0;
+}
+.header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:var(--primary);
+  color:#fff;
+  padding:10px;
+  box-shadow:0 2px 8px #0002;
+}
+.top{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.logo{
+  background:var(--primary);
+  color:var(--accent);
+  width:82px;
+  min-width:82px;
+  text-align:center;
+  font-weight:bold;
+  border:2px solid var(--accent);
+  border-radius:12px;
+  padding:4px;
+}
+.logo .z{
+  display:block;
+  font-size:38px;
+  line-height:35px;
+}
+.logo .name{
+  font-size:13px;
+}
+.search{
+  flex:1;
+  min-width:220px;
+  display:flex;
+  gap:5px;
+}
+.search input{
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:0;
+}
+.btn{
+  background:var(--primary);
+  color:#fff;
+  padding:10px 14px;
+  border-radius:8px;
+  margin:3px;
+}
+.btn.yellow{
+  background:var(--accent);
+  color:#4d0b0b;
+}
+.btn.light{
+  background:#fff;
+  color:var(--primary);
+}
+.btn.green{background:var(--success)}
+.btn.red{background:var(--danger)}
+.pill{
+  background:#fff3c4;
+  color:#5d2200;
+  border:1px solid #e2bc4c;
+  padding:8px 12px;
+  border-radius:20px;
+  margin:3px;
+}
+.nav{
+  max-width:1200px;
+  margin:8px auto 0;
+  display:flex;
+  gap:5px;
+  overflow:auto;
+}
+.nav button{
+  white-space:nowrap;
+  background:#fff;
+  color:var(--primary);
+  padding:8px 12px;
+  border-radius:7px;
+}
+.page{
+  max-width:1200px;
+  margin:auto;
+  padding:15px;
+}
+.panel{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:15px;
+  margin:12px 0;
+  box-shadow:0 2px 8px #0000000d;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
+  gap:12px;
+}
+.card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:12px;
+  box-shadow:0 2px 7px #0001;
+}
+.productEmoji{
+  height:125px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:70px;
+  background:#fff7e4;
+  border-radius:10px;
+}
+.price{
+  color:var(--primary);
+  font-weight:bold;
+  font-size:20px;
+}
+.old{
+  text-decoration:line-through;
+  color:#888;
+  font-size:13px;
+}
+.row{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+}
 .grow{flex:1}
-.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.field{display:flex;flex-direction:column;gap:5px}
-.field input,.field select,.field textarea{padding:11px;border:1px solid #ccc;border-radius:10px}
-.field textarea{min-height:80px}
-.modal{position:fixed;inset:0;background:#0008;z-index:100;display:none;align-items:center;justify-content:center;padding:15px}
-.modalbox{background:#fff;border-radius:18px;max-width:700px;width:100%;max-height:90vh;overflow:auto;padding:20px}
-.modal.show{display:flex}
-.track{display:flex;justify-content:space-between;gap:4px;position:relative;margin:20px 0}
-.track:before{content:"";position:absolute;top:15px;left:6%;right:6%;height:4px;background:#ddd}
-.step{z-index:1;text-align:center;font-size:11px;max-width:90px}
-.dot{width:30px;height:30px;border-radius:50%;background:#eee;margin:auto;padding-top:7px}
-.done .dot{background:#287be8;color:#fff}
-.notice{background:#fff8df;border:1px solid #efd57c;border-radius:12px;padding:12px;margin:10px 0}
-.bottom{position:sticky;bottom:0;background:#fff;border-top:1px solid #ddd;padding:9px;display:flex;justify-content:center;gap:8px;z-index:40}
-.bottom button{background:#f2eff8;padding:9px 12px;border-radius:12px}
-@media(max-width:650px){.formgrid{grid-template-columns:1fr}.navbtn{padding:8px}.logo{font-size:21px}.photo{height:135px}.grid{grid-template-columns:repeat(2,1fr)}}
+.form{
+  display:grid;
+  gap:10px;
+}
+.form label{
+  font-weight:bold;
+}
+.form input,.form select,.form textarea{
+  width:100%;
+  padding:11px;
+  border:1px solid #cdb9a7;
+  border-radius:8px;
+  background:#fff;
+}
+textarea{min-height:90px}
+.sectionTitle{
+  color:var(--primary);
+  margin-top:22px;
+}
+.notice{
+  padding:12px;
+  background:#fff1b8;
+  border-left:5px solid var(--accent);
+  border-radius:7px;
+  margin:10px 0;
+}
+.status{
+  padding:10px;
+  border-radius:8px;
+  background:#e9f8ed;
+  color:#176d31;
+  margin:10px 0;
+}
+.error{
+  background:#ffe8e8;
+  color:#a01818;
+}
+.badge{
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:12px;
+  background:#eee;
+  font-size:12px;
+}
+.qty{
+  display:inline-flex;
+  align-items:center;
+  border:1px solid #bbb;
+  border-radius:8px;
+  overflow:hidden;
+}
+.qty button{
+  width:34px;
+  height:34px;
+  background:#eee;
+}
+.qty span{
+  width:40px;
+  text-align:center;
+}
+.timeline{
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+  margin:12px 0;
+}
+.timeline span{
+  padding:7px 9px;
+  border-radius:15px;
+  background:#eee;
+}
+.timeline span.active{
+  background:var(--primary);
+  color:#fff;
+}
+footer{
+  margin-top:30px;
+  padding:25px;
+  background:#4a0808;
+  color:#fff;
+}
+footer button{
+  background:none;
+  color:#ffe77b;
+  padding:5px;
+}
+.modal{
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:100;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:15px;
+}
+.modalBox{
+  background:#fff;
+  max-width:600px;
+  width:100%;
+  max-height:90vh;
+  overflow:auto;
+  border-radius:14px;
+  padding:20px;
+}
+.hidden{display:none!important}
+.small{font-size:13px;color:var(--muted)}
+.center{text-align:center}
+@media(max-width:600px){
+  .top{align-items:stretch}
+  .logo{width:70px;min-width:70px}
+  .logo .z{font-size:32px}
+  .search{min-width:100%}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .card{padding:8px}
+  .productEmoji{height:100px;font-size:55px}
+}
 </style>
 </head>
+
 <body>
 
 <header class="header">
-<div class="top">
-<div><div class="logo">🛍️ ZipCart</div><div class="tag">आपकी अपनी Shopping जगह ❤️</div></div>
-<div class="search">
-<input id="search" placeholder="क्या ढूँढ रहे हैं? जैसे Anarkali Suit" onkeydown="if(event.key==='Enter')doSearch()">
-<button onclick="voiceSearch()">🎤</button><button onclick="doSearch()">🔍</button>
-</div>
-<button class="navbtn" onclick="show('wishlist')">❤️ <span id="wishCount">0</span></button>
-<button class="navbtn" onclick="show('cart')">🛒 <span id="cartCount">0</span></button>
-<button class="navbtn" onclick="show('orders')">📦 मेरे ऑर्डर</button>
-<button class="navbtn" onclick="show('account')">👤 Account</button>
-<button class="navbtn" onclick="languageModal()">🌐</button>
-</div>
+  <div class="top">
+    <button class="logo" onclick="show('home')">
+      <span class="z">Z</span>
+      <span class="name">ZipCart</span>
+    </button>
+
+    <div class="search">
+      <input id="search" placeholder="क्या खोजें?">
+      <button class="btn yellow" onclick="doSearch()">🔎</button>
+      <button class="btn light" onclick="voiceSearch()">🎙️</button>
+    </div>
+  </div>
+
+  <div class="nav">
+    <button onclick="show('home')">🏠 Home</button>
+    <button onclick="show('categories')">📂 Categories</button>
+    <button onclick="show('wishlist')">❤️ Wishlist</button>
+    <button onclick="show('cart')">🛒 Cart <span id="cartCount">0</span></button>
+    <button onclick="show('orders')">📦 Orders</button>
+    <button onclick="show('account')">👤 Account</button>
+    <button onclick="show('seller')">🏪 Seller</button>
+    <button onclick="show('rider')">🛵 Rider</button>
+    <button onclick="show('admin')">👑 Admin</button>
+  </div>
 </header>
 
 <main class="page" id="app"></main>
 
-<div class="bottom">
-<button onclick="show('home')">🏠 Home</button>
-<button onclick="show('categories')">🗂️ Categories</button>
-<button onclick="show('seller')">🏪 Seller</button>
-<button onclick="show('orders')">📦 My Orders</button>
-<button onclick="show('account')">👤 Account</button>
-</div>
+<footer>
+  <div class="center">
+    <h3>ZipCart</h3>
+    <button onclick="show('terms')">Terms & Rules</button>
+    <button onclick="show('privacy')">Privacy</button>
+    <button onclick="show('returnPolicy')">Return / Refund</button>
+    <button onclick="show('support')">Support</button>
+  </div>
+</footer>
 
-<div class="modal" id="modal"><div class="modalbox" id="modalbox"></div></div>
+<div id="modal" class="hidden"></div>
 
 <script>
-const cats=[
-["👗","महिलाओं का फैशन","women"],["👔","Men Fashion","men"],["🧒","Kids","kids"],
-["👟","जूते","shoes"],["💍","ज्वेलरी","jewellery"],["👜","बैग","bags"],
-["🧸","खिलौने","toys"],["💄","Beauty","beauty"],["🏠","घर का सामान","home"],
-["📱","Electronics","electronics"],["📚","School Items","school"],["🚌","Travel Tickets","travel"],
-["🧾","Bills & Recharge","bills"],["💊","Medicines","medicine"],["🛒","Grocery","grocery"]
-];
+/* =========================
+   ZIPCART CORE
+========================= */
+
 const app=document.getElementById("app");
-const sub={
-women:["👗 Saree","🥻 Suits","👚 Kurtis","👖 Jeans","👕 Tops","👗 Dresses","👰 Lehenga","🧥 Jackets","🌙 Nightwear","🪷 Ethnic Wear","👠 Western Wear"],
-men:["👔 Shirts","👕 T-Shirts","👖 Jeans","🥻 Kurta","🧣 Kurta-Pajama","👖 Trousers/Pants","🧥 Jackets","🩳 Shorts","💼 Formal Wear","🏃 Sports Wear"],
-kids:["👧 Girls","👦 Boys","👶 Baby","👗 Kids Dresses","👟 Kids Shoes","🍼 Baby Products","🧸 Toys"],
-shoes:["👩 Women","👨 Men","🧒 Kids","🏃 Sports Shoes","🩴 Sandals","👠 Heels","🥿 Flats","🩴 Slippers"],
-jewellery:["📿 Necklace","💎 Earrings","🪷 Bangles","💍 Rings","👰 Bridal Jewellery","✨ Artificial Jewellery"],
-bags:["👜 Handbag","🎒 Sling Bag","🎒 School Bag","🧳 Travel Bag","🎒 Backpack","👛 Wallet/Purse"],
-toys:["🧸 Baby Toys","🧠 Educational","🚗 Cars","👧 Dolls","🎲 Games","🎮 Remote Toys","⚽ Outdoor Toys"],
-beauty:["💄 Makeup","🧴 Skincare","💇 Haircare","🧼 Personal Care"],
-home:["🍳 Kitchen","🖼️ Home Decor","🛋️ Furniture","📦 Storage","🛏️ Bedsheet","🪟 Curtains"],
-electronics:["📱 Mobile Accessories","🎧 Earphones","🔌 Chargers","🔗 Cables","🔊 Speakers","💻 Other Electronics"],
-school:["🎒 School Bags","📖 Books","📓 Notebooks","✏️ Stationery","🎨 Art & Craft"],
-travel:["🚌 Bus","🚆 Train","✈️ Flight","🏨 Hotel"],
-bills:["📱 Mobile Recharge","📺 DTH","⚡ Electricity","💧 Water","🔥 Gas","🌐 Broadband/Landline","🛣️ FASTag","🛡️ Insurance","🎓 Education Fees","🏠 Property/Other Bills"],
-medicine:["💊 Common Care","🩺 Prescription Medicines","🧴 Health & Personal Care","🌡️ Devices & Wellness"],
-grocery:["🥦 Fresh Grocery","🍚 Staples","🥛 Dairy","🍪 Snacks","🧹 Household","🧼 Cleaning","🧃 Beverages"]
+
+const cats=[
+["👗","महिलाओं का फैशन","women"],
+["👔","Men Fashion","men"],
+["🧒","Kids","kids"],
+["👟","जूते","shoes"],
+["💍","ज्वेलरी","jewellery"],
+["👜","बैग","bags"],
+["🧸","खिलौने","toys"],
+["💄","Beauty","beauty"],
+["🏠","घर का सामान","home"],
+["📱","Electronics","electronics"],
+["📚","School Items","school"],
+["🚌","Travel Tickets","travel"],
+["🧾","Bills & Recharge","bills"],
+["💊","Medicines","medicine"],
+["🛒","Grocery","grocery"]
+];
+
+const subs={
+women:["Saree","Suits","Kurtis","Jeans","Tops","Dresses","Lehenga","Jackets","Nightwear","Ethnic Wear","Western Wear"],
+men:["Shirts","T-Shirts","Jeans","Kurta","Kurta-Pajama","Trousers/Pants","Jackets","Shorts","Formal Wear","Sports Wear"],
+kids:["Girls","Boys","Baby","Kids Dresses","Kids Shoes","Baby Products","Toys"],
+shoes:["Women","Men","Kids","Sports Shoes","Sandals","Heels","Flats","Slippers"],
+jewellery:["Necklace","Earrings","Bangles","Rings","Bridal Jewellery","Artificial Jewellery"],
+bags:["Handbag","Sling Bag","School Bag","Travel Bag","Backpack","Wallet/Purse"],
+toys:["Baby Toys","Educational","Cars","Dolls","Games","Remote Toys","Outdoor Toys"],
+beauty:["Makeup","Skincare","Haircare","Personal Care"],
+home:["Kitchen","Home Decor","Furniture","Storage","Bedsheet","Curtains"],
+electronics:["Mobile Accessories","Earphones","Chargers","Cables","Speakers","Other Electronics"],
+school:["School Bags","Books","Notebooks","Stationery","Art & Craft"],
+travel:["Bus","Taxi/Cab","Train","Flight","Hotel"],
+bills:["Mobile Recharge","DTH","Electricity","Water","Gas","Broadband/Landline","FASTag","Insurance","Education Fees","Property/Other Bills"],
+medicine:["Common Care","Prescription Medicines","Health & Personal Care","Devices & Wellness"],
+grocery:["Fresh Grocery","Staples","Dairy","Snacks","Household","Cleaning","Beverages"]
 };
 
-const lehenga=["👰 Bridal","🎉 Party Wear","✨ Net","💎 Designer","🌟 Heavy Work","🥻 Silk","🌸 Georgette","✨ Sequins","🧵 Embroidery","🌺 Floral","🌿 Simple/Lightweight","👧 Girls/Kids"];
-const saree=["👑 Banarasi","🥻 Silk","🌿 Cotton","🌸 Georgette","🪶 Chiffon","🌺 Bandhej","🎉 Party Wear","👰 Bridal","✨ Designer","🧵 Embroidery","🖼️ Printed","🌿 Linen"];
+const sareeTypes=["Banarasi","Silk","Cotton","Georgette","Chiffon","Bandhej","Party Wear","Bridal","Designer","Embroidery","Printed","Linen"];
+const lehengaTypes=["Bridal","Party Wear","Net","Designer","Heavy Work","Silk","Georgette","Sequins","Embroidery","Floral","Simple/Lightweight","Girls/Kids"];
 
 const products=[
-{id:1,name:"Beautiful Saree",cat:"women",sub:"Saree",emoji:"🥻",price:999,old:1499,rating:4.5},
-{id:2,name:"Designer Anarkali Suit",cat:"women",sub:"Suits",emoji:"👗",price:122,old:610,rating:4.5},
-{id:3,name:"Stylish Shoes",cat:"shoes",sub:"Women",emoji:"👠",price:799,old:1299,rating:4.3},
-{id:4,name:"Kids Toy Car",cat:"toys",sub:"Cars",emoji:"🚗",price:499,old:799,rating:4.4},
-{id:5,name:"Fashion Jewellery Set",cat:"jewellery",sub:"Artificial Jewellery",emoji:"💍",price:399,old:699,rating:4.2},
-{id:6,name:"Women Handbag",cat:"bags",sub:"Handbag",emoji:"👜",price:799,old:1199,rating:4.4},
-{id:7,name:"Cotton Kurti",cat:"women",sub:"Kurtis",emoji:"👚",price:549,old:899,rating:4.6},
-{id:8,name:"Men Casual Shirt",cat:"men",sub:"Shirts",emoji:"👔",price:699,old:999,rating:4.3},
-{id:9,name:"Kids Dress",cat:"kids",sub:"Kids Dresses",emoji:"👗",price:449,old:799,rating:4.5},
-{id:10,name:"Wireless Earphones",cat:"electronics",sub:"Earphones",emoji:"🎧",price:899,old:1499,rating:4.1},
-{id:11,name:"Grocery Daily Essentials",cat:"grocery",sub:"Household",emoji:"🛒",price:299,old:349,rating:4.4},
-{id:12,name:"Health Care Product",cat:"medicine",sub:"Common Care",emoji:"💊",price:199,old:249,rating:4.2}
+{id:1,name:"Beautiful Saree",cat:"women",sub:"Saree",emoji:"🥻",price:999,old:1499,rating:4.5,stock:20,colors:["Red","Blue","Pink","Green"],sizes:["Free Size"]},
+{id:2,name:"Designer Anarkali Suit",cat:"women",sub:"Suits",emoji:"👗",price:122,old:610,rating:4.5,stock:15,colors:["Red","Blue","Black"],sizes:["S","M","L","XL","XXL"]},
+{id:3,name:"Stylish Shoes",cat:"shoes",sub:"Women",emoji:"👠",price:799,old:1299,rating:4.3,stock:25,colors:["Black","White","Pink"],sizes:["5","6","7","8","9"]},
+{id:4,name:"Kids Toy Car",cat:"toys",sub:"Cars",emoji:"🚗",price:499,old:799,rating:4.4,stock:30,colors:["Red","Blue"],sizes:["Standard"]},
+{id:5,name:"Fashion Jewellery Set",cat:"jewellery",sub:"Artificial Jewellery",emoji:"💍",price:399,old:699,rating:4.2,stock:18,colors:["Gold","Silver"],sizes:["Standard"]},
+{id:6,name:"Women Handbag",cat:"bags",sub:"Handbag",emoji:"👜",price:799,old:1199,rating:4.4,stock:12,colors:["Black","Brown","Pink"],sizes:["Standard"]},
+{id:7,name:"Cotton Kurti",cat:"women",sub:"Kurtis",emoji:"👚",price:549,old:899,rating:4.6,stock:22,colors:["Red","Blue","Yellow","Green"],sizes:["S","M","L","XL","XXL"]},
+{id:8,name:"Men Casual Shirt",cat:"men",sub:"Shirts",emoji:"👔",price:699,old:999,rating:4.3,stock:17,colors:["Blue","White","Black"],sizes:["S","M","L","XL","XXL"]},
+{id:9,name:"Kids Dress",cat:"kids",sub:"Kids Dresses",emoji:"👗",price:449,old:799,rating:4.5,stock:14,colors:["Pink","Yellow","Blue"],sizes:["2Y","3Y","4Y","5Y","6Y","8Y","10Y","12Y"]},
+{id:10,name:"Wireless Earphones",cat:"electronics",sub:"Earphones",emoji:"🎧",price:899,old:1499,rating:4.1,stock:35,colors:["Black","White"],sizes:["Standard"]},
+{id:11,name:"Grocery Daily Essentials",cat:"grocery",sub:"Household",emoji:"🛒",price:299,old:349,rating:4.4,stock:50,colors:["Standard"],sizes:["Standard"]},
+{id:12,name:"Health Care Product",cat:"medicine",sub:"Common Care",emoji:"💊",price:199,old:249,rating:4.2,stock:40,colors:["Standard"],sizes:["Standard"]}
 ];
 
-let wishlist=JSON.parse(localStorage.getItem("zipWish")||"[]");
-let cart=JSON.parse(localStorage.getItem("zipCart")||"[]");
-let currentLang=localStorage.getItem("zipLang")||"Hindi";
-let selectedCat=null;
+let cart=JSON.parse(localStorage.getItem("zc_cart")||"[]");
+let wishlist=JSON.parse(localStorage.getItem("zc_wishlist")||"[]");
+let ordersData=JSON.parse(localStorage.getItem("zc_orders")||"[]");
+let notifications=JSON.parse(localStorage.getItem("zc_notifications")||"[]");
+let reviews=JSON.parse(localStorage.getItem("zc_reviews")||"[]");
+let sellerData=JSON.parse(localStorage.getItem("zc_seller")||"null");
+let riderData=JSON.parse(localStorage.getItem("zc_rider")||"null");
+let profile=JSON.parse(localStorage.getItem("zc_profile")||"null");
+let selectedLang=localStorage.getItem("zc_lang")||"hi";
+let selectedProduct=null;
+let checkoutFast=false;
+let appliedCoupon=0;
+let giftDiscount=0;
+
+const langs={
+hi:{home:"होम",categories:"श्रेणियाँ",cart:"कार्ट",orders:"ऑर्डर",account:"अकाउंट",search:"क्या खोजें?"},
+en:{home:"Home",categories:"Categories",cart:"Cart",orders:"Orders",account:"Account",search:"Search products"},
+gu:{home:"હોમ",categories:"કેટેગરી",cart:"કાર્ટ",orders:"ઓર્ડર",account:"એકાઉન્ટ",search:"શું શોધવું?"},
+mr:{home:"मुख्यपृष्ठ",categories:"श्रेणी",cart:"कार्ट",orders:"ऑर्डर",account:"खाते",search:"काय शोधायचे?"},
+bn:{home:"হোম",categories:"ক্যাটাগরি",cart:"কার্ট",orders:"অর্ডার",account:"অ্যাকাউন্ট",search:"কি খুঁজবেন?"},
+ta:{home:"முகப்பு",categories:"வகைகள்",cart:"கார்ட்",orders:"ஆர்டர்கள்",account:"கணக்கு",search:"எதை தேடுவது?"},
+te:{home:"హోమ్",categories:"వర్గాలు",cart:"కార్ట్",orders:"ఆర్డర్లు",account:"ఖాతా",search:"ఏమి వెతకాలి?"},
+kn:{home:"ಮುಖಪುಟ",categories:"ವರ್ಗಗಳು",cart:"ಕಾರ್ಟ್",orders:"ಆರ್ಡರ್",account:"ಖಾತೆ",search:"ಏನು ಹುಡುಕಬೇಕು?"},
+ml:{home:"ഹോം",categories:"വിഭാഗങ്ങൾ",cart:"കാർട്ട്",orders:"ഓർഡറുകൾ",account:"അക്കൗണ്ട്",search:"എന്താണ് തിരയേണ്ടത്?"},
+pa:{home:"ਹੋਮ",categories:"ਸ਼੍ਰੇਣੀਆਂ",cart:"ਕਾਰਟ",orders:"ਆਰਡਰ",account:"ਖਾਤਾ",search:"ਕੀ ਖੋਜਣਾ ਹੈ?"},
+or:{home:"ହୋମ",categories:"ଶ୍ରେଣୀ",cart:"କାର୍ଟ",orders:"ଅର୍ଡର",account:"ଆକାଉଣ୍ଟ",search:"କଣ ଖୋଜିବେ?"},
+as:{home:"হোম",categories:"শ্ৰেণী",cart:"কাৰ্ট",orders:"অৰ্ডাৰ",account:"একাউণ্ট",search:"কি বিচাৰিব?"},
+ur:{home:"ہوم",categories:"زمرے",cart:"کارٹ",orders:"آرڈر",account:"اکاؤنٹ",search:"کیا تلاش کریں؟"},
+ne:{home:"गृह",categories:"श्रेणी",cart:"कार्ट",orders:"अर्डर",account:"खाता",search:"के खोज्ने?"},
+mai:{home:"घर",categories:"श्रेणी",cart:"कार्ट",orders:"ऑर्डर",account:"खाता",search:"की खोजब?"},
+kok:{home:"होम",categories:"वर्ग",cart:"कार्ट",orders:"ऑर्डर",account:"खातें",search:"काय सोदप?"}
+};
 
 function save(){
-localStorage.setItem("zipWish",JSON.stringify(wishlist));
-localStorage.setItem("zipCart",JSON.stringify(cart));
-updateCounts();
+ localStorage.setItem("zc_cart",JSON.stringify(cart));
+ localStorage.setItem("zc_wishlist",JSON.stringify(wishlist));
+ localStorage.setItem("zc_orders",JSON.stringify(ordersData));
+ localStorage.setItem("zc_notifications",JSON.stringify(notifications));
+ localStorage.setItem("zc_reviews",JSON.stringify(reviews));
+ localStorage.setItem("zc_seller",JSON.stringify(sellerData));
+ localStorage.setItem("zc_rider",JSON.stringify(riderData));
+ localStorage.setItem("zc_profile",JSON.stringify(profile));
+ updateCounts();
 }
+
 function updateCounts(){
-document.getElementById("wishCount").textContent=wishlist.length;
-document.getElementById("cartCount").textContent=cart.reduce((a,x)=>a+x.qty,0);
+ const c=document.getElementById("cartCount");
+ if(c)c.textContent=cart.reduce((s,x)=>s+x.qty,0);
 }
-function productCard(p){
-const liked=wishlist.includes(p.id),pct=Math.round((1-p.price/p.old)*100);
-return `<div class="card">
-<button class="heart" onclick="toggleWish(${p.id})">${liked?"❤️":"♡"}</button>
-<div class="photo">${p.emoji}</div>
-<div class="cardbody"><b>${p.name}</b>
-<div><span class="price">₹${p.price}</span><span class="old">₹${p.old}</span><span class="off">${pct}% OFF</span></div>
-<div class="rating">⭐ ${p.rating}</div>
-<button class="buy" onclick="product(${p.id})">देखें / खरीदें</button>
-</div></div>`;
+
+function toast(msg){
+ const old=document.getElementById("toast");
+ if(old)old.remove();
+ const d=document.createElement("div");
+ d.id="toast";
+ d.textContent=msg;
+ d.style.cssText="position:fixed;right:15px;bottom:20px;z-index:200;background:#7b1010;color:#ffd21c;padding:12px 16px;border-radius:9px;box-shadow:0 3px 12px #0004";
+ document.body.appendChild(d);
+ setTimeout(()=>d.remove(),2200);
 }
+
+function esc(x){
+ return String(x??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));
+}
+
+function uid(prefix="ZC"){
+ return prefix+"-"+Date.now().toString(36).toUpperCase()+"-"+Math.random().toString(36).slice(2,7).toUpperCase();
+}
+
+function money(n){
+ return "₹"+Number(n||0).toLocaleString("en-IN");
+}
+
+function show(page){
+ if(page==="home")home();
+ else if(page==="categories")categoriesPage();
+ else if(page==="wishlist")wishlistPage();
+ else if(page==="cart")cartPage();
+ else if(page==="orders")ordersPage();
+ else if(page==="account")accountPage();
+ else if(page==="seller")sellerPage();
+ else if(page==="rider")riderPage();
+ else if(page==="admin")adminPage();
+ else if(page==="support")supportPage();
+ else if(page==="terms")policyPage("terms");
+ else if(page==="privacy")policyPage("privacy");
+ else if(page==="returnPolicy")policyPage("return");
+ else if(page==="notifications")notificationPage();
+ else home();
+ window.scrollTo(0,0);
+ updateCounts();
+}
+
+/* =========================
+   HOME
+========================= */
+
 function home(){
-app.innerHTML=`
-<div class="panel">
-<h2>🏠 ZipCart Home</h2>
-<p>आपकी अपनी Shopping जगह ❤️</p>
-</div>
+ app.innerHTML=`
+ <div class="panel center">
+   <div class="logo" style="margin:auto;width:120px">
+    <span class="z" style="font-size:55px">Z</span>
+    <span class="name" style="font-size:18px">ZipCart</span>
+   </div>
+   <h1>ZipCart</h1>
+   <p>आपका marketplace — shopping, sellers, delivery और services एक जगह।</p>
+   <button class="btn yellow" onclick="show('categories')">🛍️ Shopping शुरू करें</button>
+   <button class="btn" onclick="show('seller')">🏪 Seller बनें</button>
+   <button class="btn" onclick="show('rider')">🛵 Rider बनें</button>
+ </div>
 
-<div class="grid">
-${products.slice(0,8).map(productCard).join("")}
-</div>
-`;
+ <div class="panel">
+   <h2>📂 Categories</h2>
+   <div class="grid">${cats.slice(0,10).map(c=>`
+    <div class="card center">
+      <div style="font-size:45px">${c[0]}</div>
+      <b>${c[1]}</b><br>
+      <button class="pill" onclick="category('${c[2]}')">देखें</button>
+    </div>`).join("")}</div>
+   <button class="btn" onclick="show('categories')">सभी Categories</button>
+ </div>
+
+ <div class="panel">
+   <h2>🔥 Products</h2>
+   <div class="grid">${products.slice(0,8).map(productCard).join("")}</div>
+ </div>
+
+ <div class="panel">
+   <h2>✨ ZipCart Services</h2>
+   <button class="pill" onclick="category('travel')">🚌 Travel Tickets</button>
+   <button class="pill" onclick="category('bills')">🧾 Bills & Recharge</button>
+   <button class="pill" onclick="category('medicine')">💊 Medicines</button>
+   <button class="pill" onclick="category('grocery')">🛒 Grocery</button>
+   <button class="pill" onclick="show('support')">💬 Support</button>
+ </div>`;
 }
 
-function account(){
-app.innerHTML=`<h2>👤 मेरी ZipCart</h2><div class="grid">${["📦 Orders","❤️ Wishlist","🛒 Cart","🏠 Addresses","💳 Payments","🎟️ Coupons","⭐ Reviews","↩️ Returns & Refunds","🔔 Notifications","🆘 Help & Support","🌐 Language","⚙️ Accessibility","🔐 Login/OTP","🚪 Logout"].map(x=>`<button class="panel" onclick="alert('${x}: यह feature production backend में जुड़ेगा।')">${x}</button>`).join("")}</div>`;
+function productCard(p){
+ let liked=wishlist.includes(p.id);
+ return `<div class="card">
+  <div class="productEmoji" onclick="product(${p.id})">${p.emoji}</div>
+  <h3>${esc(p.name)}</h3>
+  <div>⭐ ${p.rating}</div>
+  <div><span class="price">${money(p.price)}</span> <span class="old">${money(p.old)}</span></div>
+  <div class="small">Stock: ${p.stock}</div>
+  <button class="pill" onclick="product(${p.id})">View</button>
+  <button class="pill" onclick="addCart(${p.id})">🛒 Add</button>
+  <button class="pill" onclick="toggleWish(${p.id})">${liked?"❤️":"🤍"}</button>
+ </div>`;
 }
-function categories(){app.innerHTML=`<h2>🗂️ सभी Categories</h2>${catsHTML()}`}
-function seller(){
-app.innerHTML=`<div class="panel"><h2>🏪 ZipCart Seller Registration</h2>
-<div class="notice">एक ही registration form. पहले चुनें कि आप क्या बेचना चाहते हैं। भाषा बदलने पर भरी हुई जानकारी मिटेगी नहीं।</div>
-<div class="field"><label>🌐 Form Language</label><select><option>Hindi</option><option>English</option><option>Gujarati</option><option>Marathi</option><option>Bengali</option><option>Tamil</option><option>Telugu</option><option>Kannada</option><option>Malayalam</option><option>Punjabi</option><option>Odia</option><option>Assamese</option><option>Urdu</option><option>Nepali</option><option>Maithili</option><option>Konkani</option></select></div><br>
-<div class="field"><label>आप ZipCart पर क्या बेचना चाहते हैं?</label><select><option>Clothing</option><option>Artificial Jewellery</option><option>Shoes</option><option>Bags</option><option>Toys</option><option>Kids Products</option><option>Beauty</option><option>Home & Kitchen</option><option>Electronics</option><option>School Items</option><option>Grocery</option><option>Medicines</option><option>Travel</option><option>Other</option></select></div>
-<div class="formgrid" style="margin-top:12px"><div class="field"><label>Seller/Business Name</label><input></div><div class="field"><label>Mobile / Email</label><input></div>
-<div class="field"><label>PAN / applicable identity details</label><input></div><div class="field"><label>GSTIN, जहाँ लागू/आवश्यक हो</label><input></div>
-<div class="field"><label>Business Address</label><textarea></textarea></div><div class="field"><label>Required licence/documents</label><input placeholder="Category के अनुसार"></div></div>
-<p>💊 Medicines के लिए लागू drug/pharmacy licence, prescription verification और अन्य कानूनी requirements पूरी होने के बाद ही listing/sale की अनुमति होगी।</p>
-<button class="pill" onclick="speak('आप ZipCart पर क्या बेचना चाहते हैं? कृपया अपनी category चुनें।')">🔊 सुनें</button>
-<button class="buy" onclick="alert('Prototype registration saved. Real OTP/document verification के लिए secure backend जरूरी है।')">Continue</button></div>
-<div class="panel"><h3>📋 Seller Dashboard Preview</h3><p>Products • Orders • Stock • Variants • Returns • Reviews • Earnings • Payouts • Verification • Help • Vacation Mode</p></div>`;
+
+/* =========================
+   CATEGORIES
+========================= */
+
+function categoriesPage(){
+ app.innerHTML=`
+ <div class="panel">
+  <h2>📂 सभी Categories</h2>
+  <p>🎙️ Voice button से category के नाम सुने जा सकते हैं।</p>
+  <div class="grid">
+   ${cats.map(c=>`
+    <div class="card center">
+     <div style="font-size:45px">${c[0]}</div>
+     <h3>${c[1]}</h3>
+     <button class="pill" onclick="category('${c[2]}')">Open</button>
+     <button class="pill" onclick="speak('${esc(c[1])}')">🔊 सुनें</button>
+    </div>`).join("")}
+  </div>
+ </div>`;
 }
+
+function category(id){
+ const c=cats.find(x=>x[2]===id);
+ if(!c)return;
+ let list=subs[id]||[];
+ if(!list.length){
+  app.innerHTML=`<div class="panel"><button class="pill" onclick="show('categories')">← Back</button><h2>${c[0]} ${c[1]}</h2><div class="grid">${products.filter(p=>p.cat===id).map(productCard).join("")||"<p>इस category में demo product अभी नहीं है।</p>"}</div></div>`;
+  return;
+ }
+ app.innerHTML=`
+ <button class="pill" onclick="show('categories')">← Categories</button>
+ <div class="panel">
+  <h2>${c[0]} ${c[1]}</h2>
+  <button class="btn yellow" onclick="speak('${esc(c[1]+" "+list.join(", "))}')">🔊 सभी options सुनें</button>
+ </div>
+ <div class="grid">
+ ${list.map(s=>`
+  <div class="card center">
+   <h3>${esc(s)}</h3>
+   <button class="pill" onclick="subcategory('${id}','${esc(s)}')">Open</button>
+   <button class="pill" onclick="speak('${esc(s)}')">🔊</button>
+  </div>`).join("")}
+ </div>`;
+}
+
+function subcategory(cat,sub){
+ let extra="";
+ if(sub==="Saree")extra=`<div class="panel"><h3>🥻 Saree Types</h3>${sareeTypes.map(x=>`<button class="pill" onclick="filterType('${cat}','${sub}','${x}')">${x}</button>`).join("")}</div>`;
+ if(sub==="Lehenga")extra=`<div class="panel"><h3>👗 Lehenga Types</h3>${lehengaTypes.map(x=>`<button class="pill" onclick="filterType('${cat}','${sub}','${x}')">${x}</button>`).join("")}</div>`;
+ if(cat==="kids")extra+=`<div class="panel"><h3>👶 Age</h3>${["0–12 months","1–2 years","1–3 years","3–5 years","5–8 years","8–12 years"].map(x=>`<button class="pill" onclick="toast('Age filter: ${x}')">${x}</button>`).join("")}</div>`;
+ app.innerHTML=`
+ <button class="pill" onclick="category('${cat}')">← Back</button>
+ <div class="panel">
+  <h2>${esc(sub)}</h2>
+  <button class="btn yellow" onclick="speak('${esc(sub)}')">🔊 सुनें</button>
+ </div>
+ ${extra}
+ <div class="grid">${products.filter(p=>p.cat===cat&&p.sub===sub).map(productCard).join("")||`
+ <div class="panel"><p>इस subcategory में अभी demo product नहीं है।</p>
+ <button class="btn" onclick="show('categories')">Continue Shopping</button></div>`}</div>`;
+}
+
+function filterType(cat,sub,type){
+ toast(type+" filter selected");
+ subcategory(cat,sub);
+}
+
+/* =========================
+   PRODUCT
+========================= */
+
+function product(id){
+ const p=products.find(x=>x.id===id);
+ if(!p)return;
+ selectedProduct=p;
+ app.innerHTML=`
+ <button class="pill" onclick="category('${p.cat}')">← Back</button>
+ <div class="panel">
+  <div class="row">
+   <div class="productEmoji" style="width:220px">${p.emoji}</div>
+   <div class="grow">
+    <h1>${esc(p.name)}</h1>
+    <p>⭐ ${p.rating} / 5</p>
+    <p><span class="price">${money(p.price)}</span> <span class="old">${money(p.old)}</span></p>
+    <p>Available stock: <b>${p.stock}</b></p>
+
+    <label>🎨 Color</label>
+    <select id="pColor">${p.colors.map(x=>`<option>${x}</option>`).join("")}</select>
+
+    <label>📏 Size</label>
+    <select id="pSize">${p.sizes.map(x=>`<option>${x}</option>`).join("")}</select>
+
+    <div style="margin-top:10px">
+     <button class="btn" onclick="addCart(${p.id})">🛒 Add to Cart</button>
+     <button class="btn yellow" onclick="buyNow(${p.id})">⚡ Buy Now</button>
+     <button class="pill" onclick="toggleWish(${p.id})">❤️ Wishlist</button>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <div class="panel">
+  <h2>⭐ Reviews</h2>
+  ${reviews.filter(r=>r.productId===p.id).map(r=>`
+   <div class="card"><b>⭐ ${r.rating}/5</b><p>${esc(r.text)}</p><span class="badge">${r.verified?"Verified Purchase":""}</span></div>
+  `).join("")||"<p>अभी कोई demo review नहीं।</p>"}
+  <button class="btn" onclick="reviewForm(${p.id})">Write Review</button>
+ </div>
+
+ <div class="panel">
+  <h3>🛡️ Product Information</h3>
+  <p>SKU / Product ID: ZC-P-${p.id}</p>
+  <p>Warranty/Guarantee: जहाँ लागू हो, product listing में seller की terms दिखाई जाएंगी।</p>
+  <p>Return/Exchange eligibility product और seller policy के अनुसार होगी।</p>
+ </div>`;
+}
+
+/* =========================
+   CART
+========================= */
+
+function addCart(id){
+ const p=products.find(x=>x.id===id);
+ if(!p)return;
+ let x=cart.find(a=>a.id===id);
+ if(x){
+  if(x.qty>=p.stock){toast("Maximum available stock reached");return}
+  x.qty++;
+ }else{
+  cart.push({id,qty:1,selected:true,color:p.colors[0],size:p.sizes[0]});
+ }
+ save();
+ toast("🛒 Cart में जोड़ दिया गया");
+}
+
+function buyNow(id){
+ addCart(id);
+ show("cart");
+}
+
+function cartPage(){
+ if(!cart.length){
+  app.innerHTML=`<div class="panel center"><h2>🛒 आपका Cart खाली है</h2><button class="btn yellow" onclick="show('categories')">Continue Shopping</button></div>`;
+  return;
+ }
+ let subtotal=cart.reduce((s,x)=>{
+  let p=products.find(p=>p.id===x.id);
+  return s+p.price*x.qty;
+ },0);
+ let delivery=subtotal>=999?0:49;
+ let fast=checkoutFast?25:0;
+ let discount=appliedCoupon+giftDiscount;
+ let total=Math.max(0,subtotal+delivery+fast-discount);
+
+ app.innerHTML=`
+ <div class="panel">
+  <h2>🛒 My Cart</h2>
+  ${cart.map(x=>{
+   let p=products.find(p=>p.id===x.id);
+   return `<div class="card">
+    <div class="row">
+     <div style="font-size:50px">${p.emoji}</div>
+     <div class="grow">
+      <h3>${esc(p.name)}</h3>
+      <p>${money(p.price)} × ${x.qty}</p>
+      <div class="qty">
+       <button onclick="changeQty(${x.id},-1)">−</button>
+       <span>${x.qty}</span>
+       <button onclick="changeQty(${x.id},1)">+</button>
+      </div>
+      <button class="pill" onclick="removeCart(${x.id})">🗑️ Delete</button>
+      <button class="pill" onclick="saveLater(${x.id})">💾 Save for Later</button>
+     </div>
+    </div>
+   </div>`;
+  }).join("")}
+ </div>
+
+ <div class="panel">
+  <h3>🚚 Delivery</h3>
+  <button class="pill ${checkoutFast?"":"active"}" onclick="setFast(false)">Normal Delivery</button>
+  <button class="pill" onclick="setFast(true)">⚡ Fast / Priority +₹25</button>
+  <p>${checkoutFast?"Fast delivery selected — actual availability/PIN based fee will be checked by backend later.":"Normal delivery selected."}</p>
+ </div>
+
+ <div class="panel">
+  <h3>🎟️ Coupon</h3>
+  <input id="coupon" placeholder="Coupon code e.g. ZIP10">
+  <button class="btn" onclick="applyCoupon()">Apply</button>
+  <button class="pill" onclick="removeCoupon()">Remove</button>
+  <p>Discount: ${money(appliedCoupon)}</p>
+ </div>
+
+ <div class="panel">
+  <h3>🎁 Gift Card</h3>
+  <input id="gift" placeholder="Gift card code e.g. GIFT100">
+  <button class="btn" onclick="applyGift()">Apply</button>
+  <p>Gift discount: ${money(giftDiscount)}</p>
+ </div>
+
+ <div class="panel">
+  <h2>💰 Summary</h2>
+  <p>Products: ${money(subtotal)}</p>
+  <p>Delivery: ${money(delivery)}</p>
+  <p>Fast Delivery: ${money(fast)}</p>
+  <p>Discount: -${money(discount)}</p>
+  <hr>
+  <h2>Total: ${money(total)}</h2>
+  <button class="btn yellow" onclick="checkoutPage()">Proceed to Checkout</button>
+ </div>`;
+}
+
+function changeQty(id,delta){
+ let x=cart.find(a=>a.id===id);
+ let p=products.find(p=>p.id===id);
+ if(!x||!p)return;
+ x.qty+=delta;
+ if(x.qty<1)x.qty=1;
+ if(x.qty>p.stock)x.qty=p.stock;
+ save();cartPage();
+}
+
+function removeCart(id){
+ cart=cart.filter(x=>x.id!==id);
+ save();cartPage();toast("Item removed");
+}
+
+function saveLater(id){
+ removeCart(id);
+ toast("💾 Saved for Later");
+}
+
+function setFast(v){
+ checkoutFast=v;
+ cartPage();
+}
+
+function applyCoupon(){
+ let v=(document.getElementById("coupon")?.value||"").trim().toUpperCase();
+ appliedCoupon=v==="ZIP10"?10:0;
+ if(appliedCoupon)toast("Coupon applied");
+ else toast("Valid demo coupon: ZIP10");
+ cartPage();
+}
+
+function removeCoupon(){
+ appliedCoupon=0;
+ cartPage();
+}
+
+function applyGift(){
+ let v=(document.getElementById("gift")?.value||"").trim().toUpperCase();
+ giftDiscount=v==="GIFT100"?100:0;
+ if(giftDiscount)toast("Gift card applied");
+ else toast("Valid demo gift card: GIFT100");
+ cartPage();
+}
+
+/* =========================
+   CHECKOUT
+========================= */
+
+function checkoutPage(){
+ if(!cart.length){show("cart");return}
+ app.innerHTML=`
+ <div class="panel">
+  <h2>📦 Checkout</h2>
+  <div class="form">
+   <label>नाम</label><input id="coName" value="${esc(profile?.name||"")}">
+   <label>Mobile</label><input id="coMobile" value="${esc(profile?.mobile||"")}" inputmode="numeric">
+   <label>PIN Code</label><input id="coPin" maxlength="6" inputmode="numeric">
+   <label>पूरा Address</label><textarea id="coAddress">${esc(profile?.address||"")}</textarea>
+   <label>Delivery Instructions</label><textarea id="coInstructions" placeholder="Gate, floor, landmark आदि"></textarea>
+  </div>
+ </div>
+
+ <div class="panel">
+  <h3>🎁 Gift Wrapping</h3>
+  <select id="giftWrap">
+   <option value="no">No</option>
+   <option value="yes">Yes</option>
+  </select>
+  <textarea id="giftMessage" placeholder="Gift message"></textarea>
+ </div>
+
+ <div class="panel">
+  <h3>💳 Payment Method</h3>
+  <label><input type="radio" name="pay" value="COD" checked> Cash on Delivery</label><br>
+  <label><input type="radio" name="pay" value="UPI"> UPI</label><br>
+  <label><input type="radio" name="pay" value="CARD"> Card</label><br>
+  <label><input type="radio" name="pay" value="NETBANKING"> Net Banking</label>
+  <div class="notice">Payment gateway अभी prototype mode में है। Real transaction backend/payment gateway से ही होगा।</div>
+ </div>
+
+ <div class="panel">
+  <h3>🔐 Order Security</h3>
+  <label><input type="checkbox" id="termsCheck"> मैंने Terms, Privacy और Return/Refund rules पढ़कर स्वीकार किए हैं।</label>
+  <br><br>
+  <button class="btn yellow" onclick="placeOrder()">Place Order</button>
+ </div>`;
+}
+
+function placeOrder(){
+ let name=document.getElementById("coName").value.trim();
+ let mobile=document.getElementById("coMobile").value.trim();
+ let pin=document.getElementById("coPin").value.trim();
+ let address=document.getElementById("coAddress").value.trim();
+ let ok=document.getElementById("termsCheck").checked;
+ if(!name||!mobile||!pin||!address||!ok){
+  toast("कृपया सभी required details और Terms स्वीकार करें");
+  return;
+ }
+ let payment=document.querySelector('input[name="pay"]:checked')?.value||"COD";
+ let subtotal=cart.reduce((s,x)=>{
+  let p=products.find(p=>p.id===x.id);return s+p.price*x.qty;
+ },0);
+ let delivery=subtotal>=999?0:49;
+ let fast=checkoutFast?25:0;
+ let total=Math.max(0,subtotal+delivery+fast-appliedCoupon-giftDiscount);
+
+ let order={
+  id:uid("ZC"),
+  date:new Date().toISOString(),
+  customer:{name,mobile,pin,address},
+  items:cart.map(x=>({...x})),
+  subtotal,delivery,fast,discount:appliedCoupon+giftDiscount,total,
+  payment,
+  status:"Placed",
+  tracking:"Order placed",
+  returnStatus:"",
+  exchangeStatus:"",
+  giftWrap:document.getElementById("giftWrap").value,
+  giftMessage:document.getElementById("giftMessage").value
+ };
+ ordersData.unshift(order);
+ cart=[];
+ appliedCoupon=0;
+ giftDiscount=0;
+ checkoutFast=false;
+ notifications.unshift({id:uid("N"),text:"Order "+order.id+" successfully placed",date:new Date().toISOString(),read:false});
+ save();
+ orderSuccess(order);
+}
+
+function orderSuccess(o){
+ app.innerHTML=`
+ <div class="panel center">
+  <h1>✅ Order Placed</h1>
+  <h2>${esc(o.id)}</h2>
+  <p>Total: <b>${money(o.total)}</b></p>
+  <p>Payment: ${esc(o.payment)}</p>
+  <p>Delivery: ${o.fast?"⚡ Fast / Priority":"Normal"}</p>
+  <button class="btn yellow" onclick="trackOrder('${o.id}')">📍 Track Order</button>
+  <button class="btn" onclick="show('orders')">📦 My Orders</button>
+  <button class="btn" onclick="show('categories')">🛍️ Continue Shopping</button>
+ </div>`;
+}
+
+/* =========================
+   ORDERS
+========================= */
+
+function ordersPage(){
+ if(!ordersData.length){
+  app.innerHTML=`<div class="panel center"><h2>📦 अभी कोई Order नहीं है</h2><button class="btn yellow" onclick="show('categories')">Continue Shopping</button></div>`;
+  return;
+ }
+ app.innerHTML=`
+ <div class="panel">
+  <h2>📦 My Orders</h2>
+  <input id="orderSearch" placeholder="Order ID search" oninput="renderOrders(this.value)">
+ </div>
+ <div id="ordersList"></div>
+ <div class="panel"><h3>✨ Shopping जारी रखें</h3><div class="grid">${products.slice(0,4).map(productCard).join("")}</div></div>`;
+ renderOrders("");
+}
+
+function renderOrders(q){
+ const box=document.getElementById("ordersList");
+ if(!box)return;
+ let list=ordersData.filter(o=>!q||o.id.toLowerCase().includes(q.toLowerCase()));
+ box.innerHTML=list.map(o=>`
+ <div class="panel">
+  <h3>${esc(o.id)}</h3>
+  <p>${new Date(o.date).toLocaleString("en-IN")}</p>
+  <p>Status: <b>${esc(o.status)}</b></p>
+  <p>Total: <b>${money(o.total)}</b></p>
+  <p>Payment: ${esc(o.payment)}</p>
+  <div class="timeline">
+   ${["Placed","Confirmed","Packed","Shipped","Out for Delivery","Delivered"].map(s=>`<span class="${s===o.status?'active':''}">${s}</span>`).join("")}
+  </div>
+  <button class="pill" onclick="trackOrder('${o.id}')">📍 Track</button>
+  ${["Placed","Confirmed","Packed"].includes(o.status)?`<button class="pill" onclick="cancelOrder('${o.id}')">❌ Cancel</button>`:""}
+  ${o.status==="Delivered"?`
+   <button class="pill" onclick="returnForm('${o.id}')">↩️ Return</button>
+   <button class="pill" onclick="exchangeForm('${o.id}')">🔄 Exchange</button>
+   <button class="pill" onclick="invoice('${o.id}')">🧾 Invoice</button>`:""}
+ </div>`).join("")||`<div class="panel">No matching order.</div>`;
+}
+
+function findOrder(id){return ordersData.find(o=>o.id===id)}
+
+function trackOrder(id){
+ const o=findOrder(id);
+ if(!o)return;
+ app.innerHTML=`
+ <div class="panel">
+  <button class="pill" onclick="show('orders')">← Orders</button>
+  <h2>📍 Track Order ${esc(o.id)}</h2>
+  <div class="timeline">
+   ${["Placed","Confirmed","Packed","Shipped","Out for Delivery","Delivered"].map(s=>`<span class="${s===o.status?'active':''}">${s}</span>`).join("")}
+  </div>
+  <p>Current status: <b>${esc(o.status)}</b></p>
+  <p>Delivery type: ${o.fast?"⚡ Fast / Priority":"Normal"}</p>
+  <p>Delivery address: ${esc(o.customer.address)}, ${esc(o.customer.pin)}</p>
+  <p>Rider contact details will be shown here when assigned.</p>
+ </div>`;
+}
+
+function cancelOrder(id){
+ let o=findOrder(id);
+ if(!o)return;
+ if(!["Placed","Confirmed","Packed"].includes(o.status)){
+  toast("इस stage पर cancellation उपलब्ध नहीं है");
+  return;
+ }
+ o.status="Cancelled";
+ o.tracking="Cancellation requested";
+ notifications.unshift({id:uid("N"),text:"Order "+o.id+" cancelled",date:new Date().toISOString(),read:false});
+ save();
+ toast("Cancellation दर्ज हो गया");
+ ordersPage();
+}
+
+function returnForm(id){
+ app.innerHTML=`
+ <div class="panel">
+  <h2>↩️ Return Request</h2>
+  <select id="returnReason">
+   <option>Wrong Product</option>
+   <option>Damaged Product</option>
+   <option>Different from Description</option>
+   <option>Size Issue</option>
+   <option>Other</option>
+  </select>
+  <textarea id="returnNote" placeholder="Details"></textarea>
+  <button class="btn yellow" onclick="submitReturn('${id}')">Submit Return</button>
+ </div>`;
+}
+
+function submitReturn(id){
+ let o=findOrder(id);
+ if(!o)return;
+ o.returnStatus="Requested";
+ o.returnReason=document.getElementById("returnReason").value;
+ o.returnNote=document.getElementById("returnNote").value;
+ notifications.unshift({id:uid("N"),text:"Return request submitted for "+id,date:new Date().toISOString(),read:false});
+ save();toast("Return request submitted");ordersPage();
+}
+
+function exchangeForm(id){
+ app.innerHTML=`
+ <div class="panel">
+  <h2>🔄 Exchange Request</h2>
+  <label>New Size</label>
+  <select id="exchangeSize">
+   ${["XS","S","M","L","XL","XXL","XXXL","Free Size"].map(x=>`<option>${x}</option>`).join("")}
+  </select>
+  <textarea id="exchangeNote" placeholder="Exchange details"></textarea>
+  <button class="btn yellow" onclick="submitExchange('${id}')">Submit Exchange</button>
+ </div>`;
+}
+
+function submitExchange(id){
+ let o=findOrder(id);
+ if(!o)return;
+ o.exchangeStatus="Requested";
+ o.exchangeSize=document.getElementById("exchangeSize").value;
+ o.exchangeNote=document.getElementById("exchangeNote").value;
+ save();toast("Exchange request submitted");ordersPage();
+}
+
+function invoice(id){
+ const o=findOrder(id);
+ if(!o)return;
+ app.innerHTML=`
+ <div class="panel">
+  <h2>🧾 ZipCart Invoice</h2>
+  <p>Order: ${esc(o.id)}</p>
+  <p>Customer: ${esc(o.customer.name)}</p>
+  <p>Items: ${o.items.length}</p>
+  <p>Subtotal: ${money(o.subtotal)}</p>
+  <p>Delivery: ${money(o.delivery)}</p>
+  <p>Fast: ${money(o.fast)}</p>
+  <p>Discount: -${money(o.discount)}</p>
+  <h2>Total: ${money(o.total)}</h2>
+  <button class="btn" onclick="window.print()">🖨️ Print / Save</button>
+ </div>`;
+}
+
+/* =========================
+   WISHLIST
+========================= */
+
+function toggleWish(id){
+ if(wishlist.includes(id))wishlist=wishlist.filter(x=>x!==id);
+ else wishlist.push(id);
+ save();
+ if(selectedProduct)product(selectedProduct.id);
+ else show("wishlist");
+}
+
+function wishlistPage(){
+ app.innerHTML=`
+ <div class="panel"><h2>❤️ Wishlist</h2></div>
+ <div class="grid">${products.filter(p=>wishlist.includes(p.id)).map(productCard).join("")||`
+ <div class="panel"><p>Wishlist खाली है।</p><button class="btn" onclick="show('categories')">Shopping करें</button></div>`}</div>`;
+}
+
+/* =========================
+   SEARCH + VOICE
+========================= */
+
+function doSearch(){
+ let q=(document.getElementById("search").value||"").trim();
+ if(q)searchPage(q);
+}
+
+function doSearchText(q){
+ document.getElementById("search").value=q;
+ searchPage(q);
+}
+
 function searchPage(q){
-let ps=products.filter(p=>
-(p.name+" "+p.sub).toLowerCase().includes(q.toLowerCase())
-);
+ let ps=products.filter(p=>
+  (p.name+" "+p.sub+" "+p.cat).toLowerCase().includes(q.toLowerCase())
+ );
+ let activePrice="all";
+ let activeRating=0;
+ let activeSort="default";
 
-let activePrice="all";
-let activeRating=0;
-let activeSort="default";
+ function renderResults(){
+  let result=[...ps];
 
-function renderResults(){
-let result=[...ps];
+  if(activePrice!=="all"){
+   result=result.filter(p=>{
+    if(activePrice==="0-500")return p.price<=500;
+    if(activePrice==="500-1000")return p.price>500&&p.price<=1000;
+    if(activePrice==="1000-1500")return p.price>1000&&p.price<=1500;
+    if(activePrice==="1500-2000")return p.price>1500&&p.price<=2000;
+    if(activePrice==="2000-3000")return p.price>2000&&p.price<=3000;
+    if(activePrice==="3000-5000")return p.price>3000&&p.price<=5000;
+    if(activePrice==="5000-10000")return p.price>5000&&p.price<=10000;
+    if(activePrice==="10000+")return p.price>10000;
+    return true;
+   });
+  }
+  if(activeRating>0)result=result.filter(p=>p.rating>=activeRating);
+  if(activeSort==="low")result.sort((a,b)=>a.price-b.price);
+  if(activeSort==="high")result.sort((a,b)=>b.price-a.price);
+  if(activeSort==="rating")result.sort((a,b)=>b.rating-a.rating);
 
-if(activePrice!=="all"){
-result=result.filter(p=>{
-if(activePrice==="0-500") return p.price<=500;
-if(activePrice==="500-1000") return p.price>500&&p.price<=1000;
-if(activePrice==="1000-1500") return p.price>1000&&p.price<=1500;
-if(activePrice==="1500-2000") return p.price>1500&&p.price<=2000;
-if(activePrice==="2000-3000") return p.price>2000&&p.price<=3000;
-if(activePrice==="3000-5000") return p.price>3000&&p.price<=5000;
-if(activePrice==="5000-10000") return p.price>5000&&p.price<=10000;
-if(activePrice==="10000+") return p.price>10000;
-return true;
-});
+  const box=document.getElementById("searchResults");
+  const count=document.getElementById("resultCount");
+  if(count)count.textContent=result.length+" विकल्प मिले";
+  if(box)box.innerHTML=result.map(productCard).join("")||`<div class="panel">कोई product नहीं मिला।</div>`;
+ }
+
+ app.innerHTML=`
+ <button class="pill" onclick="show('home')">← Home</button>
+ <div class="panel">
+  <h2>🔎 Search: “${esc(q)}”</h2>
+  <p id="resultCount">${ps.length} विकल्प मिले</p>
+
+  <h3>💰 Price</h3>
+  <div>
+   <button class="pill" onclick="priceFilter('all')">All</button>
+   <button class="pill" onclick="priceFilter('0-500')">₹100–₹500</button>
+   <button class="pill" onclick="priceFilter('500-1000')">₹500–₹1,000</button>
+   <button class="pill" onclick="priceFilter('1000-1500')">₹1,000–₹1,500</button>
+   <button class="pill" onclick="priceFilter('1500-2000')">₹1,500–₹2,000</button>
+   <button class="pill" onclick="priceFilter('2000-3000')">₹2,000–₹3,000</button>
+   <button class="pill" onclick="priceFilter('3000-5000')">₹3,000–₹5,000</button>
+   <button class="pill" onclick="priceFilter('5000-10000')">₹5,000–₹10,000</button>
+   <button class="pill" onclick="priceFilter('10000+')">₹10,000+</button>
+  </div>
+
+  <h3>⭐ Rating</h3>
+  <button class="pill" onclick="ratingFilter(0)">All</button>
+  <button class="pill" onclick="ratingFilter(4)">⭐ 4+</button>
+  <button class="pill" onclick="ratingFilter(4.5)">⭐ 4.5+</button>
+
+  <h3>↕️ Sort</h3>
+  <button class="pill" onclick="sortProducts('low')">Price Low-High</button>
+  <button class="pill" onclick="sortProducts('high')">Price High-Low</button>
+  <button class="pill" onclick="sortProducts('rating')">Highest Rating</button>
+  <button class="pill" onclick="sortProducts('default')">Popular</button>
+ </div>
+ <div id="searchResults" class="grid"></div>`;
+
+ window.priceFilter=v=>{activePrice=v;renderResults()};
+ window.ratingFilter=v=>{activeRating=v;renderResults()};
+ window.sortProducts=v=>{activeSort=v;renderResults()};
+ renderResults();
 }
 
-if(activeRating>0){
-result=result.filter(p=>p.rating>=activeRating);
-}
-
-if(activeSort==="low") result.sort((a,b)=>a.price-b.price);
-if(activeSort==="high") result.sort((a,b)=>b.price-a.price);
-if(activeSort==="rating") result.sort((a,b)=>b.rating-a.rating);
-
-app.innerHTML=`
-<button class="back" onclick="show('home')">← Home</button>
-<div class="panel">
-<h2>🔎 Search: “${q}”</h2>
-<p id="resultCount">${result.length} विकल्प मिले</p>
-
-<h3>💰 Price</h3>
-<div class="quick">
-<button class="pill" onclick="priceFilter('all')">All</button>
-<button class="pill" onclick="priceFilter('0-500')">₹100–₹500</button>
-<button class="pill" onclick="priceFilter('500-1000')">₹500–₹1,000</button>
-<button class="pill" onclick="priceFilter('1000-1500')">₹1,000–₹1,500</button>
-<button class="pill" onclick="priceFilter('1500-2000')">₹1,500–₹2,000</button>
-<button class="pill" onclick="priceFilter('2000-3000')">₹2,000–₹3,000</button>
-<button class="pill" onclick="priceFilter('3000-5000')">₹3,000–₹5,000</button>
-<button class="pill" onclick="priceFilter('5000-10000')">₹5,000–₹10,000</button>
-<button class="pill" onclick="priceFilter('10000+')">₹10,000+</button>
-</div>
-
-<h3>⭐ Rating</h3>
-<div class="quick">
-<button class="pill" onclick="ratingFilter(0)">All</button>
-<button class="pill" onclick="ratingFilter(4)">⭐ 4+</button>
-<button class="pill" onclick="ratingFilter(4.5)">⭐ 4.5+</button>
-</div>
-
-<h3>↕️ Sort By</h3>
-<div class="quick">
-<button class="pill" onclick="sortProducts('low')">Price Low-High</button>
-<button class="pill" onclick="sortProducts('high')">Price High-Low</button>
-<button class="pill" onclick="sortProducts('rating')">Highest Rating</button>
-<button class="pill" onclick="sortProducts('default')">Popular</button>
-</div>
-</div>
-
-<div id="searchResults" class="grid"></div>
-<div class="notice">🔔 Price Drop / Back in Stock alerts बाद में जोड़े जा सकते हैं।</div>
-`;
-
-window.priceFilter=function(value){
-activePrice=value;
-renderResults();
-};
-
-window.ratingFilter=function(value){
-activeRating=value;
-renderResults();
-};
-
-window.sortProducts=function(value){
-activeSort=value;
-renderResults();
-};
-
-renderResults();
-}
-function doSearch(){let q=document.getElementById("search").value.trim();if(q)searchPage(q)}
-function doSearchText(q){document.getElementById("search").value=q;searchPage(q)}
 function voiceSearch(){
-if(!("webkitSpeechRecognition" in window)){alert("इस browser में voice search उपलब्ध नहीं है।");return}
-let r=new webkitSpeechRecognition();r.lang="hi-IN";
-r.onresult=e=>{let q=e.results[0][0].transcript;document.getElementById("search").value=q;searchPage(q)};r.start();
+ if(!("webkitSpeechRecognition" in window||"SpeechRecognition" in window)){
+  toast("इस browser में voice search उपलब्ध नहीं है");
+  return;
+ }
+ const R=window.SpeechRecognition||window.webkitSpeechRecognition;
+ const r=new R();
+ const langMap={hi:"hi-IN",en:"en-US",gu:"gu-IN",mr:"mr-IN",bn:"bn-IN",ta:"ta-IN",te:"te-IN",kn:"kn-IN",ml:"ml-IN",pa:"pa-IN"};
+ r.lang=langMap[selectedLang]||"hi-IN";
+ r.onresult=e=>{
+  let q=e.results[0][0].transcript;
+  document.getElementById("search").value=q;
+  searchPage(q);
+ };
+ r.onerror=()=>toast("Voice search पूरा नहीं हो सका");
+ r.start();
 }
-function speak(t){if("speechSynthesis" in window)speechSynthesis.speak(new SpeechSynthesisUtterance(t))}
-function speakList(a){a.forEach((x,i)=>setTimeout(()=>speak(x.substring(x.indexOf(" ")+1)),i*900))}
-function languageModal(){
-openModal(`<h2>🌐 भाषा चुनें</h2><p>आपकी पसंद याद रखी जाएगी।</p><div class="quick">
-${["Hindi","English","Gujarati","Marathi","Bengali","Tamil","Telugu","Kannada","Malayalam","Punjabi","Odia","Assamese","Urdu","Nepali","Maithili","Konkani"].map(x=>`<button class="pill" onclick="setLang('${x}')">${x}</button>`).join("")}</div><br><button class="back" onclick="closeModal()">बंद करें</button>`);
+
+function speak(text){
+ if(!("speechSynthesis" in window)){toast("Voice सुविधा उपलब्ध नहीं है");return}
+ const u=new SpeechSynthesisUtterance(text);
+ const lm={hi:"hi-IN",en:"en-US",gu:"gu-IN",mr:"mr-IN",bn:"bn-IN",ta:"ta-IN",te:"te-IN",kn:"kn-IN",ml:"ml-IN",pa:"pa-IN",ur:"ur-IN"};
+ u.lang=lm[selectedLang]||"hi-IN";
+ speechSynthesis.cancel();
+ speechSynthesis.speak(u);
 }
-function setLang(x){currentLang=x;localStorage.setItem("zipLang",x);closeModal();alert("Language saved: "+x+" (full translation content layer में जोड़ी जाएगी।)")}
-function openModal(x){document.getElementById("modalbox").innerHTML=x;document.getElementById("modal").classList.add("show")}
-function closeModal(){document.getElementById("modal").classList.remove("show")}
-function show(x){
-selectedCat=null;
-if(x==="home")home();
-if(x==="wishlist")wishlistPage();
-if(x==="cart")cartPage();
-if(x==="orders")orders();
-if(x==="account")account();
-if(x==="categories")categories();
-if(x==="seller")seller();
-window.scrollTo(0,0);
+
+/* =========================
+   REVIEW
+========================= */
+
+function reviewForm(id){
+ app.innerHTML=`
+ <div class="panel">
+  <h2>⭐ Write Review</h2>
+  <select id="reviewRating">
+   <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
+  </select>
+  <textarea id="reviewText" placeholder="अपना review लिखें"></textarea>
+  <label>📷 Photo <input id="reviewPhoto" type="file" accept="image/*"></label>
+  <label>🎥 Video <input id="reviewVideo" type="file" accept="video/*"></label>
+  <button class="btn yellow" onclick="submitReview(${id})">Submit Review</button>
+ </div>`;
 }
-show("home");
+
+function submitReview(id){
+ let text=document.getElementById("reviewText").value.trim();
+ if(!text){toast("Review लिखें");return}
+ reviews.push({
+  id:uid("R"),
+  productId:id,
+  rating:Number(document.getElementById("reviewRating").value),
+  text,
+  verified:true,
+  date:new Date().toISOString()
+ });
+ save();toast("Review submitted");product(id);
+}
+
+/* =========================
+   ACCOUNT + LANGUAGE
+========================= */
+
+function accountPage(){
+ app.innerHTML=`
+ <div class="panel">
+  <h2>👤 Account</h2>
+  <div class="form">
+   <label>नाम</label><input id="profileName" value="${esc(profile?.name||"")}">
+   <label>Mobile</label><input id="profileMobile" value="${esc(profile?.mobile||"")}">
+   <label>Email</label><input id="profileEmail" value="${esc(profile?.email||"")}">
+   <label>Address</label><textarea id="profileAddress">${esc(profile?.address||"")}</textarea>
+   <button class="btn yellow" onclick="saveProfile()">Save Profile</button>
+  </div>
+ </div>
+
+ <div class="panel">
+  <h2>🌐 Language</h2>
+  <select onchange="setLanguage(this.value)">
+   ${Object.keys(langs).map(x=>`<option value="${x}" ${x===selectedLang?"selected":""}>${x.toUpperCase()}</option>`).join("")}
+  </select>
+  <p>Selected language: ${selectedLang.toUpperCase()}</p>
+  <button class="btn" onclick="speak('ZipCart language and accessibility')">🔊 Voice Test</button>
+ </div>
+
+ <div class="panel">
+  <h2>🔔 Notifications</h2>
+  <button class="btn" onclick="show('notifications')">Notification Center</button>
+  <button class="pill" onclick="requestNotifications()">Enable Browser Notifications</button>
+ </div>
+
+ <div class="panel">
+  <h2>♿ Accessibility</h2>
+  <button class="pill" onclick="document.body.style.fontSize='18px'">Large Text</button>
+  <button class="pill" onclick="document.body.style.fontSize='16px'">Normal Text</button>
+  <button class="pill" onclick="speak('ZipCart accessibility test')">Voice Test</button>
+ </div>
+
+ <div class="panel">
+  <h2>⚙️ Data</h2>
+  <button class="pill" onclick="exportData()">Export My Demo Data</button>
+  <button class="pill" onclick="resetDemo()">Reset Demo Data</button>
+  <button class="btn red" onclick="logout()">Logout</button>
+ </div>`;
+}
+
+function saveProfile(){
+ profile={
+  name:document.getElementById("profileName").value.trim(),
+  mobile:document.getElementById("profileMobile").value.trim(),
+  email:document.getElementById("profileEmail").value.trim(),
+  address:document.getElementById("profileAddress").value.trim()
+ };
+ save();toast("Profile saved");
+}
+
+function setLanguage(v){
+ selectedLang=v;
+ localStorage.setItem("zc_lang",v);
+ document.getElementById("search").placeholder=langs[v]?.search||"Search";
+ toast("Language changed");
+}
+
+function requestNotifications(){
+ if(!("Notification" in window)){toast("Browser notification supported नहीं है");return}
+ Notification.requestPermission().then(p=>{
+  toast(p==="granted"?"Notifications enabled":"Notifications not enabled");
+ });
+}
+
+function notificationPage(){
+ notifications.forEach(n=>n.read=true);
+ save();
+ app.innerHTML=`
+ <div class="panel">
+  <h2>🔔 Notification Center</h2>
+  ${notifications.map(n=>`<div class="card"><b>${esc(n.text)}</b><p class="small">${new Date(n.date).toLocaleString("en-IN")}</p></div>`).join("")||"<p>No notifications.</p>"}
+ </div>
+ <div class="panel">
+  <h3>Notification Settings</h3>
+  <label><input type="checkbox" checked> Order updates</label><br>
+  <label><input type="checkbox" checked> Delivery updates</label><br>
+  <label><input type="checkbox" checked> Offers</label><br>
+  <label><input type="checkbox" checked> Price drop</label><br>
+  <label><input type="checkbox" checked> Back in stock</label><br>
+  <label><input type="checkbox" checked> Return / Exchange</label>
+ </div>`;
+}
+
+/* =========================
+   SELLER
+========================= */
+
+function sellerPage(){
+ app.innerHTML=`
+ <div class="panel">
+  <h2>🏪 Seller Registration</h2>
+  <p>Seller अपना language पहले चुन सकता है। Registration के लिए required details और applicable documents देने होंगे।</p>
+
+  <div class="form">
+   <label>🌐 Form Language</label>
+   <select id="sellerLang">${Object.keys(langs).map(x=>`<option>${x.toUpperCase()}</option>`).join("")}</select>
+
+   <label>👤 Full Name *</label>
+   <input id="sName" value="${esc(sellerData?.name||"")}">
+
+   <label>🏬 Business / Shop Name *</label>
+   <input id="sBusiness" value="${esc(sellerData?.business||"")}">
+
+   <label>📱 Mobile *</label>
+   <input id="sMobile" value="${esc(sellerData?.mobile||"")}">
+
+   <label>📧 Email</label>
+   <input id="sEmail" value="${esc(sellerData?.email||"")}">
+
+   <label>📂 Selling Category *</label>
+   <select id="sCategory">${cats.map(c=>`<option value="${c[2]}">${c[1]}</option>`).join("")}</select>
+
+   <label>🪪 PAN / Identity details *</label>
+   <input id="sPan">
+
+   <label>GSTIN (where applicable)</label>
+   <input id="sGst">
+
+   <label>🏠 Business / Pickup Address *</label>
+   <textarea id="sAddress"></textarea>
+
+   <label>🏦 Bank / Payout Details *</label>
+   <textarea id="sBank" placeholder="Prototype में details only; real sensitive data backend में securely store होना चाहिए"></textarea>
+
+   <label>📄 Required License / Documents</label>
+   <input id="sDocs" type="file" multiple>
+
+   <label>📜 Seller Terms & Rules *</label>
+   <textarea readonly>Seller को ZipCart Terms, Privacy, Seller Rules, prohibited products, return/refund, payout और applicable legal requirements स्वीकार करने होंगे। Final legal text company policy के अनुसार maintain किया जाएगा।</textarea>
+
+   <label><input id="sAgree" type="checkbox"> मैंने Terms & Rules पढ़कर स्वीकार किए हैं।</label>
+
+   <button class="btn yellow" onclick="submitSeller()">Save & Continue</button>
+  </div>
+ </div>
+
+ <div class="panel">
+  <h3>🧩 Category-specific seller information</h3>
+  <p>Stone/handmade/furniture/custom products, jewellery, medicine, grocery, electronics, travel आदि के लिए applicable product details, licenses, authenticity, tax/GST और other legal requirements category के अनुसार लिए जाएंगे।</p>
+  <p><b>Medicine:</b> prescription/licensing requirements जहाँ लागू हों वहाँ verify किए जाएंगे।</p>
+  <p><b>Custom products:</b> customer requirements, design/photo, material, size, color, engraving, quotation और approval order में save होंगे।</p>
+ </div>
+
+ ${sellerData?sellerDashboard():""}`;
+}
+
+function submitSeller(){
+ const name=document.getElementById("sName").value.trim();
+ const business=document.getElementById("sBusiness").value.trim();
+ const mobile=document.getElementById("sMobile").value.trim();
+ const category=document.getElementById("sCategory").value;
+ const pan=document.getElementById("sPan").value.trim();
+ const address=document.getElementById("sAddress").value.trim();
+ const bank=document.getElementById("sBank").value.trim();
+
+ if(!name||!business||!mobile||!pan||!address||!bank||!document.getElementById("sAgree").checked){
+  toast("Seller registration की required details पूरी करें");
+  return;
+ }
+
+ sellerData={
+  id:sellerData?.id||uid("SELLER"),
+  name,business,mobile,
+  email:document.getElementById("sEmail").value.trim(),
+  category,pan,
+  gst:document.getElementById("sGst").value.trim(),
+  address,bank,
+  verification:"Pending",
+  agreementVersion:"ZipCart-Seller-Terms-v1",
+  agreementDate:new Date().toISOString(),
+  products:[],
+  vacation:false
+ };
+ save();
+ toast("Seller details saved — verification pending");
+ sellerPage();
+}
+
+function sellerDashboard(){
+ return `<div class="panel">
+  <h2>🏪 Seller Dashboard</h2>
+  <p>Verification: <b>${sellerData.verification}</b></p>
+  <p>Seller ID: ${esc(sellerData.id)}</p>
+  <button class="pill" onclick="sellerProducts()">Products</button>
+  <button class="pill" onclick="sellerOrders()">Orders</button>
+  <button class="pill" onclick="sellerStock()">Stock & Variants</button>
+  <button class="pill" onclick="sellerEarnings()">Earnings / Payouts</button>
+  <button class="pill" onclick="sellerReturns()">Returns / Exchanges</button>
+  <button class="pill" onclick="sellerReviews()">Reviews</button>
+  <button class="pill" onclick="sellerCustom()">Custom Orders</button>
+  <button class="pill" onclick="toggleVacation()">Vacation Mode</button>
+  <button class="pill" onclick="supportPage('Seller')">Seller Support</button>
+ </div>`;
+}
+
+function sellerProducts(){
+ app.innerHTML=`
+ <div class="panel">
+  <h2>🏪 Seller Products</h2>
+  <button class="btn yellow" onclick="addSellerProduct()">➕ Add Product</button>
+  <p>${sellerData?.products?.length||0} seller products</p>
+ </div>
+ <div class="grid">${(sellerData?.products||[]).map((p,i)=>`<div class="card"><h3>${esc(p.name)}</h3><p>${money(p.price)}</p><p>Stock: ${p.stock}</p><button class="pill" onclick="deleteSellerProduct(${i})">Delete</button></div>`).join("")}</div>`;
+}
+
+function addSellerProduct(){
+ app.innerHTML=`
+ <div class="panel">
+  <h2>➕ Add Product</h2>
+  <div class="form">
+   <input id="spName" placeholder="Product name">
+   <select id="spCat">${cats.map(c=>`<option value="${c[2]}">${c[1]}</option>`).join("")}</select>
+   <input id="spPrice" type="number" placeholder="Price">
+   <input id="spStock" type="number" placeholder="Stock">
+   <input id="spSku" placeholder="SKU / Unique ID">
+   <input id="spWarranty" placeholder="Warranty / Guarantee">
+   <input id="spPhoto" type="file" multiple accept="image/*">
+   <input id="spVideo" type="file" accept="video/*">
+   <textarea id="spInfo" placeholder="Material, authenticity, description"></textarea>
+   <button class="btn yellow" onclick="saveSellerProduct()">Save Product</button>
+  </div>
+ </div>`;
+}
+
+function saveSellerProduct(){
+ let p={
+  id:uid("SP"),
+  name:document.getElementById("spName").value.trim(),
+  category:document.getElementById("spCat").value,
+  price:Number(document.getElementById("spPrice").value),
+  stock:Number(document.getElementById("spStock").value),
+  sku:document.getElementById("spSku").value.trim()||uid("SKU"),
+  warranty:document.getElementById("spWarranty").value.trim(),
+  info:document.getElementById("spInfo").value.trim()
+ };
+ if(!p.name||!p.price||!p.stock){toast("Product name, price और stock required");return}
+ sellerData.products=sellerData.products||[];
+ sellerData.products.push(p);
+ save();toast("Product saved");sellerProducts();
+}
+
+function deleteSellerProduct(i){
+ sellerData.products.splice(i,1);save();sellerProducts();toast("Product deleted");
+}
+
+function sellerOrders(){simpleRolePage("🏪 Seller Orders","Seller को केवल अपने products के orders और संबंधित operational information दिखाई जाएगी।")}
+function sellerStock(){simpleRolePage("📦 Stock & Variants","Size-wise और color-wise availability यहाँ manage होगी।")}
+function sellerEarnings(){simpleRolePage("💰 Seller Earnings","Seller को केवल अपने sales, commission, adjustments और net earning दिखाई जाएगी। Company profit यहाँ नहीं दिखाया जाएगा.")}
+function sellerReturns(){simpleRolePage("↩️ Returns & Exchanges","Seller अपने applicable return/exchange requests देख और process कर सकेगा।")}
+function sellerReviews(){simpleRolePage("⭐ Seller Reviews","Product और seller reviews, responses और reports manage होंगे।")}
+function sellerCustom(){simpleRolePage("🎨 Custom Orders","Customer requirement → design/reference → quotation → customer approval → final customization details order में save होगी।")}
+
+function toggleVacation(){
+ sellerData.vacation=!sellerData.vacation;save();
+ toast(sellerData.vacation?"Vacation Mode ON":"Vacation Mode OFF");
+ sellerPage();
+}
+
+/* =========================
+   RIDER
+========================= */
+
+function riderPage(){
+ app.innerHTML=`
+ <div class="panel">
+  <h2>🛵 Rider / Delivery Partner</h2>
+  <div class="form">
+   <input id="rName" placeholder="Full Name" value="${esc(riderData?.name||"")}">
+   <input id="rMobile" placeholder="Mobile" value="${esc(riderData?.mobile||"")}">
+   <input id="rId" placeholder="Government ID / KYC">
+   <input id="rDl" placeholder="Driving License">
+   <input id="rVehicle" placeholder="Vehicle details">
+   <textarea id="rAddress" placeholder="Address"></textarea>
+   <label><input id="rAgree" type="checkbox"> Rider Terms & Rules स्वीकार हैं</label>
+   <button class="btn yellow" onclick="registerRider()">Register / Save</button>
+  </div>
+ </div>
+ ${riderData?riderDashboard():""}`;
+}
+
+function registerRider(){
+ let name=document.getElementById("rName").value.trim();
+ let mobile=document.getElementById("rMobile").value.trim();
+ let id=document.getElementById("rId").value.trim();
+ let dl=document.getElementById("rDl").value.trim();
+ let vehicle=document.getElementById("rVehicle").value.trim();
+ if(!name||!mobile||!id||!dl||!vehicle||!document.getElementById("rAgree").checked){
+  toast("Rider registration की required details पूरी करें");return;
+ }
+ riderData={
+  id:riderData?.id||uid("RIDER"),
+  name,mobile,id,dl,vehicle,
+  address:document.getElementById("rAddress").value.trim(),
+  online:false,
+  earnings:0,
+  payout:"Pending",
+  verification:"Pending"
+ };
+ save();toast("Rider profile saved");riderPage();
+}
+
+function riderDashboard(){
+ return `<div class="panel">
+  <h2>🛵 Rider Dashboard</h2>
+  <p>Verification: ${riderData.verification}</p>
+  <p>Status: ${riderData.online?"🟢 Online":"⚪ Offline"}</p>
+  <button class="pill" onclick="toggleRiderOnline()">Online / Offline</button>
+  <button class="pill" onclick="riderAssigned()">Assigned Orders</button>
+  <button class="pill" onclick="riderHistory()">Delivery History</button>
+  <button class="pill" onclick="riderEarnings()">💰 My Earnings</button>
+  <button class="pill" onclick="riderSupport()">💬 Support / Emergency</button>
+  <button class="pill" onclick="riderCod()">COD Reconciliation</button>
+ </div>`;
+}
+
+function toggleRiderOnline(){
+ riderData.online=!riderData.online;save();riderPage();toast(riderData.online?"Rider Online":"Rider Offline");
+}
+
+function riderAssigned(){simpleRolePage("📦 Assigned Orders","Assigned order, normal/fast priority, pickup/drop notes, customer contact, route और delivery sequence यहाँ दिखेंगे।")}
+function riderHistory(){simpleRolePage("📜 Delivery History","Rider को अपनी delivery history और applicable status दिखाई देगी।")}
+function riderEarnings(){simpleRolePage("💰 Rider Earnings","Rider को केवल अपनी earnings, incentives, disclosed deductions और payout status दिखाई देगा। Company profit नहीं।")}
+function riderSupport(){simpleRolePage("🆘 Rider Support","Support chat, emergency/help, missed delivery और reassignment सहायता।")}
+function riderCod(){simpleRolePage("💵 COD Reconciliation","COD cash collection, settlement receipt और reconciliation status।")}
+
+/* =========================
+   ADMIN
+========================= */
+
+function adminPage(){
+ app.innerHTML=`
+ <div class="panel">
+  <h2>👑 ZipCart Admin / Company</h2>
+  <div class="grid">
+   ${[
+    ["📊","Sales / Orders","adminSales"],
+    ["👥","Customers","adminCustomers"],
+    ["🏪","Sellers","adminSellers"],
+    ["🛵","Riders","adminRiders"],
+    ["💰","Company Finance","adminFinance"],
+    ["💸","Seller Settlements","adminSettlements"],
+    ["🧾","Tax / GST Reports","adminTax"],
+    ["🚚","Delivery Management","adminDelivery"],
+    ["↩️","Returns / Refunds","adminReturns"],
+    ["🎁","Gift Cards","adminGift"],
+    ["⚠️","Fraud / Reports","adminFraud"],
+    ["🔐","Security / Audit","adminSecurity"],
+    ["📢","Announcements","adminAnnouncements"],
+    ["⚙️","App Settings","adminSettings"],
+    ["💾","Backup / Export","adminBackup"]
+   ].map(x=>`<div class="card center"><div style="font-size:35px">${x[0]}</div><h3>${x[1]}</h3><button class="pill" onclick="${x[2]}()">Open</button></div>`).join("")}
+  </div>
+ </div>
+ <div class="notice">Admin permissions को production में server-side authentication/authorization से enforce करना जरूरी होगा। Frontend अकेले financial/security permissions सुरक्षित नहीं कर सकता।</div>`;
+}
+
+function simpleRolePage(title,text){
+ app.innerHTML=`<div class="panel"><button class="pill" onclick="show('home')">← Home</button><h2>${title}</h2><p>${text}</p><div class="notice">यह module frontend prototype में तैयार है। Production में इसे secure backend/database APIs से connect किया जाएगा।</div></div>`;
+}
+
+function adminSales(){simpleRolePage("📊 Sales / Orders","Orders, GMV, cancellations, returns, delivery status और analytics।")}
+function adminCustomers(){simpleRolePage("👥 Customers","Customer accounts, orders, support and abuse management।")}
+function adminSellers(){simpleRolePage("🏪 Sellers","Seller approval, verification, products, complaints and blocking/unblocking।")}
+function adminRiders(){simpleRolePage("🛵 Riders","Rider verification, assignments, zones, earnings and payout management।")}
+function adminFinance(){simpleRolePage("💰 Company Finance","Company revenue, commission, expenses, payouts and profit visibility — admin only।")}
+function adminSettlements(){simpleRolePage("💸 Seller Settlements","Seller commission, adjustments and payout reconciliation।")}
+function adminTax(){simpleRolePage("🧾 Tax / GST","Applicable tax/GST records and reports।")}
+function adminDelivery(){simpleRolePage("🚚 Delivery Management","Zones, assignments, pickup points, fast delivery and reassignment।")}
+function adminReturns(){simpleRolePage("↩️ Returns / Refunds","Return, exchange, replacement and refund reconciliation।")}
+function adminGift(){simpleRolePage("🎁 Gift Cards","Gift card purchase, balance, redemption, expiry and liability tracking।")}
+function adminFraud(){simpleRolePage("⚠️ Fraud / Reports","Suspicious orders, reports, complaints and evidence review।")}
+function adminSecurity(){simpleRolePage("🔐 Security / Audit","Activity logs, role permissions and security events।")}
+function adminAnnouncements(){simpleRolePage("📢 Announcements","ZipCart notices, banners and seller/rider/customer announcements।")}
+function adminSettings(){simpleRolePage("⚙️ App Settings","Theme, categories, commission rules, maintenance mode and app version configuration।")}
+function adminBackup(){exportData()}
+
+/* =========================
+   SUPPORT
+========================= */
+
+function supportPage(role="Customer"){
+ app.innerHTML=`
+ <div class="panel">
+  <h2>💬 ${role} Support</h2>
+  <div class="form">
+   <label>Problem</label>
+   <select id="supportProblem">
+    <option>Order not arrived</option>
+    <option>Payment taken / Order not created</option>
+    <option>Refund not received</option>
+    <option>Return / Exchange</option>
+    <option>Delivery</option>
+    <option>Wrong / Damaged Product</option>
+    <option>Seller</option>
+    <option>Gift Card</option>
+    <option>Coupon / Discount</option>
+    <option>Medicine / Prescription</option>
+    <option>Travel</option>
+    <option>Bill / Recharge</option>
+    <option>Other</option>
+   </select>
+   <input id="supportOrder" placeholder="Order ID if applicable">
+   <textarea id="supportText" placeholder="अपनी समस्या लिखें"></textarea>
+   <input id="supportFile" type="file" multiple accept="image/*,video/*">
+   <button class="btn yellow" onclick="submitTicket('${role}')">Raise Ticket</button>
+  </div>
+ </div>
+ <div class="panel">
+  <h3>☎️ Helpline / Chat</h3>
+  <button class="pill" onclick="toast('Support call flow will connect to official helpline after backend setup')">Call Support</button>
+  <button class="pill" onclick="toast('Support chat opened')">Chat with ZipCart</button>
+ </div>`;
+}
+
+function submitTicket(role){
+ let text=document.getElementById("supportText").value.trim();
+ if(!text){toast("Problem लिखें");return}
+ let id=uid("TICKET");
+ notifications.unshift({id:uid("N"),text:"Support ticket "+id+" created",date:new Date().toISOString(),read:false});
+ save();
+ app.innerHTML=`<div class="panel center"><h2>✅ Ticket Created</h2><h3>${id}</h3><p>Status: Open</p><p>Support team आपके issue को review करेगी।</p><button class="btn" onclick="show('home')">Home</button></div>`;
+}
+
+/* =========================
+   POLICIES
+========================= */
+
+function policyPage(type){
+ let data={
+ terms:["📜 Terms & Rules",`
+ ZipCart पर customer, seller, rider और other participants को applicable Terms & Rules स्वीकार करने होंगे।
+ <br><br>
+ Users को सही information देनी होगी और prohibited/restricted products या fraudulent activity की अनुमति नहीं होगी।
+ <br><br>
+ Seller अपने products, price, stock, authenticity, applicable tax/licensing और legal compliance के लिए जिम्मेदार होगा।
+ <br><br>
+ Rider delivery duties, identity/KYC, safety और disclosed policies का पालन करेगा।
+ <br><br>
+ Real production version में legal team/company-approved Terms का version, date और consent record securely store किया जाएगा।
+ `],
+ privacy:["🔐 Privacy",`
+ ZipCart को production में personal information को applicable privacy/data-protection laws के अनुसार process करना होगा।
+ <br><br>
+ Sensitive authentication, payment, KYC और financial information frontend-only storage में नहीं रखना चाहिए।
+ `],
+ return:["↩️ Return / Refund Policy",`
+ Return, exchange, replacement और refund product/category/seller policy और applicable law के अनुसार होंगे।
+ <br><br>
+ Wrong or misrepresented product, damaged product, logistics issue और customer-caused issue को evidence के आधार पर अलग-अलग review किया जाएगा।
+ <br><br>
+ Refund status order से linked रहेगा।
+ `]
+ };
+ app.innerHTML=`<div class="panel"><h2>${data[type][0]}</h2><p>${data[type][1]}</p><button class="btn" onclick="show('home')">← Home</button></div>`;
+}
+
+/* =========================
+   TRAVEL / BILLS / MEDICINE
+========================= */
+
+function serviceForm(type){
+ let title=type==="travel"?"🚌 Travel":type==="bills"?"🧾 Bills & Recharge":"💊 Medicines";
+ app.innerHTML=`
+ <div class="panel">
+  <h2>${title}</h2>
+  <div class="form">
+   <input id="svcName" placeholder="Name">
+   <input id="svcMobile" placeholder="Mobile">
+   <input id="svcRef" placeholder="${type==="travel"?"From / To / Date":type==="bills"?"Account / Consumer Number":"Medicine / Product"}">
+   ${type==="medicine"?`<input id="prescription" type="file" accept="image/*,.pdf"><p class="notice">Prescription medicines के लिए applicable prescription/licensing verification required होगी।</p>`:""}
+   <button class="btn yellow" onclick="submitService('${type}')">Continue</button>
+  </div>
+ </div>
+ <div class="notice">Live booking/payment/recharge APIs अभी connect नहीं हैं। Production में verified service providers/API integration जरूरी होगा।</div>`;
+}
+
+function submitService(type){
+ let ref=document.getElementById("svcRef").value.trim();
+ if(!ref){toast("Required details भरें");return}
+ toast(type+" request saved as prototype");
+}
+
+/* Override category services with forms where useful */
+const originalCategory=category;
+category=function(id){
+ if(["travel","bills","medicine"].includes(id)){serviceForm(id);return}
+ originalCategory(id);
+};
+
+/* =========================
+   OPEN BOX / DELIVERY
+========================= */
+
+function openBoxFlow(orderId){
+ app.innerHTML=`
+ <div class="panel">
+  <h2>📦 Open Box Delivery</h2>
+  <p>Order: ${esc(orderId)}</p>
+  <p>Customer package inspect कर सकता है।</p>
+  <label>Delivery evidence video where required/allowed:
+   <input type="file" accept="video/*">
+  </label>
+  <br><br>
+  <button class="btn yellow" onclick="toast('Evidence recorded in prototype flow')">Upload Evidence</button>
+  <button class="btn green" onclick="toast('Customer accepted package')">Customer Accepted</button>
+  <button class="btn red" onclick="toast('Issue reported for review')">Report Issue</button>
+  <p class="small">Missing evidence पर production policy के अनुसार review/exception होगा; automatic salary deduction hard-coded नहीं है।</p>
+ </div>`;
+}
+
+/* =========================
+   DATA EXPORT / RESET
+========================= */
+
+function exportData(){
+ const data={
+  profile,sellerData,riderData,cart,wishlist,ordersData,notifications,reviews,
+  exportedAt:new Date().toISOString()
+ };
+ const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+ const a=document.createElement("a");
+ a.href=URL.createObjectURL(blob);
+ a.download="zipcart-demo-backup.json";
+ a.click();
+ URL.revokeObjectURL(a.href);
+ toast("Backup exported");
+}
+
+function resetDemo(){
+ cart=[];
+ wishlist=[];
+ ordersData=[];
+ notifications=[];
+ reviews=[];
+ sellerData=null;
+ riderData=null;
+ profile=null;
+ save();
+ toast("Demo data reset");
+ home();
+}
+
+function logout(){
+ localStorage.removeItem("zc_profile");
+ profile=null;
+ toast("Logged out");
+ show("home");
+}
+
+/* =========================
+   INITIALIZE
+========================= */
+
+document.getElementById("search").placeholder=langs[selectedLang]?.search||"Search products";
+updateCounts();
+home();
+
 </script>
 </body>
 </html>
