@@ -161,144 +161,19 @@ return `<div class="card">
 <button class="buy" onclick="product(${p.id})">देखें / खरीदें</button>
 </div></div>`;
 }
-function catsHTML(){
-return `<div class="hscroll">${cats.map(c=>`<div class="cat" onclick="category('${c[2]}')">
-<div class="catpic">${c[0]}</div><b>${c[1]}</b></div>`).join("")}</div>`;
-}
 function home(){
-app.innerHTML=`<section class="hero">
-<h1>ZipCart में आपका स्वागत है ❤️</h1>
-<p>आपकी अपनी shopping जगह — <b>देखो → सुनो → समझो → दबाओ → खरीदो</b></p>
-<div class="quick">
-<button class="pill" onclick="voiceSearch()">🔊 Voice Search</button>
-<button class="pill" onclick="show('orders')">📦 मेरे ऑर्डर</button>
-<button class="pill" onclick="show('account')">🆘 मदद चाहिए?</button>
-<button class="pill" onclick="category('grocery')">⚡ Grocery Quick Delivery</button>
-<button class="pill" onclick="category('medicine')">💊 Medicines</button>
-</div></section>
-<div class="banner"><div><h2>🎉 आज के Offers</h2><div>आपके बजट और पसंद के हिसाब से खरीदारी करें</div></div>
-<button onclick="doSearchText('Anarkali Suit')">Anarkali Suit देखें</button></div>
-<section class="section"><h2>🗂️ Top Categories</h2>${catsHTML()}</section>
-<section class="section"><h2>✨ आपके लिए चुना गया</h2><div class="grid">${products.slice(0,8).map(productCard).join("")}</div></section>
-<section class="section"><h2>🔥 कम बजट में पसंदीदा</h2><div class="grid">${products.filter(p=>p.price<600).map(productCard).join("")}</div></section>
-<section class="section"><h2>🆕 New Arrivals</h2><div class="grid">${products.slice(8).map(productCard).join("")}</div></section>`;
-updateCounts();
+app.innerHTML=`
+<div class="panel">
+<h2>🏠 ZipCart Home</h2>
+<p>आपकी अपनी Shopping जगह ❤️</p>
+</div>
+
+<div class="grid">
+${products.slice(0,8).map(productCard).join("")}
+</div>
+`;
 }
-function category(key){
-selectedCat=key;const c=cats.find(x=>x[2]===key);let arr=sub[key]||[];
-app.innerHTML=`<button class="back" onclick="show('home')">← वापस Home</button>
-<div class="panel"><h2>${c?c[0]+" "+c[1]:key}</h2>
-<p>ऊपर की category को बाएँ-दाएँ swipe करके देखें। 🔊 नाम सुनने के लिए नीचे Listen दबाएँ।</p>
-<button class="pill" onclick='speakList(${JSON.stringify(arr)})'>🔊 सुनें</button></div>
-<div class="hscroll">${arr.map(x=>`<div class="cat" onclick="subCategory('${key}',\`${x}\`)">
-<div class="catpic">${x.split(" ")[0]}</div><b>${x.substring(x.indexOf(" ")+1)}</b></div>`).join("")}</div>
-${key==="women"?`<div class="panel"><h3>👰 Lehenga की अलग varieties</h3><div class="hscroll">
-${lehenga.map(x=>`<div class="cat" onclick="subCategory('women',\`Lehenga ${x.substring(x.indexOf(" ")+1)}\`)"><div class="catpic">${x.split(" ")[0]}</div><b>${x.substring(x.indexOf(" ")+1)}</b></div>`).join("")}</div>
-<h3>🥻 Saree varieties</h3><div class="hscroll">${saree.map(x=>`<div class="cat" onclick="subCategory('women',\`Saree ${x.substring(x.indexOf(" ")+1)}\`)"><div class="catpic">${x.split(" ")[0]}</div><b>${x.substring(x.indexOf(" ")+1)}</b></div>`).join("")}</div></div>`:""}
-<section class="section"><h2>🛍️ Products</h2><div class="grid">${products.filter(p=>p.cat===key).map(productCard).join("")||`<div class="panel">इस category के real products seller जोड़ने के बाद यहाँ दिखाई देंगे।</div>`}</div></section>`;
-}
-function subCategory(key,s){
-let name=s.trim();
-let found=products.filter(p=>p.cat===key&&((p.sub||"").toLowerCase().includes(name.toLowerCase())||p.name.toLowerCase().includes(name.toLowerCase())));
-app.innerHTML=`<button class="back" onclick="category('${key}')">← वापस</button>
-<div class="panel"><h2>${name}</h2><button class="pill" onclick='speak(${JSON.stringify(name)})'>🔊 सुनें</button>
-<div class="quick">${["₹100–₹500","₹500–₹1,000","₹1,000–₹1,500","₹1,500–₹2,000","₹2,000–₹3,000","₹3,000–₹5,000","₹5,000–₹10,000","₹10,000+"].map(x=>`<button class="pill">${x}</button>`).join("")}</div></div>
-<div class="grid">${found.length?found.map(productCard).join(""):products.filter(p=>p.cat===key).map(productCard).join("")}</div>`;
-}
-function product(id){
-const p=products.find(x=>x.id===id);
-app.innerHTML=`<button class="back" onclick="show('home')">← वापस</button>
-<div class="panel"><div class="photo" style="height:240px">${p.emoji}</div><h2>${p.name}</h2>
-<div><span class="price">₹${p.price}</span> <span class="old">₹${p.old}</span> <span class="off">${Math.round((1-p.price/p.old)*100)}% OFF</span></div>
-<div class="rating">⭐ ${p.rating} Green Rating</div>
-<p><b>पूरा विवरण:</b> वास्तविक seller listing में category के अनुसार fabric/material, size, color, weight, dimensions, manufacturer, warranty/expiry और अन्य लागू जानकारी दिखाई जाएगी।</p>
-<p><b>Size:</b> XS, S, M, L, XL, XXL, 3XL, 4XL / लागू variants</p>
-<p><b>Color:</b> उपलब्ध रंग seller के अनुसार</p>
-<p><b>Delivery:</b> PIN code डालने पर वास्तविक उपलब्ध तारीख और charge दिखेगा।</p>
-<p><b>Return/Exchange:</b> लागू policy और window के अनुसार।</p>
-<div class="quick"><button class="pill" onclick="toggleWish(${p.id})">❤️ Wishlist</button>
-<button class="pill" onclick="addCart(${p.id})">🛒 Add to Cart</button>
-<button class="pill" onclick="buyNow(${p.id})">⚡ Buy Now</button>
-<button class="pill" onclick='speak(${JSON.stringify(p.name)})'>🔊 सुनें</button></div></div>
-<div class="panel"><h3>⭐ Reviews & Q&A</h3><p>Verified Purchase reviews, customer photo/video, Helpful, seller reply और Product Q&A यहाँ दिखेंगे।</p></div>`;
-}
-function toggleWish(id){
-wishlist=wishlist.includes(id)?wishlist.filter(x=>x!==id):[...wishlist,id];save();
-selectedCat?category(selectedCat):wishlistPage();
-}
-function addCart(id){
-let x=cart.find(a=>a.id===id);
-x?x.qty++:cart.push({id,qty:1,selected:true});
-save();
-}
-function buyNow(id){
-let x=cart.find(a=>a.id===id);
-x?x.qty++:cart.push({id,qty:1,selected:true});
-save();
-show("cart");
-}
-function cartPage(){
-let total=cart.filter(x=>x.selected).reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0);
-app.innerHTML=`<h2>🛒 मेरा Cart</h2><div class="panel">${cart.length?cart.map((x,i)=>{let p=products.find(a=>a.id===x.id);
-return `<div class="row" style="padding:12px 0;border-bottom:1px solid #eee">
-<input type="checkbox" ${x.selected?"checked":""} onchange="cart[${i}].selected=this.checked;save();cartPage()">
-<span>${p.emoji}</span><div class="grow"><b>${p.name}</b><div>₹${p.price} × ${x.qty}</div></div>
-<button onclick="qty(${i},-1)">−</button><b>${x.qty}</b><button onclick="qty(${i},1)">+</button>
-<button onclick="removeCart(${i})">🗑️ Remove</button><button onclick="saveLater(${i})">💾 Save for Later</button>
-</div>`}).join(""):`<p>आपका cart अभी खाली है। ❤️</p>`}</div>
-${cart.length?`<div class="panel"><h3>Price Details</h3><p>Selected Product Total: ₹${total}</p>
-<p>Delivery: checkout पर वास्तविक PIN/stock के अनुसार</p><p>Discount: लागू coupon/offer के अनुसार</p>
-<h2>Final Total: ₹${total}</h2><button class="buy" onclick="checkout()">Proceed to Checkout</button></div>`:""}`;
-}
-function qty(i,d){cart[i].qty=Math.max(1,cart[i].qty+d);save();cartPage()}
-function removeCart(i){cart.splice(i,1);save();cartPage()}
-function saveLater(i){cart[i].selected=false;save();cartPage()}
-function wishlistPage(){
-let ps=products.filter(p=>wishlist.includes(p.id));
-app.innerHTML=`<h2>❤️ मेरी Wishlist</h2><div class="grid">${ps.length?ps.map(productCard).join(""):`<div class="panel">Wishlist अभी खाली है। किसी product पर ❤️ दबाइए।</div>`}</div>`;
-}
-function checkout(){
-let total=cart.filter(x=>x.selected).reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0);
-app.innerHTML=`<button class="back" onclick="cartPage()">← Cart</button><div class="panel"><h2>💳 Checkout</h2>
-<div class="formgrid"><div class="field"><label>नाम</label><input placeholder="आपका नाम"></div>
-<div class="field"><label>Mobile</label><input placeholder="Mobile number"></div>
-<div class="field"><label>Address</label><textarea placeholder="पूरा delivery address"></textarea></div>
-<div class="field"><label>PIN Code</label><input placeholder="PIN"></div></div>
-<h3>🚚 Delivery</h3><p>Standard / Fast / Express — वास्तविक उपलब्धता, stock और PIN के अनुसार charge/date दिखेंगे। Grocery में 15–20 मिनट केवल eligible location/store पर; Medicine में Today/Tomorrow केवल वास्तविक availability पर।</p>
-<h3>💰 Payment</h3><p>UPI / Card / Net Banking / COD — वास्तविक payment gateway backend जुड़ने पर काम करेगा।</p>
-<p>Open Box Delivery: केवल eligible products पर configurable extra charge के साथ।</p><h2>Final Total: ₹${total}</h2>
-<button class="buy" onclick="alert('Prototype में order preview तैयार है। Real order/payment के लिए secure backend आवश्यक है।')">Place Order</button></div>`;
-}
-function orders(){
-app.innerHTML=`<h2>📦 मेरे ऑर्डर</h2><div class="panel"><h3>Example Order #ZC-DEMO</h3><div class="row">
-<span style="font-size:50px">🥻</span><div class="grow"><b>Beautiful Saree</b><p>Order date: — | Expected delivery: वास्तविक system से</p></div>
-<button class="pill" onclick="track()">Track Order</button>
-<button class="pill" onclick="cancelOrder()">❌ Cancel Order</button>
-</div></div><div class="panel"><h3>✨ Shopping जारी रखें</h3><div class="grid">${products.slice(0,4).map(productCard).join("")}</div></div>`;
-}
-function cancelOrder(){
-if(confirm("क्या आप यह order cancel करना चाहते हैं?")){
-alert("Order cancellation request दर्ज हो गई।");
-orders();
-}
-}
-  function track(){
-app.innerHTML=`<button class="back" onclick="orders()">← My Orders</button><div class="panel"><h2>🚚 Order Tracking</h2>
-<div class="track"><div class="step done"><div class="dot">✓</div>Order Placed</div><div class="step done"><div class="dot">✓</div>Confirmed</div>
-<div class="step done"><div class="dot">✓</div>Packed</div><div class="step"><div class="dot">4</div>Shipped</div>
-<div class="step"><div class="dot">5</div>Out for Delivery</div><div class="step"><div class="dot">6</div>Delivered</div></div>
-<p>अगर order delayed हुआ तो यहाँ <b>Delayed</b> और नया expected date दिखेगा।</p></div>`;
-}
-function returnFlow(){
-app.innerHTML=`<div class="panel"><h2>↩️ Return</h2><p>Reason चुनें, photo/video evidence जोड़ें, pickup और refund status देखें। Seller fault (wrong/defective/damaged) applicable policy के अनुसार seller responsibility में जा सकता है।</p>
-<select><option>Wrong product</option><option>Damaged/defective</option><option>Wrong color/size</option><option>Change of mind (if eligible)</option></select><br><br>
-<button class="pill">📷 Photo/Video जोड़ें</button><button class="pill">Submit Return</button></div>`;
-}
-function exchangeFlow(){
-app.innerHTML=`<div class="panel"><h2>🔄 Exchange</h2><p>नया size/color/variant चुनें। Availability के अनुसार replacement होगा; unavailable होने पर applicable fallback दिखेगा।</p>
-<select><option>Size: S</option><option>Size: M</option><option>Size: L</option><option>Size: XL</option></select>
-<select><option>Color चुनें</option><option>Red</option><option>Blue</option></select><br><br><button class="pill">Submit Exchange</button></div>`;
-}
+
 function account(){
 app.innerHTML=`<h2>👤 मेरी ZipCart</h2><div class="grid">${["📦 Orders","❤️ Wishlist","🛒 Cart","🏠 Addresses","💳 Payments","🎟️ Coupons","⭐ Reviews","↩️ Returns & Refunds","🔔 Notifications","🆘 Help & Support","🌐 Language","⚙️ Accessibility","🔐 Login/OTP","🚪 Logout"].map(x=>`<button class="panel" onclick="alert('${x}: यह feature production backend में जुड़ेगा।')">${x}</button>`).join("")}</div>`;
 }
