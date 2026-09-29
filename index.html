@@ -231,12 +231,6 @@ let x=cart.find(a=>a.id===id);
 x?x.qty++:cart.push({id,qty:1,selected:true});
 save();
 }
-}let x=cart.find(a=>a.id===id);
-x?x.qty++:cart.push({id,qty:1,selected:true});
-save();
-}{
-
-}
 function buyNow(id){
 let x=cart.find(a=>a.id===id);
 x?x.qty++:cart.push({id,qty:1,selected:true});
@@ -282,7 +276,13 @@ app.innerHTML=`<h2>📦 मेरे ऑर्डर</h2><div class="panel"><h3>
 <button class="pill" onclick="cancelOrder()">❌ Cancel Order</button>
 </div></div><div class="panel"><h3>✨ Shopping जारी रखें</h3><div class="grid">${products.slice(0,4).map(productCard).join("")}</div></div>`;
 }
-function track(){
+function cancelOrder(){
+if(confirm("क्या आप यह order cancel करना चाहते हैं?")){
+alert("Order cancellation request दर्ज हो गई।");
+orders();
+}
+}
+  function track(){
 app.innerHTML=`<button class="back" onclick="orders()">← My Orders</button><div class="panel"><h2>🚚 Order Tracking</h2>
 <div class="track"><div class="step done"><div class="dot">✓</div>Order Placed</div><div class="step done"><div class="dot">✓</div>Confirmed</div>
 <div class="step done"><div class="dot">✓</div>Packed</div><div class="step"><div class="dot">4</div>Shipped</div>
