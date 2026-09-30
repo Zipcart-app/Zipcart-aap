@@ -20,18 +20,25 @@
   --success:#16833a;
   --danger:#c62828;
 }
+
 *{box-sizing:border-box}
+
 body{
   margin:0;
   font-family:Arial,Helvetica,sans-serif;
   background:var(--bg);
   color:var(--text);
 }
-button,input,select,textarea{font:inherit}
+
+button,input,select,textarea{
+  font:inherit;
+}
+
 button{
   cursor:pointer;
   border:0;
 }
+
 .header{
   position:sticky;
   top:0;
@@ -41,6 +48,7 @@ button{
   padding:10px;
   box-shadow:0 2px 8px #0002;
 }
+
 .top{
   max-width:1200px;
   margin:auto;
@@ -49,6 +57,7 @@ button{
   gap:10px;
   flex-wrap:wrap;
 }
+
 .logo{
   background:var(--primary);
   color:#fff;
@@ -60,32 +69,38 @@ button{
   border-radius:12px;
   padding:4px;
 }
+
 .logo .z{
   display:block;
   font-size:38px;
   line-height:35px;
 }
+
 .logo .name{
   font-size:13px;
 }
+
 .search{
   flex:1;
   min-width:220px;
   display:flex;
   gap:5px;
 }
+
 .search input{
   width:100%;
   padding:12px;
   border-radius:8px;
   border:0;
 }
+
 .searchActions{
   display:flex;
   align-items:center;
   gap:5px;
   flex-wrap:wrap;
 }
+
 .navbtn{
   background:#fff;
   color:var(--primary);
@@ -94,9 +109,11 @@ button{
   white-space:nowrap;
   font-weight:bold;
 }
+
 .navbtn:hover{
   background:#fce7f3;
 }
+
 .count{
   display:inline-flex;
   align-items:center;
@@ -110,6 +127,7 @@ button{
   font-size:12px;
   font-weight:bold;
 }
+
 .btn{
   background:var(--primary);
   color:#fff;
@@ -117,16 +135,25 @@ button{
   border-radius:8px;
   margin:3px;
 }
+
 .btn.yellow{
   background:var(--pink);
   color:#fff;
 }
+
 .btn.light{
   background:#fff;
   color:var(--primary);
 }
-.btn.green{background:var(--success)}
-.btn.red{background:var(--danger)}
+
+.btn.green{
+  background:var(--success);
+}
+
+.btn.red{
+  background:var(--danger);
+}
+
 .pill{
   background:#f3e8ff;
   color:var(--primary);
@@ -135,10 +162,12 @@ button{
   border-radius:20px;
   margin:3px;
 }
+
 .pill:hover{
   background:#fce7f3;
   border-color:var(--pink2);
 }
+
 .nav{
   max-width:1200px;
   margin:8px auto 0;
@@ -146,6 +175,7 @@ button{
   gap:5px;
   overflow:auto;
 }
+
 .nav button{
   white-space:nowrap;
   background:#fff;
@@ -153,14 +183,17 @@ button{
   padding:8px 12px;
   border-radius:7px;
 }
+
 .nav button:hover{
   background:#fce7f3;
 }
+
 .page{
   max-width:1200px;
   margin:auto;
   padding:15px;
 }
+
 .panel{
   background:var(--card);
   border:1px solid var(--border);
@@ -169,11 +202,13 @@ button{
   margin:12px 0;
   box-shadow:0 2px 8px #0000000d;
 }
+
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
   gap:12px;
 }
+
 .card{
   background:#fff;
   border:1px solid var(--border);
@@ -182,6 +217,7 @@ button{
   box-shadow:0 2px 7px #0001;
   position:relative;
 }
+
 .productEmoji{
   height:125px;
   display:flex;
@@ -191,6 +227,7 @@ button{
   background:#fdf2f8;
   border-radius:10px;
 }
+
 .heart{
   position:absolute;
   top:8px;
@@ -204,45 +241,62 @@ button{
   font-size:22px;
   z-index:2;
 }
+
 .heart:hover{
   background:#fce7f3;
 }
+
 .price{
   color:var(--primary);
   font-weight:bold;
   font-size:20px;
 }
+
 .old{
   text-decoration:line-through;
   color:#888;
   font-size:13px;
 }
+
 .row{
   display:flex;
   gap:12px;
   align-items:center;
   flex-wrap:wrap;
 }
-.grow{flex:1}
+
+.grow{
+  flex:1;
+}
+
 .form{
   display:grid;
   gap:10px;
 }
+
 .form label{
   font-weight:bold;
 }
-.form input,.form select,.form textarea{
+
+.form input,
+.form select,
+.form textarea{
   width:100%;
   padding:11px;
   border:1px solid #d8b4fe;
   border-radius:8px;
   background:#fff;
 }
-textarea{min-height:90px}
+
+textarea{
+  min-height:90px;
+}
+
 .sectionTitle{
   color:var(--primary);
   margin-top:22px;
 }
+
 .notice{
   padding:12px;
   background:#fce7f3;
@@ -250,6 +304,7 @@ textarea{min-height:90px}
   border-radius:7px;
   margin:10px 0;
 }
+
 .status{
   padding:10px;
   border-radius:8px;
@@ -257,10 +312,12 @@ textarea{min-height:90px}
   color:#176d31;
   margin:10px 0;
 }
+
 .error{
   background:#ffe8e8;
   color:#a01818;
 }
+
 .badge{
   display:inline-block;
   padding:4px 8px;
@@ -269,6 +326,7 @@ textarea{min-height:90px}
   color:var(--primary);
   font-size:12px;
 }
+
 .qty{
   display:inline-flex;
   align-items:center;
@@ -276,41 +334,49 @@ textarea{min-height:90px}
   border-radius:8px;
   overflow:hidden;
 }
+
 .qty button{
   width:34px;
   height:34px;
   background:#f3e8ff;
 }
+
 .qty span{
   width:40px;
   text-align:center;
 }
+
 .timeline{
   display:flex;
   gap:5px;
   flex-wrap:wrap;
   margin:12px 0;
 }
+
 .timeline span{
   padding:7px 9px;
   border-radius:15px;
   background:#eee;
 }
+
 .timeline span.active{
   background:var(--primary);
   color:#fff;
 }
+
 footer{
   margin-top:30px;
   padding:25px;
   background:#32105f;
   color:#fff;
 }
+
 footer button{
   background:none;
   color:#f9a8d4;
   padding:5px;
 }
+
 .modal{
   position:fixed;
   inset:0;
@@ -321,6 +387,7 @@ footer button{
   align-items:center;
   padding:15px;
 }
+
 .modalBox{
   background:#fff;
   max-width:600px;
@@ -330,40 +397,124 @@ footer button{
   border-radius:14px;
   padding:20px;
 }
-.hidden{display:none!important}
-.small{font-size:13px;color:var(--muted)}
-.center{text-align:center}
+
+.hidden{
+  display:none!important;
+}
+
+.small{
+  font-size:13px;
+  color:var(--muted);
+}
+
+.center{
+  text-align:center;
+}
+
+/* =========================
+   QUICK SERVICES
+========================= */
+
+.quickServices{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin:18px 0 5px;
+}
+
+.serviceCircle{
+  background:transparent;
+  color:var(--primary);
+  padding:5px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-weight:bold;
+  text-align:center;
+}
+
+.serviceIcon{
+  width:78px;
+  height:78px;
+  border-radius:50%;
+  background:#fff;
+  border:3px solid #f9a8d4;
+  box-shadow:0 3px 10px #0002;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:38px;
+  transition:.2s;
+}
+
+.serviceCircle:hover .serviceIcon{
+  background:#fce7f3;
+  border-color:var(--pink);
+  transform:scale(1.05);
+}
+
+.serviceName{
+  font-size:14px;
+  line-height:18px;
+}
 
 @media(max-width:700px){
+
   .top{
     align-items:stretch;
   }
+
   .logo{
     width:70px;
     min-width:70px;
   }
+
   .logo .z{
     font-size:32px;
   }
+
   .search{
     min-width:100%;
   }
+
   .searchActions{
     width:100%;
   }
+
   .navbtn{
     flex:1;
     text-align:center;
   }
+
   .grid{
     grid-template-columns:repeat(2,1fr);
   }
+
   .card{
     padding:8px;
   }
+
   .productEmoji{
     height:100px;
     font-size:55px;
+  }
+
+  .quickServices{
+    grid-template-columns:repeat(4,1fr);
+    gap:5px;
+  }
+
+  .serviceIcon{
+    width:62px;
+    height:62px;
+    font-size:30px;
+  }
+
+  .serviceName{
+    font-size:11px;
+    line-height:14px;
   }
 }
 </style>
@@ -372,6 +523,7 @@ footer button{
 <body>
 
 <header class="header">
+
   <div class="top">
 
     <button class="logo" onclick="show('home')">
@@ -380,65 +532,130 @@ footer button{
     </button>
 
     <div class="search">
+
       <input
         id="search"
         placeholder="क्या खोजें?"
         onkeydown="if(event.key==='Enter')doSearch()"
       >
 
-      <button class="btn yellow" onclick="doSearch()">🔎</button>
-      <button class="btn light" onclick="voiceSearch()">🎙️</button>
+      <button class="btn yellow"
+        onclick="doSearch()">
+        🔎
+      </button>
+
+      <button class="btn light"
+        onclick="voiceSearch()">
+        🎙️
+      </button>
+
     </div>
 
-    <!-- Cart और Wishlist Search के ठीक पास -->
     <div class="searchActions">
-      <button class="navbtn" onclick="show('wishlist')">
-        ❤️ Wishlist <span class="count" id="wishCount">0</span>
+
+      <button class="navbtn"
+        onclick="show('wishlist')">
+
+        ❤️ Wishlist
+        <span class="count" id="wishCount">0</span>
+
       </button>
 
-      <button class="navbtn" onclick="show('cart')">
-        🛒 Cart <span class="count" id="cartCount">0</span>
+      <button class="navbtn"
+        onclick="show('cart')">
+
+        🛒 Cart
+        <span class="count" id="cartCount">0</span>
+
       </button>
+
     </div>
 
-    <button class="navbtn" onclick="show('orders')">
+    <button class="navbtn"
+      onclick="show('orders')">
+
       📦 Orders
+
     </button>
 
-    <button class="navbtn" onclick="show('account')">
+    <button class="navbtn"
+      onclick="show('account')">
+
       👤 Account
+
     </button>
 
-    <button class="navbtn" onclick="languageModal()">
+    <button class="navbtn"
+      onclick="languageModal()">
+
       🌐
+
     </button>
 
   </div>
 
   <div class="nav">
-    <button onclick="show('home')">🏠 Home</button>
-    <button onclick="show('categories')">📂 Categories</button>
+
+    <button onclick="show('home')">
+      🏠 Home
+    </button>
+
+    <button onclick="show('categories')">
+      📂 Categories
+    </button>
+
     <button onclick="show('wishlist')">
-      ❤️ Wishlist <span class="count" id="wishCountNav">0</span>
+
+      ❤️ Wishlist
+      <span class="count" id="wishCountNav">0</span>
+
     </button>
+
     <button onclick="show('cart')">
-      🛒 Cart <span class="count" id="cartCountNav">0</span>
+
+      🛒 Cart
+      <span class="count" id="cartCountNav">0</span>
+
     </button>
-    <button onclick="show('orders')">📦 Orders</button>
-    <button onclick="show('account')">👤 Account</button>
+
+    <button onclick="show('orders')">
+      📦 Orders
+    </button>
+
+    <button onclick="show('account')">
+      👤 Account
+    </button>
+
   </div>
+
 </header>
 
 <main class="page" id="app"></main>
 
 <footer>
+
   <div class="center">
+
     <h3>ZipCart</h3>
-    <button onclick="show('terms')">Terms & Rules</button>
-    <button onclick="show('privacy')">Privacy</button>
-    <button onclick="show('returnPolicy')">Return / Refund</button>
-    <button onclick="show('support')">Support</button>
+
+    <button onclick="show('terms')">
+      Terms & Rules
+    </button>
+
+    <button onclick="show('privacy')">
+      Privacy
+    </button>
+
+    <button onclick="show('returnPolicy')">
+      Return / Refund
+    </button>
+
+    <button onclick="show('support')">
+      Support
+    </button>
+
   </div>
+
 </footer>
 
 <div id="modal" class="hidden"></div>
@@ -452,6 +669,7 @@ footer button{
 const app=document.getElementById("app");
 
 const cats=[
+
 ["👗","महिलाओं का फैशन","women"],
 ["👔","Men Fashion","men"],
 ["🧒","Kids","kids"],
@@ -467,125 +685,636 @@ const cats=[
 ["🧾","Bills & Recharge","bills"],
 ["💊","Medicines","medicine"],
 ["🛒","Grocery","grocery"]
+
 ];
 
 const subs={
-women:["Saree","Suits","Kurtis","Jeans","Tops","Dresses","Lehenga","Jackets","Nightwear","Ethnic Wear","Western Wear"],
-men:["Shirts","T-Shirts","Jeans","Kurta","Kurta-Pajama","Trousers/Pants","Jackets","Shorts","Formal Wear","Sports Wear"],
-kids:["Girls","Boys","Baby","Kids Dresses","Kids Shoes","Baby Products","Toys"],
-shoes:["Women","Men","Kids","Sports Shoes","Sandals","Heels","Flats","Slippers"],
-jewellery:["Necklace","Earrings","Bangles","Rings","Bridal Jewellery","Artificial Jewellery"],
-bags:["Handbag","Sling Bag","School Bag","Travel Bag","Backpack","Wallet/Purse"],
-toys:["Baby Toys","Educational","Cars","Dolls","Games","Remote Toys","Outdoor Toys"],
-beauty:["Makeup","Skincare","Haircare","Personal Care"],
-home:["Kitchen","Home Decor","Furniture","Storage","Bedsheet","Curtains"],
-electronics:["Mobile Accessories","Earphones","Chargers","Cables","Speakers","Other Electronics"],
-school:["School Bags","Books","Notebooks","Stationery","Art & Craft"],
-travel:["Bus","Taxi/Cab","Train","Flight","Hotel"],
-bills:["Mobile Recharge","DTH","Electricity","Water","Gas","Broadband/Landline","FASTag","Insurance","Education Fees","Property/Other Bills"],
-medicine:["Common Care","Prescription Medicines","Health & Personal Care","Devices & Wellness"],
-grocery:["Fresh Grocery","Staples","Dairy","Snacks","Household","Cleaning","Beverages"]
+
+women:[
+"Saree",
+"Suits",
+"Kurtis",
+"Jeans",
+"Tops",
+"Dresses",
+"Lehenga",
+"Jackets",
+"Nightwear",
+"Ethnic Wear",
+"Western Wear"
+],
+
+men:[
+"Shirts",
+"T-Shirts",
+"Jeans",
+"Kurta",
+"Kurta-Pajama",
+"Trousers/Pants",
+"Jackets",
+"Shorts",
+"Formal Wear",
+"Sports Wear"
+],
+
+kids:[
+"Girls",
+"Boys",
+"Baby",
+"Kids Dresses",
+"Kids Shoes",
+"Baby Products",
+"Toys"
+],
+
+shoes:[
+"Women",
+"Men",
+"Kids",
+"Sports Shoes",
+"Sandals",
+"Heels",
+"Flats",
+"Slippers"
+],
+
+jewellery:[
+"Necklace",
+"Earrings",
+"Bangles",
+"Rings",
+"Bridal Jewellery",
+"Artificial Jewellery"
+],
+
+bags:[
+"Handbag",
+"Sling Bag",
+"School Bag",
+"Travel Bag",
+"Backpack",
+"Wallet/Purse"
+],
+
+toys:[
+"Baby Toys",
+"Educational",
+"Cars",
+"Dolls",
+"Games",
+"Remote Toys",
+"Outdoor Toys"
+],
+
+beauty:[
+"Makeup",
+"Skincare",
+"Haircare",
+"Personal Care"
+],
+
+home:[
+"Kitchen",
+"Home Decor",
+"Furniture",
+"Storage",
+"Bedsheet",
+"Curtains"
+],
+
+electronics:[
+"Mobile Accessories",
+"Earphones",
+"Chargers",
+"Cables",
+"Speakers",
+"Other Electronics"
+],
+
+school:[
+"School Bags",
+"Books",
+"Notebooks",
+"Stationery",
+"Art & Craft"
+],
+
+travel:[
+"Bus",
+"Taxi/Cab",
+"Train",
+"Flight",
+"Hotel"
+],
+
+bills:[
+"Mobile Recharge",
+"DTH",
+"Electricity",
+"Water",
+"Gas",
+"Broadband/Landline",
+"FASTag",
+"Insurance",
+"Education Fees",
+"Property/Other Bills"
+],
+
+medicine:[
+"Common Care",
+"Prescription Medicines",
+"Health & Personal Care",
+"Devices & Wellness"
+],
+
+grocery:[
+"Fresh Grocery",
+"Staples",
+"Dairy",
+"Snacks",
+"Household",
+"Cleaning",
+"Beverages"
+]
+
 };
 
 const sareeTypes=[
-"Banarasi","Silk","Cotton","Georgette","Chiffon","Bandhej",
-"Party Wear","Bridal","Designer","Embroidery","Printed","Linen"
+
+"Banarasi",
+"Silk",
+"Cotton",
+"Georgette",
+"Chiffon",
+"Bandhej",
+"Party Wear",
+"Bridal",
+"Designer",
+"Embroidery",
+"Printed",
+"Linen"
+
 ];
 
 const lehengaTypes=[
-"Bridal","Party Wear","Net","Designer","Heavy Work","Silk",
-"Georgette","Sequins","Embroidery","Floral","Simple/Lightweight","Girls/Kids"
+
+"Bridal",
+"Party Wear",
+"Net",
+"Designer",
+"Heavy Work",
+"Silk",
+"Georgette",
+"Sequins",
+"Embroidery",
+"Floral",
+"Simple/Lightweight",
+"Girls/Kids"
+
 ];
 
 const products=[
-{id:1,name:"Beautiful Saree",cat:"women",sub:"Saree",emoji:"🥻",price:999,old:1499,rating:4.5,stock:20,colors:["Red","Blue","Pink","Green"],sizes:["Free Size"]},
-{id:2,name:"Designer Anarkali Suit",cat:"women",sub:"Suits",emoji:"👗",price:122,old:610,rating:4.5,stock:15,colors:["Red","Blue","Black"],sizes:["S","M","L","XL","XXL"]},
-{id:3,name:"Stylish Shoes",cat:"shoes",sub:"Women",emoji:"👠",price:799,old:1299,rating:4.3,stock:25,colors:["Black","White","Pink"],sizes:["5","6","7","8","9"]},
-{id:4,name:"Kids Toy Car",cat:"toys",sub:"Cars",emoji:"🚗",price:499,old:799,rating:4.4,stock:30,colors:["Red","Blue"],sizes:["Standard"]},
-{id:5,name:"Fashion Jewellery Set",cat:"jewellery",sub:"Artificial Jewellery",emoji:"💍",price:399,old:699,rating:4.2,stock:18,colors:["Gold","Silver"],sizes:["Standard"]},
-{id:6,name:"Women Handbag",cat:"bags",sub:"Handbag",emoji:"👜",price:799,old:1199,rating:4.4,stock:12,colors:["Black","Brown","Pink"],sizes:["Standard"]},
-{id:7,name:"Cotton Kurti",cat:"women",sub:"Kurtis",emoji:"👚",price:549,old:899,rating:4.6,stock:22,colors:["Red","Blue","Yellow","Green"],sizes:["S","M","L","XL","XXL"]},
-{id:8,name:"Men Casual Shirt",cat:"men",sub:"Shirts",emoji:"👔",price:699,old:999,rating:4.3,stock:17,colors:["Blue","White","Black"],sizes:["S","M","L","XL","XXL"]},
-{id:9,name:"Kids Dress",cat:"kids",sub:"Kids Dresses",emoji:"👗",price:449,old:799,rating:4.5,stock:14,colors:["Pink","Yellow","Blue"],sizes:["2Y","3Y","4Y","5Y","6Y","8Y","10Y","12Y"]},
-{id:10,name:"Wireless Earphones",cat:"electronics",sub:"Earphones",emoji:"🎧",price:899,old:1499,rating:4.1,stock:35,colors:["Black","White"],sizes:["Standard"]},
-{id:11,name:"Grocery Daily Essentials",cat:"grocery",sub:"Household",emoji:"🛒",price:299,old:349,rating:4.4,stock:50,colors:["Standard"],sizes:["Standard"]},
-{id:12,name:"Health Care Product",cat:"medicine",sub:"Common Care",emoji:"💊",price:199,old:249,rating:4.2,stock:40,colors:["Standard"],sizes:["Standard"]}
+
+{
+ id:1,
+ name:"Beautiful Saree",
+ cat:"women",
+ sub:"Saree",
+ emoji:"🥻",
+ price:999,
+ old:1499,
+ rating:4.5,
+ stock:20,
+ colors:["Red","Blue","Pink","Green"],
+ sizes:["Free Size"]
+},
+
+{
+ id:2,
+ name:"Designer Anarkali Suit",
+ cat:"women",
+ sub:"Suits",
+ emoji:"👗",
+ price:122,
+ old:610,
+ rating:4.5,
+ stock:15,
+ colors:["Red","Blue","Black"],
+ sizes:["S","M","L","XL","XXL"]
+},
+
+{
+ id:3,
+ name:"Stylish Shoes",
+ cat:"shoes",
+ sub:"Women",
+ emoji:"👠",
+ price:799,
+ old:1299,
+ rating:4.3,
+ stock:25,
+ colors:["Black","White","Pink"],
+ sizes:["5","6","7","8","9"]
+},
+
+{
+ id:4,
+ name:"Kids Toy Car",
+ cat:"toys",
+ sub:"Cars",
+ emoji:"🚗",
+ price:499,
+ old:799,
+ rating:4.4,
+ stock:30,
+ colors:["Red","Blue"],
+ sizes:["Standard"]
+},
+
+{
+ id:5,
+ name:"Fashion Jewellery Set",
+ cat:"jewellery",
+ sub:"Artificial Jewellery",
+ emoji:"💍",
+ price:399,
+ old:699,
+ rating:4.2,
+ stock:18,
+ colors:["Gold","Silver"],
+ sizes:["Standard"]
+},
+
+{
+ id:6,
+ name:"Women Handbag",
+ cat:"bags",
+ sub:"Handbag",
+ emoji:"👜",
+ price:799,
+ old:1199,
+ rating:4.4,
+ stock:12,
+ colors:["Black","Brown","Pink"],
+ sizes:["Standard"]
+},
+
+{
+ id:7,
+ name:"Cotton Kurti",
+ cat:"women",
+ sub:"Kurtis",
+ emoji:"👚",
+ price:549,
+ old:899,
+ rating:4.6,
+ stock:22,
+ colors:["Red","Blue","Yellow","Green"],
+ sizes:["S","M","L","XL","XXL"]
+},
+
+{
+ id:8,
+ name:"Men Casual Shirt",
+ cat:"men",
+ sub:"Shirts",
+ emoji:"👔",
+ price:699,
+ old:999,
+ rating:4.3,
+ stock:17,
+ colors:["Blue","White","Black"],
+ sizes:["S","M","L","XL","XXL"]
+},
+
+{
+ id:9,
+ name:"Kids Dress",
+ cat:"kids",
+ sub:"Kids Dresses",
+ emoji:"👗",
+ price:449,
+ old:799,
+ rating:4.5,
+ stock:14,
+ colors:["Pink","Yellow","Blue"],
+ sizes:["2Y","3Y","4Y","5Y","6Y","8Y","10Y","12Y"]
+},
+
+{
+ id:10,
+ name:"Wireless Earphones",
+ cat:"electronics",
+ sub:"Earphones",
+ emoji:"🎧",
+ price:899,
+ old:1499,
+ rating:4.1,
+ stock:35,
+ colors:["Black","White"],
+ sizes:["Standard"]
+},
+
+{
+ id:11,
+ name:"Grocery Daily Essentials",
+ cat:"grocery",
+ sub:"Household",
+ emoji:"🛒",
+ price:299,
+ old:349,
+ rating:4.4,
+ stock:50,
+ colors:["Standard"],
+ sizes:["Standard"]
+},
+
+{
+ id:12,
+ name:"Health Care Product",
+ cat:"medicine",
+ sub:"Common Care",
+ emoji:"💊",
+ price:199,
+ old:249,
+ rating:4.2,
+ stock:40,
+ colors:["Standard"],
+ sizes:["Standard"]
+}
+
 ];
 
-let cart=JSON.parse(localStorage.getItem("zc_cart")||"[]");
-let wishlist=JSON.parse(localStorage.getItem("zc_wishlist")||"[]");
-let ordersData=JSON.parse(localStorage.getItem("zc_orders")||"[]");
-let notifications=JSON.parse(localStorage.getItem("zc_notifications")||"[]");
-let reviews=JSON.parse(localStorage.getItem("zc_reviews")||"[]");
-let profile=JSON.parse(localStorage.getItem("zc_profile")||"null");
+let cart=
+JSON.parse(localStorage.getItem("zc_cart")||"[]");
 
-let selectedLang=localStorage.getItem("zc_lang")||"hi";
+let wishlist=
+JSON.parse(localStorage.getItem("zc_wishlist")||"[]");
+
+let ordersData=
+JSON.parse(localStorage.getItem("zc_orders")||"[]");
+
+let notifications=
+JSON.parse(localStorage.getItem("zc_notifications")||"[]");
+
+let reviews=
+JSON.parse(localStorage.getItem("zc_reviews")||"[]");
+
+let profile=
+JSON.parse(localStorage.getItem("zc_profile")||"null");
+
+let selectedLang=
+localStorage.getItem("zc_lang")||"hi";
+
 let selectedProduct=null;
+
 let checkoutFast=false;
+
 let appliedCoupon=0;
+
 let giftDiscount=0;
 
 const langs={
-hi:{home:"होम",categories:"श्रेणियाँ",cart:"कार्ट",orders:"ऑर्डर",account:"अकाउंट",search:"क्या खोजें?"},
-en:{home:"Home",categories:"Categories",cart:"Cart",orders:"Orders",account:"Account",search:"Search products"},
-gu:{home:"હોમ",categories:"કેટેગરી",cart:"કાર્ટ",orders:"ઓર્ડર",account:"એકાઉન્ટ",search:"શું શોધવું?"},
-mr:{home:"मुख्यपृष्ठ",categories:"श्रेणी",cart:"कार्ट",orders:"ऑर्डर",account:"खाते",search:"काय शोधायचे?"},
-bn:{home:"হোম",categories:"ক্যাটাগরি",cart:"কার্ট",orders:"অর্ডার",account:"অ্যাকাউন্ট",search:"কি খুঁজবেন?"},
-ta:{home:"முகப்பு",categories:"வகைகள்",cart:"கார்ட்",orders:"ஆர்டர்கள்",account:"கணக்கு",search:"எதை தேடுவது?"},
-te:{home:"హోమ్",categories:"వర్గాలు",cart:"కార్ట్",orders:"ఆర్డర్లు",account:"ఖాతా",search:"ఏమి వెతకాలి?"},
 
-kn:{home:"ಮುಖಪುಟ",categories:"ವರ್ಗಗಳು",cart:"ಕಾರ್ಟ್",orders:"ಆರ್ಡರ್",account:"ಖಾತೆ",search:"ಏನು ಹುಡುಕಬೇಕು?"},
-ml:{home:"ഹോം",categories:"വിഭാഗങ്ങൾ",cart:"കാർട്ട്",orders:"ഓർഡറുകൾ",account:"അക്കൗണ്ട്",search:"എന്താണ് തിരയേണ്ടത്?"},
-pa:{home:"ਹੋਮ",categories:"ਸ਼੍ਰੇਣੀਆਂ",cart:"ਕਾਰਟ",orders:"ਆਰਡਰ",account:"ਖਾਤਾ",search:"ਕੀ ਖੋਜਣਾ ਹੈ?"},
-or:{home:"ହୋମ",categories:"ଶ୍ରେଣୀ",cart:"କାର୍ଟ",orders:"ଅର୍ଡର",account:"ଆକାଉଣ୍ଟ",search:"କଣ ଖୋଜିବେ?"},
-as:{home:"হোম",categories:"শ্ৰেণী",cart:"কাৰ্ট",orders:"অৰ্ডাৰ",account:"একাউণ্ট",search:"কি বিচাৰিব?"},
-ur:{home:"ہوم",categories:"زمرے",cart:"کارٹ",orders:"آرڈر",account:"اکاؤنٹ",search:"کیا تلاش کریں؟"},
-ne:{home:"गृह",categories:"श्रेणी",cart:"कार्ट",orders:"अर्डर",account:"खाता",search:"के खोज्ने?"},
-mai:{home:"घर",categories:"श्रेणी",cart:"कार्ट",orders:"ऑर्डर",account:"खाता",search:"की खोजब?"},
-kok:{home:"होम",categories:"वर्ग",cart:"कार्ट",orders:"ऑर्डर",account:"खातें",search:"काय सोदप?"}
+hi:{
+ home:"होम",
+ categories:"श्रेणियाँ",
+ cart:"कार्ट",
+ orders:"ऑर्डर",
+ account:"अकाउंट",
+ search:"क्या खोजें?"
+},
+
+en:{
+ home:"Home",
+ categories:"Categories",
+ cart:"Cart",
+ orders:"Orders",
+ account:"Account",
+ search:"Search products"
+},
+
+gu:{
+ home:"હોમ",
+ categories:"કેટેગરી",
+ cart:"કાર્ટ",
+ orders:"ઓર્ડર",
+ account:"એકાઉન્ટ",
+ search:"શું શોધવું?"
+},
+
+mr:{
+ home:"मुख्यपृष्ठ",
+ categories:"श्रेणी",
+ cart:"कार्ट",
+ orders:"ऑर्डर",
+ account:"खाते",
+ search:"काय शोधायचे?"
+},
+
+bn:{
+ home:"হোম",
+ categories:"ক্যাটাগরি",
+ cart:"কার্ট",
+ orders:"অর্ডার",
+ account:"অ্যাকাউন্ট",
+ search:"কি খুঁজবেন?"
+},
+
+ta:{
+ home:"முகப்பு",
+ categories:"வகைகள்",
+ cart:"கார்ட்",
+ orders:"ஆர்டர்கள்",
+ account:"கணக்கு",
+ search:"எதை தேடுவது?"
+},
+
+te:{
+ home:"హోమ్",
+ categories:"వర్గాలు",
+ cart:"కార్ట్",
+ orders:"ఆర్డర్లు",
+ account:"ఖాతా",
+ search:"ఏమి వెతకాలి?"
+},
+
+kn:{
+ home:"ಮುಖಪುಟ",
+ categories:"ವರ್ಗಗಳು",
+ cart:"ಕಾರ್ಟ್",
+ orders:"ಆರ್ಡರ್",
+ account:"ಖಾತೆ",
+ search:"ಏನು ಹುಡುಕಬೇಕು?"
+},
+
+ml:{
+ home:"ഹോം",
+ categories:"വിഭാഗങ്ങൾ",
+ cart:"കാർട്ട്",
+ orders:"ഓർഡറുകൾ",
+ account:"അക്കൗണ്ട്",
+ search:"എന്താണ് തിരയേണ്ടത്?"
+},
+
+pa:{
+ home:"ਹੋਮ",
+ categories:"ਸ਼੍ਰੇਣੀਆਂ",
+ cart:"ਕਾਰਟ",
+ orders:"ਆਰਡਰ",
+ account:"ਖਾਤਾ",
+ search:"ਕੀ ਖੋਜਣਾ ਹੈ?"
+},
+
+or:{
+ home:"ହୋମ",
+ categories:"ଶ୍ରେଣୀ",
+ cart:"କାର୍ଟ",
+ orders:"ଅର୍ଡର",
+ account:"ଆକାଉଣ୍ଟ",
+ search:"କଣ ଖୋଜିବେ?"
+},
+
+as:{
+ home:"হোম",
+ categories:"শ্ৰেণী",
+ cart:"কাৰ্ট",
+ orders:"অৰ্ডাৰ",
+ account:"একাউণ্ট",
+ search:"কি বিচাৰিব?"
+},
+
+ur:{
+ home:"ہوم",
+ categories:"زمرے",
+ cart:"کارٹ",
+ orders:"آرڈر",
+ account:"اکاؤنٹ",
+ search:"کیا تلاش کریں؟"
+},
+
+ne:{
+ home:"गृह",
+ categories:"श्रेणी",
+ cart:"कार्ट",
+ orders:"अर्डर",
+ account:"खाता",
+ search:"के खोज्ने?"
+},
+
+mai:{
+ home:"घर",
+ categories:"श्रेणी",
+ cart:"कार्ट",
+ orders:"ऑर्डर",
+ account:"खाता",
+ search:"की खोजब?"
+},
+
+kok:{
+ home:"होम",
+ categories:"वर्ग",
+ cart:"कार्ट",
+ orders:"ऑर्डर",
+ account:"खातें",
+ search:"काय सोदप?"
+}
+
 };
 
 function save(){
- localStorage.setItem("zc_cart",JSON.stringify(cart));
- localStorage.setItem("zc_wishlist",JSON.stringify(wishlist));
- localStorage.setItem("zc_orders",JSON.stringify(ordersData));
- localStorage.setItem("zc_notifications",JSON.stringify(notifications));
- localStorage.setItem("zc_reviews",JSON.stringify(reviews));
- localStorage.setItem("zc_profile",JSON.stringify(profile));
+
+ localStorage.setItem(
+  "zc_cart",
+  JSON.stringify(cart)
+ );
+
+ localStorage.setItem(
+  "zc_wishlist",
+  JSON.stringify(wishlist)
+ );
+
+ localStorage.setItem(
+  "zc_orders",
+  JSON.stringify(ordersData)
+ );
+
+ localStorage.setItem(
+  "zc_notifications",
+  JSON.stringify(notifications)
+ );
+
+ localStorage.setItem(
+  "zc_reviews",
+  JSON.stringify(reviews)
+ );
+
+ localStorage.setItem(
+  "zc_profile",
+  JSON.stringify(profile)
+ );
+
  updateCounts();
 }
 
 function updateCounts(){
- const cartTotal=cart.reduce((s,x)=>s+x.qty,0);
 
- const c=document.getElementById("cartCount");
- if(c)c.textContent=cartTotal;
+ const cartTotal=
+ cart.reduce((s,x)=>s+x.qty,0);
 
- const cn=document.getElementById("cartCountNav");
- if(cn)cn.textContent=cartTotal;
+ const c=
+ document.getElementById("cartCount");
 
- const w=document.getElementById("wishCount");
- if(w)w.textContent=wishlist.length;
+ if(c)
+  c.textContent=cartTotal;
 
- const wn=document.getElementById("wishCountNav");
- if(wn)wn.textContent=wishlist.length;
+ const cn=
+ document.getElementById("cartCountNav");
+
+ if(cn)
+  cn.textContent=cartTotal;
+
+ const w=
+ document.getElementById("wishCount");
+
+ if(w)
+  w.textContent=wishlist.length;
+
+ const wn=
+ document.getElementById("wishCountNav");
+
+ if(wn)
+  wn.textContent=wishlist.length;
 }
 
 function toast(msg){
- const old=document.getElementById("toast");
- if(old)old.remove();
 
- const d=document.createElement("div");
+ const old=
+ document.getElementById("toast");
+
+ if(old)
+  old.remove();
+
+ const d=
+ document.createElement("div");
+
  d.id="toast";
+
  d.textContent=msg;
+
  d.style.cssText=
  "position:fixed;right:15px;bottom:20px;z-index:200;background:#5b21b6;color:#fff;padding:12px 16px;border-radius:9px;box-shadow:0 3px 12px #0004";
 
  document.body.appendChild(d);
- setTimeout(()=>d.remove(),2200);
+
+ setTimeout(
+  ()=>d.remove(),
+  2200
+ );
 }
 
 function esc(x){
+
  return String(x??"").replace(
   /[&<>"']/g,
   m=>({
@@ -599,28 +1328,63 @@ function esc(x){
 }
 
 function uid(prefix="ZC"){
- return prefix+"-"+Date.now().toString(36).toUpperCase()+"-"+Math.random().toString(36).slice(2,7).toUpperCase();
+
+ return prefix+
+ "-" +
+ Date.now().toString(36).toUpperCase()+
+ "-" +
+ Math.random().toString(36)
+ .slice(2,7)
+ .toUpperCase();
 }
 
 function money(n){
- return "₹"+Number(n||0).toLocaleString("en-IN");
+
+ return "₹"+
+ Number(n||0)
+ .toLocaleString("en-IN");
 }
 
 function show(page){
- if(page==="home")home();
- else if(page==="categories")categoriesPage();
- else if(page==="wishlist")wishlistPage();
- else if(page==="cart")cartPage();
- else if(page==="orders")ordersPage();
- else if(page==="account")accountPage();
- else if(page==="support")supportPage();
- else if(page==="terms")policyPage("terms");
- else if(page==="privacy")policyPage("privacy");
- else if(page==="returnPolicy")policyPage("return");
- else if(page==="notifications")notificationPage();
- else home();
+
+ if(page==="home")
+  home();
+
+ else if(page==="categories")
+  categoriesPage();
+
+ else if(page==="wishlist")
+  wishlistPage();
+
+ else if(page==="cart")
+  cartPage();
+
+ else if(page==="orders")
+  ordersPage();
+
+ else if(page==="account")
+  accountPage();
+
+ else if(page==="support")
+  supportPage();
+
+ else if(page==="terms")
+  policyPage("terms");
+
+ else if(page==="privacy")
+  policyPage("privacy");
+
+ else if(page==="returnPolicy")
+  policyPage("return");
+
+ else if(page==="notifications")
+  notificationPage();
+
+ else
+  home();
 
  window.scrollTo(0,0);
+
  updateCounts();
 }
 
@@ -629,12 +1393,24 @@ function show(page){
 ========================= */
 
 function home(){
+
  app.innerHTML=`
+
  <div class="panel center">
 
-   <div class="logo" style="margin:auto;width:120px">
-    <span class="z" style="font-size:55px">Z</span>
-    <span class="name" style="font-size:18px">ZipCart</span>
+   <div class="logo"
+     style="margin:auto;width:120px">
+
+    <span class="z"
+      style="font-size:55px">
+      Z
+    </span>
+
+    <span class="name"
+      style="font-size:18px">
+      ZipCart
+    </span>
+
    </div>
 
    <h1>ZipCart</h1>
@@ -643,13 +1419,83 @@ function home(){
     आपका marketplace — shopping, delivery और services एक जगह।
    </p>
 
-   <button class="btn yellow" onclick="show('categories')">
+   <button class="btn yellow"
+     onclick="show('categories')">
+
     🛍️ Shopping शुरू करें
+
    </button>
 
  </div>
 
  <div class="panel">
+
+   <h2>⚡ Quick Services</h2>
+
+   <p class="small">
+    रोज़मर्रा की जरूरी services यहाँ से सीधे खोलें।
+   </p>
+
+   <div class="quickServices">
+
+     <button class="serviceCircle"
+       onclick="category('travel')">
+
+       <span class="serviceIcon">
+        ✈️
+       </span>
+
+       <span class="serviceName">
+        Travel Tickets
+       </span>
+
+     </button>
+
+     <button class="serviceCircle"
+       onclick="category('bills')">
+
+       <span class="serviceIcon">
+        💳
+       </span>
+
+       <span class="serviceName">
+        Bills & Recharge
+       </span>
+
+     </button>
+
+     <button class="serviceCircle"
+       onclick="category('medicine')">
+
+       <span class="serviceIcon">
+        💊
+       </span>
+
+       <span class="serviceName">
+        Medicines
+       </span>
+
+     </button>
+
+     <button class="serviceCircle"
+       onclick="category('grocery')">
+
+       <span class="serviceIcon">
+        🛒
+       </span>
+
+       <span class="serviceName">
+        Grocery
+       </span>
+
+     </button>
+
+   </div>
+
+ </div>
+
+ <div class="panel">
+
    <h2>📂 Categories</h2>
 
    <p>
@@ -657,95 +1503,133 @@ function home(){
    </p>
 
    <div class="grid">
+
    ${cats.slice(0,10).map(c=>`
+
     <div class="card center">
-      <div style="font-size:45px">${c[0]}</div>
-      <b>${c[1]}</b><br>
-      <button class="pill" onclick="category('${c[2]}')">
+
+      <div style="font-size:45px">
+       ${c[0]}
+      </div>
+
+      <b>
+       ${c[1]}
+      </b>
+
+      <br>
+
+      <button class="pill"
+        onclick="category('${c[2]}')">
+
         देखें
+
       </button>
+
     </div>
+
    `).join("")}
+
    </div>
 
-   <button class="btn" onclick="show('categories')">
+   <button class="btn"
+     onclick="show('categories')">
+
     सभी Categories
+
    </button>
+
  </div>
 
  <div class="panel">
+
    <h2>🔥 Products</h2>
+
    <div class="grid">
-     ${products.slice(0,8).map(productCard).join("")}
+
+     ${products
+       .slice(0,8)
+       .map(productCard)
+       .join("")}
+
    </div>
+
  </div>
 
- <div class="panel">
-   <h2>✨ ZipCart Services</h2>
-
-   <button class="pill" onclick="category('travel')">
-     🚌 Travel Tickets
-   </button>
-
-   <button class="pill" onclick="category('bills')">
-     🧾 Bills & Recharge
-   </button>
-
-   <button class="pill" onclick="category('medicine')">
-     💊 Medicines
-   </button>
-
-   <button class="pill" onclick="category('grocery')">
-     🛒 Grocery
-   </button>
-
-   <button class="pill" onclick="show('support')">
-     💬 Support
-   </button>
- </div>`;
+ `;
 }
 
 function productCard(p){
- let liked=wishlist.includes(p.id);
 
- return `<div class="card">
+ let liked=
+ wishlist.includes(p.id);
+
+ return `
+
+ <div class="card">
 
   <button class="heart"
     aria-label="Wishlist"
     onclick="toggleWish(${p.id})">
+
     ${liked?"❤️":"🤍"}
+
   </button>
 
-  <div class="productEmoji" onclick="product(${p.id})">
+  <div class="productEmoji"
+    onclick="product(${p.id})">
+
     ${p.emoji}
+
   </div>
 
-  <h3>${esc(p.name)}</h3>
-
-  <div>⭐ ${p.rating}</div>
+  <h3>
+   ${esc(p.name)}
+  </h3>
 
   <div>
-    <span class="price">${money(p.price)}</span>
-    <span class="old">${money(p.old)}</span>
+   ⭐ ${p.rating}
+  </div>
+
+  <div>
+
+   <span class="price">
+    ${money(p.price)}
+   </span>
+
+   <span class="old">
+    ${money(p.old)}
+   </span>
+
   </div>
 
   <div class="small">
-    Stock: ${p.stock}
+   Stock: ${p.stock}
   </div>
 
-  <button class="pill" onclick="product(${p.id})">
+  <button class="pill"
+    onclick="product(${p.id})">
+
     View
+
   </button>
 
-  <button class="pill" onclick="addCart(${p.id})">
+  <button class="pill"
+    onclick="addCart(${p.id})">
+
     🛒 Add
+
   </button>
 
-  <button class="pill" onclick="toggleWish(${p.id})">
+  <button class="pill"
+    onclick="toggleWish(${p.id})">
+
     ${liked?"❤️":"🤍"}
+
   </button>
 
- </div>`;
+ </div>
+
+ `;
 }
 
 /* =========================
@@ -753,86 +1637,134 @@ function productCard(p){
 ========================= */
 
 function categoriesPage(){
+
  app.innerHTML=`
+
  <div class="panel">
 
   <h2>📂 सभी Categories</h2>
 
   <p>
-    🎙️ Voice button से category के नाम सुने जा सकते हैं।
+   🎙️ Voice button से category के नाम सुने जा सकते हैं।
   </p>
 
   <div class="grid">
 
    ${cats.map(c=>`
+
     <div class="card center">
 
-     <div style="font-size:45px">${c[0]}</div>
+     <div style="font-size:45px">
+      ${c[0]}
+     </div>
 
-     <h3>${c[1]}</h3>
+     <h3>
+      ${c[1]}
+     </h3>
 
      <button class="pill"
        onclick="category('${c[2]}')">
+
        Open
+
      </button>
 
      <button class="pill"
        onclick="speak('${esc(c[1])}')">
+
        🔊 सुनें
+
      </button>
 
     </div>
+
    `).join("")}
 
   </div>
 
- </div>`;
+ </div>
+
+ `;
 }
 
 function category(id){
- const c=cats.find(x=>x[2]===id);
- if(!c)return;
 
- if(["travel","bills","medicine"].includes(id)){
+ const c=
+ cats.find(x=>x[2]===id);
+
+ if(!c)
+  return;
+
+ if(
+  ["travel","bills","medicine"]
+  .includes(id)
+ ){
+
   serviceForm(id);
+
   return;
  }
 
- let list=subs[id]||[];
+ let list=
+ subs[id]||[];
 
  if(!list.length){
 
   app.innerHTML=`
+
   <div class="panel">
 
-   <button class="pill" onclick="show('categories')">
+   <button class="pill"
+     onclick="show('categories')">
+
     ← Back
+
    </button>
 
-   <h2>${c[0]} ${c[1]}</h2>
+   <h2>
+    ${c[0]} ${c[1]}
+   </h2>
 
    <div class="grid">
-    ${products.filter(p=>p.cat===id).map(productCard).join("")
-    ||"<p>इस category में demo product अभी नहीं है।</p>"}
+
+    ${
+     products
+      .filter(p=>p.cat===id)
+      .map(productCard)
+      .join("")
+     ||
+     "<p>इस category में demo product अभी नहीं है।</p>"
+    }
+
    </div>
 
-  </div>`;
+  </div>
+
+  `;
 
   return;
  }
 
  app.innerHTML=`
- <button class="pill" onclick="show('categories')">
+
+ <button class="pill"
+   onclick="show('categories')">
+
   ← Categories
+
  </button>
 
  <div class="panel">
 
-  <h2>${c[0]} ${c[1]}</h2>
+  <h2>
+   ${c[0]} ${c[1]}
+  </h2>
 
   <button class="btn yellow"
     onclick="speak('${esc(c[1]+" "+list.join(", "))}')">
+
     🔊 सभी options सुनें
+
   </button>
 
  </div>
@@ -840,24 +1772,34 @@ function category(id){
  <div class="grid">
 
  ${list.map(s=>`
+
   <div class="card center">
 
-   <h3>${esc(s)}</h3>
+   <h3>
+    ${esc(s)}
+   </h3>
 
    <button class="pill"
      onclick="subcategory('${id}','${esc(s)}')">
-     Open
+
+    Open
+
    </button>
 
    <button class="pill"
      onclick="speak('${esc(s)}')">
-     🔊
+
+    🔊
+
    </button>
 
   </div>
+
  `).join("")}
 
- </div>`;
+ </div>
+
+ `;
 }
 
 function subcategory(cat,sub){
@@ -865,32 +1807,57 @@ function subcategory(cat,sub){
  let extra="";
 
  if(sub==="Saree")
+
  extra=`
+
  <div class="panel">
+
   <h3>🥻 Saree Types</h3>
+
   ${sareeTypes.map(x=>`
+
    <button class="pill"
     onclick="filterType('${cat}','${sub}','${x}')">
+
     ${x}
+
    </button>
+
   `).join("")}
- </div>`;
+
+ </div>
+
+ `;
 
  if(sub==="Lehenga")
+
  extra=`
+
  <div class="panel">
+
   <h3>👗 Lehenga Types</h3>
+
   ${lehengaTypes.map(x=>`
+
    <button class="pill"
     onclick="filterType('${cat}','${sub}','${x}')">
+
     ${x}
+
    </button>
+
   `).join("")}
- </div>`;
+
+ </div>
+
+ `;
 
  if(cat==="kids")
+
  extra+=`
+
  <div class="panel">
+
   <h3>👶 Age</h3>
 
   ${[
@@ -901,26 +1868,40 @@ function subcategory(cat,sub){
    "5–8 years",
    "8–12 years"
   ].map(x=>`
+
    <button class="pill"
     onclick="toast('Age filter: ${x}')">
+
     ${x}
+
    </button>
+
   `).join("")}
 
- </div>`;
+ </div>
+
+ `;
 
  app.innerHTML=`
- <button class="pill" onclick="category('${cat}')">
+
+ <button class="pill"
+   onclick="category('${cat}')">
+
   ← Back
+
  </button>
 
  <div class="panel">
 
-  <h2>${esc(sub)}</h2>
+  <h2>
+   ${esc(sub)}
+  </h2>
 
   <button class="btn yellow"
    onclick="speak('${esc(sub)}')">
+
    🔊 सुनें
+
   </button>
 
  </div>
@@ -928,24 +1909,44 @@ function subcategory(cat,sub){
  ${extra}
 
  <div class="grid">
-  ${products.filter(
-   p=>p.cat===cat&&p.sub===sub
-  ).map(productCard).join("")||`
+
+  ${
+   products
+    .filter(
+     p=>p.cat===cat&&p.sub===sub
+    )
+    .map(productCard)
+    .join("")
+   ||
+   `
 
    <div class="panel">
-    <p>इस subcategory में अभी demo product नहीं है।</p>
+
+    <p>
+     इस subcategory में अभी demo product नहीं है।
+    </p>
 
     <button class="btn"
       onclick="show('categories')">
-      Continue Shopping
+
+     Continue Shopping
+
     </button>
+
    </div>
-  `}
- </div>`;
+
+   `
+  }
+
+ </div>
+
+ `;
 }
 
 function filterType(cat,sub,type){
+
  toast(type+" filter selected");
+
  subcategory(cat,sub);
 }
 
@@ -955,18 +1956,24 @@ function filterType(cat,sub,type){
 
 function product(id){
 
- const p=products.find(x=>x.id===id);
- if(!p)return;
+ const p=
+ products.find(x=>x.id===id);
+
+ if(!p)
+  return;
 
  selectedProduct=p;
 
- const liked=wishlist.includes(p.id);
+ const liked=
+ wishlist.includes(p.id);
 
  app.innerHTML=`
 
  <button class="pill"
    onclick="category('${p.cat}')">
-   ← Back
+
+  ← Back
+
  </button>
 
  <div class="panel">
@@ -975,56 +1982,89 @@ function product(id){
 
    <div class="productEmoji"
      style="width:220px">
+
      ${p.emoji}
+
    </div>
 
    <div class="grow">
 
-    <h1>${esc(p.name)}</h1>
-
-    <p>⭐ ${p.rating} / 5</p>
+    <h1>
+     ${esc(p.name)}
+    </h1>
 
     <p>
-      <span class="price">${money(p.price)}</span>
-      <span class="old">${money(p.old)}</span>
+     ⭐ ${p.rating} / 5
     </p>
 
     <p>
-      Available stock: <b>${p.stock}</b>
+
+      <span class="price">
+       ${money(p.price)}
+      </span>
+
+      <span class="old">
+       ${money(p.old)}
+      </span>
+
     </p>
 
-    <label>🎨 Color</label>
+    <p>
+      Available stock:
+      <b>${p.stock}</b>
+    </p>
+
+    <label>
+     🎨 Color
+    </label>
 
     <select id="pColor">
-      ${p.colors.map(x=>`<option>${x}</option>`).join("")}
+
+      ${p.colors
+       .map(x=>`<option>${x}</option>`)
+       .join("")}
+
     </select>
 
-    <label>📏 Size</label>
+    <label>
+     📏 Size
+    </label>
 
     <select id="pSize">
-      ${p.sizes.map(x=>`<option>${x}</option>`).join("")}
+
+      ${p.sizes
+       .map(x=>`<option>${x}</option>`)
+       .join("")}
+
     </select>
 
     <div style="margin-top:10px">
 
      <button class="btn"
        onclick="addCart(${p.id})">
+
        🛒 Add to Cart
+
      </button>
 
      <button class="btn yellow"
        onclick="buyNow(${p.id})">
+
        ⚡ Buy Now
+
      </button>
 
      <button class="pill"
        onclick="toggleWish(${p.id})">
+
        ${liked?"❤️":"🤍"} Wishlist
+
      </button>
 
     </div>
 
    </div>
+
   </div>
 
  </div>
@@ -1034,31 +2074,49 @@ function product(id){
   <h2>⭐ Reviews</h2>
 
   ${
-   reviews.filter(r=>r.productId===p.id)
-   .map(r=>`
+   reviews
+    .filter(r=>r.productId===p.id)
+    .map(r=>`
+
     <div class="card">
-      <b>⭐ ${r.rating}/5</b>
-      <p>${esc(r.text)}</p>
+
+      <b>
+       ⭐ ${r.rating}/5
+      </b>
+
+      <p>
+       ${esc(r.text)}
+      </p>
+
       <span class="badge">
        ${r.verified?"Verified Purchase":""}
       </span>
+
     </div>
+
    `).join("")
-   ||"<p>अभी कोई demo review नहीं।</p>"
+   ||
+   "<p>अभी कोई demo review नहीं।</p>"
   }
 
   <button class="btn"
     onclick="reviewForm(${p.id})">
+
     Write Review
+
   </button>
 
  </div>
 
  <div class="panel">
 
-  <h3>🛡️ Product Information</h3>
+  <h3>
+   🛡️ Product Information
+  </h3>
 
-  <p>SKU / Product ID: ZC-P-${p.id}</p>
+  <p>
+   SKU / Product ID: ZC-P-${p.id}
+  </p>
 
   <p>
    Warranty/Guarantee: जहाँ लागू हो,
@@ -1070,7 +2128,9 @@ function product(id){
    seller policy के अनुसार होगी।
   </p>
 
- </div>`;
+ </div>
+
+ `;
 }
 
 /* =========================
@@ -1079,15 +2139,23 @@ function product(id){
 
 function addCart(id){
 
- const p=products.find(x=>x.id===id);
- if(!p)return;
+ const p=
+ products.find(x=>x.id===id);
 
- let x=cart.find(a=>a.id===id);
+ if(!p)
+  return;
+
+ let x=
+ cart.find(a=>a.id===id);
 
  if(x){
 
   if(x.qty>=p.stock){
-   toast("Maximum available stock reached");
+
+   toast(
+    "Maximum available stock reached"
+   );
+
    return;
   }
 
@@ -1096,11 +2164,13 @@ function addCart(id){
  }else{
 
   cart.push({
+
    id,
    qty:1,
    selected:true,
    color:p.colors[0],
    size:p.sizes[0]
+
   });
 
  }
@@ -1111,7 +2181,9 @@ function addCart(id){
 }
 
 function buyNow(id){
+
  addCart(id);
+
  show("cart");
 }
 
@@ -1120,41 +2192,67 @@ function cartPage(){
  if(!cart.length){
 
   app.innerHTML=`
+
   <div class="panel center">
 
-   <h2>🛒 आपका Cart खाली है</h2>
+   <h2>
+    🛒 आपका Cart खाली है
+   </h2>
 
    <button class="btn yellow"
      onclick="show('categories')">
-     Continue Shopping
+
+    Continue Shopping
+
    </button>
 
-  </div>`;
+  </div>
+
+  `;
 
   return;
  }
 
- let subtotal=cart.reduce((s,x)=>{
-  let p=products.find(p=>p.id===x.id);
+ let subtotal=
+ cart.reduce((s,x)=>{
+
+  let p=
+   products.find(p=>p.id===x.id);
+
   return s+p.price*x.qty;
+
  },0);
 
- let delivery=subtotal>=999?0:49;
- let fast=checkoutFast?25:0;
- let discount=appliedCoupon+giftDiscount;
- let total=Math.max(0,subtotal+delivery+fast-discount);
+ let delivery=
+ subtotal>=999?0:49;
+
+ let fast=
+ checkoutFast?25:0;
+
+ let discount=
+ appliedCoupon+giftDiscount;
+
+ let total=
+ Math.max(
+  0,
+  subtotal+delivery+fast-discount
+ );
 
  app.innerHTML=`
 
  <div class="panel">
 
-  <h2>🛒 My Cart</h2>
+  <h2>
+   🛒 My Cart
+  </h2>
 
   ${cart.map(x=>{
 
-   let p=products.find(p=>p.id===x.id);
+   let p=
+    products.find(p=>p.id===x.id);
 
    return `
+
    <div class="card">
 
     <div class="row">
@@ -1165,7 +2263,9 @@ function cartPage(){
 
      <div class="grow">
 
-      <h3>${esc(p.name)}</h3>
+      <h3>
+       ${esc(p.name)}
+      </h3>
 
       <p>
        ${money(p.price)} × ${x.qty}
@@ -1173,76 +2273,107 @@ function cartPage(){
 
       <div class="qty">
 
-       <button onclick="changeQty(${x.id},-1)">
+       <button
+        onclick="changeQty(${x.id},-1)">
+
         −
+
        </button>
 
-       <span>${x.qty}</span>
+       <span>
+        ${x.qty}
+       </span>
 
-       <button onclick="changeQty(${x.id},1)">
+       <button
+        onclick="changeQty(${x.id},1)">
+
         +
+
        </button>
 
       </div>
 
       <button class="pill"
        onclick="removeCart(${x.id})">
+
        🗑️ Delete
+
       </button>
 
       <button class="pill"
        onclick="saveLater(${x.id})">
+
        💾 Save for Later
+
       </button>
 
      </div>
 
     </div>
 
-   </div>`;
+   </div>
+
+   `;
+
   }).join("")}
 
  </div>
 
  <div class="panel">
 
-  <h3>🚚 Delivery</h3>
+  <h3>
+   🚚 Delivery
+  </h3>
 
   <button class="pill"
     onclick="setFast(false)">
+
     Normal Delivery
+
   </button>
 
   <button class="pill"
     onclick="setFast(true)">
+
     ⚡ Fast / Priority +₹25
+
   </button>
 
   <p>
+
    ${
     checkoutFast
-    ?"Fast delivery selected — actual availability/PIN based fee will be checked by backend later."
-    :"Normal delivery selected."
+    ?
+    "Fast delivery selected — actual availability/PIN based fee will be checked by backend later."
+    :
+    "Normal delivery selected."
    }
+
   </p>
 
  </div>
 
  <div class="panel">
 
-  <h3>🎟️ Coupon</h3>
+  <h3>
+   🎟️ Coupon
+  </h3>
 
   <input id="coupon"
     placeholder="Coupon code e.g. ZIP10">
 
   <button class="btn"
     onclick="applyCoupon()">
+
     Apply
+
   </button>
 
   <button class="pill"
     onclick="removeCoupon()">
+
     Remove
+
   </button>
 
   <p>
@@ -1253,14 +2384,18 @@ function cartPage(){
 
  <div class="panel">
 
-  <h3>🎁 Gift Card</h3>
+  <h3>
+   🎁 Gift Card
+  </h3>
 
   <input id="gift"
     placeholder="Gift card code e.g. GIFT100">
 
   <button class="btn"
     onclick="applyGift()">
+
     Apply
+
   </button>
 
   <p>
@@ -1271,65 +2406,103 @@ function cartPage(){
 
  <div class="panel">
 
-  <h2>💰 Summary</h2>
+  <h2>
+   💰 Summary
+  </h2>
 
-  <p>Products: ${money(subtotal)}</p>
-  <p>Delivery: ${money(delivery)}</p>
-  <p>Fast Delivery: ${money(fast)}</p>
-  <p>Discount: -${money(discount)}</p>
+  <p>
+   Products: ${money(subtotal)}
+  </p>
+
+  <p>
+   Delivery: ${money(delivery)}
+  </p>
+
+  <p>
+   Fast Delivery: ${money(fast)}
+  </p>
+
+  <p>
+   Discount: -${money(discount)}
+  </p>
 
   <hr>
 
-  <h2>Total: ${money(total)}</h2>
+  <h2>
+   Total: ${money(total)}
+  </h2>
 
   <button class="btn yellow"
     onclick="checkoutPage()">
+
     Proceed to Checkout
+
   </button>
 
- </div>`;
+ </div>
+
+ `;
 }
 
 function changeQty(id,delta){
 
- let x=cart.find(a=>a.id===id);
- let p=products.find(p=>p.id===id);
+ let x=
+  cart.find(a=>a.id===id);
 
- if(!x||!p)return;
+ let p=
+  products.find(p=>p.id===id);
+
+ if(!x||!p)
+  return;
 
  x.qty+=delta;
 
- if(x.qty<1)x.qty=1;
- if(x.qty>p.stock)x.qty=p.stock;
+ if(x.qty<1)
+  x.qty=1;
+
+ if(x.qty>p.stock)
+  x.qty=p.stock;
 
  save();
+
  cartPage();
 }
 
 function removeCart(id){
- cart=cart.filter(x=>x.id!==id);
+
+ cart=
+  cart.filter(x=>x.id!==id);
+
  save();
+
  cartPage();
+
  toast("Item removed");
 }
 
 function saveLater(id){
+
  removeCart(id);
+
  toast("💾 Saved for Later");
 }
 
 function setFast(v){
+
  checkoutFast=v;
+
  cartPage();
 }
 
 function applyCoupon(){
 
- let v=(document.getElementById("coupon")?.value||"")
- .trim()
- .toUpperCase();
+ let v=
+  (document.getElementById("coupon")?.value||"")
+  .trim()
+  .toUpperCase();
 
- appliedCoupon=v==="ZIP10"?10:0;
+ appliedCoupon=
+  v==="ZIP10"?10:0;
 
  if(appliedCoupon)
   toast("Coupon applied");
@@ -1340,17 +2513,21 @@ function applyCoupon(){
 }
 
 function removeCoupon(){
+
  appliedCoupon=0;
+
  cartPage();
 }
 
 function applyGift(){
 
- let v=(document.getElementById("gift")?.value||"")
- .trim()
- .toUpperCase();
+ let v=
+  (document.getElementById("gift")?.value||"")
+  .trim()
+  .toUpperCase();
 
- giftDiscount=v==="GIFT100"?100:0;
+ giftDiscount=
+  v==="GIFT100"?100:0;
 
  if(giftDiscount)
   toast("Gift card applied");
@@ -1367,7 +2544,9 @@ function applyGift(){
 function checkoutPage(){
 
  if(!cart.length){
+
   show("cart");
+
   return;
  }
 
@@ -1375,28 +2554,45 @@ function checkoutPage(){
 
  <div class="panel">
 
-  <h2>📦 Checkout</h2>
+  <h2>
+   📦 Checkout
+  </h2>
 
   <div class="form">
 
-   <label>नाम</label>
+   <label>
+    नाम
+   </label>
+
    <input id="coName"
      value="${esc(profile?.name||"")}">
 
-   <label>Mobile</label>
+   <label>
+    Mobile
+   </label>
+
    <input id="coMobile"
      value="${esc(profile?.mobile||"")}"
      inputmode="numeric">
 
-   <label>PIN Code</label>
+   <label>
+    PIN Code
+   </label>
+
    <input id="coPin"
      maxlength="6"
      inputmode="numeric">
 
-   <label>पूरा Address</label>
+   <label>
+    पूरा Address
+   </label>
+
    <textarea id="coAddress">${esc(profile?.address||"")}</textarea>
 
-   <label>Delivery Instructions</label>
+   <label>
+    Delivery Instructions
+   </label>
+
    <textarea id="coInstructions"
      placeholder="Gate, floor, landmark आदि"></textarea>
 
@@ -1406,11 +2602,20 @@ function checkoutPage(){
 
  <div class="panel">
 
-  <h3>🎁 Gift Wrapping</h3>
+  <h3>
+   🎁 Gift Wrapping
+  </h3>
 
   <select id="giftWrap">
-   <option value="no">No</option>
-   <option value="yes">Yes</option>
+
+   <option value="no">
+    No
+   </option>
+
+   <option value="yes">
+    Yes
+   </option>
+
   </select>
 
   <textarea id="giftMessage"
@@ -1420,101 +2625,156 @@ function checkoutPage(){
 
  <div class="panel">
 
-  <h3>💳 Payment Method</h3>
+  <h3>
+   💳 Payment Method
+  </h3>
 
   <label>
+
    <input type="radio"
      name="pay"
      value="COD"
      checked>
+
    Cash on Delivery
+
   </label>
 
   <br>
 
   <label>
+
    <input type="radio"
      name="pay"
      value="UPI">
+
    UPI
+
   </label>
 
   <br>
 
   <label>
+
    <input type="radio"
      name="pay"
      value="CARD">
+
    Card
+
   </label>
 
   <br>
 
   <label>
+
    <input type="radio"
      name="pay"
      value="NETBANKING">
+
    Net Banking
+
   </label>
 
   <div class="notice">
+
    Payment gateway अभी prototype mode में है।
    Real transaction backend/payment gateway से ही होगा।
+
   </div>
 
  </div>
 
  <div class="panel">
 
-  <h3>🔐 Order Security</h3>
+  <h3>
+   🔐 Order Security
+  </h3>
 
   <label>
-   <input type="checkbox" id="termsCheck">
+
+   <input type="checkbox"
+     id="termsCheck">
+
    मैंने Terms, Privacy और Return/Refund rules पढ़कर स्वीकार किए हैं।
+
   </label>
 
   <br><br>
 
   <button class="btn yellow"
     onclick="placeOrder()">
+
     Place Order
+
   </button>
 
- </div>`;
+ </div>
+
+ `;
 }
 
 function placeOrder(){
 
- let name=document.getElementById("coName").value.trim();
- let mobile=document.getElementById("coMobile").value.trim();
- let pin=document.getElementById("coPin").value.trim();
- let address=document.getElementById("coAddress").value.trim();
- let ok=document.getElementById("termsCheck").checked;
+ let name=
+  document.getElementById("coName").value.trim();
+
+ let mobile=
+  document.getElementById("coMobile").value.trim();
+
+ let pin=
+  document.getElementById("coPin").value.trim();
+
+ let address=
+  document.getElementById("coAddress").value.trim();
+
+ let ok=
+  document.getElementById("termsCheck").checked;
 
  if(!name||!mobile||!pin||!address||!ok){
-  toast("कृपया सभी required details और Terms स्वीकार करें");
+
+  toast(
+   "कृपया सभी required details और Terms स्वीकार करें"
+  );
+
   return;
  }
 
- let payment=document.querySelector(
-  'input[name="pay"]:checked'
- )?.value||"COD";
+ let payment=
+  document.querySelector(
+   'input[name="pay"]:checked'
+  )?.value||"COD";
 
- let subtotal=cart.reduce((s,x)=>{
-  let p=products.find(p=>p.id===x.id);
-  return s+p.price*x.qty;
- },0);
+ let subtotal=
+  cart.reduce((s,x)=>{
 
- let delivery=subtotal>=999?0:49;
- let fast=checkoutFast?25:0;
+   let p=
+    products.find(p=>p.id===x.id);
 
- let total=Math.max(
-  0,
-  subtotal+delivery+fast-appliedCoupon-giftDiscount
- );
+   return s+p.price*x.qty;
+
+  },0);
+
+ let delivery=
+  subtotal>=999?0:49;
+
+ let fast=
+  checkoutFast?25:0;
+
+ let total=
+  Math.max(
+   0,
+   subtotal+
+   delivery+
+   fast-
+   appliedCoupon-
+   giftDiscount
+  );
 
  let order={
+
   id:uid("ZC"),
+
   date:new Date().toISOString(),
 
   customer:{
@@ -1524,39 +2784,61 @@ function placeOrder(){
    address
   },
 
-  items:cart.map(x=>({...x})),
+  items:
+   cart.map(x=>({...x})),
 
   subtotal,
+
   delivery,
+
   fast,
 
-  discount:appliedCoupon+giftDiscount,
+  discount:
+   appliedCoupon+giftDiscount,
 
   total,
 
   payment,
 
   status:"Placed",
+
   tracking:"Order placed",
+
   returnStatus:"",
+
   exchangeStatus:"",
 
-  giftWrap:document.getElementById("giftWrap").value,
-  giftMessage:document.getElementById("giftMessage").value
+  giftWrap:
+   document.getElementById("giftWrap").value,
+
+  giftMessage:
+   document.getElementById("giftMessage").value
+
  };
 
  ordersData.unshift(order);
 
  cart=[];
+
  appliedCoupon=0;
+
  giftDiscount=0;
+
  checkoutFast=false;
 
  notifications.unshift({
+
   id:uid("N"),
-  text:"Order "+order.id+" successfully placed",
-  date:new Date().toISOString(),
+
+  text:
+   "Order "+order.id+
+   " successfully placed",
+
+  date:
+   new Date().toISOString(),
+
   read:false
+
  });
 
  save();
@@ -1570,16 +2852,22 @@ function orderSuccess(o){
 
  <div class="panel center">
 
-  <h1>✅ Order Placed</h1>
+  <h1>
+   ✅ Order Placed
+  </h1>
 
-  <h2>${esc(o.id)}</h2>
+  <h2>
+   ${esc(o.id)}
+  </h2>
 
   <p>
-   Total: <b>${money(o.total)}</b>
+   Total:
+   <b>${money(o.total)}</b>
   </p>
 
   <p>
-   Payment: ${esc(o.payment)}
+   Payment:
+   ${esc(o.payment)}
   </p>
 
   <p>
@@ -1589,20 +2877,28 @@ function orderSuccess(o){
 
   <button class="btn yellow"
     onclick="trackOrder('${o.id}')">
+
     📍 Track Order
+
   </button>
 
   <button class="btn"
     onclick="show('orders')">
+
     📦 My Orders
+
   </button>
 
   <button class="btn"
     onclick="show('categories')">
+
     🛍️ Continue Shopping
+
   </button>
 
- </div>`;
+ </div>
+
+ `;
 }
 
 /* =========================
@@ -1614,16 +2910,23 @@ function ordersPage(){
  if(!ordersData.length){
 
   app.innerHTML=`
+
   <div class="panel center">
 
-   <h2>📦 अभी कोई Order नहीं है</h2>
+   <h2>
+    📦 अभी कोई Order नहीं है
+   </h2>
 
    <button class="btn yellow"
      onclick="show('categories')">
-     Continue Shopping
+
+    Continue Shopping
+
    </button>
 
-  </div>`;
+  </div>
+
+  `;
 
   return;
  }
@@ -1632,7 +2935,9 @@ function ordersPage(){
 
  <div class="panel">
 
-  <h2>📦 My Orders</h2>
+  <h2>
+   📦 My Orders
+  </h2>
 
   <input id="orderSearch"
     placeholder="Order ID search"
@@ -1644,46 +2949,71 @@ function ordersPage(){
 
  <div class="panel">
 
-  <h3>✨ Shopping जारी रखें</h3>
+  <h3>
+   ✨ Shopping जारी रखें
+  </h3>
 
   <div class="grid">
-   ${products.slice(0,4).map(productCard).join("")}
+
+   ${products
+    .slice(0,4)
+    .map(productCard)
+    .join("")}
+
   </div>
 
- </div>`;
+ </div>
+
+ `;
 
  renderOrders("");
 }
 
 function renderOrders(q){
 
- const box=document.getElementById("ordersList");
- if(!box)return;
+ const box=
+  document.getElementById("ordersList");
 
- let list=ordersData.filter(
-  o=>!q||o.id.toLowerCase().includes(q.toLowerCase())
- );
+ if(!box)
+  return;
 
- box.innerHTML=list.map(o=>`
+ let list=
+  ordersData.filter(
+   o=>
+   !q||
+   o.id
+    .toLowerCase()
+    .includes(q.toLowerCase())
+  );
+
+ box.innerHTML=
+
+ list.map(o=>`
 
  <div class="panel">
 
-  <h3>${esc(o.id)}</h3>
+  <h3>
+   ${esc(o.id)}
+  </h3>
 
   <p>
-   ${new Date(o.date).toLocaleString("en-IN")}
+   ${new Date(o.date)
+    .toLocaleString("en-IN")}
   </p>
 
   <p>
-   Status: <b>${esc(o.status)}</b>
+   Status:
+   <b>${esc(o.status)}</b>
   </p>
 
   <p>
-   Total: <b>${money(o.total)}</b>
+   Total:
+   <b>${money(o.total)}</b>
   </p>
 
   <p>
-   Payment: ${esc(o.payment)}
+   Payment:
+   ${esc(o.payment)}
   </p>
 
   <div class="timeline">
@@ -1696,65 +3026,100 @@ function renderOrders(q){
     "Out for Delivery",
     "Delivered"
    ].map(s=>`
+
     <span class="${s===o.status?'active':''}">
      ${s}
     </span>
+
    `).join("")}
 
   </div>
 
   <button class="pill"
     onclick="trackOrder('${o.id}')">
+
     📍 Track
+
   </button>
 
   ${
-   ["Placed","Confirmed","Packed"].includes(o.status)
-   ?`
-    <button class="pill"
-      onclick="cancelOrder('${o.id}')">
-      ❌ Cancel
-    </button>`
-   :""
+   ["Placed","Confirmed","Packed"]
+   .includes(o.status)
+   ?
+   `
+   <button class="pill"
+     onclick="cancelOrder('${o.id}')">
+
+     ❌ Cancel
+
+   </button>
+   `
+   :
+   ""
   }
 
   ${
    o.status==="Delivered"
-   ?`
+   ?
+   `
+
     <button class="pill"
       onclick="returnForm('${o.id}')">
+
       ↩️ Return
+
     </button>
 
     <button class="pill"
       onclick="exchangeForm('${o.id}')">
+
       🔄 Exchange
+
     </button>
 
     <button class="pill"
       onclick="invoice('${o.id}')">
+
       🧾 Invoice
+
     </button>
+
    `
-   :""
+   :
+   ""
   }
 
  </div>
 
- `).join("")||`
+ `).join("")
+
+ ||
+
+ `
+
  <div class="panel">
+
   No matching order.
- </div>`;
+
+ </div>
+
+ `;
 }
 
 function findOrder(id){
- return ordersData.find(o=>o.id===id);
+
+ return ordersData.find(
+  o=>o.id===id
+ );
 }
 
 function trackOrder(id){
 
- const o=findOrder(id);
- if(!o)return;
+ const o=
+  findOrder(id);
+
+ if(!o)
+  return;
 
  app.innerHTML=`
 
@@ -1762,7 +3127,9 @@ function trackOrder(id){
 
   <button class="pill"
     onclick="show('orders')">
+
     ← Orders
+
   </button>
 
   <h2>
@@ -1779,9 +3146,11 @@ function trackOrder(id){
     "Out for Delivery",
     "Delivered"
    ].map(s=>`
+
     <span class="${s===o.status?'active':''}">
      ${s}
     </span>
+
    `).join("")}
 
   </div>
@@ -1808,32 +3177,56 @@ function trackOrder(id){
    delivery system.
   </p>
 
- </div>`;
+ </div>
+
+ `;
 }
 
 function cancelOrder(id){
 
- let o=findOrder(id);
- if(!o)return;
+ let o=
+  findOrder(id);
 
- if(!["Placed","Confirmed","Packed"].includes(o.status)){
-  toast("इस stage पर cancellation उपलब्ध नहीं है");
+ if(!o)
+  return;
+
+ if(
+  !["Placed","Confirmed","Packed"]
+  .includes(o.status)
+ ){
+
+  toast(
+   "इस stage पर cancellation उपलब्ध नहीं है"
+  );
+
   return;
  }
 
  o.status="Cancelled";
- o.tracking="Cancellation requested";
+
+ o.tracking=
+  "Cancellation requested";
 
  notifications.unshift({
+
   id:uid("N"),
-  text:"Order "+o.id+" cancelled",
-  date:new Date().toISOString(),
+
+  text:
+   "Order "+o.id+" cancelled",
+
+  date:
+   new Date().toISOString(),
+
   read:false
+
  });
 
  save();
 
- toast("Cancellation दर्ज हो गया");
+ toast(
+  "Cancellation दर्ज हो गया"
+ );
+
  ordersPage();
 }
 
@@ -1843,15 +3236,31 @@ function returnForm(id){
 
  <div class="panel">
 
-  <h2>↩️ Return Request</h2>
+  <h2>
+   ↩️ Return Request
+  </h2>
 
   <select id="returnReason">
 
-   <option>Wrong Product</option>
-   <option>Damaged Product</option>
-   <option>Different from Description</option>
-   <option>Size Issue</option>
-   <option>Other</option>
+   <option>
+    Wrong Product
+   </option>
+
+   <option>
+    Damaged Product
+   </option>
+
+   <option>
+    Different from Description
+   </option>
+
+   <option>
+    Size Issue
+   </option>
+
+   <option>
+    Other
+   </option>
 
   </select>
 
@@ -1860,31 +3269,57 @@ function returnForm(id){
 
   <button class="btn yellow"
     onclick="submitReturn('${id}')">
+
     Submit Return
+
   </button>
 
- </div>`;
+ </div>
+
+ `;
 }
 
 function submitReturn(id){
 
- let o=findOrder(id);
- if(!o)return;
+ let o=
+  findOrder(id);
 
- o.returnStatus="Requested";
- o.returnReason=document.getElementById("returnReason").value;
- o.returnNote=document.getElementById("returnNote").value;
+ if(!o)
+  return;
+
+ o.returnStatus=
+  "Requested";
+
+ o.returnReason=
+  document.getElementById(
+   "returnReason"
+  ).value;
+
+ o.returnNote=
+  document.getElementById(
+   "returnNote"
+  ).value;
 
  notifications.unshift({
+
   id:uid("N"),
-  text:"Return request submitted for "+id,
-  date:new Date().toISOString(),
+
+  text:
+   "Return request submitted for "+id,
+
+  date:
+   new Date().toISOString(),
+
   read:false
+
  });
 
  save();
 
- toast("Return request submitted");
+ toast(
+  "Return request submitted"
+ );
+
  ordersPage();
 }
 
@@ -1894,9 +3329,13 @@ function exchangeForm(id){
 
  <div class="panel">
 
-  <h2>🔄 Exchange Request</h2>
+  <h2>
+   🔄 Exchange Request
+  </h2>
 
-  <label>New Size</label>
+  <label>
+   New Size
+  </label>
 
   <select id="exchangeSize">
 
@@ -1909,7 +3348,13 @@ function exchangeForm(id){
     "XXL",
     "XXXL",
     "Free Size"
-   ].map(x=>`<option>${x}</option>`).join("")}
+   ].map(x=>`
+
+    <option>
+     ${x}
+    </option>
+
+   `).join("")}
 
   </select>
 
@@ -1918,76 +3363,112 @@ function exchangeForm(id){
 
   <button class="btn yellow"
     onclick="submitExchange('${id}')">
+
     Submit Exchange
+
   </button>
 
- </div>`;
+ </div>
+
+ `;
 }
 
 function submitExchange(id){
 
- let o=findOrder(id);
- if(!o)return;
+ let o=
+  findOrder(id);
 
- o.exchangeStatus="Requested";
- o.exchangeSize=document.getElementById("exchangeSize").value;
- o.exchangeNote=document.getElementById("exchangeNote").value;
+ if(!o)
+  return;
+
+ o.exchangeStatus=
+  "Requested";
+
+ o.exchangeSize=
+  document.getElementById(
+   "exchangeSize"
+  ).value;
+
+ o.exchangeNote=
+  document.getElementById(
+   "exchangeNote"
+  ).value;
 
  save();
 
- toast("Exchange request submitted");
+ toast(
+  "Exchange request submitted"
+ );
+
  ordersPage();
 }
 
 function invoice(id){
 
- const o=findOrder(id);
- if(!o)return;
+ const o=
+  findOrder(id);
+
+ if(!o)
+  return;
 
  app.innerHTML=`
 
  <div class="panel">
 
-  <h2>🧾 ZipCart Invoice</h2>
+  <h2>
+   🧾 ZipCart Invoice
+  </h2>
 
   <p>
-   Order: ${esc(o.id)}
+   Order:
+   ${esc(o.id)}
   </p>
 
   <p>
-   Customer: ${esc(o.customer.name)}
+   Customer:
+   ${esc(o.customer.name)}
   </p>
 
   <p>
-   Items: ${o.items.length}
+   Items:
+   ${o.items.length}
   </p>
 
   <p>
-   Subtotal: ${money(o.subtotal)}
+   Subtotal:
+   ${money(o.subtotal)}
   </p>
 
   <p>
-   Delivery: ${money(o.delivery)}
+   Delivery:
+   ${money(o.delivery)}
   </p>
 
   <p>
-   Fast: ${money(o.fast)}
+   Fast:
+   ${money(o.fast)}
   </p>
 
   <p>
-   Discount: -${money(o.discount)}
+   Discount:
+   -${money(o.discount)}
   </p>
 
   <h2>
-   Total: ${money(o.total)}
+   Total:
+   ${money(o.total)}
   </h2>
 
   <button class="btn"
     onclick="window.print()">
+
     🖨️ Print / Save
+
   </button>
 
- </div>`;
+ </div>
+
+ `;
 }
 
 /* =========================
@@ -1997,15 +3478,24 @@ function invoice(id){
 function toggleWish(id){
 
  if(wishlist.includes(id))
-  wishlist=wishlist.filter(x=>x!==id);
+
+  wishlist=
+   wishlist.filter(
+    x=>x!==id
+   );
+
  else
+
   wishlist.push(id);
 
  save();
 
  if(selectedProduct)
+
   product(selectedProduct.id);
+
  else
+
   wishlistPage();
 }
 
@@ -2016,8 +3506,13 @@ function wishlistPage(){
  <div class="panel">
 
   <h2>
+
    ❤️ Wishlist
-   <span class="count">${wishlist.length}</span>
+
+   <span class="count">
+    ${wishlist.length}
+   </span>
+
   </h2>
 
   <p>
@@ -2029,21 +3524,38 @@ function wishlistPage(){
  <div class="grid">
 
   ${
-   products.filter(p=>wishlist.includes(p.id))
-   .map(productCard).join("")
-   ||`
+   products
+    .filter(
+     p=>wishlist.includes(p.id)
+    )
+    .map(productCard)
+    .join("")
+
+   ||
+
+   `
 
    <div class="panel">
-    <p>Wishlist खाली है।</p>
+
+    <p>
+     Wishlist खाली है।
+    </p>
 
     <button class="btn"
       onclick="show('categories')">
-      Shopping करें
+
+     Shopping करें
+
     </button>
-   </div>`
+
+   </div>
+
+   `
   }
 
- </div>`;
+ </div>
+
+ `;
 }
 
 /* =========================
@@ -2052,7 +3564,11 @@ function wishlistPage(){
 
 function doSearch(){
 
- let q=(document.getElementById("search").value||"").trim();
+ let q=
+  (
+   document.getElementById("search")
+   .value||""
+  ).trim();
 
  if(q)
   searchPage(q);
@@ -2060,20 +3576,28 @@ function doSearch(){
 
 function doSearchText(q){
 
- document.getElementById("search").value=q;
+ document.getElementById(
+  "search"
+ ).value=q;
+
  searchPage(q);
 }
 
 function searchPage(q){
 
- let ps=products.filter(p=>
-  (p.name+" "+p.sub+" "+p.cat)
-  .toLowerCase()
-  .includes(q.toLowerCase())
- );
+ let ps=
+  products.filter(p=>
+
+   (p.name+" "+p.sub+" "+p.cat)
+   .toLowerCase()
+   .includes(q.toLowerCase())
+
+  );
 
  let activePrice="all";
+
  let activeRating=0;
+
  let activeSort="default";
 
  function renderResults(){
@@ -2082,64 +3606,95 @@ function searchPage(q){
 
   if(activePrice!=="all"){
 
-   result=result.filter(p=>{
+   result=
+    result.filter(p=>{
 
-    if(activePrice==="0-500")
-     return p.price<=500;
+     if(activePrice==="0-500")
+      return p.price<=500;
 
-    if(activePrice==="500-1000")
-     return p.price>500&&p.price<=1000;
+     if(activePrice==="500-1000")
+      return p.price>500&&p.price<=1000;
 
-    if(activePrice==="1000-1500")
-     return p.price>1000&&p.price<=1500;
+     if(activePrice==="1000-1500")
+      return p.price>1000&&p.price<=1500;
 
-    if(activePrice==="1500-2000")
-     return p.price>1500&&p.price<=2000;
+     if(activePrice==="1500-2000")
+      return p.price>1500&&p.price<=2000;
 
-    if(activePrice==="2000-3000")
-     return p.price>2000&&p.price<=3000;
+     if(activePrice==="2000-3000")
+      return p.price>2000&&p.price<=3000;
 
-    if(activePrice==="3000-5000")
-     return p.price>3000&&p.price<=5000;
+     if(activePrice==="3000-5000")
+      return p.price>3000&&p.price<=5000;
 
-    if(activePrice==="5000-10000")
-     return p.price>5000&&p.price<=10000;
+     if(activePrice==="5000-10000")
+      return p.price>5000&&p.price<=10000;
 
-    if(activePrice==="10000+")
-     return p.price>10000;
+     if(activePrice==="10000+")
+      return p.price>10000;
 
-    return true;
-   });
+     return true;
+    });
   }
 
   if(activeRating>0)
-   result=result.filter(p=>p.rating>=activeRating);
+
+   result=
+    result.filter(
+     p=>p.rating>=activeRating
+    );
 
   if(activeSort==="low")
-   result.sort((a,b)=>a.price-b.price);
+
+   result.sort(
+    (a,b)=>a.price-b.price
+   );
 
   if(activeSort==="high")
-   result.sort((a,b)=>b.price-a.price);
+
+   result.sort(
+    (a,b)=>b.price-a.price
+   );
 
   if(activeSort==="rating")
-   result.sort((a,b)=>b.rating-a.rating);
 
-  const box=document.getElementById("searchResults");
-  const count=document.getElementById("resultCount");
+   result.sort(
+    (a,b)=>b.rating-a.rating
+   );
+
+  const box=
+   document.getElementById(
+    "searchResults"
+   );
+
+  const count=
+   document.getElementById(
+    "resultCount"
+   );
 
   if(count)
-   count.textContent=result.length+" विकल्प मिले";
+
+   count.textContent=
+    result.length+
+    " विकल्प मिले";
 
   if(box)
-   box.innerHTML=result.map(productCard).join("")
-   ||`<div class="panel">कोई product नहीं मिला।</div>`;
+
+   box.innerHTML=
+    result.map(productCard).join("")
+    ||
+    `<div class="panel">
+      कोई product नहीं मिला।
+     </div>`;
  }
 
  app.innerHTML=`
 
  <button class="pill"
    onclick="show('home')">
-   ← Home
+
+  ← Home
+
  </button>
 
  <div class="panel">
@@ -2152,7 +3707,9 @@ function searchPage(q){
    ${ps.length} विकल्प मिले
   </p>
 
-  <h3>💰 Price</h3>
+  <h3>
+   💰 Price
+  </h3>
 
   <div>
 
@@ -2203,64 +3760,94 @@ function searchPage(q){
 
   </div>
 
-  <h3>⭐ Rating</h3>
+  <h3>
+   ⭐ Rating
+  </h3>
 
   <button class="pill"
     onclick="ratingFilter(0)">
-    All
+
+   All
+
   </button>
 
   <button class="pill"
     onclick="ratingFilter(4)">
-    ⭐ 4+
+
+   ⭐ 4+
+
   </button>
 
   <button class="pill"
     onclick="ratingFilter(4.5)">
-    ⭐ 4.5+
+
+   ⭐ 4.5+
+
   </button>
 
-  <h3>↕️ Sort</h3>
+  <h3>
+   ↕️ Sort
+  </h3>
 
   <button class="pill"
     onclick="sortProducts('low')">
-    Price Low-High
+
+   Price Low-High
+
   </button>
 
   <button class="pill"
     onclick="sortProducts('high')">
-    Price High-Low
+
+   Price High-Low
+
   </button>
 
   <button class="pill"
     onclick="sortProducts('rating')">
-    Highest Rating
+
+   Highest Rating
+
   </button>
 
   <button class="pill"
     onclick="sortProducts('default')">
-    Popular
+
+   Popular
+
   </button>
 
  </div>
 
  <div id="searchResults"
    class="grid">
- </div>`;
+
+ </div>
+
+ `;
 
  window.priceFilter=v=>{
+
   activePrice=v;
+
   renderResults();
+
  };
 
  window.ratingFilter=v=>{
+
   activeRating=v;
+
   renderResults();
+
  };
 
  window.sortProducts=v=>{
+
   activeSort=v;
+
   renderResults();
+
  };
 
  renderResults();
@@ -2268,10 +3855,20 @@ function searchPage(q){
 
 function voiceSearch(){
 
- if(!("webkitSpeechRecognition" in window||
-      "SpeechRecognition" in window)){
+ if(
+  !(
+   "webkitSpeechRecognition"
+   in window
+   ||
+   "SpeechRecognition"
+   in window
+  )
+ ){
 
-  toast("इस browser में voice search उपलब्ध नहीं है");
+  toast(
+   "इस browser में voice search उपलब्ध नहीं है"
+  );
+
   return;
  }
 
@@ -2282,6 +3879,7 @@ function voiceSearch(){
  const r=new R();
 
  const langMap={
+
   hi:"hi-IN",
   en:"en-US",
   gu:"gu-IN",
@@ -2292,21 +3890,32 @@ function voiceSearch(){
   kn:"kn-IN",
   ml:"ml-IN",
   pa:"pa-IN"
+
  };
 
- r.lang=langMap[selectedLang]||"hi-IN";
+ r.lang=
+  langMap[selectedLang]||
+  "hi-IN";
 
  r.onresult=e=>{
 
-  let q=e.results[0][0].transcript;
+  let q=
+   e.results[0][0]
+   .transcript;
 
-  document.getElementById("search").value=q;
+  document.getElementById(
+   "search"
+  ).value=q;
 
   searchPage(q);
  };
 
  r.onerror=()=>{
-  toast("Voice search पूरा नहीं हो सका");
+
+  toast(
+   "Voice search पूरा नहीं हो सका"
+  );
+
  };
 
  r.start();
@@ -2314,14 +3923,22 @@ function voiceSearch(){
 
 function speak(text){
 
- if(!("speechSynthesis" in window)){
-  toast("Voice सुविधा उपलब्ध नहीं है");
+ if(
+  !("speechSynthesis" in window)
+ ){
+
+  toast(
+   "Voice सुविधा उपलब्ध नहीं है"
+  );
+
   return;
  }
 
- const u=new SpeechSynthesisUtterance(text);
+ const u=
+  new SpeechSynthesisUtterance(text);
 
  const lm={
+
   hi:"hi-IN",
   en:"en-US",
   gu:"gu-IN",
@@ -2333,11 +3950,15 @@ function speak(text){
   ml:"ml-IN",
   pa:"pa-IN",
   ur:"ur-IN"
+
  };
 
- u.lang=lm[selectedLang]||"hi-IN";
+ u.lang=
+  lm[selectedLang]||
+  "hi-IN";
 
  speechSynthesis.cancel();
+
  speechSynthesis.speak(u);
 }
 
@@ -2351,61 +3972,89 @@ function reviewForm(id){
 
  <div class="panel">
 
-  <h2>⭐ Write Review</h2>
+  <h2>
+   ⭐ Write Review
+  </h2>
 
   <select id="reviewRating">
+
    <option>5</option>
    <option>4</option>
    <option>3</option>
    <option>2</option>
    <option>1</option>
+
   </select>
 
   <textarea id="reviewText"
     placeholder="अपना review लिखें"></textarea>
 
   <label>
+
    📷 Photo
+
    <input id="reviewPhoto"
      type="file"
      accept="image/*">
+
   </label>
 
   <label>
+
    🎥 Video
+
    <input id="reviewVideo"
      type="file"
      accept="video/*">
+
   </label>
 
   <button class="btn yellow"
     onclick="submitReview(${id})">
+
     Submit Review
+
   </button>
 
- </div>`;
+ </div>
+
+ `;
 }
 
 function submitReview(id){
 
- let text=document
-  .getElementById("reviewText")
-  .value.trim();
+ let text=
+  document
+   .getElementById("reviewText")
+   .value
+   .trim();
 
  if(!text){
+
   toast("Review लिखें");
+
   return;
  }
 
  reviews.push({
+
   id:uid("R"),
+
   productId:id,
+
   rating:Number(
-   document.getElementById("reviewRating").value
+   document.getElementById(
+    "reviewRating"
+   ).value
   ),
+
   text,
+
   verified:true,
-  date:new Date().toISOString()
+
+  date:
+   new Date().toISOString()
+
  });
 
  save();
@@ -2425,28 +4074,44 @@ function accountPage(){
 
  <div class="panel">
 
-  <h2>👤 Account</h2>
+  <h2>
+   👤 Account
+  </h2>
 
   <div class="form">
 
-   <label>नाम</label>
+   <label>
+    नाम
+   </label>
+
    <input id="profileName"
      value="${esc(profile?.name||"")}">
 
-   <label>Mobile</label>
+   <label>
+    Mobile
+   </label>
+
    <input id="profileMobile"
      value="${esc(profile?.mobile||"")}">
 
-   <label>Email</label>
+   <label>
+    Email
+   </label>
+
    <input id="profileEmail"
      value="${esc(profile?.email||"")}">
 
-   <label>Address</label>
+   <label>
+    Address
+   </label>
+
    <textarea id="profileAddress">${esc(profile?.address||"")}</textarea>
 
    <button class="btn yellow"
      onclick="saveProfile()">
+
      Save Profile
+
    </button>
 
   </div>
@@ -2455,15 +4120,21 @@ function accountPage(){
 
  <div class="panel">
 
-  <h2>🌐 Language</h2>
+  <h2>
+   🌐 Language
+  </h2>
 
   <select onchange="setLanguage(this.value)">
 
    ${Object.keys(langs).map(x=>`
+
     <option value="${x}"
       ${x===selectedLang?"selected":""}>
+
       ${x.toUpperCase()}
+
     </option>
+
    `).join("")}
 
   </select>
@@ -2475,77 +4146,91 @@ function accountPage(){
 
   <button class="btn"
     onclick="speak('ZipCart language and accessibility')">
+
     🔊 Voice Test
+
   </button>
 
  </div>
 
  <div class="panel">
 
-  <h2>🔔 Notifications</h2>
+  <h2>
+   🔔 Notifications
+  </h2>
 
   <button class="btn"
     onclick="show('notifications')">
+
     Notification Center
+
   </button>
 
   <button class="pill"
     onclick="requestNotifications()">
+
     Enable Browser Notifications
+
   </button>
 
  </div>
 
  <div class="panel">
 
-  <h2>♿ Accessibility</h2>
+  <h2>
+   ♿ Accessibility
+  </h2>
 
   <button class="pill"
     onclick="document.body.style.fontSize='18px'">
+
     Large Text
+
   </button>
 
   <button class="pill"
     onclick="document.body.style.fontSize='16px'">
+
     Normal Text
+
   </button>
 
   <button class="pill"
     onclick="speak('ZipCart accessibility test')">
+
     Voice Test
+
   </button>
 
  </div>
 
- <div class="panel">
-
-  <h2>⚙️ Data</h2>
-
-  <button class="pill"
-    onclick="exportData()">
-    Export My Demo Data
-  </button>
-
-  <button class="pill"
-    onclick="resetDemo()">
-    Reset Demo Data
-  </button>
-
-  <button class="btn red"
-    onclick="logout()">
-    Logout
-  </button>
-
- </div>`;
+ `;
 }
 
 function saveProfile(){
 
  profile={
-  name:document.getElementById("profileName").value.trim(),
-  mobile:document.getElementById("profileMobile").value.trim(),
-  email:document.getElementById("profileEmail").value.trim(),
-  address:document.getElementById("profileAddress").value.trim()
+
+  name:
+   document.getElementById(
+    "profileName"
+   ).value.trim(),
+
+  mobile:
+   document.getElementById(
+    "profileMobile"
+   ).value.trim(),
+
+  email:
+   document.getElementById(
+    "profileEmail"
+   ).value.trim(),
+
+  address:
+   document.getElementById(
+    "profileAddress"
+   ).value.trim()
+
  };
 
  save();
@@ -2557,33 +4242,56 @@ function setLanguage(v){
 
  selectedLang=v;
 
- localStorage.setItem("zc_lang",v);
+ localStorage.setItem(
+  "zc_lang",
+  v
+ );
 
- document.getElementById("search").placeholder=
-  langs[v]?.search||"Search";
+ document.getElementById(
+  "search"
+ ).placeholder=
+  langs[v]?.search||
+  "Search";
 
  toast("Language changed");
 }
 
 function requestNotifications(){
 
- if(!("Notification" in window)){
-  toast("Browser notification supported नहीं है");
+ if(
+  !("Notification" in window)
+ ){
+
+  toast(
+   "Browser notification supported नहीं है"
+  );
+
   return;
  }
 
- Notification.requestPermission().then(p=>{
-  toast(
-   p==="granted"
-   ?"Notifications enabled"
-   :"Notifications not enabled"
-  );
- });
+ Notification
+  .requestPermission()
+  .then(p=>{
+
+   toast(
+
+    p==="granted"
+    ?
+    "Notifications enabled"
+    :
+    "Notifications not enabled"
+
+   );
+
+  });
 }
 
 function languageModal(){
 
- const modal=document.getElementById("modal");
+ const modal=
+  document.getElementById(
+   "modal"
+  );
 
  modal.className="modal";
 
@@ -2591,48 +4299,70 @@ function languageModal(){
 
  <div class="modalBox">
 
-  <h2>🌐 भाषा चुनें</h2>
+  <h2>
+   🌐 भाषा चुनें
+  </h2>
 
   <div class="form">
 
    <select id="modalLang">
 
     ${Object.keys(langs).map(x=>`
+
      <option value="${x}"
       ${x===selectedLang?"selected":""}>
+
       ${x.toUpperCase()}
+
      </option>
+
     `).join("")}
 
    </select>
 
    <button class="btn yellow"
      onclick="
-      setLanguage(document.getElementById('modalLang').value);
+      setLanguage(
+       document.getElementById('modalLang').value
+      );
       closeModal();
      ">
+
      Save Language
+
    </button>
 
    <button class="btn"
      onclick="closeModal()">
+
      Close
+
    </button>
 
   </div>
 
- </div>`;
+ </div>
+
+ `;
 }
 
 function closeModal(){
- const modal=document.getElementById("modal");
+
+ const modal=
+  document.getElementById(
+   "modal"
+  );
+
  modal.className="hidden";
+
  modal.innerHTML="";
 }
 
 function notificationPage(){
 
- notifications.forEach(n=>n.read=true);
+ notifications.forEach(
+  n=>n.read=true
+ );
 
  save();
 
@@ -2640,70 +4370,103 @@ function notificationPage(){
 
  <div class="panel">
 
-  <h2>🔔 Notification Center</h2>
+  <h2>
+   🔔 Notification Center
+  </h2>
 
   ${
-   notifications.map(n=>`
+   notifications
+    .map(n=>`
+
     <div class="card">
 
-     <b>${esc(n.text)}</b>
+     <b>
+      ${esc(n.text)}
+     </b>
 
      <p class="small">
-      ${new Date(n.date).toLocaleString("en-IN")}
+      ${new Date(n.date)
+       .toLocaleString("en-IN")}
      </p>
 
     </div>
+
    `).join("")
-   ||"<p>No notifications.</p>"
+
+   ||
+
+   "<p>No notifications.</p>"
   }
 
  </div>
 
  <div class="panel">
 
-  <h3>Notification Settings</h3>
+  <h3>
+   Notification Settings
+  </h3>
 
   <label>
+
    <input type="checkbox" checked>
+
    Order updates
+
   </label>
 
   <br>
 
   <label>
+
    <input type="checkbox" checked>
+
    Delivery updates
+
   </label>
 
   <br>
 
   <label>
+
    <input type="checkbox" checked>
+
    Offers
+
   </label>
 
   <br>
 
   <label>
+
    <input type="checkbox" checked>
+
    Price drop
+
   </label>
 
   <br>
 
   <label>
+
    <input type="checkbox" checked>
+
    Back in stock
+
   </label>
 
   <br>
 
   <label>
+
    <input type="checkbox" checked>
+
    Return / Exchange
+
   </label>
 
- </div>`;
+ </div>
+
+ `;
 }
 
 /* =========================
@@ -2716,27 +4479,69 @@ function supportPage(){
 
  <div class="panel">
 
-  <h2>💬 Customer Support</h2>
+  <h2>
+   💬 Customer Support
+  </h2>
 
   <div class="form">
 
-   <label>Problem</label>
+   <label>
+    Problem
+   </label>
 
    <select id="supportProblem">
 
-    <option>Order not arrived</option>
-    <option>Payment taken / Order not created</option>
-    <option>Refund not received</option>
-    <option>Return / Exchange</option>
-    <option>Delivery</option>
-    <option>Wrong / Damaged Product</option>
-    <option>Seller</option>
-    <option>Gift Card</option>
-    <option>Coupon / Discount</option>
-    <option>Medicine / Prescription</option>
-    <option>Travel</option>
-    <option>Bill / Recharge</option>
-    <option>Other</option>
+    <option>
+     Order not arrived
+    </option>
+
+    <option>
+     Payment taken / Order not created
+    </option>
+
+    <option>
+     Refund not received
+    </option>
+
+    <option>
+     Return / Exchange
+    </option>
+
+    <option>
+     Delivery
+    </option>
+
+    <option>
+     Wrong / Damaged Product
+    </option>
+
+    <option>
+     Seller
+    </option>
+
+    <option>
+     Gift Card
+    </option>
+
+    <option>
+     Coupon / Discount
+    </option>
+
+    <option>
+     Medicine / Prescription
+    </option>
+
+    <option>
+     Travel
+    </option>
+
+    <option>
+     Bill / Recharge
+    </option>
+
+    <option>
+     Other
+    </option>
 
    </select>
 
@@ -2753,7 +4558,9 @@ function supportPage(){
 
    <button class="btn yellow"
      onclick="submitTicket()">
+
      Raise Ticket
+
    </button>
 
   </div>
@@ -2762,39 +4569,63 @@ function supportPage(){
 
  <div class="panel">
 
-  <h3>☎️ Helpline / Chat</h3>
+  <h3>
+   ☎️ Helpline / Chat
+  </h3>
 
   <button class="pill"
     onclick="toast('Support call flow will connect to official helpline after backend setup')">
+
     Call Support
+
   </button>
 
   <button class="pill"
     onclick="toast('Support chat opened')">
+
     Chat with ZipCart
+
   </button>
 
- </div>`;
+ </div>
+
+ `;
 }
 
 function submitTicket(){
 
- let text=document
-  .getElementById("supportText")
-  .value.trim();
+ let text=
+  document
+   .getElementById(
+    "supportText"
+   )
+   .value
+   .trim();
 
  if(!text){
+
   toast("Problem लिखें");
+
   return;
  }
 
- let id=uid("TICKET");
+ let id=
+  uid("TICKET");
 
  notifications.unshift({
+
   id:uid("N"),
-  text:"Support ticket "+id+" created",
-  date:new Date().toISOString(),
+
+  text:
+   "Support ticket "+
+   id+
+   " created",
+
+  date:
+   new Date().toISOString(),
+
   read:false
+
  });
 
  save();
@@ -2803,11 +4634,17 @@ function submitTicket(){
 
  <div class="panel center">
 
-  <h2>✅ Ticket Created</h2>
+  <h2>
+   ✅ Ticket Created
+  </h2>
 
-  <h3>${id}</h3>
+  <h3>
+   ${id}
+  </h3>
 
-  <p>Status: Open</p>
+  <p>
+   Status: Open
+  </p>
 
   <p>
    Support team आपके issue को review करेगी।
@@ -2815,10 +4652,14 @@ function submitTicket(){
 
   <button class="btn"
     onclick="show('home')">
+
     Home
+
   </button>
 
- </div>`;
+ </div>
+
+ `;
 }
 
 /* =========================
@@ -2830,8 +4671,11 @@ function policyPage(type){
  let data={
 
   terms:[
+
    "📜 Terms & Rules",
+
    `
+
    ZipCart पर customers और अन्य applicable participants को
    Terms & Rules स्वीकार करने होंगे।
 
@@ -2850,13 +4694,18 @@ function policyPage(type){
 
    Real production version में legal team/company-approved
    Terms का version, date और consent record securely
-   store किया जाएगा।
+   store किया जाएगा.
+
    `
+
   ],
 
   privacy:[
+
    "🔐 Privacy",
+
    `
+
    ZipCart को production में personal information को
    applicable privacy/data-protection laws के अनुसार
    process करना होगा।
@@ -2871,12 +4720,17 @@ function policyPage(type){
    Customer को किसी दूसरे customer, seller, rider या
    company के private financial information तक access
    नहीं दिया जाएगा।
+
    `
+
   ],
 
   return:[
+
    "↩️ Return / Refund Policy",
+
    `
+
    Return, exchange, replacement और refund product/category
    policy और applicable law के अनुसार होंगे।
 
@@ -2889,7 +4743,9 @@ function policyPage(type){
    <br><br>
 
    Refund status customer के order से linked रहेगा।
+
    `
+
   ]
 
  };
@@ -2898,16 +4754,24 @@ function policyPage(type){
 
  <div class="panel">
 
-  <h2>${data[type][0]}</h2>
+  <h2>
+   ${data[type][0]}
+  </h2>
 
-  <p>${data[type][1]}</p>
+  <p>
+   ${data[type][1]}
+  </p>
 
   <button class="btn"
     onclick="show('home')">
+
     ← Home
+
   </button>
 
- </div>`;
+ </div>
+
+ `;
 }
 
 /* =========================
@@ -2917,17 +4781,26 @@ function policyPage(type){
 function serviceForm(type){
 
  let title=
+
   type==="travel"
-  ?"🚌 Travel"
-  :type==="bills"
-  ?"🧾 Bills & Recharge"
-  :"💊 Medicines";
+  ?
+  "✈️ Travel Tickets"
+
+  :
+  type==="bills"
+  ?
+  "💳 Bills & Recharge"
+
+  :
+  "💊 Medicines";
 
  app.innerHTML=`
 
  <div class="panel">
 
-  <h2>${title}</h2>
+  <h2>
+   ${title}
+  </h2>
 
   <div class="form">
 
@@ -2940,30 +4813,42 @@ function serviceForm(type){
    <input id="svcRef"
      placeholder="${
       type==="travel"
-      ?"From / To / Date"
-      :type==="bills"
-      ?"Account / Consumer Number"
-      :"Medicine / Product"
+      ?
+      "From / To / Date"
+      :
+      type==="bills"
+      ?
+      "Account / Consumer Number"
+      :
+      "Medicine / Product"
      }">
 
    ${
     type==="medicine"
-    ?`
+    ?
+    `
+
      <input id="prescription"
        type="file"
        accept="image/*,.pdf">
 
      <p class="notice">
+
       Prescription medicines के लिए applicable
       prescription/licensing verification required होगी।
+
      </p>
+
     `
-    :""
+    :
+    ""
    }
 
    <button class="btn yellow"
      onclick="submitService('${type}')">
-     Continue
+
+    Continue
+
    </button>
 
   </div>
@@ -2971,24 +4856,37 @@ function serviceForm(type){
  </div>
 
  <div class="notice">
+
   Live booking/payment/recharge APIs अभी connect नहीं हैं।
   Production में verified service providers/API integration
   जरूरी होगा।
- </div>`;
+
+ </div>
+
+ `;
 }
 
 function submitService(type){
 
- let ref=document
-  .getElementById("svcRef")
-  .value.trim();
+ let ref=
+  document
+   .getElementById("svcRef")
+   .value
+   .trim();
 
  if(!ref){
-  toast("Required details भरें");
+
+  toast(
+   "Required details भरें"
+  );
+
   return;
  }
 
- toast(type+" request saved as prototype");
+ toast(
+  type+
+  " request saved as prototype"
+ );
 }
 
 /* =========================
@@ -3001,7 +4899,9 @@ function openBoxFlow(orderId){
 
  <div class="panel">
 
-  <h2>📦 Open Box Delivery</h2>
+  <h2>
+   📦 Open Box Delivery
+  </h2>
 
   <p>
    Order: ${esc(orderId)}
@@ -3012,61 +4912,84 @@ function openBoxFlow(orderId){
   </p>
 
   <label>
+
    Delivery evidence video where required/allowed:
-   <input type="file" accept="video/*">
+
+   <input type="file"
+     accept="video/*">
+
   </label>
 
   <br><br>
 
   <button class="btn yellow"
     onclick="toast('Evidence recorded in prototype flow')">
+
     Upload Evidence
+
   </button>
 
   <button class="btn green"
     onclick="toast('Customer accepted package')">
+
     Customer Accepted
+
   </button>
 
   <button class="btn red"
     onclick="toast('Issue reported for review')">
+
     Report Issue
+
   </button>
 
   <p class="small">
+
    Missing evidence पर production policy के अनुसार
    review/exception होगा; automatic salary deduction
    hard-coded नहीं है।
+
   </p>
 
- </div>`;
+ </div>
+
+ `;
 }
 
 /* =========================
-   DATA EXPORT / RESET
+   DATA FUNCTIONS
+   INTERNAL USE ONLY
 ========================= */
 
 function exportData(){
 
  const data={
+
   profile,
   cart,
   wishlist,
   ordersData,
   notifications,
   reviews,
-  exportedAt:new Date().toISOString()
+  exportedAt:
+   new Date().toISOString()
+
  };
 
- const blob=new Blob(
-  [JSON.stringify(data,null,2)],
-  {type:"application/json"}
- );
+ const blob=
+  new Blob(
+   [JSON.stringify(data,null,2)],
+   {type:"application/json"}
+  );
 
- const a=document.createElement("a");
+ const a=
+  document.createElement("a");
 
- a.href=URL.createObjectURL(blob);
- a.download="zipcart-demo-backup.json";
+ a.href=
+  URL.createObjectURL(blob);
+
+ a.download=
+  "zipcart-demo-backup.json";
 
  a.click();
 
@@ -3078,26 +5001,37 @@ function exportData(){
 function resetDemo(){
 
  cart=[];
+
  wishlist=[];
+
  ordersData=[];
+
  notifications=[];
+
  reviews=[];
+
  profile=null;
 
  save();
 
- toast("Demo data reset");
+ toast(
+  "Demo data reset"
+ );
 
  home();
 }
 
 function logout(){
 
- localStorage.removeItem("zc_profile");
+ localStorage.removeItem(
+  "zc_profile"
+ );
 
  profile=null;
 
- toast("Logged out");
+ toast(
+  "Logged out"
+ );
 
  show("home");
 }
@@ -3106,13 +5040,17 @@ function logout(){
    INITIALIZE
 ========================= */
 
-document.getElementById("search").placeholder=
- langs[selectedLang]?.search||"Search products";
+document.getElementById(
+ "search"
+).placeholder=
+ langs[selectedLang]?.search||
+ "Search products";
 
 updateCounts();
 
 home();
 
 </script>
+
 </body>
 </html>
