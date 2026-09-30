@@ -218,6 +218,7 @@ button{
   position:relative;
 }
 
+/* Product photo area */
 .productEmoji{
   height:125px;
   display:flex;
@@ -226,24 +227,34 @@ button{
   font-size:70px;
   background:#fdf2f8;
   border-radius:10px;
+  position:relative;
+  cursor:pointer;
 }
 
+/* Wishlist heart directly on product photo */
 .heart{
   position:absolute;
   top:8px;
   right:8px;
-  width:38px;
-  height:38px;
+  width:44px;
+  height:44px;
   border-radius:50%;
   background:#fff;
-  border:1px solid #f9a8d4;
+  border:2px solid #f9a8d4;
   color:var(--pink);
-  font-size:22px;
-  z-index:2;
+  font-size:28px;
+  line-height:1;
+  z-index:5;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 2px 7px #0002;
 }
 
 .heart:hover{
   background:#fce7f3;
+  border-color:var(--pink);
+  transform:scale(1.05);
 }
 
 .price{
@@ -364,19 +375,6 @@ textarea{
   color:#fff;
 }
 
-footer{
-  margin-top:30px;
-  padding:25px;
-  background:#32105f;
-  color:#fff;
-}
-
-footer button{
-  background:none;
-  color:#f9a8d4;
-  padding:5px;
-}
-
 .modal{
   position:fixed;
   inset:0;
@@ -455,6 +453,33 @@ footer button{
   transform:scale(1.05);
 }
 
+/* =========================
+   CUSTOMER CARE
+========================= */
+
+.customerCare{
+  background:#fff;
+  border:2px solid #f9a8d4;
+  border-radius:12px;
+  padding:15px;
+  margin-top:15px;
+}
+
+.customerCare h3{
+  color:var(--primary);
+  margin-top:0;
+}
+
+.customerCareNumber{
+  font-size:20px;
+  font-weight:bold;
+  color:var(--pink);
+}
+
+.customerCare a{
+  text-decoration:none;
+}
+
 .serviceName{
   font-size:14px;
   line-height:18px;
@@ -501,6 +526,12 @@ footer button{
     font-size:55px;
   }
 
+  .heart{
+    width:40px;
+    height:40px;
+    font-size:25px;
+  }
+
   .quickServices{
     grid-template-columns:repeat(4,1fr);
     gap:5px;
@@ -515,6 +546,10 @@ footer button{
   .serviceName{
     font-size:11px;
     line-height:14px;
+  }
+
+  .customerCareNumber{
+    font-size:17px;
   }
 }
 </style>
@@ -632,32 +667,6 @@ footer button{
 
 <main class="page" id="app"></main>
 
-<footer>
-
-  <div class="center">
-
-    <h3>ZipCart</h3>
-
-    <button onclick="show('terms')">
-      Terms & Rules
-    </button>
-
-    <button onclick="show('privacy')">
-      Privacy
-    </button>
-
-    <button onclick="show('returnPolicy')">
-      Return / Refund
-    </button>
-
-    <button onclick="show('support')">
-      Support
-    </button>
-
-  </div>
-
-</footer>
-
 <div id="modal" class="hidden"></div>
 
 <script>
@@ -665,6 +674,15 @@ footer button{
 /* =========================
    ZIPCART CORE
 ========================= */
+
+/*
+  IMPORTANT:
+  आपके current code में actual helpline number नहीं था।
+  इसलिए कोई नकली number नहीं बनाया गया है।
+
+  अपना official Customer Care number नीचे डालें:
+*/
+const HELPLINE_NUMBER="";
 
 const app=document.getElementById("app");
 
@@ -840,7 +858,6 @@ grocery:[
 };
 
 const sareeTypes=[
-
 "Banarasi",
 "Silk",
 "Cotton",
@@ -853,11 +870,9 @@ const sareeTypes=[
 "Embroidery",
 "Printed",
 "Linen"
-
 ];
 
 const lehengaTypes=[
-
 "Bridal",
 "Party Wear",
 "Net",
@@ -870,7 +885,6 @@ const lehengaTypes=[
 "Floral",
 "Simple/Lightweight",
 "Girls/Kids"
-
 ];
 
 const products=[
@@ -1334,8 +1348,7 @@ function uid(prefix="ZC"){
  Date.now().toString(36).toUpperCase()+
  "-" +
  Math.random().toString(36)
- .slice(2,7)
- .toUpperCase();
+ .slice(2,7).toUpperCase();
 }
 
 function money(n){
@@ -1343,6 +1356,82 @@ function money(n){
  return "₹"+
  Number(n||0)
  .toLocaleString("en-IN");
+}
+
+/* =========================
+   CUSTOMER CARE
+========================= */
+
+function customerCare(){
+
+ const number=HELPLINE_NUMBER.trim();
+
+ if(number){
+
+  return `
+
+  <div class="customerCare">
+
+   <h3>
+    📞 Customer Care / Help
+   </h3>
+
+   <p>
+    Shopping, payment, delivery, return या order में
+    कोई समस्या हो तो हमसे संपर्क करें।
+   </p>
+
+   <div class="customerCareNumber">
+
+    <a href="tel:${esc(number)}">
+
+     📞 ${esc(number)}
+
+    </a>
+
+   </div>
+
+   <button class="btn"
+     onclick="show('support')">
+
+    💬 Help & Support
+
+   </button>
+
+  </div>
+
+  `;
+
+ }
+
+ return `
+
+ <div class="customerCare">
+
+  <h3>
+   📞 Customer Care / Help
+  </h3>
+
+  <p>
+   Shopping, payment, delivery, return या order में
+   कोई समस्या हो तो Customer Care से संपर्क करें।
+  </p>
+
+  <p class="small">
+   Official helpline number अभी setup नहीं किया गया है।
+   Number जोड़ने के बाद यहाँ सीधे Call का option दिखाई देगा।
+  </p>
+
+  <button class="btn"
+    onclick="show('support')">
+
+   💬 Help & Support
+
+  </button>
+
+ </div>
+
+ `;
 }
 
 function show(page){
@@ -1558,6 +1647,11 @@ function home(){
  `;
 }
 
+/* =========================
+   PRODUCT CARD
+   Wishlist is ONLY on photo
+========================= */
+
 function productCard(p){
 
  let liked=
@@ -1567,16 +1661,19 @@ function productCard(p){
 
  <div class="card">
 
-  <button class="heart"
-    aria-label="Wishlist"
-    onclick="toggleWish(${p.id})">
-
-    ${liked?"❤️":"🤍"}
-
-  </button>
-
   <div class="productEmoji"
     onclick="product(${p.id})">
+
+    <button
+      type="button"
+      class="heart"
+      aria-label="Wishlist"
+      title="${liked?"Remove from Wishlist":"Add to Wishlist"}"
+      onclick="event.stopPropagation();toggleWish(${p.id})">
+
+      ${liked?"❤️":"♡"}
+
+    </button>
 
     ${p.emoji}
 
@@ -1617,13 +1714,6 @@ function productCard(p){
     onclick="addCart(${p.id})">
 
     🛒 Add
-
-  </button>
-
-  <button class="pill"
-    onclick="toggleWish(${p.id})">
-
-    ${liked?"❤️":"🤍"}
 
   </button>
 
@@ -1983,6 +2073,17 @@ function product(id){
    <div class="productEmoji"
      style="width:220px">
 
+     <button
+       type="button"
+       class="heart"
+       aria-label="Wishlist"
+       title="${liked?"Remove from Wishlist":"Add to Wishlist"}"
+       onclick="event.stopPropagation();toggleWish(${p.id})">
+
+       ${liked?"❤️":"♡"}
+
+     </button>
+
      ${p.emoji}
 
    </div>
@@ -2051,13 +2152,6 @@ function product(id){
        onclick="buyNow(${p.id})">
 
        ⚡ Buy Now
-
-     </button>
-
-     <button class="pill"
-       onclick="toggleWish(${p.id})">
-
-       ${liked?"❤️":"🤍"} Wishlist
 
      </button>
 
@@ -2439,9 +2533,12 @@ function cartPage(){
 
   </button>
 
+  ${customerCare()}
+
  </div>
 
  `;
+
 }
 
 function changeQty(id,delta){
@@ -2709,9 +2806,12 @@ function checkoutPage(){
 
   </button>
 
+  ${customerCare()}
+
  </div>
 
  `;
+
 }
 
 function placeOrder(){
@@ -2896,9 +2996,12 @@ function orderSuccess(o){
 
   </button>
 
+  ${customerCare()}
+
  </div>
 
  `;
+
 }
 
 /* =========================
@@ -2923,6 +3026,8 @@ function ordersPage(){
     Continue Shopping
 
    </button>
+
+   ${customerCare()}
 
   </div>
 
@@ -2963,6 +3068,8 @@ function ordersPage(){
   </div>
 
  </div>
+
+ ${customerCare()}
 
  `;
 
@@ -3104,6 +3211,7 @@ function renderOrders(q){
  </div>
 
  `;
+
 }
 
 function findOrder(id){
@@ -3177,9 +3285,12 @@ function trackOrder(id){
    delivery system.
   </p>
 
+  ${customerCare()}
+
  </div>
 
  `;
+
 }
 
 function cancelOrder(id){
@@ -3274,9 +3385,12 @@ function returnForm(id){
 
   </button>
 
+  ${customerCare()}
+
  </div>
 
  `;
+
 }
 
 function submitReturn(id){
@@ -3368,9 +3482,12 @@ function exchangeForm(id){
 
   </button>
 
+  ${customerCare()}
+
  </div>
 
  `;
+
 }
 
 function submitExchange(id){
@@ -3466,9 +3583,12 @@ function invoice(id){
 
   </button>
 
+  ${customerCare()}
+
  </div>
 
  `;
+
 }
 
 /* =========================
@@ -3490,13 +3610,16 @@ function toggleWish(id){
 
  save();
 
- if(selectedProduct)
+ if(selectedProduct){
 
   product(selectedProduct.id);
 
- else
+ }else{
 
   wishlistPage();
+
+ }
+
 }
 
 function wishlistPage(){
@@ -3556,6 +3679,7 @@ function wishlistPage(){
  </div>
 
  `;
+
 }
 
 /* =========================
@@ -4019,6 +4143,7 @@ function reviewForm(id){
  </div>
 
  `;
+
 }
 
 function submitReview(id){
@@ -4205,6 +4330,7 @@ function accountPage(){
  </div>
 
  `;
+
 }
 
 function saveProfile(){
@@ -4344,6 +4470,7 @@ function languageModal(){
  </div>
 
  `;
+
 }
 
 function closeModal(){
@@ -4467,6 +4594,7 @@ function notificationPage(){
  </div>
 
  `;
+
 }
 
 /* =========================
@@ -4475,6 +4603,8 @@ function notificationPage(){
 
 function supportPage(){
 
+ const number=HELPLINE_NUMBER.trim();
+
  app.innerHTML=`
 
  <div class="panel">
@@ -4482,6 +4612,42 @@ function supportPage(){
   <h2>
    💬 Customer Support
   </h2>
+
+  ${
+   number
+   ?
+   `
+   <div class="customerCare">
+
+    <h3>
+     ☎️ Official Customer Care
+    </h3>
+
+    <div class="customerCareNumber">
+
+     <a href="tel:${esc(number)}">
+      📞 ${esc(number)}
+     </a>
+
+    </div>
+
+    <p>
+     Shopping, payment, order, delivery,
+     return या refund से जुड़ी मदद के लिए संपर्क करें।
+    </p>
+
+   </div>
+   `
+   :
+   `
+   <div class="notice">
+
+    ☎️ Official helpline number अभी add नहीं किया गया है।
+    Number setup होने के बाद यहाँ Call option दिखाई देगा।
+
+   </div>
+   `
+  }
 
   <div class="form">
 
@@ -4570,26 +4736,43 @@ function supportPage(){
  <div class="panel">
 
   <h3>
-   ☎️ Helpline / Chat
+   ☎️ Help / Chat
   </h3>
 
-  <button class="pill"
-    onclick="toast('Support call flow will connect to official helpline after backend setup')">
+  ${
+   number
+   ?
+   `
+   <a
+     class="btn"
+     href="tel:${esc(number)}">
 
-    Call Support
+     📞 Call Customer Care
 
-  </button>
+   </a>
+   `
+   :
+   `
+   <button class="pill"
+     onclick="toast('Official helpline number अभी setup नहीं है')">
+
+     📞 Call Support
+
+   </button>
+   `
+  }
 
   <button class="pill"
     onclick="toast('Support chat opened')">
 
-    Chat with ZipCart
+    💬 Chat with ZipCart
 
   </button>
 
  </div>
 
  `;
+
 }
 
 function submitTicket(){
@@ -4650,6 +4833,8 @@ function submitTicket(){
    Support team आपके issue को review करेगी।
   </p>
 
+  ${customerCare()}
+
   <button class="btn"
     onclick="show('home')">
 
@@ -4660,6 +4845,7 @@ function submitTicket(){
  </div>
 
  `;
+
 }
 
 /* =========================
@@ -4762,6 +4948,8 @@ function policyPage(type){
    ${data[type][1]}
   </p>
 
+  ${customerCare()}
+
   <button class="btn"
     onclick="show('home')">
 
@@ -4772,6 +4960,7 @@ function policyPage(type){
  </div>
 
  `;
+
 }
 
 /* =========================
@@ -4864,6 +5053,7 @@ function serviceForm(type){
  </div>
 
  `;
+
 }
 
 function submitService(type){
@@ -4951,9 +5141,12 @@ function openBoxFlow(orderId){
 
   </p>
 
+  ${customerCare()}
+
  </div>
 
  `;
+
 }
 
 /* =========================
