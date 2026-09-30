@@ -231,30 +231,32 @@ button{
   cursor:pointer;
 }
 
-/* Wishlist heart directly on product photo */
+/* Clearly visible Wishlist heart */
 .heart{
   position:absolute;
-  top:8px;
-  right:8px;
-  width:44px;
-  height:44px;
+  top:7px;
+  right:7px;
+  width:46px;
+  height:46px;
+  padding:0;
   border-radius:50%;
   background:#fff;
-  border:2px solid #f9a8d4;
+  border:2px solid var(--pink);
   color:var(--pink);
-  font-size:28px;
+  font-size:30px;
   line-height:1;
-  z-index:5;
+  z-index:10;
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 2px 7px #0002;
+  box-shadow:0 3px 9px #0003;
+  transition:.2s;
 }
 
 .heart:hover{
   background:#fce7f3;
   border-color:var(--pink);
-  transform:scale(1.05);
+  transform:scale(1.08);
 }
 
 .price{
@@ -529,7 +531,9 @@ textarea{
   .heart{
     width:40px;
     height:40px;
-    font-size:25px;
+    font-size:27px;
+    top:5px;
+    right:5px;
   }
 
   .quickServices{
@@ -675,13 +679,6 @@ textarea{
    ZIPCART CORE
 ========================= */
 
-/*
-  IMPORTANT:
-  आपके current code में actual helpline number नहीं था।
-  इसलिए कोई नकली number नहीं बनाया गया है।
-
-  अपना official Customer Care number नीचे डालें:
-*/
 const HELPLINE_NUMBER="";
 
 const app=document.getElementById("app");
@@ -1649,7 +1646,7 @@ function home(){
 
 /* =========================
    PRODUCT CARD
-   Wishlist is ONLY on photo
+   Wishlist heart is visible
 ========================= */
 
 function productCard(p){
