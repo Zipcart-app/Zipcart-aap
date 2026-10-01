@@ -699,39 +699,135 @@ color:#fff;
 display:flex;
 align-items:center;
 justify-content:center;
-font-weight:bold
+font-weight:bold;
+flex:none
+}
+
+/* PAYMENT UI - FIXED */
+
+.payment-options{
+display:flex;
+flex-direction:column;
+gap:10px;
+margin-top:12px
 }
 
 .payment-option{
+width:100%;
+display:flex;
+align-items:flex-start;
+gap:12px;
 border:1px solid #ddd;
 border-radius:14px;
-padding:13px;
-margin:8px 0;
-cursor:pointer
+padding:14px;
+margin:0;
+cursor:pointer;
+background:#fff;
+transition:.15s;
+min-height:70px;
+text-align:left;
+overflow:hidden
+}
+
+.payment-option:hover{
+border-color:#b58be8;
+background:#fcf9ff
 }
 
 .payment-option.selected{
 border:2px solid #8e2de2;
-background:#faf5ff
+background:#faf5ff;
+padding:13px
 }
 
-.payment-option input{
-margin-right:8px
+.payment-radio{
+width:19px;
+height:19px;
+margin:2px 0 0;
+flex:none;
+accent-color:#8e2de2
+}
+
+.payment-icon{
+width:36px;
+height:36px;
+border-radius:10px;
+background:#f2eaff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:21px;
+flex:none
+}
+
+.payment-content{
+flex:1;
+min-width:0;
+display:flex;
+flex-direction:column;
+gap:4px
+}
+
+.payment-title{
+font-weight:800;
+font-size:15px;
+line-height:1.35;
+word-break:break-word
+}
+
+.payment-description{
+font-size:13px;
+line-height:1.45;
+color:#666;
+white-space:normal;
+overflow-wrap:anywhere
+}
+
+.payment-adjustment{
+display:inline-flex;
+align-self:flex-start;
+font-size:12px;
+font-weight:700;
+padding:4px 8px;
+border-radius:12px;
+background:#fff0f7;
+color:#e91e63;
+line-height:1.3;
+white-space:normal;
+overflow-wrap:anywhere
+}
+
+.payment-option.selected .payment-adjustment{
+background:#eee2ff;
+color:#6a11cb
 }
 
 .price-line{
 display:flex;
 justify-content:space-between;
+align-items:flex-start;
+gap:15px;
 padding:7px 0
+}
+
+.price-line span:last-child{
+text-align:right;
+white-space:nowrap
 }
 
 .total-line{
 display:flex;
 justify-content:space-between;
+align-items:flex-start;
+gap:15px;
 font-size:21px;
 font-weight:900;
 padding-top:10px;
 border-top:1px solid #ddd
+}
+
+.total-line span:last-child{
+white-space:nowrap
 }
 
 .success-box{
@@ -850,6 +946,41 @@ grid-template-columns:1fr 1fr
 padding-bottom:175px
 }
 
+.payment-option{
+padding:12px;
+gap:9px
+}
+
+.payment-option.selected{
+padding:11px
+}
+
+.payment-icon{
+width:32px;
+height:32px;
+font-size:19px
+}
+
+.payment-title{
+font-size:14px
+}
+
+.payment-description{
+font-size:12px
+}
+
+.payment-adjustment{
+font-size:11px
+}
+
+.price-line{
+font-size:14px
+}
+
+.total-line{
+font-size:19px
+}
+
 }
 </style>
 </head>
@@ -938,6 +1069,26 @@ onkeydown="if(event.key==='Enter')doSearch()"
 
 <script>
 
+/* =========================================================
+   ZIPCART PAYMENT SETTINGS
+   ---------------------------------------------------------
+   आगे चलकर COD / Online amount बदलना हो तो सिर्फ यहाँ
+   number बदलना है।
+   Example:
+   codExtra: 20
+   onlineDiscount: 10
+   ========================================================= */
+
+const PAYMENT_SETTINGS={
+codExtra:50,
+onlineDiscount:40
+};
+
+
+/* =========================================================
+   BASIC DATA
+   ========================================================= */
+
 const cats=[
 
 ["👗","महिलाओं का फैशन","women"],
@@ -961,8 +1112,8 @@ const cats=[
 const sub={
 
 women:[
-"👗 Saree",
-"🥻 Suits",
+"🥻 Saree",
+"👗 Suits",
 "👚 Kurtis",
 "👖 Jeans",
 "👕 Tops",
@@ -1364,8 +1515,75 @@ let selectedColor="";
 let checkoutProductId=null;
 let checkoutSource="product";
 let selectedPayment="Online Payment";
+
+let checkoutCustomer={
+name:"ZipCart Customer",
+mobile:"9876543210",
+address:"Jaipur, Rajasthan — Demo Address",
+pin:"302001"
+};
+
 let currentReturnOrderId=null;
 let currentExchangeOrderId=null;
+let exchangeSize="";
+let exchangeColor="";
+
+
+/* =========================================================
+   PAYMENT HELPERS
+   ========================================================= */
+
+function isCashPayment(method){
+
+return method==="Cash on Delivery";
+
+}
+
+function isOnlinePayment(method){
+
+return !isCashPayment(method);
+
+}
+
+function getPaymentAdjustment(method){
+
+if(isCashPayment(method)){
+
+return PAYMENT_SETTINGS.codExtra;
+
+}
+
+return -PAYMENT_SETTINGS.onlineDiscount;
+
+}
+
+function getFinalAmount(subtotal,method){
+
+const adjustment=getPaymentAdjustment(method);
+
+return Math.max(
+0,
+subtotal+adjustment
+);
+
+}
+
+function getPaymentAdjustmentText(method){
+
+if(isCashPayment(method)){
+
+return `COD charge: +₹${PAYMENT_SETTINGS.codExtra}`;
+
+}
+
+return `Online payment discount: -₹${PAYMENT_SETTINGS.onlineDiscount}`;
+
+}
+
+
+/* =========================================================
+   SAVE / COUNTS
+   ========================================================= */
 
 function save(){
 
@@ -1405,6 +1623,11 @@ p=>p.id===Number(id)
 );
 
 }
+
+
+/* =========================================================
+   PRODUCT CARD
+   ========================================================= */
 
 function productCard(p){
 
@@ -1475,6 +1698,11 @@ onclick="event.stopPropagation();product(${p.id})"
 
 }
 
+
+/* =========================================================
+   CATEGORIES
+   ========================================================= */
+
 function catsHTML(){
 
 return `
@@ -1504,7 +1732,13 @@ ${c[1]}
 
 `;
 
+
 }
+
+
+/* =========================================================
+   HOME
+   ========================================================= */
 
 function home(){
 
@@ -1645,6 +1879,11 @@ ${products.slice(8).map(productCard).join("")}
 updateCounts();
 
 }
+
+
+/* =========================================================
+   CATEGORY
+   ========================================================= */
 
 function category(key){
 
@@ -1807,6 +2046,11 @@ updateCounts();
 
 }
 
+
+/* =========================================================
+   SUB CATEGORY
+   ========================================================= */
+
 function subCategory(key,s){
 
 selectedCat=key;
@@ -1894,6 +2138,11 @@ updateCounts();
 
 }
 
+
+/* =========================================================
+   PRICE FILTER
+   ========================================================= */
+
 function filterPrice(range){
 
 let parts=range
@@ -1945,6 +2194,11 @@ document.getElementById(
 result.map(productCard).join("");
 
 }
+
+
+/* =========================================================
+   WISHLIST / CART
+   ========================================================= */
 
 function toggleWish(id){
 
@@ -2058,6 +2312,11 @@ box.remove();
 
 }
 
+
+/* =========================================================
+   PRODUCT OPTIONS
+   ========================================================= */
+
 function selectSize(size){
 
 selectedSize=size;
@@ -2119,6 +2378,11 @@ return false;
 return true;
 
 }
+
+
+/* =========================================================
+   PRODUCT DETAIL
+   ========================================================= */
 
 function product(id){
 
@@ -2561,6 +2825,11 @@ window.scrollTo(0,0);
 
 }
 
+
+/* =========================================================
+   BUY NOW / REVIEW / SHARE
+   ========================================================= */
+
 function buyNow(id){
 
 currentProductId=Number(id);
@@ -2573,6 +2842,13 @@ return;
 
 checkoutProductId=Number(id);
 checkoutSource="product";
+
+checkoutCustomer={
+name:"ZipCart Customer",
+mobile:"9876543210",
+address:"Jaipur, Rajasthan — Demo Address",
+pin:"302001"
+};
 
 checkoutPage();
 
@@ -2752,6 +3028,11 @@ ${related.map(productCard).join("")}
 updateCounts();
 
 }
+
+
+/* =========================================================
+   CART PAGE
+   ========================================================= */
 
 function cartPage(){
 
@@ -2966,6 +3247,7 @@ Proceed to Checkout
 `
 :
 ""
+
 }
 
 `;
@@ -3017,6 +3299,11 @@ save();
 cartPage();
 
 }
+
+
+/* =========================================================
+   WISHLIST
+   ========================================================= */
 
 function wishlistPage(){
 
@@ -3090,6 +3377,11 @@ updateCounts();
 
 }
 
+
+/* =========================================================
+   CHECKOUT
+   ========================================================= */
+
 function checkout(){
 
 let selectedItems=cart.filter(
@@ -3106,12 +3398,26 @@ return;
 
 }
 
+/*
+  Important fix:
+  Cart checkout हमेशा cart mode में रहेगा,
+  चाहे 1 product हो या कई products.
+*/
+
+checkoutSource="cart";
+
 if(selectedItems.length===1){
 
 checkoutProductId=selectedItems[0].id;
-checkoutSource="cart";
 
 }
+
+checkoutCustomer={
+name:"ZipCart Customer",
+mobile:"9876543210",
+address:"Jaipur, Rajasthan — Demo Address",
+pin:"302001"
+};
 
 checkoutCartPage();
 
@@ -3238,7 +3544,7 @@ Product details फिर से देखने के लिए click कर�
 <input
 id="checkoutName"
 placeholder="आपका नाम"
-value="ZipCart Customer"
+value="${escapeHTML(checkoutCustomer.name)}"
 >
 
 </div>
@@ -3252,7 +3558,7 @@ Mobile
 <input
 id="checkoutMobile"
 placeholder="Mobile number"
-value="9876543210"
+value="${escapeHTML(checkoutCustomer.mobile)}"
 >
 
 </div>
@@ -3266,7 +3572,7 @@ Address
 <textarea
 id="checkoutAddress"
 placeholder="पूरा delivery address"
->Jaipur, Rajasthan — Demo Address</textarea>
+>${escapeHTML(checkoutCustomer.address)}</textarea>
 
 </div>
 
@@ -3279,7 +3585,7 @@ PIN Code
 <input
 id="checkoutPin"
 placeholder="PIN"
-value="302001"
+value="${escapeHTML(checkoutCustomer.pin)}"
 >
 
 </div>
@@ -3433,7 +3739,7 @@ Demo estimate: आज order करने पर लगभग 7 दिन।
 <input
 id="checkoutName"
 placeholder="आपका नाम"
-value="ZipCart Customer"
+value="${escapeHTML(checkoutCustomer.name)}"
 >
 
 </div>
@@ -3447,7 +3753,7 @@ Mobile
 <input
 id="checkoutMobile"
 placeholder="Mobile number"
-value="9876543210"
+value="${escapeHTML(checkoutCustomer.mobile)}"
 >
 
 </div>
@@ -3460,7 +3766,7 @@ Address
 
 <textarea
 id="checkoutAddress"
->Jaipur, Rajasthan — Demo Address</textarea>
+>${escapeHTML(checkoutCustomer.address)}</textarea>
 
 </div>
 
@@ -3472,7 +3778,7 @@ PIN Code
 
 <input
 id="checkoutPin"
-value="302001"
+value="${escapeHTML(checkoutCustomer.pin)}"
 >
 
 </div>
@@ -3515,9 +3821,26 @@ return;
 
 }
 
+/*
+  Address को save कर रहे हैं ताकि payment option चुनने पर
+  re-render होने के बाद data गायब न हो.
+*/
+
+checkoutCustomer={
+name:name,
+mobile:mobile,
+address:address,
+pin:pin
+};
+
 showPaymentPage();
 
 }
+
+
+/* =========================================================
+   PAYMENT PAGE
+   ========================================================= */
 
 function showPaymentPage(){
 
@@ -3531,7 +3854,9 @@ items=cart.filter(x=>x.selected!==false);
 subtotal=items.reduce(
 (sum,x)=>{
 const p=getProduct(x.id);
-return sum+(p?p.price:0)*Number(x.qty||1);
+return sum+
+(p?p.price:0)*
+Number(x.qty||1);
 },
 0
 );
@@ -3552,15 +3877,25 @@ subtotal=p.price;
 }
 
 let delivery=0;
-let onlineDiscount=40;
-let codExtra=50;
 
-let onlineTotal=Math.max(
+const onlineTotal=Math.max(
 0,
-subtotal+delivery-onlineDiscount
+subtotal+
+delivery-
+PAYMENT_SETTINGS.onlineDiscount
 );
 
-let codTotal=subtotal+delivery+codExtra;
+const codTotal=
+subtotal+
+delivery+
+PAYMENT_SETTINGS.codExtra;
+
+const finalAmount=
+isCashPayment(selectedPayment)
+?
+codTotal
+:
+onlineTotal;
 
 app.innerHTML=`
 
@@ -3585,119 +3920,246 @@ onclick="checkoutSource==='cart'?checkoutCartPage():checkoutPage()"
 Payment method चुनें:
 </p>
 
+<div class="payment-options">
+
 <label
 class="payment-option ${selectedPayment==="Cash on Delivery"?"selected":""}"
+>
+
+<input
+class="payment-radio"
+type="radio"
+name="payment"
+value="Cash on Delivery"
+${selectedPayment==="Cash on Delivery"?"checked":""}
 onclick="selectPayment('Cash on Delivery')"
 >
 
-<input
-type="radio"
-name="payment"
-${selectedPayment==="Cash on Delivery"?"checked":""}
->
+<span class="payment-icon">
+💵
+</span>
 
-💵 <b>Cash on Delivery</b>
+<span class="payment-content">
 
-<br>
+<span class="payment-title">
+Cash on Delivery
+</span>
 
-<span style="font-size:13px">
-COD charge: +₹50
+<span class="payment-description">
+Delivery के समय payment करें।
+</span>
+
+<span class="payment-adjustment">
++ ₹${PAYMENT_SETTINGS.codExtra} COD charge
+</span>
+
 </span>
 
 </label>
+
 
 <label
 class="payment-option ${selectedPayment==="Online Payment"?"selected":""}"
+>
+
+<input
+class="payment-radio"
+type="radio"
+name="payment"
+value="Online Payment"
+${selectedPayment==="Online Payment"?"checked":""}
 onclick="selectPayment('Online Payment')"
 >
 
-<input
-type="radio"
-name="payment"
-${selectedPayment==="Online Payment"?"checked":""}
->
+<span class="payment-icon">
+💳
+</span>
 
-💳 <b>Online Payment</b>
+<span class="payment-content">
 
-<br>
+<span class="payment-title">
+Online Payment
+</span>
 
-<span style="font-size:13px">
-Online payment discount: -₹40
+<span class="payment-description">
+Online payment से अभी pay करें।
+</span>
+
+<span class="payment-adjustment">
+− ₹${PAYMENT_SETTINGS.onlineDiscount} online discount
+</span>
+
 </span>
 
 </label>
+
 
 <label
 class="payment-option ${selectedPayment==="UPI / GPay"?"selected":""}"
-onclick="selectPayment('UPI / GPay')"
 >
 
 <input
+class="payment-radio"
 type="radio"
 name="payment"
+value="UPI / GPay"
 ${selectedPayment==="UPI / GPay"?"checked":""}
+onclick="selectPayment('UPI / GPay')"
 >
 
-📱 <b>UPI / GPay</b>
+<span class="payment-icon">
+📱
+</span>
 
-<br>
+<span class="payment-content">
 
-<span style="font-size:13px">
-Online payment discount: -₹40
+<span class="payment-title">
+UPI / GPay
+</span>
+
+<span class="payment-description">
+UPI या GPay से online payment करें।
+</span>
+
+<span class="payment-adjustment">
+− ₹${PAYMENT_SETTINGS.onlineDiscount} online discount
+</span>
+
 </span>
 
 </label>
 
+
 <label
 class="payment-option ${selectedPayment==="SBI Card"?"selected":""}"
+>
+
+<input
+class="payment-radio"
+type="radio"
+name="payment"
+value="SBI Card"
+${selectedPayment==="SBI Card"?"checked":""}
 onclick="selectPayment('SBI Card')"
 >
 
-<input
-type="radio"
-name="payment"
-${selectedPayment==="SBI Card"?"checked":""}
->
+<span class="payment-icon">
+💳
+</span>
 
-💳 SBI Card
+<span class="payment-content">
+
+<span class="payment-title">
+SBI Card
+</span>
+
+<span class="payment-description">
+SBI card से online payment।
+</span>
+
+<span class="payment-adjustment">
+− ₹${PAYMENT_SETTINGS.onlineDiscount} online discount
+</span>
+
+</span>
 
 </label>
+
 
 <label
 class="payment-option ${selectedPayment==="IndusBank Card"?"selected":""}"
+>
+
+<input
+class="payment-radio"
+type="radio"
+name="payment"
+value="IndusBank Card"
+${selectedPayment==="IndusBank Card"?"checked":""}
 onclick="selectPayment('IndusBank Card')"
 >
 
-<input
-type="radio"
-name="payment"
-${selectedPayment==="IndusBank Card"?"checked":""}
->
+<span class="payment-icon">
+💳
+</span>
 
-💳 IndusBank Card
+<span class="payment-content">
+
+<span class="payment-title">
+IndusBank Card
+</span>
+
+<span class="payment-description">
+IndusBank card से online payment।
+</span>
+
+<span class="payment-adjustment">
+− ₹${PAYMENT_SETTINGS.onlineDiscount} online discount
+</span>
+
+</span>
 
 </label>
+
 
 <label
 class="payment-option ${selectedPayment==="ICICI Card"?"selected":""}"
-onclick="selectPayment('ICICI Card')"
 >
 
 <input
+class="payment-radio"
 type="radio"
 name="payment"
+value="ICICI Card"
 ${selectedPayment==="ICICI Card"?"checked":""}
+onclick="selectPayment('ICICI Card')"
 >
 
-💳 ICICI Card
+<span class="payment-icon">
+💳
+</span>
+
+<span class="payment-content">
+
+<span class="payment-title">
+ICICI Card
+</span>
+
+<span class="payment-description">
+ICICI card से online payment।
+</span>
+
+<span class="payment-adjustment">
+− ₹${PAYMENT_SETTINGS.onlineDiscount} online discount
+</span>
+
+</span>
 
 </label>
+
+</div>
+
 
 <div class="notice">
 
 💡 <b>Pay after delivery / 7 days</b> option का demo concept यहाँ दिखाया जा सकता है। Real credit/pay-later service backend और eligible provider integration के बाद ही production में इस्तेमाल होगा।
 
 </div>
+
+
+<h3>
+📍 Delivery Address
+</h3>
+
+<div class="notice">
+
+<strong>${escapeHTML(checkoutCustomer.name)}</strong><br>
+📱 ${escapeHTML(checkoutCustomer.mobile)}<br>
+🏠 ${escapeHTML(checkoutCustomer.address)}<br>
+📍 PIN: ${escapeHTML(checkoutCustomer.pin)}
+
+</div>
+
 
 <h3>
 💰 Price Details
@@ -3734,7 +4196,12 @@ COD Charge
 </span>
 
 <span>
-${selectedPayment==="Cash on Delivery"?"+ ₹50":"₹0"}
+${isCashPayment(selectedPayment)
+?
+"+ ₹"+PAYMENT_SETTINGS.codExtra
+:
+"₹0"
+}
 </span>
 
 </div>
@@ -3746,12 +4213,11 @@ Online Discount
 </span>
 
 <span>
-${
-selectedPayment==="Cash on Delivery"
+${isOnlinePayment(selectedPayment)
 ?
-"₹0"
+"- ₹"+PAYMENT_SETTINGS.onlineDiscount
 :
-"- ₹40"
+"₹0"
 }
 </span>
 
@@ -3764,13 +4230,7 @@ Final Amount
 </span>
 
 <span>
-₹${
-selectedPayment==="Cash on Delivery"
-?
-codTotal
-:
-onlineTotal
-}
+₹${finalAmount}
 </span>
 
 </div>
@@ -3796,6 +4256,11 @@ showPaymentPage();
 
 }
 
+
+/* =========================================================
+   ORDER
+   ========================================================= */
+
 function generateOrderNumber(){
 
 const d=new Date();
@@ -3814,10 +4279,10 @@ return "ZC-"+part+"-"+random;
 
 function placeOrder(){
 
-const name=document.getElementById("checkoutName")?.value.trim()||"ZipCart Customer";
-const mobile=document.getElementById("checkoutMobile")?.value.trim()||"9876543210";
-const address=document.getElementById("checkoutAddress")?.value.trim()||"Demo Address";
-const pin=document.getElementById("checkoutPin")?.value.trim()||"302001";
+const name=checkoutCustomer.name||"ZipCart Customer";
+const mobile=checkoutCustomer.mobile||"9876543210";
+const address=checkoutCustomer.address||"Demo Address";
+const pin=checkoutCustomer.pin||"302001";
 
 let items=[];
 
@@ -3853,7 +4318,9 @@ let subtotal=items.reduce(
 
 const p=getProduct(x.id);
 
-return sum+(p?p.price:0)*x.qty;
+return sum+
+(p?p.price:0)*
+x.qty;
 
 },
 
@@ -3861,12 +4328,10 @@ return sum+(p?p.price:0)*x.qty;
 
 );
 
-const finalAmount=
-selectedPayment==="Cash on Delivery"
-?
-subtotal+50
-:
-Math.max(0,subtotal-40);
+const finalAmount=getFinalAmount(
+subtotal,
+selectedPayment
+);
 
 const deliveryDate=new Date();
 deliveryDate.setDate(deliveryDate.getDate()+7);
@@ -3996,6 +4461,11 @@ onclick="show('home')"
 `;
 
 }
+
+
+/* =========================================================
+   ORDERS
+   ========================================================= */
 
 function orders(){
 
@@ -4197,6 +4667,11 @@ updateCounts();
 
 }
 
+
+/* =========================================================
+   TRACKING
+   ========================================================= */
+
 function trackOrder(orderId){
 
 const order=ordersData.find(
@@ -4274,6 +4749,11 @@ Production version में seller, warehouse, rider और live tracking statu
 `;
 
 }
+
+
+/* =========================================================
+   RETURN
+   ========================================================= */
 
 function returnFlow(orderId){
 
@@ -4453,9 +4933,16 @@ My Orders
 
 }
 
+
+/* =========================================================
+   EXCHANGE
+   ========================================================= */
+
 function exchangeFlow(orderId){
 
 currentExchangeOrderId=orderId;
+exchangeSize="";
+exchangeColor="";
 
 const order=ordersData.find(
 x=>x.id===orderId
@@ -4544,9 +5031,6 @@ Submit Exchange Request
 
 }
 
-let exchangeSize="";
-let exchangeColor="";
-
 function selectExchangeSize(btn){
 
 exchangeSize=btn.dataset.exchangeSize;
@@ -4632,6 +5116,11 @@ My Orders
 `);
 
 }
+
+
+/* =========================================================
+   CANCEL
+   ========================================================= */
 
 function cancelOrder(orderId){
 
@@ -4737,6 +5226,11 @@ first.id,
 );
 
 }
+
+
+/* =========================================================
+   ACCOUNT
+   ========================================================= */
 
 function account(){
 
@@ -4860,6 +5354,7 @@ ${escapeHTML(r.comment||"No comment")}
 
 }).join("")
 :
+
 `
 
 <div class="empty">
@@ -4882,6 +5377,11 @@ name+
 
 }
 
+
+/* =========================================================
+   CATEGORIES PAGE
+   ========================================================= */
+
 function categories(){
 
 app.innerHTML=`
@@ -4902,6 +5402,11 @@ ${catsHTML()}
 `;
 
 }
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
 
 function searchPage(q){
 
@@ -5026,6 +5531,11 @@ searchPage(q);
 
 }
 
+
+/* =========================================================
+   VOICE
+   ========================================================= */
+
 function voiceSearch(){
 
 if(!("webkitSpeechRecognition" in window)){
@@ -5100,6 +5610,11 @@ i*900
 );
 
 }
+
+
+/* =========================================================
+   LANGUAGE
+   ========================================================= */
 
 function languageModal(){
 
@@ -5178,6 +5693,11 @@ alert(
 
 }
 
+
+/* =========================================================
+   MODAL / SECURITY HELPERS
+   ========================================================= */
+
 function openModal(x){
 
 document.getElementById(
@@ -5208,6 +5728,11 @@ return String(value)
 .replaceAll("'","&#039;");
 
 }
+
+
+/* =========================================================
+   MAIN NAVIGATION
+   ========================================================= */
 
 function show(x){
 
