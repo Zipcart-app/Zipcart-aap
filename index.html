@@ -1741,7 +1741,6 @@ ${c[1]}
 
 `;
 
-
 }
 
 
@@ -2034,6 +2033,7 @@ products.filter(p=>p.cat===key).length
 ?
 products.filter(p=>p.cat===key).map(productCard).join("")
 :
+
 `
 
 <div class="empty">
@@ -4020,17 +4020,20 @@ UPI या GPay से online payment करें।
 </label>
 
 
+<!-- सभी बैंक के अलग-अलग Card विकल्प हटाकर
+     सिर्फ एक generic Card Payment रखा गया है। -->
+
 <label
-class="payment-option ${selectedPayment==="SBI Card"?"selected":""}"
+class="payment-option ${selectedPayment==="Card Payment"?"selected":""}"
 >
 
 <input
 class="payment-radio"
 type="radio"
 name="payment"
-value="SBI Card"
-${selectedPayment==="SBI Card"?"checked":""}
-onclick="selectPayment('SBI Card')"
+value="Card Payment"
+${selectedPayment==="Card Payment"?"checked":""}
+onclick="selectPayment('Card Payment')"
 >
 
 <span class="payment-icon">
@@ -4040,75 +4043,12 @@ onclick="selectPayment('SBI Card')"
 <span class="payment-content">
 
 <span class="payment-title">
-SBI Card
+Card Payment
 </span>
 
 <span class="payment-description">
-SBI card से online payment।
-</span>
-
-</span>
-
-</label>
-
-
-<label
-class="payment-option ${selectedPayment==="IndusBank Card"?"selected":""}"
->
-
-<input
-class="payment-radio"
-type="radio"
-name="payment"
-value="IndusBank Card"
-${selectedPayment==="IndusBank Card"?"checked":""}
-onclick="selectPayment('IndusBank Card')"
->
-
-<span class="payment-icon">
-💳
-</span>
-
-<span class="payment-content">
-
-<span class="payment-title">
-IndusBank Card
-</span>
-
-<span class="payment-description">
-IndusBank card से online payment।
-</span>
-
-</span>
-
-</label>
-
-
-<label
-class="payment-option ${selectedPayment==="ICICI Card"?"selected":""}"
->
-
-<input
-class="payment-radio"
-type="radio"
-name="payment"
-value="ICICI Card"
-${selectedPayment==="ICICI Card"?"checked":""}
-onclick="selectPayment('ICICI Card')"
->
-
-<span class="payment-icon">
-💳
-</span>
-
-<span class="payment-content">
-
-<span class="payment-title">
-ICICI Card
-</span>
-
-<span class="payment-description">
-ICICI card से online payment।
+किसी भी बैंक के Debit Card या Credit Card से सुरक्षित payment करें।
+Production में card details और bank OTP verified payment gateway के secure checkout में होंगे।
 </span>
 
 </span>
@@ -4120,7 +4060,8 @@ ICICI card से online payment।
 
 <div class="notice">
 
-💡 <b>Pay after delivery / 7 days</b> option का demo concept यहाँ दिखाया जा सकता है। Real credit/pay-later service backend और eligible provider integration के बाद ही production में इस्तेमाल होगा।
+💳 <b>Card Payment:</b>
+यहाँ किसी एक बैंक का Card option नहीं है। Customer अपना कोई भी eligible Debit/Credit Card चुन सकता है। वास्तविक card details और OTP को ZipCart के अपने page पर store नहीं किया जाएगा; production में secure payment gateway checkout इन्हें संभालेगा।
 
 </div>
 
