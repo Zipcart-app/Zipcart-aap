@@ -703,7 +703,7 @@ font-weight:bold;
 flex:none
 }
 
-/* PAYMENT UI - FIXED */
+/* PAYMENT UI */
 
 .payment-options{
 display:flex;
@@ -1072,16 +1072,12 @@ onkeydown="if(event.key==='Enter')doSearch()"
 /* =========================================================
    ZIPCART PAYMENT SETTINGS
    ---------------------------------------------------------
-   आगे चलकर COD / Online amount बदलना हो तो सिर्फ यहाँ
-   number बदलना है।
-   Example:
-   codExtra: 20
-   onlineDiscount: 10
+   COD पर ₹50 extra charge है।
+   Online payment पर कोई online discount नहीं है।
    ========================================================= */
 
 const PAYMENT_SETTINGS={
-codExtra:50,
-onlineDiscount:40
+codExtra:50
 };
 
 
@@ -1100,6 +1096,7 @@ const cats=[
 ["🧸","खिलौने","toys"],
 ["💄","Beauty","beauty"],
 ["🏠","घर का सामान","home"],
+["🛋️","Furniture","furniture"],
 ["📱","Electronics","electronics"],
 ["📚","School Items","school"],
 ["🚌","Travel Tickets","travel"],
@@ -1197,10 +1194,22 @@ beauty:[
 home:[
 "🍳 Kitchen",
 "🖼️ Home Decor",
-"🛋️ Furniture",
 "📦 Storage",
 "🛏️ Bedsheet",
 "🪟 Curtains"
+],
+
+furniture:[
+"🛋️ Sofa",
+"🛏️ Bed",
+"🪑 Chair",
+"🪵 Table",
+"🚪 Wardrobe",
+"🗄️ Cabinet",
+"🍽️ Dining Set",
+"🪑 Office Chair",
+"🛋️ Recliner",
+"🪞 Dressing Table"
 ],
 
 electronics:[
@@ -1553,7 +1562,7 @@ return PAYMENT_SETTINGS.codExtra;
 
 }
 
-return -PAYMENT_SETTINGS.onlineDiscount;
+return 0;
 
 }
 
@@ -1576,7 +1585,7 @@ return `COD charge: +₹${PAYMENT_SETTINGS.codExtra}`;
 
 }
 
-return `Online payment discount: -₹${PAYMENT_SETTINGS.onlineDiscount}`;
+return "";
 
 }
 
@@ -2111,7 +2120,8 @@ onclick="filterPrice('${x}')"
 ${x}
 </button>
 
-`).join("")}
+`).join("")
+}
 
 </div>
 
@@ -3398,12 +3408,6 @@ return;
 
 }
 
-/*
-  Important fix:
-  Cart checkout हमेशा cart mode में रहेगा,
-  चाहे 1 product हो या कई products.
-*/
-
 checkoutSource="cart";
 
 if(selectedItems.length===1){
@@ -3821,11 +3825,6 @@ return;
 
 }
 
-/*
-  Address को save कर रहे हैं ताकि payment option चुनने पर
-  re-render होने के बाद data गायब न हो.
-*/
-
 checkoutCustomer={
 name:name,
 mobile:mobile,
@@ -3881,8 +3880,7 @@ let delivery=0;
 const onlineTotal=Math.max(
 0,
 subtotal+
-delivery-
-PAYMENT_SETTINGS.onlineDiscount
+delivery
 );
 
 const codTotal=
@@ -3985,10 +3983,6 @@ Online Payment
 Online payment से अभी pay करें।
 </span>
 
-<span class="payment-adjustment">
-− ₹${PAYMENT_SETTINGS.onlineDiscount} online discount
-</span>
-
 </span>
 
 </label>
@@ -4019,10 +4013,6 @@ UPI / GPay
 
 <span class="payment-description">
 UPI या GPay से online payment करें।
-</span>
-
-<span class="payment-adjustment">
-− ₹${PAYMENT_SETTINGS.onlineDiscount} online discount
 </span>
 
 </span>
@@ -4057,10 +4047,6 @@ SBI Card
 SBI card से online payment।
 </span>
 
-<span class="payment-adjustment">
-− ₹${PAYMENT_SETTINGS.onlineDiscount} online discount
-</span>
-
 </span>
 
 </label>
@@ -4093,10 +4079,6 @@ IndusBank Card
 IndusBank card से online payment।
 </span>
 
-<span class="payment-adjustment">
-− ₹${PAYMENT_SETTINGS.onlineDiscount} online discount
-</span>
-
 </span>
 
 </label>
@@ -4127,10 +4109,6 @@ ICICI Card
 
 <span class="payment-description">
 ICICI card से online payment।
-</span>
-
-<span class="payment-adjustment">
-− ₹${PAYMENT_SETTINGS.onlineDiscount} online discount
 </span>
 
 </span>
@@ -4199,23 +4177,6 @@ COD Charge
 ${isCashPayment(selectedPayment)
 ?
 "+ ₹"+PAYMENT_SETTINGS.codExtra
-:
-"₹0"
-}
-</span>
-
-</div>
-
-<div class="price-line">
-
-<span>
-Online Discount
-</span>
-
-<span>
-${isOnlinePayment(selectedPayment)
-?
-"- ₹"+PAYMENT_SETTINGS.onlineDiscount
 :
 "₹0"
 }
