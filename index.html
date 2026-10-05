@@ -1030,7 +1030,7 @@ function openModal(x){document.getElementById("modalbox").innerHTML=x;document.g
 function closeModal(){document.getElementById("modal").classList.remove("show")}
 
 function escapeHTML(value){
-return String(value).replaceAll("&","&").replaceAll("<","<").replaceAll(">",">").replaceAll('"',""").replaceAll("'","'");
+return String(value).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
 }
 
 function show(x){
@@ -1048,4 +1048,4 @@ show("home");
 
 </script>
 </body>
-</html>कोई भी फालतू की बात नहीं कोडिंग के बदले कोडिंग ही दे दो बस।
+</html>
