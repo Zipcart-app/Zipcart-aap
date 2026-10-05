@@ -1254,9 +1254,14 @@ onkeydown="if(event.key==='Enter')doSearch()"
 
 </div>
 
-<button class="navbtn" onclick="show('wishlist')">
-❤️ Wishlist
-<span class="count" id="wishCount">0</span>
+<!-- सिर्फ ❤️ + count रखा गया है; Wishlist text हटाया गया है -->
+<button
+class="navbtn"
+onclick="show('wishlist')"
+aria-label="Wishlist"
+title="Wishlist"
+>
+❤️ <span class="count" id="wishCount">0</span>
 </button>
 
 <button class="navbtn" onclick="show('cart')">
@@ -1281,12 +1286,6 @@ onkeydown="if(event.key==='Enter')doSearch()"
 </header>
 
 <main class="page" id="app"></main>
-
-<!--
-  IMPORTANT:
-  नीचे वाला Wishlist अब सिर्फ ❤️ icon है।
-  "Wishlist" text जानबूझकर हटाया गया है।
--->
 
 <div class="bottom">
 
@@ -1833,6 +1832,59 @@ JSON.stringify(migratedCart)
 }
 
 migrateOldIds();
+
+
+/* =========================================================
+   QUANTITY FIX
+   पुराने 1,3,5,7 जैसे odd quantities को एक बार
+   1,2,3,4 में ठीक किया जाएगा।
+   उसके बाद quantity + / - हमेशा 1-1 से बदलेगी।
+   ========================================================= */
+
+function fixOldQuantities(){
+
+if(localStorage.getItem("zipQtyFixedV1")==="1"){
+return;
+}
+
+let savedCart=JSON.parse(
+localStorage.getItem("zipCart")||"[]"
+);
+
+savedCart=savedCart.map(item=>{
+
+let q=Number(item.qty);
+
+if(!Number.isFinite(q)||q<1){
+q=1;
+}
+
+q=Math.floor(q);
+
+if(q%2===1){
+q=(q+1)/2;
+}
+
+return {
+...item,
+qty:Math.max(1,q)
+};
+
+});
+
+localStorage.setItem(
+"zipCart",
+JSON.stringify(savedCart)
+);
+
+localStorage.setItem(
+"zipQtyFixedV1",
+"1"
+);
+
+}
+
+fixOldQuantities();
 
 
 let wishlist=JSON.parse(localStorage.getItem("zipWish")||"[]");
@@ -2657,13 +2709,13 @@ x=>x.id===id
 
 if(item){
 
-item.qty+=Number(qty);
+item.qty=Number(item.qty||1)+Number(qty);
 
 }else{
 
 cart.push({
 id:id,
-qty:Number(qty),
+qty:Math.max(1,Number(qty)||1),
 selected:true
 });
 
@@ -3744,11 +3796,17 @@ cartPage();
 
 function qty(i,d){
 
-cart[i].qty=
-Math.max(
-1,
-Number(cart[i].qty||1)+d
-);
+let currentQty=Number(cart[i].qty);
+
+if(!Number.isFinite(currentQty)||currentQty<1){
+currentQty=1;
+}
+
+currentQty=Math.floor(currentQty);
+
+let newQty=currentQty+d;
+
+cart[i].qty=Math.max(1,newQty);
 
 save();
 
