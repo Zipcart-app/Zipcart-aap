@@ -229,7 +229,174 @@ display:flex;
 align-items:center;
 justify-content:center;
 font-size:70px;
-cursor:pointer
+cursor:pointer;
+position:relative;
+overflow:hidden
+}
+
+/* PRODUCT COLOR PREVIEW */
+.product-visual{
+width:100%;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:70px;
+transition:.3s;
+position:relative
+}
+
+.product-visual:after{
+content:"";
+position:absolute;
+inset:15px;
+border-radius:20px;
+opacity:.16;
+pointer-events:none
+}
+
+.color-red{
+background:linear-gradient(135deg,#fff,#ffe4e8)
+}
+
+.color-red:after{
+background:#e53935
+}
+
+.color-pink{
+background:linear-gradient(135deg,#fff,#ffe5f0)
+}
+
+.color-pink:after{
+background:#ec4899
+}
+
+.color-blue{
+background:linear-gradient(135deg,#fff,#e3efff)
+}
+
+.color-blue:after{
+background:#2563eb
+}
+
+.color-green{
+background:linear-gradient(135deg,#fff,#e4f8ec)
+}
+
+.color-green:after{
+background:#16a34a
+}
+
+.color-black{
+background:linear-gradient(135deg,#fff,#e9e9e9)
+}
+
+.color-black:after{
+background:#111
+}
+
+.color-white{
+background:linear-gradient(135deg,#fff,#f2f2f2)
+}
+
+.color-white:after{
+background:#fff;
+border:2px solid #ddd
+}
+
+.color-yellow{
+background:linear-gradient(135deg,#fff,#fff5cf)
+}
+
+.color-yellow:after{
+background:#facc15
+}
+
+.color-maroon{
+background:linear-gradient(135deg,#fff,#f8e1e6)
+}
+
+.color-maroon:after{
+background:#800020
+}
+
+.color-purple{
+background:linear-gradient(135deg,#fff,#eee4ff)
+}
+
+.color-purple:after{
+background:#7c3aed
+}
+
+.color-golden{
+background:linear-gradient(135deg,#fff,#fff1b8)
+}
+
+.color-golden:after{
+background:#d4af37
+}
+
+.color-silver{
+background:linear-gradient(135deg,#fff,#e7e7e7)
+}
+
+.color-silver:after{
+background:#9ca3af
+}
+
+.color-rose-gold{
+background:linear-gradient(135deg,#fff,#ffe6df)
+}
+
+.color-rose-gold:after{
+background:#b76e79
+}
+
+.color-brown{
+background:linear-gradient(135deg,#fff,#eee0d2)
+}
+
+.color-brown:after{
+background:#8b5e3c
+}
+
+.color-beige{
+background:linear-gradient(135deg,#fff,#f5ead7)
+}
+
+.color-beige:after{
+background:#d6c2a1
+}
+
+.color-grey{
+background:linear-gradient(135deg,#fff,#e8e8e8)
+}
+
+.color-grey:after{
+background:#6b7280
+}
+
+.color-standard{
+background:linear-gradient(135deg,#eee,#fafafa)
+}
+
+.color-standard:after{
+background:#8e2de2
+}
+
+.color-label{
+position:absolute;
+bottom:10px;
+left:50%;
+transform:translateX(-50%);
+background:#ffffffdd;
+padding:5px 10px;
+border-radius:20px;
+font-size:11px;
+font-weight:800;
+z-index:2;
+white-space:nowrap;
+box-shadow:0 2px 6px #0002
 }
 
 .heart{
@@ -509,7 +676,14 @@ display:flex;
 align-items:center;
 justify-content:center;
 font-size:130px;
-box-shadow:0 2px 12px #0001
+box-shadow:0 2px 12px #0001;
+position:relative;
+overflow:hidden;
+transition:.3s
+}
+
+.product-photo-large .product-visual{
+font-size:130px
 }
 
 .product-info h1{
@@ -877,6 +1051,52 @@ font-weight:bold;
 margin-bottom:8px
 }
 
+/* COLOR PREVIEW INFO */
+
+.color-preview-info{
+margin-top:10px;
+background:#faf6ff;
+border:1px solid #eadcff;
+border-radius:12px;
+padding:10px;
+font-size:13px;
+color:#5c16b8
+}
+
+.color-dot{
+display:inline-block;
+width:13px;
+height:13px;
+border-radius:50%;
+vertical-align:-2px;
+margin-right:5px;
+border:1px solid #aaa
+}
+
+.dot-Red{background:#e53935}
+.dot-Pink{background:#ec4899}
+.dot-Blue{background:#2563eb}
+.dot-Green{background:#16a34a}
+.dot-Black{background:#111}
+.dot-White{background:#fff}
+.dot-Yellow{background:#facc15}
+.dot-Maroon{background:#800020}
+.dot-Purple{background:#7c3aed}
+.dot-Golden{background:#d4af37}
+.dot-Silver{background:#c0c0c0}
+.dot-Rose-Gold{background:#b76e79}
+.dot-Brown{background:#8b5e3c}
+.dot-Beige{background:#d6c2a1}
+.dot-Grey{background:#6b7280}
+.dot-Standard{background:#8e2de2}
+
+.sort-active{
+background:#eadcff;
+color:#5c16b8;
+border-color:#8e2de2;
+font-weight:bold
+}
+
 @media(max-width:800px){
 
 .product-main{
@@ -885,6 +1105,10 @@ grid-template-columns:1fr
 
 .product-photo-large{
 min-height:280px;
+font-size:100px
+}
+
+.product-photo-large .product-visual{
 font-size:100px
 }
 
@@ -1302,6 +1526,13 @@ const saree=[
 
 ];
 
+
+/* =========================================================
+   PRODUCTS
+   IMPORTANT:
+   PRODUCT NUMBERING STARTS FROM 1
+   ========================================================= */
+
 const products=[
 
 {
@@ -1540,6 +1771,7 @@ let exchangeColor="";
 
 /* =========================================================
    PAYMENT HELPERS
+   PAYMENT LOGIC LEFT UNCHANGED
    ========================================================= */
 
 function isCashPayment(method){
@@ -1635,6 +1867,85 @@ p=>p.id===Number(id)
 
 
 /* =========================================================
+   COLOR HELPERS
+   ========================================================= */
+
+function colorClass(color){
+
+if(!color){
+return "color-standard";
+}
+
+const key=String(color)
+.trim()
+.toLowerCase()
+.replace(/\s+/g,"-");
+
+const allowed=[
+"red",
+"pink",
+"blue",
+"green",
+"black",
+"white",
+"yellow",
+"maroon",
+"purple",
+"golden",
+"silver",
+"rose-gold",
+"brown",
+"beige",
+"grey",
+"standard"
+];
+
+return allowed.includes(key)
+?
+"color-"+key
+:
+"color-standard";
+
+}
+
+function colorDotClass(color){
+
+if(!color){
+return "dot-Standard";
+}
+
+const key=String(color)
+.trim()
+.replace(/\s+/g,"-");
+
+return "dot-"+key;
+
+}
+
+function productVisual(p,color=""){
+
+const selected=color||p.colors?.[0]||"Standard";
+
+return `
+
+<div class="product-visual ${colorClass(selected)}">
+
+<span>
+${p.emoji}
+</span>
+
+<span class="color-label">
+${escapeHTML(selected)}
+</span>
+
+</div>
+
+`;
+
+}
+
+
+/* =========================================================
    PRODUCT CARD
    ========================================================= */
 
@@ -1645,6 +1956,8 @@ const liked=wishlist.includes(p.id);
 const pct=Math.round(
 (1-p.price/p.old)*100
 );
+
+const previewColor=p.colors?.[0]||"Standard";
 
 return `
 
@@ -1661,7 +1974,7 @@ ${liked?"❤️":"♡"}
 class="photo"
 onclick="product(${p.id})"
 >
-${p.emoji}
+${productVisual(p,previewColor)}
 </div>
 
 <div
@@ -2351,6 +2664,38 @@ btn.dataset.color===color
 );
 });
 
+/* Selected color changes product preview automatically */
+
+const p=getProduct(currentProductId);
+
+const preview=document.getElementById("productColorPreview");
+
+if(preview && p){
+
+preview.className=
+"product-photo-large "+
+colorClass(color);
+
+preview.innerHTML=
+productVisual(p,color);
+
+}
+
+const selectedText=document.getElementById(
+"selectedColorText"
+);
+
+if(selectedText){
+
+selectedText.innerHTML=`
+
+<span class="color-dot ${colorDotClass(color)}"></span>
+Selected Color: <b>${escapeHTML(color)}</b>
+
+`;
+
+}
+
 }
 
 function validateProductSelection(){
@@ -2428,6 +2773,8 @@ year:"numeric"
 }
 );
 
+const firstColor=p.colors?.[0]||"Standard";
+
 app.innerHTML=`
 
 <div class="product-page">
@@ -2443,8 +2790,21 @@ onclick="show('home')"
 
 <div>
 
-<div class="product-photo-large">
-${p.emoji}
+<div
+id="productColorPreview"
+class="product-photo-large ${colorClass(firstColor)}"
+>
+
+${productVisual(p,firstColor)}
+
+</div>
+
+<div
+id="selectedColorText"
+class="color-preview-info"
+>
+<span class="color-dot ${colorDotClass(firstColor)}"></span>
+Product Preview Color: <b>${escapeHTML(firstColor)}</b>
 </div>
 
 <div class="quick">
@@ -2555,10 +2915,18 @@ class="color-btn"
 data-color="${color}"
 onclick="selectColor('${color}')"
 >
+<span class="color-dot ${colorDotClass(color)}"></span>
 ${color}
 </button>
 
 `).join("")}
+
+</div>
+
+<div class="notice">
+
+🎨 <b>Color Preview:</b>
+ऊपर कोई भी color चुनते ही product preview अपने-आप उस color के हिसाब से बदल जाएगा।
 
 </div>
 
@@ -3839,6 +4207,8 @@ showPaymentPage();
 
 /* =========================================================
    PAYMENT PAGE
+   IMPORTANT:
+   THIS PAYMENT SECTION IS KEPT AS PROVIDED
    ========================================================= */
 
 function showPaymentPage(){
@@ -4907,6 +5277,7 @@ class="color-btn"
 data-exchange-color="${color}"
 onclick="selectExchangeColor(this)"
 >
+<span class="color-dot ${colorDotClass(color)}"></span>
 ${color}
 </button>
 
@@ -5358,36 +5729,70 @@ ps.length+" विकल्प मिले"
 
 <div class="quick">
 
-${[
-
-"Price",
-"Color",
-"Brand",
-"Seller",
-"Rating",
-"Discount",
-"Delivery",
-"Newest",
-"Popular",
-"Price Low-High",
-"Price High-Low"
-
-].map(x=>`
+<button
+class="pill"
+onclick="searchSort('default',${JSON.stringify(q)})"
+>
+Default
+</button>
 
 <button
 class="pill"
-onclick="alert('${x} filter production catalog में लागू होगा।')"
+onclick="searchSort('low',${JSON.stringify(q)})"
 >
-${x}
+Price Low-High
 </button>
 
-`).join("")}
+<button
+class="pill"
+onclick="searchSort('high',${JSON.stringify(q)})"
+>
+Price High-Low
+</button>
+
+<button
+class="pill"
+onclick="searchRating(${JSON.stringify(q)})"
+>
+Top Rated
+</button>
+
+<button
+class="pill"
+onclick="alert('Color filter product catalog में seller data जुड़ने के बाद लागू होगा।')"
+>
+Color
+</button>
+
+<button
+class="pill"
+onclick="alert('Brand filter production catalog में लागू होगा।')"
+>
+Brand
+</button>
+
+<button
+class="pill"
+onclick="alert('Seller filter production catalog में लागू होगा।')"
+>
+Seller
+</button>
+
+<button
+class="pill"
+onclick="alert('Discount filter product catalog में लागू होगा।')"
+>
+Discount
+</button>
 
 </div>
 
 </div>
 
-<div class="grid">
+<div
+id="searchResults"
+class="grid"
+>
 
 ${
 (ps.length?ps:products)
@@ -5407,6 +5812,88 @@ production version में notification system से जुड़ेंगे
 `;
 
 updateCounts();
+
+}
+
+function searchSort(type,q){
+
+let ps=products.filter(
+
+p=>
+(
+p.name+
+" "+
+p.sub+
+" "+
+p.cat
+)
+.toLowerCase()
+.includes(
+q.toLowerCase()
+)
+
+);
+
+if(type==="low"){
+
+ps.sort((a,b)=>a.price-b.price);
+
+}
+
+if(type==="high"){
+
+ps.sort((a,b)=>b.price-a.price);
+
+}
+
+if(type==="default"){
+
+/* original product order */
+
+}
+
+const box=document.getElementById("searchResults");
+
+if(!box)return;
+
+box.innerHTML=
+(ps.length?ps:products)
+.map(productCard)
+.join("");
+
+}
+
+function searchRating(q){
+
+let ps=products.filter(
+
+p=>
+(
+p.name+
+" "+
+p.sub+
+" "+
+p.cat
+)
+.toLowerCase()
+.includes(
+q.toLowerCase()
+)
+
+);
+
+ps.sort(
+(a,b)=>b.rating-a.rating
+);
+
+const box=document.getElementById("searchResults");
+
+if(!box)return;
+
+box.innerHTML=
+(ps.length?ps:products)
+.map(productCard)
+.join("");
 
 }
 
@@ -5590,7 +6077,7 @@ closeModal();
 
 alert(
 "Language saved: "+x+
-" — full translation layer production version में जोड़ी जाएगी।"
+" — full translation layer production version में जोड़ी जाएगी."
 );
 
 }
