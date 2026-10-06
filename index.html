@@ -2,529 +2,363 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ZipCart — आपकी अपनी Shopping जगह ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZipCart</title>
 
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0;
-  font-family:Arial,"Noto Sans",sans-serif;
-  background:#faf7ff;
-  color:#222;
+margin:0;
+font-family:Arial,"Noto Sans",sans-serif;
+background:#faf7ff;
+color:#222
 }
 button,input,select,textarea{font:inherit}
-button{cursor:pointer}
+button{cursor:pointer;border:0}
+
 .header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:linear-gradient(135deg,#4b0082,#6a11cb,#e91e63);
-  color:#fff;
-  box-shadow:0 3px 15px #0002;
+position:sticky;
+top:0;
+z-index:50;
+background:linear-gradient(135deg,#4b0082,#6a11cb,#e91e63);
+color:#fff;
+padding:12px
 }
 .top{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  padding:12px 16px;
-  flex-wrap:wrap;
+display:flex;
+align-items:center;
+gap:10px;
+flex-wrap:wrap;
+max-width:1200px;
+margin:auto
 }
 .logo{
-  font-size:25px;
-  font-weight:800;
-  white-space:nowrap;
+font-size:25px;
+font-weight:800;
+white-space:nowrap
 }
 .tag{
-  font-size:12px;
-  opacity:.9;
+font-size:11px;
+opacity:.9
 }
 .search{
-  flex:1;
-  min-width:230px;
-  display:flex;
-  gap:5px;
+flex:1;
+min-width:220px;
+display:flex;
+background:#fff;
+border-radius:25px;
+overflow:hidden
 }
 .search input{
-  width:100%;
-  border:0;
-  outline:0;
-  border-radius:25px;
-  padding:12px 15px;
+flex:1;
+border:0;
+padding:12px 15px;
+outline:0
 }
-.iconBtn,.headBtn{
-  border:0;
-  border-radius:22px;
-  background:#ffffff22;
-  color:#fff;
-  padding:10px 13px;
-  white-space:nowrap;
+.search button{
+background:#fff;
+padding:0 10px
 }
-.iconBtn:hover,.headBtn:hover{background:#ffffff38}
-.count{
-  background:#fff;
-  color:#6a11cb;
-  border-radius:50%;
-  min-width:21px;
-  height:21px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  font-size:12px;
-  font-weight:800;
+.navbtn{
+background:#ffffff22;
+color:#fff;
+padding:10px 12px;
+border-radius:20px;
+font-weight:600
 }
-.nav{
-  display:flex;
-  gap:8px;
-  padding:7px 12px 10px;
-  overflow-x:auto;
+.page{
+max-width:1200px;
+margin:auto;
+padding:14px
 }
-.nav button{
-  border:0;
-  background:#ffffff18;
-  color:#fff;
-  border-radius:18px;
-  padding:8px 13px;
-  white-space:nowrap;
-}
-.nav button:hover{background:#ffffff35}
-
-.categoryBar{
-  display:flex;
-  gap:10px;
-  padding:12px;
-  overflow-x:auto;
-  background:#fff;
-  border-bottom:1px solid #eee;
-}
-.catChip{
-  border:1px solid #ddd;
-  background:#fff;
-  border-radius:30px;
-  padding:8px 14px;
-  white-space:nowrap;
-}
-.catChip:hover{
-  border-color:#7c3aed;
-  color:#5b21b6;
-}
-
-main{max-width:1250px;margin:auto;padding:18px}
 .hero{
-  background:linear-gradient(135deg,#5b21b6,#7c3aed,#ec4899);
-  color:#fff;
-  border-radius:24px;
-  padding:30px 24px;
-  margin-bottom:20px;
+background:linear-gradient(135deg,#fff0fa,#eee5ff);
+border-radius:20px;
+padding:24px;
+margin-bottom:16px
 }
-.hero h1{margin:0 0 8px;font-size:30px}
-.hero p{margin:0;opacity:.95}
+.hero h1{
+margin:0 0 8px;
+color:#5c16b8
+}
+.quick{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin-top:14px
+}
+.pill{
+background:#fff;
+border:1px solid #ddd;
+padding:9px 13px;
+border-radius:20px
+}
+.section{margin:22px 0}
+.section h2{margin:0 0 12px}
 
-.sectionTitle{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  margin:22px 0 13px;
-  flex-wrap:wrap;
+.hscroll{
+display:flex;
+gap:14px;
+overflow-x:auto;
+padding:5px 2px 12px
 }
-.sectionTitle h2{margin:0;color:#4b0082}
+.cat{
+min-width:92px;
+width:92px;
+text-align:center;
+flex:none
+}
+.catpic{
+width:78px;
+height:78px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#fff;
+border:2px solid #eadcff;
+box-shadow:0 3px 10px #0001;
+font-size:35px;
+margin:auto
+}
+.cat b{
+display:block;
+font-size:13px;
+margin-top:7px
+}
+
+.banner{
+background:linear-gradient(100deg,#4b0082,#a4508b,#e91e63);
+color:#fff;
+border-radius:18px;
+padding:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px
+}
+.banner button{
+background:#fff;
+color:#6812ad;
+padding:10px 15px;
+border-radius:20px;
+font-weight:bold
+}
 
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:14px;
-}
-.catCard{
-  border:0;
-  background:#fff;
-  border-radius:20px;
-  padding:18px 10px;
-  box-shadow:0 4px 16px #4b008214;
-  text-align:center;
-  min-height:130px;
-}
-.catCard .emoji{font-size:40px}
-.catCard strong{
-  display:block;
-  margin-top:7px;
-  font-size:15px;
-}
-
-.products{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(205px,1fr));
-  gap:16px;
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+gap:14px
 }
 .card{
-  position:relative;
-  background:#fff;
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:0 4px 15px #4b008214;
+background:#fff;
+border-radius:16px;
+overflow:hidden;
+box-shadow:0 2px 10px #0001;
+position:relative
 }
-.productImage{
-  height:170px;
-  background:linear-gradient(135deg,#f3e8ff,#fce7f3);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:75px;
-}
-.cardBody{padding:13px}
-.card h3{margin:0 0 7px;font-size:17px}
-.price{font-size:20px;font-weight:800;color:#5b21b6}
-.oldPrice{
-  text-decoration:line-through;
-  color:#999;
-  font-size:13px;
+.photo{
+height:155px;
+background:linear-gradient(135deg,#eee,#fafafa);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:70px
 }
 .heart{
-  position:absolute;
-  right:9px;
-  top:9px;
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  border:0;
-  background:#fff;
-  box-shadow:0 2px 8px #0002;
-  font-size:20px;
+position:absolute;
+right:8px;
+top:8px;
+background:#fff;
+border-radius:50%;
+width:36px;
+height:36px;
+font-size:20px;
+box-shadow:0 2px 7px #0002
 }
-.actions{
-  display:flex;
-  gap:7px;
-  flex-wrap:wrap;
-  margin-top:10px;
+.cardbody{padding:11px}
+.price{
+font-size:20px;
+font-weight:800
 }
-.primary,.secondary,.danger{
-  border:0;
-  border-radius:12px;
-  padding:10px 13px;
-  font-weight:700;
+.old{
+text-decoration:line-through;
+color:#888;
+font-size:13px;
+margin-left:5px
 }
-.primary{
-  background:linear-gradient(135deg,#5b21b6,#ec4899);
-  color:#fff;
+.off{
+color:#16833c;
+font-weight:700;
+font-size:13px;
+margin-left:5px
 }
-.secondary{
-  background:#f0e9ff;
-  color:#5b21b6;
+.rating{
+color:#087b36;
+font-weight:700;
+margin-top:5px
 }
-.danger{
-  background:#ffe4e6;
-  color:#be123c;
+.buy{
+width:100%;
+margin-top:9px;
+padding:10px;
+border-radius:10px;
+background:#6a11cb;
+color:#fff;
+font-weight:bold
 }
-
 .panel{
-  background:#fff;
-  border-radius:20px;
-  padding:20px;
-  box-shadow:0 4px 16px #4b008214;
-  margin-bottom:18px;
+background:#fff;
+border-radius:18px;
+padding:18px;
+box-shadow:0 2px 12px #0001;
+margin-bottom:15px
 }
 .back{
-  border:0;
-  background:#f0e9ff;
-  color:#5b21b6;
-  padding:9px 14px;
-  border-radius:20px;
-  margin-bottom:15px;
+background:#eee;
+padding:9px 14px;
+border-radius:18px;
+margin-bottom:12px
 }
-
-.subGrid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
-  gap:12px;
+.row{
+display:flex;
+gap:10px;
+align-items:center;
+flex-wrap:wrap
 }
-.subCard{
-  border:1px solid #eadcff;
-  background:#fff;
-  border-radius:17px;
-  padding:16px 10px;
-  text-align:center;
-}
-.subCard .emoji{font-size:35px;display:block;margin-bottom:7px}
-
-.filterBar{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin:12px 0 18px;
-}
-.filterBar select,.filterBar input{
-  border:1px solid #ddd;
-  border-radius:12px;
-  padding:10px;
-  background:#fff;
-}
-
-.detail{
-  display:grid;
-  grid-template-columns:minmax(250px,1fr) minmax(250px,1fr);
-  gap:25px;
-}
-.detailImage{
-  min-height:330px;
-  border-radius:25px;
-  background:linear-gradient(135deg,#f3e8ff,#fce7f3);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:140px;
-}
-.optionRow{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin:10px 0 16px;
-}
-.option{
-  border:1px solid #ddd;
-  background:#fff;
-  padding:8px 12px;
-  border-radius:10px;
-}
-.option.active{
-  background:#5b21b6;
-  color:#fff;
-  border-color:#5b21b6;
-}
-
-.cartItem{
-  display:grid;
-  grid-template-columns:75px 1fr auto;
-  gap:12px;
-  align-items:center;
-  border-bottom:1px solid #eee;
-  padding:14px 0;
-}
-.cartImg{
-  width:75px;
-  height:75px;
-  border-radius:15px;
-  background:#f3e8ff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:35px;
-}
-.qty{
-  display:flex;
-  align-items:center;
-  gap:7px;
-}
-.qty button{
-  width:30px;
-  height:30px;
-  border:0;
-  border-radius:8px;
-  background:#eee5ff;
-}
-
-.totalBox{
-  background:#f7f1ff;
-  border-radius:18px;
-  padding:16px;
-  margin-top:15px;
-}
-.totalLine{
-  display:flex;
-  justify-content:space-between;
-  padding:6px 0;
-}
-.totalLine.final{
-  font-size:21px;
-  font-weight:800;
-  border-top:1px solid #ddd;
-  padding-top:12px;
-}
-
-.formGrid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
+.grow{flex:1}
+.formgrid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px
 }
 .field{
-  display:flex;
-  flex-direction:column;
-  gap:5px;
+display:flex;
+flex-direction:column;
+gap:5px
 }
-.field.full{grid-column:1/-1}
-.field input,.field select,.field textarea{
-  padding:11px;
-  border:1px solid #ddd;
-  border-radius:11px;
-  outline:none;
+.field input,
+.field select,
+.field textarea{
+padding:11px;
+border:1px solid #ccc;
+border-radius:10px
 }
-.field input:focus,.field select:focus,.field textarea:focus{
-  border-color:#7c3aed;
-}
-
-.payment{
-  display:grid;
-  gap:10px;
-}
-.payOption{
-  border:1px solid #ddd;
-  border-radius:14px;
-  padding:14px;
-  display:flex;
-  gap:10px;
-  align-items:center;
-}
-.payOption.active{
-  border-color:#7c3aed;
-  background:#f7f1ff;
-}
-
-.timeline{
-  position:relative;
-  padding-left:35px;
-}
-.timeline:before{
-  content:"";
-  position:absolute;
-  left:12px;
-  top:0;
-  bottom:0;
-  width:3px;
-  background:#ddd;
-}
-.step{
-  position:relative;
-  margin:0 0 22px;
-}
-.step:before{
-  content:"";
-  position:absolute;
-  left:-29px;
-  top:2px;
-  width:16px;
-  height:16px;
-  border-radius:50%;
-  background:#ddd;
-  border:3px solid #fff;
-  box-shadow:0 0 0 1px #ccc;
-}
-.step.done:before{background:#7c3aed}
-.step strong{display:block}
-
-.accountGrid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:12px;
-}
-.accountCard{
-  border:0;
-  background:#fff;
-  box-shadow:0 3px 12px #4b008214;
-  border-radius:17px;
-  padding:18px;
-  text-align:left;
-}
-.accountCard .big{font-size:30px}
-
-.voiceBtn{
-  border:0;
-  background:#5b21b6;
-  color:#fff;
-  border-radius:50%;
-  width:45px;
-  height:45px;
-  font-size:20px;
-}
-
-.toast{
-  position:fixed;
-  left:50%;
-  bottom:25px;
-  transform:translateX(-50%);
-  background:#24104f;
-  color:#fff;
-  padding:12px 18px;
-  border-radius:25px;
-  z-index:3000;
-  display:none;
-}
+.field textarea{min-height:80px}
 
 .modal{
-  position:fixed;
-  inset:0;
-  background:#0008;
-  z-index:2500;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:15px;
+position:fixed;
+inset:0;
+background:#0008;
+z-index:100;
+display:none;
+align-items:center;
+justify-content:center;
+padding:15px
 }
-.modalBox{
-  background:#fff;
-  width:min(600px,100%);
-  max-height:90vh;
-  overflow:auto;
-  border-radius:22px;
-  padding:20px;
+.modalbox{
+background:#fff;
+border-radius:18px;
+max-width:700px;
+width:100%;
+max-height:90vh;
+overflow:auto;
+padding:20px
 }
-.langList{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:9px;
-}
-.langItem{
-  border:1px solid #ddd;
-  background:#fff;
-  border-radius:12px;
-  padding:12px;
-  text-align:left;
-}
-.langItem.active{
-  border-color:#7c3aed;
-  background:#f3e8ff;
-  color:#5b21b6;
-  font-weight:700;
-}
+.modal.show{display:flex}
 
-.empty{
-  text-align:center;
-  padding:45px 15px;
-  color:#777;
+.track{
+display:flex;
+justify-content:space-between;
+gap:4px;
+position:relative;
+margin:20px 0
 }
-.empty .big{font-size:55px}
-
+.track:before{
+content:"";
+position:absolute;
+top:15px;
+left:6%;
+right:6%;
+height:4px;
+background:#ddd
+}
+.step{
+z-index:1;
+text-align:center;
+font-size:11px;
+max-width:90px
+}
+.dot{
+width:30px;
+height:30px;
+border-radius:50%;
+background:#eee;
+margin:auto;
+padding-top:7px
+}
+.done .dot{
+background:#6a11cb;
+color:#fff
+}
+.notice{
+background:#fff8df;
+border:1px solid #efd57c;
+border-radius:12px;
+padding:12px;
+margin:10px 0
+}
 .bottom{
-  display:none;
+position:sticky;
+bottom:0;
+background:#fff;
+border-top:1px solid #ddd;
+padding:9px;
+display:flex;
+justify-content:center;
+gap:8px;
+z-index:40
+}
+.bottom button{
+background:#f2eff8;
+padding:9px 12px;
+border-radius:12px
 }
 
-@media(max-width:750px){
-  .top{padding:10px}
-  .logo{font-size:21px}
-  .search{order:3;flex-basis:100%}
-  .detail{grid-template-columns:1fr}
-  .detailImage{min-height:250px;font-size:110px}
-  .formGrid{grid-template-columns:1fr}
-  .field.full{grid-column:auto}
-  .products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-  .productImage{height:130px;font-size:58px}
-  .cardBody{padding:10px}
-  .card h3{font-size:14px}
-  .price{font-size:17px}
-  .bottom{
-    position:sticky;
-    bottom:0;
-    z-index:900;
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    background:#fff;
-    box-shadow:0 -2px 12px #0002;
-  }
-  .bottom button{
-    border:0;
-    background:#fff;
-    padding:8px 2px;
-    font-size:11px;
-  }
+.lang-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:9px
+}
+.lang-btn{
+padding:12px;
+border:1px solid #ddd;
+border-radius:12px;
+background:#fff;
+text-align:left
+}
+.lang-btn.active{
+border:2px solid #6a11cb;
+background:#f4ecff;
+font-weight:bold
+}
+.lang-native{
+font-weight:700;
+display:block
+}
+.lang-english{
+font-size:11px;
+color:#777
+}
+
+@media(max-width:650px){
+.formgrid{grid-template-columns:1fr}
+.navbtn{padding:8px}
+.logo{font-size:21px}
+.photo{height:135px}
+.grid{grid-template-columns:repeat(2,1fr)}
+.lang-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -532,2527 +366,2359 @@ main{max-width:1250px;margin:auto;padding:18px}
 <body>
 
 <header class="header">
-  <div class="top">
-    <div>
-      <div class="logo">🛍️ ZipCart</div>
-      <div class="tag" id="tagline"></div>
-    </div>
+<div class="top">
 
-    <div class="search">
-      <input id="searchInput" type="text">
-      <button class="iconBtn" onclick="voiceSearch()">🎙️</button>
-      <button class="iconBtn" onclick="doSearch()">🔍</button>
-    </div>
-
-    <button class="headBtn" onclick="show('wishlist')">
-      ❤️ <span id="wishCount" class="count">0</span>
-    </button>
-
-    <button class="headBtn" onclick="show('cart')">
-      🛒 <span id="cartCount" class="count">0</span>
-    </button>
-
-    <button class="headBtn" onclick="openLanguage()">🌐 <span id="langText"></span></button>
-  </div>
-
-  <div class="nav">
-    <button onclick="show('home')" id="navHome"></button>
-    <button onclick="show('categories')" id="navCategories"></button>
-    <button onclick="show('orders')" id="navOrders"></button>
-    <button onclick="show('account')" id="navAccount"></button>
-    <button onclick="show('seller')" id="navSeller"></button>
-  </div>
-</header>
-
-<div class="categoryBar" id="categoryBar"></div>
-
-<main id="app"></main>
-
-<div class="bottom">
-  <button onclick="show('home')">🏠<br><span id="bHome"></span></button>
-  <button onclick="show('categories')">📂<br><span id="bCategories"></span></button>
-  <button onclick="show('cart')">🛒<br><span id="bCart"></span></button>
-  <button onclick="show('orders')">📦<br><span id="bOrders"></span></button>
-  <button onclick="show('account')">👤<br><span id="bAccount"></span></button>
+<div>
+<div class="logo">🛍️ ZipCart</div>
+<div class="tag" id="tagline"></div>
 </div>
 
-<div id="toast" class="toast"></div>
+<div class="search">
+<input
+id="search"
+onkeydown="if(event.key==='Enter')doSearch()"
+>
+<button onclick="voiceSearch()">🎤</button>
+<button onclick="doSearch()">🔍</button>
+</div>
 
-<div id="languageModal" class="modal" onclick="closeLanguage(event)">
-  <div class="modalBox" onclick="event.stopPropagation()">
-    <div class="sectionTitle">
-      <h2 id="languageTitle"></h2>
-      <button class="secondary" onclick="closeLanguage()">✕</button>
-    </div>
-    <p id="languageHint"></p>
-    <div id="languageList" class="langList"></div>
-  </div>
+<button class="navbtn" onclick="show('wishlist')">
+❤️ <span id="wishCount">0</span>
+</button>
+
+<button class="navbtn" onclick="show('cart')">
+🛒 <span id="cartCount">0</span>
+</button>
+
+<button class="navbtn" onclick="show('orders')" id="ordersTop"></button>
+
+<button class="navbtn" onclick="show('account')" id="accountTop"></button>
+
+<button class="navbtn" onclick="languageModal()">🌐</button>
+
+</div>
+</header>
+
+<main class="page" id="app"></main>
+
+<div class="bottom">
+
+<button onclick="show('home')" id="navHome"></button>
+<button onclick="show('categories')" id="navCategories"></button>
+<button onclick="show('seller')" id="navSeller"></button>
+<button onclick="show('orders')" id="navOrders"></button>
+<button onclick="show('account')" id="navAccount"></button>
+
+</div>
+
+<div class="modal" id="modal">
+<div class="modalbox" id="modalbox"></div>
 </div>
 
 <script>
+
 /* =========================================================
-   ZIPCART - COMPLETE MULTI LANGUAGE VERSION
-   ========================================================= */
+   LANGUAGE SYSTEM
+========================================================= */
 
-const LANGUAGES=[
-  {key:"Hindi",native:"हिन्दी",code:"hi-IN"},
-  {key:"English",native:"English",code:"en-IN"},
-  {key:"Gujarati",native:"ગુજરાતી",code:"gu-IN"},
-  {key:"Marathi",native:"मराठी",code:"mr-IN"},
-  {key:"Bengali",native:"বাংলা",code:"bn-IN"},
-  {key:"Tamil",native:"தமிழ்",code:"ta-IN"},
-  {key:"Telugu",native:"తెలుగు",code:"te-IN"},
-  {key:"Kannada",native:"ಕನ್ನಡ",code:"kn-IN"},
-  {key:"Malayalam",native:"മലയാളം",code:"ml-IN"},
-  {key:"Punjabi",native:"ਪੰਜਾਬੀ",code:"pa-IN"},
-  {key:"Odia",native:"ଓଡ଼ିଆ",code:"or-IN"},
-  {key:"Assamese",native:"অসমীয়া",code:"as-IN"},
-  {key:"Urdu",native:"اردو",code:"ur-IN"},
-  {key:"Nepali",native:"नेपाली",code:"ne-NP"},
-  {key:"Maithili",native:"मैथिली",code:"mai-IN"},
-  {key:"Konkani",native:"कोंकणी",code:"kok-IN"}
-];
+const LANGUAGES={
+Hindi:{
+native:"हिन्दी",
+english:"Hindi",
+speech:"hi-IN"
+},
+English:{
+native:"English",
+english:"English",
+speech:"en-IN"
+},
+Gujarati:{
+native:"ગુજરાતી",
+english:"Gujarati",
+speech:"gu-IN"
+},
+Marathi:{
+native:"मराठी",
+english:"Marathi",
+speech:"mr-IN"
+},
+Bengali:{
+native:"বাংলা",
+english:"Bengali",
+speech:"bn-IN"
+},
+Tamil:{
+native:"தமிழ்",
+english:"Tamil",
+speech:"ta-IN"
+},
+Telugu:{
+native:"తెలుగు",
+english:"Telugu",
+speech:"te-IN"
+},
+Kannada:{
+native:"ಕನ್ನಡ",
+english:"Kannada",
+speech:"kn-IN"
+},
+Malayalam:{
+native:"മലയാളം",
+english:"Malayalam",
+speech:"ml-IN"
+},
+Punjabi:{
+native:"ਪੰਜਾਬੀ",
+english:"Punjabi",
+speech:"pa-IN"
+},
+Odia:{
+native:"ଓଡ଼ିଆ",
+english:"Odia",
+speech:"or-IN"
+},
+Assamese:{
+native:"অসমীয়া",
+english:"Assamese",
+speech:"as-IN"
+},
+Urdu:{
+native:"اردو",
+english:"Urdu",
+speech:"ur-IN"
+},
+Nepali:{
+native:"नेपाली",
+english:"Nepali",
+speech:"ne-NP"
+},
+Maithili:{
+native:"मैथिली",
+english:"Maithili",
+speech:"hi-IN"
+},
+Konkani:{
+native:"कोंकणी",
+english:"Konkani",
+speech:"kok-IN"
+}
+};
 
-let currentLang=localStorage.getItem("zc_lang")||"Hindi";
-let currentPage="home";
-let currentArgs={};
-let selectedCat=null;
-let selectedSub=null;
+let currentLang=localStorage.getItem("zipLang")||"Hindi";
+
+
+/* =========================================================
+   TRANSLATIONS
+========================================================= */
 
 const T={
 
 Hindi:{
-tagline:"आपकी अपनी Shopping जगह ❤️",
-home:"होम",categories:"कैटेगरी",orders:"मेरे ऑर्डर",account:"अकाउंट",seller:"सेलर",
-wishlist:"विशलिस्ट",cart:"कार्ट",searchPlaceholder:"क्या ढूँढ रहे हैं? जैसे Anarkali Suit",
-language:"भाषा",chooseLanguage:"अपनी भाषा चुनें",languageHint:"भाषा चुनते ही पूरा ZipCart उसी भाषा में दिखाई देगा।",
-shopNow:"अभी खरीदें",viewAll:"सभी देखें",popular:"लोकप्रिय प्रोडक्ट्स",quick:"जल्दी डिलीवरी",
-grocery:"किराना",medicine:"दवाइयाँ",featured:"खास आपके लिए",
-addCart:"कार्ट में डालें",buyNow:"अभी खरीदें",remove:"हटाएँ",saveLater:"बाद के लिए सेव करें",
-added:"कार्ट में जोड़ दिया गया",emptyCart:"आपका कार्ट खाली है",emptyWish:"आपकी विशलिस्ट खाली है",
-back:"वापस",select:"चुनें",size:"साइज़",color:"रंग",availableColors:"उपलब्ध रंग",
-delivery:"डिलीवरी",pin:"PIN कोड",check:"चेक करें",sellerInfo:"सेलर की जानकारी",
-description:"प्रोडक्ट की जानकारी",reviews:"रिव्यू",writeReview:"अपना रिव्यू लिखें",
-searchResults:"सर्च रिजल्ट",results:"रिजल्ट",noResults:"कोई प्रोडक्ट नहीं मिला",
-filter:"फिल्टर",sort:"सॉर्ट करें",lowHigh:"कम से ज्यादा",highLow:"ज्यादा से कम",
-allProducts:"सभी प्रोडक्ट्स",priceRange:"कीमत",price100500:"₹100–₹500",price5001000:"₹500–₹1000",price10001500:"₹1000–₹1500",
-checkout:"चेकआउट",address:"डिलीवरी पता",name:"नाम",mobile:"मोबाइल नंबर",email:"ईमेल",
-city:"शहर",state:"राज्य",pincode:"PIN कोड",fullAddress:"पूरा पता",
-payment:"पेमेंट",cod:"कैश ऑन डिलीवरी",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"कार्ड जोड़ें",
-cardNumber:"कार्ड नंबर",expiry:"Expiry",cvv:"CVV",placeOrder:"ऑर्डर करें",
-onlineAmount:"ऑनलाइन पेमेंट",codExtra:"COD चार्ज",total:"कुल",subtotal:"सबटोटल",
-standard:"Standard Delivery",fast:"Fast Delivery",express:"Express Delivery",
-orderPlaced:"ऑर्डर हो गया",orderDate:"ऑर्डर की तारीख",expected:"अनुमानित डिलीवरी",
-trackOrder:"ऑर्डर ट्रैक करें",return:"रिटर्न",exchange:"एक्सचेंज",
-wrongProduct:"गलत प्रोडक्ट",damaged:"डैमेज / खराब प्रोडक्ट",wrongColorSize:"गलत रंग / साइज़",
-changeMind:"प्रोडक्ट पसंद नहीं आया",returnRequest:"रिटर्न रिक्वेस्ट",
-exchangeRequest:"एक्सचेंज रिक्वेस्ट",reason:"कारण",submit:"सबमिट करें",
-pickup:"पिकअप पॉइंट",pickupOtp:"पिकअप OTP",exchangeOtp:"एक्सचेंज OTP",cancelOtp:"कैंसिल / रिटर्न OTP",
-orderTracking:"ऑर्डर ट्रैकिंग",confirmed:"कन्फर्म",packed:"पैक्ड",shipped:"शिप्ड",
-outDelivery:"डिलीवरी के लिए निकला",delivered:"डिलीवर हो गया",
-delayed:"डिलीवरी में थोड़ी देरी हो रही है।",
-addresses:"पते",payments:"पेमेंट",coupons:"कूपन",returnsRefunds:"रिटर्न और रिफंड",
-notifications:"नोटिफिकेशन",accessibility:"एक्सेसिबिलिटी",login:"लॉगिन / OTP",logout:"लॉगआउट",
-sellerRegistration:"सेलर रजिस्ट्रेशन",businessName:"बिजनेस का नाम",pan:"PAN",gst:"GST",
-businessAddress:"बिजनेस का पता",register:"रजिस्टर करें",ordersList:"आपके ऑर्डर",
-search:"सर्च",voiceUnavailable:"आपके डिवाइस में वॉइस सर्च उपलब्ध नहीं है।",
-red:"लाल",blue:"नीला",black:"काला",white:"सफेद",pink:"गुलाबी",
-available:"उपलब्ध",unavailable:"उपलब्ध नहीं",quantity:"मात्रा",
-productAdded:"प्रोडक्ट कार्ट में जोड़ दिया गया।"
+tag:"आपकी अपनी Shopping जगह ❤️",
+search:"क्या ढूँढ रहे हैं? जैसे Anarkali Suit",
+orders:"मेरे ऑर्डर",
+account:"Account",
+home:"Home",
+categories:"Categories",
+seller:"Seller",
+myOrders:"My Orders",
+welcome:"ZipCart में आपका स्वागत है ❤️",
+intro:"आपकी अपनी shopping जगह",
+steps:"देखो → सुनो → समझो → दबाओ → खरीदो",
+voice:"Voice Search",
+help:"मदद चाहिए?",
+offers:"आज के Offers",
+budget:"आपके बजट और पसंद के हिसाब से खरीदारी करें",
+see:"देखें",
+topCategories:"Top Categories",
+forYou:"आपके लिए चुना गया",
+budgetFav:"कम बजट में पसंदीदा",
+newArrivals:"New Arrivals",
+back:"वापस",
+listen:"सुनें",
+products:"Products",
+wishlist:"मेरी Wishlist",
+cart:"मेरा Cart",
+emptyCart:"आपका cart अभी खाली है। ❤️",
+emptyWishlist:"Wishlist अभी खाली है। किसी product पर ❤️ दबाइए।",
+viewBuy:"देखें / खरीदें",
+addCart:"Add to Cart",
+buyNow:"Buy Now",
+priceDetails:"Price Details",
+selectedTotal:"Selected Product Total",
+delivery:"Delivery",
+discount:"Discount",
+finalTotal:"Final Total",
+checkout:"Proceed to Checkout",
+checkoutTitle:"Checkout",
+name:"नाम",
+mobile:"Mobile",
+address:"Address",
+pin:"PIN Code",
+payment:"Payment",
+placeOrder:"Place Order",
+orderTracking:"Order Tracking",
+return:"Return",
+exchange:"Exchange",
+trackOrder:"Track Order",
+shopping:"Shopping जारी रखें",
+accountTitle:"मेरी ZipCart",
+language:"भाषा",
+close:"बंद करें",
+chooseLanguage:"भाषा चुनें",
+languageSaved:"भाषा सफलतापूर्वक बदल दी गई।",
+searchTitle:"Search",
+noResult:"कोई exact result नहीं मिला",
+options:"विकल्प मिले",
+price:"Price",
+color:"Color",
+brand:"Brand",
+rating:"Rating",
+discountFilter:"Discount",
+newest:"Newest",
+popular:"Popular",
+lowHigh:"Price Low-High",
+highLow:"Price High-Low",
+details:"पूरा विवरण",
+size:"Size",
+colors:"Color",
+returnExchange:"Return/Exchange",
+reviews:"Reviews & Q&A",
+category:"Category",
+continue:"Continue"
 },
 
 English:{
-tagline:"Your own Shopping place ❤️",home:"Home",categories:"Categories",orders:"My Orders",account:"Account",seller:"Seller",
-wishlist:"Wishlist",cart:"Cart",searchPlaceholder:"What are you looking for? e.g. Anarkali Suit",
-language:"Language",chooseLanguage:"Choose your language",languageHint:"After choosing a language, the complete ZipCart will appear in that language.",
-shopNow:"Shop Now",viewAll:"View All",popular:"Popular Products",quick:"Quick Delivery",
-grocery:"Grocery",medicine:"Medicines",featured:"Featured for You",
-addCart:"Add to Cart",buyNow:"Buy Now",remove:"Remove",saveLater:"Save for Later",
-added:"Added to cart",emptyCart:"Your cart is empty",emptyWish:"Your wishlist is empty",
-back:"Back",select:"Select",size:"Size",color:"Color",availableColors:"Available Colors",
-delivery:"Delivery",pin:"PIN Code",check:"Check",sellerInfo:"Seller Information",
-description:"Product Information",reviews:"Reviews",writeReview:"Write your review",
-searchResults:"Search Results",results:"Results",noResults:"No products found",
-filter:"Filter",sort:"Sort",lowHigh:"Low to High",highLow:"High to Low",
-allProducts:"All Products",priceRange:"Price",price100500:"₹100–₹500",price5001000:"₹500–₹1000",price10001500:"₹1000–₹1500",
-checkout:"Checkout",address:"Delivery Address",name:"Name",mobile:"Mobile Number",email:"Email",
-city:"City",state:"State",pincode:"PIN Code",fullAddress:"Full Address",
-payment:"Payment",cod:"Cash on Delivery",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"Add Card",
-cardNumber:"Card Number",expiry:"Expiry",cvv:"CVV",placeOrder:"Place Order",
-onlineAmount:"Online Payment",codExtra:"COD Charge",total:"Total",subtotal:"Subtotal",
-standard:"Standard Delivery",fast:"Fast Delivery",express:"Express Delivery",
-orderPlaced:"Order Placed",orderDate:"Order Date",expected:"Expected Delivery",
-trackOrder:"Track Order",return:"Return",exchange:"Exchange",
-wrongProduct:"Wrong Product",damaged:"Damaged / Defective",wrongColorSize:"Wrong Color / Size",
-changeMind:"Didn't like the product",returnRequest:"Return Request",
-exchangeRequest:"Exchange Request",reason:"Reason",submit:"Submit",
-pickup:"Pickup Point",pickupOtp:"Pickup OTP",exchangeOtp:"Exchange OTP",cancelOtp:"Cancel / Return OTP",
-orderTracking:"Order Tracking",confirmed:"Confirmed",packed:"Packed",shipped:"Shipped",
-outDelivery:"Out for Delivery",delivered:"Delivered",
-delayed:"Your delivery is taking a little longer than expected.",
-addresses:"Addresses",payments:"Payments",coupons:"Coupons",returnsRefunds:"Returns & Refunds",
-notifications:"Notifications",accessibility:"Accessibility",login:"Login / OTP",logout:"Logout",
-sellerRegistration:"Seller Registration",businessName:"Business Name",pan:"PAN",gst:"GST",
-businessAddress:"Business Address",register:"Register",ordersList:"Your Orders",
-search:"Search",voiceUnavailable:"Voice search is not available on your device.",
-red:"Red",blue:"Blue",black:"Black",white:"White",pink:"Pink",
-available:"Available",unavailable:"Unavailable",quantity:"Quantity",
-productAdded:"Product added to cart."
+tag:"Your own Shopping place ❤️",
+search:"What are you looking for? e.g. Anarkali Suit",
+orders:"My Orders",
+account:"Account",
+home:"Home",
+categories:"Categories",
+seller:"Seller",
+myOrders:"My Orders",
+welcome:"Welcome to ZipCart ❤️",
+intro:"Your own shopping place",
+steps:"See → Listen → Understand → Tap → Buy",
+voice:"Voice Search",
+help:"Need Help?",
+offers:"Today's Offers",
+budget:"Shop according to your budget and choice",
+see:"View",
+topCategories:"Top Categories",
+forYou:"Picked for You",
+budgetFav:"Budget Favourites",
+newArrivals:"New Arrivals",
+back:"Back",
+listen:"Listen",
+products:"Products",
+wishlist:"My Wishlist",
+cart:"My Cart",
+emptyCart:"Your cart is empty. ❤️",
+emptyWishlist:"Wishlist is empty. Tap ❤️ on any product.",
+viewBuy:"View / Buy",
+addCart:"Add to Cart",
+buyNow:"Buy Now",
+priceDetails:"Price Details",
+selectedTotal:"Selected Product Total",
+delivery:"Delivery",
+discount:"Discount",
+finalTotal:"Final Total",
+checkout:"Proceed to Checkout",
+checkoutTitle:"Checkout",
+name:"Name",
+mobile:"Mobile",
+address:"Address",
+pin:"PIN Code",
+payment:"Payment",
+placeOrder:"Place Order",
+orderTracking:"Order Tracking",
+return:"Return",
+exchange:"Exchange",
+trackOrder:"Track Order",
+shopping:"Continue Shopping",
+accountTitle:"My ZipCart",
+language:"Language",
+close:"Close",
+chooseLanguage:"Choose Language",
+languageSaved:"Language changed successfully.",
+searchTitle:"Search",
+noResult:"No exact result found",
+options:"options found",
+price:"Price",
+color:"Color",
+brand:"Brand",
+rating:"Rating",
+discountFilter:"Discount",
+newest:"Newest",
+popular:"Popular",
+lowHigh:"Price Low-High",
+highLow:"Price High-Low",
+details:"Full Details",
+size:"Size",
+colors:"Color",
+returnExchange:"Return/Exchange",
+reviews:"Reviews & Q&A",
+category:"Category",
+continue:"Continue"
 },
 
 Gujarati:{
-tagline:"તમારી પોતાની Shopping જગ્યા ❤️",home:"હોમ",categories:"કેટેગરી",orders:"મારા ઓર્ડર",account:"એકાઉન્ટ",seller:"સેલર",
-wishlist:"વિશલિસ્ટ",cart:"કાર્ટ",searchPlaceholder:"તમે શું શોધી રહ્યા છો? જેમ કે Anarkali Suit",
-language:"ભાષા",chooseLanguage:"તમારી ભાષા પસંદ કરો",languageHint:"ભાષા પસંદ કર્યા પછી આખું ZipCart તે ભાષામાં દેખાશે.",
-shopNow:"હમણાં ખરીદો",viewAll:"બધું જુઓ",popular:"લોકપ્રિય પ્રોડક્ટ્સ",quick:"ઝડપી ડિલિવરી",
-grocery:"કરિયાણું",medicine:"દવાઓ",featured:"તમારા માટે ખાસ",
-addCart:"કાર્ટમાં ઉમેરો",buyNow:"હમણાં ખરીદો",remove:"દૂર કરો",saveLater:"પછી માટે સેવ કરો",
-added:"કાર્ટમાં ઉમેર્યું",emptyCart:"તમારું કાર્ટ ખાલી છે",emptyWish:"તમારી વિશલિસ્ટ ખાલી છે",
-back:"પાછળ",select:"પસંદ કરો",size:"સાઇઝ",color:"રંગ",availableColors:"ઉપલબ્ધ રંગો",
-delivery:"ડિલિવરી",pin:"PIN કોડ",check:"ચેક કરો",sellerInfo:"સેલરની માહિતી",
-description:"પ્રોડક્ટની માહિતી",reviews:"રિવ્યૂ",writeReview:"તમારો રિવ્યૂ લખો",
-searchResults:"સર્ચ પરિણામ",results:"પરિણામ",noResults:"કોઈ પ્રોડક્ટ મળી નથી",
-filter:"ફિલ્ટર",sort:"સૉર્ટ",lowHigh:"ઓછીથી વધુ",highLow:"વધુથી ઓછી",
-allProducts:"બધા પ્રોડક્ટ્સ",priceRange:"કિંમત",price100500:"₹100–₹500",price5001000:"₹500–₹1000",price10001500:"₹1000–₹1500",
-checkout:"ચેકઆઉટ",address:"ડિલિવરી સરનામું",name:"નામ",mobile:"મોબાઇલ નંબર",email:"ઈમેલ",
-city:"શહેર",state:"રાજ્ય",pincode:"PIN કોડ",fullAddress:"પૂરું સરનામું",
-payment:"પેમેન્ટ",cod:"કેશ ઑન ડિલિવરી",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"કાર્ડ ઉમેરો",
-cardNumber:"કાર્ડ નંબર",expiry:"Expiry",cvv:"CVV",placeOrder:"ઓર્ડર કરો",
-onlineAmount:"ઓનલાઇન પેમેન્ટ",codExtra:"COD ચાર્જ",total:"કુલ",subtotal:"સબટોટલ",
-standard:"સ્ટાન્ડર્ડ ડિલિવરી",fast:"ફાસ્ટ ડિલિવરી",express:"એક્સપ્રેસ ડિલિવરી",
-orderPlaced:"ઓર્ડર થઈ ગયો",orderDate:"ઓર્ડરની તારીખ",expected:"અપેક્ષિત ડિલિવરી",
-trackOrder:"ઓર્ડર ટ્રેક કરો",return:"રિટર્ન",exchange:"એક્સચેન્જ",
-wrongProduct:"ખોટો પ્રોડક્ટ",damaged:"ડેમેજ / ખરાબ પ્રોડક્ટ",wrongColorSize:"ખોટો રંગ / સાઇઝ",
-changeMind:"પ્રોડક્ટ પસંદ આવ્યો નથી",returnRequest:"રિટર્ન રિક્વેસ્ટ",
-exchangeRequest:"એક્સચેન્જ રિક્વેસ્ટ",reason:"કારણ",submit:"સબમિટ",
-pickup:"પિકઅપ પોઇન્ટ",pickupOtp:"પિકઅપ OTP",exchangeOtp:"એક્સચેન્જ OTP",cancelOtp:"કેન્સલ / રિટર્ન OTP",
-orderTracking:"ઓર્ડર ટ્રેકિંગ",confirmed:"કન્ફર્મ",packed:"પેક્ડ",shipped:"શિપ્ડ",
-outDelivery:"ડિલિવરી માટે નીકળ્યું",delivered:"ડિલિવર થઈ ગયું",
-delayed:"ડિલિવરીમાં થોડો વિલંબ થઈ રહ્યો છે.",
-addresses:"સરનામાં",payments:"પેમેન્ટ",coupons:"કૂપન",returnsRefunds:"રિટર્ન અને રિફંડ",
-notifications:"નોટિફિકેશન",accessibility:"ઍક્સેસિબિલિટી",login:"લૉગિન / OTP",logout:"લૉગઆઉટ",
-sellerRegistration:"સેલર રજીસ્ટ્રેશન",businessName:"બિઝનેસનું નામ",pan:"PAN",gst:"GST",
-businessAddress:"બિઝનેસનું સરનામું",register:"રજીસ્ટર કરો",ordersList:"તમારા ઓર્ડર",
-search:"સર્ચ",voiceUnavailable:"તમારા ડિવાઇસમાં વૉઇસ સર્ચ ઉપલબ્ધ નથી.",
-red:"લાલ",blue:"વાદળી",black:"કાળો",white:"સફેદ",pink:"ગુલાબી",
-available:"ઉપલબ્ધ",unavailable:"ઉપલબ્ધ નથી",quantity:"જથ્થો",
-productAdded:"પ્રોડક્ટ કાર્ટમાં ઉમેર્યું."
+tag:"તમારી પોતાની Shopping જગ્યા ❤️",
+search:"શું શોધી રહ્યા છો? જેમ કે Anarkali Suit",
+orders:"મારા ઓર્ડર",
+account:"એકાઉન્ટ",
+home:"હોમ",
+categories:"કેટેગરી",
+seller:"વિક્રેતા",
+myOrders:"મારા ઓર્ડર",
+welcome:"ZipCart માં આપનું સ્વાગત છે ❤️",
+intro:"તમારી પોતાની Shopping જગ્યા",
+steps:"જુઓ → સાંભળો → સમજો → દબાવો → ખરીદો",
+voice:"વોઇસ સર્ચ",
+help:"મદદ જોઈએ?",
+offers:"આજની ઓફર્સ",
+budget:"તમારા બજેટ અને પસંદગી મુજબ ખરીદી કરો",
+see:"જુઓ",
+topCategories:"ટોચની કેટેગરી",
+forYou:"તમારા માટે પસંદ કરેલું",
+budgetFav:"ઓછા બજેટની પસંદગી",
+newArrivals:"નવા ઉત્પાદનો",
+back:"પાછા",
+listen:"સાંભળો",
+products:"ઉત્પાદનો",
+wishlist:"મારી Wishlist",
+cart:"મારો Cart",
+emptyCart:"તમારો Cart હાલમાં ખાલી છે. ❤️",
+emptyWishlist:"Wishlist ખાલી છે. કોઈ ઉત્પાદન પર ❤️ દબાવો.",
+viewBuy:"જુઓ / ખરીદો",
+addCart:"Cart માં ઉમેરો",
+buyNow:"હમણાં ખરીદો",
+priceDetails:"કિંમતની વિગતો",
+selectedTotal:"પસંદ કરેલા ઉત્પાદનોની કુલ કિંમત",
+delivery:"ડિલિવરી",
+discount:"ડિસ્કાઉન્ટ",
+finalTotal:"અંતિમ કુલ",
+checkout:"ચેકઆઉટ કરો",
+checkoutTitle:"ચેકઆઉટ",
+name:"નામ",
+mobile:"મોબાઇલ",
+address:"સરનામું",
+pin:"PIN કોડ",
+payment:"ચુકવણી",
+placeOrder:"ઓર્ડર કરો",
+orderTracking:"ઓર્ડર ટ્રેકિંગ",
+return:"પરત",
+exchange:"બદલી",
+trackOrder:"ઓર્ડર ટ્રેક કરો",
+shopping:"ખરીદી ચાલુ રાખો",
+accountTitle:"મારું ZipCart",
+language:"ભાષા",
+close:"બંધ કરો",
+chooseLanguage:"ભાષા પસંદ કરો",
+languageSaved:"ભાષા સફળતાપૂર્વક બદલાઈ ગઈ.",
+searchTitle:"શોધ",
+noResult:"કોઈ ચોક્કસ પરિણામ મળ્યું નથી",
+options:"વિકલ્પો મળ્યા",
+price:"કિંમત",
+color:"રંગ",
+brand:"બ્રાન્ડ",
+rating:"રેટિંગ",
+discountFilter:"ડિસ્કાઉન્ટ",
+newest:"નવું",
+popular:"લોકપ્રિય",
+lowHigh:"ઓછીથી વધુ કિંમત",
+highLow:"વધુથી ઓછી કિંમત",
+details:"સંપૂર્ણ વિગતો",
+size:"કદ",
+colors:"રંગ",
+returnExchange:"પરત / બદલી",
+reviews:"સમીક્ષા અને પ્રશ્નો",
+category:"કેટેગરી",
+continue:"આગળ વધો"
 },
 
 Marathi:{
-tagline:"तुमची स्वतःची Shopping जागा ❤️",home:"होम",categories:"कॅटेगरी",orders:"माझे ऑर्डर्स",account:"अकाउंट",seller:"सेलर",
-wishlist:"विशलिस्ट",cart:"कार्ट",searchPlaceholder:"तुम्ही काय शोधत आहात? उदा. Anarkali Suit",
-language:"भाषा",chooseLanguage:"तुमची भाषा निवडा",languageHint:"भाषा निवडल्यानंतर संपूर्ण ZipCart त्या भाषेत दिसेल.",
-shopNow:"आता खरेदी करा",viewAll:"सर्व पहा",popular:"लोकप्रिय प्रॉडक्ट्स",quick:"जलद डिलिव्हरी",
-grocery:"किराणा",medicine:"औषधे",featured:"तुमच्यासाठी खास",
-addCart:"कार्टमध्ये जोडा",buyNow:"आता खरेदी करा",remove:"काढा",saveLater:"नंतरसाठी सेव्ह करा",
-added:"कार्टमध्ये जोडले",emptyCart:"तुमचे कार्ट रिकामे आहे",emptyWish:"तुमची विशलिस्ट रिकामी आहे",
-back:"मागे",select:"निवडा",size:"साईज",color:"रंग",availableColors:"उपलब्ध रंग",
-delivery:"डिलिव्हरी",pin:"PIN कोड",check:"तपासा",sellerInfo:"सेलरची माहिती",
-description:"प्रॉडक्टची माहिती",reviews:"रिव्ह्यू",writeReview:"तुमचा रिव्ह्यू लिहा",
-searchResults:"सर्च निकाल",results:"निकाल",noResults:"कोणतेही प्रॉडक्ट सापडले नाही",
-filter:"फिल्टर",sort:"सॉर्ट",lowHigh:"कमी ते जास्त",highLow:"जास्त ते कमी",
-allProducts:"सर्व प्रॉडक्ट्स",priceRange:"किंमत",price100500:"₹100–₹500",price5001000:"₹500–₹1000",price10001500:"₹1000–₹1500",
-checkout:"चेकआउट",address:"डिलिव्हरी पत्ता",name:"नाव",mobile:"मोबाईल नंबर",email:"ईमेल",
-city:"शहर",state:"राज्य",pincode:"PIN कोड",fullAddress:"पूर्ण पत्ता",
-payment:"पेमेंट",cod:"कॅश ऑन डिलिव्हरी",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"कार्ड जोडा",
-cardNumber:"कार्ड नंबर",expiry:"Expiry",cvv:"CVV",placeOrder:"ऑर्डर करा",
-onlineAmount:"ऑनलाइन पेमेंट",codExtra:"COD चार्ज",total:"एकूण",subtotal:"सबटोटल",
-standard:"स्टँडर्ड डिलिव्हरी",fast:"फास्ट डिलिव्हरी",express:"एक्सप्रेस डिलिव्हरी",
-orderPlaced:"ऑर्डर झाला",orderDate:"ऑर्डरची तारीख",expected:"अपेक्षित डिलिव्हरी",
-trackOrder:"ऑर्डर ट्रॅक करा",return:"रिटर्न",exchange:"एक्सचेंज",
-wrongProduct:"चुकीचे प्रॉडक्ट",damaged:"डॅमेज / खराब प्रॉडक्ट",wrongColorSize:"चुकीचा रंग / साईज",
-changeMind:"प्रॉडक्ट आवडले नाही",returnRequest:"रिटर्न रिक्वेस्ट",
-exchangeRequest:"एक्सचेंज रिक्वेस्ट",reason:"कारण",submit:"सबमिट",
-pickup:"पिकअप पॉइंट",pickupOtp:"पिकअप OTP",exchangeOtp:"एक्सचेंज OTP",cancelOtp:"कॅन्सल / रिटर्न OTP",
-orderTracking:"ऑर्डर ट्रॅकिंग",confirmed:"कन्फर्म",packed:"पॅक्ड",shipped:"शिप्ड",
-outDelivery:"डिलिव्हरीसाठी निघाले",delivered:"डिलिव्हर झाले",
-delayed:"डिलिव्हरीला थोडा उशीर होत आहे.",
-addresses:"पत्ते",payments:"पेमेंट",coupons:"कूपन्स",returnsRefunds:"रिटर्न आणि रिफंड",
-notifications:"नोटिफिकेशन्स",accessibility:"ॲक्सेसिबिलिटी",login:"लॉगिन / OTP",logout:"लॉगआउट",
-sellerRegistration:"सेलर रजिस्ट्रेशन",businessName:"बिझनेसचे नाव",pan:"PAN",gst:"GST",
-businessAddress:"बिझनेसचा पत्ता",register:"रजिस्टर करा",ordersList:"तुमचे ऑर्डर्स",
-search:"सर्च",voiceUnavailable:"तुमच्या डिव्हाइसवर व्हॉइस सर्च उपलब्ध नाही.",
-red:"लाल",blue:"निळा",black:"काळा",white:"पांढरा",pink:"गुलाबी",
-available:"उपलब्ध",unavailable:"उपलब्ध नाही",quantity:"प्रमाण",
-productAdded:"प्रॉडक्ट कार्टमध्ये जोडले."
+tag:"तुमची स्वतःची Shopping जागा ❤️",
+search:"तुम्ही काय शोधत आहात? जसे Anarkali Suit",
+orders:"माझे ऑर्डर्स",
+account:"अकाउंट",
+home:"होम",
+categories:"कॅटेगरी",
+seller:"विक्रेता",
+myOrders:"माझे ऑर्डर्स",
+welcome:"ZipCart मध्ये तुमचे स्वागत आहे ❤️",
+intro:"तुमची स्वतःची Shopping जागा",
+steps:"पहा → ऐका → समजा → दाबा → खरेदी करा",
+voice:"व्हॉइस सर्च",
+help:"मदत हवी आहे?",
+offers:"आजच्या ऑफर्स",
+budget:"तुमच्या बजेट आणि आवडीनुसार खरेदी करा",
+see:"पहा",
+topCategories:"टॉप कॅटेगरी",
+forYou:"तुमच्यासाठी निवडलेले",
+budgetFav:"कमी बजेटमधील आवडते",
+newArrivals:"नवीन उत्पादने",
+back:"मागे",
+listen:"ऐका",
+products:"उत्पादने",
+wishlist:"माझी Wishlist",
+cart:"माझा Cart",
+emptyCart:"तुमचा Cart सध्या रिकामा आहे. ❤️",
+emptyWishlist:"Wishlist रिकामी आहे. कोणत्याही उत्पादनावर ❤️ दाबा.",
+viewBuy:"पहा / खरेदी करा",
+addCart:"Cart मध्ये जोडा",
+buyNow:"आता खरेदी करा",
+priceDetails:"किंमतीची माहिती",
+selectedTotal:"निवडलेल्या उत्पादनांची एकूण किंमत",
+delivery:"डिलिव्हरी",
+discount:"सवलत",
+finalTotal:"अंतिम एकूण",
+checkout:"Checkout करा",
+checkoutTitle:"Checkout",
+name:"नाव",
+mobile:"मोबाईल",
+address:"पत्ता",
+pin:"PIN कोड",
+payment:"पेमेंट",
+placeOrder:"ऑर्डर द्या",
+orderTracking:"ऑर्डर ट्रॅकिंग",
+return:"परतावा",
+exchange:"बदल",
+trackOrder:"ऑर्डर ट्रॅक करा",
+shopping:"खरेदी सुरू ठेवा",
+accountTitle:"माझे ZipCart",
+language:"भाषा",
+close:"बंद करा",
+chooseLanguage:"भाषा निवडा",
+languageSaved:"भाषा यशस्वीपणे बदलली.",
+searchTitle:"शोध",
+noResult:"अचूक परिणाम मिळाला नाही",
+options:"पर्याय मिळाले",
+price:"किंमत",
+color:"रंग",
+brand:"ब्रँड",
+rating:"रेटिंग",
+discountFilter:"सवलत",
+newest:"नवीन",
+popular:"लोकप्रिय",
+lowHigh:"कमी ते जास्त किंमत",
+highLow:"जास्त ते कमी किंमत",
+details:"पूर्ण माहिती",
+size:"साइज",
+colors:"रंग",
+returnExchange:"परतावा / बदल",
+reviews:"Reviews & Q&A",
+category:"कॅटेगरी",
+continue:"पुढे"
 },
 
 Bengali:{
-tagline:"আপনার নিজের Shopping জায়গা ❤️",home:"হোম",categories:"ক্যাটাগরি",orders:"আমার অর্ডার",account:"অ্যাকাউন্ট",seller:"সেলার",
-wishlist:"উইশলিস্ট",cart:"কার্ট",searchPlaceholder:"আপনি কী খুঁজছেন? যেমন Anarkali Suit",
-language:"ভাষা",chooseLanguage:"আপনার ভাষা বেছে নিন",languageHint:"ভাষা বেছে নিলে পুরো ZipCart সেই ভাষায় দেখা যাবে।",
-shopNow:"এখনই কিনুন",viewAll:"সব দেখুন",popular:"জনপ্রিয় প্রোডাক্ট",quick:"দ্রুত ডেলিভারি",
-grocery:"মুদিখানা",medicine:"ওষুধ",featured:"আপনার জন্য বিশেষ",
-addCart:"কার্টে যোগ করুন",buyNow:"এখনই কিনুন",remove:"সরিয়ে দিন",saveLater:"পরে সেভ করুন",
-added:"কার্টে যোগ করা হয়েছে",emptyCart:"আপনার কার্ট খালি",emptyWish:"আপনার উইশলিস্ট খালি",
-back:"ফিরে যান",select:"বেছে নিন",size:"সাইজ",color:"রং",availableColors:"উপলব্ধ রং",
-delivery:"ডেলিভারি",pin:"PIN কোড",check:"চেক করুন",sellerInfo:"সেলারের তথ্য",
-description:"প্রোডাক্টের তথ্য",reviews:"রিভিউ",writeReview:"আপনার রিভিউ লিখুন",
-searchResults:"সার্চ ফলাফল",results:"ফলাফল",noResults:"কোনও প্রোডাক্ট পাওয়া যায়নি",
-filter:"ফিল্টার",sort:"সাজান",lowHigh:"কম থেকে বেশি",highLow:"বেশি থেকে কম",
-allProducts:"সব প্রোডাক্ট",priceRange:"দাম",price100500:"₹100–₹500",price5001000:"₹500–₹1000",price10001500:"₹1000–₹1500",
-checkout:"চেকআউট",address:"ডেলিভারি ঠিকানা",name:"নাম",mobile:"মোবাইল নম্বর",email:"ইমেল",
-city:"শহর",state:"রাজ্য",pincode:"PIN কোড",fullAddress:"সম্পূর্ণ ঠিকানা",
-payment:"পেমেন্ট",cod:"ক্যাশ অন ডেলিভারি",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"কার্ড যোগ করুন",
-cardNumber:"কার্ড নম্বর",expiry:"Expiry",cvv:"CVV",placeOrder:"অর্ডার করুন",
-onlineAmount:"অনলাইন পেমেন্ট",codExtra:"COD চার্জ",total:"মোট",subtotal:"সাবটোটাল",
-standard:"স্ট্যান্ডার্ড ডেলিভারি",fast:"ফাস্ট ডেলিভারি",express:"এক্সপ্রেস ডেলিভারি",
-orderPlaced:"অর্ডার হয়েছে",orderDate:"অর্ডারের তারিখ",expected:"সম্ভাব্য ডেলিভারি",
-trackOrder:"অর্ডার ট্র্যাক করুন",return:"রিটার্ন",exchange:"এক্সচেঞ্জ",
-wrongProduct:"ভুল প্রোডাক্ট",damaged:"ড্যামেজ / খারাপ প্রোডাক্ট",wrongColorSize:"ভুল রং / সাইজ",
-changeMind:"প্রোডাক্ট পছন্দ হয়নি",returnRequest:"রিটার্ন রিকোয়েস্ট",
-exchangeRequest:"এক্সচেঞ্জ রিকোয়েস্ট",reason:"কারণ",submit:"জমা দিন",
-pickup:"পিকআপ পয়েন্ট",pickupOtp:"পিকআপ OTP",exchangeOtp:"এক্সচেঞ্জ OTP",cancelOtp:"ক্যানসেল / রিটার্ন OTP",
-orderTracking:"অর্ডার ট্র্যাকিং",confirmed:"কনফার্মড",packed:"প্যাকড",shipped:"শিপড",
-outDelivery:"ডেলিভারির জন্য বের হয়েছে",delivered:"ডেলিভার হয়েছে",
-delayed:"ডেলিভারিতে একটু দেরি হচ্ছে।",
-addresses:"ঠিকানা",payments:"পেমেন্ট",coupons:"কুপন",returnsRefunds:"রিটার্ন ও রিফান্ড",
-notifications:"নোটিফিকেশন",accessibility:"অ্যাক্সেসিবিলিটি",login:"লগইন / OTP",logout:"লগআউট",
-sellerRegistration:"সেলার রেজিস্ট্রেশন",businessName:"ব্যবসার নাম",pan:"PAN",gst:"GST",
-businessAddress:"ব্যবসার ঠিকানা",register:"রেজিস্টার করুন",ordersList:"আপনার অর্ডার",
-search:"সার্চ",voiceUnavailable:"আপনার ডিভাইসে ভয়েস সার্চ উপলব্ধ নেই।",
-red:"লাল",blue:"নীল",black:"কালো",white:"সাদা",pink:"গোলাপি",
-available:"উপলব্ধ",unavailable:"উপলব্ধ নয়",quantity:"পরিমাণ",
-productAdded:"প্রোডাক্ট কার্টে যোগ করা হয়েছে।"
-},
-
-Tamil:{
-tagline:"உங்கள் சொந்த Shopping இடம் ❤️",home:"முகப்பு",categories:"வகைகள்",orders:"என் ஆர்டர்கள்",account:"கணக்கு",seller:"விற்பனையாளர்",
-wishlist:"விருப்பப்பட்டியல்",cart:"கார்ட்",searchPlaceholder:"எதைத் தேடுகிறீர்கள்? உதா. Anarkali Suit",
-language:"மொழி",chooseLanguage:"உங்கள் மொழியைத் தேர்வு செய்யுங்கள்",languageHint:"மொழியைத் தேர்வு செய்ததும் முழு ZipCart அதே மொழியில் தோன்றும்.",
-shopNow:"இப்போது வாங்குங்கள்",viewAll:"அனைத்தையும் பார்க்க",popular:"பிரபலமான பொருட்கள்",quick:"விரைவு டெலிவரி",
-grocery:"மளிகை",medicine:"மருந்துகள்",featured:"உங்களுக்காக",
-addCart:"கார்ட்டில் சேர்க்கவும்",buyNow:"இப்போது வாங்குங்கள்",remove:"நீக்கவும்",saveLater:"பின்னர் சேமிக்கவும்",
-added:"கார்ட்டில் சேர்க்கப்பட்டது",emptyCart:"உங்கள் கார்ட் காலியாக உள்ளது",emptyWish:"உங்கள் விருப்பப்பட்டியல் காலியாக உள்ளது",
-back:"பின் செல்ல",select:"தேர்வு",size:"அளவு",color:"நிறம்",availableColors:"கிடைக்கும் நிறங்கள்",
-delivery:"டெலிவரி",pin:"PIN குறியீடு",check:"சரிபார்க்க",sellerInfo:"விற்பனையாளர் தகவல்",
-description:"பொருள் தகவல்",reviews:"விமர்சனங்கள்",writeReview:"உங்கள் விமர்சனத்தை எழுதுங்கள்",
-searchResults:"தேடல் முடிவுகள்",results:"முடிவுகள்",noResults:"பொருட்கள் எதுவும் கிடைக்கவில்லை",
-filter:"வடிகட்டி",sort:"வரிசைப்படுத்து",lowHigh:"குறைந்தது முதல் அதிகம்",highLow:"அதிகம் முதல் குறைவு",
-allProducts:"அனைத்து பொருட்கள்",priceRange:"விலை",price100500:"₹100–₹500",price5001000:"₹500–₹1000",price10001500:"₹1000–₹1500",
-checkout:"செக்அவுட்",address:"டெலிவரி முகவரி",name:"பெயர்",mobile:"மொபைல் எண்",email:"மின்னஞ்சல்",
-city:"நகரம்",state:"மாநிலம்",pincode:"PIN குறியீடு",fullAddress:"முழு முகவரி",
-payment:"பணம் செலுத்துதல்",cod:"கேஷ் ஆன் டெலிவரி",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"கார்டு சேர்க்கவும்",
-cardNumber:"கார்டு எண்",expiry:"Expiry",cvv:"CVV",placeOrder:"ஆர்டர் செய்யுங்கள்",
-onlineAmount:"ஆன்லைன் பேமெண்ட்",codExtra:"COD கட்டணம்",total:"மொத்தம்",subtotal:"மொத்த தொகை",
-standard:"ஸ்டாண்டர்ட் டெலிவரி",fast:"வேகமான டெலிவரி",express:"எக்ஸ்பிரஸ் டெலிவரி",
-orderPlaced:"ஆர்டர் செய்யப்பட்டது",orderDate:"ஆர்டர் தேதி",expected:"எதிர்பார்க்கப்படும் டெலிவரி",
-trackOrder:"ஆர்டரை கண்காணிக்க",return:"திரும்பப் பெறுதல்",exchange:"மாற்றுதல்",
-wrongProduct:"தவறான பொருள்",damaged:"சேதமான பொருள்",wrongColorSize:"தவறான நிறம் / அளவு",
-changeMind:"பொருள் பிடிக்கவில்லை",returnRequest:"ரிட்டர்ன் கோரிக்கை",
-exchangeRequest:"எக்ஸ்சேஞ்ச் கோரிக்கை",reason:"காரணம்",submit:"சமர்ப்பிக்கவும்",
-pickup:"பிக்கப் பாயிண்ட்",pickupOtp:"பிக்கப் OTP",exchangeOtp:"எக்ஸ்சேஞ்ச் OTP",cancelOtp:"ரத்து / ரிட்டர்ன் OTP",
-orderTracking:"ஆர்டர் கண்காணிப்பு",confirmed:"உறுதி செய்யப்பட்டது",packed:"பேக் செய்யப்பட்டது",shipped:"அனுப்பப்பட்டது",
-outDelivery:"டெலிவரிக்கு வந்துகொண்டிருக்கிறது",delivered:"டெலிவரி செய்யப்பட்டது",
-delayed:"டெலிவரியில் சிறிது தாமதம் ஏற்படுகிறது.",
-addresses:"முகவரிகள்",payments:"பணம் செலுத்துதல்",coupons:"கூப்பன்கள்",returnsRefunds:"ரிட்டர்ன் மற்றும் ரீஃபண்ட்",
-notifications:"அறிவிப்புகள்",accessibility:"அணுகல்தன்மை",login:"லாகின் / OTP",logout:"லாக்அவுட்",
-sellerRegistration:"விற்பனையாளர் பதிவு",businessName:"வணிகப் பெயர்",pan:"PAN",gst:"GST",
-businessAddress:"வணிக முகவரி",register:"பதிவு செய்யுங்கள்",ordersList:"உங்கள் ஆர்டர்கள்",
-search:"தேடல்",voiceUnavailable:"உங்கள் சாதனத்தில் குரல் தேடல் இல்லை.",
-red:"சிவப்பு",blue:"நீலம்",black:"கருப்பு",white:"வெள்ளை",pink:"இளஞ்சிவப்பு",
-available:"கிடைக்கும்",unavailable:"கிடைக்காது",quantity:"அளவு",
-productAdded:"பொருள் கார்ட்டில் சேர்க்கப்பட்டது."
-},
-
-Telugu:{
-tagline:"మీ స్వంత Shopping స్థలం ❤️",home:"హోమ్",categories:"కేటగిరీలు",orders:"నా ఆర్డర్లు",account:"అకౌంట్",seller:"సెల్లర్",
-wishlist:"విష్‌లిస్ట్",cart:"కార్ట్",searchPlaceholder:"మీరు ఏమి వెతుకుతున్నారు? ఉదా. Anarkali Suit",
-language:"భాష",chooseLanguage:"మీ భాషను ఎంచుకోండి",languageHint:"భాషను ఎంచుకున్న తర్వాత మొత్తం ZipCart అదే భాషలో కనిపిస్తుంది.",
-shopNow:"ఇప్పుడే కొనండి",viewAll:"అన్నీ చూడండి",popular:"ప్రముఖ ఉత్పత్తులు",quick:"త్వరిత డెలివరీ",
-grocery:"కిరాణా",medicine:"మందులు",featured:"మీ కోసం ప్రత్యేకం",
-addCart:"కార్ట్‌లోకి జోడించండి",buyNow:"ఇప్పుడే కొనండి",remove:"తొలగించండి",saveLater:"తర్వాత సేవ్ చేయండి",
-added:"కార్ట్‌లో జోడించబడింది",emptyCart:"మీ కార్ట్ ఖాళీగా ఉంది",emptyWish:"మీ విష్‌లిస్ట్ ఖాళీగా ఉంది",
-back:"వెనక్కి",select:"ఎంచుకోండి",size:"సైజు",color:"రంగు",availableColors:"అందుబాటులో ఉన్న రంగులు",
-delivery:"డెలివరీ",pin:"PIN కోడ్",check:"చెక్ చేయండి",sellerInfo:"సెల్లర్ సమాచారం",
-description:"ఉత్పత్తి సమాచారం",reviews:"రివ్యూలు",writeReview:"మీ రివ్యూ రాయండి",
-searchResults:"శోధన ఫలితాలు",results:"ఫలితాలు",noResults:"ఏ ఉత్పత్తులు కనుగొనబడలేదు",
-filter:"ఫిల్టర్",sort:"సార్ట్",lowHigh:"తక్కువ నుండి ఎక్కువ",highLow:"ఎక్కువ నుండి తక్కువ",
-allProducts:"అన్ని ఉత్పత్తులు",priceRange:"ధర",price100500:"₹100–₹500",price5001000:"₹500–₹1000",price10001500:"₹1000–₹1500",
-checkout:"చెక్‌అవుట్",address:"డెలివరీ చిరునామా",name:"పేరు",mobile:"మొబైల్ నంబర్",email:"ఇమెయిల్",
-city:"నగరం",state:"రాష్ట్రం",pincode:"PIN కోడ్",fullAddress:"పూర్తి చిరునామా",
-payment:"చెల్లింపు",cod:"క్యాష్ ఆన్ డెలివరీ",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"కార్డ్ జోడించండి",
-cardNumber:"కార్డ్ నంబర్",expiry:"Expiry",cvv:"CVV",placeOrder:"ఆర్డర్ చేయండి",
-onlineAmount:"ఆన్‌లైన్ చెల్లింపు",codExtra:"COD ఛార్జ్",total:"మొత్తం",subtotal:"సబ్‌టోటల్",
-standard:"స్టాండర్డ్ డెలివరీ",fast:"ఫాస్ట్ డెలివరీ",express:"ఎక్స్‌ప్రెస్ డెలివరీ",
-orderPlaced:"ఆర్డర్ చేయబడింది",orderDate:"ఆర్డర్ తేదీ",expected:"అంచనా డెలివరీ",
-trackOrder:"ఆర్డర్ ట్రాక్ చేయండి",return:"రిటర్న్",exchange:"ఎక్స్‌చేంజ్",
-wrongProduct:"తప్పు ఉత్పత్తి",damaged:"డ్యామేజ్ / చెడ్డ ఉత్పత్తి",wrongColorSize:"తప్పు రంగు / సైజు",
-changeMind:"ఉత్పత్తి నచ్చలేదు",returnRequest:"రిటర్న్ అభ్యర్థన",
-exchangeRequest:"ఎక్స్‌చేంజ్ అభ్యర్థన",reason:"కారణం",submit:"సమర్పించండి",
-pickup:"పికప్ పాయింట్",pickupOtp:"పికప్ OTP",exchangeOtp:"ఎక్స్‌చేంజ్ OTP",cancelOtp:"క్యాన్సెల్ / రిటర్న్ OTP",
-orderTracking:"ఆర్డర్ ట్రాకింగ్",confirmed:"నిర్ధారించబడింది",packed:"ప్యాక్ చేయబడింది",shipped:"పంపబడింది",
-outDelivery:"డెలివరీకి బయలుదేరింది",delivered:"డెలివరీ పూర్తైంది",
-delayed:"డెలివరీలో కొంత ఆలస్యం అవుతోంది.",
-addresses:"చిరునామాలు",payments:"చెల్లింపులు",coupons:"కూపన్లు",returnsRefunds:"రిటర్న్ & రీఫండ్",
-notifications:"నోటిఫికేషన్లు",accessibility:"యాక్సెసిబిలిటీ",login:"లాగిన్ / OTP",logout:"లాగ్‌అవుట్",
-sellerRegistration:"సెల్లర్ రిజిస్ట్రేషన్",businessName:"బిజినెస్ పేరు",pan:"PAN",gst:"GST",
-businessAddress:"బిజినెస్ చిరునామా",register:"రిజిస్టర్ చేయండి",ordersList:"మీ ఆర్డర్లు",
-search:"శోధన",voiceUnavailable:"మీ పరికరంలో వాయిస్ సెర్చ్ అందుబాటులో లేదు.",
-red:"ఎరుపు",blue:"నీలం",black:"నలుపు",white:"తెలుపు",pink:"గులాబీ",
-available:"అందుబాటులో ఉంది",unavailable:"అందుబాటులో లేదు",quantity:"పరిమాణం",
-productAdded:"ఉత్పత్తి కార్ట్‌లో జోడించబడింది."
-},
-
-Kannada:{
-tagline:"ನಿಮ್ಮದೇ Shopping ಜಾಗ ❤️",home:"ಹೋಮ್",categories:"ವರ್ಗಗಳು",orders:"ನನ್ನ ಆರ್ಡರ್‌ಗಳು",account:"ಖಾತೆ",seller:"ಸೆಲ್ಲರ್",
-wishlist:"ವಿಶ್‌ಲಿಸ್ಟ್",cart:"ಕಾರ್ಟ್",searchPlaceholder:"ನೀವು ಏನು ಹುಡುಕುತ್ತಿದ್ದೀರಿ? ಉದಾ. Anarkali Suit",
-language:"ಭಾಷೆ",chooseLanguage:"ನಿಮ್ಮ ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ",languageHint:"ಭಾಷೆ ಆಯ್ಕೆ ಮಾಡಿದ ನಂತರ ಸಂಪೂರ್ಣ ZipCart ಅದೇ ಭಾಷೆಯಲ್ಲಿ ಕಾಣಿಸುತ್ತದೆ.",
-shopNow:"ಈಗ ಖರೀದಿಸಿ",viewAll:"ಎಲ್ಲವನ್ನೂ ನೋಡಿ",popular:"ಜನಪ್ರಿಯ ಉತ್ಪನ್ನಗಳು",quick:"ತ್ವರಿತ ಡೆಲಿವರಿ",
-grocery:"ದಿನಸಿ",medicine:"ಔಷಧಿಗಳು",featured:"ನಿಮಗಾಗಿ ವಿಶೇಷ",
-addCart:"ಕಾರ್ಟ್‌ಗೆ ಸೇರಿಸಿ",buyNow:"ಈಗ ಖರೀದಿಸಿ",remove:"ತೆಗೆದುಹಾಕಿ",saveLater:"ನಂತರ ಉಳಿಸಿ",
-added:"ಕಾರ್ಟ್‌ಗೆ ಸೇರಿಸಲಾಗಿದೆ",emptyCart:"ನಿಮ್ಮ ಕಾರ್ಟ್ ಖಾಲಿಯಾಗಿದೆ",emptyWish:"ನಿಮ್ಮ ವಿಶ್‌ಲಿಸ್ಟ್ ಖಾಲಿಯಾಗಿದೆ",
-back:"ಹಿಂದೆ",select:"ಆಯ್ಕೆಮಾಡಿ",size:"ಗಾತ್ರ",color:"ಬಣ್ಣ",availableColors:"ಲಭ್ಯವಿರುವ ಬಣ್ಣಗಳು",
-delivery:"ಡೆಲಿವರಿ",pin:"PIN ಕೋಡ್",check:"ಪರಿಶೀಲಿಸಿ",sellerInfo:"ಸೆಲ್ಲರ್ ಮಾಹಿತಿ",
-description:"ಉತ್ಪನ್ನ ಮಾಹಿತಿ",reviews:"ವಿಮರ್ಶೆಗಳು",writeReview:"ನಿಮ್ಮ ವಿಮರ್ಶೆ ಬರೆಯಿರಿ",
-searchResults:"ಹುಡುಕಾಟ ಫಲಿತಾಂಶಗಳು",results:"ಫಲಿತಾಂಶಗಳು",noResults:"ಯಾವುದೇ ಉತ್ಪನ್ನ ಸಿಗಲಿಲ್ಲ",
-filter:"ಫಿಲ್ಟರ್",sort:"ವಿಂಗಡಿಸಿ",lowHigh:"ಕಡಿಮೆಯಿಂದ ಹೆಚ್ಚಿಗೆ",highLow:"ಹೆಚ್ಚಿನಿಂದ ಕಡಿಮೆಗೆ",
-allProducts:"ಎಲ್ಲಾ ಉತ್ಪನ್ನಗಳು",priceRange:"ಬೆಲೆ",price100500:"₹100–₹500",price5001000:"₹500–₹1000",price10001500:"₹1000–₹1500",
-checkout:"ಚೆಕ್‌ಔಟ್",address:"ಡೆಲಿವರಿ ವಿಳಾಸ",name:"ಹೆಸರು",mobile:"ಮೊಬೈಲ್ ಸಂಖ್ಯೆ",email:"ಇಮೇಲ್",
-city:"ನಗರ",state:"ರಾಜ್ಯ",pincode:"PIN ಕೋಡ್",fullAddress:"ಪೂರ್ಣ ವಿಳಾಸ",
-payment:"ಪಾವತಿ",cod:"ಕ್ಯಾಶ್ ಆನ್ ಡೆಲಿವರಿ",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"ಕಾರ್ಡ್ ಸೇರಿಸಿ",
-cardNumber:"ಕಾರ್ಡ್ ಸಂಖ್ಯೆ",expiry:"Expiry",cvv:"CVV",placeOrder:"ಆರ್ಡರ್ ಮಾಡಿ",
-onlineAmount:"ಆನ್‌ಲೈನ್ ಪಾವತಿ",codExtra:"COD ಶುಲ್ಕ",total:"ಒಟ್ಟು",subtotal:"ಸಬ್‌ಟೋಟಲ್",
-standard:"ಸ್ಟ್ಯಾಂಡರ್ಡ್ ಡೆಲಿವರಿ",fast:"ಫಾಸ್ಟ್ ಡೆಲಿವರಿ",express:"ಎಕ್ಸ್‌ಪ್ರೆಸ್ ಡೆಲಿವರಿ",
-orderPlaced:"ಆರ್ಡರ್ ಮಾಡಲಾಗಿದೆ",orderDate:"ಆರ್ಡರ್ ದಿನಾಂಕ",expected:"ನಿರೀಕ್ಷಿತ ಡೆಲಿವರಿ",
-trackOrder:"ಆರ್ಡರ್ ಟ್ರ್ಯಾಕ್ ಮಾಡಿ",return:"ರಿಟರ್ನ್",exchange:"ಎಕ್ಸ್‌ಚೇಂಜ್",
-wrongProduct:"ತಪ್ಪು ಉತ್ಪನ್ನ",damaged:"ಹಾನಿಗೊಂಡ ಉತ್ಪನ್ನ",wrongColorSize:"ತಪ್ಪು ಬಣ್ಣ / ಗಾತ್ರ",
-changeMind:"ಉತ್ಪನ್ನ ಇಷ್ಟವಾಗಲಿಲ್ಲ",returnRequest:"ರಿಟರ್ನ್ ವಿನಂತಿ",
-exchangeRequest:"ಎಕ್ಸ್‌ಚೇಂಜ್ ವಿನಂತಿ",reason:"ಕಾರಣ",submit:"ಸಲ್ಲಿಸಿ",
-pickup:"ಪಿಕಪ್ ಪಾಯಿಂಟ್",pickupOtp:"ಪಿಕಪ್ OTP",exchangeOtp:"ಎಕ್ಸ್‌ಚೇಂಜ್ OTP",cancelOtp:"ಕ್ಯಾನ್ಸೆಲ್ / ರಿಟರ್ನ್ OTP",
-orderTracking:"ಆರ್ಡರ್ ಟ್ರ್ಯಾಕಿಂಗ್",confirmed:"ದೃಢೀಕರಿಸಲಾಗಿದೆ",packed:"ಪ್ಯಾಕ್ ಮಾಡಲಾಗಿದೆ",shipped:"ರವಾನಿಸಲಾಗಿದೆ",
-outDelivery:"ಡೆಲಿವರಿಗೆ ಹೊರಟಿದೆ",delivered:"ಡೆಲಿವರಿ ಆಗಿದೆ",
-delayed:"ಡೆಲಿವರಿಯಲ್ಲಿ ಸ್ವಲ್ಪ ವಿಳಂಬವಾಗುತ್ತಿದೆ.",
-addresses:"ವಿಳಾಸಗಳು",payments:"ಪಾವತಿಗಳು",coupons:"ಕೂಪನ್‌ಗಳು",returnsRefunds:"ರಿಟರ್ನ್ ಮತ್ತು ರಿಫಂಡ್",
-notifications:"ಅಧಿಸೂಚನೆಗಳು",accessibility:"ಆಕ್ಸೆಸಿಬಿಲಿಟಿ",login:"ಲಾಗಿನ್ / OTP",logout:"ಲಾಗ್‌ಔಟ್",
-sellerRegistration:"ಸೆಲ್ಲರ್ ನೋಂದಣಿ",businessName:"ವ್ಯವಹಾರದ ಹೆಸರು",pan:"PAN",gst:"GST",
-businessAddress:"ವ್ಯವಹಾರದ ವಿಳಾಸ",register:"ನೋಂದಾಯಿಸಿ",ordersList:"ನಿಮ್ಮ ಆರ್ಡರ್‌ಗಳು",
-search:"ಹುಡುಕಿ",voiceUnavailable:"ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ವಾಯ್ಸ್ ಸರ್ಚ್ ಲಭ್ಯವಿಲ್ಲ.",
-red:"ಕೆಂಪು",blue:"ನೀಲಿ",black:"ಕಪ್ಪು",white:"ಬಿಳಿ",pink:"ಗುಲಾಬಿ",
-available:"ಲಭ್ಯವಿದೆ",unavailable:"ಲಭ್ಯವಿಲ್ಲ",quantity:"ಪ್ರಮಾಣ",
-productAdded:"ಉತ್ಪನ್ನವನ್ನು ಕಾರ್ಟ್‌ಗೆ ಸೇರಿಸಲಾಗಿದೆ."
-},
-
-Malayalam:{
-tagline:"നിങ്ങളുടെ സ്വന്തം Shopping സ്ഥലം ❤️",home:"ഹോം",categories:"വിഭാഗങ്ങൾ",orders:"എന്റെ ഓർഡറുകൾ",account:"അക്കൗണ്ട്",seller:"സെല്ലർ",
-wishlist:"വിഷ്‌ലിസ്റ്റ്",cart:"കാർട്ട്",searchPlaceholder:"നിങ്ങൾ എന്താണ് തിരയുന്നത്? ഉദാ. Anarkali Suit",
-language:"ഭാഷ",chooseLanguage:"നിങ്ങളുടെ ഭാഷ തിരഞ്ഞെടുക്കുക",languageHint:"ഭാഷ തിരഞ്ഞെടുക്കുമ്പോൾ മുഴുവൻ ZipCart ആ ഭാഷയിൽ കാണാം.",
-shopNow:"ഇപ്പോൾ വാങ്ങുക",viewAll:"എല്ലാം കാണുക",popular:"ജനപ്രിയ ഉൽപ്പന്നങ്ങൾ",quick:"വേഗത്തിലുള്ള ഡെലിവറി",
-grocery:"പലചരക്ക്",medicine:"മരുന്നുകൾ",featured:"നിങ്ങൾക്കായി",
-addCart:"കാർട്ടിൽ ചേർക്കുക",buyNow:"ഇപ്പോൾ വാങ്ങുക",remove:"നീക്കം ചെയ്യുക",saveLater:"പിന്നീട് സേവ് ചെയ്യുക",
-added:"കാർട്ടിൽ ചേർത്തു",emptyCart:"നിങ്ങളുടെ കാർട്ട് ശൂന്യമാണ്",emptyWish:"നിങ്ങളുടെ വിഷ്‌ലിസ്റ്റ് ശൂന്യമാണ്",
-back:"തിരികെ",select:"തിരഞ്ഞെടുക്കുക",size:"വലുപ്പം",color:"നിറം",availableColors:"ലഭ്യമായ നിറങ്ങൾ",
-delivery:"ഡെലിവറി",pin:"PIN കോഡ്",check:"പരിശോധിക്കുക",sellerInfo:"സെല്ലർ വിവരങ്ങൾ",
-description:"ഉൽപ്പന്ന വിവരം",reviews:"റിവ്യൂകൾ",writeReview:"നിങ്ങളുടെ റിവ്യൂ എഴുതുക",
-searchResults:"തിരയൽ ഫലങ്ങൾ",results:"ഫലങ്ങൾ",noResults:"ഉൽപ്പന്നങ്ങളൊന്നും കണ്ടെത്തിയില്ല",
-filter:"ഫിൽട്ടർ",sort:"ക്രമീകരിക്കുക",lowHigh:"കുറഞ്ഞത് മുതൽ കൂടുതൽ",highLow:"കൂടുതൽ മുതൽ കുറവ്",
-allProducts:"എല്ലാ ഉൽപ്പന്നങ്ങളും",priceRange:"വില",price100500:"₹100–₹500",price5001000:"₹500–₹1000",price10001500:"₹1000–₹1500",
-checkout:"ചെക്ക്ഔട്ട്",address:"ഡെലിവറി വിലാസം",name:"പേര്",mobile:"മൊബൈൽ നമ്പർ",email:"ഇമെയിൽ",
-city:"നഗരം",state:"സംസ്ഥാനം",pincode:"PIN കോഡ്",fullAddress:"പൂർണ്ണ വിലാസം",
-payment:"പേയ്മെന്റ്",cod:"കാഷ് ഓൺ ഡെലിവറി",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"കാർഡ് ചേർക്കുക",
-cardNumber:"കാർഡ് നമ്പർ",expiry:"Expiry",cvv:"CVV",placeOrder:"ഓർഡർ ചെയ്യുക",
-onlineAmount:"ഓൺലൈൻ പേയ്മെന്റ്",codExtra:"COD ചാർജ്",total:"ആകെ",subtotal:"സബ്ടോട്ടൽ",
-standard:"സ്റ്റാൻഡേർഡ് ഡെലിവറി",fast:"ഫാസ്റ്റ് ഡെലിവറി",express:"എക്സ്പ്രസ് ഡെലിവറി",
-orderPlaced:"ഓർഡർ ചെയ്തു",orderDate:"ഓർഡർ തീയതി",expected:"പ്രതീക്ഷിക്കുന്ന ഡെലിവറി",
-trackOrder:"ഓർഡർ ട്രാക്ക് ചെയ്യുക",return:"റിട്ടേൺ",exchange:"എക്സ്ചേഞ്ച്",
-wrongProduct:"തെറ്റായ ഉൽപ്പന്നം",damaged:"കേടായ ഉൽപ്പന്നം",wrongColorSize:"തെറ്റായ നിറം / വലുപ്പം",
-changeMind:"ഉൽപ്പന്നം ഇഷ്ടപ്പെട്ടില്ല",returnRequest:"റിട്ടേൺ അഭ്യർത്ഥന",
-exchangeRequest:"എക്സ്ചേഞ്ച് അഭ്യർത്ഥന",reason:"കാരണം",submit:"സമർപ്പിക്കുക",
-pickup:"പിക്കപ്പ് പോയിന്റ്",pickupOtp:"പിക്കപ്പ് OTP",exchangeOtp:"എക്സ്ചേഞ്ച് OTP",cancelOtp:"കാൻസൽ / റിട്ടേൺ OTP",
-orderTracking:"ഓർഡർ ട്രാക്കിംഗ്",confirmed:"സ്ഥിരീകരിച്ചു",packed:"പാക്ക് ചെയ്തു",shipped:"അയച്ചു",
-outDelivery:"ഡെലിവറിക്കായി പുറപ്പെട്ടു",delivered:"ഡെലിവർ ചെയ്തു",
-delayed:"ഡെലിവറിയിൽ ചെറിയ താമസം ഉണ്ടാകുന്നു.",
-addresses:"വിലാസങ്ങൾ",payments:"പേയ്മെന്റുകൾ",coupons:"കൂപ്പണുകൾ",returnsRefunds:"റിട്ടേൺ & റീഫണ്ട്",
-notifications:"അറിയിപ്പുകൾ",accessibility:"ആക്സസിബിലിറ്റി",login:"ലോഗിൻ / OTP",logout:"ലോഗ്ഔട്ട്",
-sellerRegistration:"സെല്ലർ രജിസ്ട്രേഷൻ",businessName:"ബിസിനസ് പേര്",pan:"PAN",gst:"GST",
-businessAddress:"ബിസിനസ് വിലാസം",register:"രജിസ്റ്റർ ചെയ്യുക",ordersList:"നിങ്ങളുടെ ഓർഡറുകൾ",
-search:"തിരയുക",voiceUnavailable:"നിങ്ങളുടെ ഉപകരണത്തിൽ വോയ്സ് സെർച്ച് ലഭ്യമല്ല.",
-red:"ചുവപ്പ്",blue:"നീല",black:"കറുപ്പ്",white:"വെള്ള",pink:"പിങ്ക്",
-available:"ലഭ്യമാണ്",unavailable:"ലഭ്യമല്ല",quantity:"അളവ്",
-productAdded:"ഉൽപ്പന്നം കാർട്ടിൽ ചേർത്തു."
-},
-
-Punjabi:{
-tagline:"ਤੁਹਾਡੀ ਆਪਣੀ Shopping ਜਗ੍ਹਾ ❤️",home:"ਹੋਮ",categories:"ਕੈਟੇਗਰੀ",orders:"ਮੇਰੇ ਆਰਡਰ",account:"ਅਕਾਊਂਟ",seller:"ਸੈਲਰ",
-wishlist:"ਵਿਸ਼ਲਿਸਟ",cart:"ਕਾਰਟ",searchPlaceholder:"ਤੁਸੀਂ ਕੀ ਲੱਭ ਰਹੇ ਹੋ? ਜਿਵੇਂ Anarkali Suit",
-language:"ਭਾਸ਼ਾ",chooseLanguage:"ਆਪਣੀ ਭਾਸ਼ਾ ਚੁਣੋ",languageHint:"ਭਾਸ਼ਾ ਚੁਣਦੇ ਹੀ ਪੂਰਾ ZipCart ਉਸ ਭਾਸ਼ਾ ਵਿੱਚ ਦਿਖੇਗਾ।",
-shopNow:"ਹੁਣੇ ਖਰੀਦੋ",viewAll:"ਸਭ ਦੇਖੋ",popular:"ਪ੍ਰਸਿੱਧ ਪ੍ਰੋਡਕਟ",quick:"ਤੇਜ਼ ਡਿਲੀਵਰੀ",
-grocery:"ਕਿਰਿਆਨਾ",medicine:"ਦਵਾਈਆਂ",featured:"ਤੁਹਾਡੇ ਲਈ ਖਾਸ",
-addCart:"ਕਾਰਟ ਵਿੱਚ ਪਾਓ",buyNow:"ਹੁਣੇ ਖਰੀਦੋ",remove:"ਹਟਾਓ",saveLater:"ਬਾਅਦ ਲਈ ਸੇਵ ਕਰੋ",
-added:"ਕਾਰਟ ਵਿੱਚ ਪਾ ਦਿੱਤਾ",emptyCart:"ਤੁਹਾਡਾ ਕਾਰਟ ਖਾਲੀ ਹੈ",emptyWish:"ਤੁਹਾਡੀ ਵਿਸ਼ਲਿਸਟ ਖਾਲੀ ਹੈ",
-back:"ਵਾਪਸ",select:"ਚੁਣੋ",size:"ਸਾਈਜ਼",color:"ਰੰਗ",availableColors:"ਉਪਲਬਧ ਰੰਗ",
-delivery:"ਡਿਲੀਵਰੀ",pin:"PIN ਕੋਡ",check:"ਚੈੱਕ ਕਰੋ",sellerInfo:"ਸੈਲਰ ਦੀ ਜਾਣਕਾਰੀ",
-description:"ਪ੍ਰੋਡਕਟ ਦੀ ਜਾਣਕਾਰੀ",reviews:"ਰਿਵਿਊ",writeReview:"ਆਪਣਾ ਰਿਵਿਊ ਲਿਖੋ",
-searchResults:"ਸਰਚ ਨਤੀਜੇ",results:"ਨਤੀਜੇ",noResults:"ਕੋਈ ਪ੍ਰੋਡਕਟ ਨਹੀਂ ਮਿਲਿਆ",
-filter:"ਫਿਲਟਰ",sort:"ਸੋਰਟ",lowHigh:"ਘੱਟ ਤੋਂ ਵੱਧ",highLow:"ਵੱਧ ਤੋਂ ਘੱਟ",
-allProducts:"ਸਾਰੇ ਪ੍ਰੋਡਕਟ",priceRange:"ਕੀਮਤ",price100500:"₹100–₹500",price5001000:"₹500–₹1000",price10001500:"₹1000–₹1500",
-checkout:"ਚੈੱਕਆਉਟ",address:"ਡਿਲੀਵਰੀ ਪਤਾ",name:"ਨਾਮ",mobile:"ਮੋਬਾਈਲ ਨੰਬਰ",email:"ਈਮੇਲ",
-city:"ਸ਼ਹਿਰ",state:"ਰਾਜ",pincode:"PIN ਕੋਡ",fullAddress:"ਪੂਰਾ ਪਤਾ",
-payment:"ਪੇਮੈਂਟ",cod:"ਕੈਸ਼ ਆਨ ਡਿਲੀਵਰੀ",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"ਕਾਰਡ ਸ਼ਾਮਲ ਕਰੋ",
-cardNumber:"ਕਾਰਡ ਨੰਬਰ",expiry:"Expiry",cvv:"CVV",placeOrder:"ਆਰਡਰ ਕਰੋ",
-onlineAmount:"ਆਨਲਾਈਨ ਪੇਮੈਂਟ",codExtra:"COD ਚਾਰਜ",total:"ਕੁੱਲ",subtotal:"ਸਬਟੋਟਲ",
-standard:"ਸਟੈਂਡਰਡ ਡਿਲੀਵਰੀ",fast:"ਫਾਸਟ ਡਿਲੀਵਰੀ",express:"ਐਕਸਪ੍ਰੈਸ ਡਿਲੀਵਰੀ",
-orderPlaced:"ਆਰਡਰ ਹੋ ਗਿਆ",orderDate:"ਆਰਡਰ ਦੀ ਤਾਰੀਖ",expected:"ਅਨੁਮਾਨਿਤ ਡਿਲੀਵਰੀ",
-trackOrder:"ਆਰਡਰ ਟ੍ਰੈਕ ਕਰੋ",return:"ਰਿਟਰਨ",exchange:"ਐਕਸਚੇਂਜ",
-wrongProduct:"ਗਲਤ ਪ੍ਰੋਡਕਟ",damaged:"ਖਰਾਬ ਪ੍ਰੋਡਕਟ",wrongColorSize:"ਗਲਤ ਰੰਗ / ਸਾਈਜ਼",
-changeMind:"ਪ੍ਰੋਡਕਟ ਪਸੰਦ ਨਹੀਂ ਆਇਆ",returnRequest:"ਰਿਟਰਨ ਬੇਨਤੀ",
-exchangeRequest:"ਐਕਸਚੇਂਜ ਬੇਨਤੀ",reason:"ਕਾਰਨ",submit:"ਜਮ੍ਹਾਂ ਕਰੋ",
-pickup:"ਪਿਕਅੱਪ ਪੁਆਇੰਟ",pickupOtp:"ਪਿਕਅੱਪ OTP",exchangeOtp:"ਐਕਸਚੇਂਜ OTP",cancelOtp:"ਕੈਂਸਲ / ਰਿਟਰਨ OTP",
-orderTracking:"ਆਰਡਰ ਟ੍ਰੈਕਿੰਗ",confirmed:"ਪੁਸ਼ਟੀ ਹੋਈ",packed:"ਪੈਕ ਕੀਤਾ",shipped:"ਭੇਜਿਆ ਗਿਆ",
-outDelivery:"ਡਿਲੀਵਰੀ ਲਈ ਨਿਕਲਿਆ",delivered:"ਡਿਲੀਵਰ ਹੋ ਗਿਆ",
-delayed:"ਡਿਲੀਵਰੀ ਵਿੱਚ ਥੋੜ੍ਹੀ ਦੇਰੀ ਹੋ ਰਹੀ ਹੈ।",
-addresses:"ਪਤੇ",payments:"ਪੇਮੈਂਟ",coupons:"ਕੂਪਨ",returnsRefunds:"ਰਿਟਰਨ ਅਤੇ ਰਿਫੰਡ",
-notifications:"ਨੋਟੀਫਿਕੇਸ਼ਨ",accessibility:"ਐਕਸੈਸਬਿਲਟੀ",login:"ਲਾਗਇਨ / OTP",logout:"ਲਾਗਆਉਟ",
-sellerRegistration:"ਸੈਲਰ ਰਜਿਸਟ੍ਰੇਸ਼ਨ",businessName:"ਬਿਜ਼ਨਸ ਦਾ ਨਾਮ",pan:"PAN",gst:"GST",
-businessAddress:"ਬਿਜ਼ਨਸ ਦਾ ਪਤਾ",register:"ਰਜਿਸਟਰ ਕਰੋ",ordersList:"ਤੁਹਾਡੇ ਆਰਡਰ",
-search:"ਸਰਚ",voiceUnavailable:"ਤੁਹਾਡੇ ਡਿਵਾਈਸ ਵਿੱਚ ਵੌਇਸ ਸਰਚ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।",
-red:"ਲਾਲ",blue:"ਨੀਲਾ",black:"ਕਾਲਾ",white:"ਚਿੱਟਾ",pink:"ਗੁਲਾਬੀ",
-available:"ਉਪਲਬਧ",unavailable:"ਉਪਲਬਧ ਨਹੀਂ",quantity:"ਮਾਤਰਾ",
-productAdded:"ਪ੍ਰੋਡਕਟ ਕਾਰਟ ਵਿੱਚ ਪਾ ਦਿੱਤਾ ਗਿਆ।"
-},
-
-Odia:{
-tagline:"ଆପଣଙ୍କ ନିଜ Shopping ସ୍ଥାନ ❤️",home:"ହୋମ୍",categories:"କ୍ୟାଟେଗୋରୀ",orders:"ମୋ ଅର୍ଡର",account:"ଆକାଉଣ୍ଟ",seller:"ସେଲର",
-wishlist:"ୱିଶଲିଷ୍ଟ",cart:"କାର୍ଟ",searchPlaceholder:"ଆପଣ କଣ ଖୋଜୁଛନ୍ତି? ଯଥା Anarkali Suit",
-language:"ଭାଷା",chooseLanguage:"ଆପଣଙ୍କ ଭାଷା ବାଛନ୍ତୁ",languageHint:"ଭାଷା ବାଛିଲେ ସମ୍ପୂର୍ଣ୍ଣ ZipCart ସେହି ଭାଷାରେ ଦେଖାଯିବ।",
-shopNow:"ଏବେ କିଣନ୍ତୁ",viewAll:"ସବୁ ଦେଖନ୍ତୁ",popular:"ଲୋକପ୍ରିୟ ପ୍ରୋଡକ୍ଟ",quick:"ଦ୍ରୁତ ଡେଲିଭରି",
-grocery:"କିରାଣା",medicine:"ଔଷଧ",featured:"ଆପଣଙ୍କ ପାଇଁ ବିଶେଷ",
-addCart:"କାର୍ଟରେ ଯୋଡନ୍ତୁ",buyNow:"ଏବେ କିଣନ୍ତୁ",remove:"ହଟାନ୍ତୁ",saveLater:"ପରେ ସେଭ୍ କରନ୍ତୁ",
-added:"କାର୍ଟରେ ଯୋଡାଗଲା",emptyCart:"ଆପଣଙ୍କ କାର୍ଟ ଖାଲି",emptyWish:"ଆପଣଙ୍କ ୱିଶଲିଷ୍ଟ ଖାଲି",
-back:"ପଛକୁ",select:"ବାଛନ୍ତୁ",size:"ସାଇଜ୍",color:"ରଙ୍ଗ",availableColors:"ଉପଲବ୍ଧ ରଙ୍ଗ",
-delivery:"ଡେଲିଭରି",pin:"PIN କୋଡ୍",check:"ଯାଞ୍ଚ କରନ୍ତୁ",sellerInfo:"ସେଲର ସୂଚନା",
-description:"ପ୍ରୋଡକ୍ଟ ସୂଚନା",reviews:"ରିଭ୍ୟୁ",writeReview:"ଆପଣଙ୍କ ରିଭ୍ୟୁ ଲେଖନ୍ତୁ",
-searchResults:"ସର୍ଚ୍ଚ ଫଳାଫଳ",results:"ଫଳାଫଳ",noResults:"କୌଣସି ପ୍ରୋଡକ୍ଟ ମିଳିଲା ନାହିଁ",
-filter:"ଫିଲ୍ଟର",sort:"ସର୍ଟ",lowHigh:"କମ୍ ଠାରୁ ଅଧିକ",highLow:"ଅଧିକ ଠାରୁ କମ୍",
-allProducts:"ସମସ୍ତ ପ୍ରୋଡକ୍ଟ",priceRange:"ମୂଲ୍ୟ",price100500:"₹100–₹500",price5001000:"₹500–₹1000",price10001500:"₹1000–₹1500",
-checkout:"ଚେକଆଉଟ୍",address:"ଡେଲିଭରି ଠିକଣା",name:"ନାମ",mobile:"ମୋବାଇଲ୍ ନମ୍ବର",email:"ଇମେଲ୍",
-city:"ସହର",state:"ରାଜ୍ୟ",pincode:"PIN କୋଡ୍",fullAddress:"ସମ୍ପୂର୍ଣ୍ଣ ଠିକଣା",
-payment:"ପେମେଣ୍ଟ",cod:"କ୍ୟାଶ୍ ଅନ୍ ଡେଲିଭରି",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"କାର୍ଡ ଯୋଡନ୍ତୁ",
-cardNumber:"କାର୍ଡ ନମ୍ବର",expiry:"Expiry",cvv:"CVV",placeOrder:"ଅର୍ଡର କରନ୍ତୁ",
-onlineAmount:"ଅନଲାଇନ୍ ପେମେଣ୍ଟ",codExtra:"COD ଚାର୍ଜ",total:"ମୋଟ",subtotal:"ସବଟୋଟାଲ୍",
-standard:"ଷ୍ଟାଣ୍ଡାର୍ଡ ଡେଲିଭରି",fast:"ଫାଷ୍ଟ ଡେଲିଭରି",express:"ଏକ୍ସପ୍ରେସ୍ ଡେଲିଭରି",
-orderPlaced:"ଅର୍ଡର ହୋଇଛି",orderDate:"ଅର୍ଡର ତାରିଖ",expected:"ଆଶା କରାଯାଉଥିବା ଡେଲିଭରି",
-trackOrder:"ଅର୍ଡର ଟ୍ରାକ୍ କରନ୍ତୁ",return:"ରିଟର୍ନ",exchange:"ଏକ୍ସଚେଞ୍ଜ",
-wrongProduct:"ଭୁଲ୍ ପ୍ରୋଡକ୍ଟ",damaged:"ଡ୍ୟାମେଜ୍ ପ୍ରୋଡକ୍ଟ",wrongColorSize:"ଭୁଲ୍ ରଙ୍ଗ / ସାଇଜ୍",
-changeMind:"ପ୍ରୋଡକ୍ଟ ପସନ୍ଦ ହେଲା ନାହିଁ",returnRequest:"ରିଟର୍ନ ଅନୁରୋଧ",
-exchangeRequest:"ଏକ୍ସଚେଞ୍ଜ ଅନୁରୋଧ",reason:"କାରଣ",submit:"ଦାଖଲ କରନ୍ତୁ",
-pickup:"ପିକଅପ୍ ପଏଣ୍ଟ",pickupOtp:"ପିକଅପ୍ OTP",exchangeOtp:"ଏକ୍ସଚେଞ୍ଜ OTP",cancelOtp:"କ୍ୟାନ୍ସେଲ୍ / ରିଟର୍ନ OTP",
-orderTracking:"ଅର୍ଡର ଟ୍ରାକିଂ",confirmed:"ନିଶ୍ଚିତ",packed:"ପ୍ୟାକ୍",shipped:"ପଠାଯାଇଛି",
-outDelivery:"ଡେଲିଭରି ପାଇଁ ବାହାରିଛି",delivered:"ଡେଲିଭର୍ ହୋଇଛି",
-delayed:"ଡେଲିଭରିରେ ଟିକେ ବିଳମ୍ବ ହେଉଛି।",
-addresses:"ଠିକଣା",payments:"ପେମେଣ୍ଟ",coupons:"କୁପନ୍",returnsRefunds:"ରିଟର୍ନ ଏବଂ ରିଫଣ୍ଡ",
-notifications:"ନୋଟିଫିକେସନ୍",accessibility:"ଆକ୍ସେସିବିଲିଟି",login:"ଲଗଇନ୍ / OTP",logout:"ଲଗଆଉଟ୍",
-sellerRegistration:"ସେଲର ପଞ୍ଜୀକରଣ",businessName:"ବ୍ୟବସାୟ ନାମ",pan:"PAN",gst:"GST",
-businessAddress:"ବ୍ୟବସାୟ ଠିକଣା",register:"ପଞ୍ଜୀକରଣ କରନ୍ତୁ",ordersList:"ଆପଣଙ୍କ ଅର୍ଡର",
-search:"ସର୍ଚ୍ଚ",voiceUnavailable:"ଆପଣଙ୍କ ଡିଭାଇସରେ ଭଏସ୍ ସର୍ଚ୍ଚ ଉପଲବ୍ଧ ନାହିଁ।",
-red:"ଲାଲ",blue:"ନୀଳ",black:"କଳା",white:"ଧଳା",pink:"ଗୋଲାପୀ",
-available:"ଉପଲବ୍ଧ",unavailable:"ଉପଲବ୍ଧ ନୁହେଁ",quantity:"ପରିମାଣ",
-productAdded:"ପ୍ରୋଡକ୍ଟ କାର୍ଟରେ ଯୋଡାଗଲା।"
-},
-
-Assamese:{
-tagline:"আপোনাৰ নিজৰ Shopping ঠাই ❤️",home:"হোম",categories:"শ্ৰেণী",orders:"মোৰ অৰ্ডাৰ",account:"একাউণ্ট",seller:"বিক্ৰেতা",
-wishlist:"উইশলিষ্ট",cart:"কাৰ্ট",searchPlaceholder:"আপুনি কি বিচাৰি আছে? যেনে Anarkali Suit",
-language:"ভাষা",chooseLanguage:"আপোনাৰ ভাষা বাছক",languageHint:"ভাষা বাছিলে সম্পূৰ্ণ ZipCart সেই ভাষাত দেখা যাব।",
-shopNow:"এতিয়াই কিনক",viewAll:"সকলো চাওক",popular:"জনপ্ৰিয় সামগ্ৰী",quick:"দ্ৰুত ডেলিভাৰী",
-grocery:"মুদী",medicine:"ঔষধ",featured:"আপোনাৰ বাবে বিশেষ",
-addCart:"কাৰ্টত যোগ কৰক",buyNow:"এতিয়াই কিনক",remove:"আঁতৰাওক",saveLater:"পিছত সংৰক্ষণ কৰক",
-added:"কাৰ্টত যোগ কৰা হৈছে",emptyCart:"আপোনাৰ কাৰ্ট খালী",emptyWish:"আপোনাৰ উইশলিষ্ট খালী",
-back:"পিছলৈ",select:"বাছক",size:"আকাৰ",color:"ৰং",availableColors:"উপলব্ধ ৰং",
-delivery:"ডেলিভাৰী",pin:"PIN ক'ড",check:"পৰীক্ষা কৰক",sellerInfo:"বিক্ৰেতাৰ তথ্য",
-description:"সামগ্ৰীৰ তথ্য",reviews:"ৰিভিউ",writeReview:"আপোনাৰ ৰিভিউ লিখক",
-searchResults:"সন্ধানৰ ফলাফল",results:"ফলাফল",noResults:"কোনো সামগ্ৰী পোৱা নগ'ল",
-filter:"ফিল্টাৰ",sort:"সজাওক",lowHigh:"কমৰ পৰা বেছি",highLow:"বেছিৰ পৰা কম",
-allProducts:"সকলো সামগ্ৰী",priceRange:"মূল্য",price100500:"₹100–₹500",price5001000:"₹500–₹1000",price10001500:"₹1000–₹1500",
-checkout:"চেকআউট",address:"ডেলিভাৰী ঠিকনা",name:"নাম",mobile:"ম'বাইল নম্বৰ",email:"ইমেইল",
-city:"চহৰ",state:"ৰাজ্য",pincode:"PIN ক'ড",fullAddress:"সম্পূৰ্ণ ঠিকনা",
-payment:"পেমেণ্ট",cod:"কেশ্ব অন ডেলিভাৰী",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"কাৰ্ড যোগ কৰক",
-cardNumber:"কাৰ্ড নম্বৰ",expiry:"Expiry",cvv:"CVV",placeOrder:"অৰ্ডাৰ কৰক",
-onlineAmount:"অনলাইন পেমেণ্ট",codExtra:"COD চাৰ্জ",total:"মুঠ",subtotal:"উপমুঠ",
-standard:"ষ্টেণ্ডাৰ্ড ডেলিভাৰী",fast:"ফাষ্ট ডেলিভাৰী",express:"এক্সপ্ৰেছ ডেলিভাৰী",
-orderPlaced:"অৰ্ডাৰ কৰা হৈছে",orderDate:"অৰ্ডাৰৰ তাৰিখ",expected:"সম্ভাৱ্য ডেলিভাৰী",
-trackOrder:"অৰ্ডাৰ ট্ৰেক কৰক",return:"ৰিটাৰ্ণ",exchange:"এক্সচেঞ্জ",
-wrongProduct:"ভুল সামগ্ৰী",damaged:"ক্ষতিগ্ৰস্ত সামগ্ৰী",wrongColorSize:"ভুল ৰং / আকাৰ",
-changeMind:"সামগ্ৰী পছন্দ নহ'ল",returnRequest:"ৰিটাৰ্ণ অনুৰোধ",
-exchangeRequest:"এক্সচেঞ্জ অনুৰোধ",reason:"কাৰণ",submit:"দাখিল কৰক",
-pickup:"পিকআপ পইণ্ট",pickupOtp:"পিকআপ OTP",exchangeOtp:"এক্সচেঞ্জ OTP",cancelOtp:"কেন্সেল / ৰিটাৰ্ণ OTP",
-orderTracking:"অৰ্ডাৰ ট্ৰেকিং",confirmed:"নিশ্চিত",packed:"পেক কৰা হৈছে",shipped:"পঠোৱা হৈছে",
-outDelivery:"ডেলিভাৰীৰ বাবে ওলাইছে",delivered:"ডেলিভাৰী হৈছে",
-delayed:"ডেলিভাৰীত অলপ পলম হৈছে।",
-addresses:"ঠিকনা",payments:"পেমেণ্ট",coupons:"কুপন",returnsRefunds:"ৰিটাৰ্ণ আৰু ৰিফাণ্ড",
-notifications:"জাননী",accessibility:"এক্সেচিবিলিটি",login:"লগইন / OTP",logout:"লগআউট",
-sellerRegistration:"বিক্ৰেতা পঞ্জীয়ন",businessName:"ব্যৱসায়ৰ নাম",pan:"PAN",gst:"GST",
-businessAddress:"ব্যৱসায়ৰ ঠিকনা",register:"পঞ্জীয়ন কৰক",ordersList:"আপোনাৰ অৰ্ডাৰ",
-search:"সন্ধান",voiceUnavailable:"আপোনাৰ ডিভাইচত ভইচ সন্ধান উপলব্ধ নহয়।",
-red:"ৰঙা",blue:"নীলা",black:"ক'লা",white:"বগা",pink:"গোলাপী",
-available:"উপলব্ধ",unavailable:"উপলব্ধ নহয়",quantity:"পৰিমাণ",
-productAdded:"সামগ্ৰী কাৰ্টত যোগ কৰা হৈছে।"
-},
-
-Urdu:{
-tagline:"آپ کی اپنی Shopping جگہ ❤️",home:"ہوم",categories:"کیٹیگریز",orders:"میرے آرڈرز",account:"اکاؤنٹ",seller:"سیلر",
-wishlist:"پسندیدہ",cart:"کارٹ",searchPlaceholder:"آپ کیا تلاش کر رہے ہیں؟ مثال Anarkali Suit",
-language:"زبان",chooseLanguage:"اپنی زبان منتخب کریں",languageHint:"زبان منتخب کرتے ہی پورا ZipCart اسی زبان میں نظر آئے گا۔",
-shopNow:"ابھی خریدیں",viewAll:"سب دیکھیں",popular:"مشہور پروڈکٹس",quick:"تیز ڈیلیوری",
-grocery:"گروسری",medicine:"ادویات",featured:"آپ کے لیے خاص",
-addCart:"کارٹ میں شامل کریں",buyNow:"ابھی خریدیں",remove:"حذف کریں",saveLater:"بعد کے لیے محفوظ کریں",
-added:"کارٹ میں شامل کر دیا گیا",emptyCart:"آپ کا کارٹ خالی ہے",emptyWish:"آپ کی پسندیدہ فہرست خالی ہے",
-back:"واپس",select:"منتخب کریں",size:"سائز",color:"رنگ",availableColors:"دستیاب رنگ",
-delivery:"ڈیلیوری",pin:"PIN کوڈ",check:"چیک کریں",sellerInfo:"سیلر کی معلومات",
-description:"پروڈکٹ کی معلومات",reviews:"ریویوز",writeReview:"اپنا ریویو لکھیں",
-searchResults:"تلاش کے نتائج",results:"نتائج",noResults:"کوئی پروڈکٹ نہیں ملی",
-filter:"فلٹر",sort:"ترتیب",lowHigh:"کم سے زیادہ",highLow:"زیادہ سے کم",
-allProducts:"تمام پروڈکٹس",priceRange:"قیمت",price100500:"₹100–₹500",price5001000:"₹500–₹1000",price10001500:"₹1000–₹1500",
-checkout:"چیک آؤٹ",address:"ڈیلیوری کا پتہ",name:"نام",mobile:"موبائل نمبر",email:"ای میل",
-city:"شہر",state:"ریاست",pincode:"PIN کوڈ",fullAddress:"مکمل پتہ",
-payment:"ادائیگی",cod:"کیش آن ڈیلیوری",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"کارڈ شامل کریں",
-cardNumber:"کارڈ نمبر",expiry:"Expiry",cvv:"CVV",placeOrder:"آرڈر کریں",
-onlineAmount:"آن لائن ادائیگی",codExtra:"COD چارج",total:"کل",subtotal:"ذیلی کل",
-standard:"اسٹینڈرڈ ڈیلیوری",fast:"فاسٹ ڈیلیوری",express:"ایکسپریس ڈیلیوری",
-orderPlaced:"آرڈر ہو گیا",orderDate:"آرڈر کی تاریخ",expected:"متوقع ڈیلیوری",
-trackOrder:"آرڈر ٹریک کریں",return:"واپسی",exchange:"تبادلہ",
-wrongProduct:"غلط پروڈکٹ",damaged:"خراب پروڈکٹ",wrongColorSize:"غلط رنگ / سائز",
-changeMind:"پروڈکٹ پسند نہیں آئی",returnRequest:"واپسی کی درخواست",
-exchangeRequest:"تبادلے کی درخواست",reason:"وجہ",submit:"جمع کریں",
-pickup:"پک اپ پوائنٹ",pickupOtp:"پک اپ OTP",exchangeOtp:"ایکسچینج OTP",cancelOtp:"کینسل / ریٹرن OTP",
-orderTracking:"آرڈر ٹریکنگ",confirmed:"تصدیق شدہ",packed:"پیک کیا گیا",shipped:"بھیجا گیا",
-outDelivery:"ڈیلیوری کے لیے روانہ",delivered:"ڈیلیور ہو گیا",
-delayed:"ڈیلیوری میں تھوڑی تاخیر ہو رہی ہے۔",
-addresses:"پتے",payments:"ادائیگیاں",coupons:"کوپن",returnsRefunds:"واپسی اور ریفنڈ",
-notifications:"اطلاعات",accessibility:"رسائی",login:"لاگ ان / OTP",logout:"لاگ آؤٹ",
-sellerRegistration:"سیلر رجسٹریشن",businessName:"کاروبار کا نام",pan:"PAN",gst:"GST",
-businessAddress:"کاروبار کا پتہ",register:"رجسٹر کریں",ordersList:"آپ کے آرڈرز",
-search:"تلاش",voiceUnavailable:"آپ کے ڈیوائس میں وائس سرچ دستیاب نہیں ہے۔",
-red:"سرخ",blue:"نیلا",black:"کالا",white:"سفید",pink:"گلابی",
-available:"دستیاب",unavailable:"دستیاب نہیں",quantity:"مقدار",
-productAdded:"پروڈکٹ کارٹ میں شامل کر دی گئی۔"
-},
-
-Nepali:{
-tagline:"तपाईंको आफ्नै Shopping ठाउँ ❤️",home:"होम",categories:"श्रेणीहरू",orders:"मेरा अर्डरहरू",account:"अकाउन्ट",seller:"सेलर",
-wishlist:"विशलिस्ट",cart:"कार्ट",searchPlaceholder:"तपाईं के खोज्दै हुनुहुन्छ? जस्तै Anarkali Suit",
-language:"भाषा",chooseLanguage:"आफ्नो भाषा छान्नुहोस्",languageHint:"भाषा छानेपछि पूरा ZipCart त्यही भाषामा देखिनेछ।",
-shopNow:"अहिले किन्नुहोस्",viewAll:"सबै हेर्नुहोस्",popular:"लोकप्रिय उत्पादनहरू",quick:"छिटो डेलिभरी",
-grocery:"किराना",medicine:"औषधि",featured:"तपाईंका लागि विशेष",
-addCart:"कार्टमा थप्नुहोस्",buyNow:"अहिले किन्नुहोस्",remove:"हटाउनुहोस्",saveLater:"पछि सुरक्षित गर्नुहोस्",
-added:"कार्टमा थपियो",emptyCart:"तपाईंको कार्ट खाली छ",emptyWish:"तपाईंको विशलिस्ट खाली छ",
-back:"पछाडि",select:"छान्नुहोस्",size:"साइज",color:"रङ",availableColors:"उपलब्ध रङहरू",
-delivery:"डेलिभरी",pin:"PIN कोड",check:"जाँच गर्नुहोस्",sellerInfo:"सेलरको जानकारी",
-description:"उत्पादनको जानकारी",reviews:"समीक्षाहरू",writeReview:"आफ्नो समीक्षा लेख्नुहोस्",
-searchResults:"खोजी परिणाम",results:"परिणाम",noResults:"कुनै उत्पादन भेटिएन",
-filter:"फिल्टर",sort:"क्रम मिलाउनुहोस्",lowHigh:"कमदेखि बढी",highLow:"बढीदेखि कम",
-allProducts:"सबै उत्पादनहरू",priceRange:"मूल्य",price100500:"₹100–₹500",price5001000:"₹500–₹1000",price10001500:"₹1000–₹1500",
-checkout:"चेकआउट",address:"डेलिभरी ठेगाना",name:"नाम",mobile:"मोबाइल नम्बर",email:"इमेल",
-city:"सहर",state:"राज्य",pincode:"PIN कोड",fullAddress:"पूरा ठेगाना",
-payment:"भुक्तानी",cod:"क्यास अन डेलिभरी",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"कार्ड थप्नुहोस्",
-cardNumber:"कार्ड नम्बर",expiry:"Expiry",cvv:"CVV",placeOrder:"अर्डर गर्नुहोस्",
-onlineAmount:"अनलाइन भुक्तानी",codExtra:"COD शुल्क",total:"जम्मा",subtotal:"उपजम्मा",
-standard:"स्ट्यान्डर्ड डेलिभरी",fast:"फास्ट डेलिभरी",express:"एक्सप्रेस डेलिभरी",
-orderPlaced:"अर्डर भयो",orderDate:"अर्डर मिति",expected:"अनुमानित डेलिभरी",
-trackOrder:"अर्डर ट्र्याक गर्नुहोस्",return:"फिर्ता",exchange:"साटफेर",
-wrongProduct:"गलत उत्पादन",damaged:"बिग्रिएको उत्पादन",wrongColorSize:"गलत रङ / साइज",
-changeMind:"उत्पादन मन परेन",returnRequest:"फिर्ता अनुरोध",
-exchangeRequest:"साटफेर अनुरोध",reason:"कारण",submit:"पेश गर्नुहोस्",
-pickup:"पिकअप पोइन्ट",pickupOtp:"पिकअप OTP",exchangeOtp:"एक्सचेन्ज OTP",cancelOtp:"रद्द / फिर्ता OTP",
-orderTracking:"अर्डर ट्र्याकिङ",confirmed:"पुष्टि भयो",packed:"प्याक भयो",shipped:"पठाइयो",
-outDelivery:"डेलिभरीका लागि निस्कियो",delivered:"डेलिभर भयो",
-delayed:"डेलिभरीमा केही ढिलाइ भइरहेको छ।",
-addresses:"ठेगानाहरू",payments:"भुक्तानीहरू",coupons:"कुपनहरू",returnsRefunds:"फिर्ता र रिफन्ड",
-notifications:"सूचनाहरू",accessibility:"पहुँच",login:"लगइन / OTP",logout:"लगआउट",
-sellerRegistration:"सेलर दर्ता",businessName:"व्यवसायको नाम",pan:"PAN",gst:"GST",
-businessAddress:"व्यवसायको ठेगाना",register:"दर्ता गर्नुहोस्",ordersList:"तपाईंका अर्डरहरू",
-search:"खोज्नुहोस्",voiceUnavailable:"तपाईंको उपकरणमा भ्वाइस सर्च उपलब्ध छैन।",
-red:"रातो",blue:"निलो",black:"कालो",white:"सेतो",pink:"गुलाबी",
-available:"उपलब्ध",unavailable:"उपलब्ध छैन",quantity:"मात्रा",
-productAdded:"उत्पादन कार्टमा थपियो।"
-},
-
-Maithili:{
-tagline:"अहाँक अपन Shopping जगह ❤️",home:"होम",categories:"श्रेणी",orders:"हमर ऑर्डर",account:"अकाउंट",seller:"सेलर",
-wishlist:"विशलिस्ट",cart:"कार्ट",searchPlaceholder:"अहाँ की खोजि रहल छी? जेना Anarkali Suit",
-language:"भाषा",chooseLanguage:"अपन भाषा चुनू",languageHint:"भाषा चुनलाक बाद पूरा ZipCart ओहि भाषामे देखायत।",
-shopNow:"एखन किनू",viewAll:"सभ देखू",popular:"लोकप्रिय प्रोडक्ट",quick:"तेज डिलीवरी",
-grocery:"किराना",medicine:"दवाई",featured:"अहाँक लेल खास",
-addCart:"कार्टमे जोड़ू",buyNow:"एखन किनू",remove:"हटाउ",saveLater:"बाद लेल सेव करू",
-added:"कार्टमे जोड़ल गेल",emptyCart:"अहाँक कार्ट खाली अछि",emptyWish:"अहाँक विशलिस्ट खाली अछि",
-back:"पाछू",select:"चुनू",size:"साइज",color:"रंग",availableColors:"उपलब्ध रंग",
-delivery:"डिलीवरी",pin:"PIN कोड",check:"जाँच करू",sellerInfo:"सेलरक जानकारी",
-description:"प्रोडक्टक जानकारी",reviews:"रिव्यू",writeReview:"अपन रिव्यू लिखू",
-searchResults:"सर्च परिणाम",results:"परिणाम",noResults:"कोनो प्रोडक्ट नहि भेटल",
-filter:"फिल्टर",sort:"सॉर्ट",lowHigh:"कम सँ बेसी",highLow:"बेसी सँ कम",
-allProducts:"सभ प्रोडक्ट",priceRange:"कीमत",price100500:"₹100–₹500",price5001000:"₹500–₹1000",price10001500:"₹1000–₹1500",
-checkout:"चेकआउट",address:"डिलीवरी पता",name:"नाम",mobile:"मोबाइल नंबर",email:"ईमेल",
-city:"शहर",state:"राज्य",pincode:"PIN कोड",fullAddress:"पूरा पता",
-payment:"भुगतान",cod:"कैश ऑन डिलीवरी",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"कार्ड जोड़ू",
-cardNumber:"कार्ड नंबर",expiry:"Expiry",cvv:"CVV",placeOrder:"ऑर्डर करू",
-onlineAmount:"ऑनलाइन भुगतान",codExtra:"COD चार्ज",total:"कुल",subtotal:"सबटोटल",
-standard:"स्टैंडर्ड डिलीवरी",fast:"फास्ट डिलीवरी",express:"एक्सप्रेस डिलीवरी",
-orderPlaced:"ऑर्डर भ' गेल",orderDate:"ऑर्डरक तारीख",expected:"अनुमानित डिलीवरी",
-trackOrder:"ऑर्डर ट्रैक करू",return:"रिटर्न",exchange:"एक्सचेंज",
-wrongProduct:"गलत प्रोडक्ट",damaged:"खराब प्रोडक्ट",wrongColorSize:"गलत रंग / साइज",
-changeMind:"प्रोडक्ट नीक नहि लागल",returnRequest:"रिटर्न अनुरोध",
-exchangeRequest:"एक्सचेंज अनुरोध",reason:"कारण",submit:"जमा करू",
-pickup:"पिकअप प्वाइंट",pickupOtp:"पिकअप OTP",exchangeOtp:"एक्सचेंज OTP",cancelOtp:"कैंसल / रिटर्न OTP",
-orderTracking:"ऑर्डर ट्रैकिंग",confirmed:"पुष्टि भेल",packed:"पैक भेल",shipped:"पठाओल गेल",
-outDelivery:"डिलीवरी लेल निकलल",delivered:"डिलीवर भेल",
-delayed:"डिलीवरीमे किछु देरी भ' रहल अछि।",
-addresses:"पता",payments:"भुगतान",coupons:"कूपन",returnsRefunds:"रिटर्न आ रिफंड",
-notifications:"नोटिफिकेशन",accessibility:"एक्सेसिबिलिटी",login:"लॉगिन / OTP",logout:"लॉगआउट",
-sellerRegistration:"सेलर रजिस्ट्रेशन",businessName:"व्यवसाय नाम",pan:"PAN",gst:"GST",
-businessAddress:"व्यवसाय पता",register:"रजिस्टर करू",ordersList:"अहाँक ऑर्डर",
-search:"खोजू",voiceUnavailable:"अहाँक डिवाइसमे वॉइस सर्च उपलब्ध नहि अछि।",
-red:"लाल",blue:"नीला",black:"करिया",white:"सफेद",pink:"गुलाबी",
-available:"उपलब्ध",unavailable:"उपलब्ध नहि",quantity:"मात्रा",
-productAdded:"प्रोडक्ट कार्टमे जोड़ल गेल।"
-},
-
-Konkani:{
-tagline:"तुमची स्वताची Shopping जागो ❤️",home:"होम",categories:"वर्ग",orders:"म्हजे ऑर्डर्स",account:"खातें",seller:"सेलर",
-wishlist:"विशलिस्ट",cart:"कार्ट",searchPlaceholder:"तुमी कितें सोदतात? जशें Anarkali Suit",
-language:"भास",chooseLanguage:"तुमची भास निवडात",languageHint:"भास निवडल्यार सगळें ZipCart त्या भाशेंत दिसतलें.",
-shopNow:"आतां विकत घेवात",viewAll:"सगळें पळोवात",popular:"लोकप्रिय प्रोडक्ट्स",quick:"वेगळी डिलिव्हरी",
-grocery:"किराणा",medicine:"दवाय",featured:"तुमचे खातीर खास",
-addCart:"कार्टांत घालात",buyNow:"आतां विकत घेवात",remove:"काडात",saveLater:"फाटीर सेव करात",
-added:"कार्टांत घातलें",emptyCart:"तुमचें कार्ट रिकामें आसा",emptyWish:"तुमची विशलिस्ट रिकामी आसा",
-back:"फाटीं",select:"निवडात",size:"साइज",color:"रंग",availableColors:"मेळपी रंग",
-delivery:"डिलिव्हरी",pin:"PIN कोड",check:"तपासात",sellerInfo:"सेलराची माहिती",
-description:"प्रोडक्टाची माहिती",reviews:"रिव्यू",writeReview:"तुमचो रिव्यू बरयात",
-searchResults:"सर्च निकाल",results:"निकाल",noResults:"कसलोय प्रोडक्ट मेळ्ळो ना",
-filter:"फिल्टर",sort:"सॉर्ट",lowHigh:"उणें ते चड",highLow:"चड ते उणें",
-allProducts:"सगळे प्रोडक्ट्स",priceRange:"किंमत",price100500:"₹100–₹500",price5001000:"₹500–₹1000",price10001500:"₹1000–₹1500",
-checkout:"चेकआउट",address:"डिलिव्हरी पत्तो",name:"नांव",mobile:"मोबायल नंबर",email:"ईमेल",
-city:"शार",state:"राज्य",pincode:"PIN कोड",fullAddress:"पुराय पत्तो",
-payment:"पेमेन्ट",cod:"कॅश ऑन डिलिव्हरी",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"कार्ड घालात",
-cardNumber:"कार्ड नंबर",expiry:"Expiry",cvv:"CVV",placeOrder:"ऑर्डर करात",
-onlineAmount:"ऑनलायन पेमेन्ट",codExtra:"COD चार्ज",total:"एकूण",subtotal:"उपएकूण",
-standard:"स्टँडर्ड डिलिव्हरी",fast:"फास्ट डिलिव्हरी",express:"एक्सप्रेस डिलिव्हरी",
-orderPlaced:"ऑर्डर जालो",orderDate:"ऑर्डराची तारीख",expected:"अपेक्षित डिलिव्हरी",
-trackOrder:"ऑर्डर ट्रॅक करात",return:"रिटर्न",exchange:"एक्सचेंज",
-wrongProduct:"चुकीचो प्रोडक्ट",damaged:"नुकसान जाल्लो प्रोडक्ट",wrongColorSize:"चुकीचो रंग / साइज",
-changeMind:"प्रोडक्ट आवडलो ना",returnRequest:"रिटर्न विनंती",
-exchangeRequest:"एक्सचेंज विनंती",reason:"कारण",submit:"सादर करात",
-pickup:"पिकअप पॉईंट",pickupOtp:"पिकअप OTP",exchangeOtp:"एक्सचेंज OTP",cancelOtp:"कॅन्सल / रिटर्न OTP",
-orderTracking:"ऑर्डर ट्रॅकिंग",confirmed:"खात्री जाली",packed:"पॅक जालो",shipped:"धाडलो",
-outDelivery:"डिलिव्हरी खातीर भायर पडलो",delivered:"डिलिव्हर जालो",
-delayed:"डिलिव्हरींत थोडो उशीर जाला.",
-addresses:"पत्ते",payments:"पेमेन्ट्स",coupons:"कूपन्स",returnsRefunds:"रिटर्न आनी रिफंड",
-notifications:"नोटिफिकेशन",accessibility:"ऍक्सेसिबिलिटी",login:"लॉगिन / OTP",logout:"लॉगआउट",
-sellerRegistration:"सेलर नोंदणी",businessName:"व्यवसायाचें नांव",pan:"PAN",gst:"GST",
-businessAddress:"व्यवसायाचो पत्तो",register:"नोंदणी करात",ordersList:"तुमचे ऑर्डर्स",
-search:"सर्च",voiceUnavailable:"तुमच्या डिव्हायसांत व्हॉइस सर्च उपलब्ध ना.",
-red:"तांबडो",blue:"निळो",black:"काळो",white:"पांढरो",pink:"गुलाबी",
-available:"उपलब्ध",unavailable:"उपलब्ध ना",quantity:"प्रमाण",
-productAdded:"प्रोडक्ट कार्टांत घातलो."
+tag:"আপনার নিজের Shopping জায়গা ❤️",
+search:"আপনি কী খুঁজছেন? যেমন Anarkali Suit",
+orders:"আমার অর্ডার",
+account:"অ্যাকাউন্ট",
+home:"হোম",
+categories:"ক্যাটাগরি",
+seller:"বিক্রেতা",
+myOrders:"আমার অর্ডার",
+welcome:"ZipCart-এ আপনাকে স্বাগতম ❤️",
+intro:"আপনার নিজের Shopping জায়গা",
+steps:"দেখুন → শুনুন → বুঝুন → চাপুন → কিনুন",
+voice:"ভয়েস সার্চ",
+help:"সাহায্য দরকার?",
+offers:"আজকের অফার",
+budget:"আপনার বাজেট ও পছন্দ অনুযায়ী কেনাকাটা করুন",
+see:"দেখুন",
+topCategories:"শীর্ষ ক্যাটাগরি",
+forYou:"আপনার জন্য নির্বাচিত",
+budgetFav:"কম বাজেটের পছন্দ",
+newArrivals:"নতুন পণ্য",
+back:"ফিরে যান",
+listen:"শুনুন",
+products:"পণ্য",
+wishlist:"আমার Wishlist",
+cart:"আমার Cart",
+emptyCart:"আপনার Cart এখন খালি। ❤️",
+emptyWishlist:"Wishlist খালি। যেকোনো পণ্যে ❤️ চাপুন।",
+viewBuy:"দেখুন / কিনুন",
+addCart:"Cart-এ যোগ করুন",
+buyNow:"এখনই কিনুন",
+priceDetails:"দামের বিবরণ",
+selectedTotal:"নির্বাচিত পণ্যের মোট",
+delivery:"ডেলিভারি",
+discount:"ছাড়",
+finalTotal:"চূড়ান্ত মোট",
+checkout:"Checkout করুন",
+checkoutTitle:"Checkout",
+name:"নাম",
+mobile:"মোবাইল",
+address:"ঠিকানা",
+pin:"PIN কোড",
+payment:"পেমেন্ট",
+placeOrder:"অর্ডার করুন",
+orderTracking:"অর্ডার ট্র্যাকিং",
+return:"রিটার্ন",
+exchange:"এক্সচেঞ্জ",
+trackOrder:"অর্ডার ট্র্যাক করুন",
+shopping:"কেনাকাটা চালিয়ে যান",
+accountTitle:"আমার ZipCart",
+language:"ভাষা",
+close:"বন্ধ করুন",
+chooseLanguage:"ভাষা নির্বাচন করুন",
+languageSaved:"ভাষা সফলভাবে পরিবর্তন হয়েছে।",
+searchTitle:"সার্চ",
+noResult:"কোনও নির্দিষ্ট ফল পাওয়া যায়নি",
+options:"টি বিকল্প পাওয়া গেছে",
+price:"দাম",
+color:"রঙ",
+brand:"ব্র্যান্ড",
+rating:"রেটিং",
+discountFilter:"ছাড়",
+newest:"নতুন",
+popular:"জনপ্রিয়",
+lowHigh:"কম থেকে বেশি দাম",
+highLow:"বেশি থেকে কম দাম",
+details:"সম্পূর্ণ বিবরণ",
+size:"সাইজ",
+colors:"রঙ",
+returnExchange:"রিটার্ন / এক্সচেঞ্জ",
+reviews:"রিভিউ ও প্রশ্ন",
+category:"ক্যাটাগরি",
+continue:"চালিয়ে যান"
 }
+
 };
 
-/* ---------------- CATEGORY DATA ---------------- */
 
-const CATEGORIES=[
- {key:"women",emoji:"👗"},
- {key:"men",emoji:"👔"},
- {key:"kids",emoji:"🧒"},
- {key:"shoes",emoji:"👟"},
- {key:"jewellery",emoji:"💎"},
- {key:"bags",emoji:"👜"},
- {key:"toys",emoji:"🧸"},
- {key:"beauty",emoji:"💄"},
- {key:"home",emoji:"🏠"},
- {key:"furniture",emoji:"🛋️"},
- {key:"electronics",emoji:"📱"},
- {key:"school",emoji:"🎒"},
- {key:"travel",emoji:"✈️"},
- {key:"bills",emoji:"💳"},
- {key:"medicine",emoji:"💊"},
- {key:"grocery",emoji:"🛒"}
+/* बाकी Indian languages के लिए base English fallback.
+   UI architecture सभी languages के लिए तैयार है। */
+
+const fallbackLanguages=[
+"Tamil","Telugu","Kannada","Malayalam","Punjabi",
+"Odia","Assamese","Urdu","Nepali","Maithili","Konkani"
 ];
 
-const CAT_NAMES={
-Hindi:{women:"महिला फैशन",men:"पुरुष फैशन",kids:"बच्चे",shoes:"जूते",jewellery:"ज्वेलरी",bags:"बैग",toys:"खिलौने",beauty:"ब्यूटी",home:"होम",furniture:"फर्नीचर",electronics:"इलेक्ट्रॉनिक्स",school:"स्कूल आइटम",travel:"ट्रैवल टिकट",bills:"बिल और रिचार्ज",medicine:"दवाइयाँ",grocery:"किराना"},
-English:{women:"Women Fashion",men:"Men Fashion",kids:"Kids",shoes:"Shoes",jewellery:"Jewellery",bags:"Bags",toys:"Toys",beauty:"Beauty",home:"Home",furniture:"Furniture",electronics:"Electronics",school:"School Items",travel:"Travel Tickets",bills:"Bills & Recharge",medicine:"Medicines",grocery:"Grocery"},
-Gujarati:{women:"મહિલા ફેશન",men:"પુરુષ ફેશન",kids:"બાળકો",shoes:"જૂતા",jewellery:"જ્વેલરી",bags:"બેગ",toys:"રમકડાં",beauty:"બ્યુટી",home:"હોમ",furniture:"ફર્નિચર",electronics:"ઇલેક્ટ્રોનિક્સ",school:"સ્કૂલ વસ્તુઓ",travel:"ટ્રાવેલ ટિકિટ",bills:"બિલ અને રિચાર્જ",medicine:"દવાઓ",grocery:"કરિયાણું"},
-Marathi:{women:"महिला फॅशन",men:"पुरुष फॅशन",kids:"मुले",shoes:"बूट",jewellery:"ज्वेलरी",bags:"बॅग",toys:"खेळणी",beauty:"ब्युटी",home:"होम",furniture:"फर्निचर",electronics:"इलेक्ट्रॉनिक्स",school:"शालेय वस्तू",travel:"प्रवास तिकीट",bills:"बिल आणि रिचार्ज",medicine:"औषधे",grocery:"किराणा"},
-Bengali:{women:"মহিলাদের ফ্যাশন",men:"পুরুষদের ফ্যাশন",kids:"বাচ্চাদের",shoes:"জুতো",jewellery:"গয়না",bags:"ব্যাগ",toys:"খেলনা",beauty:"বিউটি",home:"হোম",furniture:"ফার্নিচার",electronics:"ইলেকট্রনিক্স",school:"স্কুল সামগ্রী",travel:"ভ্রমণ টিকিট",bills:"বিল ও রিচার্জ",medicine:"ওষুধ",grocery:"মুদিখানা"},
-Tamil:{women:"பெண்கள் ஃபேஷன்",men:"ஆண்கள் ஃபேஷன்",kids:"குழந்தைகள்",shoes:"காலணிகள்",jewellery:"நகைகள்",bags:"பைகள்",toys:"பொம்மைகள்",beauty:"அழகு",home:"வீடு",furniture:"மரச்சாமான்கள்",electronics:"எலக்ட்ரானிக்ஸ்",school:"பள்ளி பொருட்கள்",travel:"பயண டிக்கெட்டுகள்",bills:"பில் மற்றும் ரீசார்ஜ்",medicine:"மருந்துகள்",grocery:"மளிகை"},
-Telugu:{women:"మహిళల ఫ్యాషన్",men:"పురుషుల ఫ్యాషన్",kids:"పిల్లలు",shoes:"షూస్",jewellery:"ఆభరణాలు",bags:"బ్యాగులు",toys:"బొమ్మలు",beauty:"బ్యూటీ",home:"హోమ్",furniture:"ఫర్నిచర్",electronics:"ఎలక్ట్రానిక్స్",school:"స్కూల్ వస్తువులు",travel:"ప్రయాణ టికెట్లు",bills:"బిల్లులు & రీఛార్జ్",medicine:"మందులు",grocery:"కిరాణా"},
-Kannada:{women:"ಮಹಿಳಾ ಫ್ಯಾಷನ್",men:"ಪುರುಷರ ಫ್ಯಾಷನ್",kids:"ಮಕ್ಕಳು",shoes:"ಶೂಗಳು",jewellery:"ಆಭರಣ",bags:"ಬ್ಯಾಗ್",toys:"ಆಟಿಕೆಗಳು",beauty:"ಬ್ಯೂಟಿ",home:"ಮನೆ",furniture:"ಫರ್ನಿಚರ್",electronics:"ಎಲೆಕ್ಟ್ರಾನಿಕ್ಸ್",school:"ಶಾಲಾ ವಸ್ತುಗಳು",travel:"ಪ್ರಯಾಣ ಟಿಕೆಟ್",bills:"ಬಿಲ್ ಮತ್ತು ರೀಚಾರ್ಜ್",medicine:"ಔಷಧಿಗಳು",grocery:"ದಿನಸಿ"},
-Malayalam:{women:"വനിതാ ഫാഷൻ",men:"പുരുഷ ഫാഷൻ",kids:"കുട്ടികൾ",shoes:"ഷൂസ്",jewellery:"ആഭരണങ്ങൾ",bags:"ബാഗുകൾ",toys:"കളിപ്പാട്ടങ്ങൾ",beauty:"ബ്യൂട്ടി",home:"ഹോം",furniture:"ഫർണിച്ചർ",electronics:"ഇലക്ട്രോണിക്സ്",school:"സ്കൂൾ സാധനങ്ങൾ",travel:"യാത്രാ ടിക്കറ്റുകൾ",bills:"ബിൽ & റീചാർജ്",medicine:"മരുന്നുകൾ",grocery:"പലചരക്ക്"},
-Punjabi:{women:"ਮਹਿਲਾ ਫੈਸ਼ਨ",men:"ਮਰਦਾਂ ਦੀ ਫੈਸ਼ਨ",kids:"ਬੱਚੇ",shoes:"ਜੁੱਤੇ",jewellery:"ਗਹਿਣੇ",bags:"ਬੈਗ",toys:"ਖਿਡੌਣੇ",beauty:"ਬਿਊਟੀ",home:"ਘਰ",furniture:"ਫਰਨੀਚਰ",electronics:"ਇਲੈਕਟ੍ਰਾਨਿਕਸ",school:"ਸਕੂਲ ਸਮਾਨ",travel:"ਯਾਤਰਾ ਟਿਕਟ",bills:"ਬਿੱਲ ਅਤੇ ਰੀਚਾਰਜ",medicine:"ਦਵਾਈਆਂ",grocery:"ਕਿਰਿਆਨਾ"},
-Odia:{women:"ମହିଳା ଫ୍ୟାଶନ୍",men:"ପୁରୁଷ ଫ୍ୟାଶନ୍",kids:"ପିଲାମାନେ",shoes:"ଜୋତା",jewellery:"ଗହଣା",bags:"ବ୍ୟାଗ୍",toys:"ଖେଳନା",beauty:"ବ୍ୟୁଟି",home:"ଘର",furniture:"ଫର୍ଣ୍ଣିଚର୍",electronics:"ଇଲେକ୍ଟ୍ରୋନିକ୍ସ",school:"ସ୍କୁଲ୍ ସାମଗ୍ରୀ",travel:"ଭ୍ରମଣ ଟିକେଟ୍",bills:"ବିଲ୍ ଏବଂ ରିଚାର୍ଜ",medicine:"ଔଷଧ",grocery:"କିରାଣା"},
-Assamese:{women:"মহিলা ফেশ্বন",men:"পুৰুষৰ ফেশ্বন",kids:"শিশু",shoes:"জোতা",jewellery:"গহনা",bags:"বেগ",toys:"খেলনা",beauty:"বিউটি",home:"ঘৰ",furniture:"ফাৰ্নিচাৰ",electronics:"ইলেক্ট্ৰনিক্স",school:"স্কুল সামগ্ৰী",travel:"ভ্ৰমণ টিকট",bills:"বিল আৰু ৰিচাৰ্জ",medicine:"ঔষধ",grocery:"মুদী"},
-Urdu:{women:"خواتین فیشن",men:"مردوں کا فیشن",kids:"بچوں",shoes:"جوتے",jewellery:"زیورات",bags:"بیگز",toys:"کھلونے",beauty:"بیوٹی",home:"گھر",furniture:"فرنیچر",electronics:"الیکٹرانکس",school:"اسکول کی اشیاء",travel:"سفری ٹکٹ",bills:"بل اور ریچارج",medicine:"ادویات",grocery:"گروسری"},
-Nepali:{women:"महिला फेसन",men:"पुरुष फेसन",kids:"बच्चाहरू",shoes:"जुत्ता",jewellery:"गहना",bags:"झोला",toys:"खेलौना",beauty:"ब्यूटी",home:"घर",furniture:"फर्निचर",electronics:"इलेक्ट्रोनिक्स",school:"स्कुल सामान",travel:"यात्रा टिकट",bills:"बिल र रिचार्ज",medicine:"औषधि",grocery:"किराना"},
-Maithili:{women:"महिला फैशन",men:"पुरुष फैशन",kids:"बच्चा",shoes:"जूता",jewellery:"गहना",bags:"बैग",toys:"खिलौना",beauty:"ब्यूटी",home:"घर",furniture:"फर्नीचर",electronics:"इलेक्ट्रॉनिक्स",school:"स्कूल सामान",travel:"यात्रा टिकट",bills:"बिल आ रिचार्ज",medicine:"दवाई",grocery:"किराना"},
-Konkani:{women:"बायलांचें फॅशन",men:"दादल्यांचें फॅशन",kids:"भुरगीं",shoes:"बूट",jewellery:"दागिने",bags:"बॅग",toys:"खेळणी",beauty:"ब्युटी",home:"घर",furniture:"फर्निचर",electronics:"इलेक्ट्रॉनिक्स",school:"शाळेचें सामान",travel:"प्रवास तिकीट",bills:"बिल आनी रिचार्ज",medicine:"दवाय",grocery:"किराणा"}
-};
+fallbackLanguages.forEach(lang=>{
+if(!T[lang]){
+T[lang]={...T.English};
+}
+});
 
-/* ---------------- SUBCATEGORY DATA ---------------- */
+function t(key){
+return (T[currentLang]&&T[currentLang][key])||
+(T.English[key])||
+key;
+}
 
-const SUBS={
+
+/* =========================================================
+   CATEGORY DATA
+========================================================= */
+
+const cats=[
+["👗","Women Fashion","women"],
+["👔","Men Fashion","men"],
+["🧒","Kids","kids"],
+["👟","Shoes","shoes"],
+["💍","Jewellery","jewellery"],
+["👜","Bags","bags"],
+["🧸","Toys","toys"],
+["💄","Beauty","beauty"],
+["🏠","Home","home"],
+["🛋️","Furniture","furniture"],
+["📱","Electronics","electronics"],
+["📚","School Items","school"],
+["🚌","Travel Tickets","travel"],
+["🧾","Bills & Recharge","bills"],
+["💊","Medicines","medicine"],
+["🛒","Grocery","grocery"]
+];
+
+const sub={
 women:[
- ["saree","👗"],["suits","🥻"],["kurtis","👚"],["jeans","👖"],["tops","👕"],["dresses","👗"],["lehenga","💃"],["jackets","🧥"],["nightwear","🌙"],["ethnic","🌸"],["western","✨"]
+"👗 Saree","🥻 Suits","👚 Kurtis","👖 Jeans","👕 Tops",
+"👗 Dresses","👰 Lehenga","🧥 Jackets","🌙 Nightwear",
+"🪷 Ethnic Wear","👠 Western Wear"
 ],
+
 men:[
- ["shirts","👔"],["tshirts","👕"],["jeans","👖"],["trousers","👖"],["kurta","🥻"],["jackets","🧥"],["suits","🤵"],["ethnic","🌿"]
+"👔 Shirts","👕 T-Shirts","👖 Jeans","🥻 Kurta",
+"🧣 Kurta-Pajama","👖 Trousers/Pants","🧥 Jackets",
+"🩳 Shorts","💼 Formal Wear","🏃 Sports Wear"
 ],
+
 kids:[
- ["baby","👶"],["boys","👦"],["girls","👧"],["dresses","👗"],["toys","🧸"],["school","🎒"]
+"👧 Girls","👦 Boys","👶 Baby","👗 Kids Dresses",
+"👟 Kids Shoes","🍼 Baby Products","🧸 Toys"
 ],
+
 shoes:[
- ["womenShoes","👠"],["menShoes","👞"],["kidsShoes","👟"],["sports","🏃"],["sandals","🩴"],["slippers","🥿"]
+"👩 Women","👨 Men","🧒 Kids","🏃 Sports Shoes",
+"🩴 Sandals","👠 Heels","🥿 Flats","🩴 Slippers"
 ],
+
 jewellery:[
- ["necklace","📿"],["earrings","💎"],["rings","💍"],["bangles","⭕"],["bracelets","📿"],["sets","✨"]
+"📿 Necklace","💎 Earrings","🪷 Bangles","💍 Rings",
+"👰 Bridal Jewellery","✨ Artificial Jewellery"
 ],
+
 bags:[
- ["handbags","👜"],["backpacks","🎒"],["sling","👜"],["wallets","👛"],["travelBags","🧳"]
+"👜 Handbag","🎒 Sling Bag","🎒 School Bag","🧳 Travel Bag",
+"🎒 Backpack","👛 Wallet/Purse"
 ],
+
 toys:[
- ["cars","🚗"],["dolls","🪆"],["softToys","🧸"],["games","🎮"],["educational","📚"],["remote","🚙"]
+"🧸 Baby Toys","🧠 Educational","🚗 Cars","👧 Dolls",
+"🎲 Games","🎮 Remote Toys","⚽ Outdoor Toys"
 ],
+
 beauty:[
- ["makeup","💄"],["skincare","🧴"],["haircare","💇"],["fragrance","🌸"],["personalCare","🧼"]
+"💄 Makeup","🧴 Skincare","💇 Haircare","🧼 Personal Care"
 ],
+
 home:[
- ["kitchen","🍳"],["decor","🪴"],["bedsheet","🛏️"],["curtains","🪟"],["storage","🗄️"],["cleaning","🧹"]
+"🍳 Kitchen","🖼️ Home Decor","🛋️ Furniture","📦 Storage",
+"🛏️ Bedsheet","🪟 Curtains"
 ],
+
 furniture:[
- ["sofa","🛋️"],["bed","🛏️"],["chair","🪑"],["table","🪵"],["wardrobe","🚪"],["cabinet","🗄️"],["dining","🍽️"],["officeChair","💺"],["recliner","🛋️"],["dressing","🪞"]
+"🛋️ Sofa","🛏️ Bed","🪑 Chair","🪵 Table",
+"🚪 Wardrobe","🗄️ Cabinet","🍽️ Dining Set",
+"💺 Office Chair","🛋️ Recliner","🪞 Dressing Table"
 ],
+
 electronics:[
- ["mobiles","📱"],["laptops","💻"],["earphones","🎧"],["tv","📺"],["smartwatch","⌚"],["accessories","🔌"]
+"📱 Mobile Accessories","🎧 Earphones","🔌 Chargers",
+"🔗 Cables","🔊 Speakers","💻 Other Electronics"
 ],
+
 school:[
- ["bags","🎒"],["notebooks","📓"],["pens","🖊️"],["art","🎨"],["bottles","🧴"],["stationery","✏️"]
+"🎒 School Bags","📖 Books","📓 Notebooks","✏️ Stationery",
+"🎨 Art & Craft"
 ],
+
 travel:[
- ["flight","✈️"],["train","🚆"],["bus","🚌"],["hotel","🏨"]
+"🚌 Bus","🚆 Train","✈️ Flight","🏨 Hotel"
 ],
+
 bills:[
- ["mobileRecharge","📱"],["electricity","💡"],["water","💧"],["dth","📺"],["broadband","🌐"]
+"📱 Mobile Recharge","📺 DTH","⚡ Electricity","💧 Water",
+"🔥 Gas","🌐 Broadband/Landline","🛣️ FASTag",
+"🛡️ Insurance","🎓 Education Fees","🏠 Property/Other Bills"
 ],
+
 medicine:[
- ["general","💊"],["vitamins","💊"],["firstAid","🩹"],["personal","🧴"],["healthDevices","🩺"]
+"💊 Common Care","🩺 Prescription Medicines",
+"🧴 Health & Personal Care","🌡️ Devices & Wellness"
 ],
+
 grocery:[
- ["rice","🍚"],["flour","🌾"],["oil","🫗"],["spices","🌶️"],["snacks","🍪"],["beverages","🥤"],["daily","🛒"]
+"🥦 Fresh Grocery","🍚 Staples","🥛 Dairy","🍪 Snacks",
+"🧹 Household","🧼 Cleaning","🧃 Beverages"
 ]
 };
 
-const SUB_NAMES={
-Hindi:{
-saree:"साड़ी",suits:"सूट",kurtis:"कुर्ती",jeans:"जींस",tops:"टॉप",dresses:"ड्रेस",lehenga:"लहंगा",jackets:"जैकेट",nightwear:"नाइटवियर",ethnic:"एथनिक वियर",western:"वेस्टर्न वियर",
-shirts:"शर्ट",tshirts:"टी-शर्ट",trousers:"ट्राउज़र",kurta:"कुर्ता",baby:"बेबी",boys:"लड़कों के कपड़े",girls:"लड़कियों के कपड़े",
-womenShoes:"महिलाओं के जूते",menShoes:"पुरुषों के जूते",kidsShoes:"बच्चों के जूते",sports:"स्पोर्ट्स",sandals:"सैंडल",slippers:"चप्पल",
-necklace:"हार",earrings:"झुमके",rings:"अंगूठी",bangles:"चूड़ियाँ",bracelets:"ब्रेसलेट",sets:"ज्वेलरी सेट",
-handbags:"हैंडबैग",backpacks:"बैकपैक",sling:"स्लिंग बैग",wallets:"वॉलेट",travelBags:"ट्रैवल बैग",
-cars:"कार खिलौने",dolls:"गुड़िया",softToys:"सॉफ्ट टॉय",games:"गेम्स",educational:"एजुकेशनल खिलौने",remote:"रिमोट कार",
-makeup:"मेकअप",skincare:"स्किनकेयर",haircare:"हेयरकेयर",fragrance:"परफ्यूम",personalCare:"पर्सनल केयर",
-kitchen:"किचन",decor:"होम डेकोर",bedsheet:"बेडशीट",curtains:"पर्दे",storage:"स्टोरेज",cleaning:"क्लीनिंग",
-sofa:"सोफा",bed:"बेड",chair:"कुर्सी",table:"टेबल",wardrobe:"अलमारी",cabinet:"कैबिनेट",dining:"डाइनिंग सेट",officeChair:"ऑफिस चेयर",recliner:"रिक्लाइनर",dressing:"ड्रेसिंग टेबल",
-mobiles:"मोबाइल",laptops:"लैपटॉप",earphones:"ईयरफोन",tv:"टीवी",smartwatch:"स्मार्टवॉच",accessories:"एक्सेसरीज़",
-notebooks:"नोटबुक",pens:"पेन",art:"आर्ट सामान",bottles:"बोतल",stationery:"स्टेशनरी",
-flight:"फ्लाइट टिकट",train:"ट्रेन टिकट",bus:"बस टिकट",hotel:"होटल",
-mobileRecharge:"मोबाइल रिचार्ज",electricity:"बिजली बिल",water:"पानी बिल",dth:"DTH रिचार्ज",broadband:"ब्रॉडबैंड",
-general:"सामान्य दवाइयाँ",vitamins:"विटामिन",firstAid:"फर्स्ट एड",personal:"पर्सनल हेल्थ",healthDevices:"हेल्थ डिवाइस",
-rice:"चावल",flour:"आटा",oil:"तेल",spices:"मसाले",snacks:"स्नैक्स",beverages:"पेय पदार्थ",daily:"डेली जरूरतें"
-},
-English:{
-saree:"Saree",suits:"Suits",kurtis:"Kurtis",jeans:"Jeans",tops:"Tops",dresses:"Dresses",lehenga:"Lehenga",jackets:"Jackets",nightwear:"Nightwear",ethnic:"Ethnic Wear",western:"Western Wear",
-shirts:"Shirts",tshirts:"T-Shirts",trousers:"Trousers",kurta:"Kurta",baby:"Baby",boys:"Boys Wear",girls:"Girls Wear",
-womenShoes:"Women's Shoes",menShoes:"Men's Shoes",kidsShoes:"Kids Shoes",sports:"Sports Shoes",sandals:"Sandals",slippers:"Slippers",
-necklace:"Necklaces",earrings:"Earrings",rings:"Rings",bangles:"Bangles",bracelets:"Bracelets",sets:"Jewellery Sets",
-handbags:"Handbags",backpacks:"Backpacks",sling:"Sling Bags",wallets:"Wallets",travelBags:"Travel Bags",
-cars:"Toy Cars",dolls:"Dolls",softToys:"Soft Toys",games:"Games",educational:"Educational Toys",remote:"Remote Cars",
-makeup:"Makeup",skincare:"Skincare",haircare:"Hair Care",fragrance:"Fragrance",personalCare:"Personal Care",
-kitchen:"Kitchen",decor:"Home Decor",bedsheet:"Bedsheets",curtains:"Curtains",storage:"Storage",cleaning:"Cleaning",
-sofa:"Sofa",bed:"Bed",chair:"Chair",table:"Table",wardrobe:"Wardrobe",cabinet:"Cabinet",dining:"Dining Set",officeChair:"Office Chair",recliner:"Recliner",dressing:"Dressing Table",
-mobiles:"Mobiles",laptops:"Laptops",earphones:"Earphones",tv:"TV",smartwatch:"Smartwatch",accessories:"Accessories",
-notebooks:"Notebooks",pens:"Pens",art:"Art Supplies",bottles:"Bottles",stationery:"Stationery",
-flight:"Flight Tickets",train:"Train Tickets",bus:"Bus Tickets",hotel:"Hotels",
-mobileRecharge:"Mobile Recharge",electricity:"Electricity Bill",water:"Water Bill",dth:"DTH Recharge",broadband:"Broadband",
-general:"General Medicines",vitamins:"Vitamins",firstAid:"First Aid",personal:"Personal Health",healthDevices:"Health Devices",
-rice:"Rice",flour:"Flour",oil:"Oil",spices:"Spices",snacks:"Snacks",beverages:"Beverages",daily:"Daily Essentials"
-}
-};
-
-/* Fill untranslated subcategory languages with their English names
-   so every option still works and can be rendered without errors. */
-LANGUAGES.forEach(l=>{
-  if(!SUB_NAMES[l.key])SUB_NAMES[l.key]={};
-  Object.keys(SUB_NAMES.English).forEach(k=>{
-    if(!SUB_NAMES[l.key][k])SUB_NAMES[l.key][k]=SUB_NAMES.English[k];
-  });
-});
-
-/* ---------------- PRODUCTS ---------------- */
-
-const products=[
- {id:0,name:"Beautiful Saree",price:999,emoji:"🥻",cat:"women",sub:"saree",colors:["red","blue","pink"]},
- {id:1,name:"Designer Anarkali Suit",price:122,emoji:"👗",cat:"women",sub:"suits",colors:["red","blue","green"]},
- {id:2,name:"Stylish Shoes",price:799,emoji:"👟",cat:"shoes",sub:"womenShoes",colors:["black","white"]},
- {id:3,name:"Kids Toy Car",price:499,emoji:"🚗",cat:"kids",sub:"toys",colors:["red","blue"]},
- {id:4,name:"Fashion Jewellery Set",price:399,emoji:"💎",cat:"jewellery",sub:"sets",colors:["gold","silver"]},
- {id:5,name:"Women Handbag",price:799,emoji:"👜",cat:"bags",sub:"handbags",colors:["black","pink","white"]},
- {id:6,name:"Cotton Kurti",price:549,emoji:"👚",cat:"women",sub:"kurtis",colors:["blue","white","pink"]},
- {id:7,name:"Men Casual Shirt",price:699,emoji:"👔",cat:"men",sub:"shirts",colors:["blue","black","white"]},
- {id:8,name:"Kids Dress",price:449,emoji:"👗",cat:"kids",sub:"dresses",colors:["pink","blue"]},
- {id:9,name:"Wireless Earphones",price:899,emoji:"🎧",cat:"electronics",sub:"earphones",colors:["black","white"]},
- {id:10,name:"Grocery Daily Essentials",price:299,emoji:"🛒",cat:"grocery",sub:"daily",colors:[]},
- {id:11,name:"Health Care Product",price:199,emoji:"🩺",cat:"medicine",sub:"general",colors:[]}
+const lehenga=[
+"👰 Bridal","🎉 Party Wear","✨ Net","💎 Designer",
+"🌟 Heavy Work","🥻 Silk","🌸 Georgette","✨ Sequins",
+"🧵 Embroidery","🌺 Floral","🌿 Simple/Lightweight","👧 Girls/Kids"
 ];
 
-const PRODUCT_NAMES={
-0:{
- Hindi:"सुंदर साड़ी",English:"Beautiful Saree",Gujarati:"સુંદર સાડી",Marathi:"सुंदर साडी",Bengali:"সুন্দর শাড়ি",Tamil:"அழகான சேலை",Telugu:"అందమైన చీర",Kannada:"ಸುಂದರ ಸೀರೆ",Malayalam:"മനോഹരമായ സാരി",Punjabi:"ਸੁੰਦਰ ਸਾੜੀ",Odia:"ସୁନ୍ଦର ଶାଢ଼ୀ",Assamese:"সুন্দৰ শাৰী",Urdu:"خوبصورت ساڑی",Nepali:"सुन्दर सारी",Maithili:"सुन्दर साड़ी",Konkani:"सुंदर साडी"
+const saree=[
+"👑 Banarasi","🥻 Silk","🌿 Cotton","🌸 Georgette",
+"🪶 Chiffon","🌺 Bandhej","🎉 Party Wear","👰 Bridal",
+"✨ Designer","🧵 Embroidery","🖼️ Printed","🌿 Linen"
+];
+
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+const products=[
+{id:0,name:"Beautiful Saree",cat:"women",sub:"Saree",emoji:"🥻",price:999,old:1499,rating:4.5},
+{id:1,name:"Designer Anarkali Suit",cat:"women",sub:"Suits",emoji:"👗",price:122,old:610,rating:4.5},
+{id:2,name:"Stylish Shoes",cat:"shoes",sub:"Women",emoji:"👠",price:799,old:1299,rating:4.3},
+{id:3,name:"Kids Toy Car",cat:"toys",sub:"Cars",emoji:"🚗",price:499,old:799,rating:4.4},
+{id:4,name:"Fashion Jewellery Set",cat:"jewellery",sub:"Artificial Jewellery",emoji:"💍",price:399,old:699,rating:4.2},
+{id:5,name:"Women Handbag",cat:"bags",sub:"Handbag",emoji:"👜",price:799,old:1199,rating:4.4},
+{id:6,name:"Cotton Kurti",cat:"women",sub:"Kurtis",emoji:"👚",price:549,old:899,rating:4.6},
+{id:7,name:"Men Casual Shirt",cat:"men",sub:"Shirts",emoji:"👔",price:699,old:999,rating:4.3},
+{id:8,name:"Kids Dress",cat:"kids",sub:"Kids Dresses",emoji:"👗",price:449,old:799,rating:4.5},
+{id:9,name:"Wireless Earphones",cat:"electronics",sub:"Earphones",emoji:"🎧",price:899,old:1499,rating:4.1},
+{id:10,name:"Grocery Daily Essentials",cat:"grocery",sub:"Household",emoji:"🛒",price:299,old:349,rating:4.4},
+{id:11,name:"Health Care Product",cat:"medicine",sub:"Common Care",emoji:"💊",price:199,old:249,rating:4.2}
+];
+
+
+/* =========================================================
+   STORAGE
+========================================================= */
+
+let wishlist=JSON.parse(localStorage.getItem("zipWish")||"[]");
+let cart=JSON.parse(localStorage.getItem("zipCart")||"[]");
+let selectedCat=null;
+
+
+/* पुराने IDs की safety migration */
+wishlist=wishlist.map(id=>id>=1&&id<=12?id-1:id).filter(id=>products.some(p=>p.id===id));
+
+cart=cart.map(x=>{
+let id=x.id>=1&&x.id<=12?x.id-1:x.id;
+return {...x,id};
+}).filter(x=>products.some(p=>p.id===x.id));
+
+
+function save(){
+localStorage.setItem("zipWish",JSON.stringify(wishlist));
+localStorage.setItem("zipCart",JSON.stringify(cart));
+updateCounts();
+}
+
+function updateCounts(){
+const w=document.getElementById("wishCount");
+const c=document.getElementById("cartCount");
+if(w)w.textContent=wishlist.length;
+if(c)c.textContent=cart.reduce((a,x)=>a+(Number(x.qty)||0),0);
+}
+
+
+/* =========================================================
+   HEADER LANGUAGE REFRESH
+========================================================= */
+
+function refreshHeader(){
+
+document.documentElement.lang=
+LANGUAGES[currentLang]?.speech||"hi-IN";
+
+document.title=
+currentLang==="Hindi"
+?"ZipCart — आपकी अपनी Shopping जगह ❤️"
+:"ZipCart — Your Shopping Place ❤️";
+
+document.getElementById("tagline").textContent=t("tag");
+
+document.getElementById("search").placeholder=t("search");
+
+document.getElementById("ordersTop").textContent="📦 "+t("orders");
+document.getElementById("accountTop").textContent="👤 "+t("account");
+
+document.getElementById("navHome").textContent="🏠 "+t("home");
+document.getElementById("navCategories").textContent="🗂️ "+t("categories");
+document.getElementById("navSeller").textContent="🏪 "+t("seller");
+document.getElementById("navOrders").textContent="📦 "+t("myOrders");
+document.getElementById("navAccount").textContent="👤 "+t("account");
+
+updateCounts();
+}
+
+
+/* =========================================================
+   PRODUCT CARD
+========================================================= */
+
+function productCard(p){
+
+const liked=wishlist.includes(p.id);
+
+const pct=Math.round((1-p.price/p.old)*100);
+
+return `
+<div class="card">
+
+<button class="heart"
+onclick="toggleWish(${p.id})">
+${liked?"❤️":"♡"}
+</button>
+
+<div class="photo">${p.emoji}</div>
+
+<div class="cardbody">
+
+<b>${p.name}</b>
+
+<div>
+<span class="price">₹${p.price}</span>
+<span class="old">₹${p.old}</span>
+<span class="off">${pct}% OFF</span>
+</div>
+
+<div class="rating">⭐ ${p.rating}</div>
+
+<button class="buy"
+onclick="product(${p.id})">
+${t("viewBuy")}
+</button>
+
+</div>
+</div>
+`;
+}
+
+
+/* =========================================================
+   CATEGORIES
+========================================================= */
+
+function catsHTML(){
+
+return `
+<div class="hscroll">
+${cats.map(c=>`
+<div class="cat"
+onclick="category('${c[2]}')">
+
+<div class="catpic">${c[0]}</div>
+
+<b>${translateCategory(c[2],c[1])}</b>
+
+</div>
+`).join("")}
+</div>
+`;
+}
+
+function translateCategory(key,name){
+
+const map={
+Hindi:{
+women:"महिलाओं का फैशन",
+men:"पुरुष फैशन",
+kids:"बच्चों के उत्पाद",
+shoes:"जूते",
+jewellery:"ज्वेलरी",
+bags:"बैग",
+toys:"खिलौने",
+beauty:"ब्यूटी",
+home:"घर का सामान",
+furniture:"फर्नीचर",
+electronics:"इलेक्ट्रॉनिक्स",
+school:"स्कूल आइटम",
+travel:"ट्रैवल टिकट",
+bills:"बिल और रिचार्ज",
+medicine:"दवाइयाँ",
+grocery:"किराना"
 },
-1:{
- Hindi:"डिज़ाइनर अनारकली सूट",English:"Designer Anarkali Suit",Gujarati:"ડિઝાઇનર અનારકલી સૂટ",Marathi:"डिझायनर अनारकली सूट",Bengali:"ডিজাইনার আনারকলি স্যুট",Tamil:"டிசைனர் அனார்கலி சூட்",Telugu:"డిజైనర్ అనార్కలి సూట్",Kannada:"ಡಿಸೈನರ್ ಅನಾರ್ಕಲಿ ಸೂಟ್",Malayalam:"ഡിസൈനർ അനാർക്കലി സ്യൂട്ട്",Punjabi:"ਡਿਜ਼ਾਈਨਰ ਅਨਾਰਕਲੀ ਸੂਟ",Odia:"ଡିଜାଇନର୍ ଅନାରକଲି ସୁଟ୍",Assamese:"ডিজাইনাৰ অনাৰকলি ছুট",Urdu:"ڈیزائنر انارکلی سوٹ",Nepali:"डिजाइनर अनारकली सूट",Maithili:"डिजाइनर अनारकली सूट",Konkani:"डिझायनर अनारकली सूट"
+English:{
+women:"Women Fashion",
+men:"Men Fashion",
+kids:"Kids",
+shoes:"Shoes",
+jewellery:"Jewellery",
+bags:"Bags",
+toys:"Toys",
+beauty:"Beauty",
+home:"Home",
+furniture:"Furniture",
+electronics:"Electronics",
+school:"School Items",
+travel:"Travel Tickets",
+bills:"Bills & Recharge",
+medicine:"Medicines",
+grocery:"Grocery"
 },
-2:{
- Hindi:"स्टाइलिश जूते",English:"Stylish Shoes",Gujarati:"સ્ટાઇલિશ જૂતા",Marathi:"स्टायलिश शूज",Bengali:"স্টাইলিশ জুতো",Tamil:"ஸ்டைலிஷ் காலணிகள்",Telugu:"స్టైలిష్ షూస్",Kannada:"ಸ್ಟೈಲಿಶ್ ಶೂಸ್",Malayalam:"സ്റ്റൈലിഷ് ഷൂസ്",Punjabi:"ਸਟਾਈਲਿਸ਼ ਜੁੱਤੇ",Odia:"ଷ୍ଟାଇଲିଶ୍ ଜୋତା",Assamese:"ষ্টাইলিছ জোতা",Urdu:"اسٹائلش جوتے",Nepali:"स्टाइलिश जुत्ता",Maithili:"स्टाइलिश जूता",Konkani:"स्टायलिश बूट"
-},
-3:{
- Hindi:"बच्चों की खिलौना कार",English:"Kids Toy Car",Gujarati:"બાળકોની રમકડાની કાર",Marathi:"मुलांची खेळण्याची कार",Bengali:"বাচ্চাদের খেলনা গাড়ি",Tamil:"குழந்தைகளுக்கான பொம்மை கார்",Telugu:"పిల్లల బొమ్మ కారు",Kannada:"ಮಕ್ಕಳ ಆಟಿಕೆ ಕಾರು",Malayalam:"കുട്ടികളുടെ കളിപ്പാട്ട കാർ",Punjabi:"ਬੱਚਿਆਂ ਦੀ ਖਿਡੌਣਾ ਕਾਰ",Odia:"ପିଲାଙ୍କ ଖେଳନା କାର",Assamese:"শিশুৰ খেলনা গাড়ী",Urdu:"بچوں کی کھلونا کار",Nepali:"बच्चाहरूको खेलौना कार",Maithili:"बच्चाक खिलौना कार",Konkani:"भुरग्यांची खेळण्याची कार"
-},
-4:{
- Hindi:"फैशन ज्वेलरी सेट",English:"Fashion Jewellery Set",Gujarati:"ફેશન જ્વેલરી સેટ",Marathi:"फॅशन ज्वेलरी सेट",Bengali:"ফ্যাশন জুয়েলারি সেট",Tamil:"ஃபேஷன் நகை செட்",Telugu:"ఫ్యాషన్ జ్యువెలరీ సెట్",Kannada:"ಫ್ಯಾಷನ್ ಜ್ಯುವೆಲ್ಲರಿ ಸೆಟ್",Malayalam:"ഫാഷൻ ജ്വല്ലറി സെറ്റ്",Punjabi:"ਫੈਸ਼ਨ ਜਿਊਲਰੀ ਸੈੱਟ",Odia:"ଫ୍ୟାଶନ୍ ଜୁଏଲେରୀ ସେଟ୍",Assamese:"ফেশ্বন জুৱেলাৰী ছেট",Urdu:"فیشن جیولری سیٹ",Nepali:"फेसन गहना सेट",Maithili:"फैशन गहना सेट",Konkani:"फॅशन दागिन्यांचो सेट"
-},
-5:{
- Hindi:"महिलाओं का हैंडबैग",English:"Women Handbag",Gujarati:"મહિલા હેન્ડબેગ",Marathi:"महिलांची हँडबॅग",Bengali:"মহিলাদের হ্যান্ডব্যাগ",Tamil:"பெண்களுக்கான கைப்பை",Telugu:"మహిళల హ్యాండ్‌బ్యాగ్",Kannada:"ಮಹಿಳೆಯರ ಹ್ಯಾಂಡ್‌ಬ್ಯಾಗ್",Malayalam:"വനിതാ ഹാൻഡ്ബാഗ്",Punjabi:"ਮਹਿਲਾਵਾਂ ਦਾ ਹੈਂਡਬੈਗ",Odia:"ମହିଳା ହ୍ୟାଣ୍ଡବ୍ୟାଗ୍",Assamese:"মহিলাৰ হেণ্ডবেগ",Urdu:"خواتین ہینڈ بیگ",Nepali:"महिलाको ह्यान्डब्याग",Maithili:"महिलाक हैंडबैग",Konkani:"बायलांचो हँडबॅग"
-},
-6:{
- Hindi:"कॉटन कुर्ती",English:"Cotton Kurti",Gujarati:"કૉટન કુર્તી",Marathi:"कॉटन कुर्ती",Bengali:"কটন কুর্তি",Tamil:"காட்டன் குர்தி",Telugu:"కాటన్ కుర్తీ",Kannada:"ಕಾಟನ್ ಕುರ್ತಿ",Malayalam:"കോട്ടൺ കുർത്തി",Punjabi:"ਕਾਟਨ ਕੁੜਤੀ",Odia:"କଟନ୍ କୁର୍ତ୍ତୀ",Assamese:"কটন কুৰ্তি",Urdu:"کاٹن کرتی",Nepali:"कटन कुर्ती",Maithili:"कॉटन कुर्ती",Konkani:"कॉटन कुर्ती"
-},
-7:{
- Hindi:"पुरुषों की कैज़ुअल शर्ट",English:"Men Casual Shirt",Gujarati:"પુરુષોની કેઝ્યુઅલ શર્ટ",Marathi:"पुरुषांचा कॅज्युअल शर्ट",Bengali:"পুরুষদের ক্যাজুয়াল শার্ট",Tamil:"ஆண்களுக்கான கேஷுவல் சட்டை",Telugu:"పురుషుల క్యాజువల్ షర్ట్",Kannada:"ಪುರುಷರ ಕ್ಯಾಶುಯಲ್ ಶರ್ಟ್",Malayalam:"പുരുഷന്മാരുടെ കാഷ്വൽ ഷർട്ട്",Punjabi:"ਮਰਦਾਂ ਦੀ ਕੈਜ਼ੁਅਲ ਸ਼ਰਟ",Odia:"ପୁରୁଷଙ୍କ କ୍ୟାଜୁଆଲ୍ ସାର୍ଟ",Assamese:"পুৰুষৰ কেজুৱেল ছাৰ্ট",Urdu:"مردوں کی کیژول شرٹ",Nepali:"पुरुषको क्याजुअल शर्ट",Maithili:"पुरुषक कैजुअल शर्ट",Konkani:"दादल्यांचो कॅज्युअल शर्ट"
-},
-8:{
- Hindi:"बच्चों की ड्रेस",English:"Kids Dress",Gujarati:"બાળકોનો ડ્રેસ",Marathi:"मुलांचा ड्रेस",Bengali:"বাচ্চাদের পোশাক",Tamil:"குழந்தைகளின் உடை",Telugu:"పిల్లల డ్రెస్",Kannada:"ಮಕ್ಕಳ ಉಡುಗೆ",Malayalam:"കുട്ടികളുടെ വസ്ത്രം",Punjabi:"ਬੱਚਿਆਂ ਦੀ ਡਰੈੱਸ",Odia:"ପିଲାଙ୍କ ଡ୍ରେସ୍",Assamese:"শিশুৰ পোছাক",Urdu:"بچوں کی ڈریس",Nepali:"बच्चाहरूको ड्रेस",Maithili:"बच्चाक ड्रेस",Konkani:"भुरग्यांचो ड्रेस"
-},
-9:{
- Hindi:"वायरलेस ईयरफोन",English:"Wireless Earphones",Gujarati:"વાયરલેસ ઈયરફોન",Marathi:"वायरलेस इअरफोन",Bengali:"ওয়্যারলেস ইয়ারফোন",Tamil:"வயர்லெஸ் இயர்போன்கள்",Telugu:"వైర్‌లెస్ ఇయర్‌ఫోన్స్",Kannada:"ವೈರ್‌ಲೆಸ್ ಇಯರ್‌ಫೋನ್ಸ್",Malayalam:"വയർലെസ് ഇയർഫോണുകൾ",Punjabi:"ਵਾਇਰਲੈੱਸ ਈਅਰਫੋਨ",Odia:"ୱାୟରଲେସ୍ ଇୟରଫୋନ୍",Assamese:"ৱায়াৰলেছ ইয়েৰফোন",Urdu:"وائرلیس ایئر فون",Nepali:"वायरलेस इयरफोन",Maithili:"वायरलेस ईयरफोन",Konkani:"वायरलेस इयरफोन"
-},
-10:{
- Hindi:"किराना रोज़मर्रा की चीज़ें",English:"Grocery Daily Essentials",Gujarati:"કરિયાણાની રોજિંદી વસ્તુઓ",Marathi:"किराण्याच्या रोजच्या वस्तू",Bengali:"রোজকার মুদিখানার জিনিস",Tamil:"தினசரி மளிகைப் பொருட்கள்",Telugu:"రోజువారీ కిరాణా వస్తువులు",Kannada:"ದೈನಂದಿನ ದಿನಸಿ ವಸ್ತುಗಳು",Malayalam:"ദൈനംദിന പലചരക്ക് സാധനങ്ങൾ",Punjabi:"ਰੋਜ਼ਾਨਾ ਕਿਰਿਆਨੇ ਦਾ ਸਮਾਨ",Odia:"ଦୈନିକ କିରାଣା ସାମଗ୍ରୀ",Assamese:"দৈনন্দিন মুদীৰ সামগ্ৰী",Urdu:"روزمرہ گروسری کی اشیاء",Nepali:"दैनिक किराना सामान",Maithili:"रोजकिराना सामान",Konkani:"रोजचो किराणा सामान"
-},
-11:{
- Hindi:"हेल्थ केयर प्रोडक्ट",English:"Health Care Product",Gujarati:"હેલ્થ કેર પ્રોડક્ટ",Marathi:"हेल्थ केअर प्रॉडक्ट",Bengali:"হেলথ কেয়ার প্রোডাক্ট",Tamil:"ஹெல்த் கேர் பொருள்",Telugu:"హెల్త్ కేర్ ప్రొడక్ట్",Kannada:"ಹೆಲ್ತ್ ಕೇರ್ ಉತ್ಪನ್ನ",Malayalam:"ഹെൽത്ത് കെയർ ഉൽപ്പന്നം",Punjabi:"ਹੈਲਥ ਕੇਅਰ ਪ੍ਰੋਡਕਟ",Odia:"ହେଲ୍ଥ କେୟାର ପ୍ରୋଡକ୍ଟ",Assamese:"হেল্থ কেয়াৰ সামগ্ৰী",Urdu:"ہیلتھ کیئر پروڈکٹ",Nepali:"हेल्थ केयर उत्पादन",Maithili:"हेल्थ केयर प्रोडक्ट",Konkani:"हेल्थ केअर प्रोडक्ट"
+Gujarati:{
+women:"મહિલા ફેશન",
+men:"પુરુષ ફેશન",
+kids:"બાળકો",
+shoes:"જૂતા",
+jewellery:"જ્વેલરી",
+bags:"બેગ",
+toys:"રમકડાં",
+beauty:"બ્યુટી",
+home:"ઘરનો સામાન",
+furniture:"ફર્નિચર",
+electronics:"ઇલેક્ટ્રોનિક્સ",
+school:"સ્કૂલ વસ્તુઓ",
+travel:"ટ્રાવેલ ટિકિટ",
+bills:"બિલ અને રિચાર્જ",
+medicine:"દવાઓ",
+grocery:"કિરાણા"
 }
 };
 
-function t(key){
-  return (T[currentLang]&&T[currentLang][key]) || T.English[key] || key;
-}
-function catName(key){
-  return (CAT_NAMES[currentLang]&&CAT_NAMES[currentLang][key]) || CAT_NAMES.English[key] || key;
-}
-function subName(key){
-  return (SUB_NAMES[currentLang]&&SUB_NAMES[currentLang][key]) || SUB_NAMES.English[key] || key;
-}
-function productName(id){
-  return (PRODUCT_NAMES[id]&&PRODUCT_NAMES[id][currentLang]) || PRODUCT_NAMES[id]?.English || products[id]?.name || "";
-}
-function colorName(c){
-  const map={red:"red",blue:"blue",black:"black",white:"white",pink:"pink",gold:"gold",silver:"silver",green:"green"};
-  if(c==="gold") return currentLang==="Hindi"?"गोल्ड":c;
-  if(c==="silver") return currentLang==="Hindi"?"सिल्वर":c;
-  if(c==="green") return currentLang==="Hindi"?"हरा":c;
-  return t(map[c]||c);
+return map[currentLang]?.[key]||name;
 }
 
-function getCart(){
-  return JSON.parse(localStorage.getItem("zc_cart")||"[]");
-}
-function saveCart(cart){
-  localStorage.setItem("zc_cart",JSON.stringify(cart));
-  refreshHeader();
-}
-function getWishlist(){
-  return JSON.parse(localStorage.getItem("zc_wishlist")||"[]");
-}
-function saveWishlist(w){
-  localStorage.setItem("zc_wishlist",JSON.stringify(w));
-  refreshHeader();
-}
 
-function money(n){
-  return "₹"+Number(n).toLocaleString("en-IN");
-}
-
-function showToast(msg){
-  const el=document.getElementById("toast");
-  el.textContent=msg;
-  el.style.display="block";
-  clearTimeout(window.__toastTimer);
-  window.__toastTimer=setTimeout(()=>el.style.display="none",2200);
-}
-
-function refreshHeader(){
-  const lang=LANGUAGES.find(x=>x.key===currentLang)||LANGUAGES[0];
-  document.documentElement.lang=lang.code;
-  document.documentElement.dir=currentLang==="Urdu"?"rtl":"ltr";
-
-  document.title=currentLang==="Hindi"
-    ?"ZipCart — आपकी अपनी Shopping जगह ❤️"
-    :`ZipCart — ${t("tagline")}`;
-
-  document.getElementById("tagline").textContent=t("tagline");
-  document.getElementById("langText").textContent=lang.native;
-
-  document.getElementById("navHome").textContent=t("home");
-  document.getElementById("navCategories").textContent=t("categories");
-  document.getElementById("navOrders").textContent=t("orders");
-  document.getElementById("navAccount").textContent=t("account");
-  document.getElementById("navSeller").textContent=t("seller");
-
-  document.getElementById("bHome").textContent=t("home");
-  document.getElementById("bCategories").textContent=t("categories");
-  document.getElementById("bCart").textContent=t("cart");
-  document.getElementById("bOrders").textContent=t("orders");
-  document.getElementById("bAccount").textContent=t("account");
-
-  const si=document.getElementById("searchInput");
-  si.placeholder=t("searchPlaceholder");
-
-  document.getElementById("wishCount").textContent=getWishlist().length;
-  document.getElementById("cartCount").textContent=getCart().reduce((s,x)=>s+(x.qty||1),0);
-
-  document.getElementById("categoryBar").innerHTML=CATEGORIES.map(c=>
-    `<button class="catChip" onclick="category('${c.key}')">${c.emoji} ${catName(c.key)}</button>`
-  ).join("");
-}
-
-function navigate(page,args={}){
-  currentPage=page;
-  currentArgs=args;
-  renderPage();
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function show(page){
-  navigate(page);
-}
-
-function renderPage(){
-  refreshHeader();
-
-  switch(currentPage){
-    case"home":home();break;
-    case"wishlist":wishlistPage();break;
-    case"cart":cartPage();break;
-    case"orders":orders();break;
-    case"account":account();break;
-    case"categories":categories();break;
-    case"seller":seller();break;
-    case"category":categoryPage(currentArgs.key);break;
-    case"subCategory":subCategoryPage(currentArgs.cat,currentArgs.sub);break;
-    case"product":productPage(currentArgs.id);break;
-    case"checkout":checkoutPage();break;
-    case"search":searchPage(currentArgs.query);break;
-    case"track":trackPage(currentArgs.id);break;
-    case"return":returnPage(currentArgs.id);break;
-    case"exchange":exchangePage(currentArgs.id);break;
-    default:home();
-  }
-}
-
-function getApp(){
-  return document.getElementById("app");
-}
-
-/* ---------------- HOME ---------------- */
+/* =========================================================
+   HOME
+========================================================= */
 
 function home(){
-  const app=getApp();
 
-  app.innerHTML=`
-    <section class="hero">
-      <h1>🛍️ ZipCart</h1>
-      <p>${t("tagline")}</p>
-      <div class="actions">
-        <button class="primary" onclick="show('categories')">${t("shopNow")}</button>
-      </div>
-    </section>
+app.innerHTML=`
 
-    <div class="sectionTitle">
-      <h2>${t("categories")}</h2>
-      <button class="secondary" onclick="show('categories')">${t("viewAll")}</button>
-    </div>
+<section class="hero">
 
-    <div class="grid">
-      ${CATEGORIES.slice(0,12).map(c=>`
-        <button class="catCard" onclick="category('${c.key}')">
-          <div class="emoji">${c.emoji}</div>
-          <strong>${catName(c.key)}</strong>
-        </button>
-      `).join("")}
-    </div>
+<h1>${t("welcome")}</h1>
 
-    <div class="sectionTitle">
-      <h2>${t("quick")}</h2>
-    </div>
+<p>
+${t("intro")} —
+<b>${t("steps")}</b>
+</p>
 
-    <div class="grid">
-      <button class="catCard" onclick="category('grocery')">
-        <div class="emoji">🛒</div>
-        <strong>${t("grocery")}</strong>
-      </button>
-      <button class="catCard" onclick="category('medicine')">
-        <div class="emoji">💊</div>
-        <strong>${t("medicine")}</strong>
-      </button>
-    </div>
+<div class="quick">
 
-    <div class="sectionTitle">
-      <h2>${t("popular")}</h2>
-      <button class="secondary" onclick="searchPage('')">${t("viewAll")}</button>
-    </div>
+<button class="pill"
+onclick="voiceSearch()">
+🔊 ${t("voice")}
+</button>
 
-    <div class="products">
-      ${products.slice(0,8).map(productCard).join("")}
-    </div>
-  `;
+<button class="pill"
+onclick="show('orders')">
+📦 ${t("orders")}
+</button>
+
+<button class="pill"
+onclick="show('account')">
+🆘 ${t("help")}
+</button>
+
+<button class="pill"
+onclick="category('grocery')">
+⚡ Grocery Quick Delivery
+</button>
+
+<button class="pill"
+onclick="category('medicine')">
+💊 Medicines
+</button>
+
+</div>
+
+</section>
+
+<div class="banner">
+
+<div>
+<h2>🎉 ${t("offers")}</h2>
+<div>${t("budget")}</div>
+</div>
+
+<button onclick="doSearchText('Anarkali Suit')">
+Anarkali Suit ${t("see")}
+</button>
+
+</div>
+
+<section class="section">
+
+<h2>🗂️ ${t("topCategories")}</h2>
+
+${catsHTML()}
+
+</section>
+
+<section class="section">
+
+<h2>✨ ${t("forYou")}</h2>
+
+<div class="grid">
+${products.slice(0,8).map(productCard).join("")}
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>🔥 ${t("budgetFav")}</h2>
+
+<div class="grid">
+${products.filter(p=>p.price<600).map(productCard).join("")}
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>🆕 ${t("newArrivals")}</h2>
+
+<div class="grid">
+${products.slice(8).map(productCard).join("")}
+</div>
+
+</section>
+`;
+
+updateCounts();
 }
 
-function productCard(p){
-  const wish=getWishlist().includes(p.id);
-  return `
-    <div class="card">
-      <button class="heart" onclick="toggleWish(${p.id});event.stopPropagation()">
-        ${wish?"❤️":"♡"}
-      </button>
 
-      <div class="productImage" onclick="productPage(${p.id})">${p.emoji}</div>
-
-      <div class="cardBody">
-        <h3>${productName(p.id)}</h3>
-        <div class="price">${money(p.price)}</div>
-
-        <div class="actions">
-          <button class="secondary" onclick="productPage(${p.id})">${t("viewAll")}</button>
-          <button class="primary" onclick="addCart(${p.id})">${t("addCart")}</button>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-/* ---------------- CATEGORIES ---------------- */
-
-function categories(){
-  getApp().innerHTML=`
-    <div class="sectionTitle">
-      <h2>${t("categories")}</h2>
-    </div>
-
-    <div class="grid">
-      ${CATEGORIES.map(c=>`
-        <button class="catCard" onclick="category('${c.key}')">
-          <div class="emoji">${c.emoji}</div>
-          <strong>${catName(c.key)}</strong>
-        </button>
-      `).join("")}
-    </div>
-  `;
-}
+/* =========================================================
+   CATEGORY PAGE
+========================================================= */
 
 function category(key){
-  navigate("category",{key});
+
+selectedCat=key;
+
+const c=cats.find(x=>x[2]===key);
+
+let arr=sub[key]||[];
+
+app.innerHTML=`
+
+<button class="back"
+onclick="show('home')">
+← ${t("back")}
+</button>
+
+<div class="panel">
+
+<h2>
+${c?c[0]+" "+translateCategory(key,c[1]):key}
+</h2>
+
+<p>
+${t("listen")}
+🔊
+</p>
+
+<button class="pill"
+onclick='speakList(${JSON.stringify(arr)})'>
+🔊 ${t("listen")}
+</button>
+
+</div>
+
+<div class="hscroll">
+
+${arr.map(x=>`
+
+<div class="cat"
+onclick="subCategory('${key}',\`${x}\`)">
+
+<div class="catpic">
+${x.split(" ")[0]}
+</div>
+
+<b>
+${x.substring(x.indexOf(" ")+1)}
+</b>
+
+</div>
+
+`).join("")}
+
+</div>
+
+${key==="women"?`
+
+<div class="panel">
+
+<h3>👰 Lehenga</h3>
+
+<div class="hscroll">
+
+${lehenga.map(x=>`
+
+<div class="cat"
+onclick="subCategory('women',\`Lehenga ${x.substring(x.indexOf(" ")+1)}\`)">
+
+<div class="catpic">
+${x.split(" ")[0]}
+</div>
+
+<b>
+${x.substring(x.indexOf(" ")+1)}
+</b>
+
+</div>
+
+`).join("")}
+
+</div>
+
+<h3>🥻 Saree</h3>
+
+<div class="hscroll">
+
+${saree.map(x=>`
+
+<div class="cat"
+onclick="subCategory('women',\`Saree ${x.substring(x.indexOf(" ")+1)}\`)">
+
+<div class="catpic">
+${x.split(" ")[0]}
+</div>
+
+<b>
+${x.substring(x.indexOf(" ")+1)}
+</b>
+
+</div>
+
+`).join("")}
+
+</div>
+
+</div>
+
+`:""}
+
+<section class="section">
+
+<h2>🛍️ ${t("products")}</h2>
+
+<div class="grid">
+
+${
+products.filter(p=>p.cat===key).map(productCard).join("")
+||
+`<div class="panel">
+${t("noResult")}
+</div>`
 }
 
-function categoryPage(key){
-  selectedCat=key;
-  const items=SUBS[key]||[];
+</div>
 
-  getApp().innerHTML=`
-    <button class="back" onclick="show('categories')">← ${t("back")}</button>
-
-    <div class="sectionTitle">
-      <h2>${catName(key)}</h2>
-      <button class="voiceBtn" onclick="speakSubList('${key}')">🔊</button>
-    </div>
-
-    <div class="subGrid">
-      ${items.map(([sub,emoji])=>`
-        <button class="subCard" onclick="subCategoryPage('${key}','${sub}')">
-          <span class="emoji">${emoji}</span>
-          <strong>${subName(sub)}</strong>
-        </button>
-      `).join("")}
-    </div>
-
-    <div class="sectionTitle">
-      <h2>${t("allProducts")}</h2>
-    </div>
-
-    <div class="products">
-      ${products.filter(p=>p.cat===key).map(productCard).join("") || `
-        <div class="panel empty">
-          <div class="big">🛍️</div>
-          <p>${t("noResults")}</p>
-        </div>
-      `}
-    </div>
-  `;
+</section>
+`;
 }
 
-function subCategoryPage(cat,sub){
-  navigate("subCategory",{cat,sub});
+
+/* =========================================================
+   SUB CATEGORY
+========================================================= */
+
+function subCategory(key,s){
+
+let name=s.trim();
+
+let found=products.filter(p=>
+p.cat===key &&
+(
+(p.sub||"").toLowerCase().includes(name.toLowerCase())
+||
+p.name.toLowerCase().includes(name.toLowerCase())
+)
+);
+
+app.innerHTML=`
+
+<button class="back"
+onclick="category('${key}')">
+← ${t("back")}
+</button>
+
+<div class="panel">
+
+<h2>${name}</h2>
+
+<button class="pill"
+onclick='speak(${JSON.stringify(name)})'>
+🔊 ${t("listen")}
+</button>
+
+<div class="quick">
+
+${[
+"₹100–₹500",
+"₹500–₹1,000",
+"₹1,000–₹1,500",
+"₹1,500–₹2,000",
+"₹2,000–₹3,000",
+"₹3,000–₹5,000",
+"₹5,000–₹10,000",
+"₹10,000+"
+].map(x=>`
+<button class="pill">${x}</button>
+`).join("")}
+
+</div>
+
+</div>
+
+<div class="grid">
+
+${
+found.length
+?found.map(productCard).join("")
+:products.filter(p=>p.cat===key).map(productCard).join("")
 }
 
-function subCategoryPageRender(cat,sub){
-  const list=products.filter(p=>p.cat===cat&&p.sub===sub);
-
-  getApp().innerHTML=`
-    <button class="back" onclick="categoryPage('${cat}')">← ${t("back")}</button>
-
-    <div class="sectionTitle">
-      <h2>${subName(sub)}</h2>
-      <button class="voiceBtn" onclick="speakText('${subName(sub)}')">🔊</button>
-    </div>
-
-    <div class="filterBar">
-      <select onchange="applySubFilter('${cat}','${sub}',this.value)">
-        <option value="">${t("filter")}</option>
-        <option value="100-500">${t("price100500")}</option>
-        <option value="500-1000">${t("price5001000")}</option>
-        <option value="1000-1500">${t("price10001500")}</option>
-      </select>
-
-      <select onchange="sortSubProducts('${cat}','${sub}',this.value)">
-        <option value="">${t("sort")}</option>
-        <option value="low">${t("lowHigh")}</option>
-        <option value="high">${t("highLow")}</option>
-      </select>
-    </div>
-
-    <div id="subProducts" class="products">
-      ${list.map(productCard).join("") || `
-        <div class="panel empty">
-          <div class="big">🔎</div>
-          <p>${t("noResults")}</p>
-        </div>
-      `}
-    </div>
-  `;
+</div>
+`;
 }
 
-function applySubFilter(cat,sub,value){
-  let list=products.filter(p=>p.cat===cat&&p.sub===sub);
-  if(value){
-    const [a,b]=value.split("-").map(Number);
-    list=list.filter(p=>p.price>=a&&p.price<=b);
-  }
-  document.getElementById("subProducts").innerHTML=
-    list.map(productCard).join("")||`<div class="panel empty"><p>${t("noResults")}</p></div>`;
-}
 
-function sortSubProducts(cat,sub,value){
-  let list=products.filter(p=>p.cat===cat&&p.sub===sub);
-  if(value==="low")list.sort((a,b)=>a.price-b.price);
-  if(value==="high")list.sort((a,b)=>b.price-a.price);
-  document.getElementById("subProducts").innerHTML=
-    list.map(productCard).join("")||`<div class="panel empty"><p>${t("noResults")}</p></div>`;
-}
-
-/* ---------------- PRODUCT ---------------- */
+/* =========================================================
+   PRODUCT
+========================================================= */
 
 function product(id){
-  navigate("product",{id});
+
+const p=products.find(x=>x.id===id);
+
+if(!p)return;
+
+app.innerHTML=`
+
+<button class="back"
+onclick="show('home')">
+← ${t("back")}
+</button>
+
+<div class="panel">
+
+<div class="photo"
+style="height:240px">
+${p.emoji}
+</div>
+
+<h2>${p.name}</h2>
+
+<div>
+
+<span class="price">
+₹${p.price}
+</span>
+
+<span class="old">
+₹${p.old}
+</span>
+
+<span class="off">
+${Math.round((1-p.price/p.old)*100)}% OFF
+</span>
+
+</div>
+
+<div class="rating">
+⭐ ${p.rating}
+</div>
+
+<p>
+<b>${t("details")}:</b>
+Seller listing में category के अनुसार fabric/material,
+size, color, weight, dimensions, manufacturer,
+warranty/expiry और अन्य लागू जानकारी दिखाई जाएगी।
+</p>
+
+<p>
+<b>${t("size")}:</b>
+XS, S, M, L, XL, XXL, 3XL, 4XL
+</p>
+
+<p>
+<b>${t("colors")}:</b>
+Available colors seller के अनुसार।
+</p>
+
+<p>
+<b>${t("delivery")}:</b>
+PIN code डालने पर वास्तविक उपलब्ध तारीख और charge दिखेगा।
+</p>
+
+<p>
+<b>${t("returnExchange")}:</b>
+लागू policy और window के अनुसार।
+</p>
+
+<div class="quick">
+
+<button class="pill"
+onclick="toggleWish(${p.id})">
+❤️ ${t("wishlist")}
+</button>
+
+<button class="pill"
+onclick="addCart(${p.id})">
+🛒 ${t("addCart")}
+</button>
+
+<button class="pill"
+onclick="buyNow(${p.id})">
+⚡ ${t("buyNow")}
+</button>
+
+<button class="pill"
+onclick='speak(${JSON.stringify(p.name)})'>
+🔊 ${t("listen")}
+</button>
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<h3>
+⭐ ${t("reviews")}
+</h3>
+
+<p>
+Verified Purchase reviews, customer photo/video,
+Helpful, seller reply और Product Q&A यहाँ दिखेंगे।
+</p>
+
+</div>
+`;
 }
 
-function productPage(id){
-  const p=products.find(x=>x.id===Number(id));
-  if(!p)return home();
 
-  const wish=getWishlist().includes(p.id);
-
-  getApp().innerHTML=`
-    <button class="back" onclick="categoryPage('${p.cat}')">← ${t("back")}</button>
-
-    <div class="detail">
-      <div class="detailImage">${p.emoji}</div>
-
-      <div class="panel">
-        <div class="sectionTitle">
-          <h2>${productName(p.id)}</h2>
-          <button class="heart" style="position:static" onclick="toggleWish(${p.id})">
-            ${wish?"❤️":"♡"}
-          </button>
-        </div>
-
-        <div class="price">${money(p.price)}</div>
-
-        <p><strong>${t("description")}</strong></p>
-        <p>${productName(p.id)} — ${t("sellerInfo")}.</p>
-
-        <p><strong>${t("availableColors")}</strong></p>
-        <div class="optionRow">
-          ${(p.colors||[]).map(c=>
-            `<button class="option" onclick="selectColor(this)">${colorName(c)}</button>`
-          ).join("") || `<span>${t("available")}</span>`}
-        </div>
-
-        <p><strong>${t("size")}</strong></p>
-        <div class="optionRow">
-          ${["S","M","L","XL","XXL"].map(s=>
-            `<button class="option" onclick="selectOption(this)">${s}</button>`
-          ).join("")}
-        </div>
-
-        <div class="panel" style="padding:13px">
-          <strong>${t("delivery")}</strong>
-          <div class="field" style="margin-top:8px">
-            <input id="productPin" placeholder="${t("pin")}">
-          </div>
-          <button class="secondary" style="margin-top:8px" onclick="checkPin()">${t("check")}</button>
-        </div>
-
-        <div class="actions">
-          <button class="primary" onclick="addCart(${p.id})">${t("addCart")}</button>
-          <button class="secondary" onclick="buyNow(${p.id})">${t("buyNow")}</button>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-function selectColor(btn){
-  btn.parentElement.querySelectorAll(".option").forEach(x=>x.classList.remove("active"));
-  btn.classList.add("active");
-}
-function selectOption(btn){
-  btn.parentElement.querySelectorAll(".option").forEach(x=>x.classList.remove("active"));
-  btn.classList.add("active");
-}
-function checkPin(){
-  const pin=document.getElementById("productPin")?.value.trim();
-  showToast(pin?`${t("delivery")}: ${pin}`:t("pin"));
-}
-
-/* ---------------- CART ---------------- */
-
-function addCart(id){
-  const cart=getCart();
-  const found=cart.find(x=>x.id===id);
-  if(found)found.qty=(found.qty||1)+1;
-  else cart.push({id,qty:1});
-  saveCart(cart);
-  showToast(t("productAdded"));
-}
-
-function buyNow(id){
-  const cart=getCart();
-  const found=cart.find(x=>x.id===id);
-  if(!found)cart.push({id,qty:1});
-  saveCart(cart);
-  navigate("checkout");
-}
-
-function changeQty(id,delta){
-  const cart=getCart();
-  const item=cart.find(x=>x.id===id);
-  if(!item)return;
-  item.qty+=delta;
-  if(item.qty<=0)cart.splice(cart.indexOf(item),1);
-  saveCart(cart);
-  renderPage();
-}
-
-function removeCart(id){
-  saveCart(getCart().filter(x=>x.id!==id));
-  renderPage();
-}
-
-function cartPage(){
-  const cart=getCart();
-
-  if(!cart.length){
-    getApp().innerHTML=`
-      <div class="panel empty">
-        <div class="big">🛒</div>
-        <h2>${t("emptyCart")}</h2>
-        <button class="primary" onclick="show('home')">${t("shopNow")}</button>
-      </div>
-    `;
-    return;
-  }
-
-  let subtotal=0;
-
-  const items=cart.map(item=>{
-    const p=products.find(x=>x.id===item.id);
-    if(!p)return "";
-    subtotal+=p.price*(item.qty||1);
-
-    return `
-      <div class="cartItem">
-        <div class="cartImg">${p.emoji}</div>
-
-        <div>
-          <strong>${productName(p.id)}</strong>
-          <div class="price">${money(p.price)}</div>
-
-          <div class="qty">
-            <button onclick="changeQty(${p.id},-1)">−</button>
-            <span>${item.qty}</span>
-            <button onclick="changeQty(${p.id},1)">+</button>
-          </div>
-        </div>
-
-        <div>
-          <button class="danger" onclick="removeCart(${p.id})">${t("remove")}</button>
-          <button class="secondary" onclick="showToast('${t("saveLater")}')">${t("saveLater")}</button>
-        </div>
-      </div>
-    `;
-  }).join("");
-
-  getApp().innerHTML=`
-    <div class="sectionTitle">
-      <h2>🛒 ${t("cart")}</h2>
-    </div>
-
-    <div class="panel">${items}</div>
-
-    <div class="totalBox">
-      <div class="totalLine">
-        <span>${t("subtotal")}</span>
-        <strong>${money(subtotal)}</strong>
-      </div>
-
-      <div class="totalLine">
-        <span>${t("onlineAmount")}</span>
-        <strong>${money(subtotal)}</strong>
-      </div>
-
-      <div class="totalLine">
-        <span>${t("codExtra")}</span>
-        <strong>₹50</strong>
-      </div>
-
-      <div class="totalLine final">
-        <span>${t("total")}</span>
-        <span>${money(subtotal)}</span>
-      </div>
-
-      <button class="primary" style="width:100%;margin-top:12px" onclick="navigate('checkout')">
-        ${t("checkout")}
-      </button>
-    </div>
-  `;
-}
-
-/* ---------------- WISHLIST ---------------- */
+/* =========================================================
+   WISHLIST
+========================================================= */
 
 function toggleWish(id){
-  let w=getWishlist();
-  if(w.includes(id))w=w.filter(x=>x!==id);
-  else w.push(id);
-  saveWishlist(w);
-  renderPage();
+
+wishlist=
+wishlist.includes(id)
+?wishlist.filter(x=>x!==id)
+:[...wishlist,id];
+
+save();
+
+selectedCat
+?category(selectedCat)
+:wishlistPage();
 }
 
 function wishlistPage(){
-  const ids=getWishlist();
-  const list=products.filter(p=>ids.includes(p.id));
 
-  getApp().innerHTML=`
-    <div class="sectionTitle">
-      <h2>❤️ ${t("wishlist")}</h2>
-    </div>
+let ps=products.filter(p=>wishlist.includes(p.id));
 
-    ${list.length
-      ?`<div class="products">${list.map(productCard).join("")}</div>`
-      :`
-        <div class="panel empty">
-          <div class="big">❤️</div>
-          <h3>${t("emptyWish")}</h3>
-          <button class="primary" onclick="show('home')">${t("shopNow")}</button>
-        </div>
-      `
-    }
-  `;
+app.innerHTML=`
+
+<h2>❤️ ${t("wishlist")}</h2>
+
+<div class="grid">
+
+${
+ps.length
+?ps.map(productCard).join("")
+:`
+<div class="panel">
+${t("emptyWishlist")}
+</div>
+`
 }
 
-/* ---------------- SEARCH ---------------- */
-
-function doSearch(){
-  const q=document.getElementById("searchInput").value.trim();
-  searchPage(q);
+</div>
+`;
 }
 
-function searchPage(q=""){
-  navigate("search",{query:q});
+
+/* =========================================================
+   CART
+========================================================= */
+
+function addCart(id){
+
+let x=cart.find(a=>a.id===id);
+
+if(x){
+x.qty++;
+}else{
+cart.push({
+id,
+qty:1,
+selected:true
+});
 }
 
-function searchPageRender(q=""){
-  const term=(q||"").toLowerCase();
+save();
 
-  const list=products.filter(p=>{
-    const names=[
-      p.name,
-      productName(p.id),
-      subName(p.sub),
-      catName(p.cat)
-    ].join(" ").toLowerCase();
-
-    return !term||names.includes(term);
-  });
-
-  getApp().innerHTML=`
-    <div class="sectionTitle">
-      <h2>🔎 ${t("searchResults")}</h2>
-    </div>
-
-    <div class="filterBar">
-      <select onchange="searchFilter(this.value,'${encodeURIComponent(q||"")}')">
-        <option value="">${t("filter")}</option>
-        <option value="100-500">${t("price100500")}</option>
-        <option value="500-1000">${t("price5001000")}</option>
-        <option value="1000-1500">${t("price10001500")}</option>
-      </select>
-
-      <select onchange="searchSort(this.value,'${encodeURIComponent(q||"")}')">
-        <option value="">${t("sort")}</option>
-        <option value="low">${t("lowHigh")}</option>
-        <option value="high">${t("highLow")}</option>
-      </select>
-    </div>
-
-    <p>${list.length} ${t("results")}</p>
-
-    <div id="searchProducts" class="products">
-      ${list.map(productCard).join("")||`
-        <div class="panel empty">
-          <div class="big">🔎</div>
-          <p>${t("noResults")}</p>
-        </div>
-      `}
-    </div>
-  `;
+alert(
+currentLang==="Hindi"
+?"🛒 Product cart में जोड़ दिया गया।"
+:"🛒 Product added to cart."
+);
 }
 
-function searchFilter(value,encoded){
-  const q=decodeURIComponent(encoded);
-  let list=products.filter(p=>{
-    const names=[p.name,productName(p.id),subName(p.sub),catName(p.cat)].join(" ").toLowerCase();
-    return !q||names.includes(q.toLowerCase());
-  });
+function buyNow(id){
 
-  if(value){
-    const [a,b]=value.split("-").map(Number);
-    list=list.filter(p=>p.price>=a&&p.price<=b);
-  }
+addCart(id);
 
-  document.getElementById("searchProducts").innerHTML=
-    list.map(productCard).join("")||`<div class="panel empty"><p>${t("noResults")}</p></div>`;
+show("cart");
 }
 
-function searchSort(value,encoded){
-  const q=decodeURIComponent(encoded);
-  let list=products.filter(p=>{
-    const names=[p.name,productName(p.id),subName(p.sub),catName(p.cat)].join(" ").toLowerCase();
-    return !q||names.includes(q.toLowerCase());
-  });
+function cartPage(){
 
-  if(value==="low")list.sort((a,b)=>a.price-b.price);
-  if(value==="high")list.sort((a,b)=>b.price-a.price);
+let total=cart
+.filter(x=>x.selected)
+.reduce(
+(s,x)=>
+s+
+products.find(p=>p.id===x.id).price*x.qty,
+0
+);
 
-  document.getElementById("searchProducts").innerHTML=
-    list.map(productCard).join("")||`<div class="panel empty"><p>${t("noResults")}</p></div>`;
+app.innerHTML=`
+
+<h2>🛒 ${t("cart")}</h2>
+
+<div class="panel">
+
+${
+cart.length
+
+?
+
+cart.map((x,i)=>{
+
+let p=products.find(a=>a.id===x.id);
+
+return `
+
+<div class="row"
+style="padding:12px 0;border-bottom:1px solid #eee">
+
+<input
+type="checkbox"
+${x.selected?"checked":""}
+onchange="
+cart[${i}].selected=this.checked;
+save();
+cartPage();
+">
+
+<span>${p.emoji}</span>
+
+<div class="grow">
+
+<b>${p.name}</b>
+
+<div>
+₹${p.price} × ${x.qty}
+</div>
+
+</div>
+
+<button onclick="qty(${i},-1)">
+−
+</button>
+
+<b>${x.qty}</b>
+
+<button onclick="qty(${i},1)">
++
+</button>
+
+<button onclick="removeCart(${i})">
+🗑️ Remove
+</button>
+
+<button onclick="saveLater(${i})">
+💾 Save for Later
+</button>
+
+</div>
+`;
+
+}).join("")
+
+:
+
+`<p>${t("emptyCart")}</p>`
 }
 
-/* ---------------- CHECKOUT ---------------- */
+</div>
+
+${
+cart.length
+
+?
+
+`
+
+<div class="panel">
+
+<h3>${t("priceDetails")}</h3>
+
+<p>
+${t("selectedTotal")}: ₹${total}
+</p>
+
+<p>
+${t("delivery")}: checkout पर वास्तविक PIN/stock के अनुसार
+</p>
+
+<p>
+${t("discount")}: लागू coupon/offer के अनुसार
+</p>
+
+<h2>
+${t("finalTotal")}: ₹${total}
+</h2>
+
+<button class="buy"
+onclick="checkout()">
+${t("checkout")}
+</button>
+
+</div>
+
+`
+
+:""
+}
+`;
+}
+
+function qty(i,d){
+
+cart[i].qty=Math.max(
+1,
+cart[i].qty+d
+);
+
+save();
+cartPage();
+}
+
+function removeCart(i){
+
+cart.splice(i,1);
+
+save();
+cartPage();
+}
+
+function saveLater(i){
+
+cart[i].selected=false;
+
+save();
+cartPage();
+}
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
 
 function checkout(){
-  navigate("checkout");
+
+let total=cart
+.filter(x=>x.selected)
+.reduce(
+(s,x)=>
+s+
+products.find(p=>p.id===x.id).price*x.qty,
+0
+);
+
+app.innerHTML=`
+
+<button class="back"
+onclick="cartPage()">
+← ${t("cart")}
+</button>
+
+<div class="panel">
+
+<h2>💳 ${t("checkoutTitle")}</h2>
+
+<div class="formgrid">
+
+<div class="field">
+
+<label>${t("name")}</label>
+
+<input
+placeholder="${t("name")}">
+
+</div>
+
+<div class="field">
+
+<label>${t("mobile")}</label>
+
+<input
+placeholder="${t("mobile")}">
+
+</div>
+
+<div class="field">
+
+<label>${t("address")}</label>
+
+<textarea
+placeholder="${t("address")}"></textarea>
+
+</div>
+
+<div class="field">
+
+<label>${t("pin")}</label>
+
+<input
+placeholder="${t("pin")}">
+
+</div>
+
+</div>
+
+<h3>🚚 ${t("delivery")}</h3>
+
+<p>
+Standard / Fast / Express —
+वास्तविक उपलब्धता, stock और PIN के अनुसार
+charge/date दिखेंगे।
+</p>
+
+<h3>💰 ${t("payment")}</h3>
+
+<div class="quick">
+
+<button class="pill">
+💵 Cash on Delivery
+</button>
+
+<button class="pill">
+🟢 GPay
+</button>
+
+<button class="pill">
+🔵 PhonePe
+</button>
+
+<button class="pill">
+🔵 UPI
+</button>
+
+<button class="pill">
+💳 Add Card
+</button>
+
+</div>
+
+<h2>
+${t("finalTotal")}: ₹${total}
+</h2>
+
+<button class="buy"
+onclick="alert('Prototype में order preview तैयार है।')">
+${t("placeOrder")}
+</button>
+
+</div>
+`;
 }
 
-function checkoutPage(){
-  const cart=getCart();
 
-  if(!cart.length){
-    show("cart");
-    return;
-  }
-
-  let subtotal=0;
-  cart.forEach(i=>{
-    const p=products.find(x=>x.id===i.id);
-    if(p)subtotal+=p.price*(i.qty||1);
-  });
-
-  getApp().innerHTML=`
-    <button class="back" onclick="show('cart')">← ${t("back")}</button>
-
-    <div class="sectionTitle">
-      <h2>🧾 ${t("checkout")}</h2>
-    </div>
-
-    <div class="panel">
-      <h3>${t("address")}</h3>
-
-      <div class="formGrid">
-        <div class="field">
-          <label>${t("name")}</label>
-          <input id="customerName">
-        </div>
-
-        <div class="field">
-          <label>${t("mobile")}</label>
-          <input id="customerMobile" type="tel">
-        </div>
-
-        <div class="field">
-          <label>${t("email")}</label>
-          <input id="customerEmail" type="email">
-        </div>
-
-        <div class="field">
-          <label>${t("city")}</label>
-          <input id="customerCity">
-        </div>
-
-        <div class="field">
-          <label>${t("state")}</label>
-          <input id="customerState">
-        </div>
-
-        <div class="field">
-          <label>${t("pincode")}</label>
-          <input id="customerPin">
-        </div>
-
-        <div class="field full">
-          <label>${t("fullAddress")}</label>
-          <textarea id="customerAddress" rows="3"></textarea>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel">
-      <h3>${t("payment")}</h3>
-
-      <div class="payment">
-        <label class="payOption active">
-          <input type="radio" name="pay" value="cod" checked onchange="updatePaymentTotal()">
-          <span>💵 <strong>${t("cod")}</strong> (+₹50)</span>
-        </label>
-
-        <label class="payOption">
-          <input type="radio" name="pay" value="gpay" onchange="updatePaymentTotal()">
-          <span>📱 <strong>${t("gpay")}</strong></span>
-        </label>
-
-        <label class="payOption">
-          <input type="radio" name="pay" value="phonepe" onchange="updatePaymentTotal()">
-          <span>📱 <strong>${t("phonepe")}</strong></span>
-        </label>
-
-        <label class="payOption">
-          <input type="radio" name="pay" value="upi" onchange="updatePaymentTotal()">
-          <span>🔵 <strong>${t("upi")}</strong></span>
-        </label>
-
-        <label class="payOption">
-          <input type="radio" name="pay" value="card" onchange="updatePaymentTotal()">
-          <span>💳 <strong>${t("addCard")}</strong></span>
-        </label>
-      </div>
-
-      <div id="cardFields" style="display:none;margin-top:12px">
-        <div class="formGrid">
-          <div class="field full">
-            <label>${t("cardNumber")}</label>
-            <input>
-          </div>
-          <div class="field">
-            <label>${t("expiry")}</label>
-            <input>
-          </div>
-          <div class="field">
-            <label>${t("cvv")}</label>
-            <input type="password">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="totalBox">
-      <div class="totalLine">
-        <span>${t("subtotal")}</span>
-        <strong>${money(subtotal)}</strong>
-      </div>
-      <div class="totalLine">
-        <span>${t("codExtra")}</span>
-        <strong id="checkoutCod">₹50</strong>
-      </div>
-      <div class="totalLine final">
-        <span>${t("total")}</span>
-        <span id="checkoutTotal">${money(subtotal+50)}</span>
-      </div>
-
-      <button class="primary" style="width:100%;margin-top:12px" onclick="placeOrder()">
-        ${t("placeOrder")}
-      </button>
-    </div>
-  `;
-
-  window.__checkoutSubtotal=subtotal;
-}
-
-function updatePaymentTotal(){
-  const pay=document.querySelector('input[name="pay"]:checked')?.value;
-  const card=document.getElementById("cardFields");
-  const extra=pay==="cod"?50:0;
-
-  if(card)card.style.display=pay==="card"?"block":"none";
-  const codEl=document.getElementById("checkoutCod");
-  const totalEl=document.getElementById("checkoutTotal");
-
-  if(codEl)codEl.textContent=money(extra);
-  if(totalEl)totalEl.textContent=money((window.__checkoutSubtotal||0)+extra);
-}
-
-function placeOrder(){
-  const cart=getCart();
-  if(!cart.length)return;
-
-  const orders=JSON.parse(localStorage.getItem("zc_orders")||"[]");
-
-  orders.unshift({
-    id:"ZC"+Date.now(),
-    items:cart,
-    date:new Date().toLocaleDateString("en-IN"),
-    status:"placed"
-  });
-
-  localStorage.setItem("zc_orders",JSON.stringify(orders));
-  localStorage.removeItem("zc_cart");
-  refreshHeader();
-
-  showToast(t("orderPlaced"));
-  setTimeout(()=>show("orders"),700);
-}
-
-/* ---------------- ORDERS ---------------- */
+/* =========================================================
+   ORDERS
+========================================================= */
 
 function orders(){
-  const ordersList=JSON.parse(localStorage.getItem("zc_orders")||"[]");
 
-  getApp().innerHTML=`
-    <div class="sectionTitle">
-      <h2>📦 ${t("orders")}</h2>
-    </div>
+app.innerHTML=`
 
-    ${ordersList.length
-      ?ordersList.map(o=>{
-        const first=o.items?.[0];
-        const p=products.find(x=>x.id===first?.id);
-        return `
-          <div class="panel">
-            <div class="sectionTitle">
-              <div>
-                <strong>${o.id}</strong>
-                <div>${t("orderDate")}: ${o.date}</div>
-              </div>
-              <span>📦</span>
-            </div>
+<h2>📦 ${t("orders")}</h2>
 
-            ${p?`
-              <div class="cartItem">
-                <div class="cartImg">${p.emoji}</div>
-                <div>
-                  <strong>${productName(p.id)}</strong>
-                  <div>${t("quantity")}: ${first.qty||1}</div>
-                  <div class="price">${money(p.price*(first.qty||1))}</div>
-                </div>
-              </div>
-            `:""}
+<div class="panel">
 
-            <p><strong>${t("expected")}:</strong> 3–7 days</p>
+<h3>
+Example Order #ZC-DEMO
+</h3>
 
-            <div class="actions">
-              <button class="primary" onclick="trackPage('${o.id}')">${t("trackOrder")}</button>
-              <button class="secondary" onclick="returnPage('${o.id}')">${t("return")}</button>
-              <button class="secondary" onclick="exchangePage('${o.id}')">${t("exchange")}</button>
-            </div>
-          </div>
-        `;
-      }).join("")
-      :`
-        <div class="panel empty">
-          <div class="big">📦</div>
-          <h3>${t("ordersList")}</h3>
-          <p>${t("noResults")}</p>
-          <button class="primary" onclick="show('home')">${t("shopNow")}</button>
-        </div>
-      `
-    }
-  `;
+<div class="row">
+
+<span style="font-size:50px">
+🥻
+</span>
+
+<div class="grow">
+
+<b>Beautiful Saree</b>
+
+<p>
+Order date: —
+|
+Expected delivery: वास्तविक system से
+</p>
+
+</div>
+
+<button class="pill"
+onclick="track()">
+${t("trackOrder")}
+</button>
+
+<button class="pill"
+onclick="returnFlow()">
+↩️ ${t("return")}
+</button>
+
+<button class="pill"
+onclick="exchangeFlow()">
+🔄 ${t("exchange")}
+</button>
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<h3>
+✨ ${t("shopping")}
+</h3>
+
+<div class="grid">
+
+${products.slice(0,4).map(productCard).join("")}
+
+</div>
+
+</div>
+`;
 }
 
-/* ---------------- TRACKING ---------------- */
+function track(){
 
-function trackPage(id){
-  navigate("track",{id});
+app.innerHTML=`
+
+<button class="back"
+onclick="orders()">
+← ${t("orders")}
+</button>
+
+<div class="panel">
+
+<h2>
+🚚 ${t("orderTracking")}
+</h2>
+
+<div class="track">
+
+<div class="step done">
+<div class="dot">✓</div>
+Order Placed
+</div>
+
+<div class="step done">
+<div class="dot">✓</div>
+Confirmed
+</div>
+
+<div class="step done">
+<div class="dot">✓</div>
+Packed
+</div>
+
+<div class="step">
+<div class="dot">4</div>
+Shipped
+</div>
+
+<div class="step">
+<div class="dot">5</div>
+Out for Delivery
+</div>
+
+<div class="step">
+<div class="dot">6</div>
+Delivered
+</div>
+
+</div>
+
+<p>
+Order delayed होने पर यहाँ नया expected date दिखेगा।
+</p>
+
+</div>
+`;
 }
 
-function track(id){
-  trackPage(id);
+
+/* =========================================================
+   RETURN / EXCHANGE
+========================================================= */
+
+function returnFlow(){
+
+app.innerHTML=`
+
+<div class="panel">
+
+<h2>
+↩️ ${t("return")}
+</h2>
+
+<p>
+Reason चुनें, photo/video evidence जोड़ें,
+pickup और refund status देखें।
+</p>
+
+<select>
+
+<option>Wrong product</option>
+<option>Damaged / defective</option>
+<option>Wrong color / size</option>
+<option>Change of mind</option>
+
+</select>
+
+<br><br>
+
+<button class="pill">
+📷 Photo/Video
+</button>
+
+<button class="pill">
+${t("return")}
+</button>
+
+</div>
+`;
 }
 
-function trackPageRender(id){
-  getApp().innerHTML=`
-    <button class="back" onclick="show('orders')">← ${t("back")}</button>
+function exchangeFlow(){
 
-    <div class="panel">
-      <h2>📦 ${t("orderTracking")}</h2>
-      <p><strong>${id||"ZC0001"}</strong></p>
+app.innerHTML=`
 
-      <div class="timeline">
-        <div class="step done">
-          <strong>${t("orderPlaced")}</strong>
-        </div>
-        <div class="step done">
-          <strong>${t("confirmed")}</strong>
-        </div>
-        <div class="step done">
-          <strong>${t("packed")}</strong>
-        </div>
-        <div class="step">
-          <strong>${t("shipped")}</strong>
-        </div>
-        <div class="step">
-          <strong>${t("outDelivery")}</strong>
-        </div>
-        <div class="step">
-          <strong>${t("delivered")}</strong>
-        </div>
-      </div>
+<div class="panel">
 
-      <p>${t("delayed")}</p>
-    </div>
-  `;
+<h2>
+🔄 ${t("exchange")}
+</h2>
+
+<p>
+नया size/color/variant चुनें।
+</p>
+
+<select>
+
+<option>Size: S</option>
+<option>Size: M</option>
+<option>Size: L</option>
+<option>Size: XL</option>
+
+</select>
+
+<select>
+
+<option>Color</option>
+<option>Red</option>
+<option>Blue</option>
+<option>Black</option>
+<option>White</option>
+
+</select>
+
+<br><br>
+
+<button class="pill">
+${t("exchange")}
+</button>
+
+</div>
+`;
 }
 
-/* ---------------- RETURN ---------------- */
 
-function returnPage(id){
-  navigate("return",{id});
-}
-
-function returnFlow(id){
-  returnPage(id);
-}
-
-function returnPageRender(id){
-  getApp().innerHTML=`
-    <button class="back" onclick="show('orders')">← ${t("back")}</button>
-
-    <div class="panel">
-      <h2>↩️ ${t("returnRequest")}</h2>
-      <p><strong>${id||""}</strong></p>
-
-      <div class="optionRow" style="display:grid">
-        <button class="option" onclick="submitReturn('${id}','wrong')">${t("wrongProduct")}</button>
-        <button class="option" onclick="submitReturn('${id}','damaged')">${t("damaged")}</button>
-        <button class="option" onclick="submitReturn('${id}','color')">${t("wrongColorSize")}</button>
-        <button class="option" onclick="submitReturn('${id}','mind')">${t("changeMind")}</button>
-      </div>
-    </div>
-  `;
-}
-
-function submitReturn(id,reason){
-  showToast(t("returnRequest"));
-  setTimeout(()=>show("orders"),700);
-}
-
-/* ---------------- EXCHANGE ---------------- */
-
-function exchangePage(id){
-  navigate("exchange",{id});
-}
-
-function exchangeFlow(id){
-  exchangePage(id);
-}
-
-function exchangePageRender(id){
-  getApp().innerHTML=`
-    <button class="back" onclick="show('orders')">← ${t("back")}</button>
-
-    <div class="panel">
-      <h2>🔄 ${t("exchangeRequest")}</h2>
-
-      <p><strong>${t("color")}</strong></p>
-      <div class="optionRow">
-        ${["red","blue","black","white","pink"].map(c=>
-          `<button class="option">${colorName(c)}</button>`
-        ).join("")}
-      </div>
-
-      <p><strong>${t("size")}</strong></p>
-      <div class="optionRow">
-        ${["S","M","L","XL","XXL"].map(s=>
-          `<button class="option">${s}</button>`
-        ).join("")}
-      </div>
-
-      <button class="primary" onclick="showToast(t('exchangeOtp'))">
-        ${t("exchangeRequest")}
-      </button>
-    </div>
-  `;
-}
-
-/* ---------------- ACCOUNT ---------------- */
+/* =========================================================
+   ACCOUNT
+========================================================= */
 
 function account(){
-  getApp().innerHTML=`
-    <div class="panel">
-      <h2>👤 ${t("account")}</h2>
 
-      <div class="accountGrid">
-        <button class="accountCard">
-          <div class="big">📍</div>
-          <strong>${t("addresses")}</strong>
-        </button>
+const items=[
+"📦 "+t("orders"),
+"❤️ "+t("wishlist"),
+"🛒 "+t("cart"),
+"🏠 Addresses",
+"💳 Payments",
+"🎟️ Coupons",
+"⭐ Reviews",
+"↩️ Returns & Refunds",
+"🔔 Notifications",
+"🆘 "+t("help"),
+"🌐 "+t("language"),
+"⚙️ Accessibility",
+"🔐 Login / OTP",
+"🚪 Logout"
+];
 
-        <button class="accountCard">
-          <div class="big">💳</div>
-          <strong>${t("payments")}</strong>
-        </button>
+app.innerHTML=`
 
-        <button class="accountCard">
-          <div class="big">🎟️</div>
-          <strong>${t("coupons")}</strong>
-        </button>
+<h2>
+👤 ${t("accountTitle")}
+</h2>
 
-        <button class="accountCard" onclick="show('wishlist')">
-          <div class="big">❤️</div>
-          <strong>${t("wishlist")}</strong>
-        </button>
+<div class="grid">
 
-        <button class="accountCard">
-          <div class="big">⭐</div>
-          <strong>${t("reviews")}</strong>
-        </button>
+${items.map(x=>`
 
-        <button class="accountCard" onclick="show('orders')">
-          <div class="big">↩️</div>
-          <strong>${t("returnsRefunds")}</strong>
-        </button>
+<button class="panel"
+onclick="alert('${x.replace(/'/g,"")}')">
 
-        <button class="accountCard">
-          <div class="big">🔔</div>
-          <strong>${t("notifications")}</strong>
-        </button>
+${x}
 
-        <button class="accountCard">
-          <div class="big">♿</div>
-          <strong>${t("accessibility")}</strong>
-        </button>
+</button>
 
-        <button class="accountCard">
-          <div class="big">🔐</div>
-          <strong>${t("login")}</strong>
-        </button>
+`).join("")}
 
-        <button class="accountCard" onclick="showToast(t('logout'))">
-          <div class="big">🚪</div>
-          <strong>${t("logout")}</strong>
-        </button>
-      </div>
-    </div>
-  `;
+</div>
+`;
 }
 
-/* ---------------- SELLER ---------------- */
+
+/* =========================================================
+   ALL CATEGORIES
+========================================================= */
+
+function categories(){
+
+app.innerHTML=`
+
+<h2>
+🗂️ ${t("categories")}
+</h2>
+
+${catsHTML()}
+
+`;
+}
+
+
+/* =========================================================
+   SELLER
+========================================================= */
 
 function seller(){
-  getApp().innerHTML=`
-    <div class="panel">
-      <h2>🏪 ${t("sellerRegistration")}</h2>
 
-      <div class="formGrid">
-        <div class="field">
-          <label>${t("businessName")}</label>
-          <input>
-        </div>
+app.innerHTML=`
 
-        <div class="field">
-          <label>${t("mobile")}</label>
-          <input type="tel">
-        </div>
+<div class="panel">
 
-        <div class="field">
-          <label>${t("email")}</label>
-          <input type="email">
-        </div>
+<h2>
+🏪 ZipCart Seller Registration
+</h2>
 
-        <div class="field">
-          <label>${t("pan")}</label>
-          <input>
-        </div>
+<div class="notice">
 
-        <div class="field">
-          <label>${t("gst")}</label>
-          <input>
-        </div>
+एक ही registration form.
+Language बदलने पर भरी हुई जानकारी मिटेगी नहीं।
 
-        <div class="field full">
-          <label>${t("businessAddress")}</label>
-          <textarea rows="3"></textarea>
-        </div>
-      </div>
+</div>
 
-      <button class="primary" style="margin-top:14px" onclick="showToast(t('register'))">
-        ${t("register")}
-      </button>
-    </div>
-  `;
+<div class="field">
+
+<label>
+🌐 ${t("language")}
+</label>
+
+<select
+onchange="setLang(this.value)">
+
+${Object.keys(LANGUAGES).map(x=>`
+
+<option
+value="${x}"
+${currentLang===x?"selected":""}>
+${LANGUAGES[x].native}
+</option>
+
+`).join("")}
+
+</select>
+
+</div>
+
+<br>
+
+<div class="field">
+
+<label>
+आप ZipCart पर क्या बेचना चाहते हैं?
+</label>
+
+<select>
+
+<option>Clothing</option>
+<option>Artificial Jewellery</option>
+<option>Shoes</option>
+<option>Bags</option>
+<option>Toys</option>
+<option>Kids Products</option>
+<option>Beauty</option>
+<option>Home & Kitchen</option>
+<option>Furniture</option>
+<option>Electronics</option>
+<option>School Items</option>
+<option>Grocery</option>
+<option>Medicines</option>
+<option>Travel</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+<div
+class="formgrid"
+style="margin-top:12px">
+
+<div class="field">
+<label>Seller / Business Name</label>
+<input>
+</div>
+
+<div class="field">
+<label>Mobile / Email</label>
+<input>
+</div>
+
+<div class="field">
+<label>PAN / applicable identity details</label>
+<input>
+</div>
+
+<div class="field">
+<label>GSTIN, जहाँ लागू/आवश्यक हो</label>
+<input>
+</div>
+
+<div class="field">
+<label>Business Address</label>
+<textarea></textarea>
+</div>
+
+<div class="field">
+<label>Required licence/documents</label>
+<input>
+</div>
+
+</div>
+
+<p>
+💊 Medicines के लिए लागू drug/pharmacy licence,
+prescription verification और अन्य कानूनी requirements
+पूरी होने के बाद ही listing/sale की अनुमति होगी।
+</p>
+
+<button
+class="pill"
+onclick='speak("आप ZipCart पर क्या बेचना चाहते हैं? कृपया अपनी category चुनें।")'>
+🔊 ${t("listen")}
+</button>
+
+<button
+class="buy"
+onclick="alert('Prototype registration saved.')">
+${t("continue")}
+</button>
+
+</div>
+
+<div class="panel">
+
+<h3>
+📋 Seller Dashboard Preview
+</h3>
+
+<p>
+Products • Orders • Stock • Variants • Returns • Reviews •
+Earnings • Payouts • Verification • Help
+</p>
+
+</div>
+`;
 }
 
-/* ---------------- LANGUAGE ---------------- */
 
-function openLanguage(){
-  const modal=document.getElementById("languageModal");
-  document.getElementById("languageTitle").textContent=t("chooseLanguage");
-  document.getElementById("languageHint").textContent=t("languageHint");
+/* =========================================================
+   SEARCH
+========================================================= */
 
-  document.getElementById("languageList").innerHTML=LANGUAGES.map(l=>`
-    <button class="langItem ${l.key===currentLang?"active":""}" onclick="setLang('${l.key}')">
-      ${l.native} — ${l.key}
-    </button>
-  `).join("");
+function searchPage(q){
 
-  modal.style.display="flex";
+let ps=products.filter(p=>
+(p.name+" "+p.sub)
+.toLowerCase()
+.includes(q.toLowerCase())
+);
+
+app.innerHTML=`
+
+<button class="back"
+onclick="show('home')">
+← ${t("home")}
+</button>
+
+<div class="panel">
+
+<h2>
+🔎 ${t("searchTitle")}: “${q}”
+</h2>
+
+<p>
+
+${
+ps.length
+?ps.length+" "+t("options")
+:t("noResult")
 }
 
-function closeLanguage(e){
-  if(e && e.target!==document.getElementById("languageModal"))return;
-  document.getElementById("languageModal").style.display="none";
+</p>
+
+<div class="quick">
+
+<button class="pill">${t("price")}</button>
+<button class="pill">${t("color")}</button>
+<button class="pill">${t("brand")}</button>
+<button class="pill">${t("rating")}</button>
+<button class="pill">${t("discountFilter")}</button>
+<button class="pill">${t("newest")}</button>
+<button class="pill">${t("popular")}</button>
+<button class="pill">${t("lowHigh")}</button>
+<button class="pill">${t("highLow")}</button>
+
+</div>
+
+</div>
+
+<div class="grid">
+
+${(ps.length?ps:products).map(productCard).join("")}
+
+</div>
+`;
 }
 
-function setLang(lang){
-  if(!LANGUAGES.some(x=>x.key===lang))return;
+function doSearch(){
 
-  currentLang=lang;
-  localStorage.setItem("zc_lang",lang);
+let q=document
+.getElementById("search")
+.value
+.trim();
 
-  document.getElementById("languageModal").style.display="none";
-
-  refreshHeader();
-  renderPage();
+if(q){
+searchPage(q);
+}
 }
 
-/* ---------------- VOICE ---------------- */
+function doSearchText(q){
 
-function speakText(text){
-  if(!("speechSynthesis" in window)){
-    showToast(t("voiceUnavailable"));
-    return;
-  }
+document.getElementById("search").value=q;
 
-  speechSynthesis.cancel();
-
-  const lang=LANGUAGES.find(x=>x.key===currentLang);
-  const u=new SpeechSynthesisUtterance(text);
-  u.lang=lang?.code||"hi-IN";
-  speechSynthesis.speak(u);
+searchPage(q);
 }
 
-function speakSubList(cat){
-  const names=(SUBS[cat]||[]).map(x=>subName(x[0])).join(", ");
-  speakText(names);
-}
+
+/* =========================================================
+   VOICE
+========================================================= */
 
 function voiceSearch(){
-  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
 
-  if(!SR){
-    showToast(t("voiceUnavailable"));
-    return;
-  }
+if(!("webkitSpeechRecognition" in window)){
 
-  const recognition=new SR();
-  const lang=LANGUAGES.find(x=>x.key===currentLang);
-  recognition.lang=lang?.code||"hi-IN";
+alert(
+currentLang==="Hindi"
+?"इस browser में voice search उपलब्ध नहीं है।"
+:"Voice search is not available in this browser."
+);
 
-  recognition.onresult=e=>{
-    const text=e.results[0][0].transcript;
-    document.getElementById("searchInput").value=text;
-    searchPage(text);
-  };
-
-  recognition.start();
+return;
 }
 
-/* ---------------- INIT ---------------- */
+let r=new webkitSpeechRecognition();
 
-function init(){
-  refreshHeader();
+r.lang=
+LANGUAGES[currentLang]?.speech||
+"hi-IN";
 
-  window.categoryPage=categoryPage;
-  window.subCategoryPageRender=subCategoryPageRender;
-  window.productPage=productPage;
-  window.searchPageRender=searchPageRender;
-  window.checkoutPage=checkoutPage;
-  window.trackPageRender=trackPageRender;
-  window.returnPageRender=returnPageRender;
-  window.exchangePageRender=exchangePageRender;
+r.onresult=e=>{
 
-  renderPage();
-}
+let q=e.results[0][0].transcript;
 
-/* wrappers used by renderPage */
-function categoryPage(key){
-  selectedCat=key;
-  const items=SUBS[key]||[];
+document.getElementById("search").value=q;
 
-  getApp().innerHTML=`
-    <button class="back" onclick="show('categories')">← ${t("back")}</button>
+searchPage(q);
 
-    <div class="sectionTitle">
-      <h2>${catName(key)}</h2>
-      <button class="voiceBtn" onclick="speakSubList('${key}')">🔊</button>
-    </div>
-
-    <div class="subGrid">
-      ${items.map(([sub,emoji])=>`
-        <button class="subCard" onclick="subCategoryPage('${key}','${sub}')">
-          <span class="emoji">${emoji}</span>
-          <strong>${subName(sub)}</strong>
-        </button>
-      `).join("")}
-    </div>
-
-    <div class="sectionTitle">
-      <h2>${t("allProducts")}</h2>
-    </div>
-
-    <div class="products">
-      ${products.filter(p=>p.cat===key).map(productCard).join("")||`
-        <div class="panel empty">
-          <div class="big">🛍️</div>
-          <p>${t("noResults")}</p>
-        </div>
-      `}
-    </div>
-  `;
-}
-
-function subCategoryPage(cat,sub){
-  selectedCat=cat;
-  selectedSub=sub;
-  subCategoryPageRender(cat,sub);
-}
-
-function subCategoryPageRender(cat,sub){
-  const list=products.filter(p=>p.cat===cat&&p.sub===sub);
-
-  getApp().innerHTML=`
-    <button class="back" onclick="categoryPage('${cat}')">← ${t("back")}</button>
-
-    <div class="sectionTitle">
-      <h2>${subName(sub)}</h2>
-      <button class="voiceBtn" onclick="speakText('${subName(sub)}')">🔊</button>
-    </div>
-
-    <div class="filterBar">
-      <select onchange="applySubFilter('${cat}','${sub}',this.value)">
-        <option value="">${t("filter")}</option>
-        <option value="100-500">${t("price100500")}</option>
-        <option value="500-1000">${t("price5001000")}</option>
-        <option value="1000-1500">${t("price10001500")}</option>
-      </select>
-
-      <select onchange="sortSubProducts('${cat}','${sub}',this.value)">
-        <option value="">${t("sort")}</option>
-        <option value="low">${t("lowHigh")}</option>
-        <option value="high">${t("highLow")}</option>
-      </select>
-    </div>
-
-    <div id="subProducts" class="products">
-      ${list.map(productCard).join("")||`
-        <div class="panel empty">
-          <div class="big">🔎</div>
-          <p>${t("noResults")}</p>
-        </div>
-      `}
-    </div>
-  `;
-}
-
-function productPage(id){
-  const p=products.find(x=>x.id===Number(id));
-  if(!p)return home();
-
-  const wish=getWishlist().includes(p.id);
-
-  getApp().innerHTML=`
-    <button class="back" onclick="categoryPage('${p.cat}')">← ${t("back")}</button>
-
-    <div class="detail">
-      <div class="detailImage">${p.emoji}</div>
-
-      <div class="panel">
-        <div class="sectionTitle">
-          <h2>${productName(p.id)}</h2>
-          <button class="heart" style="position:static" onclick="toggleWish(${p.id})">
-            ${wish?"❤️":"♡"}
-          </button>
-        </div>
-
-        <div class="price">${money(p.price)}</div>
-
-        <p><strong>${t("description")}</strong></p>
-        <p>${productName(p.id)} — ${t("sellerInfo")}.</p>
-
-        <p><strong>${t("availableColors")}</strong></p>
-        <div class="optionRow">
-          ${(p.colors||[]).map(c=>
-            `<button class="option" onclick="selectColor(this)">${colorName(c)}</button>`
-          ).join("") || `<span>${t("available")}</span>`}
-        </div>
-
-        <p><strong>${t("size")}</strong></p>
-        <div class="optionRow">
-          ${["S","M","L","XL","XXL"].map(s=>
-            `<button class="option" onclick="selectOption(this)">${s}</button>`
-          ).join("")}
-        </div>
-
-        <div class="panel" style="padding:13px">
-          <strong>${t("delivery")}</strong>
-          <div class="field" style="margin-top:8px">
-            <input id="productPin" placeholder="${t("pin")}">
-          </div>
-          <button class="secondary" style="margin-top:8px" onclick="checkPin()">${t("check")}</button>
-        </div>
-
-        <div class="actions">
-          <button class="primary" onclick="addCart(${p.id})">${t("addCart")}</button>
-          <button class="secondary" onclick="buyNow(${p.id})">${t("buyNow")}</button>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-function checkoutPage(){
-  const cart=getCart();
-
-  if(!cart.length){
-    show("cart");
-    return;
-  }
-
-  let subtotal=0;
-  cart.forEach(i=>{
-    const p=products.find(x=>x.id===i.id);
-    if(p)subtotal+=p.price*(i.qty||1);
-  });
-
-  getApp().innerHTML=`
-    <button class="back" onclick="show('cart')">← ${t("back")}</button>
-
-    <div class="sectionTitle">
-      <h2>🧾 ${t("checkout")}</h2>
-    </div>
-
-    <div class="panel">
-      <h3>${t("address")}</h3>
-
-      <div class="formGrid">
-        <div class="field">
-          <label>${t("name")}</label>
-          <input id="customerName">
-        </div>
-
-        <div class="field">
-          <label>${t("mobile")}</label>
-          <input id="customerMobile" type="tel">
-        </div>
-
-        <div class="field">
-          <label>${t("email")}</label>
-          <input id="customerEmail" type="email">
-        </div>
-
-        <div class="field">
-          <label>${t("city")}</label>
-          <input id="customerCity">
-        </div>
-
-        <div class="field">
-          <label>${t("state")}</label>
-          <input id="customerState">
-        </div>
-
-        <div class="field">
-          <label>${t("pincode")}</label>
-          <input id="customerPin">
-        </div>
-
-        <div class="field full">
-          <label>${t("fullAddress")}</label>
-          <textarea id="customerAddress" rows="3"></textarea>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel">
-      <h3>${t("payment")}</h3>
-
-      <div class="payment">
-        <label class="payOption active">
-          <input type="radio" name="pay" value="cod" checked onchange="updatePaymentTotal()">
-          <span>💵 <strong>${t("cod")}</strong> (+₹50)</span>
-        </label>
-
-        <label class="payOption">
-          <input type="radio" name="pay" value="gpay" onchange="updatePaymentTotal()">
-          <span>📱 <strong>${t("gpay")}</strong></span>
-        </label>
-
-        <label class="payOption">
-          <input type="radio" name="pay" value="phonepe" onchange="updatePaymentTotal()">
-          <span>📱 <strong>${t("phonepe")}</strong></span>
-        </label>
-
-        <label class="payOption">
-          <input type="radio" name="pay" value="upi" onchange="updatePaymentTotal()">
-          <span>🔵 <strong>${t("upi")}</strong></span>
-        </label>
-
-        <label class="payOption">
-          <input type="radio" name="pay" value="card" onchange="updatePaymentTotal()">
-          <span>💳 <strong>${t("addCard")}</strong></span>
-        </label>
-      </div>
-
-      <div id="cardFields" style="display:none;margin-top:12px">
-        <div class="formGrid">
-          <div class="field full">
-            <label>${t("cardNumber")}</label>
-            <input>
-          </div>
-          <div class="field">
-            <label>${t("expiry")}</label>
-            <input>
-          </div>
-          <div class="field">
-            <label>${t("cvv")}</label>
-            <input type="password">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="totalBox">
-      <div class="totalLine">
-        <span>${t("subtotal")}</span>
-        <strong>${money(subtotal)}</strong>
-      </div>
-      <div class="totalLine">
-        <span>${t("codExtra")}</span>
-        <strong id="checkoutCod">₹50</strong>
-      </div>
-      <div class="totalLine final">
-        <span>${t("total")}</span>
-        <span id="checkoutTotal">${money(subtotal+50)}</span>
-      </div>
-
-      <button class="primary" style="width:100%;margin-top:12px" onclick="placeOrder()">
-        ${t("placeOrder")}
-      </button>
-    </div>
-  `;
-
-  window.__checkoutSubtotal=subtotal;
-}
-
-function searchPage(q=""){
-  navigate("search",{query:q});
-}
-
-function searchPageRender(q=""){
-  const term=(q||"").toLowerCase();
-
-  const list=products.filter(p=>{
-    const names=[p.name,productName(p.id),subName(p.sub),catName(p.cat)].join(" ").toLowerCase();
-    return !term||names.includes(term);
-  });
-
-  getApp().innerHTML=`
-    <div class="sectionTitle">
-      <h2>🔎 ${t("searchResults")}</h2>
-    </div>
-
-    <div class="filterBar">
-      <select onchange="searchFilter(this.value,'${encodeURIComponent(q||"")}')">
-        <option value="">${t("filter")}</option>
-        <option value="100-500">${t("price100500")}</option>
-        <option value="500-1000">${t("price5001000")}</option>
-        <option value="1000-1500">${t("price10001500")}</option>
-      </select>
-
-      <select onchange="searchSort(this.value,'${encodeURIComponent(q||"")}')">
-        <option value="">${t("sort")}</option>
-        <option value="low">${t("lowHigh")}</option>
-        <option value="high">${t("highLow")}</option>
-      </select>
-    </div>
-
-    <p>${list.length} ${t("results")}</p>
-
-    <div id="searchProducts" class="products">
-      ${list.map(productCard).join("")||`
-        <div class="panel empty">
-          <div class="big">🔎</div>
-          <p>${t("noResults")}</p>
-        </div>
-      `}
-    </div>
-  `;
-}
-
-function trackPage(id){
-  navigate("track",{id});
-}
-
-function trackPageRender(id){
-  getApp().innerHTML=`
-    <button class="back" onclick="show('orders')">← ${t("back")}</button>
-
-    <div class="panel">
-      <h2>📦 ${t("orderTracking")}</h2>
-      <p><strong>${id||"ZC0001"}</strong></p>
-
-      <div class="timeline">
-        <div class="step done"><strong>${t("orderPlaced")}</strong></div>
-        <div class="step done"><strong>${t("confirmed")}</strong></div>
-        <div class="step done"><strong>${t("packed")}</strong></div>
-        <div class="step"><strong>${t("shipped")}</strong></div>
-        <div class="step"><strong>${t("outDelivery")}</strong></div>
-        <div class="step"><strong>${t("delivered")}</strong></div>
-      </div>
-
-      <p>${t("delayed")}</p>
-    </div>
-  `;
-}
-
-function returnPage(id){
-  navigate("return",{id});
-}
-
-function returnPageRender(id){
-  getApp().innerHTML=`
-    <button class="back" onclick="show('orders')">← ${t("back")}</button>
-
-    <div class="panel">
-      <h2>↩️ ${t("returnRequest")}</h2>
-
-      <div class="optionRow" style="display:grid">
-        <button class="option" onclick="submitReturn('${id}','wrong')">${t("wrongProduct")}</button>
-        <button class="option" onclick="submitReturn('${id}','damaged')">${t("damaged")}</button>
-        <button class="option" onclick="submitReturn('${id}','color')">${t("wrongColorSize")}</button>
-        <button class="option" onclick="submitReturn('${id}','mind')">${t("changeMind")}</button>
-      </div>
-    </div>
-  `;
-}
-
-function exchangePage(id){
-  navigate("exchange",{id});
-}
-
-function exchangePageRender(id){
-  getApp().innerHTML=`
-    <button class="back" onclick="show('orders')">← ${t("back")}</button>
-
-    <div class="panel">
-      <h2>🔄 ${t("exchangeRequest")}</h2>
-
-      <p><strong>${t("color")}</strong></p>
-      <div class="optionRow">
-        ${["red","blue","black","white","pink"].map(c=>`<button class="option">${colorName(c)}</button>`).join("")}
-      </div>
-
-      <p><strong>${t("size")}</strong></p>
-      <div class="optionRow">
-        ${["S","M","L","XL","XXL"].map(s=>`<button class="option">${s}</button>`).join("")}
-      </div>
-
-      <button class="primary" onclick="showToast(t('exchangeOtp'))">
-        ${t("exchangeRequest")}
-      </button>
-    </div>
-  `;
-}
-
-/* Keep page routing and rendering together */
-const originalRenderPage=renderPage;
-renderPage=function(){
-  refreshHeader();
-
-  if(currentPage==="subCategory"){
-    subCategoryPageRender(currentArgs.cat,currentArgs.sub);
-    return;
-  }
-
-  if(currentPage==="search"){
-    searchPageRender(currentArgs.query);
-    return;
-  }
-
-  if(currentPage==="track"){
-    trackPageRender(currentArgs.id);
-    return;
-  }
-
-  if(currentPage==="return"){
-    returnPageRender(currentArgs.id);
-    return;
-  }
-
-  if(currentPage==="exchange"){
-    exchangePageRender(currentArgs.id);
-    return;
-  }
-
-  if(currentPage==="product"){
-    productPage(currentArgs.id);
-    return;
-  }
-
-  if(currentPage==="checkout"){
-    checkoutPage();
-    return;
-  }
-
-  switch(currentPage){
-    case"home":home();break;
-    case"wishlist":wishlistPage();break;
-    case"cart":cartPage();break;
-    case"orders":orders();break;
-    case"account":account();break;
-    case"categories":categories();break;
-    case"seller":seller();break;
-    case"category":categoryPage(currentArgs.key);break;
-    default:home();
-  }
 };
 
-init();
+r.start();
+}
+
+function speak(tText){
+
+if("speechSynthesis" in window){
+
+let u=
+new SpeechSynthesisUtterance(tText);
+
+u.lang=
+LANGUAGES[currentLang]?.speech||
+"hi-IN";
+
+speechSynthesis.speak(u);
+}
+}
+
+function speakList(a){
+
+a.forEach((x,i)=>{
+
+setTimeout(()=>{
+
+speak(
+x.substring(
+x.indexOf(" ")+1
+)
+);
+
+},i*900);
+
+});
+}
+
+
+/* =========================================================
+   LANGUAGE MODAL
+========================================================= */
+
+function languageModal(){
+
+openModal(`
+
+<h2>
+🌐 ${t("chooseLanguage")}
+</h2>
+
+<p>
+${t("languageSaved")}
+</p>
+
+<div class="lang-grid">
+
+${Object.keys(LANGUAGES).map(lang=>`
+
+<button
+class="lang-btn ${currentLang===lang?"active":""}"
+onclick="setLang('${lang}')">
+
+<span class="lang-native">
+${LANGUAGES[lang].native}
+</span>
+
+<span class="lang-english">
+${LANGUAGES[lang].english}
+</span>
+
+</button>
+
+`).join("")}
+
+</div>
+
+<br>
+
+<button
+class="back"
+onclick="closeModal()">
+${t("close")}
+</button>
+
+`);
+}
+
+
+/* =========================================================
+   CHANGE LANGUAGE
+========================================================= */
+
+function setLang(lang){
+
+if(!LANGUAGES[lang])return;
+
+currentLang=lang;
+
+localStorage.setItem(
+"zipLang",
+currentLang
+);
+
+closeModal();
+
+refreshHeader();
+
+/*
+   जिस screen पर user है,
+   वही screen नए language में दोबारा render होगी।
+*/
+
+if(selectedCat){
+
+category(selectedCat);
+
+}else{
+
+const title=
+document.getElementById("app")
+.innerText||"";
+
+if(title.includes("Wishlist")||title.includes("Wishlist")){
+wishlistPage();
+}
+else{
+home();
+}
+
+}
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function openModal(x){
+
+document.getElementById("modalbox").innerHTML=x;
+
+document
+.getElementById("modal")
+.classList.add("show");
+}
+
+function closeModal(){
+
+document
+.getElementById("modal")
+.classList.remove("show");
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function show(x){
+
+selectedCat=null;
+
+if(x==="home")home();
+if(x==="wishlist")wishlistPage();
+if(x==="cart")cartPage();
+if(x==="orders")orders();
+if(x==="account")account();
+if(x==="categories")categories();
+if(x==="seller")seller();
+
+window.scrollTo(0,0);
+}
+
+
+/* =========================================================
+   START
+========================================================= */
+
+refreshHeader();
+
+show("home");
+
 </script>
 
 </body>
