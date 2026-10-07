@@ -306,13 +306,6 @@ padding-top:7px
 background:#6a11cb;
 color:#fff
 }
-.notice{
-background:#fff8df;
-border:1px solid #efd57c;
-border-radius:12px;
-padding:12px;
-margin:10px 0
-}
 .bottom{
 position:sticky;
 bottom:0;
@@ -420,7 +413,7 @@ ontouchstart="this.focus()">
 <script>
 
 /* =========================================================
-   LANGUAGE SYSTEM & COMPENSIVE MULTI-LANGUAGE PACKS
+   LANGUAGE SYSTEM
 ========================================================= */
 
 const LANG_META={
@@ -736,14 +729,14 @@ wrongColorSize:"ખોટો રંગ / સાઇઝ",changeMind:"મન બદ
 submitReturn:"રિટર્ન મોકલો",submitExchange:"એક્સચેન્જ મોકલો",chooseLanguage:"ભાષા પસંદ કરો",
 languageSaved:"ભાષા સાચવાઈ",close:"બંધ કરો",searchTitle:"શોધ",results:"પરિણામ મળ્યા",
 noResults:"ચોક્કસ પરિણામ મળ્યું નથી",filter:"ફિલ્ટર",sort:"ક્રમ",lowHigh:"ઓછીથી વધુ કિંમત",
-highLow:"વધુથી ઓછી કિંમત",all:"બધું",availableColors:"ઉપલબ્ધ રંગો",sellerInfo:"વિક્રેતા માહિતી",
+highLow:"વધુથી ઓછી કિંમત",all:"બધું",availableColors:"ઉપलब्ध રંગો",sellerInfo:"વિક્રેતા માહિતી",
 pinHint:"PIN નાખ્યા પછી વાસ્તવિક તારીખ અને ચાર્જ દેખાશે",reviews:"રિવ્યૂ",addresses:"સરનામાં",
 payments:"ચુકવણીઓ",coupons:"કૂપન",returnsRefunds:"રિટર્ન અને રિફંડ",notifications:"નોટિફિકેશન",
 accessibility:"સુલભતા",loginOtp:"લોગિન / OTP",logout:"લોગઆઉટ",continueShopping:"ખરીદી ચાલુ રાખો",
-productAdded:"પ્રોડક્ટ કાર્ટમાં ઉમેરાયું.",registration:"વિક્રેતા નોંધણી",businessName:"વિક્રેતા/વ્યવસાયનું નામ",
+productAdded:"પ્રોડક્ટ કાર્ટમાં ઉમેરાયું.",registration:"વિક્રેતા નોંધણી",businessName:"વિક્રેता/વ્યવસાયનું નામ",
 sellerMobile:"મોબાઇલ / ઇમેઇલ",pan:"PAN / લાગુ ઓળખ વિગતો",gst:"GSTIN, જ્યાં લાગુ પડે",
 businessAddress:"વ્યવસાયનું સરનામું",documents:"જરૂરી લાઇસન્સ/દસ્તાવેજો",continue:"ચાલુ રાખો",
-dashboard:"વિક્રેતા ડેશબોર્ડ",stock:"સ્ટોક",variants:"વેરિઅન્ટ",earnings:"કમાણી",
+dashboard:"વિક્રેता ડેશબોર્ડ",stock:"સ્ટોક",variants:"વેરિઅન્ટ",earnings:"કમાણી",
 payouts:"ચુકવણી",verification:"ચકાસણી",vacation:"વેકેશન મોડ",save:"સાચવો",
 selectSizeColorAlert:"કૃપા કરીને આગળ વધતા પહેલા સાઇઝ અને રંગ પસંદ કરો!",
 change:"બદલો",reviewOrder:"ઓર્ડર તપાસો",paymentMethod:"પેमेंट પદ્ધતિ",
@@ -1050,7 +1043,7 @@ Gujarati:{
 "Beautiful Saree":"સુંદર સાડી","Designer Anarkali Suit":"ડિઝાઇનર અનારકલી સૂટ","Stylish Shoes":"સ્ટાઇલિશ જૂતા",
 "Kids Toy Car":"બાળકોની રમકડાની કાર","Fashion Jewellery Set":"ફેશન જ્વેલરી સેટ","Women Handbag":"મહિલા હેન્ડબેગ",
 "Cotton Kurti":"કપાસની કુર્તી","Men Casual Shirt":"પુરુષ કેઝ્યુઅલ શર્ટ","Kids Dress":"બાળકોનો ડ્રેસ",
-"Wireless Earphones":"વાયરલેસ ઇયરફોન","Grocery Daily Essentials":"રોજિંદા કરિયાણાનો સામાન","Health Care Product":"હેલ્थ કેર પ્રોડક્ટ"
+"Wireless Earphones":"વાયરલેસ ઇયરફોન","Grocery Daily Essentials":"રોજિંદા કરિયાણાનો સામાન","Health Care Product":"હેल्थ કેર પ્રોડક્ટ"
 },
 Marathi:{
 "Beautiful Saree":"सुंदर साडी","Designer Anarkali Suit":"डिझायनर अनारकली सूट","Stylish Shoes":"स्टायलिश शूज",
@@ -1811,7 +1804,7 @@ navigate("exchange");
 
 function renderExchange(){
 app.innerHTML=`
-<button class="back" onclick="orders()">← ${t("orders")}</button>
+<button class="back" onclick="orders()">← ${t("back")}</button>
 <div class="panel">
 <h2>🔄 ${t("exchange")}</h2>
 <p>${t("availableColors")}</p>
