@@ -341,7 +341,7 @@ text-align:right
 </div>
 
 <div class="search">
-<input id="search"
+<input id="searchInput"
 onkeydown="if(event.key==='Enter')doSearch()">
 <button onclick="voiceSearch()">🎤</button>
 <button onclick="doSearch()">🔍</button>
@@ -408,7 +408,6 @@ Konkani:{native:"कोंकणी",code:"kok-IN"}
 const LANGUAGES=Object.keys(LANG_META);
 
 const T={
-
 Hindi:{
 tagline:"आपकी अपनी Shopping जगह ❤️",
 search:"क्या ढूँढ रहे हैं? जैसे Anarkali Suit",
@@ -535,7 +534,6 @@ vacation:"Vacation Mode",
 save:"Save",
 realBackend:"Real order/payment के लिए secure backend आवश्यक है।"
 },
-
 English:{
 tagline:"Your own Shopping place ❤️",
 search:"What are you looking for? e.g. Anarkali Suit",
@@ -661,393 +659,8 @@ verification:"Verification",
 vacation:"Vacation Mode",
 save:"Save",
 realBackend:"Secure backend is required for real orders/payments."
-},
-
-Gujarati:{
-tagline:"તમારી પોતાની Shopping જગ્યા ❤️",
-search:"શું શોધી રહ્યા છો? જેમ કે Anarkali Suit",
-wishlist:"વિશલિસ્ટ",
-cart:"કાર્ટ",
-orders:"મારા ઓર્ડર",
-account:"એકાઉન્ટ",
-home:"હોમ",
-categories:"કેટેગરી",
-seller:"વિક્રેતા",
-welcome:"ZipCart માં આપનું સ્વાગત છે ❤️",
-shopLine:"તમારી પોતાની shopping જગ્યા — જુઓ → સાંભળો → સમજો → દબાવો → ખરીદો",
-voiceSearch:"વોઇસ સર્ચ",
-help:"મદદ જોઈએ?",
-groceryQuick:"ઝડપી ગ્રોસરી ડિલિવરી",
-medicines:"દવાઓ",
-offers:"આજની ઓફર્સ",
-offerText:"તમારા બજેટ અને પસંદગી મુજબ ખરીદી કરો",
-viewSuit:"Anarkali Suit જુઓ",
-topCategories:"ટોપ કેટેગરી",
-forYou:"તમારા માટે પસંદ કરેલું",
-budget:"ઓછા બજેટમાં લોકપ્રિય",
-newArrivals:"નવા ઉત્પાદનો",
-viewBuy:"જુઓ / ખરીદો",
-back:"પાછળ",
-listen:"સાંભળો",
-products:"ઉત્પાદનો",
-details:"સંપૂર્ણ વિગતો",
-size:"સાઇઝ",
-color:"રંગ",
-delivery:"ડિલિવરી",
-returnExchange:"રિટર્ન/એક્સચેન્જ",
-addCart:"કાર્ટમાં ઉમેરો",
-buyNow:"હમણાં ખરીદો",
-reviewsQA:"રિવ્યૂ અને પ્રશ્નો",
-wishlistTitle:"મારી વિશલિસ્ટ",
-emptyWishlist:"વિશલિસ્ટ ખાલી છે. પ્રોડક્ટ પર ❤️ દબાવો.",
-cartTitle:"મારો કાર્ટ",
-emptyCart:"તમારો કાર્ટ ખાલી છે.",
-remove:"દૂર કરો",
-saveLater:"પછી માટે સાચવો",
-priceDetails:"કિંમતની વિગતો",
-selectedTotal:"પસંદ કરેલા પ્રોડક્ટની કુલ કિંમત",
-deliveryCharge:"ડિલિવરી",
-discount:"ડિસ્કાઉન્ટ",
-finalTotal:"અંતિમ કુલ",
-checkout:"ચેકઆઉટ",
-name:"નામ",
-mobile:"મોબાઇલ",
-address:"સરનામું",
-pin:"PIN કોડ",
-payment:"ચુકવણી",
-placeOrder:"ઓર્ડર કરો",
-cod:"કેશ ઓન ડિલિવરી",
-codExtra:"COD પર ₹50 વધારાના",
-gpay:"GPay",
-phonepe:"PhonePe",
-upi:"UPI",
-addCard:"કાર્ડ ઉમેરો",
-onlinePrice:"ઓનલાઇન ચુકવણી કુલ",
-codPrice:"COD કુલ",
-standard:"સ્ટાન્ડર્ડ",
-fast:"ફાસ્ટ",
-express:"એક્સપ્રેસ",
-orderPlaced:"ઓર્ડર થયો",
-confirmed:"કન્ફર્મ",
-packed:"પેક થયો",
-shipped:"મોકલાયો",
-outDelivery:"ડિલિવરી માટે નીકળ્યો",
-delivered:"ડિલિવર થયો",
-delayed:"વિલંબિત",
-track:"ઓર્ડર ટ્રેક કરો",
-return:"રિટર્ન",
-exchange:"એક્સચેન્જ",
-orderDate:"ઓર્ડરની તારીખ",
-expectedDelivery:"અપેક્ષિત ડિલિવરી",
-wrongProduct:"ખોટું પ્રોડક્ટ",
-damaged:"નુકસાનગ્રસ્ત / ખરાબ",
-wrongColorSize:"ખોટો રંગ / સાઇઝ",
-changeMind:"મન બદલાયું",
-photoVideo:"ફોટો/વિડિયો ઉમેરો",
-submitReturn:"રિટર્ન મોકલો",
-submitExchange:"એક્સચેન્જ મોકલો",
-chooseLanguage:"ભાષા પસંદ કરો",
-languageSaved:"ભાષા સાચવાઈ",
-close:"બંધ કરો",
-searchTitle:"શોધ",
-results:"પરિણામ મળ્યા",
-noResults:"ચોક્કસ પરિણામ મળ્યું નથી",
-filter:"ફિલ્ટર",
-sort:"ક્રમ",
-lowHigh:"ઓછીથી વધુ કિંમત",
-highLow:"વધુથી ઓછી કિંમત",
-all:"બધું",
-availableColors:"ઉપલબ્ધ રંગો",
-sellerInfo:"વિક્રેતા માહિતી",
-pinHint:"PIN નાખ્યા પછી વાસ્તવિક તારીખ અને ચાર્જ દેખાશે",
-reviews:"રિવ્યૂ",
-addresses:"સરનામાં",
-payments:"ચુકવણીઓ",
-coupons:"કૂપન",
-returnsRefunds:"રિટર્ન અને રિફંડ",
-notifications:"નોટિફિકેશન",
-accessibility:"સુલભતા",
-loginOtp:"લોગિન / OTP",
-logout:"લોગઆઉટ",
-continueShopping:"ખરીદી ચાલુ રાખો",
-productAdded:"પ્રોડક્ટ કાર્ટમાં ઉમેરાયું.",
-registration:"વિક્રેતા નોંધણી",
-businessName:"વિક્રેતા/વ્યવસાયનું નામ",
-sellerMobile:"મોબાઇલ / ઇમેઇલ",
-pan:"PAN / લાગુ ઓળખ વિગતો",
-gst:"GSTIN, જ્યાં લાગુ પડે",
-businessAddress:"વ્યવસાયનું સરનામું",
-documents:"જરૂરી લાઇસન્સ/દસ્તાવેજો",
-continue:"ચાલુ રાખો",
-dashboard:"વિક્રેતા ડેશબોર્ડ",
-stock:"સ્ટોક",
-variants:"વેરિઅન્ટ",
-earnings:"કમાણી",
-payouts:"ચુકવણી",
-verification:"ચકાસણી",
-vacation:"વેકેશન મોડ",
-save:"સાચવો",
-realBackend:"વાસ્તવિક ઓર્ડર/ચુકવણી માટે સુરક્ષિત બેકએન્ડ જરૂરી છે."
-},
-
-Marathi:{
-tagline:"तुमची स्वतःची Shopping जागा ❤️",
-search:"तुम्ही काय शोधत आहात? उदा. Anarkali Suit",
-wishlist:"विशलिस्ट",
-cart:"कार्ट",
-orders:"माझ्या ऑर्डर्स",
-account:"अकाउंट",
-home:"होम",
-categories:"कॅटेगरी",
-seller:"विक्रेता",
-welcome:"ZipCart मध्ये तुमचे स्वागत आहे ❤️",
-shopLine:"तुमची स्वतःची shopping जागा — पहा → ऐका → समजा → दाबा → खरेदी करा",
-voiceSearch:"व्हॉइस सर्च",
-help:"मदत हवी?",
-groceryQuick:"जलद किराणा डिलिव्हरी",
-medicines:"औषधे",
-offers:"आजच्या ऑफर्स",
-offerText:"तुमच्या बजेट आणि आवडीनुसार खरेदी करा",
-viewSuit:"Anarkali Suit पहा",
-topCategories:"टॉप कॅटेगरी",
-forYou:"तुमच्यासाठी निवडलेले",
-budget:"कमी बजेटमधील आवडते",
-newArrivals:"नवीन उत्पादने",
-viewBuy:"पहा / खरेदी करा",
-back:"मागे",
-listen:"ऐका",
-products:"उत्पादने",
-details:"संपूर्ण माहिती",
-size:"साईज",
-color:"रंग",
-delivery:"डिलिव्हरी",
-returnExchange:"रिटर्न/एक्सचेंज",
-addCart:"कार्टमध्ये जोडा",
-buyNow:"आता खरेदी करा",
-reviewsQA:"रिव्ह्यू आणि प्रश्न",
-wishlistTitle:"माझी विशलिस्ट",
-emptyWishlist:"विशलिस्ट रिकामी आहे. प्रोडक्टवर ❤️ दाबा.",
-cartTitle:"माझा कार्ट",
-emptyCart:"तुमचा कार्ट रिकामा आहे.",
-remove:"काढा",
-saveLater:"नंतरसाठी जतन करा",
-priceDetails:"किंमतीची माहिती",
-selectedTotal:"निवडलेल्या उत्पादनांची एकूण किंमत",
-deliveryCharge:"डिलिव्हरी",
-discount:"सवलत",
-finalTotal:"अंतिम एकूण",
-checkout:"चेकआउट",
-name:"नाव",
-mobile:"मोबाईल",
-address:"पत्ता",
-pin:"PIN कोड",
-payment:"पेमेंट",
-placeOrder:"ऑर्डर करा",
-cod:"कॅश ऑन डिलिव्हरी",
-codExtra:"COD वर ₹50 अतिरिक्त",
-gpay:"GPay",
-phonepe:"PhonePe",
-upi:"UPI",
-addCard:"कार्ड जोडा",
-onlinePrice:"ऑनलाइन पेमेंट एकूण",
-codPrice:"COD एकूण",
-standard:"स्टँडर्ड",
-fast:"फास्ट",
-express:"एक्सप्रेस",
-orderPlaced:"ऑर्डर दिली",
-confirmed:"कन्फर्म",
-packed:"पॅक केले",
-shipped:"पाठवले",
-outDelivery:"डिलिव्हरीसाठी निघाले",
-delivered:"डिलिव्हर झाले",
-delayed:"उशीर झाला",
-track:"ऑर्डर ट्रॅक करा",
-return:"रिटर्न",
-exchange:"एक्सचेंज",
-orderDate:"ऑर्डरची तारीख",
-expectedDelivery:"अपेक्षित डिलिव्हरी",
-wrongProduct:"चुकीचे उत्पादन",
-damaged:"नुकसान झालेले / खराब",
-wrongColorSize:"चुकीचा रंग / साईज",
-changeMind:"मन बदलले",
-photoVideo:"फोटो/व्हिडिओ जोडा",
-submitReturn:"रिटर्न पाठवा",
-submitExchange:"एक्सचेंज पाठवा",
-chooseLanguage:"भाषा निवडा",
-languageSaved:"भाषा जतन झाली",
-close:"बंद करा",
-searchTitle:"शोध",
-results:"परिणाम मिळाले",
-noResults:"अचूक परिणाम मिळाला नाही",
-filter:"फिल्टर",
-sort:"क्रम",
-lowHigh:"कमी ते जास्त किंमत",
-highLow:"जास्त ते कमी किंमत",
-all:"सर्व",
-availableColors:"उपलब्ध रंग",
-sellerInfo:"विक्रेता माहिती",
-pinHint:"PIN टाकल्यावर वास्तविक तारीख आणि चार्ज दिसेल",
-reviews:"रिव्ह्यू",
-addresses:"पत्ते",
-payments:"पेमेंट्स",
-coupons:"कूपन्स",
-returnsRefunds:"रिटर्न आणि रिफंड",
-notifications:"नोटिफिकेशन्स",
-accessibility:"अॅक्सेसिबिलिटी",
-loginOtp:"लॉगिन / OTP",
-logout:"लॉगआउट",
-continueShopping:"खरेदी सुरू ठेवा",
-productAdded:"प्रोडक्ट कार्टमध्ये जोडले.",
-registration:"विक्रेता नोंदणी",
-businessName:"विक्रेता/व्यवसायाचे नाव",
-sellerMobile:"मोबाईल / ईमेल",
-pan:"PAN / लागू ओळख तपशील",
-gst:"GSTIN, जिथे लागू आहे",
-businessAddress:"व्यवसायाचा पत्ता",
-documents:"आवश्यक परवाने/कागदपत्रे",
-continue:"पुढे जा",
-dashboard:"विक्रेता डॅशबोर्ड",
-stock:"स्टॉक",
-variants:"व्हेरिएंट्स",
-earnings:"कमाई",
-payouts:"पेआउट्स",
-verification:"पडताळणी",
-vacation:"व्हेकेशन मोड",
-save:"जतन करा",
-realBackend:"वास्तविक ऑर्डर/पेमेंटसाठी सुरक्षित बॅकएंड आवश्यक आहे."
-},
-
-Bengali:{
-tagline:"আপনার নিজের Shopping জায়গা ❤️",
-search:"আপনি কী খুঁজছেন? যেমন Anarkali Suit",
-wishlist:"উইশলিস্ট",
-cart:"কার্ট",
-orders:"আমার অর্ডার",
-account:"অ্যাকাউন্ট",
-home:"হোম",
-categories:"ক্যাটেগরি",
-seller:"বিক্রেতা",
-welcome:"ZipCart-এ আপনাকে স্বাগতম ❤️",
-shopLine:"আপনার নিজের shopping জায়গা — দেখুন → শুনুন → বুঝুন → চাপুন → কিনুন",
-voiceSearch:"ভয়েস সার্চ",
-help:"সাহায্য দরকার?",
-groceryQuick:"দ্রুত গ্রোসারি ডেলিভারি",
-medicines:"ওষুধ",
-offers:"আজকের অফার",
-offerText:"আপনার বাজেট ও পছন্দ অনুযায়ী কেনাকাটা করুন",
-viewSuit:"Anarkali Suit দেখুন",
-topCategories:"টপ ক্যাটেগরি",
-forYou:"আপনার জন্য বাছাই করা",
-budget:"কম বাজেটের জনপ্রিয়",
-newArrivals:"নতুন পণ্য",
-viewBuy:"দেখুন / কিনুন",
-back:"পিছনে",
-listen:"শুনুন",
-products:"পণ্য",
-details:"সম্পূর্ণ বিবরণ",
-size:"সাইজ",
-color:"রং",
-delivery:"ডেলিভারি",
-returnExchange:"রিটার্ন/এক্সচেঞ্জ",
-addCart:"কার্টে যোগ করুন",
-buyNow:"এখনই কিনুন",
-reviewsQA:"রিভিউ ও প্রশ্ন",
-wishlistTitle:"আমার উইশলিস্ট",
-emptyWishlist:"উইশলিস্ট খালি। কোনো পণ্যে ❤️ চাপুন।",
-cartTitle:"আমার কার্ট",
-emptyCart:"আপনার কার্ট খালি।",
-remove:"মুছে ফেলুন",
-saveLater:"পরে রাখুন",
-priceDetails:"দামের বিবরণ",
-selectedTotal:"নির্বাচিত পণ্যের মোট",
-deliveryCharge:"ডেলিভারি",
-discount:"ডিসকাউন্ট",
-finalTotal:"চূড়ান্ত মোট",
-checkout:"চেকআউট",
-name:"নাম",
-mobile:"মোবাইল",
-address:"ঠিকানা",
-pin:"PIN কোড",
-payment:"পেমেন্ট",
-placeOrder:"অর্ডার করুন",
-cod:"ক্যাশ অন ডেলিভারি",
-codExtra:"COD-তে ₹50 অতিরিক্ত",
-gpay:"GPay",
-phonepe:"PhonePe",
-upi:"UPI",
-addCard:"কার্ড যোগ করুন",
-onlinePrice:"অনলাইন পেমেন্ট মোট",
-codPrice:"COD মোট",
-standard:"স্ট্যান্ডার্ড",
-fast:"ফাস্ট",
-express:"এক্সপ্রেস",
-orderPlaced:"অর্ডার করা হয়েছে",
-confirmed:"নিশ্চিত",
-packed:"প্যাক করা হয়েছে",
-shipped:"পাঠানো হয়েছে",
-outDelivery:"ডেলিভারির জন্য বেরিয়েছে",
-delivered:"ডেলিভার হয়েছে",
-delayed:"দেরি হয়েছে",
-track:"অর্ডার ট্র্যাক করুন",
-return:"রিটার্ন",
-exchange:"এক্সচেঞ্জ",
-orderDate:"অর্ডারের তারিখ",
-expectedDelivery:"সম্ভাব্য ডেলিভারি",
-wrongProduct:"ভুল পণ্য",
-damaged:"ক্ষতিগ্রস্ত / ত্রুটিপূর্ণ",
-wrongColorSize:"ভুল রং / সাইজ",
-changeMind:"মত পরিবর্তন",
-photoVideo:"ফটো/ভিডিও যোগ করুন",
-submitReturn:"রিটার্ন পাঠান",
-submitExchange:"এক্সচেঞ্জ পাঠান",
-chooseLanguage:"ভাষা নির্বাচন করুন",
-languageSaved:"ভাষা সংরক্ষিত হয়েছে",
-close:"বন্ধ করুন",
-searchTitle:"সার্চ",
-results:"টি ফলাফল",
-noResults:"কোনো সঠিক ফলাফল পাওয়া যায়নি",
-filter:"ফিল্টার",
-sort:"সাজান",
-lowHigh:"কম থেকে বেশি দাম",
-highLow:"বেশি থেকে কম দাম",
-all:"সব",
-availableColors:"উপলব্ধ রং",
-sellerInfo:"বিক্রেতার তথ্য",
-pinHint:"PIN দিলে আসল ডেলিভারি তারিখ ও চার্জ দেখা যাবে",
-reviews:"রিভিউ",
-addresses:"ঠিকানা",
-payments:"পেমেন্ট",
-coupons:"কুপন",
-returnsRefunds:"রিটার্ন ও রিফান্ড",
-notifications:"নোটিফিকেশন",
-accessibility:"অ্যাক্সেসিবিলিটি",
-loginOtp:"লগইন / OTP",
-logout:"লগআউট",
-continueShopping:"কেনাকাটা চালিয়ে যান",
-productAdded:"পণ্য কার্টে যোগ হয়েছে।",
-registration:"বিক্রেতা রেজিস্ট্রেশন",
-businessName:"বিক্রেতা/ব্যবসার নাম",
-sellerMobile:"মোবাইল / ইমেল",
-pan:"PAN / প্রযোজ্য পরিচয় তথ্য",
-gst:"GSTIN, যেখানে প্রযোজ্য",
-businessAddress:"ব্যবসার ঠিকানা",
-documents:"প্রয়োজনীয় লাইসেন্স/নথি",
-continue:"চালিয়ে যান",
-dashboard:"বিক্রেতা ড্যাশবোর্ড",
-stock:"স্টক",
-variants:"ভ্যারিয়েন্ট",
-earnings:"আয়",
-payouts:"পেআউট",
-verification:"ভেরিফিকেশন",
-vacation:"ভ্যাকেশন মোড",
-save:"সংরক্ষণ করুন",
-realBackend:"বাস্তব অর্ডার/পেমেন্টের জন্য নিরাপদ ব্যাকএন্ড প্রয়োজন।"
 }
-
 };
-
-/* बाकी भाषाओं के लिए पूरा UI English fallback नहीं होगा।
-   पहले से मौजूद common translations को अलग language packs से जोड़ा गया है। */
 
 const EXTRA={
 Tamil:{
@@ -1115,7 +728,7 @@ pin:"PIN കോഡ്",payment:"പേയ്മെന്റ്",placeOrder:"ഓ�
 gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"കാർഡ് ചേർക്കുക",track:"ഓർഡർ ട്രാക്ക് ചെയ്യുക",return:"റിട്ടേൺ",
 exchange:"എക്സ്ചേഞ്ച്",chooseLanguage:"ഭാഷ തിരഞ്ഞെടുക്കുക",close:"അടയ്ക്കുക",filter:"ഫിൽട്ടർ",sort:"ക്രമം",
 lowHigh:"കുറഞ്ഞ വില മുതൽ",highLow:"കൂടിയ വില മുതൽ",addresses:"വിലാസങ്ങൾ",payments:"പേയ്മെന്റുകൾ",
-coupons:"കൂപ്പണുകൾ",notifications:"അറിയിപ്പുകൾ",accessibility:"ആക്സസിബിലിറ്റി",loginOtp:"ലോഗിൻ / OTP",logout:"ലോഗൗട്ട്",
+coupons:"കൂപ്പണുകൾ",notifications:"അറിയിപ്പുകൾ",accessibility:"ആക്സസിബিলিറ്റി",loginOtp:"ലോഗിൻ / OTP",logout:"ലോഗൗട്ട്",
 productAdded:"ഉൽപ്പന്നം കാർട്ടിൽ ചേർത്തു."
 },
 Punjabi:{
@@ -1177,7 +790,7 @@ placeOrder:"آرڈر کریں",cod:"کیش آن ڈیلیوری",codExtra:"COD پ
 addCard:"کارڈ شامل کریں",track:"آرڈر ٹریک کریں",return:"واپسی",exchange:"تبدیلی",chooseLanguage:"زبان منتخب کریں",
 close:"بند کریں",filter:"فلٹر",sort:"ترتیب",lowHigh:"کم سے زیادہ قیمت",highLow:"زیادہ سے کم قیمت",
 addresses:"پتے",payments:"ادائیگیاں",coupons:"کوپن",notifications:"اطلاعات",accessibility:"رسائی",loginOtp:"لاگ ان / OTP",
-logout:"لاگ آؤٹ",productAdded:"پروڈکٹ کارٹ میں شامل کر دیا گیا۔"
+logout:"لاگ آؤٹ",productAdded:"پروڈکٹ کارٹ میں شامل کر دی گئی۔"
 },
 Nepali:{
 tagline:"तपाईंको आफ्नै Shopping ठाउँ ❤️",wishlist:"इच्छासूची",cart:"कार्ट",orders:"मेरा अर्डरहरू",account:"खाता",
@@ -1222,8 +835,8 @@ discount:"सवलत",finalTotal:"शेवटचें एकूण",checkout
 pin:"PIN कोड",payment:"पेमेंट",placeOrder:"ऑर्डर करात",cod:"कॅश ऑन डिलिवरी",codExtra:"COD क ₹50 जास्त",
 gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"कार्ड घालात",track:"ऑर्डर ट्रॅक करात",return:"रिटर्न",
 exchange:"एक्सचेंज",chooseLanguage:"भास निवडात",close:"बंद करात",filter:"फिल्टर",sort:"क्रम",
-lowHigh:"कमी ते जास्त किंमत",highLow:"जास्त ते कमी किंमत",addresses:"पत्ते",payments:"पेमेंट्स",
-coupons:"कुपन",notifications:"सूचना",accessibility:"सुलभता",loginOtp:"लॉगिन / OTP",logout:"लॉगआउट",
+lowHigh:"कम ते जास्त किंमत",highLow:"जास्त ते कमी किंमत",addresses:"पत्ते",payments:"पेमेंट्स",
+coupons:"कुपन",notifications:"सूचना",accessibility:"सुलभता",loginOtp:"logिन / OTP",logout:"लॉगआउट",
 productAdded:"उत्पादन कार्टांत घातलें."
 }
 };
@@ -1242,10 +855,14 @@ return (T[currentLang]&&T[currentLang][key]) || T.English[key] || key;
 
 
 /* =========================================================
-   CATEGORY TRANSLATIONS
+   CATEGORY TRANSLATIONS (Updated Order: Travel, Bills, Med, Groc First)
 ========================================================= */
 
 const CAT_KEYS=[
+["travel","🚌","travel"],
+["bills","🧾","bills"],
+["medicine","💊","medicine"],
+["grocery","🛒","grocery"],
 ["women","👗","women"],
 ["men","👔","men"],
 ["kids","🧒","kids"],
@@ -1257,54 +874,114 @@ const CAT_KEYS=[
 ["home","🏠","home"],
 ["furniture","🛋️","furniture"],
 ["electronics","📱","electronics"],
-["school","📚","school"],
-["travel","🚌","travel"],
-["bills","🧾","bills"],
-["medicine","💊","medicine"],
-["grocery","🛒","grocery"]
+["school","📚","school"]
 ];
 
 const CAT_NAMES={
 Hindi:{
-women:"महिलाओं का फैशन",men:"पुरुषों का फैशन",kids:"बच्चों का फैशन",shoes:"जूते",
-jewellery:"ज्वेलरी",bags:"बैग",toys:"खिलौने",beauty:"ब्यूटी",home:"घर का सामान",
-furniture:"फर्नीचर",electronics:"इलेक्ट्रॉनिक्स",school:"स्कूल सामान",travel:"ट्रैवल टिकट",
-bills:"बिल और रिचार्ज",medicine:"दवाइयाँ",grocery:"किराना"
+travel:"ट्रैवल टिकट",
+bills:"बिल और रिचार्ज",
+medicine:"दवाइयाँ",
+grocery:"किराना",
+women:"महिलाओं का फैशन",
+men:"पुरुषों का फैशन",
+kids:"बच्चों का फैशन",
+shoes:"जूते",
+jewellery:"ज्वेलरी",
+bags:"बैग",
+toys:"खिलौने",
+beauty:"ब्यूटी",
+home:"घर का सामान",
+furniture:"फर्नीचर",
+electronics:"इलेक्ट्रॉनिक्स",
+school:"स्कूल सामान"
 },
 English:{
-women:"Women Fashion",men:"Men Fashion",kids:"Kids",shoes:"Shoes",jewellery:"Jewellery",
-bags:"Bags",toys:"Toys",beauty:"Beauty",home:"Home",furniture:"Furniture",electronics:"Electronics",
-school:"School Items",travel:"Travel Tickets",bills:"Bills & Recharge",medicine:"Medicines",grocery:"Grocery"
+travel:"Travel Tickets",
+bills:"Bills & Recharge",
+medicine:"Medicines",
+grocery:"Grocery",
+women:"Women Fashion",
+men:"Men Fashion",
+kids:"Kids",
+shoes:"Shoes",
+jewellery:"Jewellery",
+bags:"Bags",
+toys:"Toys",
+beauty:"Beauty",
+home:"Home",
+furniture:"Furniture",
+electronics:"Electronics",
+school:"School Items"
 },
 Gujarati:{
-women:"મહિલા ફેશન",men:"પુરુષ ફેશન",kids:"બાળકો",shoes:"જૂતા",jewellery:"જ્વેલરી",bags:"બેગ",
-toys:"રમકડાં",beauty:"બ્યુટી",home:"ઘરનો સામાન",furniture:"ફર્નિચર",electronics:"ઇલેક્ટ્રોનિક્સ",
-school:"સ્કૂલ સામાન",travel:"ટ્રાવેલ ટિકિટ",bills:"બિલ અને રિચાર્જ",medicine:"દવાઓ",grocery:"કિરાણા"
+travel:"ટ્રાવેલ ટિકિટ",
+bills:"બિલ અને રિચાર્જ",
+medicine:"દવાઓ",
+grocery:"કરિયાણું",
+women:"મહિલા ફેશન",
+men:"પુરુષ ફેશન",
+kids:"બાળકો",
+shoes:"જૂતા",
+jewellery:"જ્વેલરી",
+bags:"બેગ",
+toys:"રમકડાં",
+beauty:"બ્યુટી",
+home:"ઘરનો સામાન",
+furniture:"ફર્નિચર",
+electronics:"ઇલેક્ટ્રોનિક્સ",
+school:"સ્કૂલ સામાન"
 },
 Marathi:{
-women:"महिला फॅशन",men:"पुरुष फॅशन",kids:"मुलांचे",shoes:"बूट/चप्पल",jewellery:"दागिने",bags:"बॅग",
-toys:"खेळणी",beauty:"ब्यूटी",home:"घरातील सामान",furniture:"फर्निचर",electronics:"इलेक्ट्रॉनिक्स",
-school:"शाळेचे सामान",travel:"प्रवास तिकीट",bills:"बिल आणि रिचार्ज",medicine:"औषधे",grocery:"किराणा"
+travel:"प्रवास तिकीट",
+bills:"बिल आणि रिचार्ज",
+medicine:"औषधे",
+grocery:"किराणा",
+women:"महिला फॅशन",
+men:"पुरुष फॅशन",
+kids:"मुलांचे",
+shoes:"बूट/चप्पल",
+jewellery:"दागिने",
+bags:"बॅग",
+toys:"खेळणी",
+beauty:"ब्यूटी",
+home:"घरातील सामान",
+furniture:"फर्नीचर",
+electronics:"इलेक्ट्रॉनिक्स",
+school:"शाळेचे सामान"
 },
 Bengali:{
-women:"মহিলাদের ফ্যাশন",men:"পুরুষদের ফ্যাশন",kids:"শিশু",shoes:"জুতো",jewellery:"গয়না",bags:"ব্যাগ",
-toys:"খেলনা",beauty:"বিউটি",home:"ঘরের জিনিস",furniture:"ফার্নিচার",electronics:"ইলেকট্রনিক্স",
-school:"স্কুল সামগ্রী",travel:"ভ্রমণ টিকিট",bills:"বিল ও রিচার্জ",medicine:"ওষুধ",grocery:"মুদিখানা"
+travel:"ভ্রমণ টিকিট",
+bills:"বিল ও রিচার্জ",
+medicine:"ওষুধ",
+grocery:"মুদিখানা",
+women:"মহিলাদের ফ্যাশন",
+men:"পুরুষদের ফ্যাশন",
+kids:"শিশু",
+shoes:"জুতো",
+jewellery:"গয়না",
+bags:"ব্যাগ",
+toys:"খেলনা",
+beauty:"বিউটি",
+home:"ঘরের জিনিস",
+furniture:"ফার্নিচার",
+electronics:"ইলেকট্রনিক্স",
+school:"স্কুল সামগ্রী"
 }
 };
 
 const COMMON_CAT={
-Tamil:{women:"பெண்கள் ஃபேஷன்",men:"ஆண்கள் ஃபேஷன்",kids:"குழந்தைகள்",shoes:"காலணிகள்",jewellery:"நகைகள்",bags:"பைகள்",toys:"பொம்மைகள்",beauty:"அழகு",home:"வீட்டு பொருட்கள்",furniture:"தளபாடங்கள்",electronics:"எலக்ட்ரானிக்ஸ்",school:"பள்ளி பொருட்கள்",travel:"பயண டிக்கெட்டுகள்",bills:"பில்கள் & ரீசார்ஜ்",medicine:"மருந்துகள்",grocery:"மளிகை"},
-Telugu:{women:"మహిళల ఫ్యాషన్",men:"పురుషుల ఫ్యాషన్",kids:"పిల్లలు",shoes:"షూస్",jewellery:"నగలు",bags:"బ్యాగులు",toys:"బొమ్మలు",beauty:"బ్యూటీ",home:"ఇంటి సామగ్రి",furniture:"ఫర్నిచర్",electronics:"ఎలక్ట్రానిక్స్",school:"పాఠశాల సామగ్రి",travel:"ప్రయాణ టికెట్లు",bills:"బిల్లులు & రీఛార్జ్",medicine:"మందులు",grocery:"కిరాణా"},
-Kannada:{women:"ಮಹಿಳಾ ಫ್ಯಾಷನ್",men:"ಪುರುಷರ ಫ್ಯಾಷನ್",kids:"ಮಕ್ಕಳು",shoes:"ಪಾದರಕ್ಷೆಗಳು",jewellery:"ಆಭರಣ",bags:"ಬ್ಯಾಗ್",toys:"ಆಟಿಕೆಗಳು",beauty:"ಬ್ಯೂಟಿ",home:"ಮನೆಯ ಸಾಮಗ್ರಿ",furniture:"ಪೀಠೋಪಕರಣ",electronics:"ಎಲೆಕ್ಟ್ರಾನಿಕ್ಸ್",school:"ಶಾಲಾ ಸಾಮಗ್ರಿ",travel:"ಪ್ರಯಾಣ ಟಿಕೆಟ್",bills:"ಬಿಲ್ ಮತ್ತು ರೀಚಾರ್ಜ್",medicine:"ಔಷಧಿಗಳು",grocery:"ಕಿರಾಣಿ"},
-Malayalam:{women:"സ്ത്രീകളുടെ ഫാഷൻ",men:"പുരുഷ ഫാഷൻ",kids:"കുട്ടികൾ",shoes:"ഷൂസ്",jewellery:"ആഭരണങ്ങൾ",bags:"ബാഗുകൾ",toys:"കളിപ്പാട്ടങ്ങൾ",beauty:"ബ്യൂട്ടി",home:"വീട്ടുസാധനങ്ങൾ",furniture:"ഫർണിച്ചർ",electronics:"ഇലക്ട്രോണിക്സ്",school:"സ്കൂൾ സാധനങ്ങൾ",travel:"യാത്രാ ടിക്കറ്റുകൾ",bills:"ബില്ലുകൾ & റീചാർജ്",medicine:"മരുന്നുകൾ",grocery:"പലചരക്ക്"},
-Punjabi:{women:"ਔਰਤਾਂ ਦੀ ਫੈਸ਼ਨ",men:"ਮਰਦਾਂ ਦੀ ਫੈਸ਼ਨ",kids:"ਬੱਚੇ",shoes:"ਜੁੱਤੇ",jewellery:"ਗਹਿਣੇ",bags:"ਬੈਗ",toys:"ਖਿਡੌਣੇ",beauty:"ਬਿਊਟੀ",home:"ਘਰ ਦਾ ਸਮਾਨ",furniture:"ਫਰਨੀਚਰ",electronics:"ਇਲੈਕਟ੍ਰਾਨਿਕਸ",school:"ਸਕੂਲ ਸਮਾਨ",travel:"ਯਾਤਰਾ ਟਿਕਟ",bills:"ਬਿੱਲ ਅਤੇ ਰੀਚਾਰਜ",medicine:"ਦਵਾਈਆਂ",grocery:"ਕਿਰਾਣਾ"},
-Odia:{women:"ମହିଳା ଫ୍ୟାଶନ",men:"ପୁରୁଷ ଫ୍ୟାଶନ",kids:"ପିଲାମାନେ",shoes:"ଜୋତା",jewellery:"ଗହଣା",bags:"ବ୍ୟାଗ",toys:"ଖେଳନା",beauty:"ବ୍ୟୁଟି",home:"ଘର ସାମଗ୍ରୀ",furniture:"ଫର୍ନିଚର",electronics:"ଇଲେକ୍ଟ୍ରୋନିକ୍ସ",school:"ସ୍କୁଲ ସାମଗ୍ରୀ",travel:"ଯାତ୍ରା ଟିକେଟ",bills:"ବିଲ୍ ଓ ରିଚାର୍ଜ",medicine:"ଔଷଧ",grocery:"କିରାଣା"},
-Assamese:{women:"মহিলাৰ ফেশ্বন",men:"পুৰুষৰ ফেশ্বন",kids:"শিশু",shoes:"জোতা",jewellery:"গহনা",bags:"বেগ",toys:"খেলনা",beauty:"বিউটি",home:"ঘৰৰ সামগ্ৰী",furniture:"ফাৰ্নিচাৰ",electronics:"ইলেক্ট্ৰনিক্স",school:"স্কুল সামগ্ৰী",travel:"ভ্ৰমণ টিকট",bills:"বিল আৰু ৰিচাৰ্জ",medicine:"ঔষধ",grocery:"কিৰানা"},
-Urdu:{women:"خواتین فیشن",men:"مردوں کا فیشن",kids:"بچے",shoes:"جوتے",jewellery:"زیورات",bags:"بیگز",toys:"کھلونے",beauty:"خوبصورتی",home:"گھر کا سامان",furniture:"فرنیچر",electronics:"الیکٹرانکس",school:"اسکول سامان",travel:"سفر ٹکٹ",bills:"بل اور ریچارج",medicine:"ادویات",grocery:"کریانہ"},
-Nepali:{women:"महिला फेसन",men:"पुरुष फेसन",kids:"बालबालिका",shoes:"जुत्ता",jewellery:"गहना",bags:"झोला",toys:"खेलौना",beauty:"ब्यूटी",home:"घरायसी सामान",furniture:"फर्निचर",electronics:"इलेक्ट्रोनिक्स",school:"स्कुल सामान",travel:"यात्रा टिकट",bills:"बिल र रिचार्ज",medicine:"औषधि",grocery:"किराना"},
-Maithili:{women:"महिला फैशन",men:"पुरुष फैशन",kids:"बच्चा",shoes:"जुत्ता",jewellery:"गहना",bags:"बैग",toys:"खिलौना",beauty:"सौन्दर्य",home:"घरक सामान",furniture:"फर्नीचर",electronics:"इलेक्ट्रॉनिक्स",school:"स्कूल सामान",travel:"यात्रा टिकट",bills:"बिल आ रिचार्ज",medicine:"दवाई",grocery:"किराना"},
-Konkani:{women:"बायलांचें फॅशन",men:"दादल्यांचें फॅशन",kids:"भुरगीं",shoes:"जोडे",jewellery:"दागिने",bags:"पिशव्यो",toys:"खेळणी",beauty:"ब्युटी",home:"घरांतलो सामान",furniture:"फर्निचर",electronics:"इलेक्ट्रॉनिक्स",school:"शाळेचें सामान",travel:"प्रवास तिकीट",bills:"बिल आनी रिचार्ज",medicine:"दवायो",grocery:"किराणा"}
+Tamil:{travel:"பயண டிக்கெட்டுகள்",bills:"பில்கள் & ரீசார்ஜ்",medicine:"மருந்துகள்",grocery:"மளிகை",women:"பெண்கள் ஃபேஷன்",men:"ஆண்கள் ஃபேஷன்",kids:"குழந்தைகள்",shoes:"காலணிகள்",jewellery:"நகைகள்",bags:"பைகள்",toys:"பொம்மைகள்",beauty:"அழகு",home:"வீட்டு பொருட்கள்",furniture:"தளபாடங்கள்",electronics:"எலக்ட்ரானிக்ஸ்",school:"பள்ளி பொருட்கள்"},
+Telugu:{travel:"ప్రయాణ టికెట్లు",bills:"బిల్లులు & రీఛార్జ్",medicine:"మందులు",grocery:"కిరాణా",women:"మహిళల ఫ్యాషన్",men:"పురుషుల ఫ్యాషన్",kids:"పిల్లలు",shoes:"షూస్",jewellery:"నగలు",bags:"బ్యాగులు",toys:"బొమ్మలు",beauty:"బ్యూటీ",home:"ఇంటి సామగ్రి",furniture:"ఫర్నిచర్",electronics:"ఎలక్ట్రానిక్స్",school:"పాఠశాల సామగ్రి"},
+Kannada:{travel:"ಪ್ರಯಾಣ ಟಿಕೆಟ್",bills:"ಬಿಲ್ ಮತ್ತು ರೀಚಾರ್ಜ್",medicine:"ಔಷಧಿಗಳು",grocery:"ದಿನಸಿ",women:"ಮಹಿಳಾ ಫ್ಯಾಷನ್",men:"ಪುರುಷರ ಫ್ಯಾಷನ್",kids:"ಮಕ್ಕಳು",shoes:"ಪಾದರಕ್ಷೆಗಳು",jewellery:"ಆಭರಣ",bags:"ಬ್ಯಾಗ್",toys:"ಆಟಿಕೆಗಳು",beauty:"ಬ್ಯೂಟಿ",home:"ಮನೆಯ ಸಾಮಗ್ರಿ",furniture:"ಪೀಠೋಪಕರಣ",electronics:"ಎಲೆಕ್ಟ್ರಾನಿಕ್ಸ್",school:"ಶಾಲಾ ಸಾಮಗ್ರಿ"},
+Malayalam:{travel:"യാത്രാ ടിക്കറ്റുകൾ",bills:"ബില്ലുകൾ & റീചാർജ്",medicine:"മരുന്നുകൾ",grocery:"പലചരക്ക്",women:"സ്ത്രീകളുടെ ഫാഷൻ",men:"പുരുഷ ഫാഷൻ",kids:"കുട്ടികൾ",shoes:"ഷൂസ്",jewellery:"ആഭരണങ്ങൾ",bags:"ബാഗുകൾ",toys:"കളിപ്പാട്ടങ്ങൾ",beauty:"ബ്യൂട്ടി",home:"വീട്ടുസാധനങ്ങൾ",furniture:"ഫർണിച്ചർ",electronics:"ഇലക്ട്രോണിക്സ്",school:"സ്കൂൾ സാധനങ്ങൾ"},
+Punjabi:{travel:"ਯਾਤਰਾ ਟਿਕਟ",bills:"ਬਿੱਲ ਅਤੇ ਰੀਚਾਰਜ",medicine:"ਦਵਾਈਆਂ",grocery:"ਕਿਰਾਣਾ",women:"ਔਰਤਾਂ ਦੀ ਫੈਸ਼ਨ",men:"ਮਰਦਾਂ ਦੀ ਫੈਸ਼ਨ",kids:"ਬੱਚੇ",shoes:"ਜੁੱਤੇ",jewellery:"ਗਹਿਣੇ",bags:"ਬੈਗ",toys:"ਖਿਡੌਣੇ",beauty:"ਬਿਊਟੀ",home:"ਘਰ ਦਾ ਸਮਾਨ",furniture:"ਫਰਨੀਚਰ",electronics:"ਇਲੈਕਟ੍ਰਾਨਿਕਸ",school:"ਸਕੂਲ ਸਮਾਨ"},
+Odia:{travel:"ଯାତ୍ରା ଟିକେଟ",bills:"ବିଲ୍ ଓ ରିଚାର୍ଜ",medicine:"ଔଷଧ",grocery:"କିରାଣା",women:"ମହିଳା ଫ୍ୟାଶନ",men:"ପୁରୁଷ ଫ୍ୟାଶନ",kids:"ପିଲାମାନେ",shoes:"ଜୋତା",jewellery:"ଗହଣା",bags:"ବ୍ୟାଗ",toys:"ଖେଳନା",beauty:"ବ୍ୟୁଟି",home:"ଘର ସାମଗ୍ରୀ",furniture:"ଫର୍ନିଚର",electronics:"ଇଲେକ୍ଟ୍ରୋନିକ୍ସ",school:"ସ୍କୁଲ ସାମଗ୍ରୀ"},
+Assamese:{travel:"ভ্ৰমণ টিকট",bills:"বিল আৰু ৰিচাৰ্জ",medicine:"ঔষধ",grocery:"কিৰানা",women:"মহিলাৰ ফেশ্বন",men:"পুৰুষৰ ফেশ্বন",kids:"শিশু",shoes:"জোতা",jewellery:"ଗହଣା",bags:"বেগ",toys:"ଖେଳনা",beauty:"বিউটি",home:"ঘৰৰ সামগ୍ରী",furniture:"ফাৰ্নিচাৰ",electronics:"ইলেক্ট্ৰনিক্স",school:"স্কুল সামগ্ৰী"},
+Urdu:{travel:"سفر ٹکٹ",bills:"بل اور ریچارج",medicine:"ادویات",grocery:"کریانہ",women:"خواتین فیشن",men:"مردوں کا فیشن",kids:"بچے",shoes:"جوتے",jewellery:"زیورات",bags:"بیگز",toys:"کھلونے",beauty:"خوبصورتی",home:"گھر کا سامان",furniture:"فرنیچر",electronics:"الیکٹرانکس",school:"اسکول سامان"},
+Nepali:{travel:"यात्रा टिकट",bills:"बिल र रिचार्ज",medicine:"औषधि",grocery:"किराना",women:"महिला फेसन",men:"पुरुष फेसन",kids:"बालबालिका",shoes:"जुत्ता",jewellery:"गहना",bags:"झोला",toys:"खेलौना",beauty:"ब्यूटी",home:"घरायसी सामान",furniture:"फर्निचर",electronics:"इलेक्ट्रोनिक्स",school:"स्कुल सामान"},
+Maithili:{travel:"यात्रा टिकट",bills:"बिल आ रिचार्ज",medicine:"दवाई",grocery:"किराना",women:"महिला फैशन",men:"पुरुष फैशन",kids:"बच्चा",shoes:"जुत्ता",jewellery:"गहना",bags:"बैग",toys:"खिलौना",beauty:"सौन्दर्य",home:"घरक सामान",furniture:"फर्नीचर",electronics:"इलेक्ट्रॉनिक्स",school:"स्कूल सामान"},
+Konkani:{travel:"प्रवास तिकी त",bills:"बिल आनी रिचार्ज",medicine:"दवायो",grocery:"किराणा",women:"बायलांचें फॅशन",men:"दादल्यांचें फॅशन",kids:"भुरगीं",shoes:"जोडे",jewellery:"दागिने",bags:"पिशव्यो",toys:"खेळणी",beauty:"ब्युटी",home:"घरांतलो सामान",furniture:"फर्निचर",electronics:"इलेक्ट्रॉनिक्स",school:"शाळेचें सामान"}
 };
 
 Object.keys(COMMON_CAT).forEach(l=>{
@@ -1343,7 +1020,7 @@ grocery:["Fresh Grocery","Staples","Dairy","Snacks","Household","Cleaning","Beve
 const SUB_TRANSLATE={
 Hindi:{
 Saree:"साड़ी",Suits:"सूट",Kurtis:"कुर्ती",Jeans:"जींस",Tops:"टॉप",Dresses:"ड्रेस",Lehenga:"लहंगा",Jackets:"जैकेट",Nightwear:"नाइटवियर",Ethnic:"एथनिक वियर",Western:"वेस्टर्न वियर",
-Shirts:"शर्ट", "T-Shirts":"टी-शर्ट",Kurta:"कुर्ता","Kurta-Pajama":"कुर्ता-पायजामा","Trousers/Pants":"ट्राउज़र/पैंट",Shorts:"शॉर्ट्स","Formal Wear":"फॉर्मल वियर","Sports Wear":"स्पोर्ट्स वियर",
+Shirts:"शर्ट","T-Shirts":"टी-शर्ट",Kurta:"कुर्ता","Kurta-Pajama":"कुर्ता-पायजामा","Trousers/Pants":"ट्राउज़र/पैंट",Shorts:"शॉर्ट्स","Formal Wear":"फॉर्मल वियर","Sports Wear":"स्पोर्ट्स वियर",
 Girls:"लड़कियाँ",Boys:"लड़के",Baby:"बेबी","Kids Dresses":"बच्चों की ड्रेस","Kids Shoes":"बच्चों के जूते","Baby Products":"बेबी प्रोडक्ट्स",Toys:"खिलौने",
 Women:"महिलाएँ",Men:"पुरुष","Sports Shoes":"स्पोर्ट्स जूते",Sandals:"सैंडल",Heels:"हील्स",Flats:"फ्लैट्स",Slippers:"चप्पल",
 Necklace:"हार",Earrings:"झुमके",Bangles:"चूड़ियाँ",Rings:"अंगूठियाँ","Bridal Jewellery":"ब्राइडल ज्वेलरी","Artificial Jewellery":"आर्टिफिशियल ज्वेलरी",
@@ -1360,7 +1037,6 @@ Bus:"बस",Train:"ट्रेन",Flight:"फ्लाइट",Hotel:"हो�
 English:{}
 };
 
-Object.keys(SUB.women).forEach(()=>{});
 function subName(x){
 return (SUB_TRANSLATE[currentLang]&&SUB_TRANSLATE[currentLang][x]) ||
 SUB_TRANSLATE.Hindi[x] && currentLang==="Hindi" ? SUB_TRANSLATE.Hindi[x] :
@@ -1396,7 +1072,7 @@ return VARIETY[currentLang]&&VARIETY[currentLang][x] || VARIETY.Hindi[x] || x;
 
 
 /* =========================================================
-   PRODUCTS — NUMBERING STARTS FROM 0
+   PRODUCTS
 ========================================================= */
 
 const products=[
@@ -1452,72 +1128,6 @@ Bengali:{
 "Kids Toy Car":"শিশুদের খেলনা গাড়ি","Fashion Jewellery Set":"ফ্যাশন জুয়েলারি সেট","Women Handbag":"মহিলাদের হ্যান্ডব্যাগ",
 "Cotton Kurti":"কটন কুর্তি","Men Casual Shirt":"পুরুষদের ক্যাজুয়াল শার্ট","Kids Dress":"শিশুদের পোশাক",
 "Wireless Earphones":"ওয়্যারলেস ইয়ারফোন","Grocery Daily Essentials":"দৈনন্দিন মুদিখানার সামগ্রী","Health Care Product":"হেলথ কেয়ার পণ্য"
-},
-Tamil:{
-"Beautiful Saree":"அழகான புடவை","Designer Anarkali Suit":"டிசைனர் அனார்கலி சூட்","Stylish Shoes":"ஸ்டைலான காலணிகள்",
-"Kids Toy Car":"குழந்தைகளின் பொம்மை கார்","Fashion Jewellery Set":"ஃபேஷன் நகை செட்","Women Handbag":"பெண்கள் கைப்பை",
-"Cotton Kurti":"காட்டன் குர்த்தி","Men Casual Shirt":"ஆண்கள் கேஷுவல் சட்டை","Kids Dress":"குழந்தைகள் உடை",
-"Wireless Earphones":"வயர்லெஸ் இயர்போன்கள்","Grocery Daily Essentials":"தினசரி மளிகை பொருட்கள்","Health Care Product":"சுகாதார பொருள்"
-},
-Telugu:{
-"Beautiful Saree":"అందమైన చీర","Designer Anarkali Suit":"డిజైనర్ అనార్కలి సూట్","Stylish Shoes":"స్టైలిష్ షూస్",
-"Kids Toy Car":"పిల్లల బొమ్మ కారు","Fashion Jewellery Set":"ఫ్యాషన్ నగల సెట్","Women Handbag":"మహిళల హ్యాండ్‌బ్యాగ్",
-"Cotton Kurti":"కాటన్ కుర్తీ","Men Casual Shirt":"పురుషుల క్యాజువల్ షర్ట్","Kids Dress":"పిల్లల డ్రెస్",
-"Wireless Earphones":"వైర్‌లెస్ ఇయర్‌ఫోన్స్","Grocery Daily Essentials":"రోజువారీ కిరాణా సామగ్రి","Health Care Product":"హెల్త్ కేర్ ఉత్పత్తి"
-},
-Kannada:{
-"Beautiful Saree":"ಸುಂದರ ಸೀರೆ","Designer Anarkali Suit":"ಡಿಸೈನರ್ ಅನಾರ್ಕಲಿ ಸೂಟ್","Stylish Shoes":"ಸ್ಟೈಲಿಶ್ ಶೂಸ್",
-"Kids Toy Car":"ಮಕ್ಕಳ ಆಟದ ಕಾರು","Fashion Jewellery Set":"ಫ್ಯಾಷನ್ ಆಭರಣ ಸೆಟ್","Women Handbag":"ಮಹಿಳೆಯರ ಹ್ಯಾಂಡ್‌ಬ್ಯಾಗ್",
-"Cotton Kurti":"ಕಾಟನ್ ಕುರ್ತಿ","Men Casual Shirt":"ಪುರುಷರ ಕ್ಯಾಶುವಲ್ ಶರ್ಟ್","Kids Dress":"ಮಕ್ಕಳ ಉಡುಪು",
-"Wireless Earphones":"ವೈರ್‌ಲೆಸ್ ಇಯರ್‌ಫೋನ್","Grocery Daily Essentials":"ದೈನಂದಿನ ಕಿರಾಣಿ ಸಾಮಗ್ರಿ","Health Care Product":"ಹೆಲ್ತ್ ಕೇರ್ ಉತ್ಪನ್ನ"
-},
-Malayalam:{
-"Beautiful Saree":"മനോഹരമായ സാരി","Designer Anarkali Suit":"ഡിസൈനർ അനാർക്കലി സ്യൂട്ട്","Stylish Shoes":"സ്റ്റൈലിഷ് ഷൂസ്",
-"Kids Toy Car":"കുട്ടികളുടെ കളിപ്പാട്ട കാർ","Fashion Jewellery Set":"ഫാഷൻ ആഭരണ സെറ്റ്","Women Handbag":"വനിതാ ഹാൻഡ്ബാഗ്",
-"Cotton Kurti":"കോട്ടൺ കുർത്തി","Men Casual Shirt":"പുരുഷന്മാരുടെ കാഷ്വൽ ഷർട്ട്","Kids Dress":"കുട്ടികളുടെ വസ്ത്രം",
-"Wireless Earphones":"വയർലെസ് ഇയർഫോൺ","Grocery Daily Essentials":"ദൈനംദിന പലചരക്ക് സാധനങ്ങൾ","Health Care Product":"ഹെൽത്ത് കെയർ ഉൽപ്പന്നം"
-},
-Punjabi:{
-"Beautiful Saree":"ਸੁੰਦਰ ਸਾੜੀ","Designer Anarkali Suit":"ਡਿਜ਼ਾਈਨਰ ਅਨਾਰਕਲੀ ਸੂਟ","Stylish Shoes":"ਸਟਾਈਲਿਸ਼ ਜੁੱਤੇ",
-"Kids Toy Car":"ਬੱਚਿਆਂ ਦੀ ਖਿਡੌਣਾ ਕਾਰ","Fashion Jewellery Set":"ਫੈਸ਼ਨ ਜਿਊਲਰੀ ਸੈੱਟ","Women Handbag":"ਔਰਤਾਂ ਦਾ ਹੈਂਡਬੈਗ",
-"Cotton Kurti":"ਕਾਟਨ ਕੁੜਤੀ","Men Casual Shirt":"ਮਰਦਾਂ ਦੀ ਕੈਜ਼ੁਅਲ ਕਮੀਜ਼","Kids Dress":"ਬੱਚਿਆਂ ਦੀ ਡ੍ਰੈੱਸ",
-"Wireless Earphones":"ਵਾਇਰਲੈੱਸ ਈਅਰਫੋਨ","Grocery Daily Essentials":"ਰੋਜ਼ਾਨਾ ਕਿਰਾਣਾ ਸਮਾਨ","Health Care Product":"ਹੈਲਥ ਕੇਅਰ ਉਤਪਾਦ"
-},
-Odia:{
-"Beautiful Saree":"ସୁନ୍ଦର ଶାଢ଼ୀ","Designer Anarkali Suit":"ଡିଜାଇନର ଅନାରକଲି ସୁଟ୍","Stylish Shoes":"ଷ୍ଟାଇଲିସ୍ ଜୋତା",
-"Kids Toy Car":"ପିଲାଙ୍କ ଖେଳନା କାର","Fashion Jewellery Set":"ଫ୍ୟାଶନ୍ ଗହଣା ସେଟ୍","Women Handbag":"ମହିଳା ହ୍ୟାଣ୍ଡବ୍ୟାଗ୍",
-"Cotton Kurti":"କଟନ କୁର୍ତ୍ତି","Men Casual Shirt":"ପୁରୁଷ କ୍ୟାଜୁଆଲ୍ ସାର୍ଟ","Kids Dress":"ପିଲାଙ୍କ ଡ୍ରେସ୍",
-"Wireless Earphones":"ୱାୟାରଲେସ୍ ଇୟରଫୋନ୍","Grocery Daily Essentials":"ଦୈନିକ କିରାଣା ସାମଗ୍ରୀ","Health Care Product":"ହେଲ୍ଥ କେୟାର ଉତ୍ପାଦ"
-},
-Assamese:{
-"Beautiful Saree":"সুন্দৰ শাৰী","Designer Anarkali Suit":"ডিজাইনাৰ অনাৰকলি ছুট","Stylish Shoes":"ষ্টাইলিছ জোতা",
-"Kids Toy Car":"শিশুৰ খেলনা গাড়ী","Fashion Jewellery Set":"ফেশ্বন গহনা ছেট","Women Handbag":"মহিলাৰ হেণ্ডবেগ",
-"Cotton Kurti":"কটন কুৰ্তি","Men Casual Shirt":"পুৰুষৰ কেজুৱেল চাৰ্ট","Kids Dress":"শিশুৰ পোছাক",
-"Wireless Earphones":"ৱায়াৰলেছ ইয়েৰফোন","Grocery Daily Essentials":"দৈনিক কিৰানা সামগ্ৰী","Health Care Product":"হেল্থ কেয়াৰ সামগ্ৰী"
-},
-Urdu:{
-"Beautiful Saree":"خوبصورت ساڑی","Designer Anarkali Suit":"ڈیزائنر انارکلی سوٹ","Stylish Shoes":"اسٹائلش جوتے",
-"Kids Toy Car":"بچوں کی کھلونا کار","Fashion Jewellery Set":"فیشن جیولری سیٹ","Women Handbag":"خواتین کا ہینڈ بیگ",
-"Cotton Kurti":"کاٹن کرتی","Men Casual Shirt":"مردوں کی کیژول شرٹ","Kids Dress":"بچوں کا لباس",
-"Wireless Earphones":"وائرلیس ایئرفون","Grocery Daily Essentials":"روزمرہ کریانہ سامان","Health Care Product":"ہیلتھ کیئر پروڈکٹ"
-},
-Nepali:{
-"Beautiful Saree":"सुन्दर साडी","Designer Anarkali Suit":"डिजाइनर अनारकली सूट","Stylish Shoes":"स्टाइलिस जुत्ता",
-"Kids Toy Car":"बालबालिकाको खेलौना कार","Fashion Jewellery Set":"फेसन गहना सेट","Women Handbag":"महिलाको ह्यान्डब्याग",
-"Cotton Kurti":"कटन कुर्ती","Men Casual Shirt":"पुरुषको क्याजुअल सर्ट","Kids Dress":"बालबालिकाको पोशाक",
-"Wireless Earphones":"वायरलेस इयरफोन","Grocery Daily Essentials":"दैनिक किराना सामान","Health Care Product":"स्वास्थ्य हेरचाह उत्पादन"
-},
-Maithili:{
-"Beautiful Saree":"सुन्दर साड़ी","Designer Anarkali Suit":"डिजाइनर अनारकली सूट","Stylish Shoes":"स्टाइलिश जुत्ता",
-"Kids Toy Car":"बच्चाक खेलौना कार","Fashion Jewellery Set":"फैशन गहना सेट","Women Handbag":"महिलाक हैंडबैग",
-"Cotton Kurti":"कॉटन कुर्ती","Men Casual Shirt":"पुरुषक कैजुअल शर्ट","Kids Dress":"बच्चाक ड्रेस",
-"Wireless Earphones":"वायरलेस ईयरफोन","Grocery Daily Essentials":"दैनिक किराना सामान","Health Care Product":"हेल्थ केयर प्रोडक्ट"
-},
-Konkani:{
-"Beautiful Saree":"सुंदर साडी","Designer Anarkali Suit":"डिझायनर अनारकली सूट","Stylish Shoes":"स्टायलिश जोडो",
-"Kids Toy Car":"भुरग्यांची खेळणी कार","Fashion Jewellery Set":"फॅशन ज्वेलरी सेट","Women Handbag":"बायलांचो हँडबॅग",
-"Cotton Kurti":"कॉटन कुर्ती","Men Casual Shirt":"दादल्यांचो कॅज्युअल शर्ट","Kids Dress":"भुरग्यांचो ड्रेस",
-"Wireless Earphones":"वायरलेस इयरफोन","Grocery Daily Essentials":"रोजचो किराणा सामान","Health Care Product":"हेल्थ केअर उत्पादन"
 }
 };
 
@@ -1559,6 +1169,7 @@ if(c)c.textContent=cart.reduce((a,x)=>a+x.qty,0);
 }
 
 function refreshHeader(){
+if(!LANG_META[currentLang]) currentLang="Hindi";
 
 document.documentElement.lang=LANG_META[currentLang].code;
 document.documentElement.dir=currentLang==="Urdu"?"rtl":"ltr";
@@ -1566,7 +1177,7 @@ document.documentElement.dir=currentLang==="Urdu"?"rtl":"ltr";
 document.title="ZipCart — "+t("tagline");
 
 document.getElementById("tagline").textContent=t("tagline");
-document.getElementById("search").placeholder=t("search");
+document.getElementById("searchInput").placeholder=t("search");
 document.getElementById("ordersTop").textContent="📦 "+t("orders");
 document.getElementById("accountTop").textContent=t("account");
 
@@ -1593,11 +1204,9 @@ window.scrollTo(0,0);
 }
 
 function renderPage(){
-
 refreshHeader();
 
 switch(currentPage){
-
 case "home":home();break;
 case "wishlist":wishlistPage();break;
 case "cart":cartPage();break;
@@ -1614,7 +1223,6 @@ case "track":track();break;
 case "return":returnFlow();break;
 case "exchange":exchangeFlow();break;
 }
-
 }
 
 function show(x){
@@ -1627,37 +1235,22 @@ navigate(x);
 ========================================================= */
 
 function productCard(p){
-
 const liked=wishlist.includes(p.id);
 const pct=Math.round((1-p.price/p.old)*100);
 
 return `
 <div class="card">
-
-<button class="heart"
-onclick="toggleWish(${p.id})">
-${liked?"❤️":"♡"}
-</button>
-
+<button class="heart" onclick="toggleWish(${p.id})">${liked?"❤️":"♡"}</button>
 <div class="photo">${p.emoji}</div>
-
 <div class="cardbody">
-
 <b>${productName(p)}</b>
-
 <div>
 <span class="price">₹${p.price}</span>
 <span class="old">₹${p.old}</span>
 <span class="off">${pct}% OFF</span>
 </div>
-
 <div class="rating">⭐ ${p.rating}</div>
-
-<button class="buy"
-onclick="product(${p.id})">
-${t("viewBuy")}
-</button>
-
+<button class="buy" onclick="product(${p.id})">${t("viewBuy")}</button>
 </div>
 </div>
 `;
@@ -1669,21 +1262,14 @@ ${t("viewBuy")}
 ========================================================= */
 
 function catsHTML(){
-
 return `
 <div class="hscroll">
-
 ${CAT_KEYS.map(c=>`
-<div class="cat"
-onclick="category('${c[0]}')">
-
+<div class="cat" onclick="category('${c[0]}')">
 <div class="catpic">${c[1]}</div>
-
 <b>${catName(c[0])}</b>
-
 </div>
 `).join("")}
-
 </div>
 `;
 }
@@ -1694,100 +1280,45 @@ onclick="category('${c[0]}')">
 ========================================================= */
 
 function home(){
-
 app.innerHTML=`
-
 <section class="hero">
-
 <h1>${t("welcome")}</h1>
-
 <p>${t("shopLine")}</p>
-
 <div class="quick">
-
-<button class="pill"
-onclick="voiceSearch()">
-🔊 ${t("voiceSearch")}
-</button>
-
-<button class="pill"
-onclick="show('orders')">
-📦 ${t("orders")}
-</button>
-
-<button class="pill"
-onclick="show('account')">
-🆘 ${t("help")}
-</button>
-
-<button class="pill"
-onclick="category('grocery')">
-⚡ ${t("groceryQuick")}
-</button>
-
-<button class="pill"
-onclick="category('medicine')">
-💊 ${t("medicines")}
-</button>
-
+<button class="pill" onclick="voiceSearch()">🔊 ${t("voiceSearch")}</button>
+<button class="pill" onclick="show('orders')">📦 ${t("orders")}</button>
+<button class="pill" onclick="show('account')">🆘 ${t("help")}</button>
+<button class="pill" onclick="category('grocery')">⚡ ${t("groceryQuick")}</button>
+<button class="pill" onclick="category('medicine')">💊 ${t("medicines")}</button>
 </div>
-
 </section>
 
-
 <div class="banner">
-
 <div>
 <h2>🎉 ${t("offers")}</h2>
 <div>${t("offerText")}</div>
 </div>
-
-<button onclick="doSearchText('Anarkali Suit')">
-${t("viewSuit")}
-</button>
-
+<button onclick="doSearchText('Anarkali Suit')">${t("viewSuit")}</button>
 </div>
 
-
 <section class="section">
-
 <h2>🗂️ ${t("topCategories")}</h2>
-
 ${catsHTML()}
-
 </section>
 
-
 <section class="section">
-
 <h2>✨ ${t("forYou")}</h2>
-
-<div class="grid">
-${products.slice(0,8).map(productCard).join("")}
-</div>
-
+<div class="grid">${products.slice(0,8).map(productCard).join("")}</div>
 </section>
 
-
 <section class="section">
-
 <h2>🔥 ${t("budget")}</h2>
-
-<div class="grid">
-${products.filter(p=>p.price<600).map(productCard).join("")}
-</div>
-
+<div class="grid">${products.filter(p=>p.price<600).map(productCard).join("")}</div>
 </section>
 
-
 <section class="section">
-
 <h2>🆕 ${t("newArrivals")}</h2>
-
-<div class="grid">
-${products.slice(8).map(productCard).join("")}
-</div>
-
+<div class="grid">${products.slice(8).map(productCard).join("")}</div>
 </section>
 `;
 }
@@ -1798,113 +1329,54 @@ ${products.slice(8).map(productCard).join("")}
 ========================================================= */
 
 function category(key){
-
 selectedCat=key;
-
 const arr=SUB[key]||[];
 
 app.innerHTML=`
-
-<button class="back"
-onclick="show('home')">
-← ${t("back")}
-</button>
-
-
+<button class="back" onclick="show('home')">← ${t("back")}</button>
 <div class="panel">
-
 <h2>${catName(key)}</h2>
-
-<button class="pill"
-onclick='speak("${catName(key)}")'>
-🔊 ${t("listen")}
-</button>
-
+<button class="pill" onclick='speak("${catName(key)}")'>🔊 ${t("listen")}</button>
 </div>
-
 
 <div class="hscroll">
-
 ${arr.map(x=>`
-
-<div class="cat"
-onclick="subCategory('${key}','${x.replace(/'/g,"\\'")}')">
-
-<div class="catpic">
-${emojiForSub(x)}
-</div>
-
+<div class="cat" onclick="subCategory('${key}','${x.replace(/'/g,"\\'")}')">
+<div class="catpic">${emojiForSub(x)}</div>
 <b>${subName(x)}</b>
-
 </div>
-
 `).join("")}
-
 </div>
-
 
 ${key==="women"?`
-
 <div class="panel">
-
 <h3>👰 ${currentLang==="Hindi"?"Lehenga की varieties":"Lehenga Varieties"}</h3>
-
 <div class="hscroll">
-
 ${LEHENGA.map(x=>`
-
-<div class="cat"
-onclick="subCategory('women','Lehenga ${x}')">
-
+<div class="cat" onclick="subCategory('women','Lehenga ${x}')">
 <div class="catpic">👰</div>
-
 <b>${varietyName(x)}</b>
-
 </div>
-
 `).join("")}
-
 </div>
-
 
 <h3>🥻 ${currentLang==="Hindi"?"Saree की varieties":"Saree Varieties"}</h3>
-
 <div class="hscroll">
-
 ${SAREE.map(x=>`
-
-<div class="cat"
-onclick="subCategory('women','Saree ${x}')">
-
+<div class="cat" onclick="subCategory('women','Saree ${x}')">
 <div class="catpic">🥻</div>
-
 <b>${varietyName(x)}</b>
-
 </div>
-
 `).join("")}
-
 </div>
-
 </div>
-
 `:""}
 
-
 <section class="section">
-
 <h2>🛍️ ${t("products")}</h2>
-
 <div class="grid">
-
-${
-products.filter(p=>p.cat===key).map(productCard).join("")
-||
-`<div class="panel">${t("noResults")}</div>`
-}
-
+${products.filter(p=>p.cat===key).map(productCard).join("") || `<div class="panel">${t("noResults")}</div>`}
 </div>
-
 </section>
 `;
 }
@@ -1915,81 +1387,35 @@ products.filter(p=>p.cat===key).map(productCard).join("")
 ========================================================= */
 
 function subCategory(key,s){
-
 navigate("subCategory",{key:key,sub:s});
-
 }
 
 function renderSubCategory(key,s){
-
 const raw=s.trim();
-
-let searchName=raw
-.replace(/^Saree /,"")
-.replace(/^Lehenga /,"");
+let searchName=raw.replace(/^Saree /,"").replace(/^Lehenga /,"");
 
 let found=products.filter(p=>
 p.cat===key &&
-(
-p.sub.toLowerCase().includes(searchName.toLowerCase()) ||
-p.name.toLowerCase().includes(searchName.toLowerCase())
-)
+(p.sub.toLowerCase().includes(searchName.toLowerCase()) || p.name.toLowerCase().includes(searchName.toLowerCase()))
 );
 
 const displayName=
-raw.startsWith("Saree ")
-?"🥻 "+varietyName(searchName)
-:
-raw.startsWith("Lehenga ")
-?"👰 "+varietyName(searchName)
-:
+raw.startsWith("Saree ")?"🥻 "+varietyName(searchName):
+raw.startsWith("Lehenga ")?"👰 "+varietyName(searchName):
 subName(raw);
 
 app.innerHTML=`
-
-<button class="back"
-onclick="category('${key}')">
-← ${t("back")}
-</button>
-
+<button class="back" onclick="category('${key}')">← ${t("back")}</button>
 <div class="panel">
-
 <h2>${displayName}</h2>
-
-<button class="pill"
-onclick='speak(${JSON.stringify(displayName)})'>
-🔊 ${t("listen")}
-</button>
-
-
+<button class="pill" onclick='speak(${JSON.stringify(displayName)})'>🔊 ${t("listen")}</button>
 <div class="quick">
-
-${[
-"₹100–₹500",
-"₹500–₹1,000",
-"₹1,000–₹1,500",
-"₹1,500–₹2,000",
-"₹2,000–₹3,000",
-"₹3,000–₹5,000",
-"₹5,000–₹10,000",
-"₹10,000+"
-].map(x=>`
-<button class="pill">${x}</button>
-`).join("")}
-
+${["₹100–₹500","₹500–₹1,000","₹1,000–₹1,500","₹1,500–₹2,000","₹2,000–₹3,000","₹3,000–₹5,000","₹5,000–₹10,000","₹10,000+"].map(x=>`<button class="pill">${x}</button>`).join("")}
 </div>
-
 </div>
-
 
 <div class="grid">
-
-${
-found.length
-?found.map(productCard).join("")
-:products.filter(p=>p.cat===key).map(productCard).join("")
-}
-
+${found.length?found.map(productCard).join(""):products.filter(p=>p.cat===key).map(productCard).join("")}
 </div>
 `;
 }
@@ -2000,117 +1426,39 @@ found.length
 ========================================================= */
 
 function product(id){
-
 navigate("product",{id});
-
 }
 
 function renderProduct(id){
-
 const p=products.find(x=>x.id===id);
-
 if(!p)return;
 
 app.innerHTML=`
-
-<button class="back"
-onclick="show('home')">
-← ${t("back")}
-</button>
-
-
+<button class="back" onclick="show('home')">← ${t("back")}</button>
 <div class="panel">
-
-<div class="photo"
-style="height:240px">
-${p.emoji}
-</div>
-
-
+<div class="photo" style="height:240px">${p.emoji}</div>
 <h2>${productName(p)}</h2>
-
-
 <div>
-
 <span class="price">₹${p.price}</span>
-
 <span class="old">₹${p.old}</span>
-
-<span class="off">
-${Math.round((1-p.price/p.old)*100)}% OFF
-</span>
-
+<span class="off">${Math.round((1-p.price/p.old)*100)}% OFF</span>
 </div>
-
-
-<div class="rating">
-⭐ ${p.rating}
-</div>
-
-
-<p>
-<b>${t("details")}:</b>
-${t("sellerInfo")}
-</p>
-
-
-<p>
-<b>${t("size")}:</b>
-XS, S, M, L, XL, XXL, 3XL, 4XL
-</p>
-
-
-<p>
-<b>${t("color")}:</b>
-${t("availableColors")}
-</p>
-
-
-<p>
-<b>${t("delivery")}:</b>
-${t("pinHint")}
-</p>
-
-
-<p>
-<b>${t("returnExchange")}:</b>
-${t("reviews")}
-</p>
-
-
+<div class="rating">⭐ ${p.rating}</div>
+<p><b>${t("details")}:</b> ${t("sellerInfo")}</p>
+<p><b>${t("size")}:</b> XS, S, M, L, XL, XXL, 3XL, 4XL</p>
+<p><b>${t("color")}:</b> ${t("availableColors")}</p>
+<p><b>${t("delivery")}:</b> ${t("pinHint")}</p>
+<p><b>${t("returnExchange")}:</b> ${t("reviews")}</p>
 <div class="quick">
-
-<button class="pill"
-onclick="toggleWish(${p.id})">
-❤️ ${t("wishlist")}
-</button>
-
-<button class="pill"
-onclick="addCart(${p.id})">
-🛒 ${t("addCart")}
-</button>
-
-<button class="pill"
-onclick="buyNow(${p.id})">
-⚡ ${t("buyNow")}
-</button>
-
-<button class="pill"
-onclick='speak(${JSON.stringify(productName(p))})'>
-🔊 ${t("listen")}
-</button>
-
+<button class="pill" onclick="toggleWish(${p.id})">❤️ ${t("wishlist")}</button>
+<button class="pill" onclick="addCart(${p.id})">🛒 ${t("addCart")}</button>
+<button class="pill" onclick="buyNow(${p.id})">⚡ ${t("buyNow")}</button>
+<button class="pill" onclick='speak(${JSON.stringify(productName(p))})'>🔊 ${t("listen")}</button>
 </div>
-
 </div>
-
-
 <div class="panel">
-
 <h3>⭐ ${t("reviewsQA")}</h3>
-
 <p>${t("reviews")}</p>
-
 </div>
 `;
 }
@@ -2121,32 +1469,17 @@ onclick='speak(${JSON.stringify(productName(p))})'>
 ========================================================= */
 
 function toggleWish(id){
-
-wishlist=wishlist.includes(id)
-?wishlist.filter(x=>x!==id)
-:[...wishlist,id];
-
+wishlist=wishlist.includes(id)?wishlist.filter(x=>x!==id):[...wishlist,id];
 save();
-
 renderPage();
 }
 
 function wishlistPage(){
-
 const ps=products.filter(p=>wishlist.includes(p.id));
-
 app.innerHTML=`
-
 <h2>❤️ ${t("wishlistTitle")}</h2>
-
 <div class="grid">
-
-${
-ps.length
-?ps.map(productCard).join("")
-:`<div class="panel">${t("emptyWishlist")}</div>`
-}
-
+${ps.length?ps.map(productCard).join(""):`<div class="panel">${t("emptyWishlist")}</div>`}
 </div>
 `;
 }
@@ -2157,188 +1490,79 @@ ps.length
 ========================================================= */
 
 function addCart(id){
-
 let x=cart.find(a=>a.id===id);
-
 if(x)x.qty++;
-else cart.push({
-id:id,
-qty:1,
-selected:true
-});
-
+else cart.push({id:id,qty:1,selected:true});
 save();
-
 alert("🛒 "+t("productAdded"));
-
 renderPage();
 }
 
 function buyNow(id){
-
 let x=cart.find(a=>a.id===id);
-
 if(x)x.qty++;
-else cart.push({
-id:id,
-qty:1,
-selected:true
-});
-
+else cart.push({id:id,qty:1,selected:true});
 save();
-
 navigate("cart");
 }
 
 function cartPage(){
-
 const selectedItems=cart.filter(x=>x.selected);
-
-const onlineTotal=selectedItems.reduce(
-(s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0
-);
-
+const onlineTotal=selectedItems.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0);
 const codTotal=onlineTotal+50;
 
 app.innerHTML=`
-
 <h2>🛒 ${t("cartTitle")}</h2>
-
-
 <div class="panel">
-
-${
-cart.length
-?
-cart.map((x,i)=>{
-
+${cart.length?cart.map((x,i)=>{
 let p=products.find(a=>a.id===x.id);
-
 return `
-
-<div class="row"
-style="padding:12px 0;border-bottom:1px solid #eee">
-
-<input
-type="checkbox"
-${x.selected?"checked":""}
-onchange="
-cart[${i}].selected=this.checked;
-save();
-cartPage();
-">
-
+<div class="row" style="padding:12px 0;border-bottom:1px solid #eee">
+<input type="checkbox" ${x.selected?"checked":""} onchange="cart[${i}].selected=this.checked;save();cartPage();">
 <span>${p.emoji}</span>
-
 <div class="grow">
-
 <b>${productName(p)}</b>
-
-<div>
-₹${p.price} × ${x.qty}
+<div>₹${p.price} ×${x.qty}</div>
 </div>
-
-</div>
-
-
 <button onclick="qty(${i},-1)">−</button>
-
 <b>${x.qty}</b>
-
 <button onclick="qty(${i},1)">+</button>
-
-
-<button onclick="removeCart(${i})">
-🗑️ ${t("remove")}
-</button>
-
-
-<button onclick="saveLater(${i})">
-💾 ${t("saveLater")}
-</button>
-
+<button onclick="removeCart(${i})">🗑️ ${t("remove")}</button>
+<button onclick="saveLater(${i})">💾 ${t("saveLater")}</button>
 </div>
 `;
-
-}).join("")
-:
-`<p>${t("emptyCart")}</p>`
-}
-
+}).join(""):`<p>${t("emptyCart")}</p>`}
 </div>
 
-
-${
-cart.length
-?
-`
-
+${cart.length?`
 <div class="panel">
-
 <h3>${t("priceDetails")}</h3>
-
-<p>
-${t("selectedTotal")}:
-₹${onlineTotal}
-</p>
-
-<p>
-${t("deliveryCharge")}:
-${t("pinHint")}
-</p>
-
-<p>
-${t("discount")}:
-— 
-</p>
-
-
-<h3>
-${t("onlinePrice")}: ₹${onlineTotal}
-</h3>
-
-
-<h3>
-${t("codPrice")}: ₹${codTotal}
-</h3>
-
-<p>
-${t("codExtra")}
-</p>
-
-
-<button class="buy"
-onclick="checkout()">
-${t("checkout")}
-</button>
-
+<p>${t("selectedTotal")}: ₹${onlineTotal}</p>
+<p>${t("deliveryCharge")}: ${t("pinHint")}</p>
+<p>${t("discount")}: —</p>
+<h3>${t("onlinePrice")}: ₹${onlineTotal}</h3>
+<h3>${t("codPrice")}: ₹${codTotal}</h3>
+<p>${t("codExtra")}</p>
+<button class="buy" onclick="checkout()">${t("checkout")}</button>
 </div>
-`
-:""
-}
+`:""}
 `;
 }
 
 function qty(i,d){
-
 cart[i].qty=Math.max(1,cart[i].qty+d);
-
 save();
 cartPage();
 }
 
 function removeCart(i){
-
 cart.splice(i,1);
-
 save();
 cartPage();
 }
 
 function saveLater(i){
-
 cart[i].selected=false;
-
 save();
 cartPage();
 }
@@ -2349,128 +1573,45 @@ cartPage();
 ========================================================= */
 
 function checkout(){
-
 navigate("checkout");
-
 }
 
 function renderCheckout(){
-
-const total=cart
-.filter(x=>x.selected)
-.reduce(
-(s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,
-0
-);
-
+const total=cart.filter(x=>x.selected).reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0);
 const codTotal=total+50;
 
 app.innerHTML=`
-
-<button class="back"
-onclick="cartPage()">
-← ${t("cart")}
-</button>
-
-
+<button class="back" onclick="cartPage()">← ${t("cart")}</button>
 <div class="panel">
-
 <h2>💳 ${t("checkout")}</h2>
-
-
 <div class="formgrid">
-
-<div class="field">
-<label>${t("name")}</label>
-<input placeholder="${t("name")}">
+<div class="field"><label>${t("name")}</label><input placeholder="${t("name")}"></div>
+<div class="field"><label>${t("mobile")}</label><input placeholder="${t("mobile")}"></div>
+<div class="field"><label>${t("address")}</label><textarea placeholder="${t("address")}"></textarea></div>
+<div class="field"><label>${t("pin")}</label><input placeholder="${t("pin")}"></div>
 </div>
-
-
-<div class="field">
-<label>${t("mobile")}</label>
-<input placeholder="${t("mobile")}">
-</div>
-
-
-<div class="field">
-<label>${t("address")}</label>
-<textarea placeholder="${t("address")}"></textarea>
-</div>
-
-
-<div class="field">
-<label>${t("pin")}</label>
-<input placeholder="${t("pin")}">
-</div>
-
-</div>
-
-
 <h3>🚚 ${t("delivery")}</h3>
-
 <div class="quick">
-
 <button class="pill">${t("standard")}</button>
 <button class="pill">${t("fast")}</button>
 <button class="pill">${t("express")}</button>
-
 </div>
-
-
 <p>${t("pinHint")}</p>
-
-
 <h3>💰 ${t("payment")}</h3>
-
-
 <div class="panel">
-
-<button class="pill lang-active">
-💵 ${t("cod")}
-</button>
-
+<button class="pill lang-active">💵 ${t("cod")}</button>
 <p>${t("codExtra")}</p>
-
 <h3>${t("codPrice")}: ₹${codTotal}</h3>
-
 </div>
-
-
 <div class="panel">
-
-<button class="pill">
-📱 ${t("gpay")}
-</button>
-
-<button class="pill">
-📱 ${t("phonepe")}
-</button>
-
-<button class="pill">
-💳 ${t("upi")}
-</button>
-
-<button class="pill">
-💳 ${t("addCard")}
-</button>
-
-<h3>
-${t("onlinePrice")}: ₹${total}
-</h3>
-
+<button class="pill">📱 ${t("gpay")}</button>
+<button class="pill">📱 ${t("phonepe")}</button>
+<button class="pill">💳 ${t("upi")}</button>
+<button class="pill">💳 ${t("addCard")}</button>
+<h3>${t("onlinePrice")}: ₹${total}</h3>
 </div>
-
-
-<h2>
-${t("finalTotal")}: ₹${total}
-</h2>
-
-
-<button class="buy"
-onclick="alert('${t("realBackend")}')">
-${t("placeOrder")}
-</button>
-
+<h2>${t("finalTotal")}: ₹${total}</h2>
+<button class="buy" onclick="alert('${t("realBackend")}')">${t("placeOrder")}</button>
 </div>
 `;
 }
@@ -2481,76 +1622,29 @@ ${t("placeOrder")}
 ========================================================= */
 
 function orders(){
-
 navigate("orders");
-
 }
 
 function renderOrders(){
-
 const p=products[0];
-
 app.innerHTML=`
-
 <h2>📦 ${t("orders")}</h2>
-
-
 <div class="panel">
-
 <h3>Example Order #ZC-DEMO</h3>
-
 <div class="row">
-
-<span style="font-size:50px">
-${p.emoji}
-</span>
-
-
+<span style="font-size:50px">${p.emoji}</span>
 <div class="grow">
-
 <b>${productName(p)}</b>
-
-<p>
-${t("orderDate")}: —
-|
-${t("expectedDelivery")}: —
-</p>
-
+<p>${t("orderDate")}: — | ${t("expectedDelivery")}: —</p>
 </div>
-
-
-<button class="pill"
-onclick="track()">
-${t("track")}
-</button>
-
-
-<button class="pill"
-onclick="returnFlow()">
-↩️ ${t("return")}
-</button>
-
-
-<button class="pill"
-onclick="exchangeFlow()">
-🔄 ${t("exchange")}
-</button>
-
+<button class="pill" onclick="track()">${t("track")}</button>
+<button class="pill" onclick="returnFlow()">↩️ ${t("return")}</button>
+<button class="pill" onclick="exchangeFlow()">🔄 ${t("exchange")}</button>
 </div>
-
 </div>
-
-
 <div class="panel">
-
 <h3>✨ ${t("continueShopping")}</h3>
-
-<div class="grid">
-
-${products.slice(0,4).map(productCard).join("")}
-
-</div>
-
+<div class="grid">${products.slice(0,4).map(productCard).join("")}</div>
 </div>
 `;
 }
@@ -2561,58 +1655,19 @@ ${products.slice(0,4).map(productCard).join("")}
 ========================================================= */
 
 function track(){
-
 navigate("track");
-
 }
 
 function renderTrack(){
-
-const steps=[
-"orderPlaced",
-"confirmed",
-"packed",
-"shipped",
-"outDelivery",
-"delivered"
-];
-
+const steps=["orderPlaced","confirmed","packed","shipped","outDelivery","delivered"];
 app.innerHTML=`
-
-<button class="back"
-onclick="orders()">
-← ${t("orders")}
-</button>
-
-
+<button class="back" onclick="orders()">← ${t("orders")}</button>
 <div class="panel">
-
 <h2>🚚 ${t("track")}</h2>
-
-
 <div class="track">
-
-${steps.map((x,i)=>`
-
-<div class="step ${i<3?"done":""}">
-
-<div class="dot">
-${i<3?"✓":i+1}
+${steps.map((x,i)=>`<div class="step ${i<3?"done":""}"><div class="dot">${i<3?"✓":i+1}</div>${t(x)}</div>`).join("")}
 </div>
-
-${t(x)}
-
-</div>
-
-`).join("")}
-
-</div>
-
-
-<p>
-${t("delayed")} होने पर नया expected date यहाँ दिखेगा।
-</p>
-
+<p>${t("delayed")} होने पर नया expected date यहाँ दिखेगा।</p>
 </div>
 `;
 }
@@ -2623,94 +1678,50 @@ ${t("delayed")} होने पर नया expected date यहाँ दि�
 ========================================================= */
 
 function returnFlow(){
-
 navigate("return");
-
 }
 
 function renderReturn(){
-
 app.innerHTML=`
-
 <div class="panel">
-
 <h2>↩️ ${t("return")}</h2>
-
-
 <select>
-
 <option>${t("wrongProduct")}</option>
 <option>${t("damaged")}</option>
 <option>${t("wrongColorSize")}</option>
 <option>${t("changeMind")}</option>
-
 </select>
-
 <br><br>
-
-
-<button class="pill">
-📷 ${t("photoVideo")}
-</button>
-
-
-<button class="pill"
-onclick="alert('${t("realBackend")}')">
-${t("submitReturn")}
-</button>
-
+<button class="pill">📷 ${t("photoVideo")}</button>
+<button class="pill" onclick="alert('${t("realBackend")}')">${t("submitReturn")}</button>
 </div>
 `;
 }
 
 function exchangeFlow(){
-
 navigate("exchange");
-
 }
 
 function renderExchange(){
-
 app.innerHTML=`
-
 <div class="panel">
-
 <h2>🔄 ${t("exchange")}</h2>
-
-
-<p>
-${t("availableColors")}
-</p>
-
-
+<p>${t("availableColors")}</p>
 <select>
-
 <option>${t("size")}: S</option>
 <option>${t("size")}: M</option>
 <option>${t("size")}: L</option>
 <option>${t("size")}: XL</option>
-
 </select>
-
-
 <select>
-
 <option>${t("color")}</option>
 <option>Red</option>
 <option>Blue</option>
 <option>Black</option>
 <option>Pink</option>
-
 </select>
-
 <br><br>
-
-
-<button class="pill"
-onclick="alert('${t("realBackend")}')">
-${t("submitExchange")}
-</button>
-
+<button class="pill" onclick="alert('${t("realBackend")}')">${t("submitExchange")}</button>
 </div>
 `;
 }
@@ -2721,13 +1732,10 @@ ${t("submitExchange")}
 ========================================================= */
 
 function account(){
-
 navigate("account");
-
 }
 
 function renderAccount(){
-
 const items=[
 ["📦",t("orders")],
 ["❤️",t("wishlist")],
@@ -2746,35 +1754,13 @@ const items=[
 ];
 
 app.innerHTML=`
-
 <h2>👤 ${t("account")}</h2>
-
 <div class="grid">
-
 ${items.map(x=>`
-
-<button
-class="panel"
-onclick="
-${
-x[1]===t("orders")
-?"show('orders')":
-x[1]===t("wishlist")
-?"show('wishlist')":
-x[1]===t("cart")
-?"show('cart')":
-x[1]===t("chooseLanguage")
-?"languageModal()":
-"alert('"+t("realBackend")+"')"
-}
-">
-
-${x[0]} ${x[1]}
-
+<button class="panel" onclick="${x[1]===t("orders")?"show('orders')":x[1]===t("wishlist")?"show('wishlist')":x[1]===t("cart")?"show('cart')":x[1]===t("chooseLanguage")?"languageModal()":"alert('"+t("realBackend")+"')"}">
+${x[0]}${x[1]}
 </button>
-
 `).join("")}
-
 </div>
 `;
 }
@@ -2785,19 +1771,13 @@ ${x[0]} ${x[1]}
 ========================================================= */
 
 function categories(){
-
 navigate("categories");
-
 }
 
 function renderCategories(){
-
 app.innerHTML=`
-
 <h2>🗂️ ${t("categories")}</h2>
-
 ${catsHTML()}
-
 `;
 }
 
@@ -2807,155 +1787,42 @@ ${catsHTML()}
 ========================================================= */
 
 function seller(){
-
 navigate("seller");
-
 }
 
 function renderSeller(){
-
 app.innerHTML=`
-
 <div class="panel">
-
 <h2>🏪 ${t("registration")}</h2>
-
-
-<div class="notice">
-${t("sellerInfo")}
-</div>
-
-
+<div class="notice">${t("sellerInfo")}</div>
 <div class="field">
-
 <label>🌐 ${t("chooseLanguage")}</label>
-
 <select>
-
-${LANGUAGES.map(x=>
-`<option ${x===currentLang?"selected":""}>
-${LANG_META[x].native} — ${x}
-</option>`
-).join("")}
-
+${LANGUAGES.map(x=>`<option ${x===currentLang?"selected":""}>${LANG_META[x].native} —${x}</option>`).join("")}
 </select>
-
 </div>
-
-
 <br>
-
-
 <div class="field">
-
 <label>${t("categories")}</label>
-
 <select>
-
-${CAT_KEYS.map(c=>
-`<option>${catName(c[0])}</option>`
-).join("")}
-
+${CAT_KEYS.map(c=>`<option>${catName(c[0])}</option>`).join("")}
 </select>
-
 </div>
-
-
-<div class="formgrid"
-style="margin-top:12px">
-
-
-<div class="field">
-
-<label>${t("businessName")}</label>
-
-<input>
-
+<div class="formgrid" style="margin-top:12px">
+<div class="field"><label>${t("businessName")}</label><input></div>
+<div class="field"><label>${t("sellerMobile")}</label><input></div>
+<div class="field"><label>${t("pan")}</label><input></div>
+<div class="field"><label>${t("gst")}</label><input></div>
+<div class="field"><label>${t("businessAddress")}</label><textarea></textarea></div>
+<div class="field"><label>${t("documents")}</label><input></div>
 </div>
-
-
-<div class="field">
-
-<label>${t("sellerMobile")}</label>
-
-<input>
-
-</div>
-
-
-<div class="field">
-
-<label>${t("pan")}</label>
-
-<input>
-
-</div>
-
-
-<div class="field">
-
-<label>${t("gst")}</label>
-
-<input>
-
-</div>
-
-
-<div class="field">
-
-<label>${t("businessAddress")}</label>
-
-<textarea></textarea>
-
-</div>
-
-
-<div class="field">
-
-<label>${t("documents")}</label>
-
-<input>
-
-</div>
-
-</div>
-
-
 <br>
-
-
-<button class="pill"
-onclick='speak("${t("categories")}")'>
-🔊 ${t("listen")}
-</button>
-
-
-<button class="buy"
-onclick="alert('${t("realBackend")}')">
-${t("continue")}
-</button>
-
+<button class="pill" onclick='speak("${t("categories")}")'>🔊 ${t("listen")}</button>
+<button class="buy" onclick="alert('${t("realBackend")}')">${t("continue")}</button>
 </div>
-
-
 <div class="panel">
-
 <h3>📋 ${t("dashboard")}</h3>
-
-<p>
-${t("products")} •
-${t("orders")} •
-${t("stock")} •
-${t("variants")} •
-${t("return")} •
-${t("reviews")} •
-${t("earnings")} •
-${t("payouts")} •
-${t("verification")} •
-${t("help")} •
-${t("vacation")}
-</p>
-
+<p>${t("products")} • ${t("orders")} • ${t("stock")} • ${t("variants")} • ${t("return")} • ${t("reviews")} • ${t("earnings")} • ${t("payouts")} • ${t("verification")} • ${t("help")} • ${t("vacation")}</p>
 </div>
 `;
 }
@@ -2966,109 +1833,44 @@ ${t("vacation")}
 ========================================================= */
 
 function searchPage(q){
-
 navigate("search",{q:q});
-
 }
 
 function renderSearch(q){
-
-let ps=products.filter(p=>
-(p.name+" "+p.sub)
-.toLowerCase()
-.includes(q.toLowerCase())
-);
-
+let ps=products.filter(p=>(p.name+" "+p.sub).toLowerCase().includes(q.toLowerCase()));
 app.innerHTML=`
-
-<button class="back"
-onclick="show('home')">
-← ${t("home")}
-</button>
-
-
+<button class="back" onclick="show('home')">← ${t("home")}</button>
 <div class="panel">
-
-<h2>
-🔎 ${t("searchTitle")}: “${q}”
-</h2>
-
-
-<p>
-${
-ps.length
-?ps.length+" "+t("results")
-:t("noResults")
-}
-</p>
-
-
+<h2>🔎 ${t("searchTitle")}: “${q}”</h2>
+<p>${ps.length?ps.length+" "+t("results"):t("noResults")}</p>
 <div class="quick">
-
-<button class="pill">
-${t("filter")}
-</button>
-
-<button class="pill"
-onclick="sortProducts('low')">
-${t("lowHigh")}
-</button>
-
-<button class="pill"
-onclick="sortProducts('high')">
-${t("highLow")}
-</button>
-
+<button class="pill">${t("filter")}</button>
+<button class="pill" onclick="sortProducts('low')">${t("lowHigh")}</button>
+<button class="pill" onclick="sortProducts('high')">${t("highLow")}</button>
 </div>
-
 </div>
-
-
-<div class="grid">
-
-${(ps.length?ps:products).map(productCard).join("")}
-
-</div>
+<div class="grid">${(ps.length?ps:products).map(productCard).join("")}</div>
 `;
 }
 
 function sortProducts(type){
-
 let list=[...products];
-
-if(type==="low")
-list.sort((a,b)=>a.price-b.price);
-
-if(type==="high")
-list.sort((a,b)=>b.price-a.price);
-
+if(type==="low")list.sort((a,b)=>a.price-b.price);
+if(type==="high")list.sort((a,b)=>b.price-a.price);
 app.innerHTML=`
-
-<button class="back"
-onclick="show('home')">
-← ${t("home")}
-</button>
-
-<div class="grid">
-${list.map(productCard).join("")}
-</div>
+<button class="back" onclick="show('home')">← ${t("home")}</button>
+<div class="grid">${list.map(productCard).join("")}</div>
 `;
 }
 
 function doSearch(){
-
-let q=document.getElementById("search").value.trim();
-
+let q=document.getElementById("searchInput").value.trim();
 if(q)searchPage(q);
-
 }
 
 function doSearchText(q){
-
-document.getElementById("search").value=q;
-
+document.getElementById("searchInput").value=q;
 searchPage(q);
-
 }
 
 
@@ -3077,93 +1879,33 @@ searchPage(q);
 ========================================================= */
 
 function voiceSearch(){
-
 if(!("webkitSpeechRecognition" in window)){
-
 alert("Voice search is not available in this browser.");
-
 return;
 }
-
 let r=new webkitSpeechRecognition();
-
 r.lang=LANG_META[currentLang].code;
-
 r.onresult=e=>{
-
 let q=e.results[0][0].transcript;
-
-document.getElementById("search").value=q;
-
+document.getElementById("searchInput").value=q;
 searchPage(q);
-
 };
-
 r.start();
 }
 
 function speak(text){
-
 if("speechSynthesis" in window){
-
 let u=new SpeechSynthesisUtterance(text);
-
 u.lang=LANG_META[currentLang].code;
-
 speechSynthesis.cancel();
-
 speechSynthesis.speak(u);
-
 }
-}
-
-function speakList(arr){
-
-arr.forEach((x,i)=>{
-
-setTimeout(()=>speak(subName(x)),i*900);
-
-});
-
 }
 
 function emojiForSub(x){
-
 const e={
-Saree:"👗",Suits:"🥻",Kurtis:"👚",Jeans:"👖",Tops:"👕",
-Dresses:"👗",Lehenga:"👰",Jackets:"🧥",Nightwear:"🌙",
-"Ethnic Wear":"🪷","Western Wear":"👠",
-Shirts:"👔","T-Shirts":"👕",Kurta:"🥻","Kurta-Pajama":"🧣",
-"Trousers/Pants":"👖",Shorts:"🩳","Formal Wear":"💼","Sports Wear":"🏃",
-Girls:"👧",Boys:"👦",Baby:"👶","Kids Dresses":"👗","Kids Shoes":"👟",
-"Baby Products":"🍼",Toys:"🧸",Women:"👩",Men:"👨",
-"Sports Shoes":"🏃",Sandals:"🩴",Heels:"👠",Flats:"🥿",Slippers:"🩴",
-Necklace:"📿",Earrings:"💎",Bangles:"🪷",Rings:"💍",
-"Bridal Jewellery":"👰","Artificial Jewellery":"✨",
-Handbag:"👜","Sling Bag":"🎒","School Bag":"🎒","Travel Bag":"🧳",
-Backpack:"🎒","Wallet/Purse":"👛",
-"Baby Toys":"🧸",Educational:"🧠",Cars:"🚗",Dolls:"👧",Games:"🎲",
-"Remote Toys":"🎮","Outdoor Toys":"⚽",
-Makeup:"💄",Skincare:"🧴",Haircare:"💇","Personal Care":"🧼",
-Kitchen:"🍳","Home Decor":"🖼️",Furniture:"🛋️",Storage:"📦",
-Bedsheet:"🛏️",Curtains:"🪟",
-Sofa:"🛋️",Bed:"🛏️",Chair:"🪑",Table:"🪑",Wardrobe:"🚪",
-Cabinet:"🗄️","Dining Set":"🍽️","Office Chair":"💺",Recliner:"🛋️",
-"Dressing Table":"🪞",
-"Mobile Accessories":"📱",Earphones:"🎧",Chargers:"🔌",Cables:"🔗",
-Speakers:"🔊","Other Electronics":"💻",
-"School Bags":"🎒",Books:"📖",Notebooks:"📓",Stationery:"✏️",
-"Art & Craft":"🎨",
-Bus:"🚌",Train:"🚆",Flight:"✈️",Hotel:"🏨",
-"Mobile Recharge":"📱",DTH:"📺",Electricity:"⚡",Water:"💧",Gas:"🔥",
-"Broadband/Landline":"🌐",FASTag:"🛣️",Insurance:"🛡️",
-"Education Fees":"🎓","Property/Other Bills":"🏠",
-"Common Care":"💊","Prescription Medicines":"🩺",
-"Health & Personal Care":"🧴","Devices & Wellness":"🌡️",
-"Fresh Grocery":"🥦",Staples:"🍚",Dairy:"🥛",Snacks:"🍪",
-Household:"🧹",Cleaning:"🧼",Beverages:"🧃"
+Saree:"👗",Suits:"🥻",Kurtis:"👚",Jeans:"👖",Tops:"👕",Dresses:"👗",Lehenga:"👰",Jackets:"🧥",Nightwear:"🌙","Ethnic Wear":"🪷","Western Wear":"👠",Shirts:"👔","T-Shirts":"👕",Kurta:"🥻","Kurta-Pajama":"🧣","Trousers/Pants":"👖",Shorts:"🩳","Formal Wear":"💼","Sports Wear":"🏃",Girls:"👧",Boys:"👦",Baby:"👶","Kids Dresses":"👗","Kids Shoes":"👟","Baby Products":"🍼",Toys:"🧸",Women:"👩",Men:"👨","Sports Shoes":"🏃",Sandals:"🩴",Heels:"👠",Flats:"🥿",Slippers:"🩴",Necklace:"📿",Earrings:"💎",Bangles:"🪷",Rings:"💍","Bridal Jewellery":"👰","Artificial Jewellery":"✨",Handbag:"👜","Sling Bag":"🎒","School Bag":"🎒","Travel Bag":"🧳",Backpack:"🎒","Wallet/Purse":"👛","Baby Toys":"🧸",Educational:"🧠",Cars:"🚗",Dolls:"👧",Games:"🎲","Remote Toys":"🎮","Outdoor Toys":"⚽",Makeup:"💄",Skincare:"🧴",Haircare:"💇","Personal Care":"🧼",Kitchen:"🍳","Home Decor":"🖼️",Furniture:"🛋️",Storage:"📦",Bedsheet:"🛏️",Curtains:"🪟",Sofa:"🛋️",Bed:"🛏️",Chair:"🪑",Table:"🪑",Wardrobe:"🚪",Cabinet:"🗄️","Dining Set":"🍽️","Office Chair":"💺",Recliner:"🛋️","Dressing Table":"🪞","Mobile Accessories":"📱",Earphones:"🎧",Chargers:"🔌",Cables:"🔗",Speakers:"🔊","Other Electronics":"💻","School Bags":"🎒",Books:"📖",Notebooks:"📓",Stationery:"✏️","Art & Craft":"🎨",Bus:"🚌",Train:"🚆",Flight:"✈️",Hotel:"🏨","Mobile Recharge":"📱",DTH:"📺",Electricity:"⚡",Water:"💧",Gas:"🔥","Broadband/Landline":"🌐",FASTag:"🛣️",Insurance:"🛡️","Education Fees":"🎓","Property/Other Bills":"🏠","Common Care":"💊","Prescription Medicines":"🩺","Health & Personal Care":"🧴","Devices & Wellness":"🌡️","Fresh Grocery":"🥦",Staples:"🍚",Dairy:"🥛",Snacks:"🍪",Household:"🧹",Cleaning:"🧼",Beverages:"🧃"
 };
-
 return e[x]||"🛍️";
 }
 
@@ -3173,61 +1915,26 @@ return e[x]||"🛍️";
 ========================================================= */
 
 function languageModal(){
-
 openModal(`
-
 <h2>🌐 ${t("chooseLanguage")}</h2>
-
 <p>${t("languageSaved")}</p>
-
 <div class="quick">
-
 ${LANGUAGES.map(x=>`
-
-<button
-class="pill ${x===currentLang?"lang-active":""}"
-onclick="setLang('${x}')">
-
-${LANG_META[x].native}
-
-<br>
-
-<small>${x}</small>
-
+<button class="pill ${x===currentLang?"lang-active":""}" onclick="setLang('${x}')">
+${LANG_META[x].native}<br><small>${x}</small>
 </button>
-
 `).join("")}
-
 </div>
-
-
 <br>
-
-<button
-class="back"
-onclick="closeModal()">
-
-${t("close")}
-
-</button>
-
+<button class="back" onclick="closeModal()">${t("close")}</button>
 `);
 }
 
 function setLang(x){
-
 currentLang=x;
-
 localStorage.setItem("zipLang",x);
-
 closeModal();
-
-document.documentElement.lang=LANG_META[currentLang].code;
-
-document.documentElement.dir=currentLang==="Urdu"?"rtl":"ltr";
-
 renderPage();
-
 }
 
 
@@ -3236,17 +1943,12 @@ renderPage();
 ========================================================= */
 
 function openModal(x){
-
 document.getElementById("modalbox").innerHTML=x;
-
 document.getElementById("modal").classList.add("show");
-
 }
 
 function closeModal(){
-
 document.getElementById("modal").classList.remove("show");
-
 }
 
 
@@ -3254,116 +1956,44 @@ document.getElementById("modal").classList.remove("show");
    ROUTER WRAPPERS
 ========================================================= */
 
-function categoryRender(key){
-category(key);
-}
-
 const oldCategory=category;
-
-category=function(key){
-currentPage="category";
-currentArgs={key:key};
-selectedCat=key;
-oldCategory(key);
-};
+category=function(key){currentPage="category";currentArgs={key:key};selectedCat=key;oldCategory(key);};
 
 const oldSubCategory=renderSubCategory;
-
-subCategory=function(key,s){
-currentPage="subCategory";
-currentArgs={key:key,sub:s};
-selectedCat=key;
-oldSubCategory(key,s);
-};
+subCategory=function(key,s){currentPage="subCategory";currentArgs={key:key,sub:s};selectedCat=key;oldSubCategory(key,s);};
 
 const oldProduct=renderProduct;
-
-product=function(id){
-currentPage="product";
-currentArgs={id:id};
-selectedCat=null;
-oldProduct(id);
-};
+product=function(id){currentPage="product";currentArgs={id:id};selectedCat=null;oldProduct(id);};
 
 const oldCart=cartPage;
-
-cartPage=function(){
-currentPage="cart";
-currentArgs={};
-oldCart();
-};
+cartPage=function(){currentPage="cart";currentArgs={};oldCart();};
 
 const oldCheckout=renderCheckout;
-
-checkout=function(){
-currentPage="checkout";
-currentArgs={};
-oldCheckout();
-};
+checkout=function(){currentPage="checkout";currentArgs={};oldCheckout();};
 
 const oldOrders=renderOrders;
-
-orders=function(){
-currentPage="orders";
-currentArgs={};
-oldOrders();
-};
+orders=function(){currentPage="orders";currentArgs={};oldOrders();};
 
 const oldTrack=renderTrack;
-
-track=function(){
-currentPage="track";
-currentArgs={};
-oldTrack();
-};
+track=function(){currentPage="track";currentArgs={};oldTrack();};
 
 const oldReturn=renderReturn;
-
-returnFlow=function(){
-currentPage="return";
-currentArgs={};
-oldReturn();
-};
+returnFlow=function(){currentPage="return";currentArgs={};oldReturn();};
 
 const oldExchange=renderExchange;
-
-exchangeFlow=function(){
-currentPage="exchange";
-currentArgs={};
-oldExchange();
-};
+exchangeFlow=function(){currentPage="exchange";currentArgs={};oldExchange();};
 
 const oldAccount=renderAccount;
-
-account=function(){
-currentPage="account";
-currentArgs={};
-oldAccount();
-};
+account=function(){currentPage="account";currentArgs={};oldAccount();};
 
 const oldCategories=renderCategories;
-
-categories=function(){
-currentPage="categories";
-currentArgs={};
-oldCategories();
-};
+categories=function(){currentPage="categories";currentArgs={};oldCategories();};
 
 const oldSeller=renderSeller;
-
-seller=function(){
-currentPage="seller";
-currentArgs={};
-oldSeller();
-};
+seller=function(){currentPage="seller";currentArgs={};oldSeller();};
 
 const oldSearch=renderSearch;
-
-searchPage=function(q){
-currentPage="search";
-currentArgs={q:q};
-oldSearch(q);
-};
+searchPage=function(q){currentPage="search";currentArgs={q:q};oldSearch(q);};
 
 
 /* =========================================================
@@ -3371,9 +2001,7 @@ oldSearch(q);
 ========================================================= */
 
 refreshHeader();
-
 home();
-
 updateCounts();
 
 </script>
