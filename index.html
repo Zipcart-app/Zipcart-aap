@@ -40,13 +40,15 @@ min-width:220px;
 display:flex;
 background:#fff;
 border-radius:25px;
-overflow:hidden
+overflow:hidden;
+cursor:pointer
 }
 .search input{
 flex:1;
 border:0;
 padding:12px 15px;
-outline:0
+outline:0;
+background:transparent
 }
 .search button{
 background:#fff;
@@ -188,14 +190,26 @@ color:#087b36;
 font-weight:700;
 margin-top:5px
 }
-.buy{
-width:100%;
-margin-top:9px;
-padding:10px;
-border-radius:10px;
+.cardActions{
+display:flex;
+gap:6px;
+margin-top:9px
+}
+.cardActions button{
+flex:1;
+padding:8px 4px;
+border-radius:8px;
+font-size:12px;
+font-weight:bold;
+text-align:center
+}
+.btn-add{
+background:#f0e6ff;
+color:#5b21b6
+}
+.btn-buy{
 background:#6a11cb;
-color:#fff;
-font-weight:bold
+color:#fff
 }
 .panel{
 background:#fff;
@@ -341,8 +355,10 @@ text-align:right
 </div>
 
 <div class="search" onclick="document.getElementById('searchInput').focus()">
-<input id="searchInput"
-onkeydown="if(event.key==='Enter')doSearch()">
+<input id="searchInput" type="text"
+onkeydown="if(event.key==='Enter')doSearch()"
+onclick="this.focus()"
+ontouchstart="this.focus()">
 <button onclick="voiceSearch()">🎤</button>
 <button onclick="doSearch()">🔍</button>
 </div>
@@ -383,7 +399,7 @@ onkeydown="if(event.key==='Enter')doSearch()">
 <script>
 
 /* =========================================================
-   LANGUAGE SYSTEM
+   LANGUAGE SYSTEM & COMPENSIVE MULTI-LANGUAGE PACKS
 ========================================================= */
 
 const LANG_META={
@@ -431,7 +447,8 @@ topCategories:"Top Categories",
 forYou:"आपके लिए चुना गया",
 budget:"कम बजट में पसंदीदा",
 newArrivals:"New Arrivals",
-viewBuy:"देखें / खरीदें",
+addCart:"Add to Cart",
+buyNow:"Buy Now",
 back:"वापस",
 listen:"सुनें",
 products:"Products",
@@ -440,8 +457,6 @@ size:"Size",
 color:"Color",
 delivery:"Delivery",
 returnExchange:"Return/Exchange",
-addCart:"Add to Cart",
-buyNow:"Buy Now",
 reviewsQA:"Reviews & Q&A",
 wishlistTitle:"मेरी Wishlist",
 emptyWishlist:"Wishlist अभी खाली है। किसी product पर ❤️ दबाइए।",
@@ -557,7 +572,8 @@ topCategories:"Top Categories",
 forYou:"Picked for You",
 budget:"Popular Under Budget",
 newArrivals:"New Arrivals",
-viewBuy:"View / Buy",
+addCart:"Add to Cart",
+buyNow:"Buy Now",
 back:"Back",
 listen:"Listen",
 products:"Products",
@@ -566,8 +582,6 @@ size:"Size",
 color:"Color",
 delivery:"Delivery",
 returnExchange:"Return/Exchange",
-addCart:"Add to Cart",
-buyNow:"Buy Now",
 reviewsQA:"Reviews & Q&A",
 wishlistTitle:"My Wishlist",
 emptyWishlist:"Your Wishlist is empty. Tap ❤️ on a product.",
@@ -665,68 +679,125 @@ realBackend:"Secure backend is required for real orders/payments."
 const EXTRA={
 Gujarati:{
 tagline:"તમારી પોતાની Shopping જગ્યા ❤️",
+search:"શું શોધી રહ્યા છો? જેમ કે Anarkali Suit",
 wishlist:"વિશલિસ્ટ",cart:"કાર્ટ",orders:"મારા ઓર્ડર",account:"એકાઉન્ટ",
-home:"હોમ",categories:"કેટેગરી",seller:"વિક્રેતા",voiceSearch:"વોઇસ સર્ચ",
-welcome:"ZipCart માં આપનું સ્વાગત છે ❤️",offers:"આજની ઓફર્સ",topCategories:"ટોપ કેટેગરી",
-forYou:"તમારા માટે પસંદ કરેલું",budget:"ઓછા બજેટમાં લોકપ્રિય",newArrivals:"નવા ઉત્પાદનો",
-back:"પાછળ",listen:"સાંભળો",products:"ઉત્પાદનો",size:"સાઇઝ",color:"રંગ",
-delivery:"ડિલિવરી",addCart:"કાર્ટમાં ઉમેરો",buyNow:"હમણાં ખરીદો",reviewsQA:"રિવ્યૂ અને પ્રશ્નો",
-wishlistTitle:"મારી વિશલિસ્ટ",cartTitle:"મારો કાર્ટ",emptyCart:"તમારો કાર્ટ ખાલી છે.",
-remove:"દૂર કરો",saveLater:"પછી માટે સાચવો",priceDetails:"કિંમતની વિગતો",selectedTotal:"પસંદ કરેલા પ્રોડક્ટની કુલ કિંમત",
+home:"હોમ",categories:"કેટેગરી",seller:"વિક્રેતા",voiceSearch:"વોઇસ સર્ચ",help:"મદદ જોઈએ?",
+groceryQuick:"ઝડપી ગ્રોસરી ડિલિવરી",medicines:"દવાઓ",offers:"આજની ઓફર્સ",
+offerText:"તમારા બજેટ અને પસંદગી મુજબ ખરીદી કરો",viewSuit:"Anarkali Suit જુઓ",
+welcome:"ZipCart માં આપનું સ્વાગત છે ❤️",shopLine:"તમારી પોતાની shopping જગ્યા — જુઓ → સાંભળો → સમજો → દબાવો → ખરીદો",
+topCategories:"ટોપ કેટેગરી",forYou:"તમારા માટે પસંદ કરેલું",budget:"ઓછા બજેટમાં લોકપ્રિય",
+newArrivals:"નવા ઉત્પાદનો",addCart:"કાર્ટમાં ઉમેરો",buyNow:"હમણાં ખરીદો",back:"પાછળ",
+listen:"સાંભળો",products:"ઉત્પાદનો",size:"સાઇઝ",color:"રંગ",delivery:"ડિલિવરી",
+returnExchange:"રિટર્ન/એક્સચેન્જ",reviewsQA:"રિવ્યૂ અને પ્રશ્નો",wishlistTitle:"મારી વિશલિસ્ટ",
+emptyWishlist:"વિશલિસ્ટ ખાલી છે. પ્રોડક્ટ પર ❤️ દબાવો.",cartTitle:"મારો કાર્ટ",
+emptyCart:"તમારો કાર્ટ ખાલી છે.",remove:"દૂર કરો",saveLater:"પછી માટે સાચવો",
+priceDetails:"કિંમતની વિગતો",selectedTotal:"પસંદ કરેલા પ્રોડક્ટની કુલ કિંમત",
 deliveryCharge:"ડિલિવરી",discount:"ડિસ્કાઉન્ટ",finalTotal:"અંતિમ કુલ",checkout:"ચેકઆઉટ",
 name:"નામ",mobile:"મોબાઇલ",address:"સરનામું",pin:"PIN કોડ",payment:"ચુકવણી",
 placeOrder:"ઓર્ડર કરો",cod:"કેશ ઓન ડિલિવરી",codExtra:"COD પર ₹50 વધારાના",
-gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"કાર્ડ ઉમેરો",track:"ઓર્ડર ટ્રેક કરો",
-return:"રિટર્ન",exchange:"એક્સચેન્જ",chooseLanguage:"ભાષા પસંદ કરો",
-close:"બંધ કરો",filter:"ફિલ્ટર",sort:"ક્રમ",lowHigh:"ઓછીથી વધુ કિંમત",highLow:"વધુથી ઓછી કિંમત",
-addresses:"સરનામાં",payments:"ચુકવણીઓ",coupons:"કૂપન",notifications:"નોટિફિકેશન",
-accessibility:"સુલભતા",loginOtp:"લોગિન / OTP",logout:"લોગઆઉટ",
-productAdded:"પ્રોડક્ટ કાર્ટમાં ઉમેરાયું."
+gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"કાર્ડ ઉમેરો",onlinePrice:"ઓનલાઇન ચુકવણી કુલ",
+codPrice:"COD કુલ",standard:"સ્ટાન્ડર્ડ",fast:"ફાસ્ટ",express:"એક્સપ્રેસ",
+orderPlaced:"ઓર્ડર થયો",confirmed:"કન્ફર્મ",packed:"પેક થયો",shipped:"મોકલાયો",
+outDelivery:"ડિલિવરી માટે નીકળ્યો",delivered:"ડિલિવર થયો",delayed:"વિલંબિત",
+track:"ઓર્ડર ટ્રેક કરો",return:"રિટર્ન",exchange:"એક્સચેન્જ",orderDate:"ઓર્ડરની તારીખ",
+expectedDelivery:"અપેક્ષિત ડિલિવરી",wrongProduct:"ખોટું પ્રોડક્ટ",damaged:"નુકસાનગ્રસ્ત / ખરાબ",
+wrongColorSize:"ખોટો રંગ / સાઇઝ",changeMind:"મન બદલાયું",photoVideo:"ફોટો/વિડિયો ઉમેરો",
+submitReturn:"રિટર્ન મોકલો",submitExchange:"એક્સચેન્જ મોકલો",chooseLanguage:"ભાષા પસંદ કરો",
+languageSaved:"ભાષા સાચવાઈ",close:"બંધ કરો",searchTitle:"શોધ",results:"પરિણામ મળ્યા",
+noResults:"ચોક્કસ પરિણામ મળ્યું નથી",filter:"ફિલ્ટર",sort:"ક્રમ",lowHigh:"ઓછીથી વધુ કિંમત",
+highLow:"વધુથી ઓછી કિંમત",all:"બધું",availableColors:"ઉપलब्ध રંગો",sellerInfo:"વિક્રેતા માહિતી",
+pinHint:"PIN નાખ્યા પછી વાસ્તવિક તારીખ અને ચાર્જ દેખાશે",reviews:"રિવ્યૂ",addresses:"સરનામાં",
+payments:"ચુકવણીઓ",coupons:"કૂપન",returnsRefunds:"રિટર્ન અને રિફંડ",notifications:"નોટિફિકેશન",
+accessibility:"સુલભતા",loginOtp:"લોગિન / OTP",logout:"લોગઆઉટ",continueShopping:"ખરીદી ચાલુ રાખો",
+productAdded:"પ્રોડક્ટ કાર્ટમાં ઉમેરાયું.",registration:"વિક્રેતા નોંધણી",businessName:"વિક્રેતા/વ્યવસાયનું નામ",
+sellerMobile:"મોબાઇલ / ઇમેઇલ",pan:"PAN / લાગુ ઓળખ વિગતો",gst:"GSTIN, જ્યાં લાગુ પડે",
+businessAddress:"વ્યવસાયનું સરનામું",documents:"જરૂરી લાઇસન્સ/દસ્તાવેજો",continue:"ચાલુ રાખો",
+dashboard:"વિક્રેતા ડેશબોર્ડ",stock:"સ્ટોક",variants:"વેરિઅન્ટ",earnings:"કમાણી",
+payouts:"ચુકવણી",verification:"ચકાસણી",vacation:"વેકેશન મોડ",save:"સાચવો",
+realBackend:"વાસ્તવિક ઓર્ડર/ચુકવણી માટે સુરક્ષિત બેકએન્ડ જરૂરી છે."
 },
 Marathi:{
 tagline:"तुमची स्वतःची Shopping जागा ❤️",
+search:"तुम्ही काय शोधत आहात? उदा. Anarkali Suit",
 wishlist:"विशलिस्ट",cart:"कार्ट",orders:"माझ्या ऑर्डर्स",account:"अकाउंट",
-home:"होम",categories:"कॅटेगरी",seller:"विक्रेता",voiceSearch:"व्हॉइस सर्च",
-welcome:"ZipCart मध्ये तुमचे स्वागत आहे ❤️",offers:"आजच्या ऑफर्स",topCategories:"टॉप कॅटेगरी",
-forYou:"तुमच्यासाठी निवडलेले",budget:"कमी बजेटमधील आवडते",newArrivals:"नवीन उत्पादने",
-back:"मागे",listen:"ऐका",products:"उत्पादने",size:"साईज",color:"रंग",
-delivery:"डिलिव्हरी",addCart:"कार्टमध्ये जोडा",buyNow:"आता खरेदी करा",reviewsQA:"रिव्ह्यू आणि प्रश्न",
-wishlistTitle:"माझी विशलिस्ट",cartTitle:"माझा कार्ट",emptyCart:"तुमचा कार्ट रिकामा आहे.",
-remove:"काढा",saveLater:"नंतरसाठी जतन करा",priceDetails:"किंमतीची माहिती",selectedTotal:"निवडलेल्या उत्पादनांची एकूण किंमत",
+home:"होम",categories:"कॅटेगरी",seller:"विक्रेता",voiceSearch:"व्हॉइस सर्च",help:"मदत हवी?",
+groceryQuick:"जलद किराणा डिलिव्हरी",medicines:"औषधे",offers:"आजच्या ऑफर्स",
+offerText:"तुमच्या बजेट आणि आवडीनुसार खरेदी करा",viewSuit:"Anarkali Suit पहा",
+welcome:"ZipCart मध्ये तुमचे स्वागत आहे ❤️",shopLine:"तुमची स्वतःची shopping जागा — पहा → ऐका → समजा → दाबा → खरेदी करा",
+topCategories:"टॉप कॅटेगरी",forYou:"तुमच्यासाठी निवडलेले",budget:"कमी बजेटमधील आवडते",
+newArrivals:"नवीन उत्पादने",addCart:"कार्टमध्ये जोडा",buyNow:"आता खरेदी करा",back:"मागे",
+listen:"ऐका",products:"उत्पादने",size:"साईज",color:"रंग",delivery:"डिलिव्हरी",
+returnExchange:"रिटर्न/एक्सचेंज",reviewsQA:"रिव्ह्यू आणि प्रश्न",wishlistTitle:"माझी विशलिस्ट",
+emptyWishlist:"विशलिस्ट रिकामी आहे. प्रोडक्टवर ❤️ दाबा.",cartTitle:"माझा कार्ट",
+emptyCart:"तुमचा कार्ट रिकामा आहे.",remove:"काढा",saveLater:"नंतरसाठी जतन करा",
+priceDetails:"किंमतीची माहिती",selectedTotal:"निवडलेल्या उत्पादनांची एकूण किंमत",
 deliveryCharge:"डिलिव्हरी",discount:"सवलत",finalTotal:"अंतिम एकूण",checkout:"चेकआउट",
 name:"नाव",mobile:"मोबाईल",address:"पत्ता",pin:"PIN कोड",payment:"पेमेंट",
 placeOrder:"ऑर्डर करा",cod:"कॅश ऑन डिलिव्हरी",codExtra:"COD वर ₹50 अतिरिक्त",
-gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"कार्ड जोडा",track:"ऑर्डर ट्रॅक करा",
-return:"रिटर्न",exchange:"एक्सचेंज",chooseLanguage:"भाषा निवडा",
-close:"बंद करा",filter:"फिल्टर",sort:"क्रम",lowHigh:"कमी ते जास्त किंमत",highLow:"जास्त ते कमी किंमत",
-addresses:"पत्ते",payments:"पेमेंट्स",coupons:"कूपन्स",notifications:"नोटिफिकेशन्स",
-accessibility:"अॅक्सेसिबिलिटी",loginOtp:"लॉगिन / OTP",logout:"लॉगआउट",
-productAdded:"प्रोडक्ट कार्टमध्ये जोडले."
+gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"कार्ड जोडा",onlinePrice:"ऑनलाइन पेमेंट एकूण",
+codPrice:"COD एकूण",standard:"स्टँडर्ड",fast:"फास्ट",express:"एक्सप्रेस",
+orderPlaced:"ऑर्डर दिली",confirmed:"कन्फर्म",packed:"पॅक केले",shipped:"पाठवले",
+outDelivery:"डिलिव्हरीसाठी निघाले",delivered:"डिलिव्हर झाले",delayed:"उशीर झाला",
+track:"ऑर्डर ट्रॅक करा",return:"रिटर्न",exchange:"एक्सचेंज",orderDate:"ऑर्डरची तारीख",
+expectedDelivery:"अपेक्षित डिलिव्हरी",wrongProduct:"चुकीचे उत्पादन",damaged:"नुकसान झालेले / खराब",
+wrongColorSize:"चुकीचा रंग / साईज",changeMind:"मन बदलले",photoVideo:"फोटो/व्हिडिओ जोडा",
+submitReturn:"रिटर्न पाठवा",submitExchange:"एक्सचेंज पाठवा",chooseLanguage:"भाषा निवडा",
+languageSaved:"भाषा जतन झाली",close:"बंद करा",searchTitle:"शोध",results:"परिणाम मिळाले",
+noResults:"अचूक परिणाम मिळाला नाही",filter:"फिल्टर",sort:"क्रम",lowHigh:"कमी ते जास्त किंमत",
+highLow:"जास्त ते कमी किंमत",all:"सर्व",availableColors:"उपलब्ध रंग",sellerInfo:"विक्रेता माहिती",
+pinHint:"PIN टाकल्यावर वास्तविक तारीख आणि चार्ज दिसेल",reviews:"रिव्ह्यू",addresses:"पत्ते",
+payments:"पेमेंट्स",coupons:"कूपन्स",returnsRefunds:"रिटर्न आणि रिफंड",notifications:"नोटिफिकेशन्स",
+accessibility:"अॅक्सेसिबिलिटी",loginOtp:"लॉगिन / OTP",logout:"लॉगआउट",continueShopping:"खरेदी सुरू ठेवा",
+productAdded:"प्रोडक्ट कार्टमध्ये जोडले.",registration:"विक्रेता नोंदणी",businessName:"विक्रेता/व्यवसायाचे नाव",
+sellerMobile:"मोबाईल / ईमेल",pan:"PAN / लागू ओळख तपशील",gst:"GSTIN, जिथे लागू आहे",
+businessAddress:"व्यवसायाचा पत्ता",documents:"आवश्यक परवाने/कागदपत्रे",continue:"पुढे जा",
+dashboard:"विक्रेता डॅशबोर्ड",stock:"स्टॉक",variants:"व्हेरिएंट्स",earnings:"कमाई",
+payouts:"पेआउट्स",verification:"पडताळणी",vacation:"व्हेकेशन मोड",save:"जतन करा",
+realBackend:"वास्तविक ऑर्डर/पेमेंटसाठी सुरक्षित बॅकएंड आवश्यक आहे."
 },
 Bengali:{
 tagline:"আপনার নিজের Shopping জায়গা ❤️",
+search:"আপনি কী খুঁজছেন? যেমন Anarkali Suit",
 wishlist:"উইশলিস্ট",cart:"কার্ট",orders:"আমার অর্ডার",account:"অ্যাকাউন্ট",
-home:"হোম",categories:"ক্যাটেগরি",seller:"বিক্রেতা",voiceSearch:"ভয়েস সার্চ",
-welcome:"ZipCart-এ আপনাকে স্বাগতম ❤️",offers:"আজকের অফার",topCategories:"টপ ক্যাটেগরি",
-forYou:"আপনার জন্য বাছাই করা",budget:"কম বাজেটের জনপ্রিয়",newArrivals:"নতুন পণ্য",
-back:"পিছনে",listen:"শুনুন",products:"পণ্য",size:"সাইজ",color:"রং",
-delivery:"ডেলিভারি",addCart:"কার্টে যোগ করুন",buyNow:"এখনই কিনুন",reviewsQA:"রিভিউ ও প্রশ্ন",
-wishlistTitle:"আমার উইশলিস্ট",cartTitle:"আমার কার্ট",emptyCart:"আপনার কার্ট খালি।",
-remove:"মুছে ফেলুন",saveLater:"পরে রাখুন",priceDetails:"দামের বিবরণ",selectedTotal:"নির্বাচিত পণ্যের মোট",
+home:"হোম",categories:"ক্যাটেগরি",seller:"বিক্রেতা",voiceSearch:"ভয়েস সার্চ",help:"সাহায্য দরকার?",
+groceryQuick:"দ্রুত গ্রোসারি ডেলিভারি",medicines:"ওষুধ",offers:"আজকের অফার",
+offerText:"আপনার বাজেট ও পছন্দ অনুযায়ী কেনাকাটা করুন",viewSuit:"Anarkali Suit দেখুন",
+welcome:"ZipCart-এ আপনাকে স্বাগতম ❤️",shopLine:"আপনার নিজের shopping জায়গা — দেখুন → শুনুন → বুঝুন → চাপুন → কিনুন",
+topCategories:"টপ ক্যাটেগরি",forYou:"আপনার জন্য বাছাই করা",budget:"কম বাজেটের জনপ্রিয়",
+newArrivals:"নতুন পণ্য",addCart:"কার্টে যোগ করুন",buyNow:"এখনই কিনুন",back:"পিছনে",
+listen:"শুনুন",products:"পণ্য",size:"সাইজ",color:"রং",delivery:"ডেলিভারি",
+returnExchange:"রিটার্ন/এক্সচেঞ্জ",reviewsQA:"রিভিউ ও প্রশ্ন",wishlistTitle:"আমার উইশলিস্ট",
+emptyWishlist:"উইশলিস্ট খালি। কোনো পণ্যে ❤️ চাপুন।",cartTitle:"আমার কার্ট",
+emptyCart:"আপনার কার্ট খালি।",remove:"মুছে ফেলুন",saveLater:"পরে রাখুন",
+priceDetails:"দামের বিবরণ",selectedTotal:"নির্বাচিত পণ্যের মোট",
 deliveryCharge:"ডেলিভারি",discount:"ডিসকাউন্ট",finalTotal:"চূড়ান্ত মোট",checkout:"চেকআউট",
 name:"নাম",mobile:"মোবাইল",address:"ঠিকানা",pin:"PIN কোড",payment:"পেমেন্ট",
 placeOrder:"অর্ডার করুন",cod:"ক্যাশ অন ডেলিভারি",codExtra:"COD-তে ₹50 অতিরিক্ত",
-gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"কার্ড যোগ করুন",track:"অর্ডার ট্র্যাক করুন",
-return:"রিটার্ন",exchange:"এক্সচেঞ্জ",chooseLanguage:"ভাষা নির্বাচন করুন",
-close:"বন্ধ করুন",filter:"ফিল্টার",sort:"সাজান",lowHigh:"কম থেকে বেশি দাম",highLow:"বেশি থেকে কম দাম",
-addresses:"ঠিকানা",payments:"পেমেন্ট",coupons:"কুপন",notifications:"নোটিফিকেশন",
-accessibility:"অ্যাক্সেসিবিলিটি",loginOtp:"লগইন / OTP",logout:"লগআউট",
-productAdded:"পণ্য কার্টে যোগ হয়েছে।"
+gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"কার্ড যোগ করুন",onlinePrice:"অনলাইন পেমেন্ট মোট",
+codPrice:"COD মোট",standard:"স্ট্যান্ডার্ড",fast:"ফাস্ট",express:"এক্সপ্রেস",
+orderPlaced:"অর্ডার করা হয়েছে",confirmed:"নিশ্চিত",packed:"প্যাক করা হয়েছে",shipped:"পাঠানো হয়েছে",
+outDelivery:"ডেলিভারির জন্য বেরিয়েছে",delivered:"ডেলিভার হয়েছে",delayed:"দেরি হয়েছে",
+track:"অর্ডার ট্র্যাক করুন",return:"রিটার্ন",exchange:"এক্সচেঞ্জ",orderDate:"অর্ডারের তারিখ",
+expectedDelivery:"সম্ভাব্য ডেলিভারি",wrongProduct:"ভুল পণ্য",damaged:"ক্ষতিগ্রস্ত / ত্রুটিপূর্ণ",
+wrongColorSize:"ভুল রং / সাইজ",changeMind:"মত পরিবর্তন",photoVideo:"ফটো/ভিডিও যোগ করুন",
+submitReturn:"রিটার্ন পাঠান",submitExchange:"এক্সচেঞ্জ পাঠান",chooseLanguage:"ভাষা নির্বাচন করুন",
+languageSaved:"ভাষা সংরক্ষিত হয়েছে",close:"বন্ধ করুন",searchTitle:"সার্চ",results:"টি ফলাফল",
+noResults:"কোনো সঠিক ফলাফল পাওয়া যায়নি",filter:"ফিল্টার",sort:"সাজান",lowHigh:"কম থেকে বেশি দাম",
+highLow:"বেশি থেকে কম দাম",all:"সব",availableColors:"উপलब्ध রং",sellerInfo:"বিক্রেতার তথ্য",
+pinHint:"PIN দিলে আসল ডেলিভারি তারিখ ও চার্জ দেখা যাবে",reviews:"রিভিউ",addresses:"ঠিকানা",
+payments:"পেমেন্ট",coupons:"কুপন",returnsRefunds:"রিটার্ন ও রিফান্ড",notifications:"নোটিফিকেশন",
+accessibility:"অ্যাক্সেসিবিলিটি",loginOtp:"লগইন / OTP",logout:"লগআউট",continueShopping:"কেনাকাটা চালিয়ে যান",
+productAdded:"পণ্য কার্টে যোগ হয়েছে।",registration:"বিক্রেতা রেজিস্ট্রেশন",businessName:"বিক্রেতা/ব্যবসার নাম",
+sellerMobile:"মোবাইল / ইমেল",pan:"PAN / প্রযোজ্য পরিচয় তথ্য",gst:"GSTIN, যেখানে প্রযোজ্য",
+businessAddress:"ব্যবসার ঠিকানা",documents:"প্রয়োজনীয় লাইসেন্স/নথি",continue:"চালিয়ে যান",
+dashboard:"বিক্রেতা ড্যাশবোর্ড",stock:"স্টক",variants:"ভ্যারিয়েন্ট",earnings:"আয়",
+payouts:"পেআউট",verification:"ভেরিফিকেশন",vacation:"ভ্যাকেশন মোড",save:"সংরক্ষণ করুন",
+realBackend:"বাস্তব অর্ডার/পেমেন্টের জন্য নিরাপদ ব্যাকএন্ড প্রয়োজন।"
 },
 Tamil:{
 tagline:"உங்கள் சொந்த Shopping இடம் ❤️",
 wishlist:"விருப்பப்பட்டியல்",cart:"கார்ட்",orders:"என் ஆர்டர்கள்",account:"கணக்கு",
-home:"முகப்பு",categories:"வகைகள்",seller:"விற்பனையாளர்",voiceSearch:"குரல் தேடல்",
+home:"முகப்பு",categories:"வகைகள்",seller:"விற்பனையாளர்",voiceSearch:"குரல் தேடல்",help:"உதவி தேவையா?",
 welcome:"ZipCart-க்கு வரவேற்கிறோம் ❤️",offers:"இன்றைய சலுகைகள்",topCategories:"முக்கிய வகைகள்",
 forYou:"உங்களுக்காக தேர்வு",budget:"குறைந்த பட்ஜெட்டில் பிரபலமானவை",newArrivals:"புதிய வரவுகள்",
 back:"பின்செல்",listen:"கேளுங்கள்",products:"தயாரிப்புகள்",size:"அளவு",color:"நிறம்",
@@ -745,15 +816,16 @@ productAdded:"தயாரிப்பு கார்ட்டில் சே�
 },
 Telugu:{
 tagline:"మీ స్వంత Shopping స్థలం ❤️",wishlist:"విష్‌లిస్ట్",cart:"కార్ట్",orders:"నా ఆర్డర్లు",account:"ఖాతా",
-home:"హోమ్",categories:"కేటగిరీలు",seller:"విక్రేత",voiceSearch:"వాయిస్ సెర్చ్",welcome:"ZipCart కు స్వాగతం ❤️",
-offers:"ఈరోజు ఆఫర్లు",topCategories:"టాప్ కేటగిరీలు",forYou:"మీ కోసం ఎంపిక",budget:"తక్కువ బడ్జెట్‌లో ప్రసిద్ధమైనవి",
-newArrivals:"కొత్త ఉత్పత్తులు",back:"వెనుకకు",listen:"వినండి",products:"ఉత్పత్తులు",size:"సైజు",color:"రంగు",
-delivery:"డెలివరీ",addCart:"కార్ట్‌లో చేర్చండి",buyNow:"ఇప్పుడే కొనండి",reviewsQA:"రివ్యూలు & ప్రశ్నలు",
-wishlistTitle:"నా విష్‌లిస్ట్",cartTitle:"నా కార్ట్",emptyCart:"మీ కార్ట్ ఖాళీగా ఉంది",remove:"తొలగించు",
-saveLater:"తర్వాత సేవ్ చేయండి",priceDetails:"ధర వివరాలు",selectedTotal:"ఎంచుకున్న మొత్తం",deliveryCharge:"డెలివరీ",
-discount:"డిస్కౌంట్",finalTotal:"చివరి మొత్తం",checkout:"చెక్‌అవుట్",name:"పేరు",mobile:"మొబైల్",address:"చిరునామా",
-pin:"PIN కోడ్",payment:"చెల్లింపు",placeOrder:"ఆర్డర్ చేయండి",cod:"క్యాష్ ఆన్ డెలివరీ",codExtra:"CODపై ₹50 అదనం",
-gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"కార్డ్ జోడించండి",track:"ఆర్డర్ ట్రాక్ చేయండి",return:"రిటర్న్",
+home:"హోమ్",categories:"కేటగిరీలు",seller:"విక్రేత",voiceSearch:"వాయిస్ సెర్చ్",help:"సహాయం కావాలా?",
+welcome:"ZipCart కు స్వాగతం ❤️",offers:"ఈరోజు ఆఫర్లు",topCategories:"టాప్ కేటగిరీలు",forYou:"మీ కోసం ఎంపిక",
+budget:"తక్కువ బడ్జెట్‌లో ప్రసిద్ధమైనవి",newArrivals:"కొత్త ఉత్పత్తులు",back:"వెనుకకు",listen:"వినండి",
+products:"ఉత్పత్తులు",size:"సైజు",color:"రంగు",delivery:"డెలివరీ",addCart:"కార్ట్‌లో చేర్చండి",
+buyNow:"ఇప్పుడే కొనండి",reviewsQA:"రివ్యూలు & ప్రశ్నలు",wishlistTitle:"నా విష్‌లిస్ట్",cartTitle:"నా కార్ట్",
+emptyCart:"మీ కార్ట్ ఖాళీగా ఉంది",remove:"తొలగించు",saveLater:"తర్వాత సేవ్ చేయండి",priceDetails:"ధర వివరాలు",
+selectedTotal:"ఎంచుకున్న మొత్తం",deliveryCharge:"డెలివరీ",discount:"డిస్కౌంట్",finalTotal:"చివరి మొత్తం",
+checkout:"చెక్‌అవుట్",name:"పేరు",mobile:"మొబైల్",address:"చిరునామా",pin:"PIN కోడ్",payment:"చెల్లింపు",
+placeOrder:"ఆర్డర్ చేయండి",cod:"క్యాష్ ఆన్ డెలివరీ",codExtra:"CODపై ₹50 అదనం",gpay:"GPay",
+phonepe:"PhonePe",upi:"UPI",addCard:"కార్డ్ జోడించండి",track:"ఆర్డర్ ట్రాక్ చేయండి",return:"రిటర్న్",
 exchange:"ఎక్స్చేంజ్",chooseLanguage:"భాషను ఎంచుకోండి",close:"మూసివేయండి",filter:"ఫిల్టర్",sort:"క్రమం",
 lowHigh:"తక్కువ నుండి ఎక్కువ ధర",highLow:"ఎక్కువ నుండి తక్కువ ధర",addresses:"చిరునామాలు",payments:"చెల్లింపులు",
 coupons:"కూపన్లు",notifications:"నోటిఫికేషన్లు",accessibility:"అందుబాటు",loginOtp:"లాగిన్ / OTP",logout:"లాగౌట్",
@@ -761,143 +833,151 @@ productAdded:"ఉత్పత్తి కార్ట్‌లో చేర్�
 },
 Kannada:{
 tagline:"ನಿಮ್ಮದೇ Shopping ಸ್ಥಳ ❤️",wishlist:"ವಿಶ್‌ಲಿಸ್ಟ್",cart:"ಕಾರ್ಟ್",orders:"ನನ್ನ ಆರ್ಡರ್‌ಗಳು",account:"ಖಾತೆ",
-home:"ಮುಖಪುಟ",categories:"ವರ್ಗಗಳು",seller:"ಮಾರಾಟಗಾರ",voiceSearch:"ವಾಯ್ಸ್ ಸರ್ಚ್",welcome:"ZipCart ಗೆ ಸ್ವಾಗತ ❤️",
-offers:"ಇಂದಿನ ಆಫರ್‌ಗಳು",topCategories:"ಮುಖ್ಯ ವರ್ಗಗಳು",forYou:"ನಿಮಗಾಗಿ ಆಯ್ಕೆ",budget:"ಕಡಿಮೆ ಬಜೆಟ್‌ನ ಜನಪ್ರಿಯ ಉತ್ಪನ್ನಗಳು",
-newArrivals:"ಹೊಸ ಉತ್ಪನ್ನಗಳು",back:"ಹಿಂದೆ",listen:"ಕೇಳಿ",products:"ಉತ್ಪನ್ನಗಳು",size:"ಗಾತ್ರ",color:"ಬಣ್ಣ",
-delivery:"ಡೆಲಿವರಿ",addCart:"ಕಾರ್ಟ್‌ಗೆ ಸೇರಿಸಿ",buyNow:"ಈಗ ಖರೀದಿಸಿ",reviewsQA:"ವಿಮರ್ಶೆಗಳು ಮತ್ತು ಪ್ರಶ್ನೆಗಳು",
-wishlistTitle:"ನನ್ನ ವಿಶ್‌ಲಿಸ್ಟ್",cartTitle:"ನನ್ನ ಕಾರ್ಟ್",emptyCart:"ನಿಮ್ಮ ಕಾರ್ಟ್ ಖಾಲಿಯಾಗಿದೆ",remove:"ತೆಗೆದುಹಾಕಿ",
-saveLater:"ನಂತರ ಉಳಿಸಿ",priceDetails:"ಬೆಲೆ ವಿವರಗಳು",selectedTotal:"ಆಯ್ದ ಒಟ್ಟು",deliveryCharge:"ಡೆಲಿವರಿ",
-discount:"ರಿಯಾಯಿತಿ",finalTotal:"ಅಂತಿಮ ಒಟ್ಟು",checkout:"ಚೆಕ್‌ಔಟ್",name:"ಹೆಸರು",mobile:"ಮೊಬೈಲ್",address:"ವಿಳಾಸ",
-pin:"PIN ಕೋಡ್",payment:"ಪಾವತಿ",placeOrder:"ಆರ್ಡರ್ ಮಾಡಿ",cod:"ಕ್ಯಾಶ್ ಆನ್ ಡೆಲಿವರಿ",codExtra:"COD ಮೇಲೆ ₹50 ಹೆಚ್ಚುವರಿ",
-gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"ಕಾರ್ಡ್ ಸೇರಿಸಿ",track:"ಆರ್ಡರ್ ಟ್ರ್ಯಾಕ್ ಮಾಡಿ",return:"ರಿಟರ್ನ್",
+home:"ಮುಖಪುಟ",categories:"ವರ್ಗಗಳು",seller:"ಮಾರಾಟಗಾರ",voiceSearch:"ವಾಯ್ಸ್ ಸರ್ಚ್",help:"ಸಹಾಯ ಬೇಕೇ?",
+welcome:"ZipCart ಗೆ ಸ್ವಾಗತ ❤️",offers:"ಇಂದಿನ ಆಫರ್‌ಗಳು",topCategories:"ಮುಖ್ಯ ವರ್ಗಗಳು",forYou:"ನಿಮಗಾಗಿ ಆಯ್ಕೆ",
+budget:"ಕಡಿಮೆ ಬಜೆಟ್‌ನ ಜನಪ್ರಿಯ ಉತ್ಪನ್ನಗಳು",newArrivals:"ಹೊಸ ಉತ್ಪನ್ನಗಳು",back:"ಹಿಂದೆ",listen:"ಕೇಳಿ",
+products:"ಉತ್ಪನ್ನಗಳು",size:"ಗಾತ್ರ",color:"ಬಣ್ಣ",delivery:"ಡೆಲಿವರಿ",addCart:"ಕಾರ್ಟ್‌ಗೆ ಸೇರಿಸಿ",
+buyNow:"ಈಗ ಖರೀದಿಸಿ",reviewsQA:"ವಿಮರ್ಶೆಗಳು ಮತ್ತು ಪ್ರಶ್ನೆಗಳು",wishlistTitle:"ನನ್ನ ವಿಶ್‌ಲಿಸ್ಟ್",cartTitle:"ನನ್ನ ಕಾರ್ಟ್",
+emptyCart:"ನಿಮ್ಮ ಕಾರ್ಟ್ ಖಾಲಿಯಾಗಿದೆ",remove:"ತೆಗೆದುಹಾಕಿ",saveLater:"ನಂತರ ಉಳಿಸಿ",priceDetails:"ಬೆಲೆ ವಿವರಗಳು",
+selectedTotal:"ಆಯ್ದ ಒಟ್ಟು",deliveryCharge:"ಡೆಲಿವರಿ",discount:"ರಿಯಾಯಿತಿ",finalTotal:"ಅಂತಿಮ ಒಟ್ಟು",
+checkout:"ಚೆಕ್‌ಔಟ್",name:"ಹೆಸರು",mobile:"ಮೊಬೈಲ್",address:"ವಿಳಾಸ",pin:"PIN ಕೋಡ್",payment:"ಪಾವತಿ",
+placeOrder:"ಆರ್ಡರ್ ಮಾಡಿ",cod:"ಕ್ಯಾಶ್ ಆನ್ ಡೆಲಿವರಿ",codExtra:"COD ಮೇಲೆ ₹50 ಹೆಚ್ಚುವರಿ",gpay:"GPay",
+phonepe:"PhonePe",upi:"UPI",addCard:"ಕಾರ್ಡ್ ಸೇರಿಸಿ",track:"ಆರ್ಡರ್ ಟ್ರ್ಯಾಕ್ ಮಾಡಿ",return:"ರಿಟರ್ನ್",
 exchange:"ಎಕ್ಸ್‌ಚೇಂಜ್",chooseLanguage:"ಭಾಷೆ ಆಯ್ಕೆಮಾಡಿ",close:"ಮುಚ್ಚಿ",filter:"ಫಿಲ್ಟರ್",sort:"ಕ್ರಮ",
 lowHigh:"ಕಡಿಮೆ ಬೆಲೆಯಿಂದ ಹೆಚ್ಚು",highLow:"ಹೆಚ್ಚಿನಿಂದ ಕಡಿಮೆ ಬೆಲೆ",addresses:"ವಿಳಾಸಗಳು",payments:"ಪಾವತಿಗಳು",
-coupons:"ಕೂಪನ್‌ಗಳು",notifications:"ಅಧಿಸೂಚನೆಗಳು",accessibility:"ಪ್ರವೇಶಸಾಧ್ಯತೆ",loginOtp:"ಲಾಗಿನ್ / OTP",logout:"ಲಾಗೌಟ್",
-productAdded:"ಉತ್ಪನ್ನವನ್ನು ಕಾರ್ಟ್‌ಗೆ ಸೇರಿಸಲಾಗಿದೆ."
+coupons:"ಕೂಪನ್‌ಗಳು",notifications:"ಅಧಿಸೂಚನೆಗಳು",accessibility:"ಪ್ರವೇಶಸಾಧ್ಯತೆ",loginOtp:"ಲಾಗಿನ್ / OTP",
+logout:"ಲಾಗ್‌ಔಟ್",productAdded:"ಉತ್ಪನ್ನವನ್ನು ಕಾರ್ಟ್‌ಗೆ ಸೇರಿಸಲಾಗಿದೆ."
 },
 Malayalam:{
 tagline:"നിങ്ങളുടെ സ്വന്തം Shopping സ്ഥലം ❤️",wishlist:"വിഷ്‌ലിസ്റ്റ്",cart:"കാർട്ട്",orders:"എന്റെ ഓർഡറുകൾ",account:"അക്കൗണ്ട്",
-home:"ഹോം",categories:"വിഭാഗങ്ങൾ",seller:"വിൽപ്പനക്കാരൻ",voiceSearch:"വോയ്സ് സെർച്ച്",welcome:"ZipCart-ലേക്ക് സ്വാഗതം ❤️",
-offers:"ഇന്നത്തെ ഓഫറുകൾ",topCategories:"പ്രധാന വിഭാഗങ്ങൾ",forYou:"നിങ്ങൾക്കായി തിരഞ്ഞെടുത്തത്",budget:"കുറഞ്ഞ ബജറ്റിലെ ജനപ്രിയം",
-newArrivals:"പുതിയ ഉൽപ്പന്നങ്ങൾ",back:"തിരികെ",listen:"കേൾക്കുക",products:"ഉൽപ്പന്നങ്ങൾ",size:"സൈസ്",color:"നിറം",
-delivery:"ഡെലിവറി",addCart:"കാർട്ടിലേക്ക് ചേർക്കുക",buyNow:"ഇപ്പോൾ വാങ്ങുക",reviewsQA:"റിവ്യൂ & ചോദ്യങ്ങൾ",
-wishlistTitle:"എന്റെ വിഷ്‌ലിസ്റ്റ്",cartTitle:"എന്റെ കാർട്ട്",emptyCart:"നിങ്ങളുടെ കാർട്ട് ശൂന്യമാണ്",remove:"നീക്കം ചെയ്യുക",
-saveLater:"പിന്നീട് സംരക്ഷിക്കുക",priceDetails:"വില വിവരങ്ങൾ",selectedTotal:"തിരഞ്ഞെടുത്ത മൊത്തം",deliveryCharge:"ഡെലിവറി",
-discount:"ഡിസ്കൗണ്ട്",finalTotal:"അന്തിമ മൊത്തം",checkout:"ചെക്ക്ഔട്ട്",name:"പേര്",mobile:"മൊബൈൽ",address:"വിലാസം",
+home:"ഹോം",categories:"വിഭാഗങ്ങൾ",seller:"വിൽപ്പനക്കാരൻ",voiceSearch:"വോയ്സ് സെർച്ച്",help:"സഹായം ആവശ്യമുണ്ടോ?",
+welcome:"ZipCart-ലേക്ക് സ്വാഗതം ❤️",offers:"ഇന്നത്തെ ഓഫറുകൾ",topCategories:"പ്രധാന വിഭാഗങ്ങൾ",
+forYou:"നിങ്ങൾക്കായി തിരഞ്ഞെടുത്തത്",budget:"കുറഞ്ഞ ബജറ്റിലെ ജനപ്രിയം",newArrivals:"പുതിയ ഉൽപ്പന്നങ്ങൾ",
+back:"തിരികെ",listen:"കേൾക്കുക",products:"ഉൽപ്പന്നങ്ങൾ",size:"സൈസ്",color:"നിറം",delivery:"ഡെലിവറി",
+addCart:"കാർട്ടിലേക്ക് ചേർക്കുക",buyNow:"ഇപ്പോൾ വാങ്ങുക",reviewsQA:"റിവ്യൂ & ചോദ്യങ്ങൾ",wishlistTitle:"എന്റെ വിഷ്‌ലിസ്റ്റ്",
+cartTitle:"എന്റെ കാർട്ട്",emptyCart:"നിങ്ങളുടെ കാർട്ട് ശൂന്യമാണ്",remove:"നീക്കം ചെയ്യുക",saveLater:"പിന്നീട് സംരക്ഷിക്കുക",
+priceDetails:"വില വിവരങ്ങൾ",selectedTotal:"തിരഞ്ഞെടുത്ത മൊത്തം",deliveryCharge:"ഡെലിവറി",discount:"ഡിസ്കൗണ്ട്",
+finalTotal:"അന്തിമ മൊത്തം",checkout:"ചെക്ക്ഔട്ട്",name:"പേര്",mobile:"മൊബൈൽ",address:"വിലാസം",
 pin:"PIN കോഡ്",payment:"പേയ്മെന്റ്",placeOrder:"ഓർഡർ ചെയ്യുക",cod:"ക്യാഷ് ഓൺ ഡെലിവറി",codExtra:"COD-ന് ₹50 അധികം",
 gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"കാർഡ് ചേർക്കുക",track:"ഓർഡർ ട്രാക്ക് ചെയ്യുക",return:"റിട്ടേൺ",
 exchange:"എക്സ്ചേഞ്ച്",chooseLanguage:"ഭാഷ തിരഞ്ഞെടുക്കുക",close:"അടയ്ക്കുക",filter:"ഫിൽട്ടർ",sort:"ക്രമം",
 lowHigh:"കുറഞ്ഞ വില മുതൽ",highLow:"കൂടിയ വില മുതൽ",addresses:"വിലാസങ്ങൾ",payments:"പേയ്മെന്റുകൾ",
-coupons:"കൂപ്പണുകൾ",notifications:"അറിയിപ്പുകൾ",accessibility:"ആക്സസിബিলিറ്റി",loginOtp:"ലോഗിൻ / OTP",logout:"ലോഗൗട്ട്",
-productAdded:"ഉൽപ്പന്നം കാർട്ടിൽ ചേർത്തു."
+coupons:"കൂപ്പണുകൾ",notifications:"അറിയിപ്പുകൾ",accessibility:"ആക്സസിബিলিটি",loginOtp:"ലോഗിൻ / OTP",
+logout:"ലോഗൗട്ട്",productAdded:"ഉൽപ്പന്നം കാർട്ടിൽ ചേർത്തു."
 },
 Punjabi:{
 tagline:"ਤੁਹਾਡੀ ਆਪਣੀ Shopping ਜਗ੍ਹਾ ❤️",wishlist:"ਵਿਸ਼ਲਿਸਟ",cart:"ਕਾਰਟ",orders:"ਮੇਰੇ ਆਰਡਰ",account:"ਅਕਾਊਂਟ",
-home:"ਹੋਮ",categories:"ਕੈਟੇਗਰੀਆਂ",seller:"ਵਿਕਰੇਤਾ",voiceSearch:"ਵੌਇਸ ਸਰਚ",welcome:"ZipCart ਵਿੱਚ ਤੁਹਾਡਾ ਸਵਾਗਤ ਹੈ ❤️",
-offers:"ਅੱਜ ਦੀਆਂ ਆਫ਼ਰਾਂ",topCategories:"ਮੁੱਖ ਕੈਟੇਗਰੀਆਂ",forYou:"ਤੁਹਾਡੇ ਲਈ ਚੁਣਿਆ",budget:"ਘੱਟ ਬਜਟ ਵਿੱਚ ਲੋਕਪ੍ਰਿਯ",
-newArrivals:"ਨਵੇਂ ਉਤਪਾਦ",back:"ਵਾਪਸ",listen:"ਸੁਣੋ",products:"ਉਤਪਾਦ",size:"ਸਾਈਜ਼",color:"ਰੰਗ",delivery:"ਡਿਲਿਵਰੀ",
-addCart:"ਕਾਰਟ ਵਿੱਚ ਜੋੜੋ",buyNow:"ਹੁਣੇ ਖਰੀਦੋ",reviewsQA:"ਰੀਵਿਊ ਅਤੇ ਸਵਾਲ",wishlistTitle:"ਮੇਰੀ ਵਿਸ਼ਲਿਸਟ",
-cartTitle:"ਮੇਰਾ ਕਾਰਟ",emptyCart:"ਤੁਹਾਡਾ ਕਾਰਟ ਖਾਲੀ ਹੈ",remove:"ਹਟਾਓ",saveLater:"ਬਾਅਦ ਲਈ ਸੇਵ ਕਰੋ",
-priceDetails:"ਕੀਮਤ ਵੇਰਵੇ",selectedTotal:"ਚੁਣਿਆ ਕੁੱਲ",deliveryCharge:"ਡਿਲਿਵਰੀ",discount:"ਛੂਟ",finalTotal:"ਅੰਤਿਮ ਕੁੱਲ",
-checkout:"ਚੈਕਆਉਟ",name:"ਨਾਮ",mobile:"ਮੋਬਾਈਲ",address:"ਪਤਾ",pin:"PIN ਕੋਡ",payment:"ਭੁਗਤਾਨ",placeOrder:"ਆਰਡਰ ਕਰੋ",
-cod:"ਕੈਸ਼ ਆਨ ਡਿਲਿਵਰੀ",codExtra:"COD ਤੇ ₹50 ਵਾਧੂ",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"ਕਾਰਡ ਜੋੜੋ",
-track:"ਆਰਡਰ ਟ੍ਰੈਕ ਕਰੋ",return:"ਰਿਟਰਨ",exchange:"ਐਕਸਚੇਂਜ",chooseLanguage:"ਭਾਸ਼ਾ ਚੁਣੋ",close:"ਬੰਦ ਕਰੋ",
-filter:"ਫਿਲਟਰ",sort:"ਕ੍ਰਮ",lowHigh:"ਘੱਟ ਤੋਂ ਵੱਧ ਕੀਮਤ",highLow:"ਵੱਧ ਤੋਂ ਘੱਟ ਕੀਮਤ",addresses:"ਪਤੇ",
-payments:"ਭੁਗਤਾਨ",coupons:"ਕੂਪਨ",notifications:"ਨੋਟੀਫਿਕੇਸ਼ਨ",accessibility:"ਸਹੂਲਤ",loginOtp:"ਲੌਗਇਨ / OTP",
+home:"ਹੋਮ",categories:"ਕੈਟੇਗਰੀਆਂ",seller:"ਵਿਕਰੇਤਾ",voiceSearch:"ਵੌਇਸ ਸਰਚ",help:"ਮਦਦ ਚਾਹੀਦੀ ਹੈ?",
+welcome:"ZipCart ਵਿੱਚ ਤੁਹਾਡਾ ਸਵਾਗਤ ਹੈ ❤️",offers:"ਅੱਜ ਦੀਆਂ ਆਫ਼ਰਾਂ",topCategories:"ਮੁੱਖ ਕੈਟੇਗਰੀਆਂ",
+forYou:"ਤੁਹਾਡੇ ਲਈ ਚੁਣਿਆ",budget:"ਘੱਟ ਬਜਟ ਵਿੱਚ ਲੋਕਪ੍ਰਿਯ",newArrivals:"ਨਵੇਂ ਉਤਪਾਦ",back:"ਵਾਪਸ",
+listen:"ਸੁਣੋ",products:"ਉਤਪਾਦ",size:"ਸਾਈਜ਼",color:"ਰੰਗ",delivery:"ਡਿਲਿਵਰੀ",addCart:"ਕਾਰਟ ਵਿੱਚ ਜੋੜੋ",
+buyNow:"ਹੁਣੇ ਖਰੀਦੋ",reviewsQA:"ਰੀਵਿਊ ਅਤੇ ਸਵਾਲ",wishlistTitle:"ਮੇਰੀ ਵਿਸ਼ਲਿਸਟ",cartTitle:"ਮੇਰਾ ਕਾਰਟ",
+emptyCart:"ਤੁਹਾਡਾ ਕਾਰਟ ਖਾਲੀ ਹੈ",remove:"ਹਟਾਓ",saveLater:"ਬਾਅਦ ਲਈ ਸੇਵ ਕਰੋ",priceDetails:"ਕੀਮਤ ਵੇਰਵੇ",
+selectedTotal:"ਚੁਣਿਆ ਕੁੱਲ",deliveryCharge:"ਡਿਲਿਵਰੀ",discount:"ਛੂਟ",finalTotal:"ਅੰਤਿਮ ਕੁੱਲ",
+checkout:"ਚੈਕਆਉਟ",name:"ਨਾਮ",mobile:"ਮੋਬਾਈਲ",address:"ਪਤਾ",pin:"PIN ਕੋਡ",payment:"ਭੁਗਤਾਨ",
+placeOrder:"ਆਰਡਰ ਕਰੋ",cod:"ਕੈਸ਼ ਆन ਡਿਲਿਵਰੀ",codExtra:"COD ਤੇ ₹50 ਵਾਧੂ",gpay:"GPay",
+phonepe:"PhonePe",upi:"UPI",addCard:"ਕਾਰਡ ਜੋੜੋ",track:"ਆਰਡਰ ਟ੍ਰੈਕ ਕਰੋ",return:"ਰਿਟਰਨ",
+exchange:"ਐਕਸਚੇਂਜ",chooseLanguage:"ਭਾਸ਼ਾ ਚੁਣੋ",close:"ਬੰਦ ਕਰੋ",filter:"ਫਿਲਟਰ",sort:"ਕ੍ਰਮ",
+lowHigh:"ਘੱਟ ਤੋਂ ਵੱਧ ਕੀਮਤ",highLow:"ਵੱਧ ਤੋਂ ਘੱਟ ਕੀਮਤ",addresses:"ਪਤੇ",payments:"ਭੁਗਤਾਨ",
+coupons:"ਕੂਪਨ",notifications:"ਨੋਟੀਫਿਕੇਸ਼ਨ",accessibility:"ਸਹੂਲਤ",loginOtp:"ਲੌਗਇਨ / OTP",
 logout:"ਲੌਗਆਉਟ",productAdded:"ਉਤਪਾਦ ਕਾਰਟ ਵਿੱਚ ਜੋੜਿਆ ਗਿਆ।"
 },
 Odia:{
 tagline:"ଆପଣଙ୍କ ନିଜ Shopping ସ୍ଥାନ ❤️",wishlist:"ଇଚ୍ଛା ତାଲିକା",cart:"କାର୍ଟ",orders:"ମୋ ଅର୍ଡର",account:"ଆକାଉଣ୍ଟ",
-home:"ହୋମ",categories:"କ୍ୟାଟେଗୋରୀ",seller:"ବିକ୍ରେତା",voiceSearch:"ଭଏସ୍ ସର୍ଚ୍ଚ",welcome:"ZipCart କୁ ସ୍ୱାଗତ ❤️",
-offers:"ଆଜିର ଅଫର୍",topCategories:"ମୁଖ୍ୟ କ୍ୟାଟେଗୋରୀ",forYou:"ଆପଣଙ୍କ ପାଇଁ ଚୟନ",budget:"କମ୍ ବଜେଟରେ ଲୋକପ୍ରିୟ",
-newArrivals:"ନୂଆ ଉତ୍ପାଦ",back:"ପଛକୁ",listen:"ଶୁଣନ୍ତୁ",products:"ଉତ୍ପାଦ",size:"ସାଇଜ୍",color:"ରଙ୍ଗ",
-delivery:"ଡେଲିଭରୀ",addCart:"କାର୍ଟରେ ଯୋଡନ୍ତୁ",buyNow:"ବର୍ତ୍ତମାନ କିଣନ୍ତୁ",reviewsQA:"ରିଭ୍ୟୁ ଏବଂ ପ୍ରଶ୍ନ",
-wishlistTitle:"ମୋ ଇଚ୍ଛା ତାଲିକା",cartTitle:"ମୋ କାର୍ଟ",emptyCart:"ଆପଣଙ୍କ କାର୍ଟ ଖାଲି ଅଛି",remove:"ହଟାନ୍ତୁ",
-saveLater:"ପରେ ସେଭ୍ କରନ୍ତୁ",priceDetails:"ମୂଲ୍ୟ ବିବରଣୀ",selectedTotal:"ଚୟନିତ ମୋଟ",deliveryCharge:"ଡେଲିଭରୀ",
-discount:"ଛାଡ",finalTotal:"ଅନ୍ତିମ ମୋଟ",checkout:"ଚେକଆଉଟ୍",name:"ନାମ",mobile:"ମୋବାଇଲ୍",address:"ଠିକଣା",
-pin:"PIN କୋଡ୍",payment:"ପେମେଣ୍ଟ",placeOrder:"ଅର୍ଡର କରନ୍ତୁ",cod:"କ୍ୟାଶ୍ ଅନ୍ ଡେଲିଭରୀ",codExtra:"COD ଉପରେ ₹50 ଅତିରିକ୍ତ",
-gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"କାର୍ଡ ଯୋଡନ୍ତୁ",track:"ଅର୍ଡର ଟ୍ରାକ୍ କରନ୍ତୁ",return:"ରିଟର୍ନ",
-exchange:"ଏକ୍ସଚେଞ୍ଜ",chooseLanguage:"ଭାଷା ବାଛନ୍ତୁ",close:"ବନ୍ଦ କରନ୍ତୁ",filter:"ଫିଲ୍ଟର",sort:"କ୍ରମ",
-lowHigh:"କମ୍ ଠାରୁ ଅଧିକ ମୂଲ୍ୟ",highLow:"ଅଧିକ ଠାରୁ କମ୍ ମୂଲ୍ୟ",addresses:"ଠିକଣା",payments:"ପେମେଣ୍ଟ",
-coupons:"କୁପନ",notifications:"ସୂଚନା",accessibility:"ସୁବିଧା",loginOtp:"ଲଗଇନ୍ / OTP",logout:"ଲଗଆଉଟ୍",
-productAdded:"ଉତ୍ପାଦ କାର୍ଟରେ ଯୋଡାଗଲା।"
+home:"ହୋମ",categories:"କ୍ୟାଟେଗୋରୀ",seller:"ବିକ୍ରେତା",voiceSearch:"ଭଏସ୍ ସର୍ଚ୍ଚ",help:"ସାହାଯ୍ୟ ଦରକାର?",
+welcome:"ZipCart କୁ ସ୍ୱାଗତ ❤️",offers:"ଆଜିର ଅଫର୍",topCategories:"ମୁଖ୍ୟ କ୍ୟାଟେଗୋରୀ",forYou:"ଆପଣଙ୍କ ପାଇଁ ଚୟନ",
+budget:"କମ୍ ବଜେଟରେ ଲୋକପ୍ରିୟ",newArrivals:"ନୂଆ ଉତ୍ପାଦ",back:"ପଛକୁ",listen:"ଶୁଣନ୍ତୁ",products:"ଉତ୍ପାଦ",
+size:"ସାଇଜ୍",color:"ରଙ୍ଗ",delivery:"ଡେଲିଭରୀ",addCart:"କାର୍ଟରେ ଯୋଡନ୍ତୁ",buyNow:"ବର୍ତ୍ତମାନ କିଣନ୍ତୁ",
+reviewsQA:"ରିଭ୍ୟୁ ଏବଂ ପ୍ରଶ୍ନ",wishlistTitle:"ମୋ ଇଚ୍ଛା ତାଲିକା",cartTitle:"ମୋ କାର୍ଟ",emptyCart:"ଆପଣଙ୍କ କାର୍ଟ ଖାଲି ଅଛି",
+remove:"ହଟାନ୍ତୁ",saveLater:"ପରେ ସେଭ୍ କରନ୍ତୁ",priceDetails:"ମୂଲ୍ୟ ବିବରଣୀ",selectedTotal:"ଚୟନିତ ମୋଟ",
+deliveryCharge:"ଡେଲିଭରୀ",discount:"ଛାଡ",finalTotal:"ଅନ୍ତିମ ମୋଟ",checkout:"ଚେକଆଉଟ୍",name:"ନାମ",
+mobile:"ମୋବାଇଲ୍",address:"ଠିକଣା",pin:"PIN କୋଡ୍",payment:"ପେମେଣ୍ଟ",placeOrder:"ଅର୍ଡର କରନ୍ତୁ",
+cod:"କ୍ୟାଶ୍ ଅନ୍ ଡେଲିଭରୀ",codExtra:"COD ଉପରେ ₹50 ଅତିରିକ୍ତ",gpay:"GPay",phonepe:"PhonePe",
+upi:"UPI",addCard:"କାର୍ଡ ଯୋଡନ୍ତୁ",track:"ଅର୍ଡର ଟ୍ରାକ୍ କରନ୍ତୁ",return:"ରିଟର୍ନ",exchange:"ଏକ୍ସଚେଞ୍ଜ",
+chooseLanguage:"ଭାଷା ବାଛନ୍ତୁ",close:"ବନ୍ଦ କରନ୍ତୁ",filter:"ଫିଲ୍ଟର",sort:"କ୍ରମ",lowHigh:"କମ୍ ଠାରୁ ଅଧିକ ମୂଲ୍ୟ",
+highLow:"ଅଧିକ ଠାରୁ କମ୍ ମୂଲ୍ୟ",addresses:"ଠିକଣା",payments:"ପେମେଣ୍ଟ",coupons:"କୁପନ",notifications:"ସୂଚନା",
+accessibility:"ସୁବିଧା",loginOtp:"ଲଗଇନ୍ / OTP",logout:"ଲଗଆଉଟ୍",productAdded:"ଉତ୍ପାଦ କାର୍ଟରେ ଯୋଡାଗଲା।"
 },
 Assamese:{
 tagline:"আপোনাৰ নিজৰ Shopping স্থান ❤️",wishlist:"ইচ্ছা তালিকা",cart:"কাৰ্ট",orders:"মোৰ অৰ্ডাৰ",account:"একাউণ্ট",
-home:"হোম",categories:"শ্ৰেণী",seller:"বিক্ৰেতা",voiceSearch:"ভইচ চাৰ্চ",welcome:"ZipCart লৈ স্বাগতম ❤️",
-offers:"আজিৰ অফাৰ",topCategories:"মুখ্য শ্ৰেণী",forYou:"আপোনাৰ বাবে নিৰ্বাচিত",budget:"কম বাজেটৰ জনপ্ৰিয়",
-newArrivals:"নতুন সামগ্ৰী",back:"পিছলৈ",listen:"শুনক",products:"সামগ্ৰী",size:"আকাৰ",color:"ৰং",delivery:"ডেলিভাৰী",
-addCart:"কাৰ্টত যোগ কৰক",buyNow:"এতিয়াই কিনক",reviewsQA:"ৰিভিউ আৰু প্ৰশ্ন",wishlistTitle:"মোৰ ইচ্ছা তালিকা",
-cartTitle:"মোৰ কাৰ্ট",emptyCart:"আপোনাৰ কাৰ্ট খালী",remove:"আঁতৰাওক",saveLater:"পিছত সংৰক্ষণ কৰক",
-priceDetails:"মূল্যৰ বিৱৰণ",selectedTotal:"নিৰ্বাচিত মুঠ",deliveryCharge:"ডেলিভাৰী",discount:"ডিছকাউণ্ট",
-finalTotal:"চূড়ান্ত মুঠ",checkout:"চেকআউট",name:"নাম",mobile:"m'বাইল",address:"ঠিকনা",pin:"PIN কোড",
-payment:"পেমেণ্ট",placeOrder:"অৰ্ডাৰ কৰক",cod:"কেশ অন ডেলিভাৰী",codExtra:"COD-ত ₹50 অতিৰিক্ত",gpay:"GPay",
-phonepe:"PhonePe",upi:"UPI",addCard:"কাৰ্ড যোগ কৰক",track:"অৰ্ডাৰ ট্ৰেক কৰক",return:"ৰিটাৰ্ণ",exchange:"এক্সচেঞ্জ",
-chooseLanguage:"ভাষা বাছনি কৰক",close:"বন্ধ কৰক",filter:"ফিল্টাৰ",sort:"ক্ৰম",lowHigh:"কমৰ পৰা বেছি মূল্য",
-highLow:"বেছিৰ পৰা কম মূল্য",addresses:"ঠিকনা",payments:"পেমেণ্ট",coupons:"কুপন",notifications:"জাননী",
-accessibility:"সহজ ব্যৱহাৰ",loginOtp:"লগইন / OTP",logout:"লগআউট",productAdded:"সামগ্ৰী কাৰ্টত যোগ কৰা হৈছে।"
+home:"হোম",categories:"শ্ৰেণী",seller:"বিক্ৰেতা",voiceSearch:"ভইচ চাৰ্চ",help:"সহায় লাগে নেকি?",
+welcome:"ZipCart লৈ স্বাগতম ❤️",offers:"আজিৰ অফাৰ",topCategories:"মুখ্য শ্ৰেণী",forYou:"আপোনাৰ বাবে নিৰ্বাচিত",
+budget:"কম বাজেটৰ জনপ্ৰিয়",newArrivals:"নতুন সামগ্ৰী",back:"পিছলৈ",listen:"শুনক",products:"সামগ্ৰী",
+size:"আকাৰ",color:"ৰং",delivery:"ডেলিভাৰী",addCart:"কাৰ্টত যোগ কৰক",buyNow:"এতিয়াই কিনক",
+reviewsQA:"ৰিভিউ আৰু প্ৰশ্ন",wishlistTitle:"মোৰ ইচ্ছা তালিকা",cartTitle:"মোৰ কাৰ্ট",emptyCart:"আপোনাৰ কাৰ্ট খালী",
+remove:"আঁতৰাওক",saveLater:"পিছত সংৰক্ষণ কৰক",priceDetails:"মূল্যৰ বিৱৰণ",selectedTotal:"নিৰ্বাচিত মুঠ",
+deliveryCharge:"ডেলিভাৰী",discount:"ডিছকাউণ্ট",finalTotal:"চূড়ান্ত মুঠ",checkout:"চেকআউট",name:"নাম",
+mobile:"ମ'বাইল",address:"ঠিকনা",pin:"PIN কোড",payment:"পেমেণ্ট",placeOrder:"অର୍ଡର কৰক",
+cod:"কেশ অন ডেলিভাৰী",codExtra:"COD-ত ₹50 অতিৰিক্ত",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",
+addCard:"কাৰ্ড যোগ কৰক",track:"অৰ্ডাৰ ট্ৰেক কৰক",return:"ৰিটাৰ্ণ",exchange:"এক্সচেঞ্জ",chooseLanguage:"ভাষা বাছনি কৰক",
+close:"বন্ধ কৰক",filter:"ফিল্টাৰ",sort:"ক্ৰম",lowHigh:"কমৰ পৰা বেছি মূল্য",highLow:"বেছিৰ পৰা কম মূল্য",
+addresses:"ঠিকনা",payments:"পেমেণ্ট",coupons:"কুপন",notifications:"জাননী",accessibility:"সহজ ব্যৱহাৰ",
+loginOtp:"লগইন / OTP",logout:"লগআউট",productAdded:"সামগ্ৰী কাৰ্টত যোগ কৰা হৈছে।"
 },
 Urdu:{
 tagline:"آپ کی اپنی Shopping جگہ ❤️",wishlist:"پسندیدہ",cart:"کارٹ",orders:"میرے آرڈرز",account:"اکاؤنٹ",
-home:"ہوم",categories:"کیٹیگریز",seller:"فروخت کنندہ",voiceSearch:"وائس سرچ",welcome:"ZipCart میں خوش آمدید ❤️",
-offers:"آج کی آفرز",topCategories:"اہم کیٹیگریز",forYou:"آپ کے لیے منتخب",budget:"کم بجٹ میں مقبول",
-newArrivals:"نئی مصنوعات",back:"واپس",listen:"سنیں",products:"مصنوعات",size:"سائز",color:"رنگ",delivery:"ڈیلیوری",
-addCart:"کارٹ میں شامل کریں",buyNow:"ابھی خریدیں",reviewsQA:"ریویوز اور سوالات",wishlistTitle:"میری پسندیدہ فہرست",
-cartTitle:"میرا کارٹ",emptyCart:"آپ کا کارٹ خالی ہے",remove:"ہٹائیں",saveLater:"بعد کے لیے محفوظ کریں",
-priceDetails:"قیمت کی تفصیل",selectedTotal:"منتخب کل",deliveryCharge:"ڈیلیوری",discount:"رعایت",
-finalTotal:"حتمی کل",checkout:"چیک آؤٹ",name:"نام",mobile:"موبائل",address:"پتہ",pin:"PIN کوڈ",payment:"ادائیگی",
-placeOrder:"آرڈر کریں",cod:"کیش آن ڈیلیوری",codExtra:"COD پر ₹50 اضافی",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",
-addCard:"کارڈ شامل کریں",track:"آرڈر ٹریک کریں",return:"واپسی",exchange:"تبدیلی",chooseLanguage:"زبان منتخب کریں",
+home:"ہوم",categories:"کیٹیگریز",seller:"فروخت کنندہ",voiceSearch:"وائس سرچ",help:"مدد چاہیے؟",
+welcome:"ZipCart میں خوش آمدید ❤️",offers:"آج کی آفرز",topCategories:"اہم کیٹیگریز",forYou:"آپ کے لیے منتخب",
+budget:"کم بجٹ میں مقبول",newArrivals:"نئی مصنوعات",back:"واپس",listen:"سنیں",products:"مصنوعات",
+size:"سائز",color:"رنگ",delivery:"ڈیلیوری",addCart:"کارٹ میں شامل کریں",buyNow:"ابھی خریدیں",
+reviewsQA:"ریویوز اور سوالات",wishlistTitle:"میری پسندیدہ فہرست",cartTitle:"میرا کارٹ",emptyCart:"آپ کا کارٹ خالی ہے",
+remove:"ہٹائیں",saveLater:"بعد کے لیے محفوظ کریں",priceDetails:"قیمت کی تفصیل",selectedTotal:"منتخب کل",
+deliveryCharge:"ڈیلیوری",discount:"رعایت",finalTotal:"حتمی کل",checkout:"چیک آؤٹ",name:"نام",
+mobile:"موبائل",address:"پتہ",pin:"PIN کوڈ",payment:"ادائیگی",placeOrder:"آرڈر کریں",
+cod:"کیش آن ڈیلیوری",codExtra:"COD پر ₹50 اضافی",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",
+addCard:"کار্ড شامل کریں",track:"آرڈر ٹریک کریں",return:"واپسی",exchange:"تبدیلی",chooseLanguage:"زبان منتخب کریں",
 close:"بند کریں",filter:"فلٹر",sort:"ترتیب",lowHigh:"کم سے زیادہ قیمت",highLow:"زیادہ سے کم قیمت",
-addresses:"پتے",payments:"ادائیگیاں",coupons:"کوپن",notifications:"اطلاعات",accessibility:"رسائی",loginOtp:"لاگ ان / OTP",
-logout:"لاگ آؤٹ",productAdded:"پروڈکٹ کارٹ میں شامل کر دی گئی۔"
+addresses:"پتے",payments:"ادائیگیاں",coupons:"کوپن",notifications:"اطلاعات",accessibility:"رسائی",
+loginOtp:"لاگ ان / OTP",logout:"لاگ آؤٹ",productAdded:"پروڈکٹ کارٹ میں شامل کر دی گئی۔"
 },
 Nepali:{
 tagline:"तपाईंको आफ्नै Shopping ठाउँ ❤️",wishlist:"इच्छासूची",cart:"कार्ट",orders:"मेरा अर्डरहरू",account:"खाता",
-home:"होम",categories:"श्रेणीहरू",seller:"विक्रेता",voiceSearch:"भ्वाइस सर्च",welcome:"ZipCart मा स्वागत छ ❤️",
-offers:"आजका अफरहरू",topCategories:"मुख्य श्रेणीहरू",forYou:"तपाईंका लागि छनोट",budget:"कम बजेटका लोकप्रिय",
-newArrivals:"नयाँ उत्पादन",back:"पछाडि",listen:"सुन्नुहोस्",products:"उत्पादन",size:"साइज",color:"रङ",
-delivery:"डेलिभरी",addCart:"कार्टमा थप्नुहोस्",buyNow:"अहिले किन्नुहोस्",reviewsQA:"रिभ्यु र प्रश्न",
-wishlistTitle:"मेरो इच्छासूची",cartTitle:"मेरो कार्ट",emptyCart:"तपाईंको कार्ट खाली छ",remove:"हटाउनुहोस्",
-saveLater:"पछि बचत गर्नुहोस्",priceDetails:"मूल्य विवरण",selectedTotal:"चयन गरिएको कुल",deliveryCharge:"डेलिभरी",
-discount:"छुट",finalTotal:"अन्तिम कुल",checkout:"चेकआउट",name:"नाम",mobile:"मोबाइल",address:"ठेगाना",
-pin:"PIN कोड",payment:"भुक्तानी",placeOrder:"अर्डर गर्नुहोस्",cod:"क्यास अन डेलिभरी",codExtra:"COD मा ₹50 थप",
-gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"कार्ड थप्नुहोस्",track:"अर्डर ट्र्याक गर्नुहोस्",
-return:"फिर्ता",exchange:"साटफेर",chooseLanguage:"भाषा छान्नुहोस्",close:"बन्द गर्नुहोस्",filter:"फिल्टर",
-sort:"क्रम",lowHigh:"कमदेखि बढी मूल्य",highLow:"बढीदेखि कम मूल्य",addresses:"ठेगानाहरू",payments:"भुक्तानी",
-coupons:"कुपन",notifications:"सूचना",accessibility:"पहुँच",loginOtp:"लगइन / OTP",logout:"लगआउट",
-productAdded:"उत्पादन कार्टमा थपियो।"
+home:"होम",categories:"श्रेणीहरू",seller:"विक्रेता",voiceSearch:"भ्वाइस सर्च",help:"सहयोग चाहिएको?",
+welcome:"ZipCart मा स्वागत छ ❤️",offers:"आजका अफरहरू",topCategories:"मुख्य श्रेणीहरू",forYou:"तपाईंका लागि छनोट",
+budget:"कम बजेटका लोकप्रिय",newArrivals:"नयाँ उत्पादन",back:"पछाडि",listen:"सुन्नुहोस्",products:"उत्पादन",
+size:"साइज",color:"रङ",delivery:"डेलिभरी",addCart:"कार्टमा थप्नुहोस्",buyNow:"अहिले किन्नुहोस्",
+reviewsQA:"रिभ्यु र प्रश्न",wishlistTitle:"मेरो इच्छासूची",cartTitle:"मेरो कार्ट",emptyCart:"तपाईंको कार्ट खाली छ",
+remove:"हटाउनुहोस्",saveLater:"पछि बचत गर्नुहोस्",priceDetails:"मूल्य विवरण",selectedTotal:"चयन गरिएको कुल",
+deliveryCharge:"डेलिभरी",discount:"छुट",finalTotal:"अन्तिम कुल",checkout:"चेकआउट",name:"नाम",
+mobile:"मोबाइल",address:"ठेगाना",pin:"PIN कोड",payment:"भुक्तानी",placeOrder:"अर्डर गर्नुहोस्",
+cod:"क्यास अन डेलिभरी",codExtra:"COD मा ₹50 थप",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",
+addCard:"कार्ड थप्नुहोस्",track:"अर्डर ट्र्याक गर्नुहोस्",return:"फिर्ता",exchange:"साटफेर",
+chooseLanguage:"भाषा छान्नुहोस्",close:"बन्द गर्नुहोस्",filter:"फिल्टर",sort:"क्रम",lowHigh:"कमदेखि बढी मूल्य",
+highLow:"बढीदेखि कम मूल्य",addresses:"ठेगानाहरू",payments:"भुक्तानी",coupons:"कुपन",notifications:"सूचना",
+accessibility:"पहुँच",loginOtp:"लगइन / OTP",logout:"लगआउट",productAdded:"उत्पादन कार्टमा थपियो।"
 },
 Maithili:{
 tagline:"अहाँक अपन Shopping जगह ❤️",wishlist:"पसंद सूची",cart:"कार्ट",orders:"हमर ऑर्डर",account:"खाता",
-home:"होम",categories:"श्रेणी",seller:"विक्रेता",voiceSearch:"वॉइस सर्च",welcome:"ZipCart मे स्वागत अछि ❤️",
-offers:"आजुक ऑफर",topCategories:"मुख्य श्रेणी",forYou:"अहाँ लेल चुनल",budget:"कम बजट मे लोकप्रिय",
-newArrivals:"नव उत्पाद",back:"पाछाँ",listen:"सुनू",products:"उत्पाद",size:"साइज",color:"रंग",delivery:"डिलिवरी",
-addCart:"कार्ट मे जोड़ू",buyNow:"आब खरीदू",reviewsQA:"रिव्यू आ प्रश्न",wishlistTitle:"हमर पसंद सूची",
-cartTitle:"हमर कार्ट",emptyCart:"अहाँक कार्ट खाली अछि",remove:"हटाउ",saveLater:"बाद लेल राखू",
-priceDetails:"मूल्य विवरण",selectedTotal:"चयनित कुल",deliveryCharge:"डिलिवरी",discount:"छूट",finalTotal:"अंतिम कुल",
-checkout:"चेकआउट",name:"नाम",mobile:"मोबाइल",address:"ठेगाना",pin:"PIN कोड",payment:"भुगतान",
-placeOrder:"ऑर्डर करू",cod:"कैश ऑन डिलिवरी",codExtra:"COD पर ₹50 अतिरिक्त",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",
+home:"होम",categories:"श्रेणी",seller:"विक्रेता",voiceSearch:"वॉइस सर्च",help:"मदद चाही?",
+welcome:"ZipCart मे स्वागत अछि ❤️",offers:"आजुक ऑफर",topCategories:"मुख्य श्रेणी",forYou:"अहाँ लेल चुनल",
+budget:"कम बजट मे लोकप्रिय",newArrivals:"नव उत्पाद",back:"पाछाँ",listen:"सुनू",products:"उत्पाद",
+size:"साइज",color:"रंग",delivery:"डिलिवरी",addCart:"कार्ट मे जोड़ू",buyNow:"आब खरीदू",
+reviewsQA:"रिव्यू आ प्रश्न",wishlistTitle:"हमर पसंद सूची",cartTitle:"हमर कार्ट",emptyCart:"अहाँक कार्ट खाली अछि",
+remove:"हटाउ",saveLater:"बाद लेल राखू",priceDetails:"मूल्य विवरण",selectedTotal:"चयनित कुल",
+deliveryCharge:"डिलिवरी",discount:"छूट",finalTotal:"अंतिम कुल",checkout:"चेकआउट",name:"नाम",
+mobile:"मोबाइल",address:"ठेगाना",pin:"PIN कोड",payment:"भुगतान",placeOrder:"ऑर्डर करू",
+cod:"कैश ऑन डिलिवरी",codExtra:"COD पर ₹50 अतिरिक्त",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",
 addCard:"कार्ड जोड़ू",track:"ऑर्डर ट्रैक करू",return:"वापसी",exchange:"बदलाव",chooseLanguage:"भाषा चुनू",
 close:"बंद करू",filter:"फिल्टर",sort:"क्रम",lowHigh:"कम सँ अधिक मूल्य",highLow:"अधिक सँ कम मूल्य",
-addresses:"ठेकाना",payments:"भुगतान",coupons:"कूपन",notifications:"सूचना",accessibility:"सुलभता",
-loginOtp:"लॉगिन / OTP",logout:"लगआउट",productAdded:"उत्पाद कार्ट मे जोड़ल गेल।"
+address:"ठेकाना",addresses:"ठेकाना",payments:"भुगतान",coupons:"कूपन",notifications:"सूचना",
+accessibility:"सुलभता",loginOtp:"लॉगिन / OTP",logout:"लगआउट",productAdded:"उत्पाद कार्ट मे जोड़ल गेल।"
 },
 Konkani:{
 tagline:"तुमची आपली Shopping जागो ❤️",wishlist:"विशलिस्ट",cart:"कार्ट",orders:"म्हजे ऑर्डर्स",account:"खातें",
-home:"मुखेल पान",categories:"वर्ग",seller:"विक्रेता",voiceSearch:"व्हॉइस सर्च",welcome:"ZipCart क स्वागत आसा ❤️",
-offers:"आजची ऑफर्स",topCategories:"मुखेल वर्ग",forYou:"तुमका खातीर निवडिल्ले",budget:"कमी बजेटांत लोकप्रिय",
-newArrivals:"नवी उत्पादना",back:"फाटीं",listen:"आयकात",products:"उत्पादना",size:"आकार",color:"रंग",
-delivery:"डिलिवरी",addCart:"कार्टांत घालात",buyNow:"आतां विकत घेतात",reviewsQA:"रिव्यू आनी प्रस्न",
-wishlistTitle:"म्हजी विशलिस्ट",cartTitle:"म्हजो कार्ट",emptyCart:"तुमचो कार्ट रिकामो आसा",remove:"काडात",
-saveLater:"उपरांत जतन करात",priceDetails:"किंमतीची माहिती",selectedTotal:"निवडिल्ले एकूण",deliveryCharge:"डिलिवरी",
-discount:"सवलत",finalTotal:"शेवटचें एकूण",checkout:"चेकआउट",name:"नांव",mobile:"मोबायल",address:"पत्तो",
-pin:"PIN कोड",payment:"पेमेंट",placeOrder:"ऑर्डर करात",cod:"कॅश ऑन डिलिवरी",codExtra:"COD क ₹50 जास्त",
-gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"कार्ड घालात",track:"ऑर्डर ट्रॅक करात",return:"रिटर्न",
-exchange:"एक्सचेंज",chooseLanguage:"भास निवडात",close:"बंद करात",filter:"फिल्टर",sort:"क्रम",
-lowHigh:"कम ते जास्त किंमत",highLow:"जास्त ते कमी किंमत",addresses:"पत्ते",payments:"पेमेंट्स",
-coupons:"कुपन",notifications:"सूचना",accessibility:"सुलभता",loginOtp:"लॉगिन / OTP",logout:"लॉगआउट",
-productAdded:"उत्पादन कार्टांत घातलें."
+home:"मुखेल पान",categories:"वर्ग",seller:"विक्रेता",voiceSearch:"व्हॉइस सर्च",help:"मदत जाय?",
+welcome:"ZipCart क स्वागत आसा ❤️",offers:"आजची ऑफर्स",topCategories:"मुखेल वर्ग",forYou:"तुमका खातीर निवडिल्ले",
+budget:"कमी बजेटांत लोकप्रिय",newArrivals:"नवी उत्पादना",back:"फाटीं",listen:"आयकात",products:"उत्पादना",
+size:"आकार",color:"रंग",
+delivery:"डिलिवरी",addCart:"कार्टांत घालात",buyNow:"आतां विकत घेतात",
+reviewsQA:"रिव्यू आनी प्रस्न",wishlistTitle:"म्हजी विशलिस्ट",cartTitle:"म्हजो कार्ट",emptyCart:"तुमचो कार्ट रिकामो आसा",
+remove:"काडात",saveLater:"उपरांत जतन करात",priceDetails:"किंमतीची माहिती",selectedTotal:"निवडिल्ले एकूण",
+deliveryCharge:"डिलिवरी",discount:"सवलत",finalTotal:"शेवटचें एकूण",checkout:"चेकआउट",name:"नांव",
+mobile:"मोबायल",address:"पत्तो",pin:"PIN कोड",payment:"पेमेंट",placeOrder:"ऑर्डर करात",
+cod:"कॅश ऑन डिलिवरी",codExtra:"COD क ₹50 जास्त",gpay:"GPay",phonepe:"PhonePe",upi:"UPI",
+addCard:"कार्ड घालात",track:"ऑर्डर ट्रॅक करात",return:"रिटर्न",exchange:"एक्सचेंज",
+chooseLanguage:"भास निवडात",close:"बंद करात",filter:"फिल्टर",sort:"क्रम",lowHigh:"कम ते जास्त किंमत",
+highLow:"जास्त ते कमी किंमत",addresses:"পत्ते",payments:"पेमेंट्स",coupons:"कुपन",notifications:"सूचना",
+accessibility:"सुलभता",loginOtp:"लॉगिन / OTP",logout:"लगआउट",productAdded:"उत्पादन कार्टांत घातलें."
 }
 };
 
@@ -1037,9 +1117,9 @@ Kannada:{travel:"ಪ್ರಯಾಣ ಟಿಕೆಟ್",bills:"ಬಿಲ್ ಮ�
 Malayalam:{travel:"യാത്രാ ടിക്കറ്റുകൾ",bills:"ബില്ലുകൾ & റീചാർജ്",medicine:"മരുന്നുകൾ",grocery:"പലചരക്ക്",women:"സ്ത്രീകളുടെ ഫാഷൻ",men:"പുരുഷ ഫാഷൻ",kids:"കുട്ടികൾ",shoes:"ഷൂസ്",jewellery:"ആഭരണങ്ങൾ",bags:"ബാഗുകൾ",toys:"കളിപ്പാട്ടങ്ങൾ",beauty:"ബ്യൂട്ടി",home:"വീട്ടുസാധനങ്ങൾ",furniture:"ഫർണിച്ചർ",electronics:"ഇലക്ട്രോണിക്സ്",school:"സ്കൂൾ സാധനങ്ങൾ"},
 Punjabi:{travel:"ਯਾਤਰਾ ਟਿਕਟ",bills:"ਬਿੱਲ ਅਤੇ ਰੀਚਾਰਜ",medicine:"ਦਵਾਈਆਂ",grocery:"ਕਿਰਾਣਾ",women:"ਔਰਤਾਂ ਦੀ ਫੈਸ਼ਨ",men:"ਮਰਦਾਂ ਦੀ ਫੈਸ਼ਨ",kids:"ਬੱਚੇ",shoes:"ਜੁੱਤੇ",jewellery:"ਗਹਿਣੇ",bags:"ਬੈਗ",toys:"ਖਿਡੌਣੇ",beauty:"ਬਿਊਟੀ",home:"ਘਰ ਦਾ ਸਮਾਨ",furniture:"ਫਰਨੀਚਰ",electronics:"ਇਲੈਕਟ੍ਰਾਨਿਕਸ",school:"ਸਕੂਲ ਸਮਾਨ"},
 Odia:{travel:"ଯାତ୍ରା ଟିକେଟ",bills:"ବିଲ୍ ଓ ରିଚାର୍ଜ",medicine:"ଔଷଧ",grocery:"କିରାଣା",women:"ମହିଳା ଫ୍ୟାଶନ",men:"ପୁରୁଷ ଫ୍ୟାଶନ",kids:"ପିଲାମାନେ",shoes:"ଜୋତା",jewellery:"ଗହଣା",bags:"ବ୍ୟାଗ",toys:"ଖେଳନା",beauty:"ବ୍ୟୁଟି",home:"ଘର ସାମଗ୍ରୀ",furniture:"ଫର୍ନିଚର",electronics:"ଇଲେକ୍ଟ୍ରୋନିକ୍ସ",school:"ସ୍କୁଲ ସାମଗ୍ରୀ"},
-Assamese:{travel:"ভ্ৰমণ টিকট",bills:"বিল আৰু ৰিচাৰ্জ",medicine:"ঔষধ",grocery:"কিৰানা",women:"মহিলাৰ ফেশ্বন",men:"পুৰুষৰ ফেশ্বন",kids:"শিশু",shoes:"জোতা",jewellery:"ଗହଣା",bags:"বেগ",toys:"খেলনা",beauty:"বিউটি",home:"ঘৰৰ সামগ্ৰী",furniture:"ফাৰ্নিচাৰ",electronics:"ইলেক্ট্ৰনিক্স",school:"স্কুল সামগ্ৰী"},
+Assamese:{travel:"ভ্ৰমণ টিকট",bills:"বিল আৰু ৰিচাৰ্জ",medicine:"ঔষধ",grocery:"কিৰানা",women:"মহিলাৰ ফেশ্বন",men:"পুৰুষৰ ফেশ্বন",kids:"শিশু",shoes:"জোতা",jewellery:"ଗହଣା",bags:"বেগ",toys:"ଖେଳনা",beauty:"বিউটি",home:"ঘৰৰ সামগ্ৰী",furniture:"ফাৰ্নিচাৰ",electronics:"ইলেক্ট্ৰনিক্স",school:"স্কুল সামগ্ৰী"},
 Urdu:{travel:"سفر ٹکٹ",bills:"بل اور ریچارج",medicine:"ادویات",grocery:"کریانہ",women:"خواتین فیشن",men:"مردوں کا فیشن",kids:"بچے",shoes:"جوتے",jewellery:"زیورات",bags:"بیگز",toys:"کھلونے",beauty:"خوبصورتی",home:"گھر کا سامان",furniture:"فرنیچر",electronics:"الیکٹرانکس",school:"اسکول سامان"},
-Nepali:{travel:"यात्रा टिकट",bills:"बिल र रिचार्ज",medicine:"औषधि",grocery:"किराना",women:"महिला फेसन",men:"पुरुष फेसन",kids:"बालबालिका",shoes:"जुत्ता",jewellery:"गहना",bags:"झोला",toys:"खेलौना",beauty:"ब्यूटी",home:"घरायसी सामान",furniture:"फर्निचर",electronics:"इलेक्ट्रोनिक्स",school:"स्कुल सामान"},
+Nepali:{travel:"यात्रा टिकट",bills:"बिल र रिचार्ज",medicine:"औषधि",grocery:"किराना",women:"महिला फेसन",men:"पुरुष फेसन",kids:"बालबालिका",shoes:"जुत्ता",jewellery:"गहना",bags:"झोला",toys:"खेलौना",beauty:"ब्यूटी",home:"घरायसी सामान",furniture:"फर्नीचर",electronics:"इलेक्ट्रोनिक्स",school:"स्कुल सामान"},
 Maithili:{travel:"यात्रा टिकट",bills:"बिल आ रिचार्ज",medicine:"दवाई",grocery:"किराना",women:"महिला फैशन",men:"पुरुष फैशन",kids:"बच्चा",shoes:"जुत्ता",jewellery:"गहना",bags:"बैग",toys:"खिलौना",beauty:"सौन्दर्य",home:"घरक सामान",furniture:"फर्नीचर",electronics:"इलेक्ट्रॉनिक्स",school:"स्कूल सामान"},
 Konkani:{travel:"प्रवास तिकी त",bills:"बिल आनी रिचार्ज",medicine:"दवायो",grocery:"किराणा",women:"बायलांचें फॅशन",men:"दादल्यांचें फॅशन",kids:"भुरगीं",shoes:"जोडे",jewellery:"दागिने",bags:"पिशव्यो",toys:"खेळणी",beauty:"ब्युटी",home:"घरांतलो सामान",furniture:"फर्निचर",electronics:"इलेक्ट्रॉनिक्स",school:"शाळेचें सामान"}
 };
@@ -1175,11 +1255,11 @@ Gujarati:{
 "Beautiful Saree":"સુંદર સાડી","Designer Anarkali Suit":"ડિઝાઇનર અનારકલી સૂટ","Stylish Shoes":"સ્ટાઇલિશ જૂતા",
 "Kids Toy Car":"બાળકોની રમકડાની કાર","Fashion Jewellery Set":"ફેશન જ્વેલરી સેટ","Women Handbag":"મહિલા હેન્ડબેગ",
 "Cotton Kurti":"કપાસની કુર્તી","Men Casual Shirt":"પુરુષ કેઝ્યુઅલ શર્ટ","Kids Dress":"બાળકોનો ડ્રેસ",
-"Wireless Earphones":"વાયરલેસ ઇયરફોન","Grocery Daily Essentials":"રોજિંદા કરિયાણાનો સામાન","Health Care Product":"હેલ્થ કેર પ્રોડક્ટ"
+"Wireless Earphones":"વાયરલેસ ઇયરફોન","Grocery Daily Essentials":"રોજિંદા કરિયાણાનો સામાન","Health Care Product":"હેલ્थ કેર પ્રોડક્ટ"
 },
 Marathi:{
 "Beautiful Saree":"सुंदर साडी","Designer Anarkali Suit":"डिझायनर अनारकली सूट","Stylish Shoes":"स्टायलिश शूज",
-"Kids Toy Car":"मुलांची खेळण्याची कार","Fashion ज्वेलरी Set":"फॅशन ज्वेलरी सेट","Women Handbag":"महिलांची हँडबॅग",
+"Kids Toy Car":"मुलांची खेळण्याची कार","Fashion Jewellery Set":"फॅशन ज्वेलरी सेट","Women Handbag":"महिलांची हँडबॅग",
 "Cotton Kurti":"कॉटन कुर्ती","Men Casual Shirt":"पुरुषांचा कॅज्युअल शर्ट","Kids Dress":"मुलांचा ड्रेस",
 "Wireless Earphones":"वायरलेस इअरफोन","Grocery Daily Essentials":"दैनंदिन किराणा सामान","Health Care Product":"हेल्थ केअर प्रोडक्ट"
 },
@@ -1236,7 +1316,9 @@ document.documentElement.dir=currentLang==="Urdu"?"rtl":"ltr";
 
 document.title="ZipCart — "+t("tagline");
 
-document.getElementById("tagline").textContent=t("tagline");
+const tagline=document.getElementById("tagline");
+if(tagline) tagline.textContent=t("tagline");
+
 const searchInput=document.getElementById("searchInput");
 if(searchInput) searchInput.placeholder=t("search");
 
@@ -1315,16 +1397,19 @@ const pct=Math.round((1-p.price/p.old)*100);
 return `
 <div class="card">
 <button class="heart" onclick="toggleWish(${p.id})">${liked?"❤️":"♡"}</button>
-<div class="photo">${p.emoji}</div>
+<div class="photo" onclick="product(${p.id})">${p.emoji}</div>
 <div class="cardbody">
-<b>${productName(p)}</b>
+<b onclick="product(${p.id})">${productName(p)}</b>
 <div>
 <span class="price">₹${p.price}</span>
 <span class="old">₹${p.old}</span>
 <span class="off">${pct}% OFF</span>
 </div>
 <div class="rating">⭐ ${p.rating}</div>
-<button class="buy" onclick="product(${p.id})">${t("viewBuy")}</button>
+<div class="cardActions">
+<button class="btn-add" onclick="addCart(${p.id})">🛒 ${t("addCart")}</button>
+<button class="btn-buy" onclick="buyNow(${p.id})">⚡ ${t("buyNow")}</button>
+</div>
 </div>
 </div>
 `;
