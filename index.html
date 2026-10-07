@@ -340,7 +340,7 @@ text-align:right
 <div class="tag" id="tagline"></div>
 </div>
 
-<div class="search">
+<div class="search" onclick="document.getElementById('searchInput').focus()">
 <input id="searchInput"
 onkeydown="if(event.key==='Enter')doSearch()">
 <button onclick="voiceSearch()">🎤</button>
@@ -663,6 +663,66 @@ realBackend:"Secure backend is required for real orders/payments."
 };
 
 const EXTRA={
+Gujarati:{
+tagline:"તમારી પોતાની Shopping જગ્યા ❤️",
+wishlist:"વિશલિસ્ટ",cart:"કાર્ટ",orders:"મારા ઓર્ડર",account:"એકાઉન્ટ",
+home:"હોમ",categories:"કેટેગરી",seller:"વિક્રેતા",voiceSearch:"વોઇસ સર્ચ",
+welcome:"ZipCart માં આપનું સ્વાગત છે ❤️",offers:"આજની ઓફર્સ",topCategories:"ટોપ કેટેગરી",
+forYou:"તમારા માટે પસંદ કરેલું",budget:"ઓછા બજેટમાં લોકપ્રિય",newArrivals:"નવા ઉત્પાદનો",
+back:"પાછળ",listen:"સાંભળો",products:"ઉત્પાદનો",size:"સાઇઝ",color:"રંગ",
+delivery:"ડિલિવરી",addCart:"કાર્ટમાં ઉમેરો",buyNow:"હમણાં ખરીદો",reviewsQA:"રિવ્યૂ અને પ્રશ્નો",
+wishlistTitle:"મારી વિશલિસ્ટ",cartTitle:"મારો કાર્ટ",emptyCart:"તમારો કાર્ટ ખાલી છે.",
+remove:"દૂર કરો",saveLater:"પછી માટે સાચવો",priceDetails:"કિંમતની વિગતો",selectedTotal:"પસંદ કરેલા પ્રોડક્ટની કુલ કિંમત",
+deliveryCharge:"ડિલિવરી",discount:"ડિસ્કાઉન્ટ",finalTotal:"અંતિમ કુલ",checkout:"ચેકઆઉટ",
+name:"નામ",mobile:"મોબાઇલ",address:"સરનામું",pin:"PIN કોડ",payment:"ચુકવણી",
+placeOrder:"ઓર્ડર કરો",cod:"કેશ ઓન ડિલિવરી",codExtra:"COD પર ₹50 વધારાના",
+gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"કાર્ડ ઉમેરો",track:"ઓર્ડર ટ્રેક કરો",
+return:"રિટર્ન",exchange:"એક્સચેન્જ",chooseLanguage:"ભાષા પસંદ કરો",
+close:"બંધ કરો",filter:"ફિલ્ટર",sort:"ક્રમ",lowHigh:"ઓછીથી વધુ કિંમત",highLow:"વધુથી ઓછી કિંમત",
+addresses:"સરનામાં",payments:"ચુકવણીઓ",coupons:"કૂપન",notifications:"નોટિફિકેશન",
+accessibility:"સુલભતા",loginOtp:"લોગિન / OTP",logout:"લોગઆઉટ",
+productAdded:"પ્રોડક્ટ કાર્ટમાં ઉમેરાયું."
+},
+Marathi:{
+tagline:"तुमची स्वतःची Shopping जागा ❤️",
+wishlist:"विशलिस्ट",cart:"कार्ट",orders:"माझ्या ऑर्डर्स",account:"अकाउंट",
+home:"होम",categories:"कॅटेगरी",seller:"विक्रेता",voiceSearch:"व्हॉइस सर्च",
+welcome:"ZipCart मध्ये तुमचे स्वागत आहे ❤️",offers:"आजच्या ऑफर्स",topCategories:"टॉप कॅटेगरी",
+forYou:"तुमच्यासाठी निवडलेले",budget:"कमी बजेटमधील आवडते",newArrivals:"नवीन उत्पादने",
+back:"मागे",listen:"ऐका",products:"उत्पादने",size:"साईज",color:"रंग",
+delivery:"डिलिव्हरी",addCart:"कार्टमध्ये जोडा",buyNow:"आता खरेदी करा",reviewsQA:"रिव्ह्यू आणि प्रश्न",
+wishlistTitle:"माझी विशलिस्ट",cartTitle:"माझा कार्ट",emptyCart:"तुमचा कार्ट रिकामा आहे.",
+remove:"काढा",saveLater:"नंतरसाठी जतन करा",priceDetails:"किंमतीची माहिती",selectedTotal:"निवडलेल्या उत्पादनांची एकूण किंमत",
+deliveryCharge:"डिलिव्हरी",discount:"सवलत",finalTotal:"अंतिम एकूण",checkout:"चेकआउट",
+name:"नाव",mobile:"मोबाईल",address:"पत्ता",pin:"PIN कोड",payment:"पेमेंट",
+placeOrder:"ऑर्डर करा",cod:"कॅश ऑन डिलिव्हरी",codExtra:"COD वर ₹50 अतिरिक्त",
+gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"कार्ड जोडा",track:"ऑर्डर ट्रॅक करा",
+return:"रिटर्न",exchange:"एक्सचेंज",chooseLanguage:"भाषा निवडा",
+close:"बंद करा",filter:"फिल्टर",sort:"क्रम",lowHigh:"कमी ते जास्त किंमत",highLow:"जास्त ते कमी किंमत",
+addresses:"पत्ते",payments:"पेमेंट्स",coupons:"कूपन्स",notifications:"नोटिफिकेशन्स",
+accessibility:"अॅक्सेसिबिलिटी",loginOtp:"लॉगिन / OTP",logout:"लॉगआउट",
+productAdded:"प्रोडक्ट कार्टमध्ये जोडले."
+},
+Bengali:{
+tagline:"আপনার নিজের Shopping জায়গা ❤️",
+wishlist:"উইশলিস্ট",cart:"কার্ট",orders:"আমার অর্ডার",account:"অ্যাকাউন্ট",
+home:"হোম",categories:"ক্যাটেগরি",seller:"বিক্রেতা",voiceSearch:"ভয়েস সার্চ",
+welcome:"ZipCart-এ আপনাকে স্বাগতম ❤️",offers:"আজকের অফার",topCategories:"টপ ক্যাটেগরি",
+forYou:"আপনার জন্য বাছাই করা",budget:"কম বাজেটের জনপ্রিয়",newArrivals:"নতুন পণ্য",
+back:"পিছনে",listen:"শুনুন",products:"পণ্য",size:"সাইজ",color:"রং",
+delivery:"ডেলিভারি",addCart:"কার্টে যোগ করুন",buyNow:"এখনই কিনুন",reviewsQA:"রিভিউ ও প্রশ্ন",
+wishlistTitle:"আমার উইশলিস্ট",cartTitle:"আমার কার্ট",emptyCart:"আপনার কার্ট খালি।",
+remove:"মুছে ফেলুন",saveLater:"পরে রাখুন",priceDetails:"দামের বিবরণ",selectedTotal:"নির্বাচিত পণ্যের মোট",
+deliveryCharge:"ডেলিভারি",discount:"ডিসকাউন্ট",finalTotal:"চূড়ান্ত মোট",checkout:"চেকআউট",
+name:"নাম",mobile:"মোবাইল",address:"ঠিকানা",pin:"PIN কোড",payment:"পেমেন্ট",
+placeOrder:"অর্ডার করুন",cod:"ক্যাশ অন ডেলিভারি",codExtra:"COD-তে ₹50 অতিরিক্ত",
+gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"কার্ড যোগ করুন",track:"অর্ডার ট্র্যাক করুন",
+return:"রিটার্ন",exchange:"এক্সচেঞ্জ",chooseLanguage:"ভাষা নির্বাচন করুন",
+close:"বন্ধ করুন",filter:"ফিল্টার",sort:"সাজান",lowHigh:"কম থেকে বেশি দাম",highLow:"বেশি থেকে কম দাম",
+addresses:"ঠিকানা",payments:"পেমেন্ট",coupons:"কুপন",notifications:"নোটিফিকেশন",
+accessibility:"অ্যাক্সেসিবিলিটি",loginOtp:"লগইন / OTP",logout:"লগআউট",
+productAdded:"পণ্য কার্টে যোগ হয়েছে।"
+},
 Tamil:{
 tagline:"உங்கள் சொந்த Shopping இடம் ❤️",
 wishlist:"விருப்பப்பட்டியல்",cart:"கார்ட்",orders:"என் ஆர்டர்கள்",account:"கணக்கு",
@@ -770,7 +830,7 @@ newArrivals:"নতুন সামগ্ৰী",back:"পিছলৈ",listen:"
 addCart:"কাৰ্টত যোগ কৰক",buyNow:"এতিয়াই কিনক",reviewsQA:"ৰিভিউ আৰু প্ৰশ্ন",wishlistTitle:"মোৰ ইচ্ছা তালিকা",
 cartTitle:"মোৰ কাৰ্ট",emptyCart:"আপোনাৰ কাৰ্ট খালী",remove:"আঁতৰাওক",saveLater:"পিছত সংৰক্ষণ কৰক",
 priceDetails:"মূল্যৰ বিৱৰণ",selectedTotal:"নিৰ্বাচিত মুঠ",deliveryCharge:"ডেলিভাৰী",discount:"ডিছকাউণ্ট",
-finalTotal:"চূড়ান্ত মুঠ",checkout:"চেকআউট",name:"নাম",mobile:"ম'বাইল",address:"ঠিকনা",pin:"PIN কোড",
+finalTotal:"চূড়ান্ত মুঠ",checkout:"চেকআউট",name:"নাম",mobile:"m'বাইল",address:"ঠিকনা",pin:"PIN কোড",
 payment:"পেমেণ্ট",placeOrder:"অৰ্ডাৰ কৰক",cod:"কেশ অন ডেলিভাৰী",codExtra:"COD-ত ₹50 অতিৰিক্ত",gpay:"GPay",
 phonepe:"PhonePe",upi:"UPI",addCard:"কাৰ্ড যোগ কৰক",track:"অৰ্ডাৰ ট্ৰেক কৰক",return:"ৰিটাৰ্ণ",exchange:"এক্সচেঞ্জ",
 chooseLanguage:"ভাষা বাছনি কৰক",close:"বন্ধ কৰক",filter:"ফিল্টাৰ",sort:"ক্ৰম",lowHigh:"কমৰ পৰা বেছি মূল্য",
@@ -821,7 +881,7 @@ placeOrder:"ऑर्डर करू",cod:"कैश ऑन डिलिवर�
 addCard:"कार्ड जोड़ू",track:"ऑर्डर ट्रैक करू",return:"वापसी",exchange:"बदलाव",chooseLanguage:"भाषा चुनू",
 close:"बंद करू",filter:"फिल्टर",sort:"क्रम",lowHigh:"कम सँ अधिक मूल्य",highLow:"अधिक सँ कम मूल्य",
 addresses:"ठेकाना",payments:"भुगतान",coupons:"कूपन",notifications:"सूचना",accessibility:"सुलभता",
-loginOtp:"लॉगिन / OTP",logout:"लॉगआउट",productAdded:"उत्पाद कार्ट मे जोड़ल गेल।"
+loginOtp:"लॉगिन / OTP",logout:"लगआउट",productAdded:"उत्पाद कार्ट मे जोड़ल गेल।"
 },
 Konkani:{
 tagline:"तुमची आपली Shopping जागो ❤️",wishlist:"विशलिस्ट",cart:"कार्ट",orders:"म्हजे ऑर्डर्स",account:"खातें",
@@ -836,7 +896,7 @@ pin:"PIN कोड",payment:"पेमेंट",placeOrder:"ऑर्डर क
 gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"कार्ड घालात",track:"ऑर्डर ट्रॅक करात",return:"रिटर्न",
 exchange:"एक्सचेंज",chooseLanguage:"भास निवडात",close:"बंद करात",filter:"फिल्टर",sort:"क्रम",
 lowHigh:"कम ते जास्त किंमत",highLow:"जास्त ते कमी किंमत",addresses:"पत्ते",payments:"पेमेंट्स",
-coupons:"कुपन",notifications:"सूचना",accessibility:"सुलभता",loginOtp:"logिन / OTP",logout:"लॉगआउट",
+coupons:"कुपन",notifications:"सूचना",accessibility:"सुलभता",loginOtp:"लॉगिन / OTP",logout:"लॉगआउट",
 productAdded:"उत्पादन कार्टांत घातलें."
 }
 };
@@ -855,7 +915,7 @@ return (T[currentLang]&&T[currentLang][key]) || T.English[key] || key;
 
 
 /* =========================================================
-   CATEGORY TRANSLATIONS (Updated Order: Travel, Bills, Med, Groc First)
+   CATEGORY TRANSLATIONS
 ========================================================= */
 
 const CAT_KEYS=[
@@ -977,7 +1037,7 @@ Kannada:{travel:"ಪ್ರಯಾಣ ಟಿಕೆಟ್",bills:"ಬಿಲ್ ಮ�
 Malayalam:{travel:"യാത്രാ ടിക്കറ്റുകൾ",bills:"ബില്ലുകൾ & റീചാർജ്",medicine:"മരുന്നുകൾ",grocery:"പലചരക്ക്",women:"സ്ത്രീകളുടെ ഫാഷൻ",men:"പുരുഷ ഫാഷൻ",kids:"കുട്ടികൾ",shoes:"ഷൂസ്",jewellery:"ആഭരണങ്ങൾ",bags:"ബാഗുകൾ",toys:"കളിപ്പാട്ടങ്ങൾ",beauty:"ബ്യൂട്ടി",home:"വീട്ടുസാധനങ്ങൾ",furniture:"ഫർണിച്ചർ",electronics:"ഇലക്ട്രോണിക്സ്",school:"സ്കൂൾ സാധനങ്ങൾ"},
 Punjabi:{travel:"ਯਾਤਰਾ ਟਿਕਟ",bills:"ਬਿੱਲ ਅਤੇ ਰੀਚਾਰਜ",medicine:"ਦਵਾਈਆਂ",grocery:"ਕਿਰਾਣਾ",women:"ਔਰਤਾਂ ਦੀ ਫੈਸ਼ਨ",men:"ਮਰਦਾਂ ਦੀ ਫੈਸ਼ਨ",kids:"ਬੱਚੇ",shoes:"ਜੁੱਤੇ",jewellery:"ਗਹਿਣੇ",bags:"ਬੈਗ",toys:"ਖਿਡੌਣੇ",beauty:"ਬਿਊਟੀ",home:"ਘਰ ਦਾ ਸਮਾਨ",furniture:"ਫਰਨੀਚਰ",electronics:"ਇਲੈਕਟ੍ਰਾਨਿਕਸ",school:"ਸਕੂਲ ਸਮਾਨ"},
 Odia:{travel:"ଯାତ୍ରା ଟିକେଟ",bills:"ବିଲ୍ ଓ ରିଚାର୍ଜ",medicine:"ଔଷଧ",grocery:"କିରାଣା",women:"ମହିଳା ଫ୍ୟାଶନ",men:"ପୁରୁଷ ଫ୍ୟାଶନ",kids:"ପିଲାମାନେ",shoes:"ଜୋତା",jewellery:"ଗହଣା",bags:"ବ୍ୟାଗ",toys:"ଖେଳନା",beauty:"ବ୍ୟୁଟି",home:"ଘର ସାମଗ୍ରୀ",furniture:"ଫର୍ନିଚର",electronics:"ଇଲେକ୍ଟ୍ରୋନିକ୍ସ",school:"ସ୍କୁଲ ସାମଗ୍ରୀ"},
-Assamese:{travel:"ভ্ৰমণ টিকট",bills:"বিল আৰু ৰিচাৰ্জ",medicine:"ঔষধ",grocery:"কিৰানা",women:"মহিলাৰ ফেশ্বন",men:"পুৰুষৰ ফেশ্বন",kids:"শিশু",shoes:"জোতা",jewellery:"ଗହଣା",bags:"বেগ",toys:"ଖେଳনা",beauty:"বিউটি",home:"ঘৰৰ সামগ୍ରী",furniture:"ফাৰ্নিচাৰ",electronics:"ইলেক্ট্ৰনিক্স",school:"স্কুল সামগ্ৰী"},
+Assamese:{travel:"ভ্ৰমণ টিকট",bills:"বিল আৰু ৰিচাৰ্জ",medicine:"ঔষধ",grocery:"কিৰানা",women:"মহিলাৰ ফেশ্বন",men:"পুৰুষৰ ফেশ্বন",kids:"শিশু",shoes:"জোতা",jewellery:"ଗହଣା",bags:"বেগ",toys:"খেলনা",beauty:"বিউটি",home:"ঘৰৰ সামগ্ৰী",furniture:"ফাৰ্নিচাৰ",electronics:"ইলেক্ট্ৰনিক্স",school:"স্কুল সামগ্ৰী"},
 Urdu:{travel:"سفر ٹکٹ",bills:"بل اور ریچارج",medicine:"ادویات",grocery:"کریانہ",women:"خواتین فیشن",men:"مردوں کا فیشن",kids:"بچے",shoes:"جوتے",jewellery:"زیورات",bags:"بیگز",toys:"کھلونے",beauty:"خوبصورتی",home:"گھر کا سامان",furniture:"فرنیچر",electronics:"الیکٹرانکس",school:"اسکول سامان"},
 Nepali:{travel:"यात्रा टिकट",bills:"बिल र रिचार्ज",medicine:"औषधि",grocery:"किराना",women:"महिला फेसन",men:"पुरुष फेसन",kids:"बालबालिका",shoes:"जुत्ता",jewellery:"गहना",bags:"झोला",toys:"खेलौना",beauty:"ब्यूटी",home:"घरायसी सामान",furniture:"फर्निचर",electronics:"इलेक्ट्रोनिक्स",school:"स्कुल सामान"},
 Maithili:{travel:"यात्रा टिकट",bills:"बिल आ रिचार्ज",medicine:"दवाई",grocery:"किराना",women:"महिला फैशन",men:"पुरुष फैशन",kids:"बच्चा",shoes:"जुत्ता",jewellery:"गहना",bags:"बैग",toys:"खिलौना",beauty:"सौन्दर्य",home:"घरक सामान",furniture:"फर्नीचर",electronics:"इलेक्ट्रॉनिक्स",school:"स्कूल सामान"},
@@ -1119,7 +1179,7 @@ Gujarati:{
 },
 Marathi:{
 "Beautiful Saree":"सुंदर साडी","Designer Anarkali Suit":"डिझायनर अनारकली सूट","Stylish Shoes":"स्टायलिश शूज",
-"Kids Toy Car":"मुलांची खेळण्याची कार","Fashion Jewellery Set":"फॅशन ज्वेलरी सेट","Women Handbag":"महिलांची हँडबॅग",
+"Kids Toy Car":"मुलांची खेळण्याची कार","Fashion ज्वेलरी Set":"फॅशन ज्वेलरी सेट","Women Handbag":"महिलांची हँडबॅग",
 "Cotton Kurti":"कॉटन कुर्ती","Men Casual Shirt":"पुरुषांचा कॅज्युअल शर्ट","Kids Dress":"मुलांचा ड्रेस",
 "Wireless Earphones":"वायरलेस इअरफोन","Grocery Daily Essentials":"दैनंदिन किराणा सामान","Health Care Product":"हेल्थ केअर प्रोडक्ट"
 },
@@ -1177,15 +1237,29 @@ document.documentElement.dir=currentLang==="Urdu"?"rtl":"ltr";
 document.title="ZipCart — "+t("tagline");
 
 document.getElementById("tagline").textContent=t("tagline");
-document.getElementById("searchInput").placeholder=t("search");
-document.getElementById("ordersTop").textContent="📦 "+t("orders");
-document.getElementById("accountTop").textContent=t("account");
+const searchInput=document.getElementById("searchInput");
+if(searchInput) searchInput.placeholder=t("search");
 
-document.getElementById("bottomHome").textContent=t("home");
-document.getElementById("bottomCategories").textContent=t("categories");
-document.getElementById("bottomSeller").textContent=t("seller");
-document.getElementById("bottomOrders").textContent=t("orders");
-document.getElementById("bottomAccount").textContent=t("account");
+const ordersTop=document.getElementById("ordersTop");
+if(ordersTop) ordersTop.textContent="📦 "+t("orders");
+
+const accountTop=document.getElementById("accountTop");
+if(accountTop) accountTop.textContent=t("account");
+
+const bh=document.getElementById("bottomHome");
+if(bh) bh.textContent=t("home");
+
+const bc=document.getElementById("bottomCategories");
+if(bc) bc.textContent=t("categories");
+
+const bs=document.getElementById("bottomSeller");
+if(bs) bs.textContent=t("seller");
+
+const bo=document.getElementById("bottomOrders");
+if(bo) bo.textContent=t("orders");
+
+const ba=document.getElementById("bottomAccount");
+if(ba) ba.textContent=t("account");
 
 updateCounts();
 }
@@ -1934,6 +2008,7 @@ function setLang(x){
 currentLang=x;
 localStorage.setItem("zipLang",x);
 closeModal();
+refreshHeader();
 renderPage();
 }
 
