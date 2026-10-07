@@ -306,13 +306,6 @@ padding-top:7px
 background:#6a11cb;
 color:#fff
 }
-.notice{
-background:#fff8df;
-border:1px solid #efd57c;
-border-radius:12px;
-padding:12px;
-margin:10px 0
-}
 .bottom{
 position:sticky;
 bottom:0;
@@ -420,7 +413,7 @@ ontouchstart="this.focus()">
 <script>
 
 /* =========================================================
-   LANGUAGE SYSTEM & COMPENSIVE MULTI-LANGUAGE PACKS
+   LANGUAGE SYSTEM
 ========================================================= */
 
 const LANG_META={
@@ -712,7 +705,7 @@ Gujarati:{
 tagline:"તમારી પોતાની Shopping જગ્યા ❤️",
 search:"શું શોધી રહ્યા છો? જેમ કે Anarkali Suit",
 wishlist:"વિશલિસ્ટ",cart:"કાર્ટ",orders:"મારા ઓર્ડર",account:"એકાઉન્ટ",
-home:"હોમ",categories:"કેટેગરી",seller:"વિક્રેતા",voiceSearch:"વોઇસ સર્ચ",help:"મદદ જોઈએ?",
+home:"હોમ",categories:"કેટેગરી",seller:"વિક્રેता",voiceSearch:"વોઇસ સર્ચ",help:"મદદ જોઈએ?",
 groceryQuick:"ઝડપી ગ્રોસરી ડિલિવરી",medicines:"દવાઓ",offers:"આજની ઓફર્સ",
 offerText:"તમારા બજેટ અને પસંદગી મુજબ ખરીદી કરો",viewSuit:"Anarkali Suit જુઓ",
 welcome:"ZipCart માં આપનું સ્વાગત છે ❤️",shopLine:"તમારી પોતાની shopping જગ્યા — જુઓ → સાંભળો → સમજો → દબાવો → ખરીદો",
@@ -729,25 +722,25 @@ placeOrder:"ઓર્ડર કરો",cod:"કેશ ઓન ડિલિવર�
 gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"કાર્ડ ઉમેરો",onlinePrice:"ઓનલાઇન ચુકવણી કુલ",
 codPrice:"COD કુલ",standard:"સ્ટાન્ડર્ડ",fast:"ફાસ્ટ",express:"એક્સપ્રેસ",
 orderPlaced:"ઓર્ડર થયો",confirmed:"કન્ફર્મ",packed:"પેક થયો",shipped:"મોકલાયો",
-outDelivery:"ડિલિવરી માટે નીકળ્યો",delivered:"ડિલિવર થયો",delayed:"વિલંબિત",
+outDelivery:"ડિલિવરી માટે નીકળ્યો",delivered:"ડિલिवર થયો",delayed:"વિલંબિત",
 track:"ઓર્ડર ટ્રેક કરો",return:"રિટર્ન",exchange:"એક્સચેન્જ",orderDate:"ઓર્ડરની તારીખ",
 expectedDelivery:"અપેક્ષિત ડિલિવરી",wrongProduct:"ખોટું પ્રોડક્ટ",damaged:"નુકસાનગ્રસ્ત / ખરાબ",
 wrongColorSize:"ખોટો રંગ / સાઇઝ",changeMind:"મન બદલાયું",photoVideo:"ફોટો/વિડિયો ઉમેરો",
 submitReturn:"રિટર્ન મોકલો",submitExchange:"એક્સચેન્જ મોકલો",chooseLanguage:"ભાષા પસંદ કરો",
 languageSaved:"ભાષા સાચવાઈ",close:"બંધ કરો",searchTitle:"શોધ",results:"પરિણામ મળ્યા",
 noResults:"ચોક્કસ પરિણામ મળ્યું નથી",filter:"ફિલ્ટર",sort:"ક્રમ",lowHigh:"ઓછીથી વધુ કિંમત",
-highLow:"વધુથી ઓછી કિંમત",all:"બધું",availableColors:"ઉપલબ્ધ રંગો",sellerInfo:"વિક્રેતા માહિતી",
+highLow:"વધુથી ઓછી કિંમત",all:"બધું",availableColors:"ઉપલબ્ધ રંગો",sellerInfo:"વિક્રેता માહિતી",
 pinHint:"PIN નાખ્યા પછી વાસ્તવિક તારીખ અને ચાર્જ દેખાશે",reviews:"રિવ્યૂ",addresses:"સરનામાં",
-payments:"ચુકવણીઓ",coupons:"કૂપન",returnsRefunds:"રિટર્ન અને રિફંડ",notifications:"નોટિફિકેશન",
+payments:"ચુકવણીઓ",coupons:"કૂપન",returnsRefunds:"રિટર્ન અને રિફંડ",notifications:"नोटिफिकेशन्स",
 accessibility:"સુલભતા",loginOtp:"લોગિન / OTP",logout:"લોગઆઉટ",continueShopping:"ખરીદી ચાલુ રાખો",
-productAdded:"પ્રોડક્ટ કાર્ટમાં ઉમેરાયું.",registration:"વિક્રેતા નોંધણી",businessName:"વિક્રેता/વ્યવસાયનું નામ",
+productAdded:"પ્રોડક્ટ કાર્ટમાં ઉમેરાયું.",registration:"વિક્રેતા નોંધણી",businessName:"વિક્રેતા/વ્યવસાયનું નામ",
 sellerMobile:"મોબાઇલ / ઇમેઇલ",pan:"PAN / લાગુ ઓળખ વિગતો",gst:"GSTIN, જ્યાં લાગુ પડે",
 businessAddress:"વ્યવસાયનું સરનામું",documents:"જરૂરી લાઇસન્સ/દસ્તાવેજો",continue:"ચાલુ રાખો",
 dashboard:"વિક્રેता ડેશબોર્ડ",stock:"સ્ટોક",variants:"વેરિઅન્ટ",earnings:"કમાણી",
 payouts:"ચુકવણી",verification:"ચકાસણી",vacation:"વેકેશન મોડ",save:"સાચવો",
 selectSizeColorAlert:"કૃપા કરીને આગળ વધતા પહેલા સાઇઝ અને રંગ પસંદ કરો!",
 change:"બદલો",reviewOrder:"ઓર્ડર તપાસો",paymentMethod:"પેमेंट પદ્ધતિ",
-orderSuccessTitle:"অভिनंदन! ઓર્ડર સફળતાપૂર્વક થઈ ગયો છે 🎉",
+orderSuccessTitle:"অভিনंदन! ઓર્ડર સફળતાપૂર્વક થઈ ગયો છે 🎉",
 orderSuccessMsg:"તમારો ઓર્ડર સફળતાપૂર્વક લેવાયો છે."
 },
 Marathi:{
@@ -910,10 +903,10 @@ Tamil:{travel:"பயண டிக்கெட்டுகள்",bills:"பி�
 Telugu:{travel:"ప్రయాణ టికెట్లు",bills:"బిల్లులు & రీఛార్జ్",medicine:"మందులు",grocery:"కిరాణా",women:"మహిళల ఫ్యాషన్",men:"పురుషుల ఫ్యాషన్",kids:"పిల్లలు",shoes:"షూస్",jewellery:"నగలు",bags:"బ్యాగులు",toys:"బొమ్మలు",beauty:"బ్యూటీ",home:"ఇంటి సామగ్రి",furniture:"ఫర్నిచర్",electronics:"ఎలక్ట్రానిక్స్",school:"పాఠశాల సామగ్రి"},
 Kannada:{travel:"ಪ್ರಯಾಣ ಟಿಕೆಟ್",bills:"ಬಿಲ್ ಮತ್ತು ರೀಚಾರ್ಜ್",medicine:"ಔಷಧಿಗಳು",grocery:"ದಿನಸಿ",women:"ಮಹಿಳಾ ಫ್ಯಾಷನ್",men:"ಪುರುಷರ ಫ್ಯಾಷನ್",kids:"ಮಕ್ಕಳು",shoes:"ಪಾದರಕ್ಷೆಗಳು",jewellery:"ಆಭರಣ",bags:"ಬ್ಯಾಗ್",toys:"ಆಟಿಕೆಗಳು",beauty:"ಬ್ಯೂಟಿ",home:"ಮನೆಯ ಸಾಮಗ್ರಿ",furniture:"ಪೀಠೋಪಕರಣ",electronics:"ಎಲೆಕ್ಟ್ರಾನಿಕ್ಸ್",school:"ಶಾಲಾ ಸಾಮಗ್ರಿ"},
 Malayalam:{travel:"യാത്രാ ടിക്കറ്റുകൾ",bills:"ബില്ലുകൾ & റീചാർജ്",medicine:"മരുന്നുകൾ",grocery:"പലചരക്ക്",women:"സ്ത്രീകളുടെ ഫാഷൻ",men:"പുരുഷ ഫാഷൻ",kids:"കുട്ടികൾ",shoes:"ഷൂസ്",jewellery:"ആഭരണങ്ങൾ",bags:"ബാഗുകൾ",toys:"കളിപ്പാട്ടങ്ങൾ",beauty:"ബ്യൂട്ടി",home:"വീട്ടുസാധനങ്ങൾ",furniture:"ഫർണിച്ചർ",electronics:"ഇലക്ട്രോണിക്സ്",school:"സ്കൂൾ സാധനങ്ങൾ"},
-Punjabi:{travel:"ਯਾਤਰਾ ਟਿਕਟ",bills:"ਬਿੱਲ ਅਤੇ ਰੀਚਾਰਜ",medicine:"ਦਵਾਈਆਂ",grocery:"ਕਿਰਾਣਾ",women:"ਔਰਤਾਂ ਦੀ ਫੈਸ਼ਨ",men:"ਮਰਦਾਂ ਦੀ ਫੈਸ਼ਨ",kids:"ਬੱਚੇ",shoes:"ਜੁੱਤੇ",jewellery:"ਗਹਿਣੇ",bags:"ਬੈਗ",toys:"ਖਿਡੌਣੇ",beauty:"ਬਿਊਟੀ",home:"ਘਰ ਦਾ ਸਮਾਨ",furniture:"ਫਰਨੀਚਰ",electronics:"ਇਲੈਕट्रॉनਿਕᱥ",school:"ਸਕੂਲ ਸਮਾਨ"},
+Punjabi:{travel:"ਯਾਤਰਾ ਟਿਕਟ",bills:"ਬਿੱਲ ਅਤੇ ਰੀਚਾਰਜ",medicine:"ਦਵਾਈਆਂ",grocery:"ਕਿਰਾਣਾ",women:"ਔਰਤਾਂ ਦੀ ਫੈਸ਼ਨ",men:"ਮਰਦਾਂ ਦੀ ਫੈਸ਼ਨ",kids:"ਬੱਚੇ",shoes:"ਜੁੱਤੇ",jewellery:"ਗਹਿਣੇ",bags:"ਬੈਗ",toys:"ਖਿਡੌਣੇ",beauty:"ਬਿਊਟੀ",home:"ਘਰ ਦਾ ਸਮਾਨ",furniture:"ਫਰਨੀਚਰ",electronics:"ਇਲੈਕट्रॉनਿਕᱥ",school:"ਸਕൂਲ ਸਮਾਨ"},
 Odia:{travel:"ଯାତ୍ରା ଟିକେଟ",bills:"ବିଲ୍ ଓ ରିଚାର୍ଜ",medicine:"ଔଷଧ",grocery:"କିରାଣା",women:"ମହିଳା ଫ୍ୟାଶନ",men:"ପୁରୁଷ ଫ୍ୟାଶନ",kids:"ପିଲାମାନେ",shoes:"ଜୋତା",jewellery:"ଗହଣା",bags:"ବ୍ୟାଗ",toys:"ଖେଳନା",beauty:"ବ୍ୟୁଟି",home:"ଘର ସାମଗ୍ରୀ",furniture:"ଫର୍ନିଚର",electronics:"ଇଲେକ୍ଟ୍ରୋନିକ୍ସ",school:"ସ୍କୁଲ ସାମଗ୍ରୀ"},
 Assamese:{travel:"ভ্ৰমণ টিকট",bills:"বিল আৰু ৰিচাৰ্জ",medicine:"ঔষধ",grocery:"কিৰানা",women:"মহিলাৰ ফেশ্বন",men:"পুৰুষৰ ফেশ্বন",kids:"শিশু",shoes:"জোতা",jewellery:"ଗହଣା",bags:"বেগ",toys:"খেলনা",beauty:"বিউটি",home:"ঘৰৰ সামগ্ৰী",furniture:"ফাৰ্নিচাৰ",electronics:"ইলেক্ট্ৰনিক্স",school:"স্কুল সামগ্ৰী"},
-Urdu:{travel:"سفر ٹکٹ",bills:"بل اور ریچارج",medicine:"ادویات",grocery:"کریانہ",women:"خواتین فیشن",men:"مردوں کا فیشن",kids:"بچے",shoes:"جوتے",jewellery:"زیورات",bags:"بیگز",toys:"کھلونے",beauty:"خوبصورتی",home:"گھر का سامان",furniture:"فرنیچر",electronics:"الیکٹرانکس",school:"اسکول سامان"},
+Urdu:{travel:"سفر ٹکٹ",bills:"بل اور ریچارج",medicine:"ادویات",grocery:"کریانہ",women:"خواتین فیشن",men:"मردوں کا فیشن",kids:"بچے",shoes:"جوتے",jewellery:"زیورات",bags:"بیگز",toys:"کھلونے",beauty:"خوبصورتی",home:"گھر کا سامان",furniture:"فرنیچر",electronics:"الیکٹرانکس",school:"اسکول سامان"},
 Nepali:{travel:"यात्रा टिकट",bills:"बिल र रिचार्ज",medicine:"औषधि",grocery:"किराना",women:"महिला फेसन",men:"पुरुष फेसन",kids:"बालबालिका",shoes:"जुत्ता",jewellery:"गहना",bags:"झोला",toys:"खेलौना",beauty:"ब्यूटी",home:"घरायसी सामान",furniture:"फर्नीचर",electronics:"इलेक्ट्रोनिक्स",school:"स्कुल सामान"},
 Maithili:{travel:"यात्रा टिकट",bills:"बिल आ रिचार्ज",medicine:"दवाई",grocery:"किराना",women:"महिला फैशन",men:"पुरुष फैशन",kids:"बच्चा",shoes:"जुत्ता",jewellery:"गहना",bags:"बैग",toys:"खिलौना",beauty:"सौन्दर्य",home:"घरक सामान",furniture:"फर्नीचर",electronics:"इलेक्ट्रॉनिक्स",school:"स्कूल सामान"},
 Konkani:{travel:"प्रवास तिकी त",bills:"बिल आनी रिचार्ज",medicine:"दवायो",grocery:"किराणा",women:"बायलांचें फॅशन",men:"दादल्यांचें फॅशन",kids:"भुरगीं",shoes:"जोडे",jewellery:"दागिने",bags:"पिशव्यो",toys:"खेळणी",beauty:"ब्युटी",home:"घरांतलो सामान",furniture:"फर्नीचर",electronics:"इलेक्ट्रॉनिक्स",school:"शाळेचें सामान"}
@@ -1054,7 +1047,7 @@ Gujarati:{
 },
 Marathi:{
 "Beautiful Saree":"सुंदर साडी","Designer Anarkali Suit":"डिझायनर अनारकली सूट","Stylish Shoes":"स्टायलिश शूज",
-"Kids Toy Car":"मुलांची खेळण्याची कार","Fashion Jewellery सेट":"फॅशन ज्वेलरी सेट","Women Handbag":"महिलांची हँडबॅग",
+"Kids Toy Car":"मुलांची खेळण्याची कार","Fashion Jewellery Set":"फॅशन ज्वेलरी सेट","Women Handbag":"महिलांची हँडबॅग",
 "Cotton Kurti":"कॉटन कुर्ती","Men Casual Shirt":"पुरुषांचा कॅज्युअल शर्ट","Kids Dress":"मुलांचा ड्रेस",
 "Wireless Earphones":"वायरलेस इअरफोन","Grocery Daily Essentials":"दैनंदिन किराणा सामान","Health Care Product":"हेल्थ केअर प्रोडक्ट"
 },
