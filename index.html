@@ -2,196 +2,985 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ZipCart — आपकी अपनी Shopping जगह ❤️</title>
 
 <style>
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial,"Noto Sans",sans-serif;background:#f7f7fb;color:#222}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer;border:0}
-.header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#4b0082,#6a11cb,#e91e63);color:#fff;padding:12px}
-.top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;max-width:1200px;margin:auto}
-.logo{font-size:25px;font-weight:800;white-space:nowrap}
-.tag{font-size:11px;opacity:.95}
-.search{flex:1;min-width:220px;display:flex;background:#fff;border-radius:25px;overflow:hidden}
-.search input{flex:1;border:0;padding:12px 15px;outline:0}
-.search button{background:#fff;padding:0 10px}
-.navbtn{background:#ffffff22;color:#fff;padding:10px 12px;border-radius:20px;font-weight:600}
-.navbtn:hover{background:#ffffff35}
-.count{display:inline-flex;min-width:21px;height:21px;align-items:center;justify-content:center;background:#ff4081;color:#fff;border-radius:50%;font-size:12px;margin-left:3px}
-.page{max-width:1200px;margin:auto;padding:14px 14px 30px}
-.hero{background:linear-gradient(135deg,#fff0fa,#eee5ff);border-radius:20px;padding:24px;margin-bottom:16px}
-.hero h1{margin:0 0 8px;color:#5c16b8}
-.quick{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.pill{background:#fff;border:1px solid #ddd;padding:9px 13px;border-radius:20px}
-.pill:hover{border-color:#8e2de2;color:#6a11cb}
-.section{margin:22px 0}
-.section h2{margin:0 0 12px}
-.hscroll{display:flex;gap:14px;overflow-x:auto;padding:5px 2px 12px}
-.cat{min-width:92px;width:92px;text-align:center;flex:none;cursor:pointer}
-.catpic{width:78px;height:78px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;border:2px solid #eadcff;box-shadow:0 3px 10px #0001;font-size:35px;margin:auto}
-.cat b{display:block;font-size:13px;margin-top:7px}
-.banner{background:linear-gradient(100deg,#4b0082,#a4508b,#e91e63);color:#fff;border-radius:18px;padding:18px;display:flex;justify-content:space-between;align-items:center;gap:15px}
-.banner button{background:#fff;color:#6812ad;padding:10px 15px;border-radius:20px;font-weight:bold}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
-.card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px #0001;position:relative;transition:.2s}
-.card:hover{transform:translateY(-2px);box-shadow:0 5px 16px #0002}
-.photo{height:155px;background:linear-gradient(135deg,#eee,#fafafa);display:flex;align-items:center;justify-content:center;font-size:70px;cursor:pointer;position:relative;overflow:hidden}
-.product-visual{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:70px;transition:.3s;position:relative}
-.product-visual:after{content:"";position:absolute;inset:15px;border-radius:20px;opacity:.16;pointer-events:none}
-.color-red{background:linear-gradient(135deg,#fff,#ffe4e8)}.color-red:after{background:#e53935}
-.color-pink{background:linear-gradient(135deg,#fff,#ffe5f0)}.color-pink:after{background:#ec4899}
-.color-blue{background:linear-gradient(135deg,#fff,#e3efff)}.color-blue:after{background:#2563eb}
-.color-green{background:linear-gradient(135deg,#fff,#e4f8ec)}.color-green:after{background:#16a34a}
-.color-black{background:linear-gradient(135deg,#fff,#e9e9e9)}.color-black:after{background:#111}
-.color-white{background:linear-gradient(135deg,#fff,#f2f2f2)}.color-white:after{background:#fff;border:2px solid #ddd}
-.color-yellow{background:linear-gradient(135deg,#fff,#fff5cf)}.color-yellow:after{background:#facc15}
-.color-maroon{background:linear-gradient(135deg,#fff,#f8e1e6)}.color-maroon:after{background:#800020}
-.color-purple{background:linear-gradient(135deg,#fff,#eee4ff)}.color-purple:after{background:#7c3aed}
-.color-golden{background:linear-gradient(135deg,#fff,#fff1b8)}.color-golden:after{background:#d4af37}
-.color-silver{background:linear-gradient(135deg,#fff,#e7e7e7)}.color-silver:after{background:#9ca3af}
-.color-rose-gold{background:linear-gradient(135deg,#fff,#ffe6df)}.color-rose-gold:after{background:#b76e79}
-.color-brown{background:linear-gradient(135deg,#fff,#eee0d2)}.color-brown:after{background:#8b5e3c}
-.color-beige{background:linear-gradient(135deg,#fff,#f5ead7)}.color-beige:after{background:#d6c2a1}
-.color-grey{background:linear-gradient(135deg,#fff,#e8e8e8)}.color-grey:after{background:#6b7280}
-.color-standard{background:linear-gradient(135deg,#eee,#fafafa)}.color-standard:after{background:#8e2de2}
-.color-label{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:#ffffffdd;padding:5px 10px;border-radius:20px;font-size:11px;font-weight:800;z-index:2;white-space:nowrap;box-shadow:0 2px 6px #0002}
-.heart{position:absolute;right:8px;top:8px;background:#fff;border-radius:50%;width:36px;height:36px;font-size:20px;box-shadow:0 2px 7px #0002;z-index:2}
-.heart.liked{color:#e91e63}
-.cardbody{padding:11px}
-.price{font-size:20px;font-weight:800}
-.old{text-decoration:line-through;color:#888;font-size:13px;margin-left:5px}
-.off{color:#16833c;font-weight:700;font-size:13px;margin-left:5px}
-.rating{color:#087b36;font-weight:700;margin-top:5px}
-.buy{width:100%;margin-top:9px;padding:11px;border-radius:10px;background:linear-gradient(135deg,#4b0082,#8e2de2);color:#fff;font-weight:bold}
-.buy:hover{background:linear-gradient(135deg,#6a11cb,#e91e63)}
-.panel{background:#fff;border-radius:18px;padding:18px;box-shadow:0 2px 12px #0001;margin-bottom:15px}
-.back{background:#eee;padding:9px 14px;border-radius:18px;margin-bottom:12px}
-.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.grow{flex:1}
-.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.field{display:flex;flex-direction:column;gap:5px}
-.field input,.field select,.field textarea{padding:11px;border:1px solid #ccc;border-radius:10px;outline:none}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:#8e2de2}
-.field textarea{min-height:80px}
-.notice{background:#fff8df;border:1px solid #efd57c;border-radius:12px;padding:12px;margin:10px 0}
-.empty{text-align:center;padding:30px;background:#fff;border-radius:18px;box-shadow:0 2px 10px #0001}
 
-/* QUANTITY */
-.qtybox{display:flex;align-items:center;gap:7px;margin-top:5px}
-.qtybox button{width:30px;height:30px;border-radius:50%;background:#eee;font-weight:bold}
-.qtybox:focus{outline:2px solid #8e2de2;outline-offset:3px;border-radius:20px}
+html{
+scroll-behavior:smooth
+}
 
-.cartitem{padding:14px 0;border-bottom:1px solid #eee;cursor:pointer}
-.cartitem:last-child{border-bottom:0}
-.selectrow{display:flex;align-items:center;gap:8px}
-.product-link{cursor:pointer}
-.product-link:hover{color:#6a11cb}
+body{
+margin:0;
+font-family:Arial,"Noto Sans",sans-serif;
+background:#f7f7fb;
+color:#222
+}
 
-.bottom{position:sticky;bottom:0;background:#fff;border-top:1px solid #ddd;padding:9px;display:flex;justify-content:center;gap:8px;z-index:40}
-.bottom button{background:#f2eff8;padding:9px 12px;border-radius:12px}
-.bottom button:hover{background:#eadcff;color:#5c16b8}
-.bottom-wishlist{font-size:24px!important;width:46px;height:42px;padding:6px!important;display:flex;align-items:center;justify-content:center;line-height:1}
+button,input,select,textarea{
+font:inherit
+}
 
-.modal{position:fixed;inset:0;background:#0008;z-index:100;display:none;align-items:center;justify-content:center;padding:15px}
-.modalbox{background:#fff;border-radius:18px;max-width:700px;width:100%;max-height:90vh;overflow:auto;padding:20px}
-.modal.show{display:flex}
-.track{display:flex;justify-content:space-between;gap:4px;position:relative;margin:20px 0}
-.track:before{content:"";position:absolute;top:15px;left:6%;right:6%;height:4px;background:#ddd}
-.step{z-index:1;text-align:center;font-size:11px;max-width:90px}
-.dot{width:30px;height:30px;border-radius:50%;background:#eee;margin:auto;padding-top:7px}
-.done .dot{background:#8e2de2;color:#fff}
+button{
+cursor:pointer;
+border:0
+}
 
-.product-page{padding-bottom:150px}
-.product-main{display:grid;grid-template-columns:minmax(280px,1fr) minmax(320px,1fr);gap:18px}
-.product-photo-large{min-height:360px;border-radius:20px;background:linear-gradient(135deg,#eee,#fff);display:flex;align-items:center;justify-content:center;font-size:130px;box-shadow:0 2px 12px #0001;position:relative;overflow:hidden;transition:.3s}
-.product-photo-large .product-visual{font-size:130px}
-.product-info h1{margin-top:0}
-.rating-box{display:flex;align-items:center;gap:10px;margin:12px 0}
-.rating-badge{background:#ff4081;color:#fff;font-weight:800;padding:7px 12px;border-radius:10px;font-size:16px}
-.rating-count{color:#666}
-.option-title{font-weight:800;margin-top:18px;margin-bottom:8px}
-.size-list,.color-list{display:flex;gap:8px;flex-wrap:wrap}
-.size-btn,.color-btn{background:#fff;border:1px solid #bbb;padding:9px 14px;border-radius:9px}
-.size-btn.active,.color-btn.active{border:2px solid #8e2de2;background:#f4eaff;color:#5c16b8;font-weight:bold}
-.size-btn.disabled{opacity:.4;text-decoration:line-through;cursor:not-allowed}
-.delivery-box{background:#faf6ff;border:1px solid #eadcff;padding:13px;border-radius:12px;margin-top:15px}
-.highlight-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.highlight{background:#fafafa;border-radius:12px;padding:12px;border:1px solid #eee}
-.rating-summary{display:grid;grid-template-columns:170px 1fr;gap:20px;align-items:center}
-.rating-big{text-align:center;background:#fff0f7;border-radius:18px;padding:20px}
-.rating-big .number{font-size:40px;font-weight:900;color:#ff4081}
-.rating-choice{display:flex;gap:7px;flex-wrap:wrap}
-.rating-choice button{background:#fff;border:1px solid #ddd;border-radius:12px;padding:9px 12px}
-.rating-choice button:hover{border-color:#ff4081;color:#e91e63}
-.review{border-top:1px solid #eee;padding:14px 0}
-.review:first-child{border-top:0}
-.review-media{background:#fafafa;border-radius:10px;padding:10px;margin-top:8px}
-.sticky-buy{position:fixed;left:0;right:0;bottom:0;z-index:80;background:#fff;border-top:1px solid #ddd;box-shadow:0 -4px 18px #0002;padding:10px 14px}
-.sticky-buy-inner{max-width:1200px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.sticky-buy button{padding:14px;border-radius:12px;font-weight:800}
-.sticky-cart{background:#fff;border:2px solid #6a11cb!important;color:#5c16b8}
-.sticky-buy-now{background:linear-gradient(135deg,#4b0082,#e91e63);color:#fff}
-.checkout-step{display:flex;gap:10px;align-items:center;margin-bottom:12px}
-.checkout-number{width:30px;height:30px;border-radius:50%;background:#6a11cb;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;flex:none}
+.header{
+position:sticky;
+top:0;
+z-index:50;
+background:linear-gradient(135deg,#4b0082,#6a11cb,#e91e63);
+color:#fff;
+padding:12px
+}
 
-.payment-options{display:flex;flex-direction:column;gap:10px;margin-top:12px}
-.payment-option{width:100%;display:flex;align-items:flex-start;gap:12px;border:1px solid #ddd;border-radius:14px;padding:14px;margin:0;cursor:pointer;background:#fff;transition:.15s;min-height:70px;text-align:left;overflow:hidden}
-.payment-option:hover{border-color:#b58be8;background:#fcf9ff}
-.payment-option.selected{border:2px solid #8e2de2;background:#faf5ff;padding:13px}
-.payment-radio{width:19px;height:19px;margin:2px 0 0;flex:none;accent-color:#8e2de2}
-.payment-icon{width:36px;height:36px;border-radius:10px;background:#f2eaff;display:flex;align-items:center;justify-content:center;font-size:21px;flex:none}
-.payment-content{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
-.payment-title{font-weight:800;font-size:15px;line-height:1.35;word-break:break-word}
-.payment-description{font-size:13px;line-height:1.45;color:#666;white-space:normal;overflow-wrap:anywhere}
-.payment-adjustment{display:inline-flex;align-self:flex-start;font-size:12px;font-weight:700;padding:4px 8px;border-radius:12px;background:#fff0f7;color:#e91e63;line-height:1.3;white-space:normal;overflow-wrap:anywhere}
-.payment-option.selected .payment-adjustment{background:#eee2ff;color:#6a11cb}
-.price-line{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;padding:7px 0}
-.price-line span:last-child{text-align:right;white-space:nowrap}
-.total-line{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;font-size:21px;font-weight:900;padding-top:10px;border-top:1px solid #ddd}
-.total-line span:last-child{white-space:nowrap}
-.success-box{background:#effff5;border:1px solid #8dd9a9;border-radius:16px;padding:20px;text-align:center}
-.order-card{cursor:pointer}
-.order-card:hover{border-color:#8e2de2}
-.reason-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
-.reason-btn{background:#fff;border:1px solid #ddd;padding:11px;border-radius:10px;text-align:left}
-.reason-btn.active{border:2px solid #e91e63;background:#fff0f7}
-.demo-label{display:inline-block;background:#fff0f7;color:#e91e63;border:1px solid #ffb5d0;padding:5px 9px;border-radius:15px;font-size:12px;font-weight:bold;margin-bottom:8px}
-.color-preview-info{margin-top:10px;background:#faf6ff;border:1px solid #eadcff;border-radius:12px;padding:10px;font-size:13px;color:#5c16b8}
-.color-dot{display:inline-block;width:13px;height:13px;border-radius:50%;vertical-align:-2px;margin-right:5px;border:1px solid #aaa}
-.dot-Red{background:#e53935}.dot-Pink{background:#ec4899}.dot-Blue{background:#2563eb}.dot-Green{background:#16a34a}.dot-Black{background:#111}.dot-White{background:#fff}.dot-Yellow{background:#facc15}.dot-Maroon{background:#800020}.dot-Purple{background:#7c3aed}.dot-Golden{background:#d4af37}.dot-Silver{background:#c0c0c0}.dot-Rose-Gold{background:#b76e79}.dot-Brown{background:#8b5e3c}.dot-Beige{background:#d6c2a1}.dot-Grey{background:#6b7280}.dot-Standard{background:#8e2de2}
-.sort-active{background:#eadcff;color:#5c16b8;border-color:#8e2de2;font-weight:bold}
+.top{
+display:flex;
+align-items:center;
+gap:10px;
+flex-wrap:wrap;
+max-width:1200px;
+margin:auto
+}
+
+.logo{
+font-size:25px;
+font-weight:800;
+white-space:nowrap
+}
+
+.tag{
+font-size:11px;
+opacity:.95
+}
+
+.search{
+flex:1;
+min-width:220px;
+display:flex;
+background:#fff;
+border-radius:25px;
+overflow:hidden
+}
+
+.search input{
+flex:1;
+border:0;
+padding:12px 15px;
+outline:0
+}
+
+.search button{
+background:#fff;
+padding:0 10px
+}
+
+.navbtn{
+background:#ffffff22;
+color:#fff;
+padding:10px 12px;
+border-radius:20px;
+font-weight:600
+}
+
+.navbtn:hover{
+background:#ffffff35
+}
+
+.count{
+display:inline-flex;
+min-width:21px;
+height:21px;
+align-items:center;
+justify-content:center;
+background:#ff4081;
+color:#fff;
+border-radius:50%;
+font-size:12px;
+margin-left:3px
+}
+
+.page{
+max-width:1200px;
+margin:auto;
+padding:14px 14px 30px
+}
+
+.hero{
+background:linear-gradient(135deg,#fff0fa,#eee5ff);
+border-radius:20px;
+padding:24px;
+margin-bottom:16px
+}
+
+.hero h1{
+margin:0 0 8px;
+color:#5c16b8
+}
+
+.quick{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin-top:14px
+}
+
+.pill{
+background:#fff;
+border:1px solid #ddd;
+padding:9px 13px;
+border-radius:20px
+}
+
+.pill:hover{
+border-color:#8e2de2;
+color:#6a11cb
+}
+
+.section{
+margin:22px 0
+}
+
+.section h2{
+margin:0 0 12px
+}
+
+.hscroll{
+display:flex;
+gap:14px;
+overflow-x:auto;
+padding:5px 2px 12px
+}
+
+.cat{
+min-width:92px;
+width:92px;
+text-align:center;
+flex:none;
+cursor:pointer
+}
+
+.catpic{
+width:78px;
+height:78px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#fff;
+border:2px solid #eadcff;
+box-shadow:0 3px 10px #0001;
+font-size:35px;
+margin:auto
+}
+
+.cat b{
+display:block;
+font-size:13px;
+margin-top:7px
+}
+
+.banner{
+background:linear-gradient(100deg,#4b0082,#a4508b,#e91e63);
+color:#fff;
+border-radius:18px;
+padding:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px
+}
+
+.banner button{
+background:#fff;
+color:#6812ad;
+padding:10px 15px;
+border-radius:20px;
+font-weight:bold
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+gap:14px
+}
+
+.card{
+background:#fff;
+border-radius:16px;
+overflow:hidden;
+box-shadow:0 2px 10px #0001;
+position:relative;
+transition:.2s
+}
+
+.card:hover{
+transform:translateY(-2px);
+box-shadow:0 5px 16px #0002
+}
+
+.photo{
+height:155px;
+background:linear-gradient(135deg,#eee,#fafafa);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:70px;
+cursor:pointer
+}
+
+.heart{
+position:absolute;
+right:8px;
+top:8px;
+background:#fff;
+border-radius:50%;
+width:36px;
+height:36px;
+font-size:20px;
+box-shadow:0 2px 7px #0002;
+z-index:2
+}
+
+.heart.liked{
+color:#e91e63
+}
+
+.cardbody{
+padding:11px
+}
+
+.price{
+font-size:20px;
+font-weight:800
+}
+
+.old{
+text-decoration:line-through;
+color:#888;
+font-size:13px;
+margin-left:5px
+}
+
+.off{
+color:#16833c;
+font-weight:700;
+font-size:13px;
+margin-left:5px
+}
+
+.rating{
+color:#087b36;
+font-weight:700;
+margin-top:5px
+}
+
+.buy{
+width:100%;
+margin-top:9px;
+padding:11px;
+border-radius:10px;
+background:linear-gradient(135deg,#4b0082,#8e2de2);
+color:#fff;
+font-weight:bold
+}
+
+.buy:hover{
+background:linear-gradient(135deg,#6a11cb,#e91e63)
+}
+
+.panel{
+background:#fff;
+border-radius:18px;
+padding:18px;
+box-shadow:0 2px 12px #0001;
+margin-bottom:15px
+}
+
+.back{
+background:#eee;
+padding:9px 14px;
+border-radius:18px;
+margin-bottom:12px
+}
+
+.row{
+display:flex;
+gap:10px;
+align-items:center;
+flex-wrap:wrap
+}
+
+.grow{
+flex:1
+}
+
+.formgrid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px
+}
+
+.field{
+display:flex;
+flex-direction:column;
+gap:5px
+}
+
+.field input,
+.field select,
+.field textarea{
+padding:11px;
+border:1px solid #ccc;
+border-radius:10px;
+outline:none
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+border-color:#8e2de2
+}
+
+.field textarea{
+min-height:80px
+}
+
+.notice{
+background:#fff8df;
+border:1px solid #efd57c;
+border-radius:12px;
+padding:12px;
+margin:10px 0
+}
+
+.empty{
+text-align:center;
+padding:30px;
+background:#fff;
+border-radius:18px;
+box-shadow:0 2px 10px #0001
+}
+
+.qtybox{
+display:flex;
+align-items:center;
+gap:7px
+}
+
+.qtybox button{
+width:30px;
+height:30px;
+border-radius:50%;
+background:#eee
+}
+
+.cartitem{
+padding:14px 0;
+border-bottom:1px solid #eee;
+cursor:pointer
+}
+
+.cartitem:last-child{
+border-bottom:0
+}
+
+.selectrow{
+display:flex;
+align-items:center;
+gap:8px
+}
+
+.product-link{
+cursor:pointer
+}
+
+.product-link:hover{
+color:#6a11cb
+}
+
+.bottom{
+position:sticky;
+bottom:0;
+background:#fff;
+border-top:1px solid #ddd;
+padding:9px;
+display:flex;
+justify-content:center;
+gap:8px;
+z-index:40
+}
+
+.bottom button{
+background:#f2eff8;
+padding:9px 12px;
+border-radius:12px
+}
+
+.bottom button:hover{
+background:#eadcff;
+color:#5c16b8
+}
+
+.modal{
+position:fixed;
+inset:0;
+background:#0008;
+z-index:100;
+display:none;
+align-items:center;
+justify-content:center;
+padding:15px
+}
+
+.modalbox{
+background:#fff;
+border-radius:18px;
+max-width:700px;
+width:100%;
+max-height:90vh;
+overflow:auto;
+padding:20px
+}
+
+.modal.show{
+display:flex
+}
+
+.track{
+display:flex;
+justify-content:space-between;
+gap:4px;
+position:relative;
+margin:20px 0
+}
+
+.track:before{
+content:"";
+position:absolute;
+top:15px;
+left:6%;
+right:6%;
+height:4px;
+background:#ddd
+}
+
+.step{
+z-index:1;
+text-align:center;
+font-size:11px;
+max-width:90px
+}
+
+.dot{
+width:30px;
+height:30px;
+border-radius:50%;
+background:#eee;
+margin:auto;
+padding-top:7px
+}
+
+.done .dot{
+background:#8e2de2;
+color:#fff
+}
+
+/* PRODUCT DETAIL */
+
+.product-page{
+padding-bottom:150px
+}
+
+.product-main{
+display:grid;
+grid-template-columns:minmax(280px,1fr) minmax(320px,1fr);
+gap:18px
+}
+
+.product-photo-large{
+min-height:360px;
+border-radius:20px;
+background:linear-gradient(135deg,#eee,#fff);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:130px;
+box-shadow:0 2px 12px #0001
+}
+
+.product-info h1{
+margin-top:0
+}
+
+.rating-box{
+display:flex;
+align-items:center;
+gap:10px;
+margin:12px 0
+}
+
+.rating-badge{
+background:#ff4081;
+color:#fff;
+font-weight:800;
+padding:7px 12px;
+border-radius:10px;
+font-size:16px
+}
+
+.rating-count{
+color:#666
+}
+
+.option-title{
+font-weight:800;
+margin-top:18px;
+margin-bottom:8px
+}
+
+.size-list,
+.color-list{
+display:flex;
+gap:8px;
+flex-wrap:wrap
+}
+
+.size-btn,
+.color-btn{
+background:#fff;
+border:1px solid #bbb;
+padding:9px 14px;
+border-radius:9px
+}
+
+.size-btn.active,
+.color-btn.active{
+border:2px solid #8e2de2;
+background:#f4eaff;
+color:#5c16b8;
+font-weight:bold
+}
+
+.size-btn.disabled{
+opacity:.4;
+text-decoration:line-through;
+cursor:not-allowed
+}
+
+.delivery-box{
+background:#faf6ff;
+border:1px solid #eadcff;
+padding:13px;
+border-radius:12px;
+margin-top:15px
+}
+
+.highlight-list{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px
+}
+
+.highlight{
+background:#fafafa;
+border-radius:12px;
+padding:12px;
+border:1px solid #eee
+}
+
+.rating-summary{
+display:grid;
+grid-template-columns:170px 1fr;
+gap:20px;
+align-items:center
+}
+
+.rating-big{
+text-align:center;
+background:#fff0f7;
+border-radius:18px;
+padding:20px
+}
+
+.rating-big .number{
+font-size:40px;
+font-weight:900;
+color:#ff4081
+}
+
+.rating-choice{
+display:flex;
+gap:7px;
+flex-wrap:wrap
+}
+
+.rating-choice button{
+background:#fff;
+border:1px solid #ddd;
+border-radius:12px;
+padding:9px 12px
+}
+
+.rating-choice button:hover{
+border-color:#ff4081;
+color:#e91e63
+}
+
+.review{
+border-top:1px solid #eee;
+padding:14px 0
+}
+
+.review:first-child{
+border-top:0
+}
+
+.review-media{
+background:#fafafa;
+border-radius:10px;
+padding:10px;
+margin-top:8px
+}
+
+.sticky-buy{
+position:fixed;
+left:0;
+right:0;
+bottom:0;
+z-index:80;
+background:#fff;
+border-top:1px solid #ddd;
+box-shadow:0 -4px 18px #0002;
+padding:10px 14px
+}
+
+.sticky-buy-inner{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px
+}
+
+.sticky-buy button{
+padding:14px;
+border-radius:12px;
+font-weight:800
+}
+
+.sticky-cart{
+background:#fff;
+border:2px solid #6a11cb!important;
+color:#5c16b8
+}
+
+.sticky-buy-now{
+background:linear-gradient(135deg,#4b0082,#e91e63);
+color:#fff
+}
+
+.checkout-step{
+display:flex;
+gap:10px;
+align-items:center;
+margin-bottom:12px
+}
+
+.checkout-number{
+width:30px;
+height:30px;
+border-radius:50%;
+background:#6a11cb;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+flex:none
+}
+
+/* PAYMENT UI */
+
+.payment-options{
+display:flex;
+flex-direction:column;
+gap:10px;
+margin-top:12px
+}
+
+.payment-option{
+width:100%;
+display:flex;
+align-items:flex-start;
+gap:12px;
+border:1px solid #ddd;
+border-radius:14px;
+padding:14px;
+margin:0;
+cursor:pointer;
+background:#fff;
+transition:.15s;
+min-height:70px;
+text-align:left;
+overflow:hidden
+}
+
+.payment-option:hover{
+border-color:#b58be8;
+background:#fcf9ff
+}
+
+.payment-option.selected{
+border:2px solid #8e2de2;
+background:#faf5ff;
+padding:13px
+}
+
+.payment-radio{
+width:19px;
+height:19px;
+margin:2px 0 0;
+flex:none;
+accent-color:#8e2de2
+}
+
+.payment-icon{
+width:36px;
+height:36px;
+border-radius:10px;
+background:#f2eaff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:21px;
+flex:none
+}
+
+.payment-content{
+flex:1;
+min-width:0;
+display:flex;
+flex-direction:column;
+gap:4px
+}
+
+.payment-title{
+font-weight:800;
+font-size:15px;
+line-height:1.35;
+word-break:break-word
+}
+
+.payment-description{
+font-size:13px;
+line-height:1.45;
+color:#666;
+white-space:normal;
+overflow-wrap:anywhere
+}
+
+.payment-adjustment{
+display:inline-flex;
+align-self:flex-start;
+font-size:12px;
+font-weight:700;
+padding:4px 8px;
+border-radius:12px;
+background:#fff0f7;
+color:#e91e63;
+line-height:1.3;
+white-space:normal;
+overflow-wrap:anywhere
+}
+
+.payment-option.selected .payment-adjustment{
+background:#eee2ff;
+color:#6a11cb
+}
+
+.price-line{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:15px;
+padding:7px 0
+}
+
+.price-line span:last-child{
+text-align:right;
+white-space:nowrap
+}
+
+.total-line{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:15px;
+font-size:21px;
+font-weight:900;
+padding-top:10px;
+border-top:1px solid #ddd
+}
+
+.total-line span:last-child{
+white-space:nowrap
+}
+
+.success-box{
+background:#effff5;
+border:1px solid #8dd9a9;
+border-radius:16px;
+padding:20px;
+text-align:center
+}
+
+.order-card{
+cursor:pointer
+}
+
+.order-card:hover{
+border-color:#8e2de2
+}
+
+.reason-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:9px
+}
+
+.reason-btn{
+background:#fff;
+border:1px solid #ddd;
+padding:11px;
+border-radius:10px;
+text-align:left
+}
+
+.reason-btn.active{
+border:2px solid #e91e63;
+background:#fff0f7
+}
+
+.demo-label{
+display:inline-block;
+background:#fff0f7;
+color:#e91e63;
+border:1px solid #ffb5d0;
+padding:5px 9px;
+border-radius:15px;
+font-size:12px;
+font-weight:bold;
+margin-bottom:8px
+}
 
 @media(max-width:800px){
-.product-main{grid-template-columns:1fr}
-.product-photo-large{min-height:280px;font-size:100px}
-.product-photo-large .product-visual{font-size:100px}
-.rating-summary{grid-template-columns:1fr}
+
+.product-main{
+grid-template-columns:1fr
 }
+
+.product-photo-large{
+min-height:280px;
+font-size:100px
+}
+
+.rating-summary{
+grid-template-columns:1fr
+}
+
+}
+
 @media(max-width:650px){
-.formgrid{grid-template-columns:1fr}
-.navbtn{padding:8px}
-.logo{font-size:21px}
-.photo{height:135px}
-.grid{grid-template-columns:repeat(2,1fr)}
-.banner{flex-direction:column;align-items:flex-start}
-.bottom{overflow-x:auto;justify-content:flex-start}
-.bottom button{white-space:nowrap}
-.bottom .bottom-wishlist{white-space:normal;flex:none}
-.highlight-list{grid-template-columns:1fr}
-.reason-grid{grid-template-columns:1fr}
-.sticky-buy-inner{grid-template-columns:1fr 1fr}
-.product-page{padding-bottom:175px}
-.payment-option{padding:12px;gap:9px}
-.payment-option.selected{padding:11px}
-.payment-icon{width:32px;height:32px;font-size:19px}
-.payment-title{font-size:14px}
-.payment-description{font-size:12px}
-.payment-adjustment{font-size:11px}
-.price-line{font-size:14px}
-.total-line{font-size:19px}
+
+.formgrid{
+grid-template-columns:1fr
+}
+
+.navbtn{
+padding:8px
+}
+
+.logo{
+font-size:21px
+}
+
+.photo{
+height:135px
+}
+
+.grid{
+grid-template-columns:repeat(2,1fr)
+}
+
+.banner{
+flex-direction:column;
+align-items:flex-start
+}
+
+.bottom{
+overflow-x:auto;
+justify-content:flex-start
+}
+
+.bottom button{
+white-space:nowrap
+}
+
+.highlight-list{
+grid-template-columns:1fr
+}
+
+.reason-grid{
+grid-template-columns:1fr
+}
+
+.sticky-buy-inner{
+grid-template-columns:1fr 1fr
+}
+
+.product-page{
+padding-bottom:175px
+}
+
+.payment-option{
+padding:12px;
+gap:9px
+}
+
+.payment-option.selected{
+padding:11px
+}
+
+.payment-icon{
+width:32px;
+height:32px;
+font-size:19px
+}
+
+.payment-title{
+font-size:14px
+}
+
+.payment-description{
+font-size:12px
+}
+
+.payment-adjustment{
+font-size:11px
+}
+
+.price-line{
+font-size:14px
+}
+
+.total-line{
+font-size:19px
+}
+
 }
 </style>
 </head>
@@ -199,6 +988,7 @@ button{cursor:pointer;border:0}
 <body>
 
 <header class="header">
+
 <div class="top">
 
 <div>
@@ -207,115 +997,518 @@ button{cursor:pointer;border:0}
 </div>
 
 <div class="search">
-<input id="search" placeholder="क्या ढूँढ रहे हैं? जैसे Anarkali Suit" onkeydown="if(event.key==='Enter')doSearch()">
+
+<input
+id="search"
+placeholder="क्या ढूँढ रहे हैं? जैसे Anarkali Suit"
+onkeydown="if(event.key==='Enter')doSearch()"
+>
+
 <button onclick="voiceSearch()">🎤</button>
 <button onclick="doSearch()">🔍</button>
+
 </div>
 
-<button class="navbtn" onclick="show('wishlist')" aria-label="Wishlist" title="Wishlist">
-❤️ <span class="count" id="wishCount">0</span>
+<button class="navbtn" onclick="show('wishlist')">
+❤️ Wishlist
+<span class="count" id="wishCount">0</span>
 </button>
 
 <button class="navbtn" onclick="show('cart')">
-🛒 Cart <span class="count" id="cartCount">0</span>
+🛒 Cart
+<span class="count" id="cartCount">0</span>
 </button>
 
-<button class="navbtn" onclick="show('orders')">📦 मेरे ऑर्डर</button>
-<button class="navbtn" onclick="show('account')">👤 Account</button>
-<button class="navbtn" onclick="languageModal()">🌐</button>
+<button class="navbtn" onclick="show('orders')">
+📦 मेरे ऑर्डर
+</button>
+
+<button class="navbtn" onclick="show('account')">
+👤 Account
+</button>
+
+<button class="navbtn" onclick="languageModal()">
+🌐
+</button>
 
 </div>
+
 </header>
 
 <main class="page" id="app"></main>
 
 <div class="bottom">
-<button onclick="show('home')">🏠 Home</button>
-<button onclick="show('categories')">🗂️ Categories</button>
-<button class="bottom-wishlist" onclick="show('wishlist')" aria-label="Wishlist" title="Wishlist">❤️</button>
-<button onclick="show('orders')">📦 My Orders</button>
-<button onclick="show('account')">👤 Account</button>
+
+<button onclick="show('home')">
+🏠 Home
+</button>
+
+<button onclick="show('categories')">
+🗂️ Categories
+</button>
+
+<button onclick="show('wishlist')">
+❤️ Wishlist
+</button>
+
+<button onclick="show('orders')">
+📦 My Orders
+</button>
+
+<button onclick="show('account')">
+👤 Account
+</button>
+
 </div>
 
 <div class="modal" id="modal">
+
 <div class="modalbox" id="modalbox"></div>
+
 </div>
 
 <script>
 
-const PAYMENT_SETTINGS={codExtra:50};
+/* =========================================================
+   ZIPCART PAYMENT SETTINGS
+   ---------------------------------------------------------
+   COD पर ₹50 extra charge है।
+   Online payment पर कोई online discount नहीं है।
+   ========================================================= */
+
+const PAYMENT_SETTINGS={
+codExtra:50
+};
+
+
+/* =========================================================
+   BASIC DATA
+   ========================================================= */
 
 const cats=[
-["👗","महिलाओं का फैशन","women"],["👔","Men Fashion","men"],["🧒","Kids","kids"],
-["👟","जूते","shoes"],["💍","ज्वेलरी","jewellery"],["👜","बैग","bags"],
-["🧸","खिलौने","toys"],["💄","Beauty","beauty"],["🏠","घर का सामान","home"],
-["🛋️","Furniture","furniture"],["📱","Electronics","electronics"],["📚","School Items","school"],
-["🚌","Travel Tickets","travel"],["🧾","Bills & Recharge","bills"],["💊","Medicines","medicine"],["🛒","Grocery","grocery"]
+
+["👗","महिलाओं का फैशन","women"],
+["👔","Men Fashion","men"],
+["🧒","Kids","kids"],
+["👟","जूते","shoes"],
+["💍","ज्वेलरी","jewellery"],
+["👜","बैग","bags"],
+["🧸","खिलौने","toys"],
+["💄","Beauty","beauty"],
+["🏠","घर का सामान","home"],
+["🛋️","Furniture","furniture"],
+["📱","Electronics","electronics"],
+["📚","School Items","school"],
+["🚌","Travel Tickets","travel"],
+["🧾","Bills & Recharge","bills"],
+["💊","Medicines","medicine"],
+["🛒","Grocery","grocery"]
+
 ];
 
 const sub={
-women:["🥻 Saree","👗 Suits","👚 Kurtis","👖 Jeans","👕 Tops","👗 Dresses","👰 Lehenga","🧥 Jackets","🌙 Nightwear","🪷 Ethnic Wear","👠 Western Wear"],
-men:["👔 Shirts","👕 T-Shirts","👖 Jeans","🥻 Kurta","🧣 Kurta-Pajama","👖 Trousers/Pants","🧥 Jackets","🩳 Shorts","💼 Formal Wear","🏃 Sports Wear"],
-kids:["👧 Girls","👦 Boys","👶 Baby","👗 Kids Dresses","👟 Kids Shoes","🍼 Baby Products","🧸 Toys"],
-shoes:["👩 Women","👨 Men","🧒 Kids","🏃 Sports Shoes","🩴 Sandals","👠 Heels","🥿 Flats","🩴 Slippers"],
-jewellery:["📿 Necklace","💎 Earrings","🪷 Bangles","💍 Rings","👰 Bridal Jewellery","✨ Artificial Jewellery"],
-bags:["👜 Handbag","🎒 Sling Bag","🎒 School Bag","🧳 Travel Bag","🎒 Backpack","👛 Wallet/Purse"],
-toys:["🧸 Baby Toys","🧠 Educational","🚗 Cars","👧 Dolls","🎲 Games","🎮 Remote Toys","⚽ Outdoor Toys"],
-beauty:["💄 Makeup","🧴 Skincare","💇 Haircare","🧼 Personal Care"],
-home:["🍳 Kitchen","🖼️ Home Decor","📦 Storage","🛏️ Bedsheet","🪟 Curtains"],
-furniture:["🛋️ Sofa","🛏️ Bed","🪑 Chair","🪵 Table","🚪 Wardrobe","🗄️ Cabinet","🍽️ Dining Set","🪑 Office Chair","🛋️ Recliner","🪞 Dressing Table"],
-electronics:["📱 Mobile Accessories","🎧 Earphones","🔌 Chargers","🔗 Cables","🔊 Speakers","💻 Other Electronics"],
-school:["🎒 School Bags","📖 Books","📓 Notebooks","✏️ Stationery","🎨 Art & Craft"],
-travel:["🚌 Bus","🚆 Train","✈️ Flight","🏨 Hotel"],
-bills:["📱 Mobile Recharge","📺 DTH","⚡ Electricity","💧 Water","🔥 Gas","🌐 Broadband/Landline","🛣️ FASTag","🛡️ Insurance","🎓 Education Fees","🏠 Property/Other Bills"],
-medicine:["💊 Common Care","🩺 Prescription Medicines","🧴 Health & Personal Care","🌡️ Devices & Wellness"],
-grocery:["🥦 Fresh Grocery","🍚 Staples","🥛 Dairy","🍪 Snacks","🧹 Household","🧼 Cleaning","🧃 Beverages"]
+
+women:[
+"🥻 Saree",
+"👗 Suits",
+"👚 Kurtis",
+"👖 Jeans",
+"👕 Tops",
+"👗 Dresses",
+"👰 Lehenga",
+"🧥 Jackets",
+"🌙 Nightwear",
+"🪷 Ethnic Wear",
+"👠 Western Wear"
+],
+
+men:[
+"👔 Shirts",
+"👕 T-Shirts",
+"👖 Jeans",
+"🥻 Kurta",
+"🧣 Kurta-Pajama",
+"👖 Trousers/Pants",
+"🧥 Jackets",
+"🩳 Shorts",
+"💼 Formal Wear",
+"🏃 Sports Wear"
+],
+
+kids:[
+"👧 Girls",
+"👦 Boys",
+"👶 Baby",
+"👗 Kids Dresses",
+"👟 Kids Shoes",
+"🍼 Baby Products",
+"🧸 Toys"
+],
+
+shoes:[
+"👩 Women",
+"👨 Men",
+"🧒 Kids",
+"🏃 Sports Shoes",
+"🩴 Sandals",
+"👠 Heels",
+"🥿 Flats",
+"🩴 Slippers"
+],
+
+jewellery:[
+"📿 Necklace",
+"💎 Earrings",
+"🪷 Bangles",
+"💍 Rings",
+"👰 Bridal Jewellery",
+"✨ Artificial Jewellery"
+],
+
+bags:[
+"👜 Handbag",
+"🎒 Sling Bag",
+"🎒 School Bag",
+"🧳 Travel Bag",
+"🎒 Backpack",
+"👛 Wallet/Purse"
+],
+
+toys:[
+"🧸 Baby Toys",
+"🧠 Educational",
+"🚗 Cars",
+"👧 Dolls",
+"🎲 Games",
+"🎮 Remote Toys",
+"⚽ Outdoor Toys"
+],
+
+beauty:[
+"💄 Makeup",
+"🧴 Skincare",
+"💇 Haircare",
+"🧼 Personal Care"
+],
+
+home:[
+"🍳 Kitchen",
+"🖼️ Home Decor",
+"📦 Storage",
+"🛏️ Bedsheet",
+"🪟 Curtains"
+],
+
+furniture:[
+"🛋️ Sofa",
+"🛏️ Bed",
+"🪑 Chair",
+"🪵 Table",
+"🚪 Wardrobe",
+"🗄️ Cabinet",
+"🍽️ Dining Set",
+"🪑 Office Chair",
+"🛋️ Recliner",
+"🪞 Dressing Table"
+],
+
+electronics:[
+"📱 Mobile Accessories",
+"🎧 Earphones",
+"🔌 Chargers",
+"🔗 Cables",
+"🔊 Speakers",
+"💻 Other Electronics"
+],
+
+school:[
+"🎒 School Bags",
+"📖 Books",
+"📓 Notebooks",
+"✏️ Stationery",
+"🎨 Art & Craft"
+],
+
+travel:[
+"🚌 Bus",
+"🚆 Train",
+"✈️ Flight",
+"🏨 Hotel"
+],
+
+bills:[
+"📱 Mobile Recharge",
+"📺 DTH",
+"⚡ Electricity",
+"💧 Water",
+"🔥 Gas",
+"🌐 Broadband/Landline",
+"🛣️ FASTag",
+"🛡️ Insurance",
+"🎓 Education Fees",
+"🏠 Property/Other Bills"
+],
+
+medicine:[
+"💊 Common Care",
+"🩺 Prescription Medicines",
+"🧴 Health & Personal Care",
+"🌡️ Devices & Wellness"
+],
+
+grocery:[
+"🥦 Fresh Grocery",
+"🍚 Staples",
+"🥛 Dairy",
+"🍪 Snacks",
+"🧹 Household",
+"🧼 Cleaning",
+"🧃 Beverages"
+]
+
 };
 
-const lehenga=["👰 Bridal","🎉 Party Wear","✨ Net","💎 Designer","🌟 Heavy Work","🥻 Silk","🌸 Georgette","✨ Sequins","🧵 Embroidery","🌺 Floral","🌿 Simple/Lightweight","👧 Girls/Kids"];
-const saree=["👑 Banarasi","🥻 Silk","🌿 Cotton","🌸 Georgette","🪶 Chiffon","🌺 Bandhej","🎉 Party Wear","👰 Bridal","✨ Designer","🧵 Embroidery","🖼️ Printed","🌿 Linen"];
+const lehenga=[
 
-const products=[
-{id:0,name:"Beautiful Saree",cat:"women",sub:"Saree",emoji:"🥻",price:999,old:1499,rating:4.5,ratingCount:128,colors:["Red","Pink","Blue","Green"],sizes:["Free Size"],description:"Elegant saree suitable for festive occasions, family functions and special events.",highlights:["Soft fabric","Elegant design","Easy to drape","Festive wear"],details:"Fabric: Premium blended fabric. Pattern: Designer. Occasion: Festive & Party Wear. Care: Gentle wash recommended."},
-{id:1,name:"Designer Anarkali Suit",cat:"women",sub:"Suits",emoji:"👗",price:122,old:610,rating:4.5,ratingCount:245,colors:["Pink","Maroon","Blue","Black"],sizes:["S","M","L","XL","XXL"],description:"Stylish Anarkali suit with comfortable fitting and attractive design.",highlights:["Comfortable fit","Stylish pattern","Multiple sizes","Party wear"],details:"Material: Soft blended fabric. Sleeve: Full. Neck: Round. Occasion: Casual, Festive & Party."},
-{id:2,name:"Stylish Shoes",cat:"shoes",sub:"Women",emoji:"👠",price:799,old:1299,rating:4.3,ratingCount:94,colors:["Black","White","Pink"],sizes:["5","6","7","8","9"],description:"Comfortable everyday fashion shoes designed for style and regular use.",highlights:["Comfort sole","Lightweight","Fashion design","Daily wear"],details:"Upper: Synthetic. Sole: Rubber. Closure: Slip-on. Suitable for casual use."},
-{id:3,name:"Kids Toy Car",cat:"toys",sub:"Cars",emoji:"🚗",price:499,old:799,rating:4.4,ratingCount:87,colors:["Red","Blue","Yellow"],sizes:["Standard"],description:"Fun toy car for children with colourful design.",highlights:["Child friendly","Colourful","Fun play","Gift option"],details:"Recommended age: 3+ years. Material: Plastic. Use under adult supervision."},
-{id:4,name:"Fashion Jewellery Set",cat:"jewellery",sub:"Artificial Jewellery",emoji:"💍",price:399,old:699,rating:4.2,ratingCount:66,colors:["Golden","Silver","Rose Gold"],sizes:["Free Size"],description:"Beautiful fashion jewellery set for occasions and everyday styling.",highlights:["Elegant look","Lightweight","Gift friendly","Party wear"],details:"Type: Artificial Jewellery. Finish: Fashion finish. Care: Keep away from moisture."},
-{id:5,name:"Women Handbag",cat:"bags",sub:"Handbag",emoji:"👜",price:799,old:1199,rating:4.4,ratingCount:105,colors:["Black","Brown","Pink","Beige"],sizes:["Standard"],description:"Spacious handbag for daily use, office and outings.",highlights:["Spacious","Multiple compartments","Strong handle","Daily use"],details:"Material: Synthetic leather. Closure: Zip. Usage: Office, Travel & Casual."},
-{id:6,name:"Cotton Kurti",cat:"women",sub:"Kurtis",emoji:"👚",price:549,old:899,rating:4.6,ratingCount:314,colors:["Blue","Pink","Yellow","Green"],sizes:["S","M","L","XL","XXL"],description:"Comfortable cotton kurti with attractive everyday styling.",highlights:["Cotton feel","Comfortable","Breathable","Daily wear"],details:"Fabric: Cotton blend. Pattern: Printed. Occasion: Casual & Office."},
-{id:7,name:"Men Casual Shirt",cat:"men",sub:"Shirts",emoji:"👔",price:699,old:999,rating:4.3,ratingCount:178,colors:["White","Blue","Black","Grey"],sizes:["S","M","L","XL","XXL"],description:"Smart casual shirt suitable for office, outings and everyday wear.",highlights:["Comfort fit","Smart design","Multiple sizes","Easy styling"],details:"Fabric: Cotton blend. Sleeve: Full. Fit: Regular. Occasion: Casual & Semi-formal."},
-{id:8,name:"Kids Dress",cat:"kids",sub:"Kids Dresses",emoji:"👗",price:449,old:799,rating:4.5,ratingCount:119,colors:["Pink","Purple","Yellow"],sizes:["2-3Y","3-5Y","5-8Y","8-12Y"],description:"Comfortable colourful kids dress for parties and everyday occasions.",highlights:["Soft feel","Colourful design","Comfortable","Kids friendly"],details:"Material: Soft fabric. Occasion: Casual & Party. Care: Gentle wash."},
-{id:9,name:"Wireless Earphones",cat:"electronics",sub:"Earphones",emoji:"🎧",price:899,old:1499,rating:4.1,ratingCount:221,colors:["Black","White"],sizes:["Standard"],description:"Wireless earphones for music, calls and everyday entertainment.",highlights:["Wireless","Compact","Clear sound","Charging case"],details:"Connectivity: Bluetooth. Charging: USB. Use: Music & Calls."},
-{id:10,name:"Grocery Daily Essentials",cat:"grocery",sub:"Household",emoji:"🛒",price:299,old:349,rating:4.4,ratingCount:52,colors:["Standard"],sizes:["Standard"],description:"Useful daily household grocery essentials.",highlights:["Daily use","Household essential","Value pack","Easy ordering"],details:"Product details and expiry will be shown from seller listing."},
-{id:11,name:"Health Care Product",cat:"medicine",sub:"Common Care",emoji:"💊",price:199,old:249,rating:4.2,ratingCount:71,colors:["Standard"],sizes:["Standard"],description:"General health and personal care product.",highlights:["Daily care","Easy to use","Useful","Compact"],details:"Actual medical product information, expiry and applicable prescription requirements will be shown from the verified seller listing."}
+"👰 Bridal",
+"🎉 Party Wear",
+"✨ Net",
+"💎 Designer",
+"🌟 Heavy Work",
+"🥻 Silk",
+"🌸 Georgette",
+"✨ Sequins",
+"🧵 Embroidery",
+"🌺 Floral",
+"🌿 Simple/Lightweight",
+"👧 Girls/Kids"
+
 ];
 
-function migrateOldIds(){
-let map={1:0,2:1,3:2,4:3,5:4,6:5,7:6,8:7,9:8,10:9,11:10,12:11};
-let w=JSON.parse(localStorage.getItem("zipWish")||"[]");
-let c=JSON.parse(localStorage.getItem("zipCart")||"[]");
-w=w.map(id=>map[id]!==undefined?map[id]:Number(id));
-c=c.map(item=>({...item,id:map[Number(item.id)]!==undefined?map[Number(item.id)]:Number(item.id)}));
-localStorage.setItem("zipWish",JSON.stringify([...new Set(w)]));
-localStorage.setItem("zipCart",JSON.stringify(c));
-}
-migrateOldIds();
+const saree=[
 
-/* पुराने quantity को सिर्फ एक बार ठीक करना */
-function fixOldQuantities(){
-if(localStorage.getItem("zipQtyFixedV1")==="1")return;
-let saved=JSON.parse(localStorage.getItem("zipCart")||"[]");
-saved=saved.map(item=>{
-let q=Number(item.qty);
-if(!Number.isFinite(q)||q<1)q=1;
-q=Math.floor(q);
-if(q%2===1)q=(q+1)/2;
-return {...item,qty:Math.max(1,q)};
-});
-localStorage.setItem("zipCart",JSON.stringify(saved));
-localStorage.setItem("zipQtyFixedV1","1");
+"👑 Banarasi",
+"🥻 Silk",
+"🌿 Cotton",
+"🌸 Georgette",
+"🪶 Chiffon",
+"🌺 Bandhej",
+"🎉 Party Wear",
+"👰 Bridal",
+"✨ Designer",
+"🧵 Embroidery",
+"🖼️ Printed",
+"🌿 Linen"
+
+];
+
+const products=[
+
+{
+id:1,
+name:"Beautiful Saree",
+cat:"women",
+sub:"Saree",
+emoji:"🥻",
+price:999,
+old:1499,
+rating:4.5,
+ratingCount:128,
+colors:["Red","Pink","Blue","Green"],
+sizes:["Free Size"],
+description:"Elegant saree suitable for festive occasions, family functions and special events.",
+highlights:["Soft fabric","Elegant design","Easy to drape","Festive wear"],
+details:"Fabric: Premium blended fabric. Pattern: Designer. Occasion: Festive & Party Wear. Care: Gentle wash recommended."
+},
+
+{
+id:2,
+name:"Designer Anarkali Suit",
+cat:"women",
+sub:"Suits",
+emoji:"👗",
+price:122,
+old:610,
+rating:4.5,
+ratingCount:245,
+colors:["Pink","Maroon","Blue","Black"],
+sizes:["S","M","L","XL","XXL"],
+description:"Stylish Anarkali suit with comfortable fitting and attractive design.",
+highlights:["Comfortable fit","Stylish pattern","Multiple sizes","Party wear"],
+details:"Material: Soft blended fabric. Sleeve: Full. Neck: Round. Occasion: Casual, Festive & Party."
+},
+
+{
+id:3,
+name:"Stylish Shoes",
+cat:"shoes",
+sub:"Women",
+emoji:"👠",
+price:799,
+old:1299,
+rating:4.3,
+ratingCount:94,
+colors:["Black","White","Pink"],
+sizes:["5","6","7","8","9"],
+description:"Comfortable everyday fashion shoes designed for style and regular use.",
+highlights:["Comfort sole","Lightweight","Fashion design","Daily wear"],
+details:"Upper: Synthetic. Sole: Rubber. Closure: Slip-on. Suitable for casual use."
+},
+
+{
+id:4,
+name:"Kids Toy Car",
+cat:"toys",
+sub:"Cars",
+emoji:"🚗",
+price:499,
+old:799,
+rating:4.4,
+ratingCount:87,
+colors:["Red","Blue","Yellow"],
+sizes:["Standard"],
+description:"Fun toy car for children with colourful design.",
+highlights:["Child friendly","Colourful","Fun play","Gift option"],
+details:"Recommended age: 3+ years. Material: Plastic. Use under adult supervision."
+},
+
+{
+id:5,
+name:"Fashion Jewellery Set",
+cat:"jewellery",
+sub:"Artificial Jewellery",
+emoji:"💍",
+price:399,
+old:699,
+rating:4.2,
+ratingCount:66,
+colors:["Golden","Silver","Rose Gold"],
+sizes:["Free Size"],
+description:"Beautiful fashion jewellery set for occasions and everyday styling.",
+highlights:["Elegant look","Lightweight","Gift friendly","Party wear"],
+details:"Type: Artificial Jewellery. Finish: Fashion finish. Care: Keep away from moisture."
+},
+
+{
+id:6,
+name:"Women Handbag",
+cat:"bags",
+sub:"Handbag",
+emoji:"👜",
+price:799,
+old:1199,
+rating:4.4,
+ratingCount:105,
+colors:["Black","Brown","Pink","Beige"],
+sizes:["Standard"],
+description:"Spacious handbag for daily use, office and outings.",
+highlights:["Spacious","Multiple compartments","Strong handle","Daily use"],
+details:"Material: Synthetic leather. Closure: Zip. Usage: Office, Travel & Casual."
+},
+
+{
+id:7,
+name:"Cotton Kurti",
+cat:"women",
+sub:"Kurtis",
+emoji:"👚",
+price:549,
+old:899,
+rating:4.6,
+ratingCount:314,
+colors:["Blue","Pink","Yellow","Green"],
+sizes:["S","M","L","XL","XXL"],
+description:"Comfortable cotton kurti with attractive everyday styling.",
+highlights:["Cotton feel","Comfortable","Breathable","Daily wear"],
+details:"Fabric: Cotton blend. Pattern: Printed. Occasion: Casual & Office."
+},
+
+{
+id:8,
+name:"Men Casual Shirt",
+cat:"men",
+sub:"Shirts",
+emoji:"👔",
+price:699,
+old:999,
+rating:4.3,
+ratingCount:178,
+colors:["White","Blue","Black","Grey"],
+sizes:["S","M","L","XL","XXL"],
+description:"Smart casual shirt suitable for office, outings and everyday wear.",
+highlights:["Comfort fit","Smart design","Multiple sizes","Easy styling"],
+details:"Fabric: Cotton blend. Sleeve: Full. Fit: Regular. Occasion: Casual & Semi-formal."
+},
+
+{
+id:9,
+name:"Kids Dress",
+cat:"kids",
+sub:"Kids Dresses",
+emoji:"👗",
+price:449,
+old:799,
+rating:4.5,
+ratingCount:119,
+colors:["Pink","Purple","Yellow"],
+sizes:["2-3Y","3-5Y","5-8Y","8-12Y"],
+description:"Comfortable colourful kids dress for parties and everyday occasions.",
+highlights:["Soft feel","Colourful design","Comfortable","Kids friendly"],
+details:"Material: Soft fabric. Occasion: Casual & Party. Care: Gentle wash."
+},
+
+{
+id:10,
+name:"Wireless Earphones",
+cat:"electronics",
+sub:"Earphones",
+emoji:"🎧",
+price:899,
+old:1499,
+rating:4.1,
+ratingCount:221,
+colors:["Black","White"],
+sizes:["Standard"],
+description:"Wireless earphones for music, calls and everyday entertainment.",
+highlights:["Wireless","Compact","Clear sound","Charging case"],
+details:"Connectivity: Bluetooth. Charging: USB. Use: Music & Calls."
+},
+
+{
+id:11,
+name:"Grocery Daily Essentials",
+cat:"grocery",
+sub:"Household",
+emoji:"🛒",
+price:299,
+old:349,
+rating:4.4,
+ratingCount:52,
+colors:["Standard"],
+sizes:["Standard"],
+description:"Useful daily household grocery essentials.",
+highlights:["Daily use","Household essential","Value pack","Easy ordering"],
+details:"Product details and expiry will be shown from seller listing."
+},
+
+{
+id:12,
+name:"Health Care Product",
+cat:"medicine",
+sub:"Common Care",
+emoji:"💊",
+price:199,
+old:249,
+rating:4.2,
+ratingCount:71,
+colors:["Standard"],
+sizes:["Standard"],
+description:"General health and personal care product.",
+highlights:["Daily care","Easy to use","Useful","Compact"],
+details:"Actual medical product information, expiry and applicable prescription requirements will be shown from the verified seller listing."
 }
-fixOldQuantities();
+
+];
 
 let wishlist=JSON.parse(localStorage.getItem("zipWish")||"[]");
 let cart=JSON.parse(localStorage.getItem("zipCart")||"[]");
@@ -323,728 +1516,4156 @@ let ordersData=JSON.parse(localStorage.getItem("zipOrders")||"[]");
 let reviewsData=JSON.parse(localStorage.getItem("zipReviews")||"[]");
 
 let currentLang=localStorage.getItem("zipLang")||"Hindi";
-let selectedCat=null,wishlistPageActive=false,currentProductId=null;
-let selectedSize="",selectedColor="",checkoutProductId=null,checkoutSource="product";
+let selectedCat=null;
+let wishlistPageActive=false;
+let currentProductId=null;
+let selectedSize="";
+let selectedColor="";
+let checkoutProductId=null;
+let checkoutSource="product";
 let selectedPayment="Online Payment";
-let checkoutCustomer={name:"ZipCart Customer",mobile:"9876543210",address:"Jaipur, Rajasthan — Demo Address",pin:"302001"};
-let currentReturnOrderId=null,currentExchangeOrderId=null,exchangeSize="",exchangeColor="";
 
-function isCashPayment(method){return method==="Cash on Delivery"}
-function isOnlinePayment(method){return !isCashPayment(method)}
-function getPaymentAdjustment(method){return isCashPayment(method)?PAYMENT_SETTINGS.codExtra:0}
-function getFinalAmount(subtotal,method){return Math.max(0,subtotal+getPaymentAdjustment(method))}
-function getPaymentAdjustmentText(method){return isCashPayment(method)?`COD charge: +₹${PAYMENT_SETTINGS.codExtra}`:""}
+let checkoutCustomer={
+name:"ZipCart Customer",
+mobile:"9876543210",
+address:"Jaipur, Rajasthan — Demo Address",
+pin:"302001"
+};
+
+let currentReturnOrderId=null;
+let currentExchangeOrderId=null;
+let exchangeSize="";
+let exchangeColor="";
+
+
+/* =========================================================
+   PAYMENT HELPERS
+   ========================================================= */
+
+function isCashPayment(method){
+
+return method==="Cash on Delivery";
+
+}
+
+function isOnlinePayment(method){
+
+return !isCashPayment(method);
+
+}
+
+function getPaymentAdjustment(method){
+
+if(isCashPayment(method)){
+
+return PAYMENT_SETTINGS.codExtra;
+
+}
+
+return 0;
+
+}
+
+function getFinalAmount(subtotal,method){
+
+const adjustment=getPaymentAdjustment(method);
+
+return Math.max(
+0,
+subtotal+adjustment
+);
+
+}
+
+function getPaymentAdjustmentText(method){
+
+if(isCashPayment(method)){
+
+return `COD charge: +₹${PAYMENT_SETTINGS.codExtra}`;
+
+}
+
+return "";
+
+}
+
+
+/* =========================================================
+   SAVE / COUNTS
+   ========================================================= */
 
 function save(){
+
 localStorage.setItem("zipWish",JSON.stringify(wishlist));
 localStorage.setItem("zipCart",JSON.stringify(cart));
 localStorage.setItem("zipOrders",JSON.stringify(ordersData));
 localStorage.setItem("zipReviews",JSON.stringify(reviewsData));
+
 updateCounts();
+
 }
 
 function updateCounts(){
-let w=document.getElementById("wishCount"),c=document.getElementById("cartCount");
-if(w)w.textContent=wishlist.length;
-if(c)c.textContent=cart.reduce((t,i)=>t+Number(i.qty||0),0);
+
+const wish=document.getElementById("wishCount");
+const cartCount=document.getElementById("cartCount");
+
+if(wish){
+wish.textContent=wishlist.length;
 }
 
-function getProduct(id){return products.find(p=>p.id===Number(id))}
+if(cartCount){
 
-function colorClass(color){
-if(!color)return"color-standard";
-let k=String(color).trim().toLowerCase().replace(/\s+/g,"-");
-let a=["red","pink","blue","green","black","white","yellow","maroon","purple","golden","silver","rose-gold","brown","beige","grey","standard"];
-return a.includes(k)?"color-"+k:"color-standard";
+cartCount.textContent=cart.reduce(
+(total,item)=>total+Number(item.qty||0),
+0
+);
+
 }
 
-function colorDotClass(color){
-if(!color)return"dot-Standard";
-return"dot-"+String(color).trim().replace(/\s+/g,"-");
 }
 
-function productVisual(p,color=""){
-let selected=color||p.colors?.[0]||"Standard";
-return `<div class="product-visual ${colorClass(selected)}"><span>${p.emoji}</span><span class="color-label">${escapeHTML(selected)}</span></div>`;
+function getProduct(id){
+
+return products.find(
+p=>p.id===Number(id)
+);
+
 }
+
+
+/* =========================================================
+   PRODUCT CARD
+   ========================================================= */
 
 function productCard(p){
-let liked=wishlist.includes(p.id),pct=Math.round((1-p.price/p.old)*100),previewColor=p.colors?.[0]||"Standard";
-return `<div class="card">
-<button class="heart ${liked?"liked":""}" onclick="event.stopPropagation();toggleWish(${p.id})">${liked?"❤️":"♡"}</button>
-<div class="photo" onclick="product(${p.id})">${productVisual(p,previewColor)}</div>
-<div class="cardbody" onclick="product(${p.id})" style="cursor:pointer">
+
+const liked=wishlist.includes(p.id);
+
+const pct=Math.round(
+(1-p.price/p.old)*100
+);
+
+return `
+
+<div class="card">
+
+<button
+class="heart ${liked?"liked":""}"
+onclick="event.stopPropagation();toggleWish(${p.id})"
+>
+${liked?"❤️":"♡"}
+</button>
+
+<div
+class="photo"
+onclick="product(${p.id})"
+>
+${p.emoji}
+</div>
+
+<div
+class="cardbody"
+onclick="product(${p.id})"
+style="cursor:pointer"
+>
+
 <b>${p.name}</b>
-<div><span class="price">₹${p.price}</span><span class="old">₹${p.old}</span><span class="off">${pct}% OFF</span></div>
-<div class="rating">⭐ ${p.rating} (${p.ratingCount||0})</div>
-<button class="buy" onclick="event.stopPropagation();product(${p.id})">देखें / खरीदें</button>
-</div></div>`;
+
+<div>
+
+<span class="price">
+₹${p.price}
+</span>
+
+<span class="old">
+₹${p.old}
+</span>
+
+<span class="off">
+${pct}% OFF
+</span>
+
+</div>
+
+<div class="rating">
+⭐ ${p.rating} (${p.ratingCount||0})
+</div>
+
+<button
+class="buy"
+onclick="event.stopPropagation();product(${p.id})"
+>
+देखें / खरीदें
+</button>
+
+</div>
+
+</div>
+
+`;
+
 }
+
+
+/* =========================================================
+   CATEGORIES
+   ========================================================= */
 
 function catsHTML(){
-return `<div class="hscroll">${cats.map(c=>`<div class="cat" onclick="category('${c[2]}')"><div class="catpic">${c[0]}</div><b>${c[1]}</b></div>`).join("")}</div>`;
+
+return `
+
+<div class="hscroll">
+
+${cats.map(c=>`
+
+<div
+class="cat"
+onclick="category('${c[2]}')"
+>
+
+<div class="catpic">
+${c[0]}
+</div>
+
+<b>
+${c[1]}
+</b>
+
+</div>
+
+`).join("")}
+
+</div>
+
+`;
+
 }
+
+
+/* =========================================================
+   HOME
+   ========================================================= */
 
 function home(){
+
 wishlistPageActive=false;
+
 app.innerHTML=`
+
 <section class="hero">
-<h1>ZipCart में आपका स्वागत है ❤️</h1>
-<p>आपकी अपनी shopping जगह — <b>देखो → सुनो → समझो → दबाओ → खरीदो</b></p>
+
+<h1>
+ZipCart में आपका स्वागत है ❤️
+</h1>
+
+<p>
+आपकी अपनी shopping जगह —
+<b>
+देखो → सुनो → समझो → दबाओ → खरीदो
+</b>
+</p>
+
 <div class="quick">
-<button class="pill" onclick="voiceSearch()">🔊 Voice Search</button>
-<button class="pill" onclick="show('orders')">📦 मेरे ऑर्डर</button>
-<button class="pill" onclick="show('account')">🆘 मदद चाहिए?</button>
-<button class="pill" onclick="category('grocery')">⚡ Grocery Quick Delivery</button>
-<button class="pill" onclick="category('medicine')">💊 Medicines</button>
-</div></section>
-<div class="banner"><div><h2>🎉 आज के Offers</h2><div>आपके बजट और पसंद के हिसाब से खरीदारी करें</div></div><button onclick="doSearchText('Anarkali Suit')">Anarkali Suit देखें</button></div>
-<section class="section"><h2>🗂️ Top Categories</h2>${catsHTML()}</section>
-<section class="section"><h2>✨ आपके लिए चुना गया</h2><div class="grid">${products.slice(0,8).map(productCard).join("")}</div></section>
-<section class="section"><h2>🔥 कम बजट में पसंदीदा</h2><div class="grid">${products.filter(p=>p.price<600).map(productCard).join("")}</div></section>
-<section class="section"><h2>🆕 New Arrivals</h2><div class="grid">${products.slice(8).map(productCard).join("")}</div></section>`;
+
+<button
+class="pill"
+onclick="voiceSearch()"
+>
+🔊 Voice Search
+</button>
+
+<button
+class="pill"
+onclick="show('orders')"
+>
+📦 मेरे ऑर्डर
+</button>
+
+<button
+class="pill"
+onclick="show('account')"
+>
+🆘 मदद चाहिए?
+</button>
+
+<button
+class="pill"
+onclick="category('grocery')"
+>
+⚡ Grocery Quick Delivery
+</button>
+
+<button
+class="pill"
+onclick="category('medicine')"
+>
+💊 Medicines
+</button>
+
+</div>
+
+</section>
+
+<div class="banner">
+
+<div>
+
+<h2>
+🎉 आज के Offers
+</h2>
+
+<div>
+आपके बजट और पसंद के हिसाब से खरीदारी करें
+</div>
+
+</div>
+
+<button
+onclick="doSearchText('Anarkali Suit')"
+>
+Anarkali Suit देखें
+</button>
+
+</div>
+
+<section class="section">
+
+<h2>
+🗂️ Top Categories
+</h2>
+
+${catsHTML()}
+
+</section>
+
+<section class="section">
+
+<h2>
+✨ आपके लिए चुना गया
+</h2>
+
+<div class="grid">
+
+${products.slice(0,8).map(productCard).join("")}
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>
+🔥 कम बजट में पसंदीदा
+</h2>
+
+<div class="grid">
+
+${products.filter(p=>p.price<600).map(productCard).join("")}
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>
+🆕 New Arrivals
+</h2>
+
+<div class="grid">
+
+${products.slice(8).map(productCard).join("")}
+
+</div>
+
+</section>
+
+`;
+
 updateCounts();
+
 }
+
+
+/* =========================================================
+   CATEGORY
+   ========================================================= */
 
 function category(key){
+
 selectedCat=key;
-let c=cats.find(x=>x[2]===key),arr=sub[key]||[];
+
+const c=cats.find(x=>x[2]===key);
+const arr=sub[key]||[];
+
 app.innerHTML=`
-<button class="back" onclick="show('home')">← वापस Home</button>
-<div class="panel"><h2>${c?c[0]+" "+c[1]:key}</h2><p>Category को बाएँ-दाएँ swipe करके देखें। 🔊 नाम सुनने के लिए Listen दबाएँ।</p><button class="pill" onclick='speakList(${JSON.stringify(arr)})'>🔊 सुनें</button></div>
-<div class="hscroll">${arr.map(x=>`<div class="cat" onclick="subCategory('${key}',\`${x}\`)"><div class="catpic">${x.split(" ")[0]}</div><b>${x.substring(x.indexOf(" ")+1)}</b></div>`).join("")}</div>
-${key==="women"?`<div class="panel">
-<h3>👰 Lehenga की अलग varieties</h3>
-<div class="hscroll">${lehenga.map(x=>`<div class="cat" onclick="subCategory('women',\`Lehenga ${x.substring(x.indexOf(" ")+1)}\`)"><div class="catpic">${x.split(" ")[0]}</div><b>${x.substring(x.indexOf(" ")+1)}</b></div>`).join("")}</div>
-<h3>🥻 Saree varieties</h3>
-<div class="hscroll">${saree.map(x=>`<div class="cat" onclick="subCategory('women',\`Saree ${x.substring(x.indexOf(" ")+1)}\`)"><div class="catpic">${x.split(" ")[0]}</div><b>${x.substring(x.indexOf(" ")+1)}</b></div>`).join("")}</div></div>`:""}
-<section class="section"><h2>🛍️ Products</h2><div class="grid">${products.filter(p=>p.cat===key).length?products.filter(p=>p.cat===key).map(productCard).join(""):`<div class="empty">इस category के real products seller जोड़ने के बाद यहाँ दिखाई देंगे।</div>`}</div></section>`;
-updateCounts();
+
+<button
+class="back"
+onclick="show('home')"
+>
+← वापस Home
+</button>
+
+<div class="panel">
+
+<h2>
+${c?c[0]+" "+c[1]:key}
+</h2>
+
+<p>
+Category को बाएँ-दाएँ swipe करके देखें।
+🔊 नाम सुनने के लिए Listen दबाएँ।
+</p>
+
+<button
+class="pill"
+onclick='speakList(${JSON.stringify(arr)})'
+>
+🔊 सुनें
+</button>
+
+</div>
+
+<div class="hscroll">
+
+${arr.map(x=>`
+
+<div
+class="cat"
+onclick="subCategory('${key}',\`${x}\`)"
+>
+
+<div class="catpic">
+${x.split(" ")[0]}
+</div>
+
+<b>
+${x.substring(x.indexOf(" ")+1)}
+</b>
+
+</div>
+
+`).join("")}
+
+</div>
+
+${
+key==="women"
+?
+`
+
+<div class="panel">
+
+<h3>
+👰 Lehenga की अलग varieties
+</h3>
+
+<div class="hscroll">
+
+${lehenga.map(x=>`
+
+<div
+class="cat"
+onclick="subCategory('women',\`Lehenga ${x.substring(x.indexOf(" ")+1)}\`)"
+>
+
+<div class="catpic">
+${x.split(" ")[0]}
+</div>
+
+<b>
+${x.substring(x.indexOf(" ")+1)}
+</b>
+
+</div>
+
+`).join("")}
+
+</div>
+
+<h3>
+🥻 Saree varieties
+</h3>
+
+<div class="hscroll">
+
+${saree.map(x=>`
+
+<div
+class="cat"
+onclick="subCategory('women',\`Saree ${x.substring(x.indexOf(" ")+1)}\`)"
+>
+
+<div class="catpic">
+${x.split(" ")[0]}
+</div>
+
+<b>
+${x.substring(x.indexOf(" ")+1)}
+</b>
+
+</div>
+
+`).join("")}
+
+</div>
+
+</div>
+
+`
+:
+""
 }
+
+<section class="section">
+
+<h2>
+🛍️ Products
+</h2>
+
+<div class="grid">
+
+${
+products.filter(p=>p.cat===key).length
+?
+products.filter(p=>p.cat===key).map(productCard).join("")
+:
+
+`
+
+<div class="empty">
+
+इस category के real products seller जोड़ने के बाद यहाँ दिखाई देंगे।
+
+</div>
+
+`
+}
+
+</div>
+
+</section>
+
+`;
+
+updateCounts();
+
+}
+
+
+/* =========================================================
+   SUB CATEGORY
+   ========================================================= */
 
 function subCategory(key,s){
+
 selectedCat=key;
-let name=s.trim(),cleanName=name.replace(/^[^\s]+\s/,"");
-let found=products.filter(p=>p.cat===key&&((p.sub||"").toLowerCase().includes(cleanName.toLowerCase())||p.name.toLowerCase().includes(cleanName.toLowerCase())));
-let ranges=["₹100–₹500","₹500–₹1,000","₹1,000–₹1,500","₹1,500–₹2,000","₹2,000–₹3,000","₹3,000–₹5,000","₹5,000–₹10,000","₹10,000+"];
+
+let name=s.trim();
+
+let cleanName=name.replace(/^[^\s]+\s/,"");
+
+let found=products.filter(
+p=>
+p.cat===key &&
+(
+(p.sub||"").toLowerCase().includes(cleanName.toLowerCase())
+||
+p.name.toLowerCase().includes(cleanName.toLowerCase())
+)
+);
+
 app.innerHTML=`
-<button class="back" onclick="category('${key}')">← वापस</button>
-<div class="panel"><h2>${name}</h2><button class="pill" onclick='speak(${JSON.stringify(name)})'>🔊 सुनें</button><div class="quick">${ranges.map(x=>`<button class="pill" onclick="filterPrice('${x}')">${x}</button>`).join("")}</div></div>
-<div id="subcategoryProducts" class="grid">${found.length?found.map(productCard).join(""):products.filter(p=>p.cat===key).map(productCard).join("")}</div>`;
-updateCounts();
+
+<button
+class="back"
+onclick="category('${key}')"
+>
+← वापस
+</button>
+
+<div class="panel">
+
+<h2>
+${name}
+</h2>
+
+<button
+class="pill"
+onclick='speak(${JSON.stringify(name)})'
+>
+🔊 सुनें
+</button>
+
+<div class="quick">
+
+${[
+"₹100–₹500",
+"₹500–₹1,000",
+"₹1,000–₹1,500",
+"₹1,500–₹2,000",
+"₹2,000–₹3,000",
+"₹3,000–₹5,000",
+"₹5,000–₹10,000",
+"₹10,000+"
+].map(x=>`
+
+<button
+class="pill"
+onclick="filterPrice('${x}')"
+>
+${x}
+</button>
+
+`).join("")
 }
+
+</div>
+
+</div>
+
+<div
+id="subcategoryProducts"
+class="grid"
+>
+
+${
+found.length
+?
+found.map(productCard).join("")
+:
+products.filter(p=>p.cat===key).map(productCard).join("")
+}
+
+</div>
+
+`;
+
+updateCounts();
+
+}
+
+
+/* =========================================================
+   PRICE FILTER
+   ========================================================= */
 
 function filterPrice(range){
-let parts=range.replaceAll("₹","").replaceAll(",","").split("–");
-let min=parseInt(parts[0]),max=parts[1]?parseInt(parts[1].replace("+","")):Infinity;
-let result=products.filter(p=>p.cat===selectedCat&&p.price>=min&&(max===Infinity||p.price<=max));
-document.getElementById("subcategoryProducts").innerHTML=result.length?result.map(productCard).join(""):`<div class="empty">इस price range में अभी product उपलब्ध नहीं है।</div>`;
+
+let parts=range
+.replaceAll("₹","")
+.replaceAll(",","")
+.split("–");
+
+let min=parseInt(parts[0]);
+
+let max=parts[1]
+?
+parseInt(parts[1].replace("+",""))
+:
+Infinity;
+
+let source=products.filter(
+p=>p.cat===selectedCat
+);
+
+let result=source.filter(
+p=>p.price>=min &&
+(
+max===Infinity ||
+p.price<=max
+)
+);
+
+if(!result.length){
+
+document.getElementById(
+"subcategoryProducts"
+).innerHTML=`
+
+<div class="empty">
+
+इस price range में अभी product उपलब्ध नहीं है।
+
+</div>
+
+`;
+
+return;
+
 }
 
+document.getElementById(
+"subcategoryProducts"
+).innerHTML=
+result.map(productCard).join("");
+
+}
+
+
+/* =========================================================
+   WISHLIST / CART
+   ========================================================= */
+
 function toggleWish(id){
-id=Number(id);
-if(wishlist.includes(id))wishlist=wishlist.filter(x=>x!==id);else wishlist.push(id);
+
+if(wishlist.includes(id)){
+
+wishlist=wishlist.filter(
+x=>x!==id
+);
+
+}else{
+
+wishlist.push(id);
+
+}
+
 save();
-if(currentProductId===id)product(id);else if(wishlistPageActive)wishlistPage();
+
+if(currentProductId===id){
+
+product(id);
+
+}else if(wishlistPageActive){
+
+wishlistPage();
+
+}
+
 }
 
 function addCart(id,qty=1){
-id=Number(id);
-let item=cart.find(x=>x.id===id);
-if(item)item.qty=Number(item.qty||1)+Number(qty);
-else cart.push({id,qty:Math.max(1,Number(qty)||1),selected:true});
+
+let item=cart.find(
+x=>x.id===Number(id)
+);
+
+if(item){
+
+item.qty+=Number(qty);
+
+}else{
+
+cart.push({
+id:Number(id),
+qty:Number(qty),
+selected:true
+});
+
+}
+
 save();
-showCartMessage("🛒 Product cart में जोड़ दिया गया।");
+
+showCartMessage(
+"🛒 Product cart में जोड़ दिया गया।"
+);
+
 }
 
 function showCartMessage(message){
-const old=document.getElementById("cartMessage");if(old)old.remove();
-const box=document.createElement("div");box.id="cartMessage";
-Object.assign(box.style,{position:"fixed",top:"80px",right:"15px",zIndex:"200",background:"#4b0082",color:"#fff",padding:"14px 18px",borderRadius:"12px",boxShadow:"0 5px 20px #0003"});
-box.innerHTML=`<div>${message}</div><div style="margin-top:8px;display:flex;gap:6px"><button onclick="show('cart');this.parentElement.parentElement.remove()" style="background:#fff;color:#4b0082;padding:6px 10px;border-radius:8px">Cart देखें</button><button onclick="this.parentElement.parentElement.remove()" style="background:#ffffff33;color:#fff;padding:6px 10px;border-radius:8px">बंद</button></div>`;
+
+const old=document.getElementById("cartMessage");
+
+if(old)old.remove();
+
+const box=document.createElement("div");
+
+box.id="cartMessage";
+
+box.style.position="fixed";
+box.style.top="80px";
+box.style.right="15px";
+box.style.zIndex="200";
+box.style.background="#4b0082";
+box.style.color="#fff";
+box.style.padding="14px 18px";
+box.style.borderRadius="12px";
+box.style.boxShadow="0 5px 20px #0003";
+
+box.innerHTML=`
+
+<div>${message}</div>
+
+<div style="margin-top:8px;display:flex;gap:6px">
+
+<button
+onclick="show('cart');this.parentElement.parentElement.remove()"
+style="background:#fff;color:#4b0082;border:0;padding:6px 10px;border-radius:8px"
+>
+Cart देखें
+</button>
+
+<button
+onclick="this.parentElement.parentElement.remove()"
+style="background:#ffffff33;color:#fff;border:0;padding:6px 10px;border-radius:8px"
+>
+बंद
+</button>
+
+</div>
+
+`;
+
 document.body.appendChild(box);
-setTimeout(()=>{if(box.parentElement)box.remove()},5000);
-}
-
-function selectSize(size){
-selectedSize=size;
-document.querySelectorAll(".size-btn").forEach(btn=>btn.classList.toggle("active",btn.dataset.size===size));
-}
-
-function selectColor(color){
-selectedColor=color;
-document.querySelectorAll(".color-btn").forEach(btn=>btn.classList.toggle("active",btn.dataset.color===color));
-const p=getProduct(currentProductId),preview=document.getElementById("productColorPreview");
-if(preview&&p){preview.className="product-photo-large "+colorClass(color);preview.innerHTML=productVisual(p,color)}
-const text=document.getElementById("selectedColorText");
-if(text)text.innerHTML=`<span class="color-dot ${colorDotClass(color)}"></span>Selected Color: <b>${escapeHTML(color)}</b>`;
-}
-
-function validateProductSelection(){
-const p=getProduct(currentProductId);if(!p)return false;
-if(p.sizes&&p.sizes.length>1&&!selectedSize){alert("कृपया पहले Size चुनें।");document.getElementById("sizeSection")?.scrollIntoView({behavior:"smooth",block:"center"});return false}
-if(p.colors&&p.colors.length>1&&!selectedColor){alert("कृपया पहले Color चुनें।");document.getElementById("colorSection")?.scrollIntoView({behavior:"smooth",block:"center"});return false}
-return true;
-}
-
-function product(id){
-const p=getProduct(id);if(!p)return;
-currentProductId=Number(id);selectedSize="";selectedColor="";
-const reviews=reviewsData.filter(r=>Number(r.productId)===Number(id));
-const related=products.filter(x=>x.id!==p.id&&x.cat===p.cat),other=products.filter(x=>x.id!==p.id&&x.cat!==p.cat),relatedAll=[...related,...other];
-const deliveryDate=new Date();deliveryDate.setDate(deliveryDate.getDate()+7);
-const deliveryText=deliveryDate.toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"});
-const firstColor=p.colors?.[0]||"Standard";
-
-app.innerHTML=`
-<div class="product-page">
-<button class="back" onclick="show('home')">← वापस</button>
-<div class="product-main">
-<div>
-<div id="productColorPreview" class="product-photo-large ${colorClass(firstColor)}">${productVisual(p,firstColor)}</div>
-<div id="selectedColorText" class="color-preview-info"><span class="color-dot ${colorDotClass(firstColor)}"></span>Product Preview Color: <b>${escapeHTML(firstColor)}</b></div>
-<div class="quick">
-<button class="pill" onclick="toggleWish(${p.id})">${wishlist.includes(p.id)?"❤️ Wishlist में है":"♡ Wishlist में जोड़ें"}</button>
-<button class="pill" onclick="shareProduct(${p.id})">📤 Share</button>
-<button class="pill" onclick='speak(${JSON.stringify(p.name)})'>🔊 सुनें</button>
-</div>
-</div>
-<div class="product-info">
-<span class="demo-label">ZipCart Product Details</span>
-<h1>${p.name}</h1>
-<div class="rating-box"><span class="rating-badge">★ ${p.rating}</span><span class="rating-count">${p.ratingCount||0} ratings & reviews</span></div>
-<div><span class="price">₹${p.price}</span><span class="old">₹${p.old}</span><span class="off">${Math.round((1-p.price/p.old)*100)}% OFF</span></div>
-<p>${p.description}</p>
-<div id="sizeSection" class="option-title">Select Size</div>
-<div class="size-list">${p.sizes.map(size=>`<button class="size-btn" data-size="${size}" onclick="selectSize('${size}')">${size}</button>`).join("")}</div>
-<div id="colorSection" class="option-title">Select Color</div>
-<div class="color-list">${p.colors.map(color=>`<button class="color-btn" data-color="${color}" onclick="selectColor('${color}')"><span class="color-dot ${colorDotClass(color)}"></span>${color}</button>`).join("")}</div>
-<div class="notice">🎨 <b>Color Preview:</b> ऊपर कोई भी color चुनते ही product preview अपने-आप उस color के हिसाब से बदल जाएगा।</div>
-<div class="delivery-box"><b>🚚 Delivery by ${deliveryText}</b><p style="margin-bottom:0">Demo estimate: आज order करने पर लगभग 7 दिन। PIN code डालने पर production version में actual delivery date दिखाई जाएगी।</p></div>
-<div class="quick"><button class="pill" onclick="buyNow(${p.id})">⚡ Buy Now</button><button class="pill" onclick="addCart(${p.id})">🛒 Add to Cart</button></div>
-</div></div>
-
-<div class="panel"><h2>📋 Product Details</h2><p>${p.details}</p><h3>✨ Product Highlights</h3><div class="highlight-list">${p.highlights.map(x=>`<div class="highlight">✓ ${x}</div>`).join("")}</div><h3>📦 Additional Details</h3><div class="notice"><strong>Category:</strong> ${p.cat}<br><strong>Sub-category:</strong> ${p.sub}<br><strong>Availability:</strong> In stock<br><strong>Return:</strong> Eligible products पर applicable return policy<br><strong>Exchange:</strong> Size/color availability के अनुसार<br><strong>Support:</strong> Order Number के साथ customer support</div></div>
-
-<div class="panel"><h2>⭐ Ratings & Reviews</h2>
-<div class="rating-summary"><div class="rating-big"><div class="number">${p.rating}</div><div>★★★★★</div><div>${p.ratingCount||0} ratings</div></div>
-<div><p>ग्राहक अपना अनुभव नीचे दिए गए options में बता सकते हैं:</p><div class="rating-choice">
-<button onclick="openReviewForm(${p.id},'Very Bad')">😞 Very Bad</button><button onclick="openReviewForm(${p.id},'Bad')">🙁 Bad</button><button onclick="openReviewForm(${p.id},'Okay')">😐 Okay</button><button onclick="openReviewForm(${p.id},'Good')">🙂 Good</button><button onclick="openReviewForm(${p.id},'Very Good')">😍 Very Good</button>
-</div></div></div>
-${reviews.length?reviews.map(r=>`<div class="review"><div><b>${r.rating}</b> <span>• ${r.date}</span></div><p>${escapeHTML(r.comment||"Customer review")}</p>${r.photo?`<div class="review-media">📷 Customer Photo Added</div>`:""}${r.video?`<div class="review-media">🎥 Customer Video Added</div>`:""}</div>`).join(""):`<div class="notice">अभी इस demo product के लिए customer review नहीं है। Order के बाद customer यहाँ अपना Photo, Video और Comment जोड़ सकता है।</div>`}
-</div>
-
-<div class="panel"><h2>🛍️ Related Products</h2><p>${p.sub} और ${p.cat} से जुड़े products देखें।</p><div class="grid">${relatedAll.map(productCard).join("")}</div></div>
-<div class="panel"><h2>🔎 और भी देखें</h2><div class="quick">${["More Like This","Similar Products","Top Rated","Best Deals","New Arrivals","Low Price","Popular"].map(x=>`<button class="pill" onclick="relatedSearch('${x}',${p.id})">${x}</button>`).join("")}</div></div>
-<div class="notice">💡 <b>ZipCart सुविधा:</b> यह product जहाँ भी saved है — Cart, Wishlist या Orders — वहाँ से product पर क्लिक करके आप इसी complete detail page पर वापस आ सकते हैं।</div>
-</div>
-<div class="sticky-buy"><div class="sticky-buy-inner"><button class="sticky-cart" onclick="addCart(${p.id})">🛒 Add to Cart</button><button class="sticky-buy-now" onclick="buyNow(${p.id})">⚡ Buy Now</button></div></div>`;
-updateCounts();window.scrollTo(0,0);
-}
-
-function buyNow(id){
-currentProductId=Number(id);
-if(!validateProductSelection())return;
-checkoutProductId=Number(id);checkoutSource="product";
-checkoutCustomer={name:"ZipCart Customer",mobile:"9876543210",address:"Jaipur, Rajasthan — Demo Address",pin:"302001"};
-checkoutPage();
-}
-
-function openReviewForm(productId,rating){
-openModal(`<h2>⭐ Product Review</h2><p>आपने चुना: <b>${rating}</b></p>
-<div class="field"><label>Comment / Review</label><textarea id="reviewComment" placeholder="Product कैसा लगा?"></textarea></div>
-<div class="field" style="margin-top:10px"><label>Photo</label><input type="file" id="reviewPhoto" accept="image/*"></div>
-<div class="field" style="margin-top:10px"><label>Video</label><input type="file" id="reviewVideo" accept="video/*"></div>
-<br><button class="buy" onclick="submitReview(${productId},'${rating}')">Review Submit करें</button><br><br><button class="back" onclick="closeModal()">बंद करें</button>`);
-}
-
-function submitReview(productId,rating){
-const comment=document.getElementById("reviewComment")?.value.trim()||"",photo=document.getElementById("reviewPhoto")?.files.length>0,video=document.getElementById("reviewVideo")?.files.length>0;
-reviewsData.push({id:"REV-"+Date.now(),productId:Number(productId),rating,comment,photo,video,date:new Date().toLocaleDateString("en-IN")});
-save();closeModal();alert("⭐ आपका review save हो गया।");product(productId);
-}
-
-function shareProduct(id){
-const p=getProduct(id);if(!p)return;
-const text=`ZipCart पर ${p.name} देखें — ₹${p.price}`;
-if(navigator.share)navigator.share({title:p.name,text}).catch(()=>{});else{if(navigator.clipboard)navigator.clipboard.writeText(text);alert("📤 Product sharing text copy हो गया।")}
-}
-
-function relatedSearch(label,id){
-const p=getProduct(id);if(!p)return;
-app.innerHTML=`<button class="back" onclick="product(${p.id})">← ${p.name}</button><div class="panel"><h2>${label}</h2><p>${p.name} जैसे और products</p></div><div class="grid">${products.filter(x=>x.id!==p.id).map(productCard).join("")}</div>`;
-updateCounts();
-}
-
-/* =========================================================
-   CART — MOUSE + KEYBOARD QUANTITY
-   ========================================================= */
-
-let activeQtyIndex=null;
-
-function handleQtyKey(event,i){
-
-activeQtyIndex=i;
-
-if(event.key==="+"||event.key==="="||event.key==="ArrowUp"){
-event.preventDefault();
-event.stopPropagation();
-qty(i,1);
-return;
-}
-
-if(event.key==="-"||event.key==="ArrowDown"){
-event.preventDefault();
-event.stopPropagation();
-qty(i,-1);
-return;
-}
-
-}
-
-function refocusQty(i){
 
 setTimeout(()=>{
 
-const box=document.querySelector(
-`.qtybox[data-qty-index="${i}"]`
+if(box.parentElement){
+box.remove();
+}
+
+},5000);
+
+}
+
+
+/* =========================================================
+   PRODUCT OPTIONS
+   ========================================================= */
+
+function selectSize(size){
+
+selectedSize=size;
+
+document.querySelectorAll(".size-btn").forEach(btn=>{
+btn.classList.toggle(
+"active",
+btn.dataset.size===size
+);
+});
+
+}
+
+function selectColor(color){
+
+selectedColor=color;
+
+document.querySelectorAll(".color-btn").forEach(btn=>{
+btn.classList.toggle(
+"active",
+btn.dataset.color===color
+);
+});
+
+}
+
+function validateProductSelection(){
+
+const p=getProduct(currentProductId);
+
+if(!p)return false;
+
+if(p.sizes && p.sizes.length>1 && !selectedSize){
+
+alert("कृपया पहले Size चुनें।");
+
+document.getElementById("sizeSection")?.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+return false;
+
+}
+
+if(p.colors && p.colors.length>1 && !selectedColor){
+
+alert("कृपया पहले Color चुनें।");
+
+document.getElementById("colorSection")?.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+return false;
+
+}
+
+return true;
+
+}
+
+
+/* =========================================================
+   PRODUCT DETAIL
+   ========================================================= */
+
+function product(id){
+
+const p=getProduct(id);
+
+if(!p)return;
+
+currentProductId=Number(id);
+selectedSize="";
+selectedColor="";
+
+const reviews=reviewsData.filter(
+r=>Number(r.productId)===Number(id)
 );
 
-if(box){
-box.focus();
-activeQtyIndex=i;
+const related=products
+.filter(x=>x.id!==p.id && x.cat===p.cat);
+
+const otherRelated=products
+.filter(x=>x.id!==p.id && x.cat!==p.cat);
+
+const relatedAll=[...related,...otherRelated];
+
+const deliveryDate=new Date();
+deliveryDate.setDate(deliveryDate.getDate()+7);
+
+const deliveryText=deliveryDate.toLocaleDateString(
+"en-IN",
+{
+day:"numeric",
+month:"short",
+year:"numeric"
 }
-
-},0);
-
-}
-
-function cartPage(){
-wishlistPageActive=false;
-let selectedItems=cart.filter(x=>x.selected!==false);
-let total=selectedItems.reduce((sum,item)=>{const p=getProduct(item.id);return sum+(p?p.price:0)*Number(item.qty||1)},0);
+);
 
 app.innerHTML=`
-<h2>🛒 मेरा Cart</h2>
-${cart.length?`
-<div class="panel"><p>💡 किसी भी product की <b>photo, name या details area</b> पर click करके उसका पूरा Product Detail Page फिर से खोल सकते हैं।</p>
-${cart.map((x,i)=>{let p=getProduct(x.id);if(!p)return"";
-return `<div class="cartitem" onclick="product(${p.id})"><div class="row">
-<div class="selectrow" onclick="event.stopPropagation()"><input type="checkbox" ${x.selected!==false?"checked":""} onchange="setCartSelected(${i},this.checked)"></div>
-<span style="font-size:55px">${p.emoji}</span>
-<div class="grow"><b class="product-link">${p.name}</b><div>₹${p.price}</div><div>Size/Color details देखने के लिए product खोलें</div>
 
-<div class="qtybox"
-data-qty-index="${i}"
-tabindex="0"
-role="group"
-aria-label="Quantity"
-onclick="event.stopPropagation()"
-onfocus="activeQtyIndex=${i}"
-onkeydown="handleQtyKey(event,${i})">
+<div class="product-page">
 
-<button type="button"
-onclick="event.stopPropagation();qty(${i},-1)"
-aria-label="Decrease quantity">−</button>
+<button
+class="back"
+onclick="show('home')"
+>
+← वापस
+</button>
 
-<b>${x.qty}</b>
+<div class="product-main">
 
-<button type="button"
-onclick="event.stopPropagation();qty(${i},1)"
-aria-label="Increase quantity">+</button>
+<div>
+
+<div class="product-photo-large">
+${p.emoji}
+</div>
+
+<div class="quick">
+
+<button
+class="pill"
+onclick="toggleWish(${p.id})"
+>
+${wishlist.includes(p.id)?"❤️ Wishlist में है":"♡ Wishlist में जोड़ें"}
+</button>
+
+<button
+class="pill"
+onclick='shareProduct(${p.id})'
+>
+📤 Share
+</button>
+
+<button
+class="pill"
+onclick='speak(${JSON.stringify(p.name)})'
+>
+🔊 सुनें
+</button>
 
 </div>
 
 </div>
-<button class="pill" onclick="event.stopPropagation();removeCart(${i})">🗑️ Remove</button>
-<button class="pill" onclick="event.stopPropagation();saveLater(${i})">💾 Save for Later</button>
-</div></div>`}).join("")}</div>`:`<div class="empty"><h3>🛒 आपका Cart अभी खाली है</h3><p>किसी product पर Add to Cart दबाइए।</p><button class="buy" onclick="show('home')">Shopping शुरू करें</button></div>`}
 
-${cart.length?`<div class="panel"><h3>Price Details</h3>
-<div class="price-line"><span>Selected Product Total</span><span>₹${total}</span></div>
-<div class="price-line"><span>Delivery</span><span>Checkout पर</span></div>
-<div class="price-line"><span>Discount</span><span>Applicable Offer</span></div>
-<div class="total-line"><span>Final Total</span><span>₹${total}</span></div>
-<button class="buy" onclick="checkout()">Proceed to Checkout</button></div>`:""}`;
+<div class="product-info">
 
-updateCounts();
+<span class="demo-label">
+ZipCart Product Details
+</span>
+
+<h1>
+${p.name}
+</h1>
+
+<div class="rating-box">
+
+<span class="rating-badge">
+★ ${p.rating}
+</span>
+
+<span class="rating-count">
+${p.ratingCount||0} ratings & reviews
+</span>
+
+</div>
+
+<div>
+
+<span class="price">
+₹${p.price}
+</span>
+
+<span class="old">
+₹${p.old}
+</span>
+
+<span class="off">
+${Math.round((1-p.price/p.old)*100)}% OFF
+</span>
+
+</div>
+
+<p>
+${p.description}
+</p>
+
+<div
+id="sizeSection"
+class="option-title"
+>
+Select Size
+</div>
+
+<div class="size-list">
+
+${p.sizes.map(size=>`
+
+<button
+class="size-btn"
+data-size="${size}"
+onclick="selectSize('${size}')"
+>
+${size}
+</button>
+
+`).join("")}
+
+</div>
+
+<div
+id="colorSection"
+class="option-title"
+>
+Select Color
+</div>
+
+<div class="color-list">
+
+${p.colors.map(color=>`
+
+<button
+class="color-btn"
+data-color="${color}"
+onclick="selectColor('${color}')"
+>
+${color}
+</button>
+
+`).join("")}
+
+</div>
+
+<div class="delivery-box">
+
+<b>
+🚚 Delivery by ${deliveryText}
+</b>
+
+<p style="margin-bottom:0">
+Demo estimate: आज order करने पर लगभग 7 दिन।
+PIN code डालने पर production version में actual delivery date दिखाई जाएगी।
+</p>
+
+</div>
+
+<div class="quick">
+
+<button
+class="pill"
+onclick="buyNow(${p.id})"
+>
+⚡ Buy Now
+</button>
+
+<button
+class="pill"
+onclick="addCart(${p.id})"
+>
+🛒 Add to Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<h2>
+📋 Product Details
+</h2>
+
+<p>
+${p.details}
+</p>
+
+<h3>
+✨ Product Highlights
+</h3>
+
+<div class="highlight-list">
+
+${p.highlights.map(x=>`
+
+<div class="highlight">
+✓ ${x}
+</div>
+
+`).join("")}
+
+</div>
+
+<h3>
+📦 Additional Details
+</h3>
+
+<div class="notice">
+
+<strong>Category:</strong> ${p.cat}<br>
+<strong>Sub-category:</strong> ${p.sub}<br>
+<strong>Availability:</strong> In stock<br>
+<strong>Return:</strong> Eligible products पर applicable return policy<br>
+<strong>Exchange:</strong> Size/color availability के अनुसार<br>
+<strong>Support:</strong> Order Number के साथ customer support
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<h2>
+⭐ Ratings & Reviews
+</h2>
+
+<div class="rating-summary">
+
+<div class="rating-big">
+
+<div class="number">
+${p.rating}
+</div>
+
+<div>
+★★★★★
+</div>
+
+<div>
+${p.ratingCount||0} ratings
+</div>
+
+</div>
+
+<div>
+
+<p>
+ग्राहक अपना अनुभव नीचे दिए गए options में बता सकते हैं:
+</p>
+
+<div class="rating-choice">
+
+<button onclick="openReviewForm(${p.id},'Very Bad')">
+😞 Very Bad
+</button>
+
+<button onclick="openReviewForm(${p.id},'Bad')">
+🙁 Bad
+</button>
+
+<button onclick="openReviewForm(${p.id},'Okay')">
+😐 Okay
+</button>
+
+<button onclick="openReviewForm(${p.id},'Good')">
+🙂 Good
+</button>
+
+<button onclick="openReviewForm(${p.id},'Very Good')">
+😍 Very Good
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+${reviews.length
+?
+reviews.map(r=>`
+
+<div class="review">
+
+<div>
+<b>
+${r.rating}
+</b>
+<span>
+• ${r.date}
+</span>
+</div>
+
+<p>
+${escapeHTML(r.comment||"Customer review")}
+</p>
+
+${
+r.photo
+?
+`<div class="review-media">📷 Customer Photo Added</div>`
+:
+""
 }
 
-function setCartSelected(i,value){cart[i].selected=value;save();cartPage()}
+${
+r.video
+?
+`<div class="review-media">🎥 Customer Video Added</div>`
+:
+""
+}
+
+</div>
+
+`).join("")
+:
+`
+
+<div class="notice">
+अभी इस demo product के लिए customer review नहीं है। Order के बाद customer यहाँ अपना Photo, Video और Comment जोड़ सकता है।
+</div>
+
+`}
+
+</div>
+
+<div class="panel">
+
+<h2>
+🛍️ Related Products
+</h2>
+
+<p>
+${p.sub} और ${p.cat} से जुड़े products देखें।
+</p>
+
+<div class="grid">
+
+${relatedAll.map(productCard).join("")}
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<h2>
+🔎 और भी देखें
+</h2>
+
+<div class="quick">
+
+${[
+"More Like This",
+"Similar Products",
+"Top Rated",
+"Best Deals",
+"New Arrivals",
+"Low Price",
+"Popular"
+].map(x=>`
+
+<button
+class="pill"
+onclick="relatedSearch('${x}',${p.id})"
+>
+${x}
+</button>
+
+`).join("")}
+
+</div>
+
+</div>
+
+<div class="notice">
+
+💡 <b>ZipCart सुविधा:</b>
+यह product जहाँ भी saved है — Cart, Wishlist या Orders — वहाँ से product पर क्लिक करके आप इसी complete detail page पर वापस आ सकते हैं।
+
+</div>
+
+</div>
+
+<div class="sticky-buy">
+
+<div class="sticky-buy-inner">
+
+<button
+class="sticky-cart"
+onclick="addCart(${p.id})"
+>
+🛒 Add to Cart
+</button>
+
+<button
+class="sticky-buy-now"
+onclick="buyNow(${p.id})"
+>
+⚡ Buy Now
+</button>
+
+</div>
+
+</div>
+
+`;
+
+updateCounts();
+
+window.scrollTo(0,0);
+
+}
+
+
+/* =========================================================
+   BUY NOW / REVIEW / SHARE
+   ========================================================= */
+
+function buyNow(id){
+
+currentProductId=Number(id);
+
+if(!validateProductSelection()){
+
+return;
+
+}
+
+checkoutProductId=Number(id);
+checkoutSource="product";
+
+checkoutCustomer={
+name:"ZipCart Customer",
+mobile:"9876543210",
+address:"Jaipur, Rajasthan — Demo Address",
+pin:"302001"
+};
+
+checkoutPage();
+
+}
+
+function openReviewForm(productId,rating){
+
+openModal(`
+
+<h2>
+⭐ Product Review
+</h2>
+
+<p>
+आपने चुना: <b>${rating}</b>
+</p>
+
+<div class="field">
+
+<label>
+Comment / Review
+</label>
+
+<textarea
+id="reviewComment"
+placeholder="Product कैसा लगा?"
+></textarea>
+
+</div>
+
+<div class="field" style="margin-top:10px">
+
+<label>
+Photo
+</label>
+
+<input
+type="file"
+id="reviewPhoto"
+accept="image/*"
+>
+
+</div>
+
+<div class="field" style="margin-top:10px">
+
+<label>
+Video
+</label>
+
+<input
+type="file"
+id="reviewVideo"
+accept="video/*"
+>
+
+</div>
+
+<br>
+
+<button
+class="buy"
+onclick="submitReview(${productId},'${rating}')"
+>
+Review Submit करें
+</button>
+
+<br><br>
+
+<button
+class="back"
+onclick="closeModal()"
+>
+बंद करें
+</button>
+
+`);
+
+}
+
+function submitReview(productId,rating){
+
+const comment=document.getElementById("reviewComment")?.value.trim()||"";
+const photo=document.getElementById("reviewPhoto")?.files.length>0;
+const video=document.getElementById("reviewVideo")?.files.length>0;
+
+reviewsData.push({
+
+id:"REV-"+Date.now(),
+productId:Number(productId),
+rating:rating,
+comment:comment,
+photo:photo,
+video:video,
+date:new Date().toLocaleDateString("en-IN")
+
+});
+
+save();
+
+closeModal();
+
+alert("⭐ आपका review save हो गया।");
+
+product(productId);
+
+}
+
+function shareProduct(id){
+
+const p=getProduct(id);
+
+if(!p)return;
+
+const text=`ZipCart पर ${p.name} देखें — ₹${p.price}`;
+
+if(navigator.share){
+
+navigator.share({
+title:p.name,
+text:text
+}).catch(()=>{});
+
+}else{
+
+if(navigator.clipboard){
+
+navigator.clipboard.writeText(text);
+
+}
+
+alert("📤 Product sharing text copy हो गया।");
+
+}
+
+}
+
+function relatedSearch(label,id){
+
+const p=getProduct(id);
+
+if(!p)return;
+
+const related=products.filter(
+x=>x.id!==p.id
+);
+
+app.innerHTML=`
+
+<button
+class="back"
+onclick="product(${p.id})"
+>
+← ${p.name}
+</button>
+
+<div class="panel">
+
+<h2>
+${label}
+</h2>
+
+<p>
+${p.name} जैसे और products
+</p>
+
+</div>
+
+<div class="grid">
+
+${related.map(productCard).join("")}
+
+</div>
+
+`;
+
+updateCounts();
+
+}
+
+
+/* =========================================================
+   CART PAGE
+   ========================================================= */
+
+function cartPage(){
+
+wishlistPageActive=false;
+
+let selectedItems=cart.filter(
+x=>x.selected!==false
+);
+
+let total=selectedItems.reduce(
+
+(sum,item)=>{
+
+const p=getProduct(item.id);
+
+if(!p)return sum;
+
+return sum+
+p.price*
+Number(item.qty||1);
+
+},
+
+0
+
+);
+
+app.innerHTML=`
+
+<h2>
+🛒 मेरा Cart
+</h2>
+
+${
+cart.length
+?
+
+`
+
+<div class="panel">
+
+<p>
+💡 किसी भी product की <b>photo, name या details area</b> पर click करके उसका पूरा Product Detail Page फिर से खोल सकते हैं।
+</p>
+
+${cart.map((x,i)=>{
+
+let p=getProduct(x.id);
+
+if(!p)return"";
+
+return `
+
+<div
+class="cartitem"
+onclick="product(${p.id})"
+>
+
+<div class="row">
+
+<div
+class="selectrow"
+onclick="event.stopPropagation()"
+>
+
+<input
+type="checkbox"
+${x.selected!==false?"checked":""}
+onchange="setCartSelected(${i},this.checked)"
+>
+
+</div>
+
+<span
+style="font-size:55px"
+>
+${p.emoji}
+</span>
+
+<div class="grow">
+
+<b class="product-link">
+${p.name}
+</b>
+
+<div>
+₹${p.price}
+</div>
+
+<div>
+Size/Color details देखने के लिए product खोलें
+</div>
+
+<div
+class="qtybox"
+onclick="event.stopPropagation()"
+>
+
+<button
+onclick="qty(${i},-1)"
+>
+−
+</button>
+
+<b>
+${x.qty}
+</b>
+
+<button
+onclick="qty(${i},1)"
+>
++
+</button>
+
+</div>
+
+</div>
+
+<button
+class="pill"
+onclick="event.stopPropagation();removeCart(${i})"
+>
+🗑️ Remove
+</button>
+
+<button
+class="pill"
+onclick="event.stopPropagation();saveLater(${i})"
+>
+💾 Save for Later
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}).join("")}
+
+</div>
+
+`
+
+:
+
+`
+
+<div class="empty">
+
+<h3>
+🛒 आपका Cart अभी खाली है
+</h3>
+
+<p>
+किसी product पर Add to Cart दबाइए।
+</p>
+
+<button
+class="buy"
+onclick="show('home')"
+>
+Shopping शुरू करें
+</button>
+
+</div>
+
+`
+}
+
+${
+cart.length
+?
+
+`
+
+<div class="panel">
+
+<h3>
+Price Details
+</h3>
+
+<div class="price-line">
+<span>Selected Product Total</span>
+<span>₹${total}</span>
+</div>
+
+<div class="price-line">
+<span>Delivery</span>
+<span>Checkout पर</span>
+</div>
+
+<div class="price-line">
+<span>Discount</span>
+<span>Applicable Offer</span>
+</div>
+
+<div class="total-line">
+<span>Final Total</span>
+<span>₹${total}</span>
+</div>
+
+<button
+class="buy"
+onclick="checkout()"
+>
+Proceed to Checkout
+</button>
+
+</div>
+
+`
+:
+""
+
+}
+
+`;
+
+updateCounts();
+
+}
+
+function setCartSelected(i,value){
+
+cart[i].selected=value;
+
+save();
+
+cartPage();
+
+}
 
 function qty(i,d){
 
-let currentQty=Number(cart[i].qty);
-
-if(!Number.isFinite(currentQty)||currentQty<1){
-currentQty=1;
-}
-
-currentQty=Math.floor(currentQty);
-
-let newQty=currentQty+d;
-
-cart[i].qty=Math.max(1,newQty);
+cart[i].qty=
+Math.max(
+1,
+Number(cart[i].qty||1)+d
+);
 
 save();
+
 cartPage();
 
-/* keyboard से बार-बार + / - दबाने पर focus वापस quantity box पर रहेगा */
-refocusQty(i);
+}
+
+function removeCart(i){
+
+cart.splice(i,1);
+
+save();
+
+cartPage();
 
 }
 
-function removeCart(i){cart.splice(i,1);save();cartPage()}
-function saveLater(i){cart[i].selected=false;save();cartPage()}
+function saveLater(i){
+
+cart[i].selected=false;
+
+save();
+
+cartPage();
+
+}
+
+
+/* =========================================================
+   WISHLIST
+   ========================================================= */
 
 function wishlistPage(){
+
 wishlistPageActive=true;
-let ps=products.filter(p=>wishlist.includes(p.id));
-app.innerHTML=`<button class="back" onclick="show('home')">← Home</button><h2>❤️ मेरी Wishlist</h2>
-<div class="notice">💡 Wishlist में saved किसी भी product पर click करके उसी का पूरा Product Detail Page खोलें — size, color, reviews और Buy Now सब वहीं मिलेगा।</div>
-${ps.length?`<div class="grid">${ps.map(productCard).join("")}</div>`:`<div class="empty"><h3>❤️ Wishlist अभी खाली है</h3><p>किसी product पर ❤️ दबाइए।</p><button class="buy" onclick="show('home')">Products देखें</button></div>`}`;
+
+let ps=products.filter(
+p=>wishlist.includes(p.id)
+);
+
+app.innerHTML=`
+
+<button
+class="back"
+onclick="show('home')"
+>
+← Home
+</button>
+
+<h2>
+❤️ मेरी Wishlist
+</h2>
+
+<div class="notice">
+
+💡 Wishlist में saved किसी भी product पर click करके उसी का पूरा Product Detail Page खोलें — size, color, reviews और Buy Now सब वहीं मिलेगा।
+
+</div>
+
+${
+ps.length
+?
+
+`
+
+<div class="grid">
+
+${ps.map(productCard).join("")}
+
+</div>
+
+`
+
+:
+
+`
+
+<div class="empty">
+
+<h3>
+❤️ Wishlist अभी खाली है
+</h3>
+
+<p>
+किसी product पर ❤️ दबाइए।
+</p>
+
+<button
+class="buy"
+onclick="show('home')"
+>
+Products देखें
+</button>
+
+</div>
+
+`
+
+}`;
+
 updateCounts();
+
 }
+
 
 /* =========================================================
    CHECKOUT
    ========================================================= */
 
 function checkout(){
-let selectedItems=cart.filter(x=>x.selected!==false);
-if(!selectedItems.length){alert("पहले Cart में कम से कम एक product select करें।");return}
+
+let selectedItems=cart.filter(
+x=>x.selected!==false
+);
+
+if(!selectedItems.length){
+
+alert(
+"पहले Cart में कम से कम एक product select करें।"
+);
+
+return;
+
+}
+
 checkoutSource="cart";
-if(selectedItems.length===1)checkoutProductId=selectedItems[0].id;
-checkoutCustomer={name:"ZipCart Customer",mobile:"9876543210",address:"Jaipur, Rajasthan — Demo Address",pin:"302001"};
+
+if(selectedItems.length===1){
+
+checkoutProductId=selectedItems[0].id;
+
+}
+
+checkoutCustomer={
+name:"ZipCart Customer",
+mobile:"9876543210",
+address:"Jaipur, Rajasthan — Demo Address",
+pin:"302001"
+};
+
 checkoutCartPage();
+
 }
 
 function checkoutCartPage(){
-let selectedItems=cart.filter(x=>x.selected!==false);
-let total=selectedItems.reduce((sum,x)=>{const p=getProduct(x.id);return sum+(p?p.price:0)*Number(x.qty||1)},0);
-let d=new Date();d.setDate(d.getDate()+7);
-let deliveryText=d.toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"});
 
-app.innerHTML=`<button class="back" onclick="cartPage()">← Cart</button><div class="panel">
-<span class="demo-label">👀 Demo Checkout</span><h2>🧾 Checkout</h2>
-<div class="checkout-step"><div class="checkout-number">1</div><div><b>Products</b><div>${selectedItems.length} selected item(s)</div></div></div>
-${selectedItems.map(x=>{const p=getProduct(x.id);return `<div class="cartitem" onclick="product(${p.id})"><div class="row"><span style="font-size:45px">${p.emoji}</span><div class="grow"><b>${p.name}</b><div>₹${p.price} × ${x.qty}</div><div>Product details फिर से देखने के लिए click करें</div></div></div></div>`}).join("")}
-<div class="checkout-step"><div class="checkout-number">2</div><div><b>Delivery Address</b><div>Demo address नीचे भरें</div></div></div>
-<div class="formgrid">
-<div class="field"><label>नाम</label><input id="checkoutName" placeholder="आपका नाम" value="${escapeHTML(checkoutCustomer.name)}"></div>
-<div class="field"><label>Mobile</label><input id="checkoutMobile" placeholder="Mobile number" value="${escapeHTML(checkoutCustomer.mobile)}"></div>
-<div class="field"><label>Address</label><textarea id="checkoutAddress" placeholder="पूरा delivery address">${escapeHTML(checkoutCustomer.address)}</textarea></div>
-<div class="field"><label>PIN Code</label><input id="checkoutPin" placeholder="PIN" value="${escapeHTML(checkoutCustomer.pin)}"></div>
+let selectedItems=cart.filter(
+x=>x.selected!==false
+);
+
+let total=selectedItems.reduce(
+
+(sum,x)=>{
+
+const p=getProduct(x.id);
+
+return sum+
+(p?p.price:0)*
+Number(x.qty||1);
+
+},
+
+0
+
+);
+
+let deliveryDate=new Date();
+deliveryDate.setDate(deliveryDate.getDate()+7);
+
+const deliveryText=deliveryDate.toLocaleDateString(
+"en-IN",
+{
+day:"numeric",
+month:"short",
+year:"numeric"
+}
+);
+
+app.innerHTML=`
+
+<button
+class="back"
+onclick="cartPage()"
+>
+← Cart
+</button>
+
+<div class="panel">
+
+<span class="demo-label">
+👀 Demo Checkout
+</span>
+
+<h2>
+🧾 Checkout
+</h2>
+
+<div class="checkout-step">
+<div class="checkout-number">1</div>
+<div>
+<b>Products</b>
+<div>${selectedItems.length} selected item(s)</div>
 </div>
-<div class="checkout-step" style="margin-top:20px"><div class="checkout-number">3</div><div><b>Delivery</b><div>Expected delivery: ${deliveryText}</div></div></div>
-<div class="delivery-box">🚚 Demo delivery estimate: <b>${deliveryText}</b><br><br>PIN डालने पर production version में actual serviceability, delivery date और delivery charge आएगा।</div>
-<div class="checkout-step" style="margin-top:20px"><div class="checkout-number">4</div><div><b>Continue</b><div>Address confirm करने के बाद payment options खुलेंगे</div></div></div>
-<button class="buy" onclick="continueToPayment()">Continue →</button>
-</div>`;
+</div>
+
+${selectedItems.map(x=>{
+
+const p=getProduct(x.id);
+
+return `
+
+<div
+class="cartitem"
+onclick="product(${p.id})"
+>
+
+<div class="row">
+
+<span style="font-size:45px">
+${p.emoji}
+</span>
+
+<div class="grow">
+
+<b>
+${p.name}
+</b>
+
+<div>
+₹${p.price} × ${x.qty}
+</div>
+
+<div>
+Product details फिर से देखने के लिए click करें
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+}).join("")}
+
+<div class="checkout-step">
+<div class="checkout-number">2</div>
+<div>
+<b>Delivery Address</b>
+<div>Demo address नीचे भरें</div>
+</div>
+</div>
+
+<div class="formgrid">
+
+<div class="field">
+
+<label>
+नाम
+</label>
+
+<input
+id="checkoutName"
+placeholder="आपका नाम"
+value="${escapeHTML(checkoutCustomer.name)}"
+>
+
+</div>
+
+<div class="field">
+
+<label>
+Mobile
+</label>
+
+<input
+id="checkoutMobile"
+placeholder="Mobile number"
+value="${escapeHTML(checkoutCustomer.mobile)}"
+>
+
+</div>
+
+<div class="field">
+
+<label>
+Address
+</label>
+
+<textarea
+id="checkoutAddress"
+placeholder="पूरा delivery address"
+>${escapeHTML(checkoutCustomer.address)}</textarea>
+
+</div>
+
+<div class="field">
+
+<label>
+PIN Code
+</label>
+
+<input
+id="checkoutPin"
+placeholder="PIN"
+value="${escapeHTML(checkoutCustomer.pin)}"
+>
+
+</div>
+
+</div>
+
+<div class="checkout-step" style="margin-top:20px">
+<div class="checkout-number">3</div>
+<div>
+<b>Delivery</b>
+<div>Expected delivery: ${deliveryText}</div>
+</div>
+</div>
+
+<div class="delivery-box">
+
+🚚 Demo delivery estimate: <b>${deliveryText}</b>
+
+<br><br>
+
+PIN डालने पर production version में actual serviceability, delivery date और delivery charge आएगा।
+
+</div>
+
+<div class="checkout-step" style="margin-top:20px">
+<div class="checkout-number">4</div>
+<div>
+<b>Continue</b>
+<div>Address confirm करने के बाद payment options खुलेंगे</div>
+</div>
+</div>
+
+<button
+class="buy"
+onclick="continueToPayment()"
+>
+Continue →
+</button>
+
+</div>
+
+`;
+
 }
 
 function checkoutPage(){
-const p=getProduct(checkoutProductId);if(!p)return;
-let d=new Date();d.setDate(d.getDate()+7);
-let deliveryText=d.toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"});
-app.innerHTML=`<button class="back" onclick="product(${p.id})">← ${p.name}</button><div class="panel">
-<span class="demo-label">👀 Demo Checkout</span><h2>⚡ Buy Now</h2>
-<div class="cartitem" onclick="product(${p.id})"><div class="row"><span style="font-size:60px">${p.emoji}</span><div class="grow"><h3>${p.name}</h3><div>₹${p.price}</div><div>Selected Size: <b>${selectedSize||"Not selected"}</b></div><div>Selected Color: <b>${selectedColor||"Not selected"}</b></div><p>Product फिर से देखने के लिए यहाँ click करें।</p></div></div></div>
-<h3>🚚 Delivery</h3><div class="delivery-box">Expected delivery: <b>${deliveryText}</b><br><br>Demo estimate: आज order करने पर लगभग 7 दिन।</div>
-<h3>📍 Delivery Address</h3>
-<div class="formgrid">
-<div class="field"><label>नाम</label><input id="checkoutName" placeholder="आपका नाम" value="${escapeHTML(checkoutCustomer.name)}"></div>
-<div class="field"><label>Mobile</label><input id="checkoutMobile" placeholder="Mobile number" value="${escapeHTML(checkoutCustomer.mobile)}"></div>
-<div class="field"><label>Address</label><textarea id="checkoutAddress">${escapeHTML(checkoutCustomer.address)}</textarea></div>
-<div class="field"><label>PIN Code</label><input id="checkoutPin" value="${escapeHTML(checkoutCustomer.pin)}"></div>
+
+const p=getProduct(checkoutProductId);
+
+if(!p)return;
+
+const deliveryDate=new Date();
+deliveryDate.setDate(deliveryDate.getDate()+7);
+
+const deliveryText=deliveryDate.toLocaleDateString(
+"en-IN",
+{
+day:"numeric",
+month:"short",
+year:"numeric"
+}
+);
+
+app.innerHTML=`
+
+<button
+class="back"
+onclick="product(${p.id})"
+>
+← ${p.name}
+</button>
+
+<div class="panel">
+
+<span class="demo-label">
+👀 Demo Checkout
+</span>
+
+<h2>
+⚡ Buy Now
+</h2>
+
+<div
+class="cartitem"
+onclick="product(${p.id})"
+>
+
+<div class="row">
+
+<span style="font-size:60px">
+${p.emoji}
+</span>
+
+<div class="grow">
+
+<h3>
+${p.name}
+</h3>
+
+<div>
+₹${p.price}
 </div>
-<div class="notice">💡 पहले Continue दबाएँ। उसके बाद payment options दिखाई देंगे।</div>
-<button class="buy" onclick="continueToPayment()">Continue →</button></div>`;
+
+<div>
+Selected Size:
+<b>${selectedSize||"Not selected"}</b>
+</div>
+
+<div>
+Selected Color:
+<b>${selectedColor||"Not selected"}</b>
+</div>
+
+<p>
+Product फिर से देखने के लिए यहाँ click करें।
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<h3>
+🚚 Delivery
+</h3>
+
+<div class="delivery-box">
+
+Expected delivery:
+<b>${deliveryText}</b>
+
+<br><br>
+
+Demo estimate: आज order करने पर लगभग 7 दिन।
+
+</div>
+
+<h3>
+📍 Delivery Address
+</h3>
+
+<div class="formgrid">
+
+<div class="field">
+
+<label>
+नाम
+</label>
+
+<input
+id="checkoutName"
+placeholder="आपका नाम"
+value="${escapeHTML(checkoutCustomer.name)}"
+>
+
+</div>
+
+<div class="field">
+
+<label>
+Mobile
+</label>
+
+<input
+id="checkoutMobile"
+placeholder="Mobile number"
+value="${escapeHTML(checkoutCustomer.mobile)}"
+>
+
+</div>
+
+<div class="field">
+
+<label>
+Address
+</label>
+
+<textarea
+id="checkoutAddress"
+>${escapeHTML(checkoutCustomer.address)}</textarea>
+
+</div>
+
+<div class="field">
+
+<label>
+PIN Code
+</label>
+
+<input
+id="checkoutPin"
+value="${escapeHTML(checkoutCustomer.pin)}"
+>
+
+</div>
+
+</div>
+
+<div class="notice">
+
+💡 पहले Continue दबाएँ। उसके बाद payment options दिखाई देंगे।
+
+</div>
+
+<button
+class="buy"
+onclick="continueToPayment()"
+>
+Continue →
+</button>
+
+</div>
+
+`;
+
 }
 
 function continueToPayment(){
-let name=document.getElementById("checkoutName")?.value.trim(),mobile=document.getElementById("checkoutMobile")?.value.trim(),address=document.getElementById("checkoutAddress")?.value.trim(),pin=document.getElementById("checkoutPin")?.value.trim();
-if(!name||!mobile||!address||!pin){alert("कृपया Name, Mobile, Address और PIN Code भरें।");return}
-checkoutCustomer={name,mobile,address,pin};
-showPaymentPage();
+
+const name=document.getElementById("checkoutName")?.value.trim();
+const mobile=document.getElementById("checkoutMobile")?.value.trim();
+const address=document.getElementById("checkoutAddress")?.value.trim();
+const pin=document.getElementById("checkoutPin")?.value.trim();
+
+if(!name||!mobile||!address||!pin){
+
+alert(
+"कृपया Name, Mobile, Address और PIN Code भरें।"
+);
+
+return;
+
 }
 
+checkoutCustomer={
+name:name,
+mobile:mobile,
+address:address,
+pin:pin
+};
+
+showPaymentPage();
+
+}
+
+
 /* =========================================================
-   PAYMENT — UNCHANGED
+   PAYMENT PAGE
    ========================================================= */
 
 function showPaymentPage(){
 
-let items=[],subtotal=0;
+let items=[];
+let subtotal=0;
 
 if(checkoutSource==="cart"){
+
 items=cart.filter(x=>x.selected!==false);
-subtotal=items.reduce((sum,x)=>{const p=getProduct(x.id);return sum+(p?p.price:0)*Number(x.qty||1)},0);
+
+subtotal=items.reduce(
+(sum,x)=>{
+const p=getProduct(x.id);
+return sum+
+(p?p.price:0)*
+Number(x.qty||1);
+},
+0
+);
+
 }else{
-const p=getProduct(checkoutProductId);if(!p)return;
-items=[{id:p.id,qty:1}];subtotal=p.price;
+
+const p=getProduct(checkoutProductId);
+
+if(!p)return;
+
+items=[{
+id:p.id,
+qty:1
+}];
+
+subtotal=p.price;
+
 }
 
 let delivery=0;
-let onlineTotal=Math.max(0,subtotal+delivery);
-let codTotal=subtotal+delivery+PAYMENT_SETTINGS.codExtra;
-let finalAmount=isCashPayment(selectedPayment)?codTotal:onlineTotal;
+
+const onlineTotal=Math.max(
+0,
+subtotal+
+delivery
+);
+
+const codTotal=
+subtotal+
+delivery+
+PAYMENT_SETTINGS.codExtra;
+
+const finalAmount=
+isCashPayment(selectedPayment)
+?
+codTotal
+:
+onlineTotal;
 
 app.innerHTML=`
-<button class="back" onclick="checkoutSource==='cart'?checkoutCartPage():checkoutPage()">← Checkout</button>
+
+<button
+class="back"
+onclick="checkoutSource==='cart'?checkoutCartPage():checkoutPage()"
+>
+← Checkout
+</button>
+
 <div class="panel">
-<span class="demo-label">👀 Demo Payment</span><h2>💳 Payment Options</h2><p>Payment method चुनें:</p>
+
+<span class="demo-label">
+👀 Demo Payment
+</span>
+
+<h2>
+💳 Payment Options
+</h2>
+
+<p>
+Payment method चुनें:
+</p>
 
 <div class="payment-options">
 
-<label class="payment-option ${selectedPayment==="Cash on Delivery"?"selected":""}">
-<input class="payment-radio" type="radio" name="payment" value="Cash on Delivery" ${selectedPayment==="Cash on Delivery"?"checked":""} onclick="selectPayment('Cash on Delivery')">
-<span class="payment-icon">💵</span><span class="payment-content"><span class="payment-title">Cash on Delivery</span><span class="payment-description">Delivery के समय payment करें।</span><span class="payment-adjustment">+ ₹${PAYMENT_SETTINGS.codExtra} COD charge</span></span>
+<label
+class="payment-option ${selectedPayment==="Cash on Delivery"?"selected":""}"
+>
+
+<input
+class="payment-radio"
+type="radio"
+name="payment"
+value="Cash on Delivery"
+${selectedPayment==="Cash on Delivery"?"checked":""}
+onclick="selectPayment('Cash on Delivery')"
+>
+
+<span class="payment-icon">
+💵
+</span>
+
+<span class="payment-content">
+
+<span class="payment-title">
+Cash on Delivery
+</span>
+
+<span class="payment-description">
+Delivery के समय payment करें।
+</span>
+
+<span class="payment-adjustment">
++ ₹${PAYMENT_SETTINGS.codExtra} COD charge
+</span>
+
+</span>
+
 </label>
 
-<label class="payment-option ${selectedPayment==="Online Payment"?"selected":""}">
-<input class="payment-radio" type="radio" name="payment" value="Online Payment" ${selectedPayment==="Online Payment"?"checked":""} onclick="selectPayment('Online Payment')">
-<span class="payment-icon">💳</span><span class="payment-content"><span class="payment-title">Online Payment</span><span class="payment-description">Online payment से अभी pay करें।</span></span>
+
+<label
+class="payment-option ${selectedPayment==="Online Payment"?"selected":""}"
+>
+
+<input
+class="payment-radio"
+type="radio"
+name="payment"
+value="Online Payment"
+${selectedPayment==="Online Payment"?"checked":""}
+onclick="selectPayment('Online Payment')"
+>
+
+<span class="payment-icon">
+💳
+</span>
+
+<span class="payment-content">
+
+<span class="payment-title">
+Online Payment
+</span>
+
+<span class="payment-description">
+Online payment से अभी pay करें।
+</span>
+
+</span>
+
 </label>
 
-<label class="payment-option ${selectedPayment==="UPI / GPay"?"selected":""}">
-<input class="payment-radio" type="radio" name="payment" value="UPI / GPay" ${selectedPayment==="UPI / GPay"?"checked":""} onclick="selectPayment('UPI / GPay')">
-<span class="payment-icon">📱</span><span class="payment-content"><span class="payment-title">UPI / GPay</span><span class="payment-description">UPI या GPay से online payment करें।</span></span>
+
+<label
+class="payment-option ${selectedPayment==="UPI / GPay"?"selected":""}"
+>
+
+<input
+class="payment-radio"
+type="radio"
+name="payment"
+value="UPI / GPay"
+${selectedPayment==="UPI / GPay"?"checked":""}
+onclick="selectPayment('UPI / GPay')"
+>
+
+<span class="payment-icon">
+📱
+</span>
+
+<span class="payment-content">
+
+<span class="payment-title">
+UPI / GPay
+</span>
+
+<span class="payment-description">
+UPI या GPay से online payment करें।
+</span>
+
+</span>
+
 </label>
 
-<label class="payment-option ${selectedPayment==="Card Payment"?"selected":""}">
-<input class="payment-radio" type="radio" name="payment" value="Card Payment" ${selectedPayment==="Card Payment"?"checked":""} onclick="selectPayment('Card Payment')">
-<span class="payment-icon">💳</span><span class="payment-content"><span class="payment-title">Card Payment</span><span class="payment-description">किसी भी बैंक के Debit Card या Credit Card से सुरक्षित payment करें। Production में card details और bank OTP verified payment gateway के secure checkout में होंगे।</span></span>
+
+<!-- सभी बैंक के अलग-अलग Card विकल्प हटाकर
+     सिर्फ एक generic Card Payment रखा गया है। -->
+
+<label
+class="payment-option ${selectedPayment==="Card Payment"?"selected":""}"
+>
+
+<input
+class="payment-radio"
+type="radio"
+name="payment"
+value="Card Payment"
+${selectedPayment==="Card Payment"?"checked":""}
+onclick="selectPayment('Card Payment')"
+>
+
+<span class="payment-icon">
+💳
+</span>
+
+<span class="payment-content">
+
+<span class="payment-title">
+Card Payment
+</span>
+
+<span class="payment-description">
+किसी भी बैंक के Debit Card या Credit Card से सुरक्षित payment करें।
+Production में card details और bank OTP verified payment gateway के secure checkout में होंगे।
+</span>
+
+</span>
+
 </label>
 
 </div>
 
-<div class="notice">💳 <b>Card Payment:</b> यहाँ किसी एक बैंक का Card option नहीं है। Customer अपना कोई भी eligible Debit/Credit Card चुन सकता है। वास्तविक card details और OTP को ZipCart के अपने page पर store नहीं किया जाएगा; production में secure payment gateway checkout इन्हें संभालेगा।</div>
 
-<h3>📍 Delivery Address</h3>
-<div class="notice"><strong>${escapeHTML(checkoutCustomer.name)}</strong><br>📱 ${escapeHTML(checkoutCustomer.mobile)}<br>🏠 ${escapeHTML(checkoutCustomer.address)}<br>📍 PIN: ${escapeHTML(checkoutCustomer.pin)}</div>
+<div class="notice">
 
-<h3>💰 Price Details</h3>
-<div class="price-line"><span>Product Price</span><span>₹${subtotal}</span></div>
-<div class="price-line"><span>Delivery</span><span>₹${delivery}</span></div>
-<div class="price-line"><span>COD Charge</span><span>${isCashPayment(selectedPayment)?"+ ₹"+PAYMENT_SETTINGS.codExtra:"₹0"}</span></div>
-<div class="total-line"><span>Final Amount</span><span>₹${finalAmount}</span></div>
+💳 <b>Card Payment:</b>
+यहाँ किसी एक बैंक का Card option नहीं है। Customer अपना कोई भी eligible Debit/Credit Card चुन सकता है। वास्तविक card details और OTP को ZipCart के अपने page पर store नहीं किया जाएगा; production में secure payment gateway checkout इन्हें संभालेगा।
 
-<button class="buy" onclick="placeOrder()">🛍️ Place Order</button>
-</div>`;
+</div>
+
+
+<h3>
+📍 Delivery Address
+</h3>
+
+<div class="notice">
+
+<strong>${escapeHTML(checkoutCustomer.name)}</strong><br>
+📱 ${escapeHTML(checkoutCustomer.mobile)}<br>
+🏠 ${escapeHTML(checkoutCustomer.address)}<br>
+📍 PIN: ${escapeHTML(checkoutCustomer.pin)}
+
+</div>
+
+
+<h3>
+💰 Price Details
+</h3>
+
+<div class="price-line">
+
+<span>
+Product Price
+</span>
+
+<span>
+₹${subtotal}
+</span>
+
+</div>
+
+<div class="price-line">
+
+<span>
+Delivery
+</span>
+
+<span>
+₹${delivery}
+</span>
+
+</div>
+
+<div class="price-line">
+
+<span>
+COD Charge
+</span>
+
+<span>
+${isCashPayment(selectedPayment)
+?
+"+ ₹"+PAYMENT_SETTINGS.codExtra
+:
+"₹0"
+}
+</span>
+
+</div>
+
+<div class="total-line">
+
+<span>
+Final Amount
+</span>
+
+<span>
+₹${finalAmount}
+</span>
+
+</div>
+
+<button
+class="buy"
+onclick="placeOrder()"
+>
+🛍️ Place Order
+</button>
+
+</div>
+
+`;
+
 }
 
-function selectPayment(method){selectedPayment=method;showPaymentPage()}
+function selectPayment(method){
+
+selectedPayment=method;
+
+showPaymentPage();
+
+}
+
+
+/* =========================================================
+   ORDER
+   ========================================================= */
 
 function generateOrderNumber(){
-const d=new Date(),part=String(d.getFullYear()).slice(-2)+String(d.getMonth()+1).padStart(2,"0")+String(d.getDate()).padStart(2,"0"),random=Math.floor(100000+Math.random()*900000);
-return"ZC-"+part+"-"+random;
+
+const d=new Date();
+
+const part=
+String(d.getFullYear()).slice(-2)+
+String(d.getMonth()+1).padStart(2,"0")+
+String(d.getDate()).padStart(2,"0");
+
+const random=
+Math.floor(100000+Math.random()*900000);
+
+return "ZC-"+part+"-"+random;
+
 }
 
 function placeOrder(){
-const name=checkoutCustomer.name||"ZipCart Customer",mobile=checkoutCustomer.mobile||"9876543210",address=checkoutCustomer.address||"Demo Address",pin=checkoutCustomer.pin||"302001";
+
+const name=checkoutCustomer.name||"ZipCart Customer";
+const mobile=checkoutCustomer.mobile||"9876543210";
+const address=checkoutCustomer.address||"Demo Address";
+const pin=checkoutCustomer.pin||"302001";
+
 let items=[];
-if(checkoutSource==="cart")items=cart.filter(x=>x.selected!==false).map(x=>({id:x.id,qty:Number(x.qty||1)}));
-else items=[{id:checkoutProductId,qty:1}];
-if(!items.length){alert("Order के लिए product नहीं मिला।");return}
-let subtotal=items.reduce((sum,x)=>{const p=getProduct(x.id);return sum+(p?p.price:0)*x.qty},0);
-let finalAmount=getFinalAmount(subtotal,selectedPayment);
-let d=new Date();d.setDate(d.getDate()+7);
-const order={id:generateOrderNumber(),items,name,mobile,address,pin,payment:selectedPayment,subtotal,finalAmount,date:new Date().toLocaleDateString("en-IN"),deliveryDate:d.toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"}),status:"Order Placed",cancelled:false,returned:false,exchanged:false};
+
+if(checkoutSource==="cart"){
+
+items=cart
+.filter(x=>x.selected!==false)
+.map(x=>({
+id:x.id,
+qty:Number(x.qty||1)
+}));
+
+}else{
+
+items=[{
+id:checkoutProductId,
+qty:1
+}];
+
+}
+
+if(!items.length){
+
+alert("Order के लिए product नहीं मिला।");
+
+return;
+
+}
+
+let subtotal=items.reduce(
+
+(sum,x)=>{
+
+const p=getProduct(x.id);
+
+return sum+
+(p?p.price:0)*
+x.qty;
+
+},
+
+0
+
+);
+
+const finalAmount=getFinalAmount(
+subtotal,
+selectedPayment
+);
+
+const deliveryDate=new Date();
+deliveryDate.setDate(deliveryDate.getDate()+7);
+
+const order={
+
+id:generateOrderNumber(),
+items:items,
+name:name,
+mobile:mobile,
+address:address,
+pin:pin,
+payment:selectedPayment,
+subtotal:subtotal,
+finalAmount:finalAmount,
+date:new Date().toLocaleDateString("en-IN"),
+deliveryDate:deliveryDate.toLocaleDateString(
+"en-IN",
+{
+day:"numeric",
+month:"short",
+year:"numeric"
+}
+),
+status:"Order Placed",
+cancelled:false,
+returned:false,
+exchanged:false
+
+};
+
 ordersData.unshift(order);
 
 if(checkoutSource==="cart"){
-let ids=new Set(items.map(x=>x.id));cart=cart.filter(x=>!ids.has(x.id));
-}else cart=cart.filter(x=>x.id!==checkoutProductId);
 
-save();showOrderSuccess(order);
+const orderedIds=new Set(
+items.map(x=>x.id)
+);
+
+cart=cart.filter(
+x=>!orderedIds.has(x.id)
+);
+
+}else{
+
+const existing=cart.find(
+x=>x.id===checkoutProductId
+);
+
+if(existing){
+
+cart=cart.filter(
+x=>x.id!==checkoutProductId
+);
+
+}
+
+}
+
+save();
+
+showOrderSuccess(order);
+
 }
 
 function showOrderSuccess(order){
-app.innerHTML=`<div class="panel"><div class="success-box"><div style="font-size:55px">🎉</div><h2>Order Successfully Placed!</h2><p>आपका order ZipCart में save हो गया है।</p><h3>Order Number</h3><div style="font-size:24px;font-weight:900;color:#5c16b8">${order.id}</div><p>इस Order Number को customer support में reference के रूप में इस्तेमाल किया जा सकता है।</p></div>
-<div class="notice"><strong>Payment:</strong> ${order.payment}<br><strong>Amount:</strong> ₹${order.finalAmount}<br><strong>Expected Delivery:</strong> ${order.deliveryDate}</div>
-<button class="buy" onclick="orders()">📦 My Orders देखें</button><button class="pill" style="width:100%;margin-top:10px" onclick="show('home')">🛍️ Continue Shopping</button></div>`;
+
+app.innerHTML=`
+
+<div class="panel">
+
+<div class="success-box">
+
+<div style="font-size:55px">
+🎉
+</div>
+
+<h2>
+Order Successfully Placed!
+</h2>
+
+<p>
+आपका order ZipCart में save हो गया है।
+</p>
+
+<h3>
+Order Number
+</h3>
+
+<div
+style="font-size:24px;font-weight:900;color:#5c16b8"
+>
+${order.id}
+</div>
+
+<p>
+इस Order Number को customer support में reference के रूप में इस्तेमाल किया जा सकता है।
+</p>
+
+</div>
+
+<div class="notice">
+
+<strong>Payment:</strong> ${order.payment}<br>
+<strong>Amount:</strong> ₹${order.finalAmount}<br>
+<strong>Expected Delivery:</strong> ${order.deliveryDate}
+
+</div>
+
+<button
+class="buy"
+onclick="orders()"
+>
+📦 My Orders देखें
+</button>
+
+<button
+class="pill"
+style="width:100%;margin-top:10px"
+onclick="show('home')"
+>
+🛍️ Continue Shopping
+</button>
+
+</div>
+
+`;
+
 }
 
+
 /* =========================================================
-   ORDERS / TRACK / RETURN / EXCHANGE
+   ORDERS
    ========================================================= */
 
 function orders(){
+
 wishlistPageActive=false;
+
 if(!ordersData.length){
-app.innerHTML=`<h2>📦 मेरे ऑर्डर</h2><div class="empty"><h3>अभी कोई order नहीं है।</h3><p>जब आप order place करेंगे, उसका unique Order Number यहाँ दिखाई देगा।</p><button class="buy" onclick="show('home')">Shopping शुरू करें</button></div>`;
-updateCounts();return;
-}
-app.innerHTML=`<h2>📦 मेरे ऑर्डर</h2><div class="notice">💡 किसी भी ordered product पर click करके उसका पूरा Product Detail Page फिर से खोल सकते हैं।</div>
-${ordersData.map(order=>`<div class="panel order-card"><div class="row"><div class="grow"><h3>Order #${order.id}</h3><p>📅 ${order.date}</p><p>💳 ${order.payment}</p><p>💰 ₹${order.finalAmount}</p><p>🚚 Expected Delivery: ${order.deliveryDate}</p></div></div>
-${order.items.map(item=>{const p=getProduct(item.id);if(!p)return"";return`<div class="cartitem" onclick="product(${p.id})"><div class="row"><span style="font-size:55px">${p.emoji}</span><div class="grow"><b>${p.name}</b><div>Quantity: ${item.qty}</div><div>Product details देखने के लिए click करें</div></div></div></div>`}).join("")}
-<div class="notice">Status: <b>${order.status}</b></div>
-<div class="quick">
-<button class="pill" onclick="trackOrder('${order.id}')">🚚 Track Order</button>
-${order.status==="Delivered"?`<button class="pill" onclick="openReviewFromOrder('${order.id}')">⭐ Review</button>`:""}
-${!order.cancelled&&!order.returned&&!order.exchanged?`<button class="pill" onclick="returnFlow('${order.id}')">↩️ Return</button><button class="pill" onclick="exchangeFlow('${order.id}')">🔄 Exchange</button><button class="pill" onclick="cancelOrder('${order.id}')">❌ Cancel Order</button>`:""}
-</div></div>`).join("")}`;
+
+app.innerHTML=`
+
+<h2>
+📦 मेरे ऑर्डर
+</h2>
+
+<div class="empty">
+
+<h3>
+अभी कोई order नहीं है।
+</h3>
+
+<p>
+जब आप order place करेंगे, उसका unique Order Number यहाँ दिखाई देगा।
+</p>
+
+<button
+class="buy"
+onclick="show('home')"
+>
+Shopping शुरू करें
+</button>
+
+</div>
+
+`;
+
 updateCounts();
+
+return;
+
 }
+
+app.innerHTML=`
+
+<h2>
+📦 मेरे ऑर्डर
+</h2>
+
+<div class="notice">
+
+💡 किसी भी ordered product पर click करके उसका पूरा Product Detail Page फिर से खोल सकते हैं।
+
+</div>
+
+${ordersData.map(order=>`
+
+<div class="panel order-card">
+
+<div class="row">
+
+<div class="grow">
+
+<h3>
+Order #${order.id}
+</h3>
+
+<p>
+📅 ${order.date}
+</p>
+
+<p>
+💳 ${order.payment}
+</p>
+
+<p>
+💰 ₹${order.finalAmount}
+</p>
+
+<p>
+🚚 Expected Delivery: ${order.deliveryDate}
+</p>
+
+</div>
+
+</div>
+
+${order.items.map(item=>{
+
+const p=getProduct(item.id);
+
+if(!p)return"";
+
+return `
+
+<div
+class="cartitem"
+onclick="product(${p.id})"
+>
+
+<div class="row">
+
+<span style="font-size:55px">
+${p.emoji}
+</span>
+
+<div class="grow">
+
+<b>
+${p.name}
+</b>
+
+<div>
+Quantity: ${item.qty}
+</div>
+
+<div>
+Product details देखने के लिए click करें
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+}).join("")}
+
+<div class="notice">
+
+Status:
+<b>${order.status}</b>
+
+</div>
+
+<div class="quick">
+
+<button
+class="pill"
+onclick="trackOrder('${order.id}')"
+>
+🚚 Track Order
+</button>
+
+${
+order.status==="Delivered"
+?
+`
+<button
+class="pill"
+onclick="openReviewFromOrder('${order.id}')"
+>
+⭐ Review
+</button>
+`
+:
+""
+}
+
+${
+!order.cancelled && !order.returned && !order.exchanged
+?
+`
+
+<button
+class="pill"
+onclick="returnFlow('${order.id}')"
+>
+↩️ Return
+</button>
+
+<button
+class="pill"
+onclick="exchangeFlow('${order.id}')"
+>
+🔄 Exchange
+</button>
+
+<button
+class="pill"
+onclick="cancelOrder('${order.id}')"
+>
+❌ Cancel Order
+</button>
+
+`
+:
+""
+}
+
+</div>
+
+</div>
+
+`).join("")}
+
+`;
+
+updateCounts();
+
+}
+
+
+/* =========================================================
+   TRACKING
+   ========================================================= */
 
 function trackOrder(orderId){
-const order=ordersData.find(x=>x.id===orderId);if(!order)return;
-app.innerHTML=`<button class="back" onclick="orders()">← My Orders</button><div class="panel"><h2>🚚 Order Tracking</h2><h3>Order #${order.id}</h3>
-<div class="track"><div class="step done"><div class="dot">✓</div>Order Placed</div><div class="step done"><div class="dot">✓</div>Confirmed</div><div class="step"><div class="dot">3</div>Packed</div><div class="step"><div class="dot">4</div>Shipped</div><div class="step"><div class="dot">5</div>Out for Delivery</div><div class="step"><div class="dot">6</div>Delivered</div></div>
-<div class="notice">Expected delivery: <b>${order.deliveryDate}</b><br><br>Production version में seller, warehouse, rider और live tracking status इसी जगह update होगा।</div></div>`;
+
+const order=ordersData.find(
+x=>x.id===orderId
+);
+
+if(!order)return;
+
+app.innerHTML=`
+
+<button
+class="back"
+onclick="orders()"
+>
+← My Orders
+</button>
+
+<div class="panel">
+
+<h2>
+🚚 Order Tracking
+</h2>
+
+<h3>
+Order #${order.id}
+</h3>
+
+<div class="track">
+
+<div class="step done">
+<div class="dot">✓</div>
+Order Placed
+</div>
+
+<div class="step done">
+<div class="dot">✓</div>
+Confirmed
+</div>
+
+<div class="step">
+<div class="dot">3</div>
+Packed
+</div>
+
+<div class="step">
+<div class="dot">4</div>
+Shipped
+</div>
+
+<div class="step">
+<div class="dot">5</div>
+Out for Delivery
+</div>
+
+<div class="step">
+<div class="dot">6</div>
+Delivered
+</div>
+
+</div>
+
+<div class="notice">
+
+Expected delivery:
+<b>${order.deliveryDate}</b>
+
+<br><br>
+
+Production version में seller, warehouse, rider और live tracking status इसी जगह update होगा।
+
+</div>
+
+</div>
+
+`;
+
 }
+
+
+/* =========================================================
+   RETURN
+   ========================================================= */
 
 function returnFlow(orderId){
+
 currentReturnOrderId=orderId;
-let reasons=["Product broken / टूटा हुआ","Damaged product / डैमेज","Torn / फटा हुआ","Stain / दाग","Wrong product / गलत product","Product as expected नहीं है","पसंद नहीं आया","Delivery बहुत ज्यादा late हुई","Wrong size / color","Other / अन्य"];
-app.innerHTML=`<button class="back" onclick="orders()">← My Orders</button><div class="panel"><h2>↩️ Return Request</h2><p>Return का reason चुनें:</p><div id="returnReasons" class="reason-grid">${reasons.map(r=>`<button class="reason-btn" onclick="selectReason(this)" data-reason="${r}">${r}</button>`).join("")}</div><br><div class="field"><label>Additional message</label><textarea id="returnMessage" placeholder="अगर कोई और जानकारी देना चाहते हैं..."></textarea></div><br><div class="field"><label>Photo / Video Evidence</label><input type="file" id="returnMedia" accept="image/*,video/*"></div><div class="notice">📦 Return pickup के समय production version में pickup OTP verify किया जाएगा।</div><button class="buy" onclick="submitReturn()">Submit Return Request</button></div>`;
+
+const reasons=[
+
+"Product broken / टूटा हुआ",
+"Damaged product / डैमेज",
+"Torn / फटा हुआ",
+"Stain / दाग",
+"Wrong product / गलत product",
+"Product as expected नहीं है",
+"पसंद नहीं आया",
+"Delivery बहुत ज्यादा late हुई",
+"Wrong size / color",
+"Other / अन्य"
+
+];
+
+app.innerHTML=`
+
+<button
+class="back"
+onclick="orders()"
+>
+← My Orders
+</button>
+
+<div class="panel">
+
+<h2>
+↩️ Return Request
+</h2>
+
+<p>
+Return का reason चुनें:
+</p>
+
+<div
+id="returnReasons"
+class="reason-grid"
+>
+
+${reasons.map((r,i)=>`
+
+<button
+class="reason-btn"
+onclick="selectReason(this)"
+data-reason="${r}"
+>
+${r}
+</button>
+
+`).join("")}
+
+</div>
+
+<br>
+
+<div class="field">
+
+<label>
+Additional message
+</label>
+
+<textarea
+id="returnMessage"
+placeholder="अगर कोई और जानकारी देना चाहते हैं..."
+></textarea>
+
+</div>
+
+<br>
+
+<div class="field">
+
+<label>
+Photo / Video Evidence
+</label>
+
+<input
+type="file"
+id="returnMedia"
+accept="image/*,video/*"
+>
+
+</div>
+
+<div class="notice">
+
+📦 Return pickup के समय production version में pickup OTP verify किया जाएगा।
+
+</div>
+
+<button
+class="buy"
+onclick="submitReturn()"
+>
+Submit Return Request
+</button>
+
+</div>
+
+`;
+
 }
 
-function selectReason(btn){document.querySelectorAll(".reason-btn").forEach(x=>x.classList.remove("active"));btn.classList.add("active")}
+function selectReason(btn){
+
+document.querySelectorAll(".reason-btn").forEach(
+x=>x.classList.remove("active")
+);
+
+btn.classList.add("active");
+
+}
 
 function submitReturn(){
-const selected=document.querySelector(".reason-btn.active");if(!selected){alert("कृपया Return का reason चुनें।");return}
-const order=ordersData.find(x=>x.id===currentReturnOrderId);if(!order)return;
-order.returned=true;order.status="Return Requested";order.returnReason=selected.dataset.reason;order.returnMessage=document.getElementById("returnMessage")?.value||"";
-save();
-openModal(`<div class="success-box"><h2>↩️ Return Request Submitted</h2><p>Order #${order.id}</p><p>Reason: <b>${order.returnReason}</b></p><p>Pickup OTP production flow में generate होगा।</p><button class="buy" onclick="closeModal();orders()">My Orders</button></div>`);
+
+const selected=document.querySelector(
+".reason-btn.active"
+);
+
+if(!selected){
+
+alert("कृपया Return का reason चुनें।");
+
+return;
+
 }
+
+const order=ordersData.find(
+x=>x.id===currentReturnOrderId
+);
+
+if(!order)return;
+
+order.returned=true;
+order.status="Return Requested";
+order.returnReason=selected.dataset.reason;
+order.returnMessage=
+document.getElementById("returnMessage")?.value||"";
+
+save();
+
+openModal(`
+
+<div class="success-box">
+
+<h2>
+↩️ Return Request Submitted
+</h2>
+
+<p>
+Order #${order.id}
+</p>
+
+<p>
+Reason: <b>${order.returnReason}</b>
+</p>
+
+<p>
+Pickup OTP production flow में generate होगा।
+</p>
+
+<button
+class="buy"
+onclick="closeModal();orders()"
+>
+My Orders
+</button>
+
+</div>
+
+`);
+
+}
+
+
+/* =========================================================
+   EXCHANGE
+   ========================================================= */
 
 function exchangeFlow(orderId){
-currentExchangeOrderId=orderId;exchangeSize="";exchangeColor="";
-const order=ordersData.find(x=>x.id===orderId);if(!order)return;
-const p=getProduct(order.items[0].id);
-app.innerHTML=`<button class="back" onclick="orders()">← My Orders</button><div class="panel"><h2>🔄 Exchange</h2><p>${p?p.name:"Product"} के लिए नया size/color चुनें।</p>
-<div class="option-title">New Size</div><div class="size-list">${(p?.sizes||["S","M","L","XL","XXL"]).map(size=>`<button class="size-btn" data-exchange-size="${size}" onclick="selectExchangeSize(this)">${size}</button>`).join("")}</div>
-<div class="option-title">New Color</div><div class="color-list">${(p?.colors||["Red","Blue","Black"]).map(color=>`<button class="color-btn" data-exchange-color="${color}" onclick="selectExchangeColor(this)"><span class="color-dot ${colorDotClass(color)}"></span>${color}</button>`).join("")}</div>
-<div class="notice">🔐 Exchange pickup/delivery के समय production version में Exchange OTP verify होगा।</div><button class="buy" onclick="submitExchange()">Submit Exchange Request</button></div>`;
+
+currentExchangeOrderId=orderId;
+exchangeSize="";
+exchangeColor="";
+
+const order=ordersData.find(
+x=>x.id===orderId
+);
+
+if(!order)return;
+
+const firstItem=order.items[0];
+const p=getProduct(firstItem.id);
+
+app.innerHTML=`
+
+<button
+class="back"
+onclick="orders()"
+>
+← My Orders
+</button>
+
+<div class="panel">
+
+<h2>
+🔄 Exchange
+</h2>
+
+<p>
+${p?p.name:"Product"} के लिए नया size/color चुनें।
+</p>
+
+<div class="option-title">
+New Size
+</div>
+
+<div class="size-list">
+
+${(p?.sizes||["S","M","L","XL","XXL"]).map(size=>`
+
+<button
+class="size-btn"
+data-exchange-size="${size}"
+onclick="selectExchangeSize(this)"
+>
+${size}
+</button>
+
+`).join("")}
+
+</div>
+
+<div class="option-title">
+New Color
+</div>
+
+<div class="color-list">
+
+${(p?.colors||["Red","Blue","Black"]).map(color=>`
+
+<button
+class="color-btn"
+data-exchange-color="${color}"
+onclick="selectExchangeColor(this)"
+>
+${color}
+</button>
+
+`).join("")}
+
+</div>
+
+<div class="notice">
+
+🔐 Exchange pickup/delivery के समय production version में Exchange OTP verify होगा।
+
+</div>
+
+<button
+class="buy"
+onclick="submitExchange()"
+>
+Submit Exchange Request
+</button>
+
+</div>
+
+`;
+
 }
 
-function selectExchangeSize(btn){exchangeSize=btn.dataset.exchangeSize;document.querySelectorAll("[data-exchange-size]").forEach(x=>x.classList.remove("active"));btn.classList.add("active")}
-function selectExchangeColor(btn){exchangeColor=btn.dataset.exchangeColor;document.querySelectorAll("[data-exchange-color]").forEach(x=>x.classList.remove("active"));btn.classList.add("active")}
+function selectExchangeSize(btn){
+
+exchangeSize=btn.dataset.exchangeSize;
+
+document.querySelectorAll("[data-exchange-size]").forEach(
+x=>x.classList.remove("active")
+);
+
+btn.classList.add("active");
+
+}
+
+function selectExchangeColor(btn){
+
+exchangeColor=btn.dataset.exchangeColor;
+
+document.querySelectorAll("[data-exchange-color]").forEach(
+x=>x.classList.remove("active")
+);
+
+btn.classList.add("active");
+
+}
 
 function submitExchange(){
-if(!exchangeSize&&!exchangeColor){alert("कृपया नया Size या Color चुनें।");return}
-const order=ordersData.find(x=>x.id===currentExchangeOrderId);if(!order)return;
-order.exchanged=true;order.status="Exchange Requested";order.exchangeSize=exchangeSize;order.exchangeColor=exchangeColor;save();
-openModal(`<div class="success-box"><h2>🔄 Exchange Request Submitted</h2><p>Order #${order.id}</p><p>New Size: <b>${exchangeSize||"Same"}</b></p><p>New Color: <b>${exchangeColor||"Same"}</b></p><p>Exchange OTP production flow में generate होगा।</p><button class="buy" onclick="closeModal();orders()">My Orders</button></div>`);
+
+if(!exchangeSize && !exchangeColor){
+
+alert("कृपया नया Size या Color चुनें।");
+
+return;
+
 }
 
+const order=ordersData.find(
+x=>x.id===currentExchangeOrderId
+);
+
+if(!order)return;
+
+order.exchanged=true;
+order.status="Exchange Requested";
+order.exchangeSize=exchangeSize;
+order.exchangeColor=exchangeColor;
+
+save();
+
+openModal(`
+
+<div class="success-box">
+
+<h2>
+🔄 Exchange Request Submitted
+</h2>
+
+<p>
+Order #${order.id}
+</p>
+
+<p>
+New Size:
+<b>${exchangeSize||"Same"}</b>
+</p>
+
+<p>
+New Color:
+<b>${exchangeColor||"Same"}</b>
+</p>
+
+<p>
+Exchange OTP production flow में generate होगा।
+</p>
+
+<button
+class="buy"
+onclick="closeModal();orders()"
+>
+My Orders
+</button>
+
+</div>
+
+`);
+
+}
+
+
+/* =========================================================
+   CANCEL
+   ========================================================= */
+
 function cancelOrder(orderId){
-const order=ordersData.find(x=>x.id===orderId);if(!order)return;
-let reasons=["Product नहीं चाहिए","गलती से order हो गया","Price बदल गया","Delivery बहुत late हो रही है","Other"];
-openModal(`<h2>❌ Cancel Order</h2><p>Order #${order.id}</p><select id="cancelReason">${reasons.map(r=>`<option>${r}</option>`).join("")}</select><br><br><button class="buy" onclick="confirmCancelOrder('${orderId}')">Cancel Order Confirm करें</button><br><br><button class="back" onclick="closeModal()">बंद करें</button>`);
+
+const order=ordersData.find(
+x=>x.id===orderId
+);
+
+if(!order)return;
+
+const reasons=[
+
+"Product नहीं चाहिए",
+"गलती से order हो गया",
+"Price बदल गया",
+"Delivery बहुत late हो रही है",
+"Other"
+
+];
+
+openModal(`
+
+<h2>
+❌ Cancel Order
+</h2>
+
+<p>
+Order #${order.id}
+</p>
+
+<select id="cancelReason">
+
+${reasons.map(r=>`
+
+<option>
+${r}
+</option>
+
+`).join("")}
+
+</select>
+
+<br><br>
+
+<button
+class="buy"
+onclick="confirmCancelOrder('${orderId}')"
+>
+Cancel Order Confirm करें
+</button>
+
+<br><br>
+
+<button
+class="back"
+onclick="closeModal()"
+>
+बंद करें
+</button>
+
+`);
+
 }
 
 function confirmCancelOrder(orderId){
-const order=ordersData.find(x=>x.id===orderId);if(!order)return;
-order.cancelled=true;order.status="Cancelled";order.cancelReason=document.getElementById("cancelReason")?.value||"";
-save();closeModal();alert("Order #"+order.id+" cancel request save हो गई।");orders();
+
+const order=ordersData.find(
+x=>x.id===orderId
+);
+
+if(!order)return;
+
+order.cancelled=true;
+order.status="Cancelled";
+order.cancelReason=
+document.getElementById("cancelReason")?.value||"";
+
+save();
+
+closeModal();
+
+alert(
+"Order #"+order.id+
+" cancel request save हो गई।"
+);
+
+orders();
+
 }
 
 function openReviewFromOrder(orderId){
-const order=ordersData.find(x=>x.id===orderId);if(!order)return;
-openReviewForm(order.items[0].id,"Very Good");
+
+const order=ordersData.find(
+x=>x.id===orderId
+);
+
+if(!order)return;
+
+const first=order.items[0];
+
+openReviewForm(
+first.id,
+"Very Good"
+);
+
 }
 
+
 /* =========================================================
-   ACCOUNT / CATEGORIES / SEARCH
+   ACCOUNT
    ========================================================= */
 
 function account(){
-app.innerHTML=`<h2>👤 मेरी ZipCart</h2><div class="grid">${["📦 Orders","❤️ Wishlist","🛒 Cart","🏠 Addresses","💳 Payments","🎟️ Coupons","⭐ Reviews","↩️ Returns & Refunds","🔔 Notifications","🆘 Help & Support","🌐 Language","⚙️ Accessibility","🔐 Login/OTP","🚪 Logout"].map(x=>`<button class="panel" onclick="accountAction('${x}')">${x}</button>`).join("")}</div>`;
+
+app.innerHTML=`
+
+<h2>
+👤 मेरी ZipCart
+</h2>
+
+<div class="grid">
+
+${[
+
+"📦 Orders",
+"❤️ Wishlist",
+"🛒 Cart",
+"🏠 Addresses",
+"💳 Payments",
+"🎟️ Coupons",
+"⭐ Reviews",
+"↩️ Returns & Refunds",
+"🔔 Notifications",
+"🆘 Help & Support",
+"🌐 Language",
+"⚙️ Accessibility",
+"🔐 Login/OTP",
+"🚪 Logout"
+
+].map(x=>`
+
+<button
+class="panel"
+onclick="accountAction('${x}')"
+>
+${x}
+</button>
+
+`).join("")}
+
+</div>
+
+`;
+
 updateCounts();
+
 }
 
 function accountAction(name){
-if(name==="❤️ Wishlist"){show("wishlist");return}
-if(name==="🛒 Cart"){show("cart");return}
-if(name==="📦 Orders"){show("orders");return}
-if(name==="🌐 Language"){languageModal();return}
-if(name==="⭐ Reviews"){
-app.innerHTML=`<button class="back" onclick="account()">← Account</button><h2>⭐ My Reviews</h2>${reviewsData.length?reviewsData.map(r=>{const p=getProduct(r.productId);return`<div class="panel"><h3>${p?p.name:"Product"}</h3><div>Rating: <b>${r.rating}</b></div><p>${escapeHTML(r.comment||"No comment")}</p></div>`}).join(""):`<div class="empty">अभी कोई review नहीं है।</div>`}`;
+
+if(name==="❤️ Wishlist"){
+
+show("wishlist");
 return;
+
 }
-alert(name+": यह feature production backend में जुड़ेगा।");
+
+if(name==="🛒 Cart"){
+
+show("cart");
+return;
+
 }
+
+if(name==="📦 Orders"){
+
+show("orders");
+return;
+
+}
+
+if(name==="🌐 Language"){
+
+languageModal();
+return;
+
+}
+
+if(name==="⭐ Reviews"){
+
+const reviewed=reviewsData;
+
+app.innerHTML=`
+
+<button
+class="back"
+onclick="account()"
+>
+← Account
+</button>
+
+<h2>
+⭐ My Reviews
+</h2>
+
+${
+reviewed.length
+?
+reviewed.map(r=>{
+
+const p=getProduct(r.productId);
+
+return `
+
+<div class="panel">
+
+<h3>
+${p?p.name:"Product"}
+</h3>
+
+<div>
+Rating: <b>${r.rating}</b>
+</div>
+
+<p>
+${escapeHTML(r.comment||"No comment")}
+</p>
+
+</div>
+
+`;
+
+}).join("")
+:
+
+`
+
+<div class="empty">
+अभी कोई review नहीं है।
+</div>
+
+`
+}
+
+`;
+
+return;
+
+}
+
+alert(
+name+
+": यह feature production backend में जुड़ेगा।"
+);
+
+}
+
+
+/* =========================================================
+   CATEGORIES PAGE
+   ========================================================= */
 
 function categories(){
-app.innerHTML=`<button class="back" onclick="show('home')">← Home</button><h2>🗂️ सभी Categories</h2>${catsHTML()}`;
+
+app.innerHTML=`
+
+<button
+class="back"
+onclick="show('home')"
+>
+← Home
+</button>
+
+<h2>
+🗂️ सभी Categories
+</h2>
+
+${catsHTML()}
+
+`;
+
 }
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
 
 function searchPage(q){
-let ps=products.filter(p=>(p.name+" "+p.sub+" "+p.cat).toLowerCase().includes(q.toLowerCase()));
-app.innerHTML=`<button class="back" onclick="show('home')">← Home</button><div class="panel"><h2>🔎 Search: “${escapeHTML(q)}”</h2><p>${ps.length?ps.length+" विकल्प मिले":"कोई exact result नहीं मिला — Similar products देखें।"}</p>
+
+let ps=products.filter(
+
+p=>
+(
+p.name+
+" "+
+p.sub+
+" "+
+p.cat
+)
+.toLowerCase()
+.includes(
+q.toLowerCase()
+)
+
+);
+
+app.innerHTML=`
+
+<button
+class="back"
+onclick="show('home')"
+>
+← Home
+</button>
+
+<div class="panel">
+
+<h2>
+🔎 Search: “${escapeHTML(q)}”
+</h2>
+
+<p>
+
+${
+ps.length
+?
+ps.length+" विकल्प मिले"
+:
+"कोई exact result नहीं मिला — Similar products देखें।"
+}
+
+</p>
+
 <div class="quick">
-<button class="pill" onclick="searchSort('default',${JSON.stringify(q)})">Default</button>
-<button class="pill" onclick="searchSort('low',${JSON.stringify(q)})">Price Low-High</button>
-<button class="pill" onclick="searchSort('high',${JSON.stringify(q)})">Price High-Low</button>
-<button class="pill" onclick="searchRating(${JSON.stringify(q)})">Top Rated</button>
-<button class="pill" onclick="alert('Color filter product catalog में seller data जुड़ने के बाद लागू होगा।')">Color</button>
-<button class="pill" onclick="alert('Brand filter production catalog में लागू होगा।')">Brand</button>
-<button class="pill" onclick="alert('Seller filter production catalog में लागू होगा।')">Seller</button>
-<button class="pill" onclick="alert('Discount filter product catalog में लागू होगा।')">Discount</button>
-</div></div>
-<div id="searchResults" class="grid">${(ps.length?ps:products).map(productCard).join("")}</div>
-<div class="notice">🔔 Price Drop और Back in Stock alerts production version में notification system से जुड़ेंगे।</div>`;
+
+${[
+
+"Price",
+"Color",
+"Brand",
+"Seller",
+"Rating",
+"Discount",
+"Delivery",
+"Newest",
+"Popular",
+"Price Low-High",
+"Price High-Low"
+
+].map(x=>`
+
+<button
+class="pill"
+onclick="alert('${x} filter production catalog में लागू होगा।')"
+>
+${x}
+</button>
+
+`).join("")}
+
+</div>
+
+</div>
+
+<div class="grid">
+
+${
+(ps.length?ps:products)
+.map(productCard)
+.join("")
+}
+
+</div>
+
+<div class="notice">
+
+🔔 Price Drop और Back in Stock alerts
+production version में notification system से जुड़ेंगे।
+
+</div>
+
+`;
+
 updateCounts();
+
 }
 
-function searchSort(type,q){
-let ps=products.filter(p=>(p.name+" "+p.sub+" "+p.cat).toLowerCase().includes(q.toLowerCase()));
-if(type==="low")ps.sort((a,b)=>a.price-b.price);
-if(type==="high")ps.sort((a,b)=>b.price-a.price);
-let box=document.getElementById("searchResults");if(box)box.innerHTML=(ps.length?ps:products).map(productCard).join("");
+function doSearch(){
+
+let q=
+document.getElementById("search")
+.value
+.trim();
+
+if(q){
+
+searchPage(q);
+
 }
 
-function searchRating(q){
-let ps=products.filter(p=>(p.name+" "+p.sub+" "+p.cat).toLowerCase().includes(q.toLowerCase()));
-ps.sort((a,b)=>b.rating-a.rating);
-let box=document.getElementById("searchResults");if(box)box.innerHTML=(ps.length?ps:products).map(productCard).join("");
 }
 
-function doSearch(){let q=document.getElementById("search").value.trim();if(q)searchPage(q)}
-function doSearchText(q){document.getElementById("search").value=q;searchPage(q)}
+function doSearchText(q){
+
+document.getElementById("search").value=q;
+
+searchPage(q);
+
+}
+
+
+/* =========================================================
+   VOICE
+   ========================================================= */
 
 function voiceSearch(){
-if(!("webkitSpeechRecognition"in window)){alert("इस browser में voice search उपलब्ध नहीं है।");return}
-let r=new webkitSpeechRecognition();r.lang="hi-IN";
-r.onresult=e=>{let q=e.results[0][0].transcript;document.getElementById("search").value=q;searchPage(q)};
+
+if(!("webkitSpeechRecognition" in window)){
+
+alert(
+"इस browser में voice search उपलब्ध नहीं है।"
+);
+
+return;
+
+}
+
+let r=
+new webkitSpeechRecognition();
+
+r.lang="hi-IN";
+
+r.onresult=e=>{
+
+let q=
+e.results[0][0].transcript;
+
+document.getElementById("search").value=q;
+
+searchPage(q);
+
+};
+
 r.start();
+
 }
 
 function speak(t){
-if("speechSynthesis"in window){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang=currentLang==="English"?"en-IN":"hi-IN";speechSynthesis.speak(u)}
+
+if("speechSynthesis" in window){
+
+speechSynthesis.cancel();
+
+const u=
+new SpeechSynthesisUtterance(t);
+
+u.lang=
+currentLang==="English"
+?
+"en-IN"
+:
+"hi-IN";
+
+speechSynthesis.speak(u);
+
 }
 
-function speakList(a){a.forEach((x,i)=>setTimeout(()=>speak(x.substring(x.indexOf(" ")+1)),i*900))}
+}
+
+function speakList(a){
+
+a.forEach(
+
+(x,i)=>
+setTimeout(
+
+()=>speak(
+x.substring(
+x.indexOf(" ")+1
+)
+),
+
+i*900
+
+)
+
+);
+
+}
+
+
+/* =========================================================
+   LANGUAGE
+   ========================================================= */
 
 function languageModal(){
-openModal(`<h2>🌐 भाषा चुनें</h2><p>आपकी पसंद याद रखी जाएगी।</p><div class="quick">${["Hindi","English","Gujarati","Marathi","Bengali","Tamil","Telugu","Kannada","Malayalam","Punjabi","Odia","Assamese","Urdu","Nepali","Maithili","Konkani"].map(x=>`<button class="pill" onclick="setLang('${x}')">${x}</button>`).join("")}</div><br><button class="back" onclick="closeModal()">बंद करें</button>`);
+
+openModal(`
+
+<h2>
+🌐 भाषा चुनें
+</h2>
+
+<p>
+आपकी पसंद याद रखी जाएगी।
+</p>
+
+<div class="quick">
+
+${[
+
+"Hindi",
+"English",
+"Gujarati",
+"Marathi",
+"Bengali",
+"Tamil",
+"Telugu",
+"Kannada",
+"Malayalam",
+"Punjabi",
+"Odia",
+"Assamese",
+"Urdu",
+"Nepali",
+"Maithili",
+"Konkani"
+
+].map(x=>`
+
+<button
+class="pill"
+onclick="setLang('${x}')"
+>
+${x}
+</button>
+
+`).join("")}
+
+</div>
+
+<br>
+
+<button
+class="back"
+onclick="closeModal()"
+>
+बंद करें
+</button>
+
+`);
+
 }
 
-function setLang(x){currentLang=x;localStorage.setItem("zipLang",x);closeModal();alert("Language saved: "+x+" — full translation layer production version में जोड़ी जाएगी.")}
+function setLang(x){
 
-function openModal(x){document.getElementById("modalbox").innerHTML=x;document.getElementById("modal").classList.add("show")}
-function closeModal(){document.getElementById("modal").classList.remove("show")}
+currentLang=x;
+
+localStorage.setItem(
+"zipLang",
+x
+);
+
+closeModal();
+
+alert(
+"Language saved: "+x+
+" — full translation layer production version में जोड़ी जाएगी।"
+);
+
+}
+
+
+/* =========================================================
+   MODAL / SECURITY HELPERS
+   ========================================================= */
+
+function openModal(x){
+
+document.getElementById(
+"modalbox"
+).innerHTML=x;
+
+document.getElementById(
+"modal"
+).classList.add("show");
+
+}
+
+function closeModal(){
+
+document.getElementById(
+"modal"
+).classList.remove("show");
+
+}
 
 function escapeHTML(value){
-return String(value).replaceAll("&","&").replaceAll("<","<").replaceAll(">",">").replaceAll('"',""").replaceAll("'","'");
+
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
 }
 
+
+/* =========================================================
+   MAIN NAVIGATION
+   ========================================================= */
+
 function show(x){
-selectedCat=null;wishlistPageActive=false;
-if(x==="home")home();
-if(x==="wishlist")wishlistPage();
-if(x==="cart")cartPage();
-if(x==="orders")orders();
-if(x==="account")account();
-if(x==="categories")categories();
+
+selectedCat=null;
+wishlistPageActive=false;
+
+if(x==="home")
+home();
+
+if(x==="wishlist")
+wishlistPage();
+
+if(x==="cart")
+cartPage();
+
+if(x==="orders")
+orders();
+
+if(x==="account")
+account();
+
+if(x==="categories")
+categories();
+
 window.scrollTo(0,0);
+
 }
 
 show("home");
 
 </script>
+
 </body>
+</html>
