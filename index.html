@@ -1335,7 +1335,7 @@ codExtra:50
 
 
 /* =========================================================
-   BASIC DATA — TRAVEL, BILLS, MEDICINES & GROCERY PLACED FIRST
+   BASIC DATA — TRAVEL, MEDICINE, BILLS & GROCERY PLACED FIRST
    ========================================================= */
 
 const cats=[
@@ -1544,7 +1544,7 @@ const saree=[
 "🥻 Silk",
 "🌿 Cotton",
 "🌸 Georgette",
-"🥶 Chiffon",
+"🪶 Chiffon",
 "🌺 Bandhej",
 "🎉 Party Wear",
 "👰 Bridal",
@@ -1558,7 +1558,6 @@ const saree=[
 
 /* =========================================================
    PRODUCTS
-   PRODUCT NUMBERING NOW STARTS FROM 0
    ========================================================= */
 
 const products=[
@@ -1771,119 +1770,36 @@ details:"Actual medical product information, expiry and applicable prescription 
 
 
 /* =========================================================
-   OLD DEMO DATA MIGRATION
-   पुराने 1–12 IDs को नए 0–11 IDs में automatically बदलना
+   MIGRATION & QUANTITY FIX
    ========================================================= */
 
 function migrateOldIds(){
-
-let oldToNew={
-1:0,
-2:1,
-3:2,
-4:3,
-5:4,
-6:5,
-7:6,
-8:7,
-9:8,
-10:9,
-11:10,
-12:11
-};
-
-let oldWish=JSON.parse(
-localStorage.getItem("zipWish")||"[]"
-);
-
-let oldCart=JSON.parse(
-localStorage.getItem("zipCart")||"[]"
-);
-
-let migratedWish=oldWish.map(
-id=>oldToNew[id]!==undefined?oldToNew[id]:Number(id)
-);
-
+let oldToNew={1:0,2:1,3:2,4:3,5:4,6:5,7:6,8:7,9:8,10:9,11:10,12:11};
+let oldWish=JSON.parse(localStorage.getItem("zipWish")||"[]");
+let oldCart=JSON.parse(localStorage.getItem("zipCart")||"[]");
+let migratedWish=oldWish.map(id=>oldToNew[id]!==undefined?oldToNew[id]:Number(id));
 let migratedCart=oldCart.map(item=>{
-
 let oldId=Number(item.id);
-
-return {
-...item,
-id:oldToNew[oldId]!==undefined
-?
-oldToNew[oldId]
-:
-oldId
-};
-
+return {...item,id:oldToNew[oldId]!==undefined?oldToNew[oldId]:oldId};
 });
-
-localStorage.setItem(
-"zipWish",
-JSON.stringify([...new Set(migratedWish)])
-);
-
-localStorage.setItem(
-"zipCart",
-JSON.stringify(migratedCart)
-);
-
+localStorage.setItem("zipWish",JSON.stringify([...new Set(migratedWish)]));
+localStorage.setItem("zipCart",JSON.stringify(migratedCart));
 }
-
 migrateOldIds();
 
-
-/* =========================================================
-   QUANTITY FIX
-   पुराने 1,3,5,7 जैसे odd quantities को एक बार
-   1,2,3,4 में ठीक किया जाएगा।
-   उसके बाद quantity + / - हमेशा 1-1 से बदलेगी।
-   ========================================================= */
-
 function fixOldQuantities(){
-
-if(localStorage.getItem("zipQtyFixedV1")==="1"){
-return;
-}
-
-let savedCart=JSON.parse(
-localStorage.getItem("zipCart")||"[]"
-);
-
+if(localStorage.getItem("zipQtyFixedV1")==="1")return;
+let savedCart=JSON.parse(localStorage.getItem("zipCart")||"[]");
 savedCart=savedCart.map(item=>{
-
 let q=Number(item.qty);
-
-if(!Number.isFinite(q)||q<1){
-q=1;
-}
-
+if(!Number.isFinite(q)||q<1)q=1;
 q=Math.floor(q);
-
-if(q%2===1){
-q=(q+1)/2;
-}
-
-return {
-...item,
-qty:Math.max(1,q)
-};
-
+if(q%2===1)q=(q+1)/2;
+return {...item,qty:Math.max(1,q)};
 });
-
-localStorage.setItem(
-"zipCart",
-JSON.stringify(savedCart)
-);
-
-localStorage.setItem(
-"zipQtyFixedV1",
-"1"
-);
-
+localStorage.setItem("zipCart",JSON.stringify(savedCart));
+localStorage.setItem("zipQtyFixedV1","1");
 }
-
 fixOldQuantities();
 
 
@@ -1917,55 +1833,13 @@ let exchangeColor="";
 
 /* =========================================================
    PAYMENT HELPERS
-   PAYMENT LOGIC UNCHANGED
    ========================================================= */
 
-function isCashPayment(method){
-
-return method==="Cash on Delivery";
-
-}
-
-function isOnlinePayment(method){
-
-return !isCashPayment(method);
-
-}
-
-function getPaymentAdjustment(method){
-
-if(isCashPayment(method)){
-
-return PAYMENT_SETTINGS.codExtra;
-
-}
-
-return 0;
-
-}
-
-function getFinalAmount(subtotal,method){
-
-const adjustment=getPaymentAdjustment(method);
-
-return Math.max(
-0,
-subtotal+adjustment
-);
-
-}
-
-function getPaymentAdjustmentText(method){
-
-if(isCashPayment(method)){
-
-return `COD charge: +₹${PAYMENT_SETTINGS.codExtra}`;
-
-}
-
-return "";
-
-}
+function isCashPayment(method){return method==="Cash on Delivery";}
+function isOnlinePayment(method){return !isCashPayment(method);}
+function getPaymentAdjustment(method){return isCashPayment(method)?PAYMENT_SETTINGS.codExtra:0;}
+function getFinalAmount(subtotal,method){return Math.max(0,subtotal+getPaymentAdjustment(method));}
+function getPaymentAdjustmentText(method){return isCashPayment(method)?`COD charge: +₹${PAYMENT_SETTINGS.codExtra}`:"";}
 
 
 /* =========================================================
@@ -1973,42 +1847,22 @@ return "";
    ========================================================= */
 
 function save(){
-
 localStorage.setItem("zipWish",JSON.stringify(wishlist));
 localStorage.setItem("zipCart",JSON.stringify(cart));
 localStorage.setItem("zipOrders",JSON.stringify(ordersData));
 localStorage.setItem("zipReviews",JSON.stringify(reviewsData));
-
 updateCounts();
-
 }
 
 function updateCounts(){
-
 const wish=document.getElementById("wishCount");
 const cartCount=document.getElementById("cartCount");
-
-if(wish){
-wish.textContent=wishlist.length;
-}
-
-if(cartCount){
-
-cartCount.textContent=cart.reduce(
-(total,item)=>total+Number(item.qty||0),
-0
-);
-
-}
-
+if(wish)wish.textContent=wishlist.length;
+if(cartCount)cartCount.textContent=cart.reduce((total,item)=>total+Number(item.qty||0),0);
 }
 
 function getProduct(id){
-
-return products.find(
-p=>p.id===Number(id)
-);
-
+return products.find(p=>p.id===Number(id));
 }
 
 
@@ -2017,189 +1871,68 @@ p=>p.id===Number(id)
    ========================================================= */
 
 function colorClass(color){
-
-if(!color){
-return "color-standard";
-}
-
-const key=String(color)
-.trim()
-.toLowerCase()
-.replace(/\s+/g,"-");
-
-const allowed=[
-"red",
-"pink",
-"blue",
-"green",
-"black",
-"white",
-"yellow",
-"maroon",
-"purple",
-"golden",
-"silver",
-"rose-gold",
-"brown",
-"beige",
-"grey",
-"standard"
-];
-
-return allowed.includes(key)
-?
-"color-"+key
-:
-"color-standard";
-
+if(!color)return "color-standard";
+let key=String(color).trim().toLowerCase().replace(/\s+/g,"-");
+const allowed=["red","pink","blue","green","black","white","yellow","maroon","purple","golden","silver","rose-gold","brown","beige","grey","standard"];
+return allowed.includes(key)?"color-"+key:"color-standard";
 }
 
 function colorDotClass(color){
-
-if(!color){
-return "dot-Standard";
-}
-
-const key=String(color)
-.trim()
-.replace(/\s+/g,"-");
-
+if(!color)return "dot-Standard";
+let key=String(color).trim().replace(/\s+/g,"-");
 return "dot-"+key;
-
 }
 
 function productVisual(p,color=""){
-
-const selected=color||p.colors?.[0]||"Standard";
-
+let selected=color||p.colors?.[0]||"Standard";
 return `
-
 <div class="product-visual ${colorClass(selected)}">
-
-<span>
-${p.emoji}
-</span>
-
-<span class="color-label">
-${escapeHTML(selected)}
-</span>
-
+<span>${p.emoji}</span>
+<span class="color-label">${escapeHTML(selected)}</span>
 </div>
-
 `;
-
 }
 
 
 /* =========================================================
-   PRODUCT CARD
+   PRODUCT CARD & CATEGories
    ========================================================= */
 
 function productCard(p){
-
 const liked=wishlist.includes(p.id);
-
-const pct=Math.round(
-(1-p.price/p.old)*100
-);
-
+const pct=Math.round((1-p.price/p.old)*100);
 const previewColor=p.colors?.[0]||"Standard";
-
 return `
-
 <div class="card">
-
-<button
-class="heart ${liked?"liked":""}"
-onclick="event.stopPropagation();toggleWish(${p.id})"
->
+<button class="heart ${liked?"liked":""}" onclick="event.stopPropagation();toggleWish(${p.id})">
 ${liked?"❤️":"♡"}
 </button>
-
-<div
-class="photo"
-onclick="product(${p.id})"
->
-${productVisual(p,previewColor)}
-</div>
-
-<div
-class="cardbody"
-onclick="product(${p.id})"
-style="cursor:pointer"
->
-
+<div class="photo" onclick="product(${p.id})">${productVisual(p,previewColor)}</div>
+<div class="cardbody" onclick="product(${p.id})" style="cursor:pointer">
 <b>${p.name}</b>
-
 <div>
-
-<span class="price">
-₹${p.price}
-</span>
-
-<span class="old">
-₹${p.old}
-</span>
-
-<span class="off">
-${pct}% OFF
-</span>
-
+<span class="price">₹${p.price}</span>
+<span class="old">₹${p.old}</span>
+<span class="off">${pct}% OFF</span>
 </div>
-
-<div class="rating">
-⭐ ${p.rating} (${p.ratingCount||0})
+<div class="rating">⭐ ${p.rating} (${p.ratingCount||0})</div>
+<button class="buy" onclick="event.stopPropagation();product(${p.id})">देखें / खरीदें</button>
 </div>
-
-<button
-class="buy"
-onclick="event.stopPropagation();product(${p.id})"
->
-देखें / खरीदें
-</button>
-
 </div>
-
-</div>
-
 `;
-
 }
 
-
-/* =========================================================
-   CATEGORIES
-   ========================================================= */
-
 function catsHTML(){
-
 return `
-
 <div class="hscroll">
-
 ${cats.map(c=>`
-
-<div
-class="cat"
-onclick="category('${c[2]}')"
->
-
-<div class="catpic">
-${c[0]}
+<div class="cat" onclick="category('${c[2]}')">
+<div class="catpic">${c[0]}</div>
+<b>${c[1]}</b>
 </div>
-
-<b>
-${c[1]}
-</b>
-
-</div>
-
 `).join("")}
-
 </div>
-
 `;
-
 }
 
 
@@ -2208,537 +1941,171 @@ ${c[1]}
    ========================================================= */
 
 function home(){
-
 wishlistPageActive=false;
-
 app.innerHTML=`
-
 <section class="hero">
-
-<h1>
-ZipCart में आपका स्वागत है ❤️
-</h1>
-
-<p>
-आपकी अपनी shopping जगह —
-<b>
-देखो → सुनो → समझो → दबाओ → खरीदो
-</b>
-</p>
-
+<h1>ZipCart में आपका स्वागत है ❤️</h1>
+<p>आपकी अपनी shopping जगह — <b>देखो → सुनो → समझो → दबाओ → खरीदो</b></p>
 <div class="quick">
-
-<button
-class="pill"
-onclick="voiceSearch()"
->
-🔊 Voice Search
-</button>
-
-<button
-class="pill"
-onclick="show('orders')"
->
-📦 मेरे ऑर्डर
-</button>
-
-<button
-class="pill"
-onclick="show('account')"
->
-🆘 मदद चाहिए?
-</button>
-
-<button
-class="pill"
-onclick="category('grocery')"
->
-⚡ Grocery Quick Delivery
-</button>
-
-<button
-class="pill"
-onclick="category('medicine')"
->
-💊 Medicines
-</button>
-
+<button class="pill" onclick="voiceSearch()">🔊 Voice Search</button>
+<button class="pill" onclick="show('orders')">📦 मेरे ऑर्डर</button>
+<button class="pill" onclick="show('account')">🆘 मदद चाहिए?</button>
+<button class="pill" onclick="category('grocery')">⚡ Grocery Quick Delivery</button>
+<button class="pill" onclick="category('medicine')">💊 Medicines</button>
 </div>
-
 </section>
 
 <div class="banner">
-
 <div>
-
-<h2>
-🎉 आज के Offers
-</h2>
-
-<div>
-आपके बजट और पसंद के हिसाब से खरीदारी करें
+<h2>🎉 आज के Offers</h2>
+<div>आपके बजट और पसंद के हिसाब से खरीदारी करें</div>
 </div>
-
-</div>
-
-<button
-onclick="doSearchText('Anarkali Suit')"
->
-Anarkali Suit देखें
-</button>
-
+<button onclick="doSearchText('Anarkali Suit')">Anarkali Suit देखें</button>
 </div>
 
 <section class="section">
-
-<h2>
-🗂️ Top Categories
-</h2>
-
+<h2>🗂️ Top Categories</h2>
 ${catsHTML()}
-
 </section>
 
 <section class="section">
-
-<h2>
-✨ आपके लिए चुना गया
-</h2>
-
-<div class="grid">
-
-${products.slice(0,8).map(productCard).join("")}
-
-</div>
-
+<h2>✨ आपके लिए चुना गया</h2>
+<div class="grid">${products.slice(0,8).map(productCard).join("")}</div>
 </section>
 
 <section class="section">
-
-<h2>
-🔥 कम बजट में पसंदीदा
-</h2>
-
-<div class="grid">
-
-${products.filter(p=>p.price<600).map(productCard).join("")}
-
-</div>
-
+<h2>🔥 कम बजट में पसंदीदा</h2>
+<div class="grid">${products.filter(p=>p.price<600).map(productCard).join("")}</div>
 </section>
 
 <section class="section">
-
-<h2>
-🆕 New Arrivals
-</h2>
-
-<div class="grid">
-
-${products.slice(8).map(productCard).join("")}
-
-</div>
-
+<h2>🆕 New Arrivals</h2>
+<div class="grid">${products.slice(8).map(productCard).join("")}</div>
 </section>
-
 `;
-
 updateCounts();
-
 }
 
 
 /* =========================================================
-   CATEGORY
+   CATEGORY & SUB CATEGORY
    ========================================================= */
 
 function category(key){
-
 selectedCat=key;
-
-const c=cats.find(x=>x[2]===key);
-const arr=sub[key]||[];
-
+let c=cats.find(x=>x[2]===key);
+let arr=sub[key]||[];
 app.innerHTML=`
-
-<button
-class="back"
-onclick="show('home')"
->
-← वापस Home
-</button>
-
+<button class="back" onclick="show('home')">← वापस Home</button>
 <div class="panel">
-
-<h2>
-${c?c[0]+" "+c[1]:key}
-</h2>
-
-<p>
-Category को बाएँ-दाएँ swipe करके देखें।
-🔊 नाम सुनने के लिए Listen दबाएँ।
-</p>
-
-<button
-class="pill"
-onclick='speakList(${JSON.stringify(arr)})'
->
-🔊 सुनें
-</button>
-
+<h2>${c?c[0]+" "+c[1]:key}</h2>
+<p>Category को बाएँ-दाएँ swipe करके देखें। 🔊 नाम सुनने के लिए Listen दबाएँ।</p>
+<button class="pill" onclick='speakList(${JSON.stringify(arr)})'>🔊 सुनें</button>
 </div>
-
 <div class="hscroll">
-
 ${arr.map(x=>`
-
-<div
-class="cat"
-onclick="subCategory('${key}',\`${x}\`)"
->
-
-<div class="catpic">
-${x.split(" ")[0]}
+<div class="cat" onclick="subCategory('${key}',\`${x}\`)">
+<div class="catpic">${x.split(" ")[0]}</div>
+<b>${x.substring(x.indexOf(" ")+1)}</b>
 </div>
-
-<b>
-${x.substring(x.indexOf(" ")+1)}
-</b>
-
-</div>
-
 `).join("")}
-
 </div>
-
-${
-key==="women"
-?
-`
-
+${key==="women"?`
 <div class="panel">
-
-<h3>
-👰 Lehenga की अलग varieties
-</h3>
-
+<h3>👰 Lehenga की अलग varieties</h3>
 <div class="hscroll">
-
 ${lehenga.map(x=>`
-
-<div
-class="cat"
-onclick="subCategory('women',\`Lehenga ${x.substring(x.indexOf(" ")+1)}\`)"
->
-
-<div class="catpic">
-${x.split(" ")[0]}
+<div class="cat" onclick="subCategory('women',\`Lehenga ${x.substring(x.indexOf(" ")+1)}\`)">
+<div class="catpic">${x.split(" ")[0]}</div>
+<b>${x.substring(x.indexOf(" ")+1)}</b>
 </div>
-
-<b>
-${x.substring(x.indexOf(" ")+1)}
-</b>
-
-</div>
-
 `).join("")}
-
 </div>
-
-<h3>
-🥻 Saree varieties
-</h3>
-
+<h3>🥻 Saree varieties</h3>
 <div class="hscroll">
-
 ${saree.map(x=>`
-
-<div
-class="cat"
-onclick="subCategory('women',\`Saree ${x.substring(x.indexOf(" ")+1)}\`)"
->
-
-<div class="catpic">
-${x.split(" ")[0]}
+<div class="cat" onclick="subCategory('women',\`Saree ${x.substring(x.indexOf(" ")+1)}\`)">
+<div class="catpic">${x.split(" ")[0]}</div>
+<b>${x.substring(x.indexOf(" ")+1)}</b>
 </div>
-
-<b>
-${x.substring(x.indexOf(" ")+1)}
-</b>
-
-</div>
-
 `).join("")}
-
 </div>
-
 </div>
-
-`
-:
-""
-}
-
+`:""}
 <section class="section">
-
-<h2>
-🛍️ Products
-</h2>
-
+<h2>🛍️ Products</h2>
 <div class="grid">
-
-${
-products.filter(p=>p.cat===key).length
-?
-products.filter(p=>p.cat===key).map(productCard).join("")
-:
-
-`
-
-<div class="empty">
-
-इस category के real products seller जोड़ने के बाद यहाँ दिखाई देंगे।
-
+${products.filter(p=>p.cat===key).length?products.filter(p=>p.cat===key).map(productCard).join(""):`<div class="empty">इस category के real products seller जोड़ने के बाद यहाँ दिखाई देंगे।</div>`}
 </div>
-
-`
-}
-
-</div>
-
 </section>
-
 `;
-
 updateCounts();
-
 }
-
-
-/* =========================================================
-   SUB CATEGORY
-   ========================================================= */
 
 function subCategory(key,s){
-
 selectedCat=key;
-
 let name=s.trim();
-
 let cleanName=name.replace(/^[^\s]+\s/,"");
-
-let found=products.filter(
-p=>
-p.cat===key &&
-(
-(p.sub||"").toLowerCase().includes(cleanName.toLowerCase())
-||
-p.name.toLowerCase().includes(cleanName.toLowerCase())
-)
-);
-
+let found=products.filter(p=>p.cat===key&&((p.sub||"").toLowerCase().includes(cleanName.toLowerCase())||p.name.toLowerCase().includes(cleanName.toLowerCase())));
 app.innerHTML=`
-
-<button
-class="back"
-onclick="category('${key}')"
->
-← वापस
-</button>
-
+<button class="back" onclick="category('${key}')">← वापस</button>
 <div class="panel">
-
-<h2>
-${name}
-</h2>
-
-<button
-class="pill"
-onclick='speak(${JSON.stringify(name)})'
->
-🔊 सुनें
-</button>
-
+<h2>${name}</h2>
+<button class="pill" onclick='speak(${JSON.stringify(name)})'>🔊 सुनें</button>
 <div class="quick">
-
-${[
-"₹100–₹500",
-"₹500–₹1,000",
-"₹1,000–₹1,500",
-"₹1,500–₹2,000",
-"₹2,000–₹3,000",
-"₹3,000–₹5,000",
-"₹5,000–₹10,000",
-"₹10,000+"
-].map(x=>`
-
-<button
-class="pill"
-onclick="filterPrice('${x}')"
->
-${x}
-</button>
-
-`).join("")
-}
-
+${["₹100–₹500","₹500–₹1,000","₹1,000–₹1,500","₹1,500–₹2,000","₹2,000–₹3,000","₹3,000–₹5,000","₹5,000–₹10,000","₹10,000+"].map(x=>`
+<button class="pill" onclick="filterPrice('${x}')">${x}</button>
+`).join("")}
 </div>
-
 </div>
-
-<div
-id="subcategoryProducts"
-class="grid"
->
-
-${
-found.length
-?
-found.map(productCard).join("")
-:
-products.filter(p=>p.cat===key).map(productCard).join("")
-}
-
+<div id="subcategoryProducts" class="grid">
+${found.length?found.map(productCard).join(""):products.filter(p=>p.cat===key).map(productCard).join("")}
 </div>
-
 `;
-
 updateCounts();
-
 }
-
-
-/* =========================================================
-   PRICE FILTER
-   ========================================================= */
 
 function filterPrice(range){
-
-let parts=range
-.replaceAll("₹","")
-.replaceAll(",","")
-.split("–");
-
+let parts=range.replaceAll("₹","").replaceAll(",","").split("–");
 let min=parseInt(parts[0]);
-
-let max=parts[1]
-?
-parseInt(parts[1].replace("+",""))
-:
-Infinity;
-
-let source=products.filter(
-p=>p.cat===selectedCat
-);
-
-let result=source.filter(
-p=>p.price>=min &&
-(
-max===Infinity ||
-p.price<=max
-)
-);
-
+let max=parts[1]?parseInt(parts[1].replace("+","")):Infinity;
+let source=products.filter(p=>p.cat===selectedCat);
+let result=source.filter(p=>p.price>=min&&(max===Infinity||p.price<=max));
 if(!result.length){
-
-document.getElementById(
-"subcategoryProducts"
-).innerHTML=`
-
-<div class="empty">
-
-इस price range में अभी product उपलब्ध नहीं है।
-
-</div>
-
-`;
-
+document.getElementById("subcategoryProducts").innerHTML=`<div class="empty">इस price range में अभी product उपलब्ध नहीं है।</div>`;
 return;
-
 }
-
-document.getElementById(
-"subcategoryProducts"
-).innerHTML=
-result.map(productCard).join("");
-
+document.getElementById("subcategoryProducts").innerHTML=result.map(productCard).join("");
 }
 
 
 /* =========================================================
-   WISHLIST / CART
+   WISHLIST / CART / OPTIONS
    ========================================================= */
 
 function toggleWish(id){
-
 id=Number(id);
-
-if(wishlist.includes(id)){
-
-wishlist=wishlist.filter(
-x=>x!==id
-);
-
-}else{
-
-wishlist.push(id);
-
-}
-
+if(wishlist.includes(id)){wishlist=wishlist.filter(x=>x!==id);}
+else{wishlist.push(id);}
 save();
-
-if(currentProductId===id){
-
-product(id);
-
-}else if(wishlistPageActive){
-
-wishlistPage();
-
-}
-
+if(currentProductId===id)product(id);
+else if(wishlistPageActive)wishlistPage();
 }
 
 function addCart(id,qty=1){
-
 id=Number(id);
-
-let item=cart.find(
-x=>x.id===id
-);
-
-if(item){
-
-item.qty=Number(item.qty||1)+Number(qty);
-
-}else{
-
-cart.push({
-id:id,
-qty:Math.max(1,Number(qty)||1),
-selected:true
-});
-
-}
-
+let item=cart.find(x=>x.id===id);
+if(item){item.qty=Number(item.qty||1)+Number(qty);}
+else{cart.push({id:id,qty:Math.max(1,Number(qty)||1),selected:true});}
 save();
-
-showCartMessage(
-"🛒 Product cart में जोड़ दिया गया।"
-);
-
+showCartMessage("🛒 Product cart में जोड़ दिया गया।");
 }
 
 function showCartMessage(message){
-
 const old=document.getElementById("cartMessage");
-
 if(old)old.remove();
-
 const box=document.createElement("div");
-
 box.id="cartMessage";
-
 box.style.position="fixed";
 box.style.top="80px";
 box.style.right="15px";
@@ -2748,140 +2115,51 @@ box.style.color="#fff";
 box.style.padding="14px 18px";
 box.style.borderRadius="12px";
 box.style.boxShadow="0 5px 20px #0003";
-
 box.innerHTML=`
-
 <div>${message}</div>
-
 <div style="margin-top:8px;display:flex;gap:6px">
-
-<button
-onclick="show('cart');this.parentElement.parentElement.remove()"
-style="background:#fff;color:#4b0082;border:0;padding:6px 10px;border-radius:8px"
->
-Cart देखें
-</button>
-
-<button
-onclick="this.parentElement.parentElement.remove()"
-style="background:#ffffff33;color:#fff;border:0;padding:6px 10px;border-radius:8px"
->
-बंद
-</button>
-
+<button onclick="show('cart');this.parentElement.parentElement.remove()" style="background:#fff;color:#4b0082;border:0;padding:6px 10px;border-radius:8px">Cart देखें</button>
+<button onclick="this.parentElement.parentElement.remove()" style="background:#ffffff33;color:#fff;border:0;padding:6px 10px;border-radius:8px">बंद</button>
 </div>
-
 `;
-
 document.body.appendChild(box);
-
-setTimeout(()=>{
-
-if(box.parentElement){
-box.remove();
+setTimeout(()=>{if(box.parentElement)box.remove();},5000);
 }
-
-},5000);
-
-}
-
-
-/* =========================================================
-   PRODUCT OPTIONS
-   ========================================================= */
 
 function selectSize(size){
-
 selectedSize=size;
-
-document.querySelectorAll(".size-btn").forEach(btn=>{
-btn.classList.toggle(
-"active",
-btn.dataset.size===size
-);
-});
-
+document.querySelectorAll(".size-btn").forEach(btn=>{btn.classList.toggle("active",btn.dataset.size===size);});
 }
 
 function selectColor(color){
-
 selectedColor=color;
-
-document.querySelectorAll(".color-btn").forEach(btn=>{
-btn.classList.toggle(
-"active",
-btn.dataset.color===color
-);
-});
-
-/* Selected color changes product preview automatically */
-
-const p=getProduct(currentProductId);
-
-const preview=document.getElementById("productColorPreview");
-
-if(preview && p){
-
-preview.className=
-"product-photo-large "+
-colorClass(color);
-
-preview.innerHTML=
-productVisual(p,color);
-
+document.querySelectorAll(".color-btn").forEach(btn=>{btn.classList.toggle("active",btn.dataset.color===color);});
+let p=getProduct(currentProductId);
+let preview=document.getElementById("productColorPreview");
+if(preview&&p){
+preview.className="product-photo-large "+colorClass(color);
+preview.innerHTML=productVisual(p,color);
 }
-
-const selectedText=document.getElementById(
-"selectedColorText"
-);
-
+let selectedText=document.getElementById("selectedColorText");
 if(selectedText){
-
-selectedText.innerHTML=`
-
-<span class="color-dot ${colorDotClass(color)}"></span>
-Selected Color: <b>${escapeHTML(color)}</b>
-
-`;
-
+selectedText.innerHTML=`<span class="color-dot ${colorDotClass(color)}"></span>Selected Color: <b>${escapeHTML(color)}</b>`;
 }
-
 }
 
 function validateProductSelection(){
-
-const p=getProduct(currentProductId);
-
+let p=getProduct(currentProductId);
 if(!p)return false;
-
-if(p.sizes && p.sizes.length>1 && !selectedSize){
-
+if(p.sizes&&p.sizes.length>1&&!selectedSize){
 alert("कृपया पहले Size चुनें।");
-
-document.getElementById("sizeSection")?.scrollIntoView({
-behavior:"smooth",
-block:"center"
-});
-
+document.getElementById("sizeSection")?.scrollIntoView({behavior:"smooth",block:"center"});
 return false;
-
 }
-
-if(p.colors && p.colors.length>1 && !selectedColor){
-
+if(p.colors&&p.colors.length>1&&!selectedColor){
 alert("कृपया पहले Color चुनें।");
-
-document.getElementById("colorSection")?.scrollIntoView({
-behavior:"smooth",
-block:"center"
-});
-
+document.getElementById("colorSection")?.scrollIntoView({behavior:"smooth",block:"center"});
 return false;
-
 }
-
 return true;
-
 }
 
 
@@ -2890,431 +2168,432 @@ return true;
    ========================================================= */
 
 function product(id){
-
-const p=getProduct(id);
-
+let p=getProduct(id);
 if(!p)return;
-
 currentProductId=Number(id);
 selectedSize="";
 selectedColor="";
 
-const reviews=reviewsData.filter(
-r=>Number(r.productId)===Number(id)
-);
+let reviews=reviewsData.filter(r=>Number(r.productId)===Number(id));
+let related=products.filter(x=>x.id!==p.id&&x.cat===p.cat);
+let otherRelated=products.filter(x=>x.id!==p.id&&x.cat!==p.cat);
+let relatedAll=[...related,...otherRelated];
 
-const related=products
-.filter(x=>x.id!==p.id && x.cat===p.cat);
-
-const otherRelated=products
-.filter(x=>x.id!==p.id && x.cat!==p.cat);
-
-const relatedAll=[...related,...otherRelated];
-
-const deliveryDate=new Date();
+let deliveryDate=new Date();
 deliveryDate.setDate(deliveryDate.getDate()+7);
-
-const deliveryText=deliveryDate.toLocaleDateString(
-"en-IN",
-{
-day:"numeric",
-month:"short",
-year:"numeric"
-}
-);
-
-const firstColor=p.colors?.[0]||"Standard";
+let deliveryText=deliveryDate.toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"});
+let firstColor=p.colors?.[0]||"Standard";
 
 app.innerHTML=`
-
 <div class="product-page">
-
-<button
-class="back"
-onclick="show('home')"
->
-← वापस
-</button>
-
+<button class="back" onclick="show('home')">← वापस</button>
 <div class="product-main">
-
 <div>
-
-<div
-id="productColorPreview"
-class="product-photo-large ${colorClass(firstColor)}"
->
-
+<div id="productColorPreview" class="product-photo-large ${colorClass(firstColor)}">
 ${productVisual(p,firstColor)}
-
 </div>
-
-<div
-id="selectedColorText"
-class="color-preview-info"
->
-<span class="color-dot ${colorDotClass(firstColor)}"></span>
-Product Preview Color: <b>${escapeHTML(firstColor)}</b>
+<div id="selectedColorText" class="color-preview-info">
+<span class="color-dot ${colorDotClass(firstColor)}"></span>Product Preview Color: <b>${escapeHTML(firstColor)}</b>
 </div>
-
 <div class="quick">
-
-<button
-class="pill"
-onclick="toggleWish(${p.id})"
->
-${wishlist.includes(p.id)?"❤️ Wishlist में है":"♡ Wishlist में जोड़ें"}
-</button>
-
-<button
-class="pill"
-onclick='shareProduct(${p.id})'
->
-📤 Share
-</button>
-
-<button
-class="pill"
-onclick='speak(${JSON.stringify(p.name)})'
->
-🔊 सुनें
-</button>
-
+<button class="pill" onclick="toggleWish(${p.id})">${wishlist.includes(p.id)?"❤️ Wishlist में है":"♡ Wishlist में जोड़ें"}</button>
+<button class="pill" onclick='shareProduct(${p.id})'>📤 Share</button>
+<button class="pill" onclick='speak(${JSON.stringify(p.name)})'>🔊 सुनें</button>
 </div>
-
 </div>
 
 <div class="product-info">
-
-<span class="demo-label">
-ZipCart Product Details
-</span>
-
-<h1>
-${p.name}
-</h1>
-
+<span class="demo-label">ZipCart Product Details</span>
+<h1>${p.name}</h1>
 <div class="rating-box">
-
-<span class="rating-badge">
-★ ${p.rating}
-</span>
-
-<span class="rating-count">
-${p.ratingCount||0} ratings & reviews
-</span>
-
+<span class="rating-badge">★ ${p.rating}</span>
+<span class="rating-count">${p.ratingCount||0} ratings & reviews</span>
 </div>
-
 <div>
-
-<span class="price">
-₹${p.price}
-</span>
-
-<span class="old">
-₹${p.old}
-</span>
-
-<span class="off">
-${Math.round((1-p.price/p.old)*100)}% OFF
-</span>
-
+<span class="price">₹${p.price}</span>
+<span class="old">₹${p.old}</span>
+<span class="off">${Math.round((1-p.price/p.old)*100)}% OFF</span>
 </div>
-
-<p>
-${p.description}
-</p>
-
-<div
-id="sizeSection"
-class="option-title"
->
-Select Size
-</div>
-
+<p>${p.description}</p>
+<div id="sizeSection" class="option-title">Select Size</div>
 <div class="size-list">
-
-${p.sizes.map(size=>`
-
-<button
-class="size-btn"
-data-size="${size}"
-onclick="selectSize('${size}')"
->
-${size}
-</button>
-
-`).join("")}
-
+${p.sizes.map(size=>`<button class="size-btn" data-size="${size}" onclick="selectSize('${size}')">${size}</button>`).join("")}
 </div>
-
-<div
-id="colorSection"
-class="option-title"
->
-Select Color
-</div>
-
+<div id="colorSection" class="option-title">Select Color</div>
 <div class="color-list">
-
-${p.colors.map(color=>`
-
-<button
-class="color-btn"
-data-color="${color}"
-onclick="selectColor('${color}')"
->
-<span class="color-dot ${colorDotClass(color)}"></span>
-${color}
-</button>
-
-`).join("")}
-
+${p.colors.map(color=>`<button class="color-btn" data-color="${color}" onclick="selectColor('${color}')"><span class="color-dot ${colorDotClass(color)}"></span>${color}</button>`).join("")}
 </div>
-
-<div class="notice">
-
-🎨 <b>Color Preview:</b>
-ऊपर कोई भी color चुनते ही product preview अपने-आप उस color के हिसाब से बदल जाएगा।
-
-</div>
-
+<div class="notice">🎨 <b>Color Preview:</b> ऊपर कोई भी color चुनते ही product preview अपने-आप उस color के हिसाब से बदल जाएगा।</div>
 <div class="delivery-box">
-
-<b>
-🚚 Delivery by ${deliveryText}
-</b>
-
-<p style="margin-bottom:0">
-Demo estimate: आज order करने पर लगभग 7 दिन।
-PIN code डालने पर production version में actual delivery date दिखाई जाएगी।
-</p>
-
+<b>🚚 Delivery by ${deliveryText}</b>
+<p style="margin-bottom:0">Demo estimate: आज order करने पर लगभग 7 दिन।</p>
 </div>
-
 <div class="quick">
-
-<button
-class="pill"
-onclick="buyNow(${p.id})"
->
-⚡ Buy Now
-</button>
-
-<button
-class="pill"
-onclick="addCart(${p.id})"
->
-🛒 Add to Cart
-</button>
-
+<button class="pill" onclick="buyNow(${p.id})">⚡ Buy Now</button>
+<button class="pill" onclick="addCart(${p.id})">🛒 Add to Cart</button>
 </div>
-
 </div>
-
 </div>
 
 <div class="panel">
-
-<h2>
-📋 Product Details
-</h2>
-
-<p>
-${p.details}
-</p>
-
-<h3>
-✨ Product Highlights
-</h3>
-
+<h2>📋 Product Details</h2>
+<p>${p.details}</p>
+<h3>✨ Product Highlights</h3>
 <div class="highlight-list">
-
-${p.highlights.map(x=>`
-
-<div class="highlight">
-✓ ${x}
+${p.highlights.map(x=>`<div class="highlight">✓ ${x}</div>`).join("")}
 </div>
-
-`).join("")}
-
-</div>
-
-<h3>
-📦 Additional Details
-</h3>
-
-<div class="notice">
-
-<strong>Category:</strong> ${p.cat}<br>
-<strong>Sub-category:</strong> ${p.sub}<br>
-<strong>Availability:</strong> In stock<br>
-<strong>Return:</strong> Eligible products पर applicable return policy<br>
-<strong>Exchange:</strong> Size/color availability के अनुसार<br>
-<strong>Support:</strong> Order Number के साथ customer support
-
-</div>
-
 </div>
 
 <div class="panel">
-
-<h2>
-⭐ Ratings & Reviews
-</h2>
-
+<h2>⭐ Ratings & Reviews</h2>
 <div class="rating-summary">
-
 <div class="rating-big">
-
-<div class="number">
-${p.rating}
+<div class="number">${p.rating}</div>
+<div>★★★★★</div>
+<div>${p.ratingCount||0} ratings</div>
 </div>
-
 <div>
-★★★★★
-</div>
-
-<div>
-${p.ratingCount||0} ratings
-</div>
-
-</div>
-
-<div>
-
-<p>
-ग्राहक अपना अनुभव नीचे दिए गए options में बता सकते हैं:
-</p>
-
+<p>ग्राहक अपना अनुभव नीचे दिए गए options में बता सकते हैं:</p>
 <div class="rating-choice">
-
-<button onclick="openReviewForm(${p.id},'Very Bad')">
-😞 Very Bad
-</button>
-
-<button onclick="openReviewForm(${p.id},'Bad')">
-🙁 Bad
-</button>
-
-<button onclick="openReviewForm(${p.id},'Okay')">
-😐 Okay
-</button>
-
-<button onclick="openReviewForm(${p.id},'Good')">
-🙂 Good
-</button>
-
-<button onclick="openReviewForm(${p.id},'Very Good')">
-😍 Very Good
-</button>
-
+<button onclick="openReviewForm(${p.id},'Very Bad')">😞 Very Bad</button>
+<button onclick="openReviewForm(${p.id},'Bad')">🙁 Bad</button>
+<button onclick="openReviewForm(${p.id},'Okay')">😐 Okay</button>
+<button onclick="openReviewForm(${p.id},'Good')">🙂 Good</button>
+<button onclick="openReviewForm(${p.id},'Very Good')">😍 Very Good</button>
 </div>
-
 </div>
-
 </div>
-
-${reviews.length
-?
-reviews.map(r=>`
-
+${reviews.length?reviews.map(r=>`
 <div class="review">
-
-<div>
-<b>
-${r.rating}
-</b>
-<span>
-- ${r.date}
-</span>
+<div><b>${r.rating}</b><span>-${r.date}</span></div>
+<p>${escapeHTML(r.comment||"Customer review")}</p>
 </div>
-
-<p>
-${escapeHTML(r.comment||"Customer review")}
-</p>
-
-${
-r.photo
-?
-`<div class="review-media">📷 Customer Photo Added</div>`
-:
-""
-}
-
-${
-r.video
-?
-`<div class="review-media">🎥 Customer Video Added</div>`
-:
-""
-}
-
-</div>
-
-`).join("")
-:
-`
-
-<div class="notice">
-अभी इस demo product के लिए customer review नहीं है। Order के बाद customer यहाँ अपना Photo, Video और Comment जोड़ सकता है।
-</div>
-
-`}
-
+`).join(""):`<div class="notice">अभी इस demo product के लिए customer review नहीं है।</div>`}
 </div>
 
 <div class="panel">
-
-<h2>
-🛍️ Related Products
-</h2>
-
-<p>
-${p.sub} और ${p.cat} से जुड़े products देखें।
-</p>
-
-<div class="grid">
-
-${relatedAll.map(productCard).join("")}
-
+<h2>🛍️ Related Products</h2>
+<div class="grid">${relatedAll.map(productCard).join("")}</div>
+</div>
 </div>
 
+<div class="sticky-buy">
+<div class="sticky-buy-inner">
+<button class="sticky-cart" onclick="addCart(${p.id})">🛒 Add to Cart</button>
+<button class="sticky-buy-now" onclick="buyNow(${p.id})">⚡ Buy Now</button>
 </div>
+</div>
+`;
+updateCounts();
+window.scrollTo(0,0);
+}
 
+
+/* =========================================================
+   BUY NOW, REVIEWS, SHARE & SEARCH
+   ========================================================= */
+
+function buyNow(id){
+currentProductId=Number(id);
+if(!validateProductSelection())return;
+checkoutProductId=Number(id);
+checkoutSource="product";
+checkoutCustomer={name:"ZipCart Customer",mobile:"9876543210",address:"Jaipur, Rajasthan — Demo Address",pin:"302001"};
+checkoutPage();
+}
+
+function openReviewForm(productId,rating){
+openModal(`
+<h2>⭐ Product Review</h2>
+<p>आपने चुना: <b>${rating}</b></p>
+<div class="field"><label>Comment / Review</label><textarea id="reviewComment" placeholder="Product कैसा लगा?"></textarea></div>
+<br><button class="buy" onclick="submitReview(${productId},'${rating}')">Review Submit करें</button>
+<br><br><button class="back" onclick="closeModal()">बंद करें</button>
+`);
+}
+
+function submitReview(productId,rating){
+const comment=document.getElementById("reviewComment")?.value.trim()||"";
+reviewsData.push({id:"REV-"+Date.now(),productId:Number(productId),rating:rating,comment:comment,date:new Date().toLocaleDateString("en-IN")});
+save();
+closeModal();
+alert("⭐ आपका review save हो गया।");
+product(productId);
+}
+
+function shareProduct(id){
+let p=getProduct(id);
+if(!p)return;
+let text=`ZipCart पर ${p.name} देखें — ₹${p.price}`;
+if(navigator.share){navigator.share({title:p.name,text:text}).catch(()=>{});}
+else{if(navigator.clipboard)navigator.clipboard.writeText(text);alert("📤 Product sharing text copy हो गया।");}
+}
+
+
+/* =========================================================
+   CART & WISHLIST PAGE
+   ========================================================= */
+
+function cartPage(){
+wishlistPageActive=false;
+let selectedItems=cart.filter(x=>x.selected!==false);
+let total=selectedItems.reduce((sum,item)=>{let p=getProduct(item.id);return sum+(p?p.price*Number(item.qty||1):0);},0);
+app.innerHTML=`
+<h2>🛒 मेरा Cart</h2>
+${cart.length?`
 <div class="panel">
+${cart.map((x,i)=>{
+let p=getProduct(x.id);
+if(!p)return"";
+return `
+<div class="cartitem" onclick="product(${p.id})">
+<div class="row">
+<div class="selectrow" onclick="event.stopPropagation()"><input type="checkbox" ${x.selected!==false?"checked":""} onchange="setCartSelected(${i},this.checked)"></div>
+<span style="font-size:55px">${p.emoji}</span>
+<div class="grow">
+<b class="product-link">${p.name}</b>
+<div>₹${p.price}</div>
+<div class="qtybox" onclick="event.stopPropagation()">
+<button onclick="qty(${i},-1)">−</button><b>${x.qty}</b><button onclick="qty(${i},1)">+</button>
+</div>
+</div>
+<button class="pill" onclick="event.stopPropagation();removeCart(${i})">🗑️ Remove</button>
+</div>
+</div>
+`;
+}).join("")}
+</div>
+`:`<div class="empty"><h3>🛒 आपका Cart अभी खाली है</h3><button class="buy" onclick="show('home')">Shopping शुरू करें</button></div>`}
+${cart.length?`
+<div class="panel">
+<h3>Price Details</h3>
+<div class="price-line"><span>Selected Product Total</span><span>₹${total}</span></div>
+<div class="total-line"><span>Final Total</span><span>₹${total}</span></div>
+<button class="buy" onclick="checkout()">Proceed to Checkout</button>
+</div>
+`:""}
+`;
+updateCounts();
+}
 
-<h2>
-🔎 और भी देखें
-</h2>
+function setCartSelected(i,value){cart[i].selected=value;save();cartPage();}
+function qty(i,d){let q=Math.max(1,Number(cart[i].qty||1)+d);cart[i].qty=q;save();cartPage();}
+function removeCart(i){cart.splice(i,1);save();cartPage();}
 
-<div class="quick">
+function wishlistPage(){
+wishlistPageActive=true;
+let ps=products.filter(p=>wishlist.includes(p.id));
+app.innerHTML=`
+<button class="back" onclick="show('home')">← Home</button>
+<h2>❤️ मेरी Wishlist</h2>
+${ps.length?`<div class="grid">${ps.map(productCard).join("")}</div>`:`<div class="empty"><h3>❤️ Wishlist अभी खाली है</h3><button class="buy" onclick="show('home')">Products देखें</button></div>`}
+`;
+updateCounts();
+}
 
-${[
-"More Like This",
-"Similar Products",
-"Top Rated",
-"Best Deals",
-"New Arrivals",
-"Low Price",
-"Popular"
-].map(x=>`
 
-<button
-class="pill"
-onclick="relatedSearch('${x}',${p.id})"
->
-${x}
-</button>
+/* =========================================================
+   CHECKOUT & PAYMENT
+   ========================================================= */
 
+function checkout(){
+let selectedItems=cart.filter(x=>x.selected!==false);
+if(!selectedItems.length){alert("पहले Cart में कम से कम एक product select करें।");return;}
+checkoutSource="cart";
+if(selectedItems.length===1)checkoutProductId=selectedItems[0].id;
+checkoutCartPage();
+}
+
+function checkoutCartPage(){
+let selectedItems=cart.filter(x=>x.selected!==false);
+app.innerHTML=`
+<button class="back" onclick="cartPage()">← Cart</button>
+<div class="panel">
+<h2>🧾 Checkout</h2>
+<div class="formgrid">
+<div class="field"><label>नाम</label><input id="checkoutName" value="${escapeHTML(checkoutCustomer.name)}"></div>
+<div class="field"><label>Mobile</label><input id="checkoutMobile" value="${escapeHTML(checkoutCustomer.mobile)}"></div>
+<div class="field"><label>Address</label><textarea id="checkoutAddress">${escapeHTML(checkoutCustomer.address)}</textarea></div>
+<div class="field"><label>PIN Code</label><input id="checkoutPin" value="${escapeHTML(checkoutCustomer.pin)}"></div>
+</div>
+<br><button class="buy" onclick="continueToPayment()">Continue →</button>
+</div>
+`;
+}
+
+function checkoutPage(){
+let p=getProduct(checkoutProductId);
+if(!p)return;
+app.innerHTML=`
+<button class="back" onclick="product(${p.id})">← ${p.name}</button>
+<div class="panel">
+<h2>⚡ Buy Now</h2>
+<div class="formgrid">
+<div class="field"><label>नाम</label><input id="checkoutName" value="${escapeHTML(checkoutCustomer.name)}"></div>
+<div class="field"><label>Mobile</label><input id="checkoutMobile" value="${escapeHTML(checkoutCustomer.mobile)}"></div>
+<div class="field"><label>Address</label><textarea id="checkoutAddress">${escapeHTML(checkoutCustomer.address)}</textarea></div>
+<div class="field"><label>PIN Code</label><input id="checkoutPin" value="${escapeHTML(checkoutCustomer.pin)}"></div>
+</div>
+<br><button class="buy" onclick="continueToPayment()">Continue →</button>
+</div>
+`;
+}
+
+function continueToPayment(){
+let name=document.getElementById("checkoutName")?.value.trim();
+let mobile=document.getElementById("checkoutMobile")?.value.trim();
+let address=document.getElementById("checkoutAddress")?.value.trim();
+let pin=document.getElementById("checkoutPin")?.value.trim();
+if(!name||!mobile||!address||!pin){alert("कृपया सभी डिटेल्स भरें।");return;}
+checkoutCustomer={name,mobile,address,pin};
+showPaymentPage();
+}
+
+function showPaymentPage(){
+let subtotal=checkoutSource==="cart"?cart.filter(x=>x.selected!==false).reduce((s,x)=>{let p=getProduct(x.id);return s+(p?p.price*Number(x.qty||1):0);},0):getProduct(checkoutProductId)?.price||0;
+let finalAmount=getFinalAmount(subtotal,selectedPayment);
+app.innerHTML=`
+<button class="back" onclick="checkoutSource==='cart'?checkoutCartPage():checkoutPage()">← Checkout</button>
+<div class="panel">
+<h2>💳 Payment Options</h2>
+<div class="payment-options">
+<label class="payment-option ${selectedPayment==="Cash on Delivery"?"selected":""}">
+<input class="payment-radio" type="radio" name="payment" value="Cash on Delivery" ${selectedPayment==="Cash on Delivery"?"checked":""} onclick="selectPayment('Cash on Delivery')">
+<span class="payment-content"><span class="payment-title">Cash on Delivery</span><span class="payment-adjustment">+ ₹${PAYMENT_SETTINGS.codExtra} COD charge</span></span>
+</label>
+<label class="payment-option ${selectedPayment==="Online Payment"?"selected":""}">
+<input class="payment-radio" type="radio" name="payment" value="Online Payment" ${selectedPayment==="Online Payment"?"checked":""} onclick="selectPayment('Online Payment')">
+<span class="payment-content"><span class="payment-title">Online Payment</span></span>
+</label>
+</div>
+<div class="total-line"><span>Final Amount</span><span>₹${finalAmount}</span></div>
+<br><button class="buy" onclick="placeOrder()">🛍️ Place Order</button>
+</div>
+`;
+}
+
+function selectPayment(method){selectedPayment=method;showPaymentPage();}
+
+function placeOrder(){
+let order={
+id:"ZC-"+Math.floor(100000+Math.random()*900000),
+items:checkoutSource==="cart"?cart.filter(x=>x.selected!==false).map(x=>({id:x.id,qty:x.qty})):[{id:checkoutProductId,qty:1}],
+name:checkoutCustomer.name,
+mobile:checkoutCustomer.mobile,
+address:checkoutCustomer.address,
+payment:selectedPayment,
+finalAmount:getFinalAmount(checkoutSource==="cart"?cart.filter(x=>x.selected!==false).reduce((s,x)=>{let p=getProduct(x.id);return s+(p?p.price*x.qty:0);},0):getProduct(checkoutProductId)?.price||0,selectedPayment),
+date:new Date().toLocaleDateString("en-IN"),
+status:"Order Placed"
+};
+ordersData.unshift(order);
+if(checkoutSource==="cart")cart=cart.filter(x=>x.selected===false);
+save();
+app.innerHTML=`<div class="panel"><div class="success-box"><h2>🎉 Order Successfully Placed!</h2><h3>Order Number: ${order.id}</h3><button class="buy" onclick="orders()">📦 My Orders देखें</button></div></div>`;
+}
+
+function orders(){
+wishlistPageActive=false;
+if(!ordersData.length){app.innerHTML=`<h2>📦 मेरे ऑर्डर</h2><div class="empty"><h3>अभी कोई order नहीं है।</h3><button class="buy" onclick="show('home')">Shopping शुरू करें</button></div>`;updateCounts();return;}
+app.innerHTML=`
+<h2>📦 मेरे ऑर्डर</h2>
+${ordersData.map(o=>`
+<div class="panel order-card">
+<h3>Order #${o.id}</h3>
+<p>📅 ${o.date} | 💳 ${o.payment} \vert{} 💰 ₹${o.finalAmount}</p>
+<div class="notice">Status: <b>${o.status}</b></div>
+</div>
 `).join("")}
+`;
+updateCounts();
+}
 
+
+/* =========================================================
+   ACCOUNT, SEARCH, VOICE & LANGUAGE
+   ========================================================= */
+
+function account(){
+app.innerHTML=`<h2>👤 मेरी ZipCart</h2><div class="grid"><button class="panel" onclick="show('orders')">📦 Orders</button><button class="panel" onclick="show('wishlist')">❤️ Wishlist</button><button class="panel" onclick="languageModal()">🌐 Language</button></div>`;
+updateCounts();
+}
+
+function categories(){
+app.innerHTML=`<button class="back" onclick="show('home')">← Home</button><h2>🗂️ सभी Categories</h2>${catsHTML()}`;
+}
+
+function searchPage(q){
+let ps=products.filter(p=>(p.name+" "+p.sub+" "+p.cat).toLowerCase().includes(q.toLowerCase()));
+app.innerHTML=`
+<button class="back" onclick="show('home')">← Home</button>
+<div class="panel"><h2>🔎 Search: “${escapeHTML(q)}”</h2></div>
+<div class="grid">${(ps.length?ps:products).map(productCard).join("")}</div>
+`;
+updateCounts();
+}
+
+function doSearch(){let q=document.getElementById("search").value.trim();if(q)searchPage(q);}
+function doSearchText(q){document.getElementById("search").value=q;searchPage(q);}
+
+function voiceSearch(){
+if(!("webkitSpeechRecognition" in window)){alert("Voice search supported nahi hai.");return;}
+let r=new webkitSpeechRecognition();
+r.lang="hi-IN";
+r.onresult=e=>{let q=e.results[0][0].transcript;document.getElementById("search").value=q;searchPage(q);};
+r.start();
+}
+
+function speak(t){
+if("speechSynthesis" in window){
+speechSynthesis.cancel();
+let u=new SpeechSynthesisUtterance(t);
+u.lang=currentLang==="English"?"en-IN":"hi-IN";
+speechSynthesis.speak(u);
+}
+}
+
+function speakList(a){
+a.forEach((x,i)=>setTimeout(()=>speak(x.substring(x.indexOf(" ")+1)),i*900));
+}
+
+function languageModal(){
+openModal(`
+<h2>🌐 भाषा चुनें</h2>
+<div class="quick">
+${["Hindi","English","Gujarati","Marathi","Bengali","Tamil","Telugu","Kannada","Malayalam","Punjabi","Odia","Assamese","Urdu","Nepali","Maithili","Konkani"].map(x=>`
+<button class="pill" onclick="setLang('${x}')">${x}</button>
+`).join("")}
 </div>
+<br><button class="back" onclick="closeModal()">बंद करें</button>
+`);
+}
 
-</div>
+function setLang(x){
+currentLang=x;
+localStorage.setItem("zipLang",x);
+closeModal();
+alert("Language saved: "+x);
+}
 
-<div class="notice">
+function openModal(x){document.getElementById("modalbox").innerHTML=x;document.getElementById("modal").classList.add("show");}
+function closeModal(){document.getElementById("modal").classList.remove("show");}
+function escapeHTML(value){return String(value).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");}
 
-💡 <b>ZipCart सुविधा:</b>
-यह product जहाँ भी saved है — Cart, Wishlist या Orders — वहाँ से product पर क्लिक करके आप इसी complete detail page पर वापस आ सकते हैं।
+function show(x){
+selectedCat=null;
+wishlistPageActive=false;
+if(x==="home")home();
+if(x==="wishlist")wishlistPage();
+if(x==="cart")cartPage();
+if(x==="orders")orders();
+if(x==="account")account();
+if(x==="categories")categories();
+window.scrollTo(0,0);
+}
+
+show("home");
+
+</script>
+
+</body>
+</html>
