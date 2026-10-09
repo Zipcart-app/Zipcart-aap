@@ -329,6 +329,90 @@ let selectedPayment="Online Payment";
 let checkoutCustomer={name:"ZipCart Customer",mobile:"9876543210",address:"Jaipur, Rajasthan — Demo Address",pin:"302001"};
 let currentReturnOrderId=null,currentExchangeOrderId=null,exchangeSize="",exchangeColor="";
 
+/* MULTI-LANGUAGE TRANSLATION DICTIONARY (WORKING REAL TRANSLATIONS) */
+const translations = {
+  Hindi: {
+    welcome: "ZipCart में आपका स्वागत है ❤️",
+    subWelcome: "आपकी अपनी shopping जगह —",
+    topCats: "🗂️ Top Categories",
+    todaysOffers: "🎉 आज के Offers",
+    viewOffers: "Anarkali Suit देखें",
+    selectedForYou: "✨ आपके लिए चुना गया",
+    budgetFav: "🔥 कम बजट में पसंदीदा",
+    newArrivals: "🆕 New Arrivals",
+    cartTitle: "🛒 मेरा Cart",
+    wishlistTitle: "❤️ मेरी Wishlist",
+    ordersTitle: "📦 मेरे ऑर्डर",
+    accountTitle: "👤 मेरी ZipCart",
+    proceedCheckout: "Proceed to Checkout",
+    placeOrder: "🛍️ Place Order",
+    selectLangTitle: "🌐 भाषा चुनें",
+    langNote: "आपकी पसंद याद रखी जाएगी।"
+  },
+  English: {
+    welcome: "Welcome to ZipCart ❤️",
+    subWelcome: "Your own shopping destination —",
+    topCats: "🗂️ Top Categories",
+    todaysOffers: "🎉 Today's Offers",
+    viewOffers: "View Anarkali Suit",
+    selectedForYou: "✨ Selected For You",
+    budgetFav: "🔥 Budget Favorites",
+    newArrivals: "🆕 New Arrivals",
+    cartTitle: "🛒 My Cart",
+    wishlistTitle: "❤️ My Wishlist",
+    ordersTitle: "📦 My Orders",
+    accountTitle: "👤 My ZipCart",
+    proceedCheckout: "Proceed to Checkout",
+    placeOrder: "🛍️ Place Order",
+    selectLangTitle: "🌐 Select Language",
+    langNote: "Your preference will be remembered."
+  },
+  Gujarati: {
+    welcome: "ZipCart માં આપનું સ્વાગત છે ❤️",
+    subWelcome: "તમારું પોતાનું શોપિંગ સ્થળ —",
+    topCats: "🗂️ ટોચની શ્રેણીઓ",
+    todaysOffers: "🎉 આજના ઓફર્સ",
+    viewOffers: "અનારકલી સૂટ જુઓ",
+    selectedForYou: "✨ તમારા માટે પસંદ કરેલ",
+    budgetFav: "🔥 ઓછા બજેટમાં પસંદગી",
+    newArrivals: "🆕 નવા આગમન",
+    cartTitle: "🛒 મારી કાર્ટ",
+    wishlistTitle: "❤️ મારી વિશલિસ્ટ",
+    ordersTitle: "📦 મારા ઓર્ડર",
+    accountTitle: "👤 મારી ZipCart",
+    proceedCheckout: "ચેકઆઉટ કરો",
+    placeOrder: "🛍️ ઓર્ડર આપો",
+    selectLangTitle: "🌐 ભાષા પસંદ કરો",
+    langNote: "તમારી પસંદગી યાદ રાખવામાં આવશે."
+  },
+  Marathi: {
+    welcome: "ZipCart मध्ये तुमचे स्वागत आहे ❤️",
+    subWelcome: "तुमचे स्वतःचे खरेदी ठिकाण —",
+    topCats: "🗂️ टॉप श्रेणी",
+    todaysOffers: "🎉 आजच्या ऑफर्स",
+    viewOffers: "अनारकली सूट पहा",
+    selectedForYou: "✨ तुमच्यासाठी निवडलेले",
+    budgetFav: "🔥 कमी बजेटमधील आवडते",
+    newArrivals: "🆕 नवीन आगमन",
+    cartTitle: "🛒 माझी कार्ट",
+    wishlistTitle: "❤️ माझी विशलिस्ट",
+    ordersTitle: "📦 माझ्या ऑर्डर",
+    accountTitle: "👤 माझी ZipCart",
+    proceedCheckout: "चेकआउट करा",
+    placeOrder: "🛍️ ऑर्डर द्या",
+    selectLangTitle: "🌐 भाषा निवडा",
+    langNote: "तुमची पसंती लक्षात ठेवली जाईल."
+  }
+};
+
+function t(key){
+  let lang = currentLang || "Hindi";
+  if(translations[lang] && translations[lang][key]){
+    return translations[lang][key];
+  }
+  return translations["Hindi"][key] || key;
+}
+
 function isCashPayment(method){return method==="Cash on Delivery"}
 function isOnlinePayment(method){return !isCashPayment(method)}
 function getPaymentAdjustment(method){return isCashPayment(method)?PAYMENT_SETTINGS.codExtra:0}
@@ -389,8 +473,8 @@ function home(){
 wishlistPageActive=false;
 app.innerHTML=`
 <section class="hero">
-<h1>ZipCart में आपका स्वागत है ❤️</h1>
-<p>आपकी अपनी shopping जगह — <b>देखो → सुनो → समझो → दबाओ → खरीदो</b></p>
+<h1>${t("welcome")}</h1>
+<p>${t("subWelcome")} <b>देखो → सुनो → समझो → दबाओ → खरीदो</b></p>
 <div class="quick">
 <button class="pill" onclick="voiceSearch()">🔊 Voice Search</button>
 <button class="pill" onclick="show('orders')">📦 मेरे ऑर्डर</button>
@@ -398,11 +482,11 @@ app.innerHTML=`
 <button class="pill" onclick="category('grocery')">⚡ Grocery Quick Delivery</button>
 <button class="pill" onclick="category('medicine')">💊 Medicines</button>
 </div></section>
-<div class="banner"><div><h2>🎉 आज के Offers</h2><div>आपके बजट और पसंद के हिसाब से खरीदारी करें</div></div><button onclick="doSearchText('Anarkali Suit')">Anarkali Suit देखें</button></div>
-<section class="section"><h2>🗂️ Top Categories</h2>${catsHTML()}</section>
-<section class="section"><h2>✨ आपके लिए चुना गया</h2><div class="grid">${products.slice(0,8).map(productCard).join("")}</div></section>
-<section class="section"><h2>🔥 कम बजट में पसंदीदा</h2><div class="grid">${products.filter(p=>p.price<600).map(productCard).join("")}</div></section>
-<section class="section"><h2>🆕 New Arrivals</h2><div class="grid">${products.slice(8).map(productCard).join("")}</div></section>`;
+<div class="banner"><div><h2>${t("todaysOffers")}</h2><div>आपके बजट और पसंद के हिसाब से खरीदारी करें</div></div><button onclick="doSearchText('Anarkali Suit')">${t("viewOffers")}</button></div>
+<section class="section"><h2>${t("topCats")}</h2>${catsHTML()}</section>
+<section class="section"><h2>${t("selectedForYou")}</h2><div class="grid">${products.slice(0,8).map(productCard).join("")}</div></section>
+<section class="section"><h2>${t("budgetFav")}</h2><div class="grid">${products.filter(p=>p.price<600).map(productCard).join("")}</div></section>
+<section class="section"><h2>${t("newArrivals")}</h2><div class="grid">${products.slice(8).map(productCard).join("")}</div></section>`;
 updateCounts();
 }
 
@@ -531,7 +615,7 @@ app.innerHTML=`
 <div><p>ग्राहक अपना अनुभव नीचे दिए गए options में बता सकते हैं:</p><div class="rating-choice">
 <button onclick="openReviewForm(${p.id},'Very Bad')">😞 Very Bad</button><button onclick="openReviewForm(${p.id},'Bad')">🙁 Bad</button><button onclick="openReviewForm(${p.id},'Okay')">😐 Okay</button><button onclick="openReviewForm(${p.id},'Good')">🙂 Good</button><button onclick="openReviewForm(${p.id},'Very Good')">😍 Very Good</button>
 </div></div></div>
-${reviews.length?reviews.map(r=>`<div class="review"><div><b>${r.rating}</b> <span>• ${r.date}</span></div><p>${escapeHTML(r.comment||"Customer review")}</p>${r.photo?`<div class="review-media">📷 Customer Photo Added</div>`:""}${r.video?`<div class="review-media">🎥 Customer Video Added</div>`:""}</div>`).join(""):`<div class="notice">अभी इस demo product के लिए customer review नहीं है। Order के बाद customer यहाँ अपना Photo, Video और Comment जोड़ सकता है।</div>`}
+${reviews.length?reviews.map(r=>`<div class="review"><div><b>${r.rating}</b> <span>•${r.date}</span></div><p>${escapeHTML(r.comment\vert{}\vert{}"Customer review")}</p>${r.photo?`<div class="review-media">📷 Customer Photo Added</div>`:""}${r.video?`<div class="review-media">🎥 Customer Video Added</div>`:""}</div>`).join(""):`<div class="notice">अभी इस demo product के लिए customer review नहीं है। Order के बाद customer यहाँ अपना Photo, Video और Comment जोड़ सकता है।</div>`}
 </div>
 
 <div class="panel"><h2>🛍️ Related Products</h2><p>${p.sub} और ${p.cat} से जुड़े products देखें।</p><div class="grid">${relatedAll.map(productCard).join("")}</div></div>
@@ -625,7 +709,7 @@ let selectedItems=cart.filter(x=>x.selected!==false);
 let total=selectedItems.reduce((sum,item)=>{const p=getProduct(item.id);return sum+(p?p.price:0)*Number(item.qty||1)},0);
 
 app.innerHTML=`
-<h2>🛒 मेरा Cart</h2>
+<h2>${t("cartTitle")}</h2>
 ${cart.length?`
 <div class="panel"><p>💡 किसी भी product की <b>photo, name या details area</b> पर click करके उसका पूरा Product Detail Page फिर से खोल सकते हैं।</p>
 ${cart.map((x,i)=>{let p=getProduct(x.id);if(!p)return"";
@@ -665,7 +749,7 @@ ${cart.length?`<div class="panel"><h3>Price Details</h3>
 <div class="price-line"><span>Delivery</span><span>Checkout पर</span></div>
 <div class="price-line"><span>Discount</span><span>Applicable Offer</span></div>
 <div class="total-line"><span>Final Total</span><span>₹${total}</span></div>
-<button class="buy" onclick="checkout()">Proceed to Checkout</button></div>`:""}`;
+<button class="buy" onclick="checkout()">${t("proceedCheckout")}</button></div>`:""}`;
 
 updateCounts();
 }
@@ -700,7 +784,7 @@ function saveLater(i){cart[i].selected=false;save();cartPage()}
 function wishlistPage(){
 wishlistPageActive=true;
 let ps=products.filter(p=>wishlist.includes(p.id));
-app.innerHTML=`<button class="back" onclick="show('home')">← Home</button><h2>❤️ मेरी Wishlist</h2>
+app.innerHTML=`<button class="back" onclick="show('home')">← Home</button><h2>${t("wishlistTitle")}</h2>
 <div class="notice">💡 Wishlist में saved किसी भी product पर click करके उसी का पूरा Product Detail Page खोलें — size, color, reviews और Buy Now सब वहीं मिलेगा।</div>
 ${ps.length?`<div class="grid">${ps.map(productCard).join("")}</div>`:`<div class="empty"><h3>❤️ Wishlist अभी खाली है</h3><p>किसी product पर ❤️ दबाइए।</p><button class="buy" onclick="show('home')">Products देखें</button></div>`}`;
 updateCounts();
@@ -728,7 +812,7 @@ let deliveryText=d.toLocaleDateString("en-IN",{day:"numeric",month:"short",year:
 app.innerHTML=`<button class="back" onclick="cartPage()">← Cart</button><div class="panel">
 <span class="demo-label">👀 Demo Checkout</span><h2>🧾 Checkout</h2>
 <div class="checkout-step"><div class="checkout-number">1</div><div><b>Products</b><div>${selectedItems.length} selected item(s)</div></div></div>
-${selectedItems.map(x=>{const p=getProduct(x.id);return `<div class="cartitem" onclick="product(${p.id})"><div class="row"><span style="font-size:45px">${p.emoji}</span><div class="grow"><b>${p.name}</b><div>₹${p.price} × ${x.qty}</div><div>Product details फिर से देखने के लिए click करें</div></div></div></div>`}).join("")}
+${selectedItems.map(x=>{const p=getProduct(x.id);return `<div class="cartitem" onclick="product(${p.id})"><div class="row"><span style="font-size:45px">${p.emoji}</span><div class="grow"><b>${p.name}</b><div>₹${p.price} ×${x.qty}</div><div>Product details फिर से देखने के लिए click करें</div></div></div></div>`}).join("")}
 <div class="checkout-step"><div class="checkout-number">2</div><div><b>Delivery Address</b><div>Demo address नीचे भरें</div></div></div>
 <div class="formgrid">
 <div class="field"><label>नाम</label><input id="checkoutName" placeholder="आपका नाम" value="${escapeHTML(checkoutCustomer.name)}"></div>
@@ -756,7 +840,7 @@ app.innerHTML=`<button class="back" onclick="product(${p.id})">← ${p.name}</bu
 <div class="field"><label>नाम</label><input id="checkoutName" placeholder="आपका नाम" value="${escapeHTML(checkoutCustomer.name)}"></div>
 <div class="field"><label>Mobile</label><input id="checkoutMobile" placeholder="Mobile number" value="${escapeHTML(checkoutCustomer.mobile)}"></div>
 <div class="field"><label>Address</label><textarea id="checkoutAddress">${escapeHTML(checkoutCustomer.address)}</textarea></div>
-<div class="field"><label>PIN Code</label><input id="checkoutPin" value="${escapeHTML(checkoutCustomer.pin)}"></div>
+<div class="field"><label>PIN Code</label><input id="checkoutPin" placeholder="PIN" value="${escapeHTML(checkoutCustomer.pin)}"></div>
 </div>
 <div class="notice">💡 पहले Continue दबाएँ। उसके बाद payment options दिखाई देंगे।</div>
 <button class="buy" onclick="continueToPayment()">Continue →</button></div>`;
@@ -830,19 +914,19 @@ app.innerHTML=`
 <div class="price-line"><span>COD Charge</span><span>${isCashPayment(selectedPayment)?"+ ₹"+PAYMENT_SETTINGS.codExtra:"₹0"}</span></div>
 <div class="total-line"><span>Final Amount</span><span>₹${finalAmount}</span></div>
 
-<button class="buy" onclick="placeOrder()">🛍️ Place Order</button>
+<button class="buy" onclick="placeOrder()">${t("placeOrder")}</button>
 </div>`;
 }
 
 function selectPayment(method){selectedPayment=method;showPaymentPage()}
 
 function generateOrderNumber(){
-const d=new Date(),part=String(d.getFullYear()).slice(-2)+String(d.getMonth()+1).padStart(2,"0")+String(d.getDate()).padStart(2,"0"),random=Math.floor(100000+Math.random()*900000);
+let d=new Date(),part=String(d.getFullYear()).slice(-2)+String(d.getMonth()+1).padStart(2,"0")+String(d.getDate()).padStart(2,"0"),random=Math.floor(100000+Math.random()*900000);
 return"ZC-"+part+"-"+random;
 }
 
 function placeOrder(){
-const name=checkoutCustomer.name||"ZipCart Customer",mobile=checkoutCustomer.mobile||"9876543210",address=checkoutCustomer.address||"Demo Address",pin=checkoutCustomer.pin||"302001";
+let name=checkoutCustomer.name||"ZipCart Customer",mobile=checkoutCustomer.mobile||"9876543210",address=checkoutCustomer.address||"Demo Address",pin=checkoutCustomer.pin||"302001";
 let items=[];
 if(checkoutSource==="cart")items=cart.filter(x=>x.selected!==false).map(x=>({id:x.id,qty:Number(x.qty||1)}));
 else items=[{id:checkoutProductId,qty:1}];
@@ -873,12 +957,11 @@ app.innerHTML=`<div class="panel"><div class="success-box"><div style="font-size
 function orders(){
 wishlistPageActive=false;
 if(!ordersData.length){
-app.innerHTML=`<h2>📦 मेरे ऑर्डर</h2><div class="empty"><h3>अभी कोई order नहीं है।</h3><p>जब आप order place करेंगे, उसका unique Order Number यहाँ दिखाई देगा।</p><button class="buy" onclick="show('home')">Shopping शुरू करें</button></div>`;
+app.innerHTML=`<h2>${t("ordersTitle")}</h2><div class="empty"><h3>अभी कोई order नहीं है।</h3><p>जब आप order place करेंगे, उसका unique Order Number यहाँ दिखाई देगा।</p><button class="buy" onclick="show('home')">Shopping शुरू करें</button></div>`;
 updateCounts();return;
 }
-app.innerHTML=`<h2>📦 मेरे ऑर्डर</h2><div class="notice">💡 किसी भी ordered product पर click करके उसका पूरा Product Detail Page फिर से खोल सकते हैं।</div>
-${ordersData.map(order=>`<div class="panel order-card"><div class="row"><div class="grow"><h3>Order #${order.id}</h3><p>📅 ${order.date}</p><p>💳 ${order.payment}</p><p>💰 ₹${order.finalAmount}</p><p>🚚 Expected Delivery: ${order.deliveryDate}</p></div></div>
-${order.items.map(item=>{const p=getProduct(item.id);if(!p)return"";return`<div class="cartitem" onclick="product(${p.id})"><div class="row"><span style="font-size:55px">${p.emoji}</span><div class="grow"><b>${p.name}</b><div>Quantity: ${item.qty}</div><div>Product details देखने के लिए click करें</div></div></div></div>`}).join("")}
+app.innerHTML=`<h2>${t("ordersTitle")}</h2><div class="notice">💡 किसी भी ordered product पर click करके उसका पूरा Product Detail Page फिर से खोल सकते हैं।</div>
+${ordersData.map(order=>`<div class="panel order-card"><div class="row"><div class="grow"><h3>Order #${order.id}</h3><p>📅 ${order.date}</p><p>💳 ${order.payment}</p><p>💰 ₹${order.finalAmount}</p><p>🚚 Expected Delivery: ${order.deliveryDate}</p></div></div>${order.items.map(item=>{const p=getProduct(item.id);if(!p)return"";return`<div class="cartitem" onclick="product(${p.id})"><div class="row"><span style="font-size:55px">${p.emoji}</span><div class="grow"><b>${p.name}</b><div>Quantity: ${item.qty}</div><div>Product details देखने के लिए click करें</div></div></div></div>`}).join("")}
 <div class="notice">Status: <b>${order.status}</b></div>
 <div class="quick">
 <button class="pill" onclick="trackOrder('${order.id}')">🚚 Track Order</button>
@@ -953,7 +1036,7 @@ openReviewForm(order.items[0].id,"Very Good");
    ========================================================= */
 
 function account(){
-app.innerHTML=`<h2>👤 मेरी ZipCart</h2><div class="grid">${["📦 Orders","❤️ Wishlist","🛒 Cart","🏠 Addresses","💳 Payments","🎟️ Coupons","⭐ Reviews","↩️ Returns & Refunds","🔔 Notifications","🆘 Help & Support","🌐 Language","⚙️ Accessibility","🔐 Login/OTP","🚪 Logout"].map(x=>`<button class="panel" onclick="accountAction('${x}')">${x}</button>`).join("")}</div>`;
+app.innerHTML=`<h2>${t("accountTitle")}</h2><div class="grid">${["📦 Orders","❤️ Wishlist","🛒 Cart","🏠 Addresses","💳 Payments","🎟️ Coupons","⭐ Reviews","↩️ Returns & Refunds","🔔 Notifications","🆘 Help & Support","🌐 Language","⚙️ Accessibility","🔐 Login/OTP","🚪 Logout"].map(x=>`<button class="panel" onclick="accountAction('${x}')">${x}</button>`).join("")}</div>`;
 updateCounts();
 }
 
@@ -1021,16 +1104,21 @@ if("speechSynthesis"in window){speechSynthesis.cancel();let u=new SpeechSynthesi
 function speakList(a){a.forEach((x,i)=>setTimeout(()=>speak(x.substring(x.indexOf(" ")+1)),i*900))}
 
 function languageModal(){
-openModal(`<h2>🌐 भाषा चुनें</h2><p>आपकी पसंद याद रखी जाएगी।</p><div class="quick">${["Hindi","English","Gujarati","Marathi","Bengali","Tamil","Telugu","Kannada","Malayalam","Punjabi","Odia","Assamese","Urdu","Nepali","Maithili","Konkani"].map(x=>`<button class="pill" onclick="setLang('${x}')">${x}</button>`).join("")}</div><br><button class="back" onclick="closeModal()">बंद करें</button>`);
+openModal(`<h2>${t("selectLangTitle")}</h2><p>${t("langNote")}</p><div class="quick">${["Hindi","English","Gujarati","Marathi"].map(x=>`<button class="pill" onclick="setLang('${x}')">${x}</button>`).join("")}</div><br><button class="back" onclick="closeModal()">बंद करें</button>`);
 }
 
-function setLang(x){currentLang=x;localStorage.setItem("zipLang",x);closeModal();alert("Language saved: "+x+" — full translation layer production version में जोड़ी जाएगी.")}
+function setLang(x){
+  currentLang=x;
+  localStorage.setItem("zipLang",x);
+  closeModal();
+  show("home");
+}
 
 function openModal(x){document.getElementById("modalbox").innerHTML=x;document.getElementById("modal").classList.add("show")}
 function closeModal(){document.getElementById("modal").classList.remove("show")}
 
 function escapeHTML(value){
-return String(value).replaceAll("&","&").replaceAll("<","<").replaceAll(">",">").replaceAll('"',""").replaceAll("'","'");
+return String(value).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
 }
 
 function show(x){
@@ -1048,4 +1136,4 @@ show("home");
 
 </script>
 </body>
-</html>कोई भी फालतू की बात नहीं कोडिंग के बदले कोडिंग ही दे दो बस।
+</html>
