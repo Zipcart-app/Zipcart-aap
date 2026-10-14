@@ -256,22 +256,149 @@ opacity:.16;
 pointer-events:none
 }
 
-.color-red{background:linear-gradient(135deg,#fff,#ffe4e8)}.color-red:after{background:#e53935}
-.color-pink{background:linear-gradient(135deg,#fff,#ffe5f0)}.color-pink:after{background:#ec4899}
-.color-blue{background:linear-gradient(135deg,#fff,#e3efff)}.color-blue:after{background:#2563eb}
-.color-green{background:linear-gradient(135deg,#fff,#e4f8ec)}.color-green:after{background:#16a34a}
-.color-black{background:linear-gradient(135deg,#fff,#e9e9e9)}.color-black:after{background:#111}
-.color-white{background:linear-gradient(135deg,#fff,#f2f2f2)}.color-white:after{background:#fff;border:2px solid #ddd}
-.color-yellow{background:linear-gradient(135deg,#fff,#fff5cf)}.color-yellow:after{background:#facc15}
-.color-maroon{background:linear-gradient(135deg,#fff,#f8e1e6)}.color-maroon:after{background:#800020}
-.color-purple{background:linear-gradient(135deg,#fff,#eee4ff)}.color-purple:after{background:#7c3aed}
-.color-golden{background:linear-gradient(135deg,#fff,#fff1b8)}.color-golden:after{background:#d4af37}
-.color-silver{background:linear-gradient(135deg,#fff,#e7e7e7)}.color-silver:after{background:#9ca3af}
-.color-rose-gold{background:linear-gradient(135deg,#fff,#ffe6df)}.color-rose-gold:after{background:#b76e79}
-.color-brown{background:linear-gradient(135deg,#fff,#eee0d2)}.color-brown:after{background:#8b5e3c}
-.color-beige{background:linear-gradient(135deg,#fff,#f5ead7)}.color-beige:after{background:#d6c2a1}
-.color-grey{background:linear-gradient(135deg,#fff,#e8e8e8)}.color-grey:after{background:#6b7280}
-.color-standard{background:linear-gradient(135deg,#eee,#fafafa)}.color-standard:after{background:#8e2de2}
+.color-red{
+background:linear-gradient(135deg,#fff,#ffe4e8)
+}
+
+.color-red:after{
+background:#e53935
+}
+
+.color-pink{
+background:linear-gradient(135deg,#fff,#ffe5f0)
+}
+
+.color-pink:after{
+background:#ec4899
+}
+
+.color-blue{
+background:linear-gradient(135deg,#fff,#e3efff)
+}
+
+.color-blue:after{
+background:#2563eb
+}
+
+.color-green{
+background:linear-gradient(135deg,#fff,#e4f8ec)
+}
+
+.color-green:after{
+background:#16a34a
+}
+
+.color-black{
+background:linear-gradient(135deg,#fff,#e9e9e9)
+}
+
+.color-black:after{
+background:#111
+}
+
+.color-white{
+background:linear-gradient(135deg,#fff,#f2f2f2)
+}
+
+.color-white:after{
+background:#fff;
+border:2px solid #ddd
+}
+
+.color-yellow{
+background:linear-gradient(135deg,#fff,#fff5cf)
+}
+
+.color-yellow:after{
+background:#facc15
+}
+
+.color-maroon{
+background:linear-gradient(135deg,#fff,#f8e1e6)
+}
+
+.color-maroon:after{
+background:#800020
+}
+
+.color-purple{
+background:linear-gradient(135deg,#fff,#eee4ff)
+}
+
+.color-purple:after{
+background:#7c3aed
+}
+
+.color-golden{
+background:linear-gradient(135deg,#fff,#fff1b8)
+}
+
+.color-golden:after{
+background:#d4af37
+}
+
+.color-silver{
+background:linear-gradient(135deg,#fff,#e7e7e7)
+}
+
+.color-silver:after{
+background:#9ca3af
+}
+
+.color-rose-gold{
+background:linear-gradient(135deg,#fff,#ffe6df)
+}
+
+.color-rose-gold:after{
+background:#b76e79
+}
+
+.color-brown{
+background:linear-gradient(135deg,#fff,#eee0d2)
+}
+
+.color-brown:after{
+background:#8b5e3c
+}
+
+.color-beige{
+background:linear-gradient(135deg,#fff,#f5ead7)
+}
+
+.color-beige:after{
+background:#d6c2a1
+}
+
+.color-grey{
+background:linear-gradient(135deg,#fff,#e8e8e8)
+}
+
+.color-grey:after{
+background:#6b7280
+}
+
+.color-standard{
+background:linear-gradient(135deg,#eee,#fafafa)
+}
+
+.color-standard:after{
+background:#8e2de2
+}
+
+.color-label{
+position:absolute;
+bottom:10px;
+left:50%;
+transform:translateX(-50%);
+background:#ffffffdd;
+padding:5px 10px;
+border-radius:20px;
+font-size:11px;
+font-weight:800;
+z-index:2;
+white-space:nowrap;
+box-shadow:0 2px 6px #0002
+}
 
 .heart{
 position:absolute;
@@ -345,10 +472,7 @@ margin-bottom:15px
 background:#eee;
 padding:9px 14px;
 border-radius:18px;
-margin-bottom:12px;
-cursor:pointer;
-display:inline-block;
-font-weight:bold
+margin-bottom:12px
 }
 
 .row{
@@ -424,8 +548,29 @@ background:#eee
 
 .cartitem{
 padding:14px 0;
-border-bottom:1px solid #eee
+border-bottom:1px solid #eee;
+cursor:pointer
 }
+
+.cartitem:last-child{
+border-bottom:0
+}
+
+.selectrow{
+display:flex;
+align-items:center;
+gap:8px
+}
+
+.product-link{
+cursor:pointer
+}
+
+.product-link:hover{
+color:#6a11cb
+}
+
+/* BOTTOM NAV */
 
 .bottom{
 position:sticky;
@@ -444,6 +589,13 @@ background:#f2eff8;
 padding:9px 12px;
 border-radius:12px
 }
+
+.bottom button:hover{
+background:#eadcff;
+color:#5c16b8
+}
+
+/* ONLY ICON FOR BOTTOM WISHLIST */
 
 .bottom-wishlist{
 font-size:24px!important;
@@ -520,6 +672,8 @@ background:#8e2de2;
 color:#fff
 }
 
+/* PRODUCT DETAIL */
+
 .product-page{
 padding-bottom:150px
 }
@@ -528,6 +682,158 @@ padding-bottom:150px
 display:grid;
 grid-template-columns:minmax(280px,1fr) minmax(320px,1fr);
 gap:18px
+}
+
+.product-photo-large{
+min-height:360px;
+border-radius:20px;
+background:linear-gradient(135deg,#eee,#fff);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:130px;
+box-shadow:0 2px 12px #0001;
+position:relative;
+overflow:hidden;
+transition:.3s
+}
+
+.product-photo-large .product-visual{
+font-size:130px
+}
+
+.product-info h1{
+margin-top:0
+}
+
+.rating-box{
+display:flex;
+align-items:center;
+gap:10px;
+margin:12px 0
+}
+
+.rating-badge{
+background:#ff4081;
+color:#fff;
+font-weight:800;
+padding:7px 12px;
+border-radius:10px;
+font-size:16px
+}
+
+.rating-count{
+color:#666
+}
+
+.option-title{
+font-weight:800;
+margin-top:18px;
+margin-bottom:8px
+}
+
+.size-list,
+.color-list{
+display:flex;
+gap:8px;
+flex-wrap:wrap
+}
+
+.size-btn,
+.color-btn{
+background:#fff;
+border:1px solid #bbb;
+padding:9px 14px;
+border-radius:9px
+}
+
+.size-btn.active,
+.color-btn.active{
+border:2px solid #8e2de2;
+background:#f4eaff;
+color:#5c16b8;
+font-weight:bold
+}
+
+.size-btn.disabled{
+opacity:.4;
+text-decoration:line-through;
+cursor:not-allowed
+}
+
+.delivery-box{
+background:#faf6ff;
+border:1px solid #eadcff;
+padding:13px;
+border-radius:12px;
+margin-top:15px
+}
+
+.highlight-list{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px
+}
+
+.highlight{
+background:#fafafa;
+border-radius:12px;
+padding:12px;
+border:1px solid #eee
+}
+
+.rating-summary{
+display:grid;
+grid-template-columns:170px 1fr;
+gap:20px;
+align-items:center
+}
+
+.rating-big{
+text-align:center;
+background:#fff0f7;
+border-radius:18px;
+padding:20px
+}
+
+.rating-big .number{
+font-size:40px;
+font-weight:900;
+color:#ff4081
+}
+
+.rating-choice{
+display:flex;
+gap:7px;
+flex-wrap:wrap
+}
+
+.rating-choice button{
+background:#fff;
+border:1px solid #ddd;
+border-radius:12px;
+padding:9px 12px
+}
+
+.rating-choice button:hover{
+border-color:#ff4081;
+color:#e91e63
+}
+
+.review{
+border-top:1px solid #eee;
+padding:14px 0
+}
+
+.review:first-child{
+border-top:0
+}
+
+.review-media{
+background:#fafafa;
+border-radius:10px;
+padding:10px;
+margin-top:8px
 }
 
 .sticky-buy{
@@ -567,6 +873,28 @@ background:linear-gradient(135deg,#4b0082,#e91e63);
 color:#fff
 }
 
+.checkout-step{
+display:flex;
+gap:10px;
+align-items:center;
+margin-bottom:12px
+}
+
+.checkout-number{
+width:30px;
+height:30px;
+border-radius:50%;
+background:#6a11cb;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+flex:none
+}
+
+/* PAYMENT UI — UNCHANGED */
+
 .payment-options{
 display:flex;
 flex-direction:column;
@@ -582,15 +910,322 @@ gap:12px;
 border:1px solid #ddd;
 border-radius:14px;
 padding:14px;
+margin:0;
 cursor:pointer;
 background:#fff;
 transition:.15s;
-text-align:left
+min-height:70px;
+text-align:left;
+overflow:hidden
+}
+
+.payment-option:hover{
+border-color:#b58be8;
+background:#fcf9ff
 }
 
 .payment-option.selected{
 border:2px solid #8e2de2;
-background:#faf5ff
+background:#faf5ff;
+padding:13px
+}
+
+.payment-radio{
+width:19px;
+height:19px;
+margin:2px 0 0;
+flex:none;
+accent-color:#8e2de2
+}
+
+.payment-icon{
+width:36px;
+height:36px;
+border-radius:10px;
+background:#f2eaff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:21px;
+flex:none
+}
+
+.payment-content{
+flex:1;
+min-width:0;
+display:flex;
+flex-direction:column;
+gap:4px
+}
+
+.payment-title{
+font-weight:800;
+font-size:15px;
+line-height:1.35;
+word-break:break-word
+}
+
+.payment-description{
+font-size:13px;
+line-height:1.45;
+color:#666;
+white-space:normal;
+overflow-wrap:anywhere
+}
+
+.payment-adjustment{
+display:inline-flex;
+align-self:flex-start;
+font-size:12px;
+font-weight:700;
+padding:4px 8px;
+border-radius:12px;
+background:#fff0f7;
+color:#e91e63;
+line-height:1.3;
+white-space:normal;
+overflow-wrap:anywhere
+}
+
+.payment-option.selected .payment-adjustment{
+background:#eee2ff;
+color:#6a11cb
+}
+
+.price-line{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:15px;
+padding:7px 0
+}
+
+.price-line span:last-child{
+text-align:right;
+white-space:nowrap
+}
+
+.total-line{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:15px;
+font-size:21px;
+font-weight:900;
+padding-top:10px;
+border-top:1px solid #ddd
+}
+
+.total-line span:last-child{
+white-space:nowrap
+}
+
+.success-box{
+background:#effff5;
+border:1px solid #8dd9a9;
+border-radius:16px;
+padding:20px;
+text-align:center
+}
+
+.order-card{
+cursor:pointer
+}
+
+.order-card:hover{
+border-color:#8e2de2
+}
+
+.reason-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:9px
+}
+
+.reason-btn{
+background:#fff;
+border:1px solid #ddd;
+padding:11px;
+border-radius:10px;
+text-align:left
+}
+
+.reason-btn.active{
+border:2px solid #e91e63;
+background:#fff0f7
+}
+
+.demo-label{
+display:inline-block;
+background:#fff0f7;
+color:#e91e63;
+border:1px solid #ffb5d0;
+padding:5px 9px;
+border-radius:15px;
+font-size:12px;
+font-weight:bold;
+margin-bottom:8px
+}
+
+/* COLOR PREVIEW INFO */
+
+.color-preview-info{
+margin-top:10px;
+background:#faf6ff;
+border:1px solid #eadcff;
+border-radius:12px;
+padding:10px;
+font-size:13px;
+color:#5c16b8
+}
+
+.color-dot{
+display:inline-block;
+width:13px;
+height:13px;
+border-radius:50%;
+vertical-align:-2px;
+margin-right:5px;
+border:1px solid #aaa
+}
+
+.dot-Red{background:#e53935}
+.dot-Pink{background:#ec4899}
+.dot-Blue{background:#2563eb}
+.dot-Green{background:#16a34a}
+.dot-Black{background:#111}
+.dot-White{background:#fff}
+.dot-Yellow{background:#facc15}
+.dot-Maroon{background:#800020}
+.dot-Purple{background:#7c3aed}
+.dot-Golden{background:#d4af37}
+.dot-Silver{background:#c0c0c0}
+.dot-Rose-Gold{background:#b76e79}
+.dot-Brown{background:#8b5e3c}
+.dot-Beige{background:#d6c2a1}
+.dot-Grey{background:#6b7280}
+.dot-Standard{background:#8e2de2}
+
+.sort-active{
+background:#eadcff;
+color:#5c16b8;
+border-color:#8e2de2;
+font-weight:bold
+}
+
+@media(max-width:800px){
+
+.product-main{
+grid-template-columns:1fr
+}
+
+.product-photo-large{
+min-height:280px;
+font-size:100px
+}
+
+.product-photo-large .product-visual{
+font-size:100px
+}
+
+.rating-summary{
+grid-template-columns:1fr
+}
+
+}
+
+@media(max-width:650px){
+
+.formgrid{
+grid-template-columns:1fr
+}
+
+.navbtn{
+padding:8px
+}
+
+.logo{
+font-size:21px
+}
+
+.photo{
+height:135px
+}
+
+.grid{
+grid-template-columns:repeat(2,1fr)
+}
+
+.banner{
+flex-direction:column;
+align-items:flex-start
+}
+
+.bottom{
+overflow-x:auto;
+justify-content:flex-start
+}
+
+.bottom button{
+white-space:nowrap
+}
+
+.bottom .bottom-wishlist{
+white-space:normal;
+flex:none
+}
+
+.highlight-list{
+grid-template-columns:1fr
+}
+
+.reason-grid{
+grid-template-columns:1fr
+}
+
+.sticky-buy-inner{
+grid-template-columns:1fr 1fr
+}
+
+.product-page{
+padding-bottom:175px
+}
+
+.payment-option{
+padding:12px;
+gap:9px
+}
+
+.payment-option.selected{
+padding:11px
+}
+
+.payment-icon{
+width:32px;
+height:32px;
+font-size:19px
+}
+
+.payment-title{
+font-size:14px
+}
+
+.payment-description{
+font-size:12px
+}
+
+.payment-adjustment{
+font-size:11px
+}
+
+.price-line{
+font-size:14px
+}
+
+.total-line{
+font-size:19px
+}
+
 }
 </style>
 </head>
@@ -598,44 +1233,113 @@ background:#faf5ff
 <body>
 
 <header class="header">
+
 <div class="top">
+
 <div>
 <div class="logo">🛍️ ZipCart</div>
 <div class="tag">आपकी अपनी Shopping जगह ❤️</div>
 </div>
 
 <div class="search">
-<input id="searchInput" placeholder="क्या ढूँढ रहे हैं? जैसे Anarkali Suit" onkeydown="if(event.key==='Enter')doSearch()">
+
+<input
+id="search"
+placeholder="क्या ढूँढ रहे हैं? जैसे Anarkali Suit"
+onkeydown="if(event.key==='Enter')doSearch()"
+>
+
 <button onclick="voiceSearch()">🎤</button>
 <button onclick="doSearch()">🔍</button>
+
 </div>
 
-<button class="navbtn" onclick="show('wishlist')">❤️ <span class="count" id="wishCount">0</span></button>
-<button class="navbtn" onclick="show('cart')">🛒 Cart <span class="count" id="cartCount">0</span></button>
-<button class="navbtn" onclick="show('orders')">📦 मेरे ऑर्डर</button>
-<button class="navbtn" onclick="show('account')">👤 Account</button>
-<button class="navbtn" onclick="languageModal()">🌐</button>
+<!-- सिर्फ ❤️ + count रखा गया है; Wishlist text हटाया गया है -->
+<button
+class="navbtn"
+onclick="show('wishlist')"
+aria-label="Wishlist"
+title="Wishlist"
+>
+❤️ <span class="count" id="wishCount">0</span>
+</button>
+
+<button class="navbtn" onclick="show('cart')">
+🛒 Cart
+<span class="count" id="cartCount">0</span>
+</button>
+
+<button class="navbtn" onclick="show('orders')">
+📦 मेरे ऑर्डर
+</button>
+
+<button class="navbtn" onclick="show('account')">
+👤 Account
+</button>
+
+<button class="navbtn" onclick="languageModal()">
+🌐
+</button>
+
 </div>
+
 </header>
 
 <main class="page" id="app"></main>
 
 <div class="bottom">
-<button onclick="show('home')">🏠 Home</button>
-<button onclick="show('categories')">🗂️ Categories</button>
-<button class="bottom-wishlist" onclick="show('wishlist')">❤️</button>
-<button onclick="show('orders')">📦 My Orders</button>
-<button onclick="show('account')">👤 Account</button>
+
+<button onclick="show('home')">
+🏠 Home
+</button>
+
+<button onclick="show('categories')">
+🗂️ Categories
+</button>
+
+<button
+class="bottom-wishlist"
+onclick="show('wishlist')"
+aria-label="Wishlist"
+title="Wishlist"
+>
+❤️
+</button>
+
+<button onclick="show('orders')">
+📦 My Orders
+</button>
+
+<button onclick="show('account')">
+👤 Account
+</button>
+
 </div>
 
 <div class="modal" id="modal">
+
 <div class="modalbox" id="modalbox"></div>
+
 </div>
 
 <script>
-const PAYMENT_SETTINGS={ codExtra:50 };
+
+/* =========================================================
+   ZIPCART PAYMENT SETTINGS
+   PAYMENT UNCHANGED
+   ========================================================= */
+
+const PAYMENT_SETTINGS={
+codExtra:50
+};
+
+
+/* =========================================================
+   BASIC DATA — TRAVEL, BILLS, MEDICINES & GROCERY PLACED FIRST
+   ========================================================= */
 
 const cats=[
+
 ["🚌","Travel Tickets","travel"],
 ["🧾","Bills & Recharge","bills"],
 ["💊","Medicines","medicine"],
@@ -652,176 +1356,158 @@ const cats=[
 ["🛋️","Furniture","furniture"],
 ["📱","Electronics","electronics"],
 ["📚","School Items","school"]
+
 ];
 
 const sub={
-grocery:[
-"🥦 Fresh Vegetables",
-"🍎 Fresh Fruits",
-"🌾 Atta, Rice, Dal",
-"🧂 Oil, Ghee, Masala",
-"🍪 Snacks & Biscuits",
-"🧃 Beverages & Drinks",
-"🧼 Household & Cleaning",
-"👶 Baby Care & Personal"
-],
+
 women:[
-"🥻 Saree", "👗 Suits", "👚 Kurtis", "👖 Jeans", "👕 Tops", "👗 Dresses"
+"🥻 Saree",
+"👗 Suits",
+"👚 Kurtis",
+"👖 Jeans",
+"👕 Tops",
+"👗 Dresses",
+"👰 Lehenga",
+"🧥 Jackets",
+"🌙 Nightwear",
+"🪷 Ethnic Wear",
+"👠 Western Wear"
 ],
+
 men:[
-"👔 Shirts", "👕 T-Shirts", "👖 Jeans", "🥻 Kurta", "👖 Trousers/Pants"
-]
-};
-
-const products=[
-{
-id:1,
-name:"Anarkali Designer Suit",
-cat:"women",
-price:699,
-old:1999,
-off:65,
-rating:4.4,
-reviewsCount:1420,
-icon:"👗",
-visualColor:"red",
-desc:"खूबसूरत कढ़ाई वाला एथनिक अनारकली सूट, जो हर पार्टी और शादी के फंक्शन के लिए बेहतरीन है।",
-sizes:["S", "M", "L", "XL", "XXL"],
-colors:["Red", "Pink", "Blue", "Maroon", "Golden"],
-details:[
-"कपड़ा: प्रीमियम जॉर्जेट",
-"वर्क: एम्ब्रॉयडरी और सीक्वेंस वर्क",
-"दुपट्टा: शिफॉन साथ में"
+"👔 Shirts",
+"👕 T-Shirts",
+"👖 Jeans",
+"🥻 Kurta",
+"🧣 Kurta-Pajama",
+"👖 Trousers/Pants",
+"🧥 Jackets",
+"🩳 Shorts",
+"💼 Formal Wear",
+"🏃 Sports Wear"
 ],
-delivery:"3 से 5 दिनों में मुफ़्त डिलीवरी",
-returnExchange:"7 दिन की आसान रिटर्न पॉलिसी",
-reviews:[
-{name:"प्रियंका शर्मा", rating:5, comment:"सूट बहुत ही सुंदर है!", date:"12 Oct 2026"}
-]
-},
-{
-id:2,
-name:"Men's Casual Cotton Shirt",
-cat:"men",
-price:449,
-old:1299,
-off:65,
-rating:4.2,
-reviewsCount:890,
-icon:"👔",
-visualColor:"blue",
-desc:"आरामदायक सूती कैजुअल शर्ट, ऑफिस और रोजमर्रा के लिए बेस्ट।",
-sizes:["M", "L", "XL", "XXL"],
-colors:["Blue", "White", "Black", "Grey", "Green"],
-details:[
-"कपड़ा: 100% शुद्ध कॉटन",
-"फिट: रेगुलर फिट"
+
+kids:[
+"👧 Girls",
+"👦 Boys",
+"👶 Baby",
+"👗 Kids Dresses",
+"👟 Kids Shoes",
+"🍼 Baby Products",
+"🧸 Toys"
 ],
-delivery:"2 से 4 दिनों में डिलीवरी",
-returnExchange:"7 दिन की आसान वापसी",
-reviews:[
-{name:"राहुल वर्मा", rating:4, comment:"क्वालिटी अच्छी है।", date:"11 Oct 2026"}
-]
-}
-];
 
-let cart = [];
-let wishlist = [];
-let orders = [];
+shoes:[
+"👩 Women",
+"👨 Men",
+"🧒 Kids",
+"🏃 Sports Shoes",
+"🩴 Sandals",
+"👠 Heels",
+"🥿 Flats",
+"🩴 Slippers"
+],
 
-function show(page) {
-  const app = document.getElementById('app');
-  if (page === 'home') {
-    app.innerHTML = `
-      <div class="hero">
-        <h1>ZipCart में आपका स्वागत है ❤️</h1>
-        <p>आपकी अपनी shopping जगह — देखो → सुनो → समझो → दबाओ → खरीदो</p>
-      </div>
-      <div class="section">
-        <h2>Top Categories</h2>
-        <div class="hscroll">
-          ${cats.map(c => `
-            <div class="cat" onclick="alert('${c[1]} category clicked!')">
-              <div class="catpic">${c[0]}</div>
-              <b>${c[1]}</b>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-      <div class="section">
-        <h2>Trending Products</h2>
-        <div class="grid">
-          ${products.map(p => `
-            <div class="card">
-              <div class="photo color-${p.visualColor}">
-                <div class="product-visual">${p.icon}</div>
-                <div class="heart" onclick="toggleWishlist(${p.id})">❤️</div>
-              </div>
-              <div class="cardbody">
-                <b>${p.name}</b>
-                <div class="row" style="margin-top:6px">
-                  <span class="price">₹${p.price}</span>
-                  <span class="old">₹${p.old}</span>
-                  <span class="off">${p.off}% off</span>
-                </div>
-                <div class="rating">⭐ ${p.rating}</div>
-                <button class="buy" onclick="addToCart(${p.id})">Add to Cart</button>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    `;
-  } else if (page === 'cart') {
-    app.innerHTML = `
-      <h2>मेरा Cart 🛒</h2>
-      ${cart.length === 0 ? '<div class="empty">आपका cart अभी खाली है। ❤️</div>' : '<div>Cart items here...</div>'}
-    `;
-  } else if (page === 'wishlist') {
-    app.innerHTML = `
-      <h2>मेरी Wishlist ❤️</h2>
-      ${wishlist.length === 0 ? '<div class="empty">Wishlist अभी खाली है। किसी product पर ❤️ दबाइए।</div>' : '<div>Wishlist items here...</div>'}
-    `;
-  } else if (page === 'orders') {
-    app.innerHTML = `<h2>मेरे ऑर्डर 📦</h2><div class="empty">कोई ऑर्डर नहीं मिला।</div>`;
-  } else if (page === 'account') {
-    app.innerHTML = `<h2>Account 👤</h2><div class="panel">लॉगिन / प्रोफाइल विवरण</div>`;
-  } else {
-    app.innerHTML = `<h2>${page}</h2><div class="panel">पेज लोड हो रहा है...</div>`;
-  }
-}
+jewellery:[
+"📿 Necklace",
+"💎 Earrings",
+"🪷 Bangles",
+"💍 Rings",
+"👰 Bridal Jewellery",
+"✨ Artificial Jewellery"
+],
 
-function addToCart(id) {
-  cart.push(id);
-  document.getElementById('cartCount').innerText = cart.length;
-  alert('Product cart में जोड़ दिया गया।');
-}
+bags:[
+"👜 Handbag",
+"🎒 Sling Bag",
+"🎒 School Bag",
+"🧳 Travel Bag",
+"🎒 Backpack",
+"👛 Wallet/Purse"
+],
 
-function toggleWishlist(id) {
-  if (wishlist.includes(id)) {
-    wishlist = wishlist.filter(i => i !== id);
-  } else {
-    wishlist.push(id);
-  }
-  document.getElementById('wishCount').innerText = wishlist.length;
-}
+toys:[
+"🧸 Baby Toys",
+"🧠 Educational",
+"🚗 Cars",
+"👧 Dolls",
+"🎲 Games",
+"🎮 Remote Toys",
+"⚽ Outdoor Toys"
+],
 
-function voiceSearch() {
-  alert('Voice Search चालू है...');
-}
+beauty:[
+"💄 Makeup",
+"🧴 Skincare",
+"💇 Haircare",
+"🧼 Personal Care"
+],
 
-function doSearch() {
-  const query = document.getElementById('searchInput').value;
-  if(query) alert(`ढूँढ रहे हैं: ${query}`);
-}
+home:[
+"🍳 Kitchen",
+"🖼️ Home Decor",
+"📦 Storage",
+"🛏️ Bedsheet",
+"🪟 Curtains"
+],
 
-function languageModal() {
-  alert('भाषा चयन (Language Modal)');
-}
+furniture:[
+"🛋️ Sofa",
+"🛏️ Bed",
+"🪑 Chair",
+"🪵 Table",
+"🚪 Wardrobe",
+"🗄️ Cabinet",
+"🍽️ Dining Set",
+"🪑 Office Chair",
+"🛋️ Recliner",
+"🪞 Dressing Table"
+],
 
-// Initial load
-show('home');
-</script>
+electronics:[
+"📱 Mobile Accessories",
+"🎧 Earphones",
+"🔌 Chargers",
+"🔗 Cables",
+"🔊 Speakers",
+"💻 Other Electronics"
+],
 
-</body>
-</html>
+school:[
+"🎒 School Bags",
+"📖 Books",
+"📓 Notebooks",
+"✏️ Stationery",
+"🎨 Art & Craft"
+],
+
+travel:[
+"🚌 Bus",
+"🚆 Train",
+"✈️ Flight",
+"🏨 Hotel"
+],
+
+bills:[
+"📱 Mobile Recharge",
+"📺 DTH",
+"⚡ Electricity",
+"💧 Water",
+"🔥 Gas",
+"🌐 Broadband/Landline",
+"🛣️ FASTag",
+"🛡️ Insurance",
+"🎓 Education Fees",
+"🏠 Property/Other Bills"
+],
+
+medicine:[
+"💊 Common Care",
+"🩺 Prescription Medicines",
+"🧴 Health & Personal Care",
+"🌡️ Devices & Wellness"
+],
+
+grocery:[
+"🥦 Fre
