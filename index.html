@@ -7,27 +7,15 @@
 
 <style>
 *{box-sizing:border-box}
-
-html{
-scroll-behavior:smooth
-}
-
+html{scroll-behavior:smooth}
 body{
 margin:0;
 font-family:Arial,"Noto Sans",sans-serif;
-background:#f7f7fb;
+background:#faf7ff;
 color:#222
 }
-
-button,input,select,textarea{
-font:inherit
-}
-
-button{
-cursor:pointer;
-border:0
-}
-
+button,input,select,textarea{font:inherit}
+button{cursor:pointer;border:0}
 .header{
 position:sticky;
 top:0;
@@ -36,7 +24,6 @@ background:linear-gradient(135deg,#4b0082,#6a11cb,#e91e63);
 color:#fff;
 padding:12px
 }
-
 .top{
 display:flex;
 align-items:center;
@@ -45,124 +32,76 @@ flex-wrap:wrap;
 max-width:1200px;
 margin:auto
 }
-
-.logo{
-font-size:25px;
-font-weight:800;
-white-space:nowrap
-}
-
-.tag{
-font-size:11px;
-opacity:.95
-}
-
+.logo{font-size:25px;font-weight:800;white-space:nowrap}
+.tag{font-size:11px;opacity:.95}
 .search{
 flex:1;
 min-width:220px;
 display:flex;
 background:#fff;
 border-radius:25px;
-overflow:hidden
+overflow:hidden;
+cursor:pointer
 }
-
 .search input{
 flex:1;
 border:0;
 padding:12px 15px;
-outline:0
+outline:0;
+background:transparent
 }
-
 .search button{
 background:#fff;
 padding:0 10px
 }
-
 .navbtn{
-background:#ffffff22;
+background:#ffffff25;
 color:#fff;
 padding:10px 12px;
 border-radius:20px;
 font-weight:600
 }
-
-.navbtn:hover{
-background:#ffffff35
-}
-
-.count{
-display:inline-flex;
-min-width:21px;
-height:21px;
-align-items:center;
-justify-content:center;
-background:#ff4081;
-color:#fff;
-border-radius:50%;
-font-size:12px;
-margin-left:3px
-}
-
 .page{
 max-width:1200px;
 margin:auto;
-padding:14px 14px 30px
+padding:14px
 }
-
 .hero{
 background:linear-gradient(135deg,#fff0fa,#eee5ff);
 border-radius:20px;
 padding:24px;
 margin-bottom:16px
 }
-
 .hero h1{
 margin:0 0 8px;
-color:#5c16b8
+color:#5b21b6
 }
-
 .quick{
 display:flex;
 gap:8px;
 flex-wrap:wrap;
 margin-top:14px
 }
-
 .pill{
 background:#fff;
 border:1px solid #ddd;
 padding:9px 13px;
 border-radius:20px
 }
-
-.pill:hover{
-border-color:#8e2de2;
-color:#6a11cb
-}
-
-.section{
-margin:22px 0
-}
-
-.section h2{
-margin:0 0 12px
-}
-
+.section{margin:22px 0}
+.section h2{margin:0 0 12px}
 .hscroll{
 display:flex;
 gap:14px;
 overflow-x:auto;
 padding:5px 2px 12px
 }
-
 .cat{
 min-width:92px;
 width:92px;
 text-align:center;
-flex:none;
-cursor:pointer
+flex:none
 }
-
 .catpic{
 width:78px;
 height:78px;
@@ -176,15 +115,13 @@ box-shadow:0 3px 10px #0001;
 font-size:35px;
 margin:auto
 }
-
 .cat b{
 display:block;
 font-size:13px;
 margin-top:7px
 }
-
 .banner{
-background:linear-gradient(100deg,#4b0082,#a4508b,#e91e63);
+background:linear-gradient(100deg,#4b0082,#e91e63);
 color:#fff;
 border-radius:18px;
 padding:18px;
@@ -193,7 +130,6 @@ justify-content:space-between;
 align-items:center;
 gap:15px
 }
-
 .banner button{
 background:#fff;
 color:#6812ad;
@@ -201,27 +137,18 @@ padding:10px 15px;
 border-radius:20px;
 font-weight:bold
 }
-
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
 gap:14px
 }
-
 .card{
 background:#fff;
 border-radius:16px;
 overflow:hidden;
 box-shadow:0 2px 10px #0001;
-position:relative;
-transition:.2s
+position:relative
 }
-
-.card:hover{
-transform:translateY(-2px);
-box-shadow:0 5px 16px #0002
-}
-
 .photo{
 height:155px;
 background:linear-gradient(135deg,#eee,#fafafa);
@@ -229,177 +156,8 @@ display:flex;
 align-items:center;
 justify-content:center;
 font-size:70px;
-cursor:pointer;
-position:relative;
-overflow:hidden
+cursor:pointer
 }
-
-/* PRODUCT COLOR PREVIEW */
-
-.product-visual{
-width:100%;
-height:100%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:70px;
-transition:.3s;
-position:relative
-}
-
-.product-visual:after{
-content:"";
-position:absolute;
-inset:15px;
-border-radius:20px;
-opacity:.16;
-pointer-events:none
-}
-
-.color-red{
-background:linear-gradient(135deg,#fff,#ffe4e8)
-}
-
-.color-red:after{
-background:#e53935
-}
-
-.color-pink{
-background:linear-gradient(135deg,#fff,#ffe5f0)
-}
-
-.color-pink:after{
-background:#ec4899
-}
-
-.color-blue{
-background:linear-gradient(135deg,#fff,#e3efff)
-}
-
-.color-blue:after{
-background:#2563eb
-}
-
-.color-green{
-background:linear-gradient(135deg,#fff,#e4f8ec)
-}
-
-.color-green:after{
-background:#16a34a
-}
-
-.color-black{
-background:linear-gradient(135deg,#fff,#e9e9e9)
-}
-
-.color-black:after{
-background:#111
-}
-
-.color-white{
-background:linear-gradient(135deg,#fff,#f2f2f2)
-}
-
-.color-white:after{
-background:#fff;
-border:2px solid #ddd
-}
-
-.color-yellow{
-background:linear-gradient(135deg,#fff,#fff5cf)
-}
-
-.color-yellow:after{
-background:#facc15
-}
-
-.color-maroon{
-background:linear-gradient(135deg,#fff,#f8e1e6)
-}
-
-.color-maroon:after{
-background:#800020
-}
-
-.color-purple{
-background:linear-gradient(135deg,#fff,#eee4ff)
-}
-
-.color-purple:after{
-background:#7c3aed
-}
-
-.color-golden{
-background:linear-gradient(135deg,#fff,#fff1b8)
-}
-
-.color-golden:after{
-background:#d4af37
-}
-
-.color-silver{
-background:linear-gradient(135deg,#fff,#e7e7e7)
-}
-
-.color-silver:after{
-background:#9ca3af
-}
-
-.color-rose-gold{
-background:linear-gradient(135deg,#fff,#ffe6df)
-}
-
-.color-rose-gold:after{
-background:#b76e79
-}
-
-.color-brown{
-background:linear-gradient(135deg,#fff,#eee0d2)
-}
-
-.color-brown:after{
-background:#8b5e3c
-}
-
-.color-beige{
-background:linear-gradient(135deg,#fff,#f5ead7)
-}
-
-.color-beige:after{
-background:#d6c2a1
-}
-
-.color-grey{
-background:linear-gradient(135deg,#fff,#e8e8e8)
-}
-
-.color-grey:after{
-background:#6b7280
-}
-
-.color-standard{
-background:linear-gradient(135deg,#eee,#fafafa)
-}
-
-.color-standard:after{
-background:#8e2de2
-}
-
-.color-label{
-position:absolute;
-bottom:10px;
-left:50%;
-transform:translateX(-50%);
-background:#ffffffdd;
-padding:5px 10px;
-border-radius:20px;
-font-size:11px;
-font-weight:800;
-z-index:2;
-white-space:nowrap;
-box-shadow:0 2px 6px #0002
-}
-
 .heart{
 position:absolute;
 right:8px;
@@ -412,54 +170,49 @@ font-size:20px;
 box-shadow:0 2px 7px #0002;
 z-index:2
 }
-
-.heart.liked{
-color:#e91e63
-}
-
-.cardbody{
-padding:11px
-}
-
+.cardbody{padding:11px}
 .price{
 font-size:20px;
 font-weight:800
 }
-
 .old{
 text-decoration:line-through;
 color:#888;
 font-size:13px;
 margin-left:5px
 }
-
 .off{
 color:#16833c;
 font-weight:700;
 font-size:13px;
 margin-left:5px
 }
-
 .rating{
 color:#087b36;
 font-weight:700;
 margin-top:5px
 }
-
-.buy{
-width:100%;
-margin-top:9px;
-padding:11px;
-border-radius:10px;
-background:linear-gradient(135deg,#4b0082,#8e2de2);
-color:#fff;
-font-weight:bold
+.cardActions{
+display:flex;
+gap:6px;
+margin-top:9px
 }
-
-.buy:hover{
-background:linear-gradient(135deg,#6a11cb,#e91e63)
+.cardActions button{
+flex:1;
+padding:8px 4px;
+border-radius:8px;
+font-size:12px;
+font-weight:bold;
+text-align:center
 }
-
+.btn-add{
+background:#f0e6ff;
+color:#5b21b6
+}
+.btn-buy{
+background:#6a11cb;
+color:#fff
+}
 .panel{
 background:#fff;
 border-radius:18px;
@@ -467,56 +220,92 @@ padding:18px;
 box-shadow:0 2px 12px #0001;
 margin-bottom:15px
 }
-
 .back{
 background:#eee;
 padding:9px 14px;
 border-radius:18px;
-margin-bottom:12px
+margin-bottom:12px;
+font-weight:bold
 }
-
 .row{
 display:flex;
 gap:10px;
 align-items:center;
 flex-wrap:wrap
 }
-
-.grow{
-flex:1
-}
-
+.grow{flex:1}
 .formgrid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:12px
 }
-
 .field{
 display:flex;
 flex-direction:column;
 gap:5px
 }
-
 .field input,
 .field select,
 .field textarea{
 padding:11px;
 border:1px solid #ccc;
-border-radius:10px;
-outline:none
+border-radius:10px
 }
-
-.field input:focus,
-.field select:focus,
-.field textarea:focus{
-border-color:#8e2de2
+.field textarea{min-height:80px}
+.modal{
+position:fixed;
+inset:0;
+background:#0008;
+z-index:100;
+display:none;
+align-items:center;
+justify-content:center;
+padding:15px
 }
-
-.field textarea{
-min-height:80px
+.modalbox{
+background:#fff;
+border-radius:18px;
+max-width:700px;
+width:100%;
+max-height:90vh;
+overflow:auto;
+padding:20px
 }
-
+.modal.show{display:flex}
+.track{
+display:flex;
+justify-content:space-between;
+gap:4px;
+position:relative;
+margin:20px 0
+}
+.track:before{
+content:"";
+position:absolute;
+top:15px;
+left:6%;
+right:6%;
+height:4px;
+background:#ddd
+}
+.step{
+z-index:1;
+text-align:center;
+font-size:11px;
+max-width:90px
+}
+.dot{
+width:30px;
+height:30px;
+border-radius:50%;
+background:#eee;
+margin:auto;
+padding-top:7px
+}
+.done .dot{
+background:#6a11cb;
+color:#fff
+}
 .notice{
 background:#fff8df;
 border:1px solid #efd57c;
@@ -524,54 +313,6 @@ border-radius:12px;
 padding:12px;
 margin:10px 0
 }
-
-.empty{
-text-align:center;
-padding:30px;
-background:#fff;
-border-radius:18px;
-box-shadow:0 2px 10px #0001
-}
-
-.qtybox{
-display:flex;
-align-items:center;
-gap:7px
-}
-
-.qtybox button{
-width:30px;
-height:30px;
-border-radius:50%;
-background:#eee
-}
-
-.cartitem{
-padding:14px 0;
-border-bottom:1px solid #eee;
-cursor:pointer
-}
-
-.cartitem:last-child{
-border-bottom:0
-}
-
-.selectrow{
-display:flex;
-align-items:center;
-gap:8px
-}
-
-.product-link{
-cursor:pointer
-}
-
-.product-link:hover{
-color:#6a11cb
-}
-
-/* BOTTOM NAV */
-
 .bottom{
 position:sticky;
 bottom:0;
@@ -583,649 +324,43 @@ justify-content:center;
 gap:8px;
 z-index:40
 }
-
 .bottom button{
 background:#f2eff8;
 padding:9px 12px;
 border-radius:12px
 }
-
-.bottom button:hover{
-background:#eadcff;
-color:#5c16b8
+.lang-active{
+background:#6a11cb!important;
+color:#fff!important
 }
-
-/* ONLY ICON FOR BOTTOM WISHLIST */
-
-.bottom-wishlist{
-font-size:24px!important;
-width:46px;
-height:42px;
-padding:6px!important;
-display:flex;
-align-items:center;
-justify-content:center;
-line-height:1
+.rtl{
+direction:rtl;
+text-align:right
 }
-
-.modal{
-position:fixed;
-inset:0;
-background:#0008;
-z-index:100;
-display:none;
-align-items:center;
-justify-content:center;
-padding:15px
-}
-
-.modalbox{
-background:#fff;
-border-radius:18px;
-max-width:700px;
-width:100%;
-max-height:90vh;
-overflow:auto;
-padding:20px
-}
-
-.modal.show{
-display:flex
-}
-
-.track{
-display:flex;
-justify-content:space-between;
-gap:4px;
-position:relative;
-margin:20px 0
-}
-
-.track:before{
-content:"";
-position:absolute;
-top:15px;
-left:6%;
-right:6%;
-height:4px;
-background:#ddd
-}
-
-.step{
-z-index:1;
-text-align:center;
-font-size:11px;
-max-width:90px
-}
-
-.dot{
-width:30px;
-height:30px;
-border-radius:50%;
-background:#eee;
-margin:auto;
-padding-top:7px
-}
-
-.done .dot{
-background:#8e2de2;
-color:#fff
-}
-
-/* PRODUCT DETAIL */
-
-.product-page{
-padding-bottom:150px
-}
-
-.product-main{
-display:grid;
-grid-template-columns:minmax(280px,1fr) minmax(320px,1fr);
-gap:18px
-}
-
-.product-photo-large{
-min-height:360px;
-border-radius:20px;
-background:linear-gradient(135deg,#eee,#fff);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:130px;
-box-shadow:0 2px 12px #0001;
-position:relative;
-overflow:hidden;
-transition:.3s
-}
-
-.product-photo-large .product-visual{
-font-size:130px
-}
-
-.product-info h1{
-margin-top:0
-}
-
-.rating-box{
-display:flex;
-align-items:center;
-gap:10px;
-margin:12px 0
-}
-
-.rating-badge{
-background:#ff4081;
-color:#fff;
-font-weight:800;
-padding:7px 12px;
-border-radius:10px;
-font-size:16px
-}
-
-.rating-count{
-color:#666
-}
-
-.option-title{
-font-weight:800;
-margin-top:18px;
-margin-bottom:8px
-}
-
-.size-list,
-.color-list{
-display:flex;
-gap:8px;
-flex-wrap:wrap
-}
-
-.size-btn,
-.color-btn{
-background:#fff;
-border:1px solid #bbb;
-padding:9px 14px;
-border-radius:9px
-}
-
-.size-btn.active,
-.color-btn.active{
-border:2px solid #8e2de2;
-background:#f4eaff;
-color:#5c16b8;
-font-weight:bold
-}
-
-.size-btn.disabled{
-opacity:.4;
-text-decoration:line-through;
-cursor:not-allowed
-}
-
-.delivery-box{
-background:#faf6ff;
-border:1px solid #eadcff;
-padding:13px;
-border-radius:12px;
-margin-top:15px
-}
-
-.highlight-list{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px
-}
-
-.highlight{
-background:#fafafa;
-border-radius:12px;
-padding:12px;
-border:1px solid #eee
-}
-
-.rating-summary{
-display:grid;
-grid-template-columns:170px 1fr;
-gap:20px;
-align-items:center
-}
-
-.rating-big{
-text-align:center;
-background:#fff0f7;
-border-radius:18px;
-padding:20px
-}
-
-.rating-big .number{
-font-size:40px;
-font-weight:900;
-color:#ff4081
-}
-
-.rating-choice{
-display:flex;
-gap:7px;
-flex-wrap:wrap
-}
-
-.rating-choice button{
-background:#fff;
-border:1px solid #ddd;
-border-radius:12px;
-padding:9px 12px
-}
-
-.rating-choice button:hover{
-border-color:#ff4081;
-color:#e91e63
-}
-
-.review{
-border-top:1px solid #eee;
-padding:14px 0
-}
-
-.review:first-child{
-border-top:0
-}
-
-.review-media{
-background:#fafafa;
-border-radius:10px;
-padding:10px;
-margin-top:8px
-}
-
-.sticky-buy{
-position:fixed;
-left:0;
-right:0;
-bottom:0;
-z-index:80;
-background:#fff;
-border-top:1px solid #ddd;
-box-shadow:0 -4px 18px #0002;
-padding:10px 14px
-}
-
-.sticky-buy-inner{
-max-width:1200px;
-margin:auto;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px
-}
-
-.sticky-buy button{
-padding:14px;
-border-radius:12px;
-font-weight:800
-}
-
-.sticky-cart{
-background:#fff;
-border:2px solid #6a11cb!important;
-color:#5c16b8
-}
-
-.sticky-buy-now{
-background:linear-gradient(135deg,#4b0082,#e91e63);
-color:#fff
-}
-
-.checkout-step{
+.thumb-row{
 display:flex;
 gap:10px;
-align-items:center;
-margin-bottom:12px
+margin-top:10px;
+overflow-x:auto
 }
-
-.checkout-number{
-width:30px;
-height:30px;
-border-radius:50%;
-background:#6a11cb;
-color:#fff;
+.thumb{
+width:60px;
+height:60px;
+border:2px solid #ddd;
+border-radius:8px;
 display:flex;
 align-items:center;
 justify-content:center;
-font-weight:bold;
-flex:none
-}
-
-/* PAYMENT UI — UNCHANGED */
-
-.payment-options{
-display:flex;
-flex-direction:column;
-gap:10px;
-margin-top:12px
-}
-
-.payment-option{
-width:100%;
-display:flex;
-align-items:flex-start;
-gap:12px;
-border:1px solid #ddd;
-border-radius:14px;
-padding:14px;
-margin:0;
-cursor:pointer;
-background:#fff;
-transition:.15s;
-min-height:70px;
-text-align:left;
-overflow:hidden
-}
-
-.payment-option:hover{
-border-color:#b58be8;
-background:#fcf9ff
-}
-
-.payment-option.selected{
-border:2px solid #8e2de2;
-background:#faf5ff;
-padding:13px
-}
-
-.payment-radio{
-width:19px;
-height:19px;
-margin:2px 0 0;
-flex:none;
-accent-color:#8e2de2
-}
-
-.payment-icon{
-width:36px;
-height:36px;
-border-radius:10px;
-background:#f2eaff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:21px;
-flex:none
-}
-
-.payment-content{
-flex:1;
-min-width:0;
-display:flex;
-flex-direction:column;
-gap:4px
-}
-
-.payment-title{
-font-weight:800;
-font-size:15px;
-line-height:1.35;
-word-break:break-word
-}
-
-.payment-description{
-font-size:13px;
-line-height:1.45;
-color:#666;
-white-space:normal;
-overflow-wrap:anywhere
-}
-
-.payment-adjustment{
-display:inline-flex;
-align-self:flex-start;
-font-size:12px;
-font-weight:700;
-padding:4px 8px;
-border-radius:12px;
-background:#fff0f7;
-color:#e91e63;
-line-height:1.3;
-white-space:normal;
-overflow-wrap:anywhere
-}
-
-.payment-option.selected .payment-adjustment{
-background:#eee2ff;
-color:#6a11cb
-}
-
-.price-line{
-display:flex;
-justify-content:space-between;
-align-items:flex-start;
-gap:15px;
-padding:7px 0
-}
-
-.price-line span:last-child{
-text-align:right;
-white-space:nowrap
-}
-
-.total-line{
-display:flex;
-justify-content:space-between;
-align-items:flex-start;
-gap:15px;
-font-size:21px;
-font-weight:900;
-padding-top:10px;
-border-top:1px solid #ddd
-}
-
-.total-line span:last-child{
-white-space:nowrap
-}
-
-.success-box{
-background:#effff5;
-border:1px solid #8dd9a9;
-border-radius:16px;
-padding:20px;
-text-align:center
-}
-
-.order-card{
+font-size:30px;
 cursor:pointer
 }
-
-.order-card:hover{
-border-color:#8e2de2
-}
-
-.reason-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:9px
-}
-
-.reason-btn{
-background:#fff;
-border:1px solid #ddd;
-padding:11px;
-border-radius:10px;
-text-align:left
-}
-
-.reason-btn.active{
-border:2px solid #e91e63;
-background:#fff0f7
-}
-
-.demo-label{
-display:inline-block;
-background:#fff0f7;
-color:#e91e63;
-border:1px solid #ffb5d0;
-padding:5px 9px;
-border-radius:15px;
-font-size:12px;
-font-weight:bold;
-margin-bottom:8px
-}
-
-/* COLOR PREVIEW INFO */
-
-.color-preview-info{
-margin-top:10px;
-background:#faf6ff;
-border:1px solid #eadcff;
-border-radius:12px;
-padding:10px;
-font-size:13px;
-color:#5c16b8
-}
-
-.color-dot{
-display:inline-block;
-width:13px;
-height:13px;
-border-radius:50%;
-vertical-align:-2px;
-margin-right:5px;
-border:1px solid #aaa
-}
-
-.dot-Red{background:#e53935}
-.dot-Pink{background:#ec4899}
-.dot-Blue{background:#2563eb}
-.dot-Green{background:#16a34a}
-.dot-Black{background:#111}
-.dot-White{background:#fff}
-.dot-Yellow{background:#facc15}
-.dot-Maroon{background:#800020}
-.dot-Purple{background:#7c3aed}
-.dot-Golden{background:#d4af37}
-.dot-Silver{background:#c0c0c0}
-.dot-Rose-Gold{background:#b76e79}
-.dot-Brown{background:#8b5e3c}
-.dot-Beige{background:#d6c2a1}
-.dot-Grey{background:#6b7280}
-.dot-Standard{background:#8e2de2}
-
-.sort-active{
-background:#eadcff;
-color:#5c16b8;
-border-color:#8e2de2;
-font-weight:bold
-}
-
-@media(max-width:800px){
-
-.product-main{
-grid-template-columns:1fr
-}
-
-.product-photo-large{
-min-height:280px;
-font-size:100px
-}
-
-.product-photo-large .product-visual{
-font-size:100px
-}
-
-.rating-summary{
-grid-template-columns:1fr
-}
-
-}
-
+.thumb.active{border-color:#6a11cb}
 @media(max-width:650px){
-
-.formgrid{
-grid-template-columns:1fr
-}
-
-.navbtn{
-padding:8px
-}
-
-.logo{
-font-size:21px
-}
-
-.photo{
-height:135px
-}
-
-.grid{
-grid-template-columns:repeat(2,1fr)
-}
-
-.banner{
-flex-direction:column;
-align-items:flex-start
-}
-
-.bottom{
-overflow-x:auto;
-justify-content:flex-start
-}
-
-.bottom button{
-white-space:nowrap
-}
-
-.bottom .bottom-wishlist{
-white-space:normal;
-flex:none
-}
-
-.highlight-list{
-grid-template-columns:1fr
-}
-
-.reason-grid{
-grid-template-columns:1fr
-}
-
-.sticky-buy-inner{
-grid-template-columns:1fr 1fr
-}
-
-.product-page{
-padding-bottom:175px
-}
-
-.payment-option{
-padding:12px;
-gap:9px
-}
-
-.payment-option.selected{
-padding:11px
-}
-
-.payment-icon{
-width:32px;
-height:32px;
-font-size:19px
-}
-
-.payment-title{
-font-size:14px
-}
-
-.payment-description{
-font-size:12px
-}
-
-.payment-adjustment{
-font-size:11px
-}
-
-.price-line{
-font-size:14px
-}
-
-.total-line{
-font-size:19px
-}
-
+.formgrid{grid-template-columns:1fr}
+.navbtn{padding:8px}
+.logo{font-size:21px}
+.photo{height:135px}
+.grid{grid-template-columns:repeat(2,1fr)}
 }
 </style>
 </head>
@@ -1233,281 +368,408 @@ font-size:19px
 <body>
 
 <header class="header">
-
 <div class="top">
 
 <div>
 <div class="logo">🛍️ ZipCart</div>
-<div class="tag">आपकी अपनी Shopping जगह ❤️</div>
+<div class="tag" id="tagline"></div>
 </div>
 
-<div class="search">
-
-<input
-id="search"
-placeholder="क्या ढूँढ रहे हैं? जैसे Anarkali Suit"
+<div class="search" onclick="document.getElementById('searchInput').focus()">
+<input id="searchInput" type="text"
 onkeydown="if(event.key==='Enter')doSearch()"
->
-
+onclick="this.focus()"
+ontouchstart="this.focus()">
 <button onclick="voiceSearch()">🎤</button>
 <button onclick="doSearch()">🔍</button>
-
 </div>
 
-<!-- सिर्फ ❤️ + count रखा गया है; Wishlist text हटाया गया है -->
-<button
-class="navbtn"
-onclick="show('wishlist')"
-aria-label="Wishlist"
-title="Wishlist"
->
-❤️ <span class="count" id="wishCount">0</span>
+<button class="navbtn" onclick="show('wishlist')">
+❤️ <span id="wishCount">0</span>
 </button>
 
 <button class="navbtn" onclick="show('cart')">
-🛒 Cart
-<span class="count" id="cartCount">0</span>
+🛒 <span id="cartCount">0</span>
 </button>
 
-<button class="navbtn" onclick="show('orders')">
-📦 मेरे ऑर्डर
-</button>
+<button class="navbtn" onclick="show('orders')" id="ordersTop"></button>
 
 <button class="navbtn" onclick="show('account')">
-👤 Account
+👤 <span id="accountTop"></span>
 </button>
 
-<button class="navbtn" onclick="languageModal()">
-🌐
-</button>
+<button class="navbtn" onclick="languageModal()">🌐</button>
 
 </div>
-
 </header>
 
 <main class="page" id="app"></main>
 
 <div class="bottom">
-
-<button onclick="show('home')">
-🏠 Home
-</button>
-
-<button onclick="show('categories')">
-🗂️ Categories
-</button>
-
-<button
-class="bottom-wishlist"
-onclick="show('wishlist')"
-aria-label="Wishlist"
-title="Wishlist"
->
-❤️
-</button>
-
-<button onclick="show('orders')">
-📦 My Orders
-</button>
-
-<button onclick="show('account')">
-👤 Account
-</button>
-
+<button onclick="show('home')">🏠 <span id="bottomHome"></span></button>
+<button onclick="show('categories')">🗂️ <span id="bottomCategories"></span></button>
+<button onclick="show('seller')">🏪 <span id="bottomSeller"></span></button>
+<button onclick="show('orders')">📦 <span id="bottomOrders"></span></button>
+<button onclick="show('account')">👤 <span id="bottomAccount"></span></button>
 </div>
 
 <div class="modal" id="modal">
-
 <div class="modalbox" id="modalbox"></div>
-
 </div>
 
 <script>
 
 /* =========================================================
-   ZIPCART PAYMENT SETTINGS
-   PAYMENT UNCHANGED
-   ========================================================= */
+   LANGUAGE SYSTEM & COMPENSIVE MULTI-LANGUAGE PACKS
+========================================================= */
 
-const PAYMENT_SETTINGS={
-codExtra:50
+const LANG_META={
+Hindi:{native:"हिन्दी",code:"hi-IN"},
+English:{native:"English",code:"en-IN"},
+Gujarati:{native:"ગુજરાતી",code:"gu-IN"},
+Marathi:{native:"मराठी",code:"mr-IN"},
+Bengali:{native:"বাংলা",code:"bn-IN"},
+Tamil:{native:"தமிழ்",code:"ta-IN"},
+Telugu:{native:"తెలుగు",code:"te-IN"},
+Kannada:{native:"ಕನ್ನಡ",code:"kn-IN"},
+Malayalam:{native:"മലയാളം",code:"ml-IN"},
+Punjabi:{native:"ਪੰਜਾਬੀ",code:"pa-IN"},
+Odia:{native:"ଓଡ଼ିଆ",code:"or-IN"},
+Assamese:{native:"অসমীয়া",code:"as-IN"},
+Urdu:{native:"اردو",code:"ur-IN"},
+Nepali:{native:"नेपाली",code:"ne-NP"},
+Maithili:{native:"मैथिली",code:"mai-IN"},
+Konkani:{native:"कोंकणी",code:"kok-IN"}
 };
 
+const LANGUAGES=Object.keys(LANG_META);
 
-/* =========================================================
-   BASIC DATA — TRAVEL, BILLS, MEDICINES & GROCERY PLACED FIRST
-   ========================================================= */
+const T={
+Hindi:{
+tagline:"आपकी अपनी Shopping जगह ❤️",
+search:"क्या ढूँढ रहे हैं? जैसे Anarkali Suit",
+wishlist:"Wishlist",
+cart:"Cart",
+orders:"मेरे ऑर्डर",
+account:"Account",
+home:"Home",
+categories:"Categories",
+seller:"Seller",
+welcome:"ZipCart में आपका स्वागत है ❤️",
+shopLine:"आपकी अपनी shopping जगह — देखो → सुनो → समझो → दबाओ → खरीदो",
+voiceSearch:"Voice Search",
+help:"मदद चाहिए?",
+groceryQuick:"Grocery Quick Delivery",
+medicines:"Medicines",
+offers:"आज के Offers",
+offerText:"आपके बजट और पसंद के हिसाब से खरीदारी करें",
+viewSuit:"Anarkali Suit देखें",
+topCategories:"Top Categories",
+forYou:"आपके लिए चुना गया",
+budget:"कम बजट में पसंदीदा",
+newArrivals:"New Arrivals",
+addCart:"Add to Cart",
+buyNow:"Buy Now",
+back:"वापस",
+listen:"सुनें",
+products:"Products",
+details:"पूरा विवरण",
+size:"Size",
+color:"Color",
+delivery:"Delivery",
+returnExchange:"Return/Exchange",
+reviewsQA:"Reviews & Q&A",
+wishlistTitle:"मेरी Wishlist",
+emptyWishlist:"Wishlist अभी खाली है। किसी product पर ❤️ दबाइए।",
+cartTitle:"मेरा Cart",
+emptyCart:"आपका cart अभी खाली है। ❤️",
+remove:"Remove",
+saveLater:"Save for Later",
+priceDetails:"Price Details",
+selectedTotal:"Selected Product Total",
+deliveryCharge:"Delivery",
+discount:"Discount",
+finalTotal:"Final Total",
+checkout:"Proceed to Checkout",
+name:"नाम",
+mobile:"Mobile",
+address:"Address",
+pin:"PIN Code",
+payment:"Payment",
+placeOrder:"Place Order",
+cod:"Cash on Delivery",
+codExtra:"COD पर ₹50 अतिरिक्त",
+gpay:"GPay",
+phonepe:"PhonePe",
+upi:"UPI",
+addCard:"Add Card",
+onlinePrice:"Online Payment Total",
+codPrice:"COD Total",
+standard:"Standard",
+fast:"Fast",
+express:"Express",
+orderPlaced:"Order Placed",
+confirmed:"Confirmed",
+packed:"Packed",
+shipped:"Shipped",
+outDelivery:"Out for Delivery",
+delivered:"Delivered",
+delayed:"Delayed",
+track:"Track Order",
+return:"Return",
+exchange:"Exchange",
+orderDate:"Order date",
+expectedDelivery:"Expected delivery",
+wrongProduct:"Wrong product",
+damaged:"Damaged / defective",
+wrongColorSize:"Wrong color / size",
+changeMind:"Change of mind",
+photoVideo:"Photo/Video जोड़ें",
+submitReturn:"Submit Return",
+submitExchange:"Submit Exchange",
+chooseLanguage:"भाषा चुनें",
+languageSaved:"Language saved",
+close:"बंद करें",
+searchTitle:"Search",
+results:"विकल्प मिले",
+noResults:"कोई exact result नहीं मिला",
+filter:"Filter",
+sort:"Sort",
+lowHigh:"Price Low-High",
+highLow:"Price High-Low",
+all:"All",
+availableColors:"उपलब्ध रंग",
+sellerInfo:"Seller Information",
+pinHint:"PIN code डालने पर वास्तविक उपलब्ध तारीख और charge दिखेगा।",
+reviews:"Reviews",
+addresses:"Addresses",
+payments:"Payments",
+coupons:"Coupons",
+returnsRefunds:"Returns & Refunds",
+notifications:"Notifications",
+accessibility:"Accessibility",
+loginOtp:"Login / OTP",
+logout:"Logout",
+continueShopping:"Shopping जारी रखें",
+productAdded:"Product cart में जोड़ दिया गया।",
+registration:"Seller Registration",
+businessName:"Seller/Business Name",
+sellerMobile:"Mobile / Email",
+pan:"PAN / applicable identity details",
+gst:"GSTIN, जहाँ लागू/आवश्यक हो",
+businessAddress:"Business Address",
+documents:"Required licence/documents",
+continue:"Continue",
+dashboard:"Seller Dashboard",
+stock:"Stock",
+variants:"Variants",
+earnings:"Earnings",
+payouts:"Payouts",
+verification:"Verification",
+vacation:"Vacation Mode",
+save:"Save",
+selectSizeColorAlert:"कृपया आगे बढ़ने से पहले साइज़ और रंग (Size & Color) चुनें!",
+change:"बदलें (Change)",
+reviewOrder:"Review Order",
+paymentMethod:"Payment Method",
+orderSuccessTitle:"बधाई हो! आपका ऑर्डर सफल हो गया है 🎉",
+orderSuccessMsg:"आपका ऑर्डर सफलतापूर्वक ले लिया गया है। जल्दी ही यह आपके पते पर डिलीवर कर दिया जाएगा।"
+},
+English:{
+tagline:"Your own Shopping place ❤️",
+search:"What are you looking for? e.g. Anarkali Suit",
+wishlist:"Wishlist",
+cart:"Cart",
+orders:"My Orders",
+account:"Account",
+home:"Home",
+categories:"Categories",
+seller:"Seller",
+welcome:"Welcome to ZipCart ❤️",
+shopLine:"Your own shopping place — See → Listen → Understand → Tap → Buy",
+voiceSearch:"Voice Search",
+help:"Need Help?",
+groceryQuick:"Grocery Quick Delivery",
+medicines:"Medicines",
+offers:"Today's Offers",
+offerText:"Shop according to your budget and choice",
+viewSuit:"View Anarkali Suit",
+topCategories:"Top Categories",
+forYou:"Picked for You",
+budget:"Popular Under Budget",
+newArrivals:"New Arrivals",
+addCart:"Add to Cart",
+buyNow:"Buy Now",
+back:"Back",
+listen:"Listen",
+products:"Products",
+details:"Full Details",
+size:"Size",
+color:"Color",
+delivery:"Delivery",
+returnExchange:"Return/Exchange",
+reviewsQA:"Reviews & Q&A",
+wishlistTitle:"My Wishlist",
+emptyWishlist:"Your Wishlist is empty. Tap ❤️ on a product.",
+cartTitle:"My Cart",
+emptyCart:"Your cart is empty. ❤️",
+remove:"Remove",
+saveLater:"Save for Later",
+priceDetails:"Price Details",
+selectedTotal:"Selected Product Total",
+deliveryCharge:"Delivery",
+discount:"Discount",
+finalTotal:"Final Total",
+checkout:"Proceed to Checkout",
+name:"Name",
+mobile:"Mobile",
+address:"Address",
+pin:"PIN Code",
+payment:"Payment",
+placeOrder:"Place Order",
+cod:"Cash on Delivery",
+codExtra:"₹50 extra on COD",
+gpay:"GPay",
+phonepe:"PhonePe",
+upi:"UPI",
+addCard:"Add Card",
+onlinePrice:"Online Payment Total",
+codPrice:"COD Total",
+standard:"Standard",
+fast:"Fast",
+express:"Express",
+orderPlaced:"Order Placed",
+confirmed:"Confirmed",
+packed:"Packed",
+shipped:"Shipped",
+outDelivery:"Out for Delivery",
+delivered:"Delivered",
+delayed:"Delayed",
+track:"Track Order",
+return:"Return",
+exchange:"Exchange",
+orderDate:"Order date",
+expectedDelivery:"Expected delivery",
+wrongProduct:"Wrong product",
+damaged:"Damaged / defective",
+wrongColorSize:"Wrong color / size",
+changeMind:"Change of mind",
+photoVideo:"Add Photo/Video",
+submitReturn:"Submit Return",
+submitExchange:"Submit Exchange",
+chooseLanguage:"Choose Language",
+languageSaved:"Language saved",
+close:"Close",
+searchTitle:"Search",
+results:"results found",
+noResults:"No exact result found",
+filter:"Filter",
+sort:"Sort",
+lowHigh:"Price Low-High",
+highLow:"Price High-Low",
+all:"All",
+availableColors:"Available Colors",
+sellerInfo:"Seller Information",
+pinHint:"Actual delivery date and charge will show after entering PIN.",
+reviews:"Reviews",
+addresses:"Addresses",
+payments:"Payments",
+coupons:"Coupons",
+returnsRefunds:"Returns & Refunds",
+notifications:"Notifications",
+accessibility:"Accessibility",
+loginOtp:"Login / OTP",
+logout:"Logout",
+continueShopping:"Continue Shopping",
+productAdded:"Product added to cart.",
+registration:"Seller Registration",
+businessName:"Seller/Business Name",
+sellerMobile:"Mobile / Email",
+pan:"PAN / applicable identity details",
+gst:"GSTIN, where applicable/required",
+businessAddress:"Business Address",
+documents:"Required licence/documents",
+continue:"Continue",
+dashboard:"Seller Dashboard",
+stock:"Stock",
+variants:"Variants",
+earnings:"Earnings",
+payouts:"Payouts",
+verification:"Verification",
+vacation:"Vacation Mode",
+save:"Save",
+selectSizeColorAlert:"Please select Size and Color before proceeding!",
+change:"Change",
+reviewOrder:"Review Order",
+paymentMethod:"Payment Method",
+orderSuccessTitle:"Congratulations! Order Placed Successfully 🎉",
+orderSuccessMsg:"Your order has been placed successfully and will be delivered soon."
+}
+};
 
-const cats=[
-
-["🚌","Travel Tickets","travel"],
-["🧾","Bills & Recharge","bills"],
-["💊","Medicines","medicine"],
-["🛒","Grocery","grocery"],
-["👗","महिलाओं का फैशन","women"],
-["👔","Men Fashion","men"],
-["🧒","Kids","kids"],
-["👟","जूते","shoes"],
-["💍","ज्वेलरी","jewellery"],
-["👜","बैग","bags"],
-["🧸","खिलौने","toys"],
-["💄","Beauty","beauty"],
-["🏠","घर का सामान","home"],
-["🛋️","Furniture","furniture"],
-["📱","Electronics","electronics"],
-["📚","School Items","school"]
-
-];
-
-const sub={
-
-women:[
-"🥻 Saree",
-"👗 Suits",
-"👚 Kurtis",
-"👖 Jeans",
-"👕 Tops",
-"👗 Dresses",
-"👰 Lehenga",
-"🧥 Jackets",
-"🌙 Nightwear",
-"🪷 Ethnic Wear",
-"👠 Western Wear"
-],
-
-men:[
-"👔 Shirts",
-"👕 T-Shirts",
-"👖 Jeans",
-"🥻 Kurta",
-"🧣 Kurta-Pajama",
-"👖 Trousers/Pants",
-"🧥 Jackets",
-"🩳 Shorts",
-"💼 Formal Wear",
-"🏃 Sports Wear"
-],
-
-kids:[
-"👧 Girls",
-"👦 Boys",
-"👶 Baby",
-"👗 Kids Dresses",
-"👟 Kids Shoes",
-"🍼 Baby Products",
-"🧸 Toys"
-],
-
-shoes:[
-"👩 Women",
-"👨 Men",
-"🧒 Kids",
-"🏃 Sports Shoes",
-"🩴 Sandals",
-"👠 Heels",
-"🥿 Flats",
-"🩴 Slippers"
-],
-
-jewellery:[
-"📿 Necklace",
-"💎 Earrings",
-"🪷 Bangles",
-"💍 Rings",
-"👰 Bridal Jewellery",
-"✨ Artificial Jewellery"
-],
-
-bags:[
-"👜 Handbag",
-"🎒 Sling Bag",
-"🎒 School Bag",
-"🧳 Travel Bag",
-"🎒 Backpack",
-"👛 Wallet/Purse"
-],
-
-toys:[
-"🧸 Baby Toys",
-"🧠 Educational",
-"🚗 Cars",
-"👧 Dolls",
-"🎲 Games",
-"🎮 Remote Toys",
-"⚽ Outdoor Toys"
-],
-
-beauty:[
-"💄 Makeup",
-"🧴 Skincare",
-"💇 Haircare",
-"🧼 Personal Care"
-],
-
-home:[
-"🍳 Kitchen",
-"🖼️ Home Decor",
-"📦 Storage",
-"🛏️ Bedsheet",
-"🪟 Curtains"
-],
-
-furniture:[
-"🛋️ Sofa",
-"🛏️ Bed",
-"🪑 Chair",
-"🪵 Table",
-"🚪 Wardrobe",
-"🗄️ Cabinet",
-"🍽️ Dining Set",
-"🪑 Office Chair",
-"🛋️ Recliner",
-"🪞 Dressing Table"
-],
-
-electronics:[
-"📱 Mobile Accessories",
-"🎧 Earphones",
-"🔌 Chargers",
-"🔗 Cables",
-"🔊 Speakers",
-"💻 Other Electronics"
-],
-
-school:[
-"🎒 School Bags",
-"📖 Books",
-"📓 Notebooks",
-"✏️ Stationery",
-"🎨 Art & Craft"
-],
-
-travel:[
-"🚌 Bus",
-"🚆 Train",
-"✈️ Flight",
-"🏨 Hotel"
-],
-
-bills:[
-"📱 Mobile Recharge",
-"📺 DTH",
-"⚡ Electricity",
-"💧 Water",
-"🔥 Gas",
-"🌐 Broadband/Landline",
-"🛣️ FASTag",
-"🛡️ Insurance",
-"🎓 Education Fees",
-"🏠 Property/Other Bills"
-],
-
-medicine:[
-"💊 Common Care",
-"🩺 Prescription Medicines",
-"🧴 Health & Personal Care",
-"🌡️ Devices & Wellness"
-],
-
-grocery:[
-"🥦 Fre
+const EXTRA={
+Gujarati:{
+tagline:"તમારી પોતાની Shopping જગ્યા ❤️",
+search:"શું શોધી રહ્યા છો? જેમ કે Anarkali Suit",
+wishlist:"વિશલિસ્ટ",cart:"કાર્ટ",orders:"મારા ઓર્ડર",account:"એકાઉન્ટ",
+home:"હોમ",categories:"કેટેગરી",seller:"વિક્રેતા",voiceSearch:"વોઇસ સર્ચ",help:"મદદ જોઈએ?",
+groceryQuick:"ઝડપી ગ્રોસરી ડિલિવરી",medicines:"દવાઓ",offers:"આજની ઓફર્સ",
+offerText:"તમારા બજેટ અને પસંદગી મુજબ ખરીદી કરો",viewSuit:"Anarkali Suit જુઓ",
+welcome:"ZipCart માં આપનું સ્વાગત છે ❤️",shopLine:"તમારી પોતાની shopping જગ્યા — જુઓ → સાંભળો → સમજો → દબાવો → ખરીદો",
+topCategories:"ટોપ કેટેગરી",forYou:"તમારા માટે પસંદ કરેલું",budget:"ઓછા બજેટમાં લોકપ્રિય",
+newArrivals:"નવા ઉત્પાદનો",addCart:"કાર્ટમાં ઉમેરો",buyNow:"હમણાં ખરીદો",back:"પાછળ",
+listen:"સાંભળો",products:"ઉત્પાદનો",size:"સાઇઝ",color:"રંગ",delivery:"ડિલિવરી",
+returnExchange:"રિટર્ન/એક્સચેન્જ",reviewsQA:"રિવ્યૂ અને પ્રશ્નો",wishlistTitle:"મારી વિશલિસ્ટ",
+emptyWishlist:"વિશલિસ્ટ ખાલી છે. પ્રોડક્ટ પર ❤️ દબાવો.",cartTitle:"મારો કાર્ટ",
+emptyCart:"તમારો કાર્ટ ખાલી છે.",remove:"દૂર કરો",saveLater:"પછી માટે સાચવો",
+priceDetails:"કિંમતની વિગતો",selectedTotal:"પસંદ કરેલા પ્રોડક્ટની કુલ કિંમત",
+deliveryCharge:"ડિલિવરી",discount:"ડિસ્કાઉન્ટ",finalTotal:"અંતિમ કુલ",checkout:"ચેકઆઉટ",
+name:"નામ",mobile:"મોબાઇલ",address:"સરનામું",pin:"PIN કોડ",payment:"ચુકવણી",
+placeOrder:"ઓર્ડર કરો",cod:"કેશ ઓન ડિલિવરી",codExtra:"COD પર ₹50 વધારાના",
+gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"કાર્ડ ઉમેરો",onlinePrice:"ઓનલાઇન ચુકવણી કુલ",
+codPrice:"COD કુલ",standard:"સ્ટાન્ડર્ડ",fast:"ફાસ્ટ",express:"એક્સપ્રેસ",
+orderPlaced:"ઓર્ડર થયો",confirmed:"કન્ફર્મ",packed:"પેક થયો",shipped:"મોકલાયો",
+outDelivery:"ડિલિવરી માટે નીકળ્યો",delivered:"ડિલિવર થયો",delayed:"વિલંબિત",
+track:"ઓર્ડર ટ્રેક કરો",return:"રિટર્ન",exchange:"એક્સચેન્જ",orderDate:"ઓર્ડરની તારીખ",
+expectedDelivery:"અપેક્ષિત ડિલિવરી",wrongProduct:"ખોટું પ્રોડક્ટ",damaged:"નુકસાનગ્રસ્ત / ખરાબ",
+wrongColorSize:"ખોટો રંગ / સાઇઝ",changeMind:"મન બદલાયું",photoVideo:"ફોટો/વિડિયો ઉમેરો",
+submitReturn:"રિટર્ન મોકલો",submitExchange:"એક્સચેન્જ મોકલો",chooseLanguage:"ભાષા પસંદ કરો",
+languageSaved:"ભાષા સાચવાઈ",close:"બંધ કરો",searchTitle:"શોધ",results:"પરિણામ મળ્યા",
+noResults:"ચોક્કસ પરિણામ મળ્યું નથી",filter:"ફિલ્ટર",sort:"ક્રમ",lowHigh:"ઓછીથી વધુ કિંમત",
+highLow:"વધુથી ઓછી કિંમત",all:"બધું",availableColors:"ઉપલબ્ધ રંગો",sellerInfo:"વિક્રેતા માહિતી",
+pinHint:"PIN નાખ્યા પછી વાસ્તવિક તારીખ અને ચાર્જ દેખાશે",reviews:"રિવ્યૂ",addresses:"સરનામાં",
+payments:"ચુકવણીઓ",coupons:"કૂપન",returnsRefunds:"રિટર્ન અને રિફંડ",notifications:"નોટિફિકેશન",
+accessibility:"સુલભતા",loginOtp:"લોગિન / OTP",logout:"લોગઆઉટ",continueShopping:"ખરીદી ચાલુ રાખો",
+productAdded:"પ્રોડક્ટ કાર્ટમાં ઉમેરાયું.",registration:"વિક્રેતા નોંધણી",businessName:"વિક્રેતા/વ્યવસાયનું નામ",
+sellerMobile:"મોબાઇલ / ઇમેઇલ",pan:"PAN / લાગુ ઓળખ વિગતો",gst:"GSTIN, જ્યાં લાગુ પડે",
+businessAddress:"વ્યવસાયનું સરનામું",documents:"જરૂરી લાઇસન્સ/દસ્તાવેજો",continue:"ચાલુ રાખો",
+dashboard:"વિક્રેતા ડેશબોર્ડ",stock:"સ્ટોક",variants:"વેરિઅન્ટ",earnings:"કમાણી",
+payouts:"ચુકવણી",verification:"ચકાસણી",vacation:"વેકેશન મોડ",save:"સાચવો",
+selectSizeColorAlert:"કૃપા કરીને આગળ વધતા પહેલા સાઇઝ અને રંગ પસંદ કરો!",
+change:"બદલો",reviewOrder:"ઓર્ડર તપાસો",paymentMethod:"પેमेंट પદ્ધતિ",
+orderSuccessTitle:"অভिनंदन! ઓર્ડર સફળતાપૂર્વક થઈ ગયો છે 🎉",
+orderSuccessMsg:"તમારો ઓર્ડર સફળતાપૂર્વક લેવાયો છે."
+},
+Marathi:{
+tagline:"तुमची स्वतःची Shopping जागा ❤️",
+search:"तुम्ही काय शोधत आहात? उदा. Anarkali Suit",
+wishlist:"विशलिस्ट",cart:"कार्ट",orders:"माझ्या ऑर्डर्स",account:"अकाउंट",
+home:"होम",categories:"कॅटेगरी",seller:"विक्रेता",voiceSearch:"व्हॉइस सर्च",help:"मदत हवी?",
+groceryQuick:"जलद किराणा डिलिव्हरी",medicines:"औषधे",offers:"आजच्या ऑफर्स",
+offerText:"तुमच्या बजेट आणि आवडीनुसार खरेदी करा",viewSuit:"Anarkali Suit पहा",
+welcome:"ZipCart मध्ये तुमचे स्वागत आहे ❤️",shopLine:"तुमची स्वतःची shopping जागा — पहा → ऐका → समजा → दाबा → खरेदी करा",
+topCategories:"टॉप कॅटेगरी",forYou:"तुमच्यासाठी निवडलेले",budget:"कमी बजेटमधील आवडते",
+newArrivals:"नवीन उत्पादने",addCart:"कार्टमध्ये जोडा",buyNow:"आता खरेदी करा",back:"मागे",
+listen:"ऐका",products:"उत्पादने",size:"साईज",color:"रंग",delivery:"डिलिव्हरी",
+returnExchange:"रिटर्न/एक्सचेंज",reviewsQA:"रिव्ह्यू आणि प्रश्न",wishlistTitle:"माझी विशलिस्ट",
+emptyWishlist:"विशलिस्ट रिकामी आहे. प्रोडक्टवर ❤️ दाबा.",cartTitle:"माझा कार्ट",
+emptyCart:"तुमचा कार्ट रिकामा आहे.",remove:"काढा",saveLater:"नंतरसाठी जतन करा",
+priceDetails:"किंमतीची माहिती",selectedTotal:"निवडलेल्या उत्पादनांची एकूण किंमत",
+deliveryCharge:"डिलिव्हरी",discount:"सवलत",finalTotal:"अंतिम एकूण",checkout:"चेकआउट",
+name:"नाव",mobile:"मोबाईल",address:"पत्ता",pin:"PIN कोड",payment:"पेमेंट",
+placeOrder:"ऑर्डर करा",cod:"कॅश ऑन डिलिव्हरी",codExtra:"COD वर ₹50 अतिरिक्त",
+gpay:"GPay",phonepe:"PhonePe",upi:"UPI",addCard:"कार्ड जोडा",onlinePrice:"ऑनलाइन पेमेंट एकूण",
+codPrice:"COD एकूण",standard:"स्टँडर्ड",fast:"फास्ट",express:"एक्सप्रेस",
+orderPlaced:"ऑर्डर दिली",confirmed:"कन्फर्म",packed:"पॅक केले",shipped:"पाठवले",
+outDelivery:"डिलिव्हरीसाठी निघाले",delivered:"डिलिव्हर झाले",delayed:"उशीर झाला",
+track:"ऑर्डर ट्रॅक करा",return:"
